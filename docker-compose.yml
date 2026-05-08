@@ -1,0 +1,25 @@
+# Local PostgreSQL for Prani Doctor (Prisma / Next.js)
+# Run from this directory: `docker compose up -d`
+# Connection: postgresql://postgres:postgres@localhost:5432/pranidoctor_db?schema=public
+
+services:
+  db:
+    image: postgres:16-alpine
+    container_name: pranidoctor-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: pranidoctor_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - pranidoctor_pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d pranidoctor_db"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  pranidoctor_pgdata:
