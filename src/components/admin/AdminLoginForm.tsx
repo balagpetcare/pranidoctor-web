@@ -11,19 +11,26 @@ type ApiEnvelope<T> =
   | { ok: true; data: T }
   | { ok: false; error: { code: string; message: string } };
 
-/** User-facing copy in Bengali; never distinguishes wrong email vs wrong password. */
+/** Bengali-first copy; maps API `error.code` from `POST /api/admin/auth/login`. */
 function loginErrorBn(code: string): string {
   switch (code) {
+    case "invalid_credentials":
+      return "ভুল ইমেইল বা পাসওয়ার্ড";
+    case "db_unavailable":
+      return "সার্ভারের সাথে সংযোগ করা যাচ্ছে না";
+    case "server_error":
+      return "সিস্টেম সাময়িকভাবে ব্যস্ত";
+    // Legacy codes (older deployments / cached bundles)
     case "INVALID_CREDENTIALS":
-      return "লগইন সফল হয়নি। ইমেইল ও পাসওয়ার্ড আবার লিখে চেষ্টা করুন।";
-    case "VALIDATION_ERROR":
-      return "ইমেইল ও পাসওয়ার্ড সঠিকভাবে পূরণ করুন।";
-    case "INVALID_JSON":
-      return "অনুরোধ পাঠানো যায়নি। পৃষ্ঠাটি রিফ্রেশ করে আবার চেষ্টা করুন।";
+      return "ভুল ইমেইল বা পাসওয়ার্ড";
+    case "DATABASE_UNAVAILABLE":
+      return "সার্ভারের সাথে সংযোগ করা যাচ্ছে না";
     case "SERVER_MISCONFIGURED":
-      return "সিস্টেম সাময়িকভাবে ব্যস্ত। কিছুক্ষণ পরে আবার চেষ্টা করুন বা প্রশাসকের সাথে যোগাযোগ করুন।";
+    case "VALIDATION_ERROR":
+    case "INVALID_JSON":
+      return "সিস্টেম সাময়িকভাবে ব্যস্ত";
     default:
-      return "কিছু একটা সমস্যা হয়েছে। আবার চেষ্টা করুন।";
+      return "সিস্টেম সাময়িকভাবে ব্যস্ত";
   }
 }
 

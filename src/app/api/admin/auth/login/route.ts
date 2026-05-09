@@ -1,12 +1,16 @@
 import bcrypt from "bcryptjs";
 import { z } from "zod";
 
+import {
+  isAdminLoginDatabaseConnectivityError,
+  logAdminLoginFailure,
+} from "@/lib/admin-auth/admin-login-errors";
 import { setAdminSessionCookie } from "@/lib/admin-auth/cookies";
 import { signAdminToken } from "@/lib/admin-auth/jwt";
 import { getAdminJwtSecret } from "@/lib/admin-auth/secrets";
 import { jsonError, jsonOk } from "@/lib/api-response";
 import { prisma } from "@/lib/prisma";
-import { UserRole, UserStatus } from "@/generated/prisma/client";
+import { Prisma, UserRole, UserStatus } from "@/generated/prisma/client";
 
 const bodySchema = z.object({
   email: z.string().trim().email(),
@@ -18,13 +22,19 @@ export async function POST(request: Request) {
   try {
     json = await request.json();
   } catch {
-    return jsonError("INVALID_JSON", "Request body must be JSON", 400);
+    logAdminLoginFailure("server_error");
+    return jsonError(
+      "server_error",
+      "Request body must be valid JSON",
+      400,
+    );
   }
 
   const parsed = bodySchema.safeParse(json);
   if (!parsed.success) {
+    logAdminLoginFailure("server_error");
     return jsonError(
-      "VALIDATION_ERROR",
+      "server_error",
       "Invalid email or password payload",
       422,
       parsed.error.flatten(),
@@ -34,17 +44,36 @@ export async function POST(request: Request) {
   const { email, password } = parsed.data;
 
   if (!getAdminJwtSecret()) {
+    logAdminLoginFailure("server_error");
     return jsonError(
-      "SERVER_MISCONFIGURED",
-      "Admin JWT secret is not configured on the server",
+      "server_error",
+      "Admin session signing is not configured on the server",
       500,
     );
   }
 
-  const user = await prisma.user.findFirst({
-    where: { email: { equals: email, mode: "insensitive" } },
-    include: { adminProfile: true },
-  });
+  let user;
+  try {
+    user = await prisma.user.findFirst({
+      where: { email: { equals: email, mode: "insensitive" } },
+      include: { adminProfile: true },
+    });
+  } catch (e: unknown) {
+    if (isAdminLoginDatabaseConnectivityError(e)) {
+      const prismaCode =
+        e instanceof Prisma.PrismaClientKnownRequestError ? e.code : undefined;
+      logAdminLoginFailure("db_unavailable", prismaCode ? { prismaCode } : undefined);
+      return jsonError(
+        "db_unavailable",
+        "Could not reach the database",
+        503,
+      );
+    }
+    const prismaCode =
+      e instanceof Prisma.PrismaClientKnownRequestError ? e.code : undefined;
+    logAdminLoginFailure("server_error", prismaCode ? { prismaCode } : undefined);
+    return jsonError("server_error", "Unexpected error during sign-in", 500);
+  }
 
   const isPanelAdmin =
     user &&
@@ -53,12 +82,22 @@ export async function POST(request: Request) {
     user.adminProfile;
 
   if (!isPanelAdmin || !user) {
-    return jsonError("INVALID_CREDENTIALS", "Invalid email or password", 401);
+    logAdminLoginFailure("invalid_credentials");
+    return jsonError(
+      "invalid_credentials",
+      "Invalid email or password",
+      401,
+    );
   }
 
   const valid = await bcrypt.compare(password, user.passwordHash);
   if (!valid) {
-    return jsonError("INVALID_CREDENTIALS", "Invalid email or password", 401);
+    logAdminLoginFailure("invalid_credentials");
+    return jsonError(
+      "invalid_credentials",
+      "Invalid email or password",
+      401,
+    );
   }
 
   const sessionRole =
@@ -68,8 +107,9 @@ export async function POST(request: Request) {
   try {
     token = await signAdminToken(user.id, user.email, sessionRole);
   } catch {
+    logAdminLoginFailure("server_error");
     return jsonError(
-      "SERVER_MISCONFIGURED",
+      "server_error",
       "Could not issue session token",
       500,
     );
@@ -77,6 +117,7 @@ export async function POST(request: Request) {
 
   const displayName = user.adminProfile?.displayName ?? null;
   const res = jsonOk({
+    result: "success" as const,
     user: {
       id: user.id,
       email: user.email,
