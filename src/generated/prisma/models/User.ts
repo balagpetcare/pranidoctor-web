@@ -209,7 +209,10 @@ export type UserWhereInput = {
   adminProfile?: Prisma.XOR<Prisma.AdminProfileNullableScalarRelationFilter, Prisma.AdminProfileWhereInput> | null
   doctorProfile?: Prisma.XOR<Prisma.DoctorProfileNullableScalarRelationFilter, Prisma.DoctorProfileWhereInput> | null
   customerProfile?: Prisma.XOR<Prisma.CustomerProfileNullableScalarRelationFilter, Prisma.CustomerProfileWhereInput> | null
+  aiTechnicianProfile?: Prisma.XOR<Prisma.AiTechnicianProfileNullableScalarRelationFilter, Prisma.AiTechnicianProfileWhereInput> | null
   notifications?: Prisma.NotificationListRelationFilter
+  contentPostsAuthored?: Prisma.ContentPostListRelationFilter
+  complaintsAssigned?: Prisma.ComplaintListRelationFilter
 }
 
 export type UserOrderByWithRelationInput = {
@@ -224,7 +227,10 @@ export type UserOrderByWithRelationInput = {
   adminProfile?: Prisma.AdminProfileOrderByWithRelationInput
   doctorProfile?: Prisma.DoctorProfileOrderByWithRelationInput
   customerProfile?: Prisma.CustomerProfileOrderByWithRelationInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileOrderByWithRelationInput
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
+  contentPostsAuthored?: Prisma.ContentPostOrderByRelationAggregateInput
+  complaintsAssigned?: Prisma.ComplaintOrderByRelationAggregateInput
 }
 
 export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -242,7 +248,10 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   adminProfile?: Prisma.XOR<Prisma.AdminProfileNullableScalarRelationFilter, Prisma.AdminProfileWhereInput> | null
   doctorProfile?: Prisma.XOR<Prisma.DoctorProfileNullableScalarRelationFilter, Prisma.DoctorProfileWhereInput> | null
   customerProfile?: Prisma.XOR<Prisma.CustomerProfileNullableScalarRelationFilter, Prisma.CustomerProfileWhereInput> | null
+  aiTechnicianProfile?: Prisma.XOR<Prisma.AiTechnicianProfileNullableScalarRelationFilter, Prisma.AiTechnicianProfileWhereInput> | null
   notifications?: Prisma.NotificationListRelationFilter
+  contentPostsAuthored?: Prisma.ContentPostListRelationFilter
+  complaintsAssigned?: Prisma.ComplaintListRelationFilter
 }, "id" | "email" | "phone">
 
 export type UserOrderByWithAggregationInput = {
@@ -285,7 +294,10 @@ export type UserCreateInput = {
   adminProfile?: Prisma.AdminProfileCreateNestedOneWithoutUserInput
   doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput
   customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileCreateNestedOneWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
 }
 
 export type UserUncheckedCreateInput = {
@@ -300,7 +312,10 @@ export type UserUncheckedCreateInput = {
   adminProfile?: Prisma.AdminProfileUncheckedCreateNestedOneWithoutUserInput
   doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput
   customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedCreateNestedOneWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
 }
 
 export type UserUpdateInput = {
@@ -315,7 +330,10 @@ export type UserUpdateInput = {
   adminProfile?: Prisma.AdminProfileUpdateOneWithoutUserNestedInput
   doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput
   customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUpdateOneWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
 }
 
 export type UserUncheckedUpdateInput = {
@@ -330,7 +348,10 @@ export type UserUncheckedUpdateInput = {
   adminProfile?: Prisma.AdminProfileUncheckedUpdateOneWithoutUserNestedInput
   doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput
   customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedUpdateOneWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
 }
 
 export type UserCreateManyInput = {
@@ -404,6 +425,11 @@ export type UserScalarRelationFilter = {
   isNot?: Prisma.UserWhereInput
 }
 
+export type UserNullableScalarRelationFilter = {
+  is?: Prisma.UserWhereInput | null
+  isNot?: Prisma.UserWhereInput | null
+}
+
 export type StringFieldUpdateOperationsInput = {
   set?: string
 }
@@ -452,6 +478,20 @@ export type UserUpdateOneRequiredWithoutDoctorProfileNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutDoctorProfileInput, Prisma.UserUpdateWithoutDoctorProfileInput>, Prisma.UserUncheckedUpdateWithoutDoctorProfileInput>
 }
 
+export type UserCreateNestedOneWithoutAiTechnicianProfileInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAiTechnicianProfileInput, Prisma.UserUncheckedCreateWithoutAiTechnicianProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAiTechnicianProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutAiTechnicianProfileInput, Prisma.UserUncheckedCreateWithoutAiTechnicianProfileInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutAiTechnicianProfileInput
+  upsert?: Prisma.UserUpsertWithoutAiTechnicianProfileInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutAiTechnicianProfileInput, Prisma.UserUpdateWithoutAiTechnicianProfileInput>, Prisma.UserUncheckedUpdateWithoutAiTechnicianProfileInput>
+}
+
 export type UserCreateNestedOneWithoutCustomerProfileInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutCustomerProfileInput, Prisma.UserUncheckedCreateWithoutCustomerProfileInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutCustomerProfileInput
@@ -464,6 +504,36 @@ export type UserUpdateOneRequiredWithoutCustomerProfileNestedInput = {
   upsert?: Prisma.UserUpsertWithoutCustomerProfileInput
   connect?: Prisma.UserWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutCustomerProfileInput, Prisma.UserUpdateWithoutCustomerProfileInput>, Prisma.UserUncheckedUpdateWithoutCustomerProfileInput>
+}
+
+export type UserCreateNestedOneWithoutContentPostsAuthoredInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutContentPostsAuthoredInput, Prisma.UserUncheckedCreateWithoutContentPostsAuthoredInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutContentPostsAuthoredInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneRequiredWithoutContentPostsAuthoredNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutContentPostsAuthoredInput, Prisma.UserUncheckedCreateWithoutContentPostsAuthoredInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutContentPostsAuthoredInput
+  upsert?: Prisma.UserUpsertWithoutContentPostsAuthoredInput
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutContentPostsAuthoredInput, Prisma.UserUpdateWithoutContentPostsAuthoredInput>, Prisma.UserUncheckedUpdateWithoutContentPostsAuthoredInput>
+}
+
+export type UserCreateNestedOneWithoutComplaintsAssignedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutComplaintsAssignedInput, Prisma.UserUncheckedCreateWithoutComplaintsAssignedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutComplaintsAssignedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutComplaintsAssignedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutComplaintsAssignedInput, Prisma.UserUncheckedCreateWithoutComplaintsAssignedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutComplaintsAssignedInput
+  upsert?: Prisma.UserUpsertWithoutComplaintsAssignedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutComplaintsAssignedInput, Prisma.UserUpdateWithoutComplaintsAssignedInput>, Prisma.UserUncheckedUpdateWithoutComplaintsAssignedInput>
 }
 
 export type UserCreateNestedOneWithoutNotificationsInput = {
@@ -491,7 +561,10 @@ export type UserCreateWithoutAdminProfileInput = {
   updatedAt?: Date | string
   doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput
   customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileCreateNestedOneWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
 }
 
 export type UserUncheckedCreateWithoutAdminProfileInput = {
@@ -505,7 +578,10 @@ export type UserUncheckedCreateWithoutAdminProfileInput = {
   updatedAt?: Date | string
   doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput
   customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedCreateNestedOneWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
 }
 
 export type UserCreateOrConnectWithoutAdminProfileInput = {
@@ -535,7 +611,10 @@ export type UserUpdateWithoutAdminProfileInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput
   customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUpdateOneWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
 }
 
 export type UserUncheckedUpdateWithoutAdminProfileInput = {
@@ -549,7 +628,10 @@ export type UserUncheckedUpdateWithoutAdminProfileInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput
   customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedUpdateOneWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
 }
 
 export type UserCreateWithoutDoctorProfileInput = {
@@ -563,7 +645,10 @@ export type UserCreateWithoutDoctorProfileInput = {
   updatedAt?: Date | string
   adminProfile?: Prisma.AdminProfileCreateNestedOneWithoutUserInput
   customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileCreateNestedOneWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
 }
 
 export type UserUncheckedCreateWithoutDoctorProfileInput = {
@@ -577,7 +662,10 @@ export type UserUncheckedCreateWithoutDoctorProfileInput = {
   updatedAt?: Date | string
   adminProfile?: Prisma.AdminProfileUncheckedCreateNestedOneWithoutUserInput
   customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedCreateNestedOneWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
 }
 
 export type UserCreateOrConnectWithoutDoctorProfileInput = {
@@ -607,7 +695,10 @@ export type UserUpdateWithoutDoctorProfileInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   adminProfile?: Prisma.AdminProfileUpdateOneWithoutUserNestedInput
   customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUpdateOneWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
 }
 
 export type UserUncheckedUpdateWithoutDoctorProfileInput = {
@@ -621,7 +712,94 @@ export type UserUncheckedUpdateWithoutDoctorProfileInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   adminProfile?: Prisma.AdminProfileUncheckedUpdateOneWithoutUserNestedInput
   customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedUpdateOneWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
+}
+
+export type UserCreateWithoutAiTechnicianProfileInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  passwordHash: string
+  role: $Enums.UserRole
+  status?: $Enums.UserStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  adminProfile?: Prisma.AdminProfileCreateNestedOneWithoutUserInput
+  doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
+}
+
+export type UserUncheckedCreateWithoutAiTechnicianProfileInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  passwordHash: string
+  role: $Enums.UserRole
+  status?: $Enums.UserStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  adminProfile?: Prisma.AdminProfileUncheckedCreateNestedOneWithoutUserInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
+}
+
+export type UserCreateOrConnectWithoutAiTechnicianProfileInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutAiTechnicianProfileInput, Prisma.UserUncheckedCreateWithoutAiTechnicianProfileInput>
+}
+
+export type UserUpsertWithoutAiTechnicianProfileInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutAiTechnicianProfileInput, Prisma.UserUncheckedUpdateWithoutAiTechnicianProfileInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutAiTechnicianProfileInput, Prisma.UserUncheckedCreateWithoutAiTechnicianProfileInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutAiTechnicianProfileInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutAiTechnicianProfileInput, Prisma.UserUncheckedUpdateWithoutAiTechnicianProfileInput>
+}
+
+export type UserUpdateWithoutAiTechnicianProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  adminProfile?: Prisma.AdminProfileUpdateOneWithoutUserNestedInput
+  doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
+}
+
+export type UserUncheckedUpdateWithoutAiTechnicianProfileInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  adminProfile?: Prisma.AdminProfileUncheckedUpdateOneWithoutUserNestedInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
 }
 
 export type UserCreateWithoutCustomerProfileInput = {
@@ -635,7 +813,10 @@ export type UserCreateWithoutCustomerProfileInput = {
   updatedAt?: Date | string
   adminProfile?: Prisma.AdminProfileCreateNestedOneWithoutUserInput
   doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileCreateNestedOneWithoutUserInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
 }
 
 export type UserUncheckedCreateWithoutCustomerProfileInput = {
@@ -649,7 +830,10 @@ export type UserUncheckedCreateWithoutCustomerProfileInput = {
   updatedAt?: Date | string
   adminProfile?: Prisma.AdminProfileUncheckedCreateNestedOneWithoutUserInput
   doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedCreateNestedOneWithoutUserInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
 }
 
 export type UserCreateOrConnectWithoutCustomerProfileInput = {
@@ -679,7 +863,10 @@ export type UserUpdateWithoutCustomerProfileInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   adminProfile?: Prisma.AdminProfileUpdateOneWithoutUserNestedInput
   doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUpdateOneWithoutUserNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
 }
 
 export type UserUncheckedUpdateWithoutCustomerProfileInput = {
@@ -693,7 +880,178 @@ export type UserUncheckedUpdateWithoutCustomerProfileInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   adminProfile?: Prisma.AdminProfileUncheckedUpdateOneWithoutUserNestedInput
   doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedUpdateOneWithoutUserNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
+}
+
+export type UserCreateWithoutContentPostsAuthoredInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  passwordHash: string
+  role: $Enums.UserRole
+  status?: $Enums.UserStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  adminProfile?: Prisma.AdminProfileCreateNestedOneWithoutUserInput
+  doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
+}
+
+export type UserUncheckedCreateWithoutContentPostsAuthoredInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  passwordHash: string
+  role: $Enums.UserRole
+  status?: $Enums.UserStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  adminProfile?: Prisma.AdminProfileUncheckedCreateNestedOneWithoutUserInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
+}
+
+export type UserCreateOrConnectWithoutContentPostsAuthoredInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutContentPostsAuthoredInput, Prisma.UserUncheckedCreateWithoutContentPostsAuthoredInput>
+}
+
+export type UserUpsertWithoutContentPostsAuthoredInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutContentPostsAuthoredInput, Prisma.UserUncheckedUpdateWithoutContentPostsAuthoredInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutContentPostsAuthoredInput, Prisma.UserUncheckedCreateWithoutContentPostsAuthoredInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutContentPostsAuthoredInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutContentPostsAuthoredInput, Prisma.UserUncheckedUpdateWithoutContentPostsAuthoredInput>
+}
+
+export type UserUpdateWithoutContentPostsAuthoredInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  adminProfile?: Prisma.AdminProfileUpdateOneWithoutUserNestedInput
+  doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
+}
+
+export type UserUncheckedUpdateWithoutContentPostsAuthoredInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  adminProfile?: Prisma.AdminProfileUncheckedUpdateOneWithoutUserNestedInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
+}
+
+export type UserCreateWithoutComplaintsAssignedInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  passwordHash: string
+  role: $Enums.UserRole
+  status?: $Enums.UserStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  adminProfile?: Prisma.AdminProfileCreateNestedOneWithoutUserInput
+  doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
+}
+
+export type UserUncheckedCreateWithoutComplaintsAssignedInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  passwordHash: string
+  role: $Enums.UserRole
+  status?: $Enums.UserStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  adminProfile?: Prisma.AdminProfileUncheckedCreateNestedOneWithoutUserInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedCreateNestedOneWithoutUserInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
+}
+
+export type UserCreateOrConnectWithoutComplaintsAssignedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutComplaintsAssignedInput, Prisma.UserUncheckedCreateWithoutComplaintsAssignedInput>
+}
+
+export type UserUpsertWithoutComplaintsAssignedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutComplaintsAssignedInput, Prisma.UserUncheckedUpdateWithoutComplaintsAssignedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutComplaintsAssignedInput, Prisma.UserUncheckedCreateWithoutComplaintsAssignedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutComplaintsAssignedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutComplaintsAssignedInput, Prisma.UserUncheckedUpdateWithoutComplaintsAssignedInput>
+}
+
+export type UserUpdateWithoutComplaintsAssignedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  adminProfile?: Prisma.AdminProfileUpdateOneWithoutUserNestedInput
+  doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
+}
+
+export type UserUncheckedUpdateWithoutComplaintsAssignedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  adminProfile?: Prisma.AdminProfileUncheckedUpdateOneWithoutUserNestedInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedUpdateOneWithoutUserNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
 }
 
 export type UserCreateWithoutNotificationsInput = {
@@ -708,6 +1066,9 @@ export type UserCreateWithoutNotificationsInput = {
   adminProfile?: Prisma.AdminProfileCreateNestedOneWithoutUserInput
   doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput
   customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileCreateNestedOneWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
 }
 
 export type UserUncheckedCreateWithoutNotificationsInput = {
@@ -722,6 +1083,9 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   adminProfile?: Prisma.AdminProfileUncheckedCreateNestedOneWithoutUserInput
   doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput
   customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedCreateNestedOneWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
 }
 
 export type UserCreateOrConnectWithoutNotificationsInput = {
@@ -752,6 +1116,9 @@ export type UserUpdateWithoutNotificationsInput = {
   adminProfile?: Prisma.AdminProfileUpdateOneWithoutUserNestedInput
   doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput
   customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUpdateOneWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
 }
 
 export type UserUncheckedUpdateWithoutNotificationsInput = {
@@ -766,6 +1133,9 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   adminProfile?: Prisma.AdminProfileUncheckedUpdateOneWithoutUserNestedInput
   doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput
   customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedUpdateOneWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
 }
 
 
@@ -775,10 +1145,14 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
 
 export type UserCountOutputType = {
   notifications: number
+  contentPostsAuthored: number
+  complaintsAssigned: number
 }
 
 export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
+  contentPostsAuthored?: boolean | UserCountOutputTypeCountContentPostsAuthoredArgs
+  complaintsAssigned?: boolean | UserCountOutputTypeCountComplaintsAssignedArgs
 }
 
 /**
@@ -798,6 +1172,20 @@ export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Ty
   where?: Prisma.NotificationWhereInput
 }
 
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountContentPostsAuthoredArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ContentPostWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
+export type UserCountOutputTypeCountComplaintsAssignedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComplaintWhereInput
+}
+
 
 export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -811,7 +1199,10 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   adminProfile?: boolean | Prisma.User$adminProfileArgs<ExtArgs>
   doctorProfile?: boolean | Prisma.User$doctorProfileArgs<ExtArgs>
   customerProfile?: boolean | Prisma.User$customerProfileArgs<ExtArgs>
+  aiTechnicianProfile?: boolean | Prisma.User$aiTechnicianProfileArgs<ExtArgs>
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  contentPostsAuthored?: boolean | Prisma.User$contentPostsAuthoredArgs<ExtArgs>
+  complaintsAssigned?: boolean | Prisma.User$complaintsAssignedArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["user"]>
 
@@ -853,7 +1244,10 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   adminProfile?: boolean | Prisma.User$adminProfileArgs<ExtArgs>
   doctorProfile?: boolean | Prisma.User$doctorProfileArgs<ExtArgs>
   customerProfile?: boolean | Prisma.User$customerProfileArgs<ExtArgs>
+  aiTechnicianProfile?: boolean | Prisma.User$aiTechnicianProfileArgs<ExtArgs>
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
+  contentPostsAuthored?: boolean | Prisma.User$contentPostsAuthoredArgs<ExtArgs>
+  complaintsAssigned?: boolean | Prisma.User$complaintsAssignedArgs<ExtArgs>
   _count?: boolean | Prisma.UserCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UserIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -865,7 +1259,10 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     adminProfile: Prisma.$AdminProfilePayload<ExtArgs> | null
     doctorProfile: Prisma.$DoctorProfilePayload<ExtArgs> | null
     customerProfile: Prisma.$CustomerProfilePayload<ExtArgs> | null
+    aiTechnicianProfile: Prisma.$AiTechnicianProfilePayload<ExtArgs> | null
     notifications: Prisma.$NotificationPayload<ExtArgs>[]
+    contentPostsAuthored: Prisma.$ContentPostPayload<ExtArgs>[]
+    complaintsAssigned: Prisma.$ComplaintPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1273,7 +1670,10 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   adminProfile<T extends Prisma.User$adminProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$adminProfileArgs<ExtArgs>>): Prisma.Prisma__AdminProfileClient<runtime.Types.Result.GetResult<Prisma.$AdminProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   doctorProfile<T extends Prisma.User$doctorProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$doctorProfileArgs<ExtArgs>>): Prisma.Prisma__DoctorProfileClient<runtime.Types.Result.GetResult<Prisma.$DoctorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   customerProfile<T extends Prisma.User$customerProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$customerProfileArgs<ExtArgs>>): Prisma.Prisma__CustomerProfileClient<runtime.Types.Result.GetResult<Prisma.$CustomerProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  aiTechnicianProfile<T extends Prisma.User$aiTechnicianProfileArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$aiTechnicianProfileArgs<ExtArgs>>): Prisma.Prisma__AiTechnicianProfileClient<runtime.Types.Result.GetResult<Prisma.$AiTechnicianProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  contentPostsAuthored<T extends Prisma.User$contentPostsAuthoredArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$contentPostsAuthoredArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContentPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  complaintsAssigned<T extends Prisma.User$complaintsAssignedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$complaintsAssignedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1761,6 +2161,25 @@ export type User$customerProfileArgs<ExtArgs extends runtime.Types.Extensions.In
 }
 
 /**
+ * User.aiTechnicianProfile
+ */
+export type User$aiTechnicianProfileArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiTechnicianProfile
+   */
+  select?: Prisma.AiTechnicianProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiTechnicianProfile
+   */
+  omit?: Prisma.AiTechnicianProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiTechnicianProfileInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianProfileWhereInput
+}
+
+/**
  * User.notifications
  */
 export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1782,6 +2201,54 @@ export type User$notificationsArgs<ExtArgs extends runtime.Types.Extensions.Inte
   take?: number
   skip?: number
   distinct?: Prisma.NotificationScalarFieldEnum | Prisma.NotificationScalarFieldEnum[]
+}
+
+/**
+ * User.contentPostsAuthored
+ */
+export type User$contentPostsAuthoredArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the ContentPost
+   */
+  select?: Prisma.ContentPostSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the ContentPost
+   */
+  omit?: Prisma.ContentPostOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ContentPostInclude<ExtArgs> | null
+  where?: Prisma.ContentPostWhereInput
+  orderBy?: Prisma.ContentPostOrderByWithRelationInput | Prisma.ContentPostOrderByWithRelationInput[]
+  cursor?: Prisma.ContentPostWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ContentPostScalarFieldEnum | Prisma.ContentPostScalarFieldEnum[]
+}
+
+/**
+ * User.complaintsAssigned
+ */
+export type User$complaintsAssignedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Complaint
+   */
+  select?: Prisma.ComplaintSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Complaint
+   */
+  omit?: Prisma.ComplaintOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComplaintInclude<ExtArgs> | null
+  where?: Prisma.ComplaintWhereInput
+  orderBy?: Prisma.ComplaintOrderByWithRelationInput | Prisma.ComplaintOrderByWithRelationInput[]
+  cursor?: Prisma.ComplaintWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComplaintScalarFieldEnum | Prisma.ComplaintScalarFieldEnum[]
 }
 
 /**

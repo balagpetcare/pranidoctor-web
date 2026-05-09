@@ -12,7 +12,10 @@
 export const UserRole = {
   ADMIN: 'ADMIN',
   CUSTOMER: 'CUSTOMER',
-  DOCTOR: 'DOCTOR'
+  DOCTOR: 'DOCTOR',
+  AI_TECHNICIAN: 'AI_TECHNICIAN',
+  SUPPORT: 'SUPPORT',
+  SUPER_ADMIN: 'SUPER_ADMIN'
 } as const
 
 export type UserRole = (typeof UserRole)[keyof typeof UserRole]
@@ -21,10 +24,32 @@ export type UserRole = (typeof UserRole)[keyof typeof UserRole]
 export const UserStatus = {
   ACTIVE: 'ACTIVE',
   SUSPENDED: 'SUSPENDED',
-  PENDING_VERIFICATION: 'PENDING_VERIFICATION'
+  PENDING_VERIFICATION: 'PENDING_VERIFICATION',
+  INVITED: 'INVITED',
+  DELETED: 'DELETED'
 } as const
 
 export type UserStatus = (typeof UserStatus)[keyof typeof UserStatus]
+
+
+export const ProviderStatus = {
+  PENDING_VERIFICATION: 'PENDING_VERIFICATION',
+  ACTIVE: 'ACTIVE',
+  SUSPENDED: 'SUSPENDED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type ProviderStatus = (typeof ProviderStatus)[keyof typeof ProviderStatus]
+
+
+export const Gender = {
+  MALE: 'MALE',
+  FEMALE: 'FEMALE',
+  UNKNOWN: 'UNKNOWN',
+  OTHER: 'OTHER'
+} as const
+
+export type Gender = (typeof Gender)[keyof typeof Gender]
 
 
 export const AnimalCategory = {
@@ -36,23 +61,58 @@ export const AnimalCategory = {
 export type AnimalCategory = (typeof AnimalCategory)[keyof typeof AnimalCategory]
 
 
+export const AnimalType = {
+  CATTLE: 'CATTLE',
+  GOAT: 'GOAT',
+  POULTRY: 'POULTRY',
+  DOG: 'DOG',
+  CAT: 'CAT',
+  OTHER: 'OTHER'
+} as const
+
+export type AnimalType = (typeof AnimalType)[keyof typeof AnimalType]
+
+
+export const PregnancyStatus = {
+  UNKNOWN: 'UNKNOWN',
+  NOT_APPLICABLE: 'NOT_APPLICABLE',
+  NOT_PREGNANT: 'NOT_PREGNANT',
+  PREGNANT: 'PREGNANT'
+} as const
+
+export type PregnancyStatus = (typeof PregnancyStatus)[keyof typeof PregnancyStatus]
+
+
+export const ServiceRequestType = {
+  DOCTOR_HOME_VISIT: 'DOCTOR_HOME_VISIT',
+  EMERGENCY_DOCTOR: 'EMERGENCY_DOCTOR',
+  AI_SERVICE: 'AI_SERVICE',
+  ONLINE_CONSULTATION_LATER: 'ONLINE_CONSULTATION_LATER'
+} as const
+
+export type ServiceRequestType = (typeof ServiceRequestType)[keyof typeof ServiceRequestType]
+
+
 export const ServiceRequestStatus = {
-  SUBMITTED: 'SUBMITTED',
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
   ASSIGNED: 'ASSIGNED',
   IN_PROGRESS: 'IN_PROGRESS',
   COMPLETED: 'COMPLETED',
-  CANCELLED: 'CANCELLED'
+  CANCELLED: 'CANCELLED',
+  REJECTED: 'REJECTED'
 } as const
 
 export type ServiceRequestStatus = (typeof ServiceRequestStatus)[keyof typeof ServiceRequestStatus]
 
 
-export const TreatmentRecordStatus = {
+export const TreatmentCaseStatus = {
   DRAFT: 'DRAFT',
-  FINALIZED: 'FINALIZED'
+  FINALIZED: 'FINALIZED',
+  CANCELLED: 'CANCELLED'
 } as const
 
-export type TreatmentRecordStatus = (typeof TreatmentRecordStatus)[keyof typeof TreatmentRecordStatus]
+export type TreatmentCaseStatus = (typeof TreatmentCaseStatus)[keyof typeof TreatmentCaseStatus]
 
 
 export const PrescriptionStatus = {
@@ -63,11 +123,98 @@ export const PrescriptionStatus = {
 export type PrescriptionStatus = (typeof PrescriptionStatus)[keyof typeof PrescriptionStatus]
 
 
-export const BillingRecordStatus = {
+export const BillingStatus = {
   DRAFT: 'DRAFT',
   ISSUED: 'ISSUED',
+  PARTIALLY_PAID: 'PARTIALLY_PAID',
   PAID: 'PAID',
-  VOIDED: 'VOIDED'
+  VOIDED: 'VOIDED',
+  REFUNDED: 'REFUNDED'
 } as const
 
-export type BillingRecordStatus = (typeof BillingRecordStatus)[keyof typeof BillingRecordStatus]
+export type BillingStatus = (typeof BillingStatus)[keyof typeof BillingStatus]
+
+
+export const PaymentStatus = {
+  PENDING: 'PENDING',
+  AUTHORIZED: 'AUTHORIZED',
+  CAPTURED: 'CAPTURED',
+  FAILED: 'FAILED',
+  REFUNDED: 'REFUNDED',
+  CANCELLED: 'CANCELLED',
+  UNPAID: 'UNPAID',
+  PARTIAL: 'PARTIAL',
+  PAID: 'PAID'
+} as const
+
+export type PaymentStatus = (typeof PaymentStatus)[keyof typeof PaymentStatus]
+
+
+export const PaymentMethod = {
+  CASH: 'CASH',
+  BKASH: 'BKASH',
+  NAGAD: 'NAGAD',
+  CARD: 'CARD',
+  BANK_TRANSFER: 'BANK_TRANSFER',
+  OTHER: 'OTHER',
+  ROCKET: 'ROCKET',
+  BANK: 'BANK'
+} as const
+
+export type PaymentMethod = (typeof PaymentMethod)[keyof typeof PaymentMethod]
+
+
+export const ComplaintStatus = {
+  OPEN: 'OPEN',
+  IN_REVIEW: 'IN_REVIEW',
+  RESOLVED: 'RESOLVED',
+  REJECTED: 'REJECTED',
+  CLOSED: 'CLOSED'
+} as const
+
+export type ComplaintStatus = (typeof ComplaintStatus)[keyof typeof ComplaintStatus]
+
+
+export const NotificationType = {
+  REQUEST_UPDATE: 'REQUEST_UPDATE',
+  PAYMENT: 'PAYMENT',
+  CHAT: 'CHAT',
+  SYSTEM: 'SYSTEM',
+  MARKETING: 'MARKETING',
+  COMPLAINT: 'COMPLAINT',
+  REVIEW: 'REVIEW'
+} as const
+
+export type NotificationType = (typeof NotificationType)[keyof typeof NotificationType]
+
+
+export const ContentApprovalStatus = {
+  DRAFT: 'DRAFT',
+  PENDING_REVIEW: 'PENDING_REVIEW',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type ContentApprovalStatus = (typeof ContentApprovalStatus)[keyof typeof ContentApprovalStatus]
+
+
+export const ReviewStatus = {
+  PENDING: 'PENDING',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED',
+  HIDDEN: 'HIDDEN'
+} as const
+
+export type ReviewStatus = (typeof ReviewStatus)[keyof typeof ReviewStatus]
+
+
+export const AreaType = {
+  DIVISION: 'DIVISION',
+  DISTRICT: 'DISTRICT',
+  UPAZILA: 'UPAZILA',
+  UNION: 'UNION',
+  VILLAGE: 'VILLAGE',
+  SERVICE_AREA: 'SERVICE_AREA'
+} as const
+
+export type AreaType = (typeof AreaType)[keyof typeof AreaType]

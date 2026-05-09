@@ -1,9 +1,26 @@
-import { AdminDashboardShell } from "@/components/admin/AdminDashboardShell";
+import { Noto_Sans_Bengali } from "next/font/google";
 
-export default function AdminDashboardLayout({
+import { AdminLayoutShell } from "@/components/admin-ui/AdminLayoutShell";
+import { ensureAdminDashboardAccess } from "@/lib/admin-auth/dashboard-guard";
+
+import "../admin-shell.css";
+
+const notoBengali = Noto_Sans_Bengali({
+  subsets: ["bengali"],
+  weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+export default async function AdminDashboardLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  return <AdminDashboardShell>{children}</AdminDashboardShell>;
+  await ensureAdminDashboardAccess();
+
+  return (
+    <div className={notoBengali.className}>
+      <AdminLayoutShell>{children}</AdminLayoutShell>
+    </div>
+  );
 }

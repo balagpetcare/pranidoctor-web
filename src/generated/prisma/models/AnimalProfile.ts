@@ -20,8 +20,18 @@ export type AnimalProfileModel = runtime.Types.Result.DefaultSelection<Prisma.$A
 
 export type AggregateAnimalProfile = {
   _count: AnimalProfileCountAggregateOutputType | null
+  _avg: AnimalProfileAvgAggregateOutputType | null
+  _sum: AnimalProfileSumAggregateOutputType | null
   _min: AnimalProfileMinAggregateOutputType | null
   _max: AnimalProfileMaxAggregateOutputType | null
+}
+
+export type AnimalProfileAvgAggregateOutputType = {
+  weightKg: runtime.Decimal | null
+}
+
+export type AnimalProfileSumAggregateOutputType = {
+  weightKg: runtime.Decimal | null
 }
 
 export type AnimalProfileMinAggregateOutputType = {
@@ -31,10 +41,15 @@ export type AnimalProfileMinAggregateOutputType = {
   species: string | null
   breed: string | null
   category: $Enums.AnimalCategory | null
+  animalType: $Enums.AnimalType | null
+  weightKg: runtime.Decimal | null
   dateOfBirth: Date | null
   sex: string | null
+  gender: $Enums.Gender | null
   microchipOrTag: string | null
   notes: string | null
+  photoUrl: string | null
+  pregnancyStatus: $Enums.PregnancyStatus | null
   active: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -47,10 +62,15 @@ export type AnimalProfileMaxAggregateOutputType = {
   species: string | null
   breed: string | null
   category: $Enums.AnimalCategory | null
+  animalType: $Enums.AnimalType | null
+  weightKg: runtime.Decimal | null
   dateOfBirth: Date | null
   sex: string | null
+  gender: $Enums.Gender | null
   microchipOrTag: string | null
   notes: string | null
+  photoUrl: string | null
+  pregnancyStatus: $Enums.PregnancyStatus | null
   active: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
@@ -63,16 +83,29 @@ export type AnimalProfileCountAggregateOutputType = {
   species: number
   breed: number
   category: number
+  animalType: number
+  weightKg: number
   dateOfBirth: number
   sex: number
+  gender: number
   microchipOrTag: number
   notes: number
+  photoUrl: number
+  pregnancyStatus: number
   active: number
   createdAt: number
   updatedAt: number
   _all: number
 }
 
+
+export type AnimalProfileAvgAggregateInputType = {
+  weightKg?: true
+}
+
+export type AnimalProfileSumAggregateInputType = {
+  weightKg?: true
+}
 
 export type AnimalProfileMinAggregateInputType = {
   id?: true
@@ -81,10 +114,15 @@ export type AnimalProfileMinAggregateInputType = {
   species?: true
   breed?: true
   category?: true
+  animalType?: true
+  weightKg?: true
   dateOfBirth?: true
   sex?: true
+  gender?: true
   microchipOrTag?: true
   notes?: true
+  photoUrl?: true
+  pregnancyStatus?: true
   active?: true
   createdAt?: true
   updatedAt?: true
@@ -97,10 +135,15 @@ export type AnimalProfileMaxAggregateInputType = {
   species?: true
   breed?: true
   category?: true
+  animalType?: true
+  weightKg?: true
   dateOfBirth?: true
   sex?: true
+  gender?: true
   microchipOrTag?: true
   notes?: true
+  photoUrl?: true
+  pregnancyStatus?: true
   active?: true
   createdAt?: true
   updatedAt?: true
@@ -113,10 +156,15 @@ export type AnimalProfileCountAggregateInputType = {
   species?: true
   breed?: true
   category?: true
+  animalType?: true
+  weightKg?: true
   dateOfBirth?: true
   sex?: true
+  gender?: true
   microchipOrTag?: true
   notes?: true
+  photoUrl?: true
+  pregnancyStatus?: true
   active?: true
   createdAt?: true
   updatedAt?: true
@@ -161,6 +209,18 @@ export type AnimalProfileAggregateArgs<ExtArgs extends runtime.Types.Extensions.
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: AnimalProfileAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: AnimalProfileSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: AnimalProfileMinAggregateInputType
@@ -191,6 +251,8 @@ export type AnimalProfileGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   _count?: AnimalProfileCountAggregateInputType | true
+  _avg?: AnimalProfileAvgAggregateInputType
+  _sum?: AnimalProfileSumAggregateInputType
   _min?: AnimalProfileMinAggregateInputType
   _max?: AnimalProfileMaxAggregateInputType
 }
@@ -202,14 +264,21 @@ export type AnimalProfileGroupByOutputType = {
   species: string
   breed: string | null
   category: $Enums.AnimalCategory
+  animalType: $Enums.AnimalType | null
+  weightKg: runtime.Decimal | null
   dateOfBirth: Date | null
   sex: string | null
+  gender: $Enums.Gender | null
   microchipOrTag: string | null
   notes: string | null
+  photoUrl: string | null
+  pregnancyStatus: $Enums.PregnancyStatus | null
   active: boolean
   createdAt: Date
   updatedAt: Date
   _count: AnimalProfileCountAggregateOutputType | null
+  _avg: AnimalProfileAvgAggregateOutputType | null
+  _sum: AnimalProfileSumAggregateOutputType | null
   _min: AnimalProfileMinAggregateOutputType | null
   _max: AnimalProfileMaxAggregateOutputType | null
 }
@@ -239,16 +308,21 @@ export type AnimalProfileWhereInput = {
   species?: Prisma.StringFilter<"AnimalProfile"> | string
   breed?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
   category?: Prisma.EnumAnimalCategoryFilter<"AnimalProfile"> | $Enums.AnimalCategory
+  animalType?: Prisma.EnumAnimalTypeNullableFilter<"AnimalProfile"> | $Enums.AnimalType | null
+  weightKg?: Prisma.DecimalNullableFilter<"AnimalProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.DateTimeNullableFilter<"AnimalProfile"> | Date | string | null
   sex?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
+  gender?: Prisma.EnumGenderNullableFilter<"AnimalProfile"> | $Enums.Gender | null
   microchipOrTag?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
   notes?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
+  photoUrl?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
+  pregnancyStatus?: Prisma.EnumPregnancyStatusNullableFilter<"AnimalProfile"> | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFilter<"AnimalProfile"> | boolean
   createdAt?: Prisma.DateTimeFilter<"AnimalProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AnimalProfile"> | Date | string
   customer?: Prisma.XOR<Prisma.CustomerProfileScalarRelationFilter, Prisma.CustomerProfileWhereInput>
   serviceRequests?: Prisma.ServiceRequestListRelationFilter
-  treatmentRecords?: Prisma.TreatmentRecordListRelationFilter
+  treatmentCases?: Prisma.TreatmentCaseListRelationFilter
   prescriptions?: Prisma.PrescriptionListRelationFilter
 }
 
@@ -259,16 +333,21 @@ export type AnimalProfileOrderByWithRelationInput = {
   species?: Prisma.SortOrder
   breed?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.SortOrder
+  animalType?: Prisma.SortOrderInput | Prisma.SortOrder
+  weightKg?: Prisma.SortOrderInput | Prisma.SortOrder
   dateOfBirth?: Prisma.SortOrderInput | Prisma.SortOrder
   sex?: Prisma.SortOrderInput | Prisma.SortOrder
+  gender?: Prisma.SortOrderInput | Prisma.SortOrder
   microchipOrTag?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  photoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  pregnancyStatus?: Prisma.SortOrderInput | Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   customer?: Prisma.CustomerProfileOrderByWithRelationInput
   serviceRequests?: Prisma.ServiceRequestOrderByRelationAggregateInput
-  treatmentRecords?: Prisma.TreatmentRecordOrderByRelationAggregateInput
+  treatmentCases?: Prisma.TreatmentCaseOrderByRelationAggregateInput
   prescriptions?: Prisma.PrescriptionOrderByRelationAggregateInput
 }
 
@@ -282,16 +361,21 @@ export type AnimalProfileWhereUniqueInput = Prisma.AtLeast<{
   species?: Prisma.StringFilter<"AnimalProfile"> | string
   breed?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
   category?: Prisma.EnumAnimalCategoryFilter<"AnimalProfile"> | $Enums.AnimalCategory
+  animalType?: Prisma.EnumAnimalTypeNullableFilter<"AnimalProfile"> | $Enums.AnimalType | null
+  weightKg?: Prisma.DecimalNullableFilter<"AnimalProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.DateTimeNullableFilter<"AnimalProfile"> | Date | string | null
   sex?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
+  gender?: Prisma.EnumGenderNullableFilter<"AnimalProfile"> | $Enums.Gender | null
   microchipOrTag?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
   notes?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
+  photoUrl?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
+  pregnancyStatus?: Prisma.EnumPregnancyStatusNullableFilter<"AnimalProfile"> | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFilter<"AnimalProfile"> | boolean
   createdAt?: Prisma.DateTimeFilter<"AnimalProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AnimalProfile"> | Date | string
   customer?: Prisma.XOR<Prisma.CustomerProfileScalarRelationFilter, Prisma.CustomerProfileWhereInput>
   serviceRequests?: Prisma.ServiceRequestListRelationFilter
-  treatmentRecords?: Prisma.TreatmentRecordListRelationFilter
+  treatmentCases?: Prisma.TreatmentCaseListRelationFilter
   prescriptions?: Prisma.PrescriptionListRelationFilter
 }, "id">
 
@@ -302,16 +386,23 @@ export type AnimalProfileOrderByWithAggregationInput = {
   species?: Prisma.SortOrder
   breed?: Prisma.SortOrderInput | Prisma.SortOrder
   category?: Prisma.SortOrder
+  animalType?: Prisma.SortOrderInput | Prisma.SortOrder
+  weightKg?: Prisma.SortOrderInput | Prisma.SortOrder
   dateOfBirth?: Prisma.SortOrderInput | Prisma.SortOrder
   sex?: Prisma.SortOrderInput | Prisma.SortOrder
+  gender?: Prisma.SortOrderInput | Prisma.SortOrder
   microchipOrTag?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
+  photoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  pregnancyStatus?: Prisma.SortOrderInput | Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.AnimalProfileCountOrderByAggregateInput
+  _avg?: Prisma.AnimalProfileAvgOrderByAggregateInput
   _max?: Prisma.AnimalProfileMaxOrderByAggregateInput
   _min?: Prisma.AnimalProfileMinOrderByAggregateInput
+  _sum?: Prisma.AnimalProfileSumOrderByAggregateInput
 }
 
 export type AnimalProfileScalarWhereWithAggregatesInput = {
@@ -324,10 +415,15 @@ export type AnimalProfileScalarWhereWithAggregatesInput = {
   species?: Prisma.StringWithAggregatesFilter<"AnimalProfile"> | string
   breed?: Prisma.StringNullableWithAggregatesFilter<"AnimalProfile"> | string | null
   category?: Prisma.EnumAnimalCategoryWithAggregatesFilter<"AnimalProfile"> | $Enums.AnimalCategory
+  animalType?: Prisma.EnumAnimalTypeNullableWithAggregatesFilter<"AnimalProfile"> | $Enums.AnimalType | null
+  weightKg?: Prisma.DecimalNullableWithAggregatesFilter<"AnimalProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.DateTimeNullableWithAggregatesFilter<"AnimalProfile"> | Date | string | null
   sex?: Prisma.StringNullableWithAggregatesFilter<"AnimalProfile"> | string | null
+  gender?: Prisma.EnumGenderNullableWithAggregatesFilter<"AnimalProfile"> | $Enums.Gender | null
   microchipOrTag?: Prisma.StringNullableWithAggregatesFilter<"AnimalProfile"> | string | null
   notes?: Prisma.StringNullableWithAggregatesFilter<"AnimalProfile"> | string | null
+  photoUrl?: Prisma.StringNullableWithAggregatesFilter<"AnimalProfile"> | string | null
+  pregnancyStatus?: Prisma.EnumPregnancyStatusNullableWithAggregatesFilter<"AnimalProfile"> | $Enums.PregnancyStatus | null
   active?: Prisma.BoolWithAggregatesFilter<"AnimalProfile"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AnimalProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AnimalProfile"> | Date | string
@@ -339,16 +435,21 @@ export type AnimalProfileCreateInput = {
   species: string
   breed?: string | null
   category?: $Enums.AnimalCategory
+  animalType?: $Enums.AnimalType | null
+  weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Date | string | null
   sex?: string | null
+  gender?: $Enums.Gender | null
   microchipOrTag?: string | null
   notes?: string | null
+  photoUrl?: string | null
+  pregnancyStatus?: $Enums.PregnancyStatus | null
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   customer: Prisma.CustomerProfileCreateNestedOneWithoutAnimalsInput
   serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAnimalInput
-  treatmentRecords?: Prisma.TreatmentRecordCreateNestedManyWithoutAnimalInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAnimalInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAnimalInput
 }
 
@@ -359,15 +460,20 @@ export type AnimalProfileUncheckedCreateInput = {
   species: string
   breed?: string | null
   category?: $Enums.AnimalCategory
+  animalType?: $Enums.AnimalType | null
+  weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Date | string | null
   sex?: string | null
+  gender?: $Enums.Gender | null
   microchipOrTag?: string | null
   notes?: string | null
+  photoUrl?: string | null
+  pregnancyStatus?: $Enums.PregnancyStatus | null
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAnimalInput
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedCreateNestedManyWithoutAnimalInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAnimalInput
   prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAnimalInput
 }
 
@@ -377,16 +483,21 @@ export type AnimalProfileUpdateInput = {
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutAnimalsNestedInput
   serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutAnimalNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUpdateManyWithoutAnimalNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAnimalNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAnimalNestedInput
 }
 
@@ -397,15 +508,20 @@ export type AnimalProfileUncheckedUpdateInput = {
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAnimalNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedUpdateManyWithoutAnimalNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAnimalNestedInput
   prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAnimalNestedInput
 }
 
@@ -416,10 +532,15 @@ export type AnimalProfileCreateManyInput = {
   species: string
   breed?: string | null
   category?: $Enums.AnimalCategory
+  animalType?: $Enums.AnimalType | null
+  weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Date | string | null
   sex?: string | null
+  gender?: $Enums.Gender | null
   microchipOrTag?: string | null
   notes?: string | null
+  photoUrl?: string | null
+  pregnancyStatus?: $Enums.PregnancyStatus | null
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -431,10 +552,15 @@ export type AnimalProfileUpdateManyMutationInput = {
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -447,10 +573,15 @@ export type AnimalProfileUncheckedUpdateManyInput = {
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -473,13 +604,22 @@ export type AnimalProfileCountOrderByAggregateInput = {
   species?: Prisma.SortOrder
   breed?: Prisma.SortOrder
   category?: Prisma.SortOrder
+  animalType?: Prisma.SortOrder
+  weightKg?: Prisma.SortOrder
   dateOfBirth?: Prisma.SortOrder
   sex?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
   microchipOrTag?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  photoUrl?: Prisma.SortOrder
+  pregnancyStatus?: Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type AnimalProfileAvgOrderByAggregateInput = {
+  weightKg?: Prisma.SortOrder
 }
 
 export type AnimalProfileMaxOrderByAggregateInput = {
@@ -489,10 +629,15 @@ export type AnimalProfileMaxOrderByAggregateInput = {
   species?: Prisma.SortOrder
   breed?: Prisma.SortOrder
   category?: Prisma.SortOrder
+  animalType?: Prisma.SortOrder
+  weightKg?: Prisma.SortOrder
   dateOfBirth?: Prisma.SortOrder
   sex?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
   microchipOrTag?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  photoUrl?: Prisma.SortOrder
+  pregnancyStatus?: Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
@@ -505,13 +650,22 @@ export type AnimalProfileMinOrderByAggregateInput = {
   species?: Prisma.SortOrder
   breed?: Prisma.SortOrder
   category?: Prisma.SortOrder
+  animalType?: Prisma.SortOrder
+  weightKg?: Prisma.SortOrder
   dateOfBirth?: Prisma.SortOrder
   sex?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
   microchipOrTag?: Prisma.SortOrder
   notes?: Prisma.SortOrder
+  photoUrl?: Prisma.SortOrder
+  pregnancyStatus?: Prisma.SortOrder
   active?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type AnimalProfileSumOrderByAggregateInput = {
+  weightKg?: Prisma.SortOrder
 }
 
 export type AnimalProfileScalarRelationFilter = {
@@ -565,8 +719,16 @@ export type EnumAnimalCategoryFieldUpdateOperationsInput = {
   set?: $Enums.AnimalCategory
 }
 
-export type BoolFieldUpdateOperationsInput = {
-  set?: boolean
+export type NullableEnumAnimalTypeFieldUpdateOperationsInput = {
+  set?: $Enums.AnimalType | null
+}
+
+export type NullableEnumGenderFieldUpdateOperationsInput = {
+  set?: $Enums.Gender | null
+}
+
+export type NullableEnumPregnancyStatusFieldUpdateOperationsInput = {
+  set?: $Enums.PregnancyStatus | null
 }
 
 export type AnimalProfileCreateNestedOneWithoutServiceRequestsInput = {
@@ -583,18 +745,18 @@ export type AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.AnimalProfileUpdateToOneWithWhereWithoutServiceRequestsInput, Prisma.AnimalProfileUpdateWithoutServiceRequestsInput>, Prisma.AnimalProfileUncheckedUpdateWithoutServiceRequestsInput>
 }
 
-export type AnimalProfileCreateNestedOneWithoutTreatmentRecordsInput = {
-  create?: Prisma.XOR<Prisma.AnimalProfileCreateWithoutTreatmentRecordsInput, Prisma.AnimalProfileUncheckedCreateWithoutTreatmentRecordsInput>
-  connectOrCreate?: Prisma.AnimalProfileCreateOrConnectWithoutTreatmentRecordsInput
+export type AnimalProfileCreateNestedOneWithoutTreatmentCasesInput = {
+  create?: Prisma.XOR<Prisma.AnimalProfileCreateWithoutTreatmentCasesInput, Prisma.AnimalProfileUncheckedCreateWithoutTreatmentCasesInput>
+  connectOrCreate?: Prisma.AnimalProfileCreateOrConnectWithoutTreatmentCasesInput
   connect?: Prisma.AnimalProfileWhereUniqueInput
 }
 
-export type AnimalProfileUpdateOneRequiredWithoutTreatmentRecordsNestedInput = {
-  create?: Prisma.XOR<Prisma.AnimalProfileCreateWithoutTreatmentRecordsInput, Prisma.AnimalProfileUncheckedCreateWithoutTreatmentRecordsInput>
-  connectOrCreate?: Prisma.AnimalProfileCreateOrConnectWithoutTreatmentRecordsInput
-  upsert?: Prisma.AnimalProfileUpsertWithoutTreatmentRecordsInput
+export type AnimalProfileUpdateOneRequiredWithoutTreatmentCasesNestedInput = {
+  create?: Prisma.XOR<Prisma.AnimalProfileCreateWithoutTreatmentCasesInput, Prisma.AnimalProfileUncheckedCreateWithoutTreatmentCasesInput>
+  connectOrCreate?: Prisma.AnimalProfileCreateOrConnectWithoutTreatmentCasesInput
+  upsert?: Prisma.AnimalProfileUpsertWithoutTreatmentCasesInput
   connect?: Prisma.AnimalProfileWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.AnimalProfileUpdateToOneWithWhereWithoutTreatmentRecordsInput, Prisma.AnimalProfileUpdateWithoutTreatmentRecordsInput>, Prisma.AnimalProfileUncheckedUpdateWithoutTreatmentRecordsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AnimalProfileUpdateToOneWithWhereWithoutTreatmentCasesInput, Prisma.AnimalProfileUpdateWithoutTreatmentCasesInput>, Prisma.AnimalProfileUncheckedUpdateWithoutTreatmentCasesInput>
 }
 
 export type AnimalProfileCreateNestedOneWithoutPrescriptionsInput = {
@@ -617,15 +779,20 @@ export type AnimalProfileCreateWithoutCustomerInput = {
   species: string
   breed?: string | null
   category?: $Enums.AnimalCategory
+  animalType?: $Enums.AnimalType | null
+  weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Date | string | null
   sex?: string | null
+  gender?: $Enums.Gender | null
   microchipOrTag?: string | null
   notes?: string | null
+  photoUrl?: string | null
+  pregnancyStatus?: $Enums.PregnancyStatus | null
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAnimalInput
-  treatmentRecords?: Prisma.TreatmentRecordCreateNestedManyWithoutAnimalInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAnimalInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAnimalInput
 }
 
@@ -635,15 +802,20 @@ export type AnimalProfileUncheckedCreateWithoutCustomerInput = {
   species: string
   breed?: string | null
   category?: $Enums.AnimalCategory
+  animalType?: $Enums.AnimalType | null
+  weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Date | string | null
   sex?: string | null
+  gender?: $Enums.Gender | null
   microchipOrTag?: string | null
   notes?: string | null
+  photoUrl?: string | null
+  pregnancyStatus?: $Enums.PregnancyStatus | null
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAnimalInput
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedCreateNestedManyWithoutAnimalInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAnimalInput
   prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAnimalInput
 }
 
@@ -683,10 +855,15 @@ export type AnimalProfileScalarWhereInput = {
   species?: Prisma.StringFilter<"AnimalProfile"> | string
   breed?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
   category?: Prisma.EnumAnimalCategoryFilter<"AnimalProfile"> | $Enums.AnimalCategory
+  animalType?: Prisma.EnumAnimalTypeNullableFilter<"AnimalProfile"> | $Enums.AnimalType | null
+  weightKg?: Prisma.DecimalNullableFilter<"AnimalProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.DateTimeNullableFilter<"AnimalProfile"> | Date | string | null
   sex?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
+  gender?: Prisma.EnumGenderNullableFilter<"AnimalProfile"> | $Enums.Gender | null
   microchipOrTag?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
   notes?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
+  photoUrl?: Prisma.StringNullableFilter<"AnimalProfile"> | string | null
+  pregnancyStatus?: Prisma.EnumPregnancyStatusNullableFilter<"AnimalProfile"> | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFilter<"AnimalProfile"> | boolean
   createdAt?: Prisma.DateTimeFilter<"AnimalProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AnimalProfile"> | Date | string
@@ -698,15 +875,20 @@ export type AnimalProfileCreateWithoutServiceRequestsInput = {
   species: string
   breed?: string | null
   category?: $Enums.AnimalCategory
+  animalType?: $Enums.AnimalType | null
+  weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Date | string | null
   sex?: string | null
+  gender?: $Enums.Gender | null
   microchipOrTag?: string | null
   notes?: string | null
+  photoUrl?: string | null
+  pregnancyStatus?: $Enums.PregnancyStatus | null
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   customer: Prisma.CustomerProfileCreateNestedOneWithoutAnimalsInput
-  treatmentRecords?: Prisma.TreatmentRecordCreateNestedManyWithoutAnimalInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAnimalInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAnimalInput
 }
 
@@ -717,14 +899,19 @@ export type AnimalProfileUncheckedCreateWithoutServiceRequestsInput = {
   species: string
   breed?: string | null
   category?: $Enums.AnimalCategory
+  animalType?: $Enums.AnimalType | null
+  weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Date | string | null
   sex?: string | null
+  gender?: $Enums.Gender | null
   microchipOrTag?: string | null
   notes?: string | null
+  photoUrl?: string | null
+  pregnancyStatus?: $Enums.PregnancyStatus | null
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedCreateNestedManyWithoutAnimalInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAnimalInput
   prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAnimalInput
 }
 
@@ -750,15 +937,20 @@ export type AnimalProfileUpdateWithoutServiceRequestsInput = {
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutAnimalsNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUpdateManyWithoutAnimalNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAnimalNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAnimalNestedInput
 }
 
@@ -769,27 +961,37 @@ export type AnimalProfileUncheckedUpdateWithoutServiceRequestsInput = {
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedUpdateManyWithoutAnimalNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAnimalNestedInput
   prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAnimalNestedInput
 }
 
-export type AnimalProfileCreateWithoutTreatmentRecordsInput = {
+export type AnimalProfileCreateWithoutTreatmentCasesInput = {
   id?: string
   name: string
   species: string
   breed?: string | null
   category?: $Enums.AnimalCategory
+  animalType?: $Enums.AnimalType | null
+  weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Date | string | null
   sex?: string | null
+  gender?: $Enums.Gender | null
   microchipOrTag?: string | null
   notes?: string | null
+  photoUrl?: string | null
+  pregnancyStatus?: $Enums.PregnancyStatus | null
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -798,17 +1000,22 @@ export type AnimalProfileCreateWithoutTreatmentRecordsInput = {
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAnimalInput
 }
 
-export type AnimalProfileUncheckedCreateWithoutTreatmentRecordsInput = {
+export type AnimalProfileUncheckedCreateWithoutTreatmentCasesInput = {
   id?: string
   customerId: string
   name: string
   species: string
   breed?: string | null
   category?: $Enums.AnimalCategory
+  animalType?: $Enums.AnimalType | null
+  weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Date | string | null
   sex?: string | null
+  gender?: $Enums.Gender | null
   microchipOrTag?: string | null
   notes?: string | null
+  photoUrl?: string | null
+  pregnancyStatus?: $Enums.PregnancyStatus | null
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -816,32 +1023,37 @@ export type AnimalProfileUncheckedCreateWithoutTreatmentRecordsInput = {
   prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAnimalInput
 }
 
-export type AnimalProfileCreateOrConnectWithoutTreatmentRecordsInput = {
+export type AnimalProfileCreateOrConnectWithoutTreatmentCasesInput = {
   where: Prisma.AnimalProfileWhereUniqueInput
-  create: Prisma.XOR<Prisma.AnimalProfileCreateWithoutTreatmentRecordsInput, Prisma.AnimalProfileUncheckedCreateWithoutTreatmentRecordsInput>
+  create: Prisma.XOR<Prisma.AnimalProfileCreateWithoutTreatmentCasesInput, Prisma.AnimalProfileUncheckedCreateWithoutTreatmentCasesInput>
 }
 
-export type AnimalProfileUpsertWithoutTreatmentRecordsInput = {
-  update: Prisma.XOR<Prisma.AnimalProfileUpdateWithoutTreatmentRecordsInput, Prisma.AnimalProfileUncheckedUpdateWithoutTreatmentRecordsInput>
-  create: Prisma.XOR<Prisma.AnimalProfileCreateWithoutTreatmentRecordsInput, Prisma.AnimalProfileUncheckedCreateWithoutTreatmentRecordsInput>
+export type AnimalProfileUpsertWithoutTreatmentCasesInput = {
+  update: Prisma.XOR<Prisma.AnimalProfileUpdateWithoutTreatmentCasesInput, Prisma.AnimalProfileUncheckedUpdateWithoutTreatmentCasesInput>
+  create: Prisma.XOR<Prisma.AnimalProfileCreateWithoutTreatmentCasesInput, Prisma.AnimalProfileUncheckedCreateWithoutTreatmentCasesInput>
   where?: Prisma.AnimalProfileWhereInput
 }
 
-export type AnimalProfileUpdateToOneWithWhereWithoutTreatmentRecordsInput = {
+export type AnimalProfileUpdateToOneWithWhereWithoutTreatmentCasesInput = {
   where?: Prisma.AnimalProfileWhereInput
-  data: Prisma.XOR<Prisma.AnimalProfileUpdateWithoutTreatmentRecordsInput, Prisma.AnimalProfileUncheckedUpdateWithoutTreatmentRecordsInput>
+  data: Prisma.XOR<Prisma.AnimalProfileUpdateWithoutTreatmentCasesInput, Prisma.AnimalProfileUncheckedUpdateWithoutTreatmentCasesInput>
 }
 
-export type AnimalProfileUpdateWithoutTreatmentRecordsInput = {
+export type AnimalProfileUpdateWithoutTreatmentCasesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -850,17 +1062,22 @@ export type AnimalProfileUpdateWithoutTreatmentRecordsInput = {
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAnimalNestedInput
 }
 
-export type AnimalProfileUncheckedUpdateWithoutTreatmentRecordsInput = {
+export type AnimalProfileUncheckedUpdateWithoutTreatmentCasesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -874,16 +1091,21 @@ export type AnimalProfileCreateWithoutPrescriptionsInput = {
   species: string
   breed?: string | null
   category?: $Enums.AnimalCategory
+  animalType?: $Enums.AnimalType | null
+  weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Date | string | null
   sex?: string | null
+  gender?: $Enums.Gender | null
   microchipOrTag?: string | null
   notes?: string | null
+  photoUrl?: string | null
+  pregnancyStatus?: $Enums.PregnancyStatus | null
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   customer: Prisma.CustomerProfileCreateNestedOneWithoutAnimalsInput
   serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAnimalInput
-  treatmentRecords?: Prisma.TreatmentRecordCreateNestedManyWithoutAnimalInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAnimalInput
 }
 
 export type AnimalProfileUncheckedCreateWithoutPrescriptionsInput = {
@@ -893,15 +1115,20 @@ export type AnimalProfileUncheckedCreateWithoutPrescriptionsInput = {
   species: string
   breed?: string | null
   category?: $Enums.AnimalCategory
+  animalType?: $Enums.AnimalType | null
+  weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Date | string | null
   sex?: string | null
+  gender?: $Enums.Gender | null
   microchipOrTag?: string | null
   notes?: string | null
+  photoUrl?: string | null
+  pregnancyStatus?: $Enums.PregnancyStatus | null
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAnimalInput
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedCreateNestedManyWithoutAnimalInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAnimalInput
 }
 
 export type AnimalProfileCreateOrConnectWithoutPrescriptionsInput = {
@@ -926,16 +1153,21 @@ export type AnimalProfileUpdateWithoutPrescriptionsInput = {
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutAnimalsNestedInput
   serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutAnimalNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUpdateManyWithoutAnimalNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAnimalNestedInput
 }
 
 export type AnimalProfileUncheckedUpdateWithoutPrescriptionsInput = {
@@ -945,15 +1177,20 @@ export type AnimalProfileUncheckedUpdateWithoutPrescriptionsInput = {
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAnimalNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedUpdateManyWithoutAnimalNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAnimalNestedInput
 }
 
 export type AnimalProfileCreateManyCustomerInput = {
@@ -962,10 +1199,15 @@ export type AnimalProfileCreateManyCustomerInput = {
   species: string
   breed?: string | null
   category?: $Enums.AnimalCategory
+  animalType?: $Enums.AnimalType | null
+  weightKg?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Date | string | null
   sex?: string | null
+  gender?: $Enums.Gender | null
   microchipOrTag?: string | null
   notes?: string | null
+  photoUrl?: string | null
+  pregnancyStatus?: $Enums.PregnancyStatus | null
   active?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -977,15 +1219,20 @@ export type AnimalProfileUpdateWithoutCustomerInput = {
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutAnimalNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUpdateManyWithoutAnimalNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAnimalNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAnimalNestedInput
 }
 
@@ -995,15 +1242,20 @@ export type AnimalProfileUncheckedUpdateWithoutCustomerInput = {
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAnimalNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedUpdateManyWithoutAnimalNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAnimalNestedInput
   prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAnimalNestedInput
 }
 
@@ -1013,10 +1265,15 @@ export type AnimalProfileUncheckedUpdateManyWithoutCustomerInput = {
   species?: Prisma.StringFieldUpdateOperationsInput | string
   breed?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   category?: Prisma.EnumAnimalCategoryFieldUpdateOperationsInput | $Enums.AnimalCategory
+  animalType?: Prisma.NullableEnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType | null
+  weightKg?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sex?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
   microchipOrTag?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  photoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pregnancyStatus?: Prisma.NullableEnumPregnancyStatusFieldUpdateOperationsInput | $Enums.PregnancyStatus | null
   active?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1029,13 +1286,13 @@ export type AnimalProfileUncheckedUpdateManyWithoutCustomerInput = {
 
 export type AnimalProfileCountOutputType = {
   serviceRequests: number
-  treatmentRecords: number
+  treatmentCases: number
   prescriptions: number
 }
 
 export type AnimalProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   serviceRequests?: boolean | AnimalProfileCountOutputTypeCountServiceRequestsArgs
-  treatmentRecords?: boolean | AnimalProfileCountOutputTypeCountTreatmentRecordsArgs
+  treatmentCases?: boolean | AnimalProfileCountOutputTypeCountTreatmentCasesArgs
   prescriptions?: boolean | AnimalProfileCountOutputTypeCountPrescriptionsArgs
 }
 
@@ -1059,8 +1316,8 @@ export type AnimalProfileCountOutputTypeCountServiceRequestsArgs<ExtArgs extends
 /**
  * AnimalProfileCountOutputType without action
  */
-export type AnimalProfileCountOutputTypeCountTreatmentRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TreatmentRecordWhereInput
+export type AnimalProfileCountOutputTypeCountTreatmentCasesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TreatmentCaseWhereInput
 }
 
 /**
@@ -1078,16 +1335,21 @@ export type AnimalProfileSelect<ExtArgs extends runtime.Types.Extensions.Interna
   species?: boolean
   breed?: boolean
   category?: boolean
+  animalType?: boolean
+  weightKg?: boolean
   dateOfBirth?: boolean
   sex?: boolean
+  gender?: boolean
   microchipOrTag?: boolean
   notes?: boolean
+  photoUrl?: boolean
+  pregnancyStatus?: boolean
   active?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
   serviceRequests?: boolean | Prisma.AnimalProfile$serviceRequestsArgs<ExtArgs>
-  treatmentRecords?: boolean | Prisma.AnimalProfile$treatmentRecordsArgs<ExtArgs>
+  treatmentCases?: boolean | Prisma.AnimalProfile$treatmentCasesArgs<ExtArgs>
   prescriptions?: boolean | Prisma.AnimalProfile$prescriptionsArgs<ExtArgs>
   _count?: boolean | Prisma.AnimalProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["animalProfile"]>
@@ -1099,10 +1361,15 @@ export type AnimalProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   species?: boolean
   breed?: boolean
   category?: boolean
+  animalType?: boolean
+  weightKg?: boolean
   dateOfBirth?: boolean
   sex?: boolean
+  gender?: boolean
   microchipOrTag?: boolean
   notes?: boolean
+  photoUrl?: boolean
+  pregnancyStatus?: boolean
   active?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1116,10 +1383,15 @@ export type AnimalProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   species?: boolean
   breed?: boolean
   category?: boolean
+  animalType?: boolean
+  weightKg?: boolean
   dateOfBirth?: boolean
   sex?: boolean
+  gender?: boolean
   microchipOrTag?: boolean
   notes?: boolean
+  photoUrl?: boolean
+  pregnancyStatus?: boolean
   active?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -1133,20 +1405,25 @@ export type AnimalProfileSelectScalar = {
   species?: boolean
   breed?: boolean
   category?: boolean
+  animalType?: boolean
+  weightKg?: boolean
   dateOfBirth?: boolean
   sex?: boolean
+  gender?: boolean
   microchipOrTag?: boolean
   notes?: boolean
+  photoUrl?: boolean
+  pregnancyStatus?: boolean
   active?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type AnimalProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "customerId" | "name" | "species" | "breed" | "category" | "dateOfBirth" | "sex" | "microchipOrTag" | "notes" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["animalProfile"]>
+export type AnimalProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "customerId" | "name" | "species" | "breed" | "category" | "animalType" | "weightKg" | "dateOfBirth" | "sex" | "gender" | "microchipOrTag" | "notes" | "photoUrl" | "pregnancyStatus" | "active" | "createdAt" | "updatedAt", ExtArgs["result"]["animalProfile"]>
 export type AnimalProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
   serviceRequests?: boolean | Prisma.AnimalProfile$serviceRequestsArgs<ExtArgs>
-  treatmentRecords?: boolean | Prisma.AnimalProfile$treatmentRecordsArgs<ExtArgs>
+  treatmentCases?: boolean | Prisma.AnimalProfile$treatmentCasesArgs<ExtArgs>
   prescriptions?: boolean | Prisma.AnimalProfile$prescriptionsArgs<ExtArgs>
   _count?: boolean | Prisma.AnimalProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -1162,7 +1439,7 @@ export type $AnimalProfilePayload<ExtArgs extends runtime.Types.Extensions.Inter
   objects: {
     customer: Prisma.$CustomerProfilePayload<ExtArgs>
     serviceRequests: Prisma.$ServiceRequestPayload<ExtArgs>[]
-    treatmentRecords: Prisma.$TreatmentRecordPayload<ExtArgs>[]
+    treatmentCases: Prisma.$TreatmentCasePayload<ExtArgs>[]
     prescriptions: Prisma.$PrescriptionPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
@@ -1172,10 +1449,15 @@ export type $AnimalProfilePayload<ExtArgs extends runtime.Types.Extensions.Inter
     species: string
     breed: string | null
     category: $Enums.AnimalCategory
+    animalType: $Enums.AnimalType | null
+    weightKg: runtime.Decimal | null
     dateOfBirth: Date | null
     sex: string | null
+    gender: $Enums.Gender | null
     microchipOrTag: string | null
     notes: string | null
+    photoUrl: string | null
+    pregnancyStatus: $Enums.PregnancyStatus | null
     active: boolean
     createdAt: Date
     updatedAt: Date
@@ -1575,7 +1857,7 @@ export interface Prisma__AnimalProfileClient<T, Null = never, ExtArgs extends ru
   readonly [Symbol.toStringTag]: "PrismaPromise"
   customer<T extends Prisma.CustomerProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CustomerProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__CustomerProfileClient<runtime.Types.Result.GetResult<Prisma.$CustomerProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   serviceRequests<T extends Prisma.AnimalProfile$serviceRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AnimalProfile$serviceRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServiceRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  treatmentRecords<T extends Prisma.AnimalProfile$treatmentRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AnimalProfile$treatmentRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TreatmentRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  treatmentCases<T extends Prisma.AnimalProfile$treatmentCasesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AnimalProfile$treatmentCasesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TreatmentCasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   prescriptions<T extends Prisma.AnimalProfile$prescriptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AnimalProfile$prescriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrescriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1612,10 +1894,15 @@ export interface AnimalProfileFieldRefs {
   readonly species: Prisma.FieldRef<"AnimalProfile", 'String'>
   readonly breed: Prisma.FieldRef<"AnimalProfile", 'String'>
   readonly category: Prisma.FieldRef<"AnimalProfile", 'AnimalCategory'>
+  readonly animalType: Prisma.FieldRef<"AnimalProfile", 'AnimalType'>
+  readonly weightKg: Prisma.FieldRef<"AnimalProfile", 'Decimal'>
   readonly dateOfBirth: Prisma.FieldRef<"AnimalProfile", 'DateTime'>
   readonly sex: Prisma.FieldRef<"AnimalProfile", 'String'>
+  readonly gender: Prisma.FieldRef<"AnimalProfile", 'Gender'>
   readonly microchipOrTag: Prisma.FieldRef<"AnimalProfile", 'String'>
   readonly notes: Prisma.FieldRef<"AnimalProfile", 'String'>
+  readonly photoUrl: Prisma.FieldRef<"AnimalProfile", 'String'>
+  readonly pregnancyStatus: Prisma.FieldRef<"AnimalProfile", 'PregnancyStatus'>
   readonly active: Prisma.FieldRef<"AnimalProfile", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"AnimalProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"AnimalProfile", 'DateTime'>
@@ -2044,27 +2331,27 @@ export type AnimalProfile$serviceRequestsArgs<ExtArgs extends runtime.Types.Exte
 }
 
 /**
- * AnimalProfile.treatmentRecords
+ * AnimalProfile.treatmentCases
  */
-export type AnimalProfile$treatmentRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type AnimalProfile$treatmentCasesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the TreatmentRecord
+   * Select specific fields to fetch from the TreatmentCase
    */
-  select?: Prisma.TreatmentRecordSelect<ExtArgs> | null
+  select?: Prisma.TreatmentCaseSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the TreatmentRecord
+   * Omit specific fields from the TreatmentCase
    */
-  omit?: Prisma.TreatmentRecordOmit<ExtArgs> | null
+  omit?: Prisma.TreatmentCaseOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.TreatmentRecordInclude<ExtArgs> | null
-  where?: Prisma.TreatmentRecordWhereInput
-  orderBy?: Prisma.TreatmentRecordOrderByWithRelationInput | Prisma.TreatmentRecordOrderByWithRelationInput[]
-  cursor?: Prisma.TreatmentRecordWhereUniqueInput
+  include?: Prisma.TreatmentCaseInclude<ExtArgs> | null
+  where?: Prisma.TreatmentCaseWhereInput
+  orderBy?: Prisma.TreatmentCaseOrderByWithRelationInput | Prisma.TreatmentCaseOrderByWithRelationInput[]
+  cursor?: Prisma.TreatmentCaseWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.TreatmentRecordScalarFieldEnum | Prisma.TreatmentRecordScalarFieldEnum[]
+  distinct?: Prisma.TreatmentCaseScalarFieldEnum | Prisma.TreatmentCaseScalarFieldEnum[]
 }
 
 /**

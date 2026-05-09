@@ -1,9 +1,9 @@
 import bcrypt from "bcryptjs";
-import { NextResponse } from "next/server";
 import { z } from "zod";
 
-import { ADMIN_SESSION_COOKIE, ADMIN_SESSION_MAX_AGE } from "@/lib/admin-auth/constants";
+import { setAdminSessionCookie } from "@/lib/admin-auth/cookies";
 import { signAdminToken } from "@/lib/admin-auth/jwt";
+import { getAdminJwtSecret } from "@/lib/admin-auth/secrets";
 import { jsonError, jsonOk } from "@/lib/api-response";
 import { prisma } from "@/lib/prisma";
 import { UserRole, UserStatus } from "@/generated/prisma/client";
@@ -33,10 +33,7 @@ export async function POST(request: Request) {
 
   const { email, password } = parsed.data;
 
-  if (
-    !process.env.ADMIN_JWT_SECRET ||
-    process.env.ADMIN_JWT_SECRET.length < 32
-  ) {
+  if (!getAdminJwtSecret()) {
     return jsonError(
       "SERVER_MISCONFIGURED",
       "Admin JWT secret is not configured on the server",
@@ -49,12 +46,13 @@ export async function POST(request: Request) {
     include: { adminProfile: true },
   });
 
-  if (
-    !user ||
-    user.role !== UserRole.ADMIN ||
-    user.status !== UserStatus.ACTIVE ||
-    !user.adminProfile
-  ) {
+  const isPanelAdmin =
+    user &&
+    (user.role === UserRole.ADMIN || user.role === UserRole.SUPER_ADMIN) &&
+    user.status === UserStatus.ACTIVE &&
+    user.adminProfile;
+
+  if (!isPanelAdmin || !user) {
     return jsonError("INVALID_CREDENTIALS", "Invalid email or password", 401);
   }
 
@@ -63,9 +61,12 @@ export async function POST(request: Request) {
     return jsonError("INVALID_CREDENTIALS", "Invalid email or password", 401);
   }
 
+  const sessionRole =
+    user.role === UserRole.SUPER_ADMIN ? "SUPER_ADMIN" : "ADMIN";
+
   let token: string;
   try {
-    token = await signAdminToken(user.id, user.email);
+    token = await signAdminToken(user.id, user.email, sessionRole);
   } catch {
     return jsonError(
       "SERVER_MISCONFIGURED",
@@ -74,23 +75,18 @@ export async function POST(request: Request) {
     );
   }
 
-  const res = NextResponse.json(
-    jsonOk({
-      user: {
-        id: user.id,
-        email: user.email,
-        displayName: user.adminProfile.displayName,
-      },
-    }),
-  );
-
-  res.cookies.set(ADMIN_SESSION_COOKIE, token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    sameSite: "lax",
-    path: "/",
-    maxAge: ADMIN_SESSION_MAX_AGE,
+  const displayName = user.adminProfile?.displayName ?? null;
+  const res = jsonOk({
+    user: {
+      id: user.id,
+      email: user.email,
+      displayName,
+      name: displayName ?? user.email,
+      role: sessionRole,
+    },
   });
+
+  setAdminSessionCookie(res, token);
 
   return res;
 }

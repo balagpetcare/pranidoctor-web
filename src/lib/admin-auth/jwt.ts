@@ -1,30 +1,40 @@
 import { SignJWT, jwtVerify } from "jose";
 
+import { ADMIN_SESSION_MAX_AGE } from "./constants";
+import { getAdminJwtSecret } from "./secrets";
+
 const ALG = "HS256";
 
 function getEncodedSecret(): Uint8Array {
-  const secret = process.env.ADMIN_JWT_SECRET;
-  if (!secret || secret.length < 32) {
+  const secret = getAdminJwtSecret();
+  if (!secret) {
     throw new Error(
-      "ADMIN_JWT_SECRET must be set and at least 32 characters long",
+      "ADMIN_JWT_SECRET, AUTH_SECRET, or JWT_SECRET must be set and at least 32 characters long",
     );
   }
   return new TextEncoder().encode(secret);
 }
 
+/** Mirrors Prisma `UserRole.ADMIN` and `UserRole.SUPER_ADMIN` for panel sessions */
+export type AdminPanelSessionRole = "ADMIN" | "SUPER_ADMIN";
+
 export type AdminJwtPayload = {
   sub: string;
   email: string;
-  role: "ADMIN";
+  role: AdminPanelSessionRole;
 };
 
-export async function signAdminToken(userId: string, email: string): Promise<string> {
+export async function signAdminToken(
+  userId: string,
+  email: string,
+  role: AdminPanelSessionRole,
+): Promise<string> {
   const secret = getEncodedSecret();
-  return new SignJWT({ role: "ADMIN" as const, email })
+  return new SignJWT({ role, email })
     .setProtectedHeader({ alg: ALG })
     .setSubject(userId)
     .setIssuedAt()
-    .setExpirationTime("7d")
+    .setExpirationTime(`${ADMIN_SESSION_MAX_AGE}s`)
     .sign(secret);
 }
 
@@ -33,17 +43,22 @@ export async function verifyAdminToken(
   token: string,
 ): Promise<AdminJwtPayload | null> {
   try {
-    const secret = process.env.ADMIN_JWT_SECRET;
-    if (!secret || secret.length < 32) {
+    const secret = getAdminJwtSecret();
+    if (!secret) {
       return null;
     }
     const { payload } = await jwtVerify(token, new TextEncoder().encode(secret), {
       algorithms: [ALG],
     });
-    if (payload.role !== "ADMIN") return null;
+    const role = payload.role;
+    if (role !== "ADMIN" && role !== "SUPER_ADMIN") return null;
     if (typeof payload.sub !== "string") return null;
     if (typeof payload.email !== "string") return null;
-    return { sub: payload.sub, email: payload.email, role: "ADMIN" };
+    return {
+      sub: payload.sub,
+      email: payload.email,
+      role: role as AdminPanelSessionRole,
+    };
   } catch {
     return null;
   }

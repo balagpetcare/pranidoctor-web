@@ -191,6 +191,8 @@ export type ServiceCategoryWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
   serviceRequests?: Prisma.ServiceRequestListRelationFilter
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryListRelationFilter
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryListRelationFilter
 }
 
 export type ServiceCategoryOrderByWithRelationInput = {
@@ -201,6 +203,8 @@ export type ServiceCategoryOrderByWithRelationInput = {
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   serviceRequests?: Prisma.ServiceRequestOrderByRelationAggregateInput
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryOrderByRelationAggregateInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryOrderByRelationAggregateInput
 }
 
 export type ServiceCategoryWhereUniqueInput = Prisma.AtLeast<{
@@ -214,6 +218,8 @@ export type ServiceCategoryWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ServiceCategory"> | Date | string
   serviceRequests?: Prisma.ServiceRequestListRelationFilter
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryListRelationFilter
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryListRelationFilter
 }, "id" | "slug">
 
 export type ServiceCategoryOrderByWithAggregationInput = {
@@ -248,6 +254,8 @@ export type ServiceCategoryCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutServiceCategoryInput
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryCreateNestedManyWithoutServiceCategoryInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutServiceCategoryInput
 }
 
 export type ServiceCategoryUncheckedCreateInput = {
@@ -258,6 +266,8 @@ export type ServiceCategoryUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutServiceCategoryInput
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryUncheckedCreateNestedManyWithoutServiceCategoryInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutServiceCategoryInput
 }
 
 export type ServiceCategoryUpdateInput = {
@@ -268,6 +278,8 @@ export type ServiceCategoryUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutServiceCategoryNestedInput
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryUpdateManyWithoutServiceCategoryNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutServiceCategoryNestedInput
 }
 
 export type ServiceCategoryUncheckedUpdateInput = {
@@ -278,6 +290,8 @@ export type ServiceCategoryUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutServiceCategoryNestedInput
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryUncheckedUpdateManyWithoutServiceCategoryNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutServiceCategoryNestedInput
 }
 
 export type ServiceCategoryCreateManyInput = {
@@ -339,6 +353,34 @@ export type ServiceCategoryScalarRelationFilter = {
   isNot?: Prisma.ServiceCategoryWhereInput
 }
 
+export type ServiceCategoryCreateNestedOneWithoutDoctorProfileServiceCategoriesInput = {
+  create?: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutDoctorProfileServiceCategoriesInput, Prisma.ServiceCategoryUncheckedCreateWithoutDoctorProfileServiceCategoriesInput>
+  connectOrCreate?: Prisma.ServiceCategoryCreateOrConnectWithoutDoctorProfileServiceCategoriesInput
+  connect?: Prisma.ServiceCategoryWhereUniqueInput
+}
+
+export type ServiceCategoryUpdateOneRequiredWithoutDoctorProfileServiceCategoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutDoctorProfileServiceCategoriesInput, Prisma.ServiceCategoryUncheckedCreateWithoutDoctorProfileServiceCategoriesInput>
+  connectOrCreate?: Prisma.ServiceCategoryCreateOrConnectWithoutDoctorProfileServiceCategoriesInput
+  upsert?: Prisma.ServiceCategoryUpsertWithoutDoctorProfileServiceCategoriesInput
+  connect?: Prisma.ServiceCategoryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceCategoryUpdateToOneWithWhereWithoutDoctorProfileServiceCategoriesInput, Prisma.ServiceCategoryUpdateWithoutDoctorProfileServiceCategoriesInput>, Prisma.ServiceCategoryUncheckedUpdateWithoutDoctorProfileServiceCategoriesInput>
+}
+
+export type ServiceCategoryCreateNestedOneWithoutAiTechnicianProfileServiceCategoriesInput = {
+  create?: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutAiTechnicianProfileServiceCategoriesInput, Prisma.ServiceCategoryUncheckedCreateWithoutAiTechnicianProfileServiceCategoriesInput>
+  connectOrCreate?: Prisma.ServiceCategoryCreateOrConnectWithoutAiTechnicianProfileServiceCategoriesInput
+  connect?: Prisma.ServiceCategoryWhereUniqueInput
+}
+
+export type ServiceCategoryUpdateOneRequiredWithoutAiTechnicianProfileServiceCategoriesNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutAiTechnicianProfileServiceCategoriesInput, Prisma.ServiceCategoryUncheckedCreateWithoutAiTechnicianProfileServiceCategoriesInput>
+  connectOrCreate?: Prisma.ServiceCategoryCreateOrConnectWithoutAiTechnicianProfileServiceCategoriesInput
+  upsert?: Prisma.ServiceCategoryUpsertWithoutAiTechnicianProfileServiceCategoriesInput
+  connect?: Prisma.ServiceCategoryWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceCategoryUpdateToOneWithWhereWithoutAiTechnicianProfileServiceCategoriesInput, Prisma.ServiceCategoryUpdateWithoutAiTechnicianProfileServiceCategoriesInput>, Prisma.ServiceCategoryUncheckedUpdateWithoutAiTechnicianProfileServiceCategoriesInput>
+}
+
 export type ServiceCategoryCreateNestedOneWithoutServiceRequestsInput = {
   create?: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutServiceRequestsInput, Prisma.ServiceCategoryUncheckedCreateWithoutServiceRequestsInput>
   connectOrCreate?: Prisma.ServiceCategoryCreateOrConnectWithoutServiceRequestsInput
@@ -353,6 +395,126 @@ export type ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput = 
   update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceCategoryUpdateToOneWithWhereWithoutServiceRequestsInput, Prisma.ServiceCategoryUpdateWithoutServiceRequestsInput>, Prisma.ServiceCategoryUncheckedUpdateWithoutServiceRequestsInput>
 }
 
+export type ServiceCategoryCreateWithoutDoctorProfileServiceCategoriesInput = {
+  id?: string
+  name: string
+  slug: string
+  description?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutServiceCategoryInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutServiceCategoryInput
+}
+
+export type ServiceCategoryUncheckedCreateWithoutDoctorProfileServiceCategoriesInput = {
+  id?: string
+  name: string
+  slug: string
+  description?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutServiceCategoryInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutServiceCategoryInput
+}
+
+export type ServiceCategoryCreateOrConnectWithoutDoctorProfileServiceCategoriesInput = {
+  where: Prisma.ServiceCategoryWhereUniqueInput
+  create: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutDoctorProfileServiceCategoriesInput, Prisma.ServiceCategoryUncheckedCreateWithoutDoctorProfileServiceCategoriesInput>
+}
+
+export type ServiceCategoryUpsertWithoutDoctorProfileServiceCategoriesInput = {
+  update: Prisma.XOR<Prisma.ServiceCategoryUpdateWithoutDoctorProfileServiceCategoriesInput, Prisma.ServiceCategoryUncheckedUpdateWithoutDoctorProfileServiceCategoriesInput>
+  create: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutDoctorProfileServiceCategoriesInput, Prisma.ServiceCategoryUncheckedCreateWithoutDoctorProfileServiceCategoriesInput>
+  where?: Prisma.ServiceCategoryWhereInput
+}
+
+export type ServiceCategoryUpdateToOneWithWhereWithoutDoctorProfileServiceCategoriesInput = {
+  where?: Prisma.ServiceCategoryWhereInput
+  data: Prisma.XOR<Prisma.ServiceCategoryUpdateWithoutDoctorProfileServiceCategoriesInput, Prisma.ServiceCategoryUncheckedUpdateWithoutDoctorProfileServiceCategoriesInput>
+}
+
+export type ServiceCategoryUpdateWithoutDoctorProfileServiceCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutServiceCategoryNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutServiceCategoryNestedInput
+}
+
+export type ServiceCategoryUncheckedUpdateWithoutDoctorProfileServiceCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutServiceCategoryNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutServiceCategoryNestedInput
+}
+
+export type ServiceCategoryCreateWithoutAiTechnicianProfileServiceCategoriesInput = {
+  id?: string
+  name: string
+  slug: string
+  description?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutServiceCategoryInput
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryCreateNestedManyWithoutServiceCategoryInput
+}
+
+export type ServiceCategoryUncheckedCreateWithoutAiTechnicianProfileServiceCategoriesInput = {
+  id?: string
+  name: string
+  slug: string
+  description?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutServiceCategoryInput
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryUncheckedCreateNestedManyWithoutServiceCategoryInput
+}
+
+export type ServiceCategoryCreateOrConnectWithoutAiTechnicianProfileServiceCategoriesInput = {
+  where: Prisma.ServiceCategoryWhereUniqueInput
+  create: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutAiTechnicianProfileServiceCategoriesInput, Prisma.ServiceCategoryUncheckedCreateWithoutAiTechnicianProfileServiceCategoriesInput>
+}
+
+export type ServiceCategoryUpsertWithoutAiTechnicianProfileServiceCategoriesInput = {
+  update: Prisma.XOR<Prisma.ServiceCategoryUpdateWithoutAiTechnicianProfileServiceCategoriesInput, Prisma.ServiceCategoryUncheckedUpdateWithoutAiTechnicianProfileServiceCategoriesInput>
+  create: Prisma.XOR<Prisma.ServiceCategoryCreateWithoutAiTechnicianProfileServiceCategoriesInput, Prisma.ServiceCategoryUncheckedCreateWithoutAiTechnicianProfileServiceCategoriesInput>
+  where?: Prisma.ServiceCategoryWhereInput
+}
+
+export type ServiceCategoryUpdateToOneWithWhereWithoutAiTechnicianProfileServiceCategoriesInput = {
+  where?: Prisma.ServiceCategoryWhereInput
+  data: Prisma.XOR<Prisma.ServiceCategoryUpdateWithoutAiTechnicianProfileServiceCategoriesInput, Prisma.ServiceCategoryUncheckedUpdateWithoutAiTechnicianProfileServiceCategoriesInput>
+}
+
+export type ServiceCategoryUpdateWithoutAiTechnicianProfileServiceCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutServiceCategoryNestedInput
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryUpdateManyWithoutServiceCategoryNestedInput
+}
+
+export type ServiceCategoryUncheckedUpdateWithoutAiTechnicianProfileServiceCategoriesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutServiceCategoryNestedInput
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryUncheckedUpdateManyWithoutServiceCategoryNestedInput
+}
+
 export type ServiceCategoryCreateWithoutServiceRequestsInput = {
   id?: string
   name: string
@@ -360,6 +522,8 @@ export type ServiceCategoryCreateWithoutServiceRequestsInput = {
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryCreateNestedManyWithoutServiceCategoryInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutServiceCategoryInput
 }
 
 export type ServiceCategoryUncheckedCreateWithoutServiceRequestsInput = {
@@ -369,6 +533,8 @@ export type ServiceCategoryUncheckedCreateWithoutServiceRequestsInput = {
   description?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryUncheckedCreateNestedManyWithoutServiceCategoryInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutServiceCategoryInput
 }
 
 export type ServiceCategoryCreateOrConnectWithoutServiceRequestsInput = {
@@ -394,6 +560,8 @@ export type ServiceCategoryUpdateWithoutServiceRequestsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryUpdateManyWithoutServiceCategoryNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutServiceCategoryNestedInput
 }
 
 export type ServiceCategoryUncheckedUpdateWithoutServiceRequestsInput = {
@@ -403,6 +571,8 @@ export type ServiceCategoryUncheckedUpdateWithoutServiceRequestsInput = {
   description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  doctorProfileServiceCategories?: Prisma.DoctorProfileServiceCategoryUncheckedUpdateManyWithoutServiceCategoryNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutServiceCategoryNestedInput
 }
 
 
@@ -412,10 +582,14 @@ export type ServiceCategoryUncheckedUpdateWithoutServiceRequestsInput = {
 
 export type ServiceCategoryCountOutputType = {
   serviceRequests: number
+  doctorProfileServiceCategories: number
+  aiTechnicianProfileServiceCategories: number
 }
 
 export type ServiceCategoryCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   serviceRequests?: boolean | ServiceCategoryCountOutputTypeCountServiceRequestsArgs
+  doctorProfileServiceCategories?: boolean | ServiceCategoryCountOutputTypeCountDoctorProfileServiceCategoriesArgs
+  aiTechnicianProfileServiceCategories?: boolean | ServiceCategoryCountOutputTypeCountAiTechnicianProfileServiceCategoriesArgs
 }
 
 /**
@@ -435,6 +609,20 @@ export type ServiceCategoryCountOutputTypeCountServiceRequestsArgs<ExtArgs exten
   where?: Prisma.ServiceRequestWhereInput
 }
 
+/**
+ * ServiceCategoryCountOutputType without action
+ */
+export type ServiceCategoryCountOutputTypeCountDoctorProfileServiceCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DoctorProfileServiceCategoryWhereInput
+}
+
+/**
+ * ServiceCategoryCountOutputType without action
+ */
+export type ServiceCategoryCountOutputTypeCountAiTechnicianProfileServiceCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiTechnicianProfileServiceCategoryWhereInput
+}
+
 
 export type ServiceCategorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -444,6 +632,8 @@ export type ServiceCategorySelect<ExtArgs extends runtime.Types.Extensions.Inter
   createdAt?: boolean
   updatedAt?: boolean
   serviceRequests?: boolean | Prisma.ServiceCategory$serviceRequestsArgs<ExtArgs>
+  doctorProfileServiceCategories?: boolean | Prisma.ServiceCategory$doctorProfileServiceCategoriesArgs<ExtArgs>
+  aiTechnicianProfileServiceCategories?: boolean | Prisma.ServiceCategory$aiTechnicianProfileServiceCategoriesArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceCategoryCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["serviceCategory"]>
 
@@ -477,6 +667,8 @@ export type ServiceCategorySelectScalar = {
 export type ServiceCategoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "description" | "createdAt" | "updatedAt", ExtArgs["result"]["serviceCategory"]>
 export type ServiceCategoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   serviceRequests?: boolean | Prisma.ServiceCategory$serviceRequestsArgs<ExtArgs>
+  doctorProfileServiceCategories?: boolean | Prisma.ServiceCategory$doctorProfileServiceCategoriesArgs<ExtArgs>
+  aiTechnicianProfileServiceCategories?: boolean | Prisma.ServiceCategory$aiTechnicianProfileServiceCategoriesArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceCategoryCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ServiceCategoryIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {}
@@ -486,6 +678,8 @@ export type $ServiceCategoryPayload<ExtArgs extends runtime.Types.Extensions.Int
   name: "ServiceCategory"
   objects: {
     serviceRequests: Prisma.$ServiceRequestPayload<ExtArgs>[]
+    doctorProfileServiceCategories: Prisma.$DoctorProfileServiceCategoryPayload<ExtArgs>[]
+    aiTechnicianProfileServiceCategories: Prisma.$AiTechnicianProfileServiceCategoryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -889,6 +1083,8 @@ readonly fields: ServiceCategoryFieldRefs;
 export interface Prisma__ServiceCategoryClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   serviceRequests<T extends Prisma.ServiceCategory$serviceRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceCategory$serviceRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServiceRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  doctorProfileServiceCategories<T extends Prisma.ServiceCategory$doctorProfileServiceCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceCategory$doctorProfileServiceCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DoctorProfileServiceCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  aiTechnicianProfileServiceCategories<T extends Prisma.ServiceCategory$aiTechnicianProfileServiceCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceCategory$aiTechnicianProfileServiceCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianProfileServiceCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1338,6 +1534,54 @@ export type ServiceCategory$serviceRequestsArgs<ExtArgs extends runtime.Types.Ex
   take?: number
   skip?: number
   distinct?: Prisma.ServiceRequestScalarFieldEnum | Prisma.ServiceRequestScalarFieldEnum[]
+}
+
+/**
+ * ServiceCategory.doctorProfileServiceCategories
+ */
+export type ServiceCategory$doctorProfileServiceCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DoctorProfileServiceCategory
+   */
+  select?: Prisma.DoctorProfileServiceCategorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DoctorProfileServiceCategory
+   */
+  omit?: Prisma.DoctorProfileServiceCategoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DoctorProfileServiceCategoryInclude<ExtArgs> | null
+  where?: Prisma.DoctorProfileServiceCategoryWhereInput
+  orderBy?: Prisma.DoctorProfileServiceCategoryOrderByWithRelationInput | Prisma.DoctorProfileServiceCategoryOrderByWithRelationInput[]
+  cursor?: Prisma.DoctorProfileServiceCategoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DoctorProfileServiceCategoryScalarFieldEnum | Prisma.DoctorProfileServiceCategoryScalarFieldEnum[]
+}
+
+/**
+ * ServiceCategory.aiTechnicianProfileServiceCategories
+ */
+export type ServiceCategory$aiTechnicianProfileServiceCategoriesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiTechnicianProfileServiceCategory
+   */
+  select?: Prisma.AiTechnicianProfileServiceCategorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiTechnicianProfileServiceCategory
+   */
+  omit?: Prisma.AiTechnicianProfileServiceCategoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiTechnicianProfileServiceCategoryInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianProfileServiceCategoryWhereInput
+  orderBy?: Prisma.AiTechnicianProfileServiceCategoryOrderByWithRelationInput | Prisma.AiTechnicianProfileServiceCategoryOrderByWithRelationInput[]
+  cursor?: Prisma.AiTechnicianProfileServiceCategoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiTechnicianProfileServiceCategoryScalarFieldEnum | Prisma.AiTechnicianProfileServiceCategoryScalarFieldEnum[]
 }
 
 /**

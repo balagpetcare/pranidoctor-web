@@ -1,0 +1,126 @@
+/*
+ * Prani Doctor admin shell — Larkon-inspired tokens, scoped to #pd-admin-root
+ * so public/mobile pages are unaffected. Import only from admin (dashboard) layout.
+ * Companion layout: AdminLayoutShell uses h-[100dvh] overflow-hidden on this root so
+ * AdminContent (main) owns vertical scrolling.
+ */
+
+#pd-admin-root {
+  --pd-admin-sidebar-w-expanded: 18rem;
+  --pd-admin-sidebar-w-collapsed: 4.5rem;
+  --pd-admin-sidebar-w: var(--pd-admin-sidebar-w-expanded);
+  --pd-admin-topbar-h: 3.75rem;
+  --pd-admin-radius: 0.75rem;
+  --pd-admin-radius-sm: 0.5rem;
+  --pd-admin-card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.04), 0 1px 3px 0 rgb(0 0 0 / 0.08);
+  --pd-admin-card-shadow-lg: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+}
+
+/* Desktop sidebar width: expanded vs collapsed (rail). Mobile overlay always uses expanded width. */
+#pd-admin-root[data-sidebar-mode="collapsed"] {
+  --pd-admin-sidebar-w: var(--pd-admin-sidebar-w-collapsed);
+}
+
+@media (max-width: 767.98px) {
+  #pd-admin-root[data-sidebar-mode="collapsed"] {
+    --pd-admin-sidebar-w: var(--pd-admin-sidebar-w-expanded);
+  }
+}
+
+/* Sticky desktop topbar (mobile topbar remains sticky via component classes) */
+#pd-admin-root[data-topbar-sticky="true"] .pd-admin-topbar-desktop {
+  position: sticky;
+  top: 0;
+  z-index: 30;
+}
+
+/* --- Appearance: explicit light --- */
+#pd-admin-root[data-admin-appearance="light"] {
+  --pd-admin-primary: rgb(5 122 85);
+  --pd-admin-primary-soft: rgb(236 253 245);
+  --pd-admin-border: rgb(228 228 231);
+  --pd-admin-surface: rgb(255 255 255);
+  --pd-admin-muted: rgb(113 113 122);
+  --pd-admin-card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.04), 0 1px 3px 0 rgb(0 0 0 / 0.08);
+  --pd-admin-card-shadow-lg: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --pd-admin-app-bg: rgb(250 250 250);
+  --pd-admin-app-fg: rgb(24 24 27);
+  --pd-admin-main-bg: rgb(250 250 250 / 0.92);
+  --pd-admin-topbar-bg: rgb(255 255 255 / 0.95);
+}
+
+/* --- Appearance: explicit dark --- */
+#pd-admin-root[data-admin-appearance="dark"] {
+  --pd-admin-primary: rgb(52 211 153);
+  --pd-admin-primary-soft: rgb(6 78 59 / 0.35);
+  --pd-admin-border: rgb(63 63 70);
+  --pd-admin-surface: rgb(9 9 11);
+  --pd-admin-muted: rgb(161 161 170);
+  --pd-admin-card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.25);
+  --pd-admin-card-shadow-lg: 0 4px 6px -1px rgb(0 0 0 / 0.35), 0 2px 4px -2px rgb(0 0 0 / 0.25);
+  --pd-admin-app-bg: rgb(9 9 11);
+  --pd-admin-app-fg: rgb(250 250 250);
+  --pd-admin-main-bg: rgb(9 9 11 / 0.94);
+  --pd-admin-topbar-bg: rgb(9 9 11 / 0.92);
+}
+
+/* --- Appearance: system (defaults = light; OS dark overrides) --- */
+#pd-admin-root[data-admin-appearance="system"] {
+  --pd-admin-primary: rgb(5 122 85);
+  --pd-admin-primary-soft: rgb(236 253 245);
+  --pd-admin-border: rgb(228 228 231);
+  --pd-admin-surface: rgb(255 255 255);
+  --pd-admin-muted: rgb(113 113 122);
+  --pd-admin-card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.04), 0 1px 3px 0 rgb(0 0 0 / 0.08);
+  --pd-admin-card-shadow-lg: 0 4px 6px -1px rgb(0 0 0 / 0.06), 0 2px 4px -2px rgb(0 0 0 / 0.06);
+  --pd-admin-app-bg: rgb(250 250 250);
+  --pd-admin-app-fg: rgb(24 24 27);
+  --pd-admin-main-bg: rgb(250 250 250 / 0.92);
+  --pd-admin-topbar-bg: rgb(255 255 255 / 0.95);
+}
+
+@media (prefers-color-scheme: dark) {
+  #pd-admin-root[data-admin-appearance="system"] {
+    --pd-admin-primary: rgb(52 211 153);
+    --pd-admin-primary-soft: rgb(6 78 59 / 0.35);
+    --pd-admin-border: rgb(63 63 70);
+    --pd-admin-surface: rgb(9 9 11);
+    --pd-admin-muted: rgb(161 161 170);
+    --pd-admin-card-shadow: 0 1px 2px 0 rgb(0 0 0 / 0.25);
+    --pd-admin-card-shadow-lg: 0 4px 6px -1px rgb(0 0 0 / 0.35), 0 2px 4px -2px rgb(0 0 0 / 0.25);
+    --pd-admin-app-bg: rgb(9 9 11);
+    --pd-admin-app-fg: rgb(250 250 250);
+    --pd-admin-main-bg: rgb(9 9 11 / 0.94);
+    --pd-admin-topbar-bg: rgb(9 9 11 / 0.92);
+  }
+}
+
+/* --- Sidebar chrome: light rail (white surface, dark text, subtle border) --- */
+#pd-admin-root[data-sidebar-theme="light"] {
+  --pd-admin-sidebar-bg: rgb(255 255 255);
+  --pd-admin-sidebar-border: rgb(228 228 231);
+  --pd-admin-sidebar-link-fg: rgb(39 39 42);
+  --pd-admin-sidebar-muted: rgb(113 113 122);
+  --pd-admin-sidebar-icon-fg: rgb(63 63 70);
+  --pd-admin-sidebar-brand-fg: rgb(6 95 70);
+  --pd-admin-sidebar-hover-bg: rgb(244 244 245);
+  --pd-admin-sidebar-active-bg: rgb(236 253 245);
+  --pd-admin-sidebar-active-fg: rgb(6 78 59);
+  --pd-admin-sidebar-active-ring: rgb(6 95 70 / 0.18);
+}
+
+/* --- Sidebar chrome: dark rail (zinc + emerald accents) --- */
+#pd-admin-root[data-sidebar-theme="dark"] {
+  --pd-admin-sidebar-bg: rgb(24 24 27);
+  --pd-admin-sidebar-border: rgb(63 63 70);
+  --pd-admin-sidebar-link-fg: rgb(228 228 231);
+  --pd-admin-sidebar-muted: rgb(161 161 170);
+  --pd-admin-sidebar-icon-fg: rgb(212 212 216);
+  --pd-admin-sidebar-brand-fg: rgb(52 211 153);
+  --pd-admin-sidebar-hover-bg: rgb(39 39 42);
+  --pd-admin-sidebar-active-bg: rgb(6 78 59 / 0.42);
+  --pd-admin-sidebar-active-fg: rgb(209 250 229);
+  --pd-admin-sidebar-active-ring: rgb(52 211 153 / 0.28);
+}
+
+/* Shell footer (`.pd-admin-footer`): sibling below scrolling `AdminContent`; uses appearance tokens. */

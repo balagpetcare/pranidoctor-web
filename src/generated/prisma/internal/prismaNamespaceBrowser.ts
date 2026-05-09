@@ -54,14 +54,33 @@ export const ModelName = {
   User: 'User',
   AdminProfile: 'AdminProfile',
   DoctorProfile: 'DoctorProfile',
+  AiTechnicianProfile: 'AiTechnicianProfile',
   CustomerProfile: 'CustomerProfile',
-  AnimalProfile: 'AnimalProfile',
+  MobileOtpChallenge: 'MobileOtpChallenge',
+  Division: 'Division',
+  District: 'District',
+  Upazila: 'Upazila',
+  Union: 'Union',
+  Village: 'Village',
   Area: 'Area',
+  DoctorServiceArea: 'DoctorServiceArea',
+  AiTechnicianServiceArea: 'AiTechnicianServiceArea',
   ServiceCategory: 'ServiceCategory',
+  DoctorProfileArea: 'DoctorProfileArea',
+  AiTechnicianProfileArea: 'AiTechnicianProfileArea',
+  DoctorProfileServiceCategory: 'DoctorProfileServiceCategory',
+  AiTechnicianProfileServiceCategory: 'AiTechnicianProfileServiceCategory',
+  AnimalProfile: 'AnimalProfile',
   ServiceRequest: 'ServiceRequest',
-  TreatmentRecord: 'TreatmentRecord',
+  TreatmentCase: 'TreatmentCase',
   Prescription: 'Prescription',
+  PrescriptionItem: 'PrescriptionItem',
   BillingRecord: 'BillingRecord',
+  PaymentRecord: 'PaymentRecord',
+  Review: 'Review',
+  ContentCategory: 'ContentCategory',
+  ContentPost: 'ContentPost',
+  Complaint: 'Complaint',
   Notification: 'Notification',
   Setting: 'Setting'
 } as const
@@ -110,15 +129,41 @@ export type AdminProfileScalarFieldEnum = (typeof AdminProfileScalarFieldEnum)[k
 export const DoctorProfileScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
+  displayName: 'displayName',
   licenseNumber: 'licenseNumber',
+  degree: 'degree',
   specialization: 'specialization',
+  experienceYears: 'experienceYears',
   bio: 'bio',
+  profilePhotoUrl: 'profilePhotoUrl',
+  visitFeeBdt: 'visitFeeBdt',
+  acceptsEmergency: 'acceptsEmergency',
+  acceptsOnlineConsultation: 'acceptsOnlineConsultation',
+  providerStatus: 'providerStatus',
   verifiedAt: 'verifiedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type DoctorProfileScalarFieldEnum = (typeof DoctorProfileScalarFieldEnum)[keyof typeof DoctorProfileScalarFieldEnum]
+
+
+export const AiTechnicianProfileScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  displayName: 'displayName',
+  certification: 'certification',
+  bio: 'bio',
+  serviceFeeBdt: 'serviceFeeBdt',
+  acceptsEmergency: 'acceptsEmergency',
+  metadataJson: 'metadataJson',
+  providerStatus: 'providerStatus',
+  verifiedAt: 'verifiedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiTechnicianProfileScalarFieldEnum = (typeof AiTechnicianProfileScalarFieldEnum)[keyof typeof AiTechnicianProfileScalarFieldEnum]
 
 
 export const CustomerProfileScalarFieldEnum = {
@@ -134,36 +179,123 @@ export const CustomerProfileScalarFieldEnum = {
 export type CustomerProfileScalarFieldEnum = (typeof CustomerProfileScalarFieldEnum)[keyof typeof CustomerProfileScalarFieldEnum]
 
 
-export const AnimalProfileScalarFieldEnum = {
+export const MobileOtpChallengeScalarFieldEnum = {
   id: 'id',
-  customerId: 'customerId',
-  name: 'name',
-  species: 'species',
-  breed: 'breed',
-  category: 'category',
-  dateOfBirth: 'dateOfBirth',
-  sex: 'sex',
-  microchipOrTag: 'microchipOrTag',
-  notes: 'notes',
-  active: 'active',
+  normalizedPhone: 'normalizedPhone',
+  codeHash: 'codeHash',
+  expiresAt: 'expiresAt',
+  verifyAttempts: 'verifyAttempts',
+  sendWindowStartedAt: 'sendWindowStartedAt',
+  sendsInWindow: 'sendsInWindow',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type AnimalProfileScalarFieldEnum = (typeof AnimalProfileScalarFieldEnum)[keyof typeof AnimalProfileScalarFieldEnum]
+export type MobileOtpChallengeScalarFieldEnum = (typeof MobileOtpChallengeScalarFieldEnum)[keyof typeof MobileOtpChallengeScalarFieldEnum]
+
+
+export const DivisionScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  slug: 'slug',
+  code: 'code',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DivisionScalarFieldEnum = (typeof DivisionScalarFieldEnum)[keyof typeof DivisionScalarFieldEnum]
+
+
+export const DistrictScalarFieldEnum = {
+  id: 'id',
+  divisionId: 'divisionId',
+  name: 'name',
+  slug: 'slug',
+  code: 'code',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type DistrictScalarFieldEnum = (typeof DistrictScalarFieldEnum)[keyof typeof DistrictScalarFieldEnum]
+
+
+export const UpazilaScalarFieldEnum = {
+  id: 'id',
+  districtId: 'districtId',
+  name: 'name',
+  slug: 'slug',
+  code: 'code',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UpazilaScalarFieldEnum = (typeof UpazilaScalarFieldEnum)[keyof typeof UpazilaScalarFieldEnum]
+
+
+export const UnionScalarFieldEnum = {
+  id: 'id',
+  upazilaId: 'upazilaId',
+  name: 'name',
+  slug: 'slug',
+  code: 'code',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UnionScalarFieldEnum = (typeof UnionScalarFieldEnum)[keyof typeof UnionScalarFieldEnum]
+
+
+export const VillageScalarFieldEnum = {
+  id: 'id',
+  unionId: 'unionId',
+  name: 'name',
+  slug: 'slug',
+  code: 'code',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type VillageScalarFieldEnum = (typeof VillageScalarFieldEnum)[keyof typeof VillageScalarFieldEnum]
 
 
 export const AreaScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  nameBn: 'nameBn',
   slug: 'slug',
+  code: 'code',
+  type: 'type',
   parentId: 'parentId',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
   metadataJson: 'metadataJson',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type AreaScalarFieldEnum = (typeof AreaScalarFieldEnum)[keyof typeof AreaScalarFieldEnum]
+
+
+export const DoctorServiceAreaScalarFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  villageId: 'villageId',
+  priority: 'priority',
+  createdAt: 'createdAt'
+} as const
+
+export type DoctorServiceAreaScalarFieldEnum = (typeof DoctorServiceAreaScalarFieldEnum)[keyof typeof DoctorServiceAreaScalarFieldEnum]
+
+
+export const AiTechnicianServiceAreaScalarFieldEnum = {
+  id: 'id',
+  aiTechnicianId: 'aiTechnicianId',
+  villageId: 'villageId',
+  priority: 'priority',
+  createdAt: 'createdAt'
+} as const
+
+export type AiTechnicianServiceAreaScalarFieldEnum = (typeof AiTechnicianServiceAreaScalarFieldEnum)[keyof typeof AiTechnicianServiceAreaScalarFieldEnum]
 
 
 export const ServiceCategoryScalarFieldEnum = {
@@ -178,18 +310,97 @@ export const ServiceCategoryScalarFieldEnum = {
 export type ServiceCategoryScalarFieldEnum = (typeof ServiceCategoryScalarFieldEnum)[keyof typeof ServiceCategoryScalarFieldEnum]
 
 
+export const DoctorProfileAreaScalarFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  areaId: 'areaId',
+  priority: 'priority',
+  createdAt: 'createdAt'
+} as const
+
+export type DoctorProfileAreaScalarFieldEnum = (typeof DoctorProfileAreaScalarFieldEnum)[keyof typeof DoctorProfileAreaScalarFieldEnum]
+
+
+export const AiTechnicianProfileAreaScalarFieldEnum = {
+  id: 'id',
+  aiTechnicianId: 'aiTechnicianId',
+  areaId: 'areaId',
+  priority: 'priority',
+  createdAt: 'createdAt'
+} as const
+
+export type AiTechnicianProfileAreaScalarFieldEnum = (typeof AiTechnicianProfileAreaScalarFieldEnum)[keyof typeof AiTechnicianProfileAreaScalarFieldEnum]
+
+
+export const DoctorProfileServiceCategoryScalarFieldEnum = {
+  id: 'id',
+  doctorId: 'doctorId',
+  serviceCategoryId: 'serviceCategoryId',
+  createdAt: 'createdAt'
+} as const
+
+export type DoctorProfileServiceCategoryScalarFieldEnum = (typeof DoctorProfileServiceCategoryScalarFieldEnum)[keyof typeof DoctorProfileServiceCategoryScalarFieldEnum]
+
+
+export const AiTechnicianProfileServiceCategoryScalarFieldEnum = {
+  id: 'id',
+  aiTechnicianId: 'aiTechnicianId',
+  serviceCategoryId: 'serviceCategoryId',
+  createdAt: 'createdAt'
+} as const
+
+export type AiTechnicianProfileServiceCategoryScalarFieldEnum = (typeof AiTechnicianProfileServiceCategoryScalarFieldEnum)[keyof typeof AiTechnicianProfileServiceCategoryScalarFieldEnum]
+
+
+export const AnimalProfileScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  name: 'name',
+  species: 'species',
+  breed: 'breed',
+  category: 'category',
+  animalType: 'animalType',
+  weightKg: 'weightKg',
+  dateOfBirth: 'dateOfBirth',
+  sex: 'sex',
+  gender: 'gender',
+  microchipOrTag: 'microchipOrTag',
+  notes: 'notes',
+  photoUrl: 'photoUrl',
+  pregnancyStatus: 'pregnancyStatus',
+  active: 'active',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AnimalProfileScalarFieldEnum = (typeof AnimalProfileScalarFieldEnum)[keyof typeof AnimalProfileScalarFieldEnum]
+
+
 export const ServiceRequestScalarFieldEnum = {
   id: 'id',
   customerId: 'customerId',
   animalId: 'animalId',
   areaId: 'areaId',
+  villageId: 'villageId',
   serviceCategoryId: 'serviceCategoryId',
+  serviceType: 'serviceType',
   assignedDoctorId: 'assignedDoctorId',
+  assignedTechnicianId: 'assignedTechnicianId',
   status: 'status',
   urgency: 'urgency',
-  symptoms: 'symptoms',
-  preferredWindow: 'preferredWindow',
-  locationNotes: 'locationNotes',
+  problemOrSymptom: 'problemOrSymptom',
+  description: 'description',
+  preferredTime: 'preferredTime',
+  locationText: 'locationText',
+  scheduledStart: 'scheduledStart',
+  scheduledEnd: 'scheduledEnd',
+  isEmergency: 'isEmergency',
+  emergencyNotes: 'emergencyNotes',
+  submittedAt: 'submittedAt',
+  assignedAt: 'assignedAt',
+  startedAt: 'startedAt',
+  cancelledAt: 'cancelledAt',
+  cancelReason: 'cancelReason',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   completedAt: 'completedAt'
@@ -198,28 +409,33 @@ export const ServiceRequestScalarFieldEnum = {
 export type ServiceRequestScalarFieldEnum = (typeof ServiceRequestScalarFieldEnum)[keyof typeof ServiceRequestScalarFieldEnum]
 
 
-export const TreatmentRecordScalarFieldEnum = {
+export const TreatmentCaseScalarFieldEnum = {
   id: 'id',
   serviceRequestId: 'serviceRequestId',
-  doctorId: 'doctorId',
   animalId: 'animalId',
+  doctorId: 'doctorId',
+  aiTechnicianId: 'aiTechnicianId',
   status: 'status',
   chiefComplaint: 'chiefComplaint',
+  symptoms: 'symptoms',
   diagnosis: 'diagnosis',
   procedures: 'procedures',
+  treatmentNotes: 'treatmentNotes',
   followUpNotes: 'followUpNotes',
+  followUpDate: 'followUpDate',
   recordedAt: 'recordedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
-export type TreatmentRecordScalarFieldEnum = (typeof TreatmentRecordScalarFieldEnum)[keyof typeof TreatmentRecordScalarFieldEnum]
+export type TreatmentCaseScalarFieldEnum = (typeof TreatmentCaseScalarFieldEnum)[keyof typeof TreatmentCaseScalarFieldEnum]
 
 
 export const PrescriptionScalarFieldEnum = {
   id: 'id',
   serviceRequestId: 'serviceRequestId',
   doctorId: 'doctorId',
+  aiTechnicianId: 'aiTechnicianId',
   animalId: 'animalId',
   status: 'status',
   instructions: 'instructions',
@@ -231,16 +447,42 @@ export const PrescriptionScalarFieldEnum = {
 export type PrescriptionScalarFieldEnum = (typeof PrescriptionScalarFieldEnum)[keyof typeof PrescriptionScalarFieldEnum]
 
 
+export const PrescriptionItemScalarFieldEnum = {
+  id: 'id',
+  prescriptionId: 'prescriptionId',
+  medicineName: 'medicineName',
+  dosage: 'dosage',
+  duration: 'duration',
+  instruction: 'instruction',
+  quantity: 'quantity',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PrescriptionItemScalarFieldEnum = (typeof PrescriptionItemScalarFieldEnum)[keyof typeof PrescriptionItemScalarFieldEnum]
+
+
 export const BillingRecordScalarFieldEnum = {
   id: 'id',
   serviceRequestId: 'serviceRequestId',
+  treatmentCaseId: 'treatmentCaseId',
   doctorId: 'doctorId',
+  aiTechnicianId: 'aiTechnicianId',
   customerId: 'customerId',
   status: 'status',
   currency: 'currency',
   subtotal: 'subtotal',
   tax: 'tax',
   total: 'total',
+  serviceFee: 'serviceFee',
+  travelCost: 'travelCost',
+  medicineCost: 'medicineCost',
+  discountAmount: 'discountAmount',
+  totalCollected: 'totalCollected',
+  platformCommission: 'platformCommission',
+  providerPayout: 'providerPayout',
+  paymentMethod: 'paymentMethod',
+  paymentStatus: 'paymentStatus',
   issuedAt: 'issuedAt',
   paidAt: 'paidAt',
   notes: 'notes',
@@ -249,6 +491,92 @@ export const BillingRecordScalarFieldEnum = {
 } as const
 
 export type BillingRecordScalarFieldEnum = (typeof BillingRecordScalarFieldEnum)[keyof typeof BillingRecordScalarFieldEnum]
+
+
+export const PaymentRecordScalarFieldEnum = {
+  id: 'id',
+  billingRecordId: 'billingRecordId',
+  serviceRequestId: 'serviceRequestId',
+  status: 'status',
+  method: 'method',
+  amount: 'amount',
+  currency: 'currency',
+  externalId: 'externalId',
+  paidAt: 'paidAt',
+  metadataJson: 'metadataJson',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type PaymentRecordScalarFieldEnum = (typeof PaymentRecordScalarFieldEnum)[keyof typeof PaymentRecordScalarFieldEnum]
+
+
+export const ReviewScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  doctorId: 'doctorId',
+  aiTechnicianId: 'aiTechnicianId',
+  serviceRequestId: 'serviceRequestId',
+  rating: 'rating',
+  comment: 'comment',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ReviewScalarFieldEnum = (typeof ReviewScalarFieldEnum)[keyof typeof ReviewScalarFieldEnum]
+
+
+export const ContentCategoryScalarFieldEnum = {
+  id: 'id',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
+  slug: 'slug',
+  description: 'description',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ContentCategoryScalarFieldEnum = (typeof ContentCategoryScalarFieldEnum)[keyof typeof ContentCategoryScalarFieldEnum]
+
+
+export const ContentPostScalarFieldEnum = {
+  id: 'id',
+  title: 'title',
+  slug: 'slug',
+  summary: 'summary',
+  body: 'body',
+  coverImageUrl: 'coverImageUrl',
+  categoryId: 'categoryId',
+  authorId: 'authorId',
+  approvalStatus: 'approvalStatus',
+  rejectionReason: 'rejectionReason',
+  publishedAt: 'publishedAt',
+  isPublished: 'isPublished',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ContentPostScalarFieldEnum = (typeof ContentPostScalarFieldEnum)[keyof typeof ContentPostScalarFieldEnum]
+
+
+export const ComplaintScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  doctorId: 'doctorId',
+  aiTechnicianId: 'aiTechnicianId',
+  adminAssigneeId: 'adminAssigneeId',
+  serviceRequestId: 'serviceRequestId',
+  billingRecordId: 'billingRecordId',
+  status: 'status',
+  resolutionNotes: 'resolutionNotes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type ComplaintScalarFieldEnum = (typeof ComplaintScalarFieldEnum)[keyof typeof ComplaintScalarFieldEnum]
 
 
 export const NotificationScalarFieldEnum = {

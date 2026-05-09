@@ -10,16 +10,37 @@ datasource db {
   provider = "postgresql"
 }
 
+// --- Enums ---
+
 enum UserRole {
   ADMIN
   CUSTOMER
   DOCTOR
+  AI_TECHNICIAN
+  SUPPORT
+  SUPER_ADMIN
 }
 
 enum UserStatus {
   ACTIVE
   SUSPENDED
   PENDING_VERIFICATION
+  INVITED
+  DELETED
+}
+
+enum ProviderStatus {
+  PENDING_VERIFICATION
+  ACTIVE
+  SUSPENDED
+  REJECTED
+}
+
+enum Gender {
+  MALE
+  FEMALE
+  UNKNOWN
+  OTHER
 }
 
 enum AnimalCategory {
@@ -28,17 +49,44 @@ enum AnimalCategory {
   OTHER
 }
 
+enum AnimalType {
+  CATTLE
+  GOAT
+  POULTRY
+  DOG
+  CAT
+  OTHER
+}
+
+/// Reproductive status for applicable animals (e.g. livestock).
+enum PregnancyStatus {
+  UNKNOWN
+  NOT_APPLICABLE
+  NOT_PREGNANT
+  PREGNANT
+}
+
+enum ServiceRequestType {
+  DOCTOR_HOME_VISIT
+  EMERGENCY_DOCTOR
+  AI_SERVICE
+  ONLINE_CONSULTATION_LATER
+}
+
 enum ServiceRequestStatus {
-  SUBMITTED
+  PENDING
+  ACCEPTED
   ASSIGNED
   IN_PROGRESS
   COMPLETED
   CANCELLED
+  REJECTED
 }
 
-enum TreatmentRecordStatus {
+enum TreatmentCaseStatus {
   DRAFT
   FINALIZED
+  CANCELLED
 }
 
 enum PrescriptionStatus {
@@ -46,12 +94,84 @@ enum PrescriptionStatus {
   VOIDED
 }
 
-enum BillingRecordStatus {
+enum BillingStatus {
   DRAFT
   ISSUED
+  PARTIALLY_PAID
   PAID
   VOIDED
+  REFUNDED
 }
+
+enum PaymentStatus {
+  PENDING
+  AUTHORIZED
+  CAPTURED
+  FAILED
+  REFUNDED
+  CANCELLED
+  /// MVP billing settlement (invoice-level); additive — gateway statuses above remain for PaymentRecord.
+  UNPAID
+  PARTIAL
+  PAID
+}
+
+enum PaymentMethod {
+  CASH
+  BKASH
+  NAGAD
+  CARD
+  BANK_TRANSFER
+  OTHER
+  /// MVP additions (Bangladesh mobile wallets / bank). Keep CARD/BANK_TRANSFER for legacy PaymentRecord rows.
+  ROCKET
+  BANK
+}
+
+enum ComplaintStatus {
+  OPEN
+  IN_REVIEW
+  RESOLVED
+  REJECTED
+  CLOSED
+}
+
+enum NotificationType {
+  REQUEST_UPDATE
+  PAYMENT
+  CHAT
+  SYSTEM
+  MARKETING
+  COMPLAINT
+  REVIEW
+}
+
+/// Knowledge Hub / tutorial posts — editorial workflow (replaces legacy `ContentStatus` on `ContentPost`).
+enum ContentApprovalStatus {
+  DRAFT
+  PENDING_REVIEW
+  APPROVED
+  REJECTED
+}
+
+enum ReviewStatus {
+  PENDING
+  APPROVED
+  REJECTED
+  HIDDEN
+}
+
+/// Administrative level for the unified `Area` tree (Bangladesh geography + optional service leaf).
+enum AreaType {
+  DIVISION
+  DISTRICT
+  UPAZILA
+  UNION
+  VILLAGE
+  SERVICE_AREA
+}
+
+// --- Models ---
 
 model User {
   id           String     @id @default(cuid())
@@ -63,10 +183,17 @@ model User {
   createdAt    DateTime   @default(now())
   updatedAt    DateTime   @updatedAt
 
-  adminProfile    AdminProfile?
-  doctorProfile   DoctorProfile?
-  customerProfile CustomerProfile?
-  notifications   Notification[]
+  adminProfile         AdminProfile?
+  doctorProfile        DoctorProfile?
+  customerProfile      CustomerProfile?
+  aiTechnicianProfile  AiTechnicianProfile?
+  notifications        Notification[]
+  contentPostsAuthored ContentPost[]        @relation("ContentPostAuthor")
+  complaintsAssigned   Complaint[]          @relation("ComplaintAssignee")
+
+  @@index([role])
+  @@index([status])
+  @@index([role, status])
 }
 
 model AdminProfile {
@@ -80,20 +207,70 @@ model AdminProfile {
 }
 
 model DoctorProfile {
-  id             String    @id @default(cuid())
-  userId         String    @unique
-  licenseNumber  String
-  specialization String?
-  bio            String?
-  verifiedAt     DateTime?
-  createdAt      DateTime  @default(now())
-  updatedAt      DateTime  @updatedAt
+  id                        String         @id @default(cuid())
+  userId                    String         @unique
+  /// Display name shown to customers (identity email/phone stay on `User`).
+  displayName               String?
+  licenseNumber             String
+  degree                    String?
+  specialization            String?
+  /// Years of professional experience (optional).
+  experienceYears           Int?
+  bio                       String?
+  /// Placeholder or CDN URL for profile photo until uploads exist.
+  profilePhotoUrl           String?
+  visitFeeBdt               Decimal?       @db.Decimal(12, 2)
+  acceptsEmergency          Boolean        @default(false)
+  acceptsOnlineConsultation Boolean        @default(false)
+  providerStatus            ProviderStatus @default(PENDING_VERIFICATION)
+  verifiedAt                DateTime?
+  createdAt                 DateTime       @default(now())
+  updatedAt                 DateTime       @updatedAt
 
-  user                User              @relation(fields: [userId], references: [id], onDelete: Cascade)
-  assignedRequests    ServiceRequest[]
-  treatmentRecords    TreatmentRecord[]
-  prescriptions       Prescription[]
-  billingRecords      BillingRecord[]
+  user                           User                           @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assignedRequests               ServiceRequest[]
+  treatmentCases                 TreatmentCase[]
+  prescriptions                  Prescription[]
+  billingRecords                 BillingRecord[]
+  doctorServiceAreas             DoctorServiceArea[]
+  doctorProfileAreas             DoctorProfileArea[]
+  doctorProfileServiceCategories DoctorProfileServiceCategory[]
+  reviews                        Review[]
+  complaints                     Complaint[]
+
+  @@index([providerStatus])
+}
+
+model AiTechnicianProfile {
+  id               String         @id @default(cuid())
+  userId           String         @unique
+  /// Display name shown to customers (identity email/phone stay on `User`).
+  displayName      String?
+  certification    String?
+  bio              String?
+  /// Default fee for AI / technician field services (BDT).
+  serviceFeeBdt    Decimal?       @db.Decimal(12, 2)
+  /// Offers urgent / after-hours field AI support (dispatch rules live in product logic).
+  acceptsEmergency Boolean        @default(false)
+  /// Optional tags for MVP: e.g. livestock breeds, semen services (`{ "livestockFocus": ["cattle"], "semenServices": true }`).
+  metadataJson     Json?
+  providerStatus   ProviderStatus @default(PENDING_VERIFICATION)
+  verifiedAt       DateTime?
+  createdAt        DateTime       @default(now())
+  updatedAt        DateTime       @updatedAt
+
+  user                                 User                                 @relation(fields: [userId], references: [id], onDelete: Cascade)
+  assignedRequests                     ServiceRequest[]
+  treatmentCases                       TreatmentCase[]
+  prescriptions                        Prescription[]
+  billingRecords                       BillingRecord[]
+  aiTechnicianServiceAreas             AiTechnicianServiceArea[]
+  aiTechnicianProfileAreas             AiTechnicianProfileArea[]
+  aiTechnicianProfileServiceCategories AiTechnicianProfileServiceCategory[]
+  reviews                              Review[]
+  complaints                           Complaint[]
+
+  @@index([providerStatus])
 }
 
 model CustomerProfile {
@@ -109,46 +286,152 @@ model CustomerProfile {
   animals         AnimalProfile[]
   serviceRequests ServiceRequest[]
   billingRecords  BillingRecord[]
+  reviews         Review[]
+  complaints      Complaint[]
 }
 
-model AnimalProfile {
-  id              String         @id @default(cuid())
-  customerId      String
-  name            String
-  species         String
-  breed           String?
-  category        AnimalCategory @default(OTHER)
-  dateOfBirth     DateTime?
-  sex             String?
-  microchipOrTag  String?
-  notes           String?
-  active          Boolean        @default(true)
-  createdAt       DateTime       @default(now())
-  updatedAt       DateTime       @updatedAt
+/// One active OTP challenge per normalized Bangladesh mobile (customer login).
+model MobileOtpChallenge {
+  id                  String    @id @default(cuid())
+  normalizedPhone     String    @unique
+  codeHash            String
+  expiresAt           DateTime
+  verifyAttempts      Int       @default(0)
+  sendWindowStartedAt DateTime?
+  sendsInWindow       Int       @default(0)
+  createdAt           DateTime  @default(now())
+  updatedAt           DateTime  @updatedAt
 
-  customer        CustomerProfile   @relation(fields: [customerId], references: [id], onDelete: Cascade)
-  serviceRequests ServiceRequest[]
-  treatmentRecords TreatmentRecord[]
-  prescriptions   Prescription[]
-
-  @@index([customerId])
+  @@index([expiresAt])
 }
 
+model Division {
+  id        String   @id @default(cuid())
+  name      String
+  slug      String   @unique
+  code      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  districts District[]
+}
+
+model District {
+  id         String   @id @default(cuid())
+  divisionId String
+  name       String
+  slug       String   @unique
+  code       String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  division Division  @relation(fields: [divisionId], references: [id], onDelete: Restrict)
+  upazilas Upazila[]
+
+  @@index([divisionId])
+}
+
+model Upazila {
+  id         String   @id @default(cuid())
+  districtId String
+  name       String
+  slug       String   @unique
+  code       String?
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+
+  district District @relation(fields: [districtId], references: [id], onDelete: Restrict)
+  unions   Union[]
+
+  @@index([districtId])
+}
+
+model Union {
+  id        String   @id @default(cuid())
+  upazilaId String
+  name      String
+  slug      String   @unique
+  code      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  upazila  Upazila   @relation(fields: [upazilaId], references: [id], onDelete: Restrict)
+  villages Village[]
+
+  @@index([upazilaId])
+}
+
+model Village {
+  id        String   @id @default(cuid())
+  unionId   String
+  name      String
+  slug      String   @unique
+  code      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  union                    Union                     @relation(fields: [unionId], references: [id], onDelete: Restrict)
+  serviceRequests          ServiceRequest[]
+  doctorServiceAreas       DoctorServiceArea[]
+  aiTechnicianServiceAreas AiTechnicianServiceArea[]
+
+  @@index([unionId])
+}
+
+/// Unified hierarchical area tree for Bangladesh geography (admin/API).
+/// Coexists with normalized `Division`…`Village` tables; `ServiceRequest.areaId` remains optional during migration.
 model Area {
   id           String   @id @default(cuid())
   name         String
+  nameBn       String?
   slug         String   @unique
+  code         String?
+  type         AreaType @default(DIVISION)
   parentId     String?
+  sortOrder    Int      @default(0)
+  isActive     Boolean  @default(true)
   metadataJson Json?
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 
-  parent   Area?  @relation("AreaHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
-  children Area[] @relation("AreaHierarchy")
-
-  serviceRequests ServiceRequest[]
+  parent                   Area?                     @relation("AreaHierarchy", fields: [parentId], references: [id], onDelete: SetNull)
+  children                 Area[]                    @relation("AreaHierarchy")
+  serviceRequests          ServiceRequest[]
+  doctorProfileAreas       DoctorProfileArea[]
+  aiTechnicianProfileAreas AiTechnicianProfileArea[]
 
   @@index([parentId])
+  @@index([type])
+  @@index([isActive])
+  @@index([parentId, type])
+}
+
+model DoctorServiceArea {
+  id        String   @id @default(cuid())
+  doctorId  String
+  villageId String
+  priority  Int?
+  createdAt DateTime @default(now())
+
+  doctor  DoctorProfile @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  village Village       @relation(fields: [villageId], references: [id], onDelete: Cascade)
+
+  @@unique([doctorId, villageId])
+  @@index([villageId])
+}
+
+model AiTechnicianServiceArea {
+  id             String   @id @default(cuid())
+  aiTechnicianId String
+  villageId      String
+  priority       Int?
+  createdAt      DateTime @default(now())
+
+  aiTechnician AiTechnicianProfile @relation(fields: [aiTechnicianId], references: [id], onDelete: Cascade)
+  village      Village             @relation(fields: [villageId], references: [id], onDelete: Cascade)
+
+  @@unique([aiTechnicianId, villageId])
+  @@index([villageId])
 }
 
 model ServiceCategory {
@@ -159,67 +442,194 @@ model ServiceCategory {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 
+  serviceRequests                      ServiceRequest[]
+  doctorProfileServiceCategories       DoctorProfileServiceCategory[]
+  aiTechnicianProfileServiceCategories AiTechnicianProfileServiceCategory[]
+}
+
+/// Many-to-many: doctor coverage using the unified `Area` tree (admin geography).
+model DoctorProfileArea {
+  id        String   @id @default(cuid())
+  doctorId  String
+  areaId    String
+  priority  Int?
+  createdAt DateTime @default(now())
+
+  doctor DoctorProfile @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  area   Area          @relation(fields: [areaId], references: [id], onDelete: Cascade)
+
+  @@unique([doctorId, areaId])
+  @@index([areaId])
+}
+
+/// Many-to-many: AI technician coverage using the unified `Area` tree (parallel to `DoctorProfileArea`).
+model AiTechnicianProfileArea {
+  id             String   @id @default(cuid())
+  aiTechnicianId String
+  areaId         String
+  priority       Int?
+  createdAt      DateTime @default(now())
+
+  aiTechnician AiTechnicianProfile @relation(fields: [aiTechnicianId], references: [id], onDelete: Cascade)
+  area         Area                @relation(fields: [areaId], references: [id], onDelete: Cascade)
+
+  @@unique([aiTechnicianId, areaId])
+  @@index([areaId])
+}
+
+/// Many-to-many: which service categories a doctor offers.
+model DoctorProfileServiceCategory {
+  id                String   @id @default(cuid())
+  doctorId          String
+  serviceCategoryId String
+  createdAt         DateTime @default(now())
+
+  doctor          DoctorProfile   @relation(fields: [doctorId], references: [id], onDelete: Cascade)
+  serviceCategory ServiceCategory @relation(fields: [serviceCategoryId], references: [id], onDelete: Cascade)
+
+  @@unique([doctorId, serviceCategoryId])
+  @@index([serviceCategoryId])
+}
+
+/// Many-to-many: which catalog services an AI technician provides (e.g. slug `ai-service`).
+model AiTechnicianProfileServiceCategory {
+  id                String   @id @default(cuid())
+  aiTechnicianId    String
+  serviceCategoryId String
+  createdAt         DateTime @default(now())
+
+  aiTechnician    AiTechnicianProfile @relation(fields: [aiTechnicianId], references: [id], onDelete: Cascade)
+  serviceCategory ServiceCategory     @relation(fields: [serviceCategoryId], references: [id], onDelete: Cascade)
+
+  @@unique([aiTechnicianId, serviceCategoryId])
+  @@index([serviceCategoryId])
+}
+
+model AnimalProfile {
+  id              String           @id @default(cuid())
+  customerId      String
+  name            String
+  species         String
+  breed           String?
+  category        AnimalCategory   @default(OTHER)
+  animalType      AnimalType?
+  weightKg        Decimal?         @db.Decimal(10, 3)
+  dateOfBirth     DateTime?
+  sex             String?
+  gender          Gender?
+  microchipOrTag  String?
+  notes           String?
+  photoUrl        String?
+  pregnancyStatus PregnancyStatus?
+  active          Boolean          @default(true)
+  createdAt       DateTime         @default(now())
+  updatedAt       DateTime         @updatedAt
+
+  customer        CustomerProfile  @relation(fields: [customerId], references: [id], onDelete: Cascade)
   serviceRequests ServiceRequest[]
+  treatmentCases  TreatmentCase[]
+  prescriptions   Prescription[]
+
+  @@index([customerId])
 }
 
 model ServiceRequest {
-  id                     String               @id @default(cuid())
-  customerId             String
-  animalId               String
-  areaId                 String
-  serviceCategoryId      String
-  assignedDoctorId       String?
-  status                 ServiceRequestStatus @default(SUBMITTED)
-  urgency                String?
-  symptoms               String?
-  preferredWindow        String?
-  locationNotes          String?
-  createdAt              DateTime             @default(now())
-  updatedAt              DateTime             @updatedAt
-  completedAt            DateTime?
+  id                   String               @id @default(cuid())
+  customerId           String
+  animalId             String
+  /// Legacy link — prefer `villageId` for new records.
+  areaId               String?
+  villageId            String?
+  serviceCategoryId    String
+  /// Stored as `requestType` in PostgreSQL (historic column name).
+  serviceType          ServiceRequestType   @default(DOCTOR_HOME_VISIT) @map("requestType")
+  assignedDoctorId     String?
+  /// Stored as `assignedAiTechnicianId` in PostgreSQL (historic column name).
+  assignedTechnicianId String?              @map("assignedAiTechnicianId")
+  status               ServiceRequestStatus @default(PENDING)
+  urgency              String?
+  /// Stored as `symptoms` in PostgreSQL.
+  problemOrSymptom     String?              @map("symptoms")
+  description          String?
+  /// Stored as `preferredWindow` in PostgreSQL.
+  preferredTime        String?              @map("preferredWindow")
+  /// Stored as `locationNotes` in PostgreSQL.
+  locationText         String?              @map("locationNotes")
+  scheduledStart       DateTime?
+  scheduledEnd         DateTime?
+  isEmergency          Boolean              @default(false)
+  emergencyNotes       String?
+  submittedAt          DateTime             @default(now())
+  assignedAt           DateTime?
+  startedAt            DateTime?
+  cancelledAt          DateTime?
+  cancelReason         String?
+  createdAt            DateTime             @default(now())
+  updatedAt            DateTime             @updatedAt
+  completedAt          DateTime?
 
-  customer        CustomerProfile @relation(fields: [customerId], references: [id], onDelete: Cascade)
-  animal          AnimalProfile   @relation(fields: [animalId], references: [id], onDelete: Restrict)
-  area            Area            @relation(fields: [areaId], references: [id], onDelete: Restrict)
-  serviceCategory ServiceCategory @relation(fields: [serviceCategoryId], references: [id], onDelete: Restrict)
-  assignedDoctor  DoctorProfile?  @relation(fields: [assignedDoctorId], references: [id], onDelete: SetNull)
+  customer           CustomerProfile      @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  animal             AnimalProfile        @relation(fields: [animalId], references: [id], onDelete: Restrict)
+  area               Area?                @relation(fields: [areaId], references: [id], onDelete: Restrict)
+  village            Village?             @relation(fields: [villageId], references: [id], onDelete: Restrict)
+  serviceCategory    ServiceCategory      @relation(fields: [serviceCategoryId], references: [id], onDelete: Restrict)
+  assignedDoctor     DoctorProfile?       @relation(fields: [assignedDoctorId], references: [id], onDelete: SetNull)
+  assignedTechnician AiTechnicianProfile? @relation(fields: [assignedTechnicianId], references: [id], onDelete: SetNull)
 
-  treatmentRecords TreatmentRecord[]
-  prescriptions    Prescription[]
-  billingRecords     BillingRecord[]
+  treatmentCases TreatmentCase[]
+  prescriptions  Prescription[]
+  billingRecords BillingRecord[]
+  paymentRecords PaymentRecord[]
+  reviews        Review[]
+  complaints     Complaint[]
 
   @@index([status])
   @@index([customerId])
+  @@index([animalId])
   @@index([assignedDoctorId, status])
+  @@index([assignedTechnicianId, status])
+  @@index([serviceType, status])
   @@index([areaId, serviceCategoryId])
+  @@index([villageId])
 }
 
-model TreatmentRecord {
-  id              String                @id @default(cuid())
+/// Former `TreatmentRecord` table — mapped to preserve existing rows.
+model TreatmentCase {
+  id               String              @id @default(cuid())
   serviceRequestId String
-  doctorId        String
-  animalId        String
-  status          TreatmentRecordStatus @default(DRAFT)
-  chiefComplaint  String?
-  diagnosis       String?
-  procedures      String?
-  followUpNotes   String?
-  recordedAt      DateTime              @default(now())
-  createdAt       DateTime              @default(now())
-  updatedAt       DateTime              @updatedAt
+  animalId         String
+  doctorId         String?
+  aiTechnicianId   String?
+  status           TreatmentCaseStatus @default(DRAFT)
+  chiefComplaint   String?
+  symptoms         String?
+  diagnosis        String?
+  procedures       String?
+  treatmentNotes   String?
+  followUpNotes    String?
+  followUpDate     DateTime?
+  recordedAt       DateTime            @default(now())
+  createdAt        DateTime            @default(now())
+  updatedAt        DateTime            @updatedAt
 
-  serviceRequest ServiceRequest @relation(fields: [serviceRequestId], references: [id], onDelete: Cascade)
-  doctor         DoctorProfile  @relation(fields: [doctorId], references: [id], onDelete: Restrict)
-  animal         AnimalProfile  @relation(fields: [animalId], references: [id], onDelete: Restrict)
+  serviceRequest ServiceRequest       @relation(fields: [serviceRequestId], references: [id], onDelete: Cascade)
+  animal         AnimalProfile        @relation(fields: [animalId], references: [id], onDelete: Restrict)
+  doctor         DoctorProfile?       @relation(fields: [doctorId], references: [id], onDelete: Restrict)
+  aiTechnician   AiTechnicianProfile? @relation(fields: [aiTechnicianId], references: [id], onDelete: Restrict)
+  billingRecords BillingRecord[]
 
   @@index([serviceRequestId])
   @@index([doctorId])
+  @@index([aiTechnicianId])
+  @@index([status])
+  @@map("TreatmentRecord")
 }
 
 model Prescription {
   id               String             @id @default(cuid())
   serviceRequestId String
-  doctorId         String
+  doctorId         String?
+  aiTechnicianId   String?
   animalId         String
   status           PrescriptionStatus @default(ACTIVE)
   instructions     String?
@@ -227,51 +637,203 @@ model Prescription {
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
 
-  serviceRequest ServiceRequest @relation(fields: [serviceRequestId], references: [id], onDelete: Cascade)
-  doctor         DoctorProfile  @relation(fields: [doctorId], references: [id], onDelete: Restrict)
-  animal         AnimalProfile  @relation(fields: [animalId], references: [id], onDelete: Restrict)
+  serviceRequest ServiceRequest       @relation(fields: [serviceRequestId], references: [id], onDelete: Cascade)
+  doctor         DoctorProfile?       @relation(fields: [doctorId], references: [id], onDelete: Restrict)
+  aiTechnician   AiTechnicianProfile? @relation(fields: [aiTechnicianId], references: [id], onDelete: Restrict)
+  animal         AnimalProfile        @relation(fields: [animalId], references: [id], onDelete: Restrict)
+  items          PrescriptionItem[]
 
   @@index([serviceRequestId])
+  @@index([doctorId])
+  @@index([aiTechnicianId])
+}
+
+model PrescriptionItem {
+  id             String   @id @default(cuid())
+  prescriptionId String
+  medicineName   String
+  dosage         String?
+  duration       String?
+  instruction    String?
+  quantity       Decimal? @db.Decimal(12, 3)
+  createdAt      DateTime @default(now())
+  updatedAt      DateTime @updatedAt
+
+  prescription Prescription @relation(fields: [prescriptionId], references: [id], onDelete: Cascade)
+
+  @@index([prescriptionId])
 }
 
 model BillingRecord {
-  id               String             @id @default(cuid())
-  serviceRequestId String
-  doctorId         String
-  customerId       String
-  status           BillingRecordStatus @default(DRAFT)
-  currency         String             @default("BDT")
-  subtotal         Decimal            @db.Decimal(14, 2)
-  tax              Decimal            @db.Decimal(14, 2)
-  total            Decimal            @db.Decimal(14, 2)
-  issuedAt         DateTime?
-  paidAt           DateTime?
-  notes            String?
-  createdAt        DateTime           @default(now())
-  updatedAt        DateTime           @updatedAt
+  id                 String         @id @default(cuid())
+  serviceRequestId   String
+  treatmentCaseId    String?
+  doctorId           String?
+  aiTechnicianId     String?
+  customerId         String
+  status             BillingStatus  @default(DRAFT)
+  currency           String         @default("BDT")
+  /// Legacy aggregates — nullable while migrating to fee breakdown fields.
+  subtotal           Decimal?       @db.Decimal(14, 2)
+  tax                Decimal?       @db.Decimal(14, 2)
+  total              Decimal?       @db.Decimal(14, 2)
+  serviceFee         Decimal?       @db.Decimal(14, 2)
+  travelCost         Decimal?       @db.Decimal(14, 2)
+  medicineCost       Decimal?       @db.Decimal(14, 2)
+  discountAmount     Decimal?       @db.Decimal(14, 2)
+  totalCollected     Decimal?       @db.Decimal(14, 2)
+  platformCommission Decimal?       @db.Decimal(14, 2)
+  providerPayout     Decimal?       @db.Decimal(14, 2)
+  /// Primary/settlement method for this invoice (optional if only PaymentRecord lines are used).
+  paymentMethod      PaymentMethod?
+  /// MVP payment settlement status at invoice level (distinct from BillingStatus lifecycle).
+  paymentStatus      PaymentStatus  @default(UNPAID)
+  issuedAt           DateTime?
+  paidAt             DateTime?
+  notes              String?
+  createdAt          DateTime       @default(now())
+  updatedAt          DateTime       @updatedAt
 
-  serviceRequest ServiceRequest  @relation(fields: [serviceRequestId], references: [id], onDelete: Cascade)
-  doctor         DoctorProfile   @relation(fields: [doctorId], references: [id], onDelete: Restrict)
-  customer       CustomerProfile @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  serviceRequest ServiceRequest       @relation(fields: [serviceRequestId], references: [id], onDelete: Cascade)
+  treatmentCase  TreatmentCase?       @relation(fields: [treatmentCaseId], references: [id], onDelete: SetNull)
+  doctor         DoctorProfile?       @relation(fields: [doctorId], references: [id], onDelete: Restrict)
+  aiTechnician   AiTechnicianProfile? @relation(fields: [aiTechnicianId], references: [id], onDelete: Restrict)
+  customer       CustomerProfile      @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  paymentRecords PaymentRecord[]
+  complaints     Complaint[]
 
   @@index([customerId])
   @@index([doctorId])
+  @@index([aiTechnicianId])
   @@index([status])
 }
 
+model PaymentRecord {
+  id               String        @id @default(cuid())
+  billingRecordId  String?
+  serviceRequestId String?
+  status           PaymentStatus @default(PENDING)
+  method           PaymentMethod
+  amount           Decimal       @db.Decimal(14, 2)
+  currency         String        @default("BDT")
+  externalId       String?
+  paidAt           DateTime?
+  metadataJson     Json?
+  createdAt        DateTime      @default(now())
+  updatedAt        DateTime      @updatedAt
+
+  billingRecord  BillingRecord?  @relation(fields: [billingRecordId], references: [id], onDelete: SetNull)
+  serviceRequest ServiceRequest? @relation(fields: [serviceRequestId], references: [id], onDelete: SetNull)
+
+  @@index([billingRecordId])
+  @@index([serviceRequestId])
+  @@index([status])
+  @@index([externalId])
+}
+
+model Review {
+  id               String       @id @default(cuid())
+  customerId       String
+  doctorId         String?
+  aiTechnicianId   String?
+  serviceRequestId String?
+  rating           Int
+  comment          String?
+  status           ReviewStatus @default(PENDING)
+  createdAt        DateTime     @default(now())
+  updatedAt        DateTime     @updatedAt
+
+  customer       CustomerProfile      @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  doctor         DoctorProfile?       @relation(fields: [doctorId], references: [id], onDelete: SetNull)
+  aiTechnician   AiTechnicianProfile? @relation(fields: [aiTechnicianId], references: [id], onDelete: SetNull)
+  serviceRequest ServiceRequest?      @relation(fields: [serviceRequestId], references: [id], onDelete: SetNull)
+
+  @@index([customerId, serviceRequestId])
+  @@index([doctorId])
+  @@index([aiTechnicianId])
+  @@index([status])
+}
+
+/// Tutorial / Knowledge Hub article (author = `User`: doctor or admin).
+model ContentCategory {
+  id          String   @id @default(cuid())
+  nameBn      String
+  nameEn      String?
+  slug        String   @unique
+  description String?
+  sortOrder   Int      @default(0)
+  isActive    Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+
+  posts ContentPost[]
+
+  @@index([isActive, sortOrder])
+}
+
+model ContentPost {
+  id              String                @id @default(cuid())
+  title           String
+  slug            String                @unique
+  summary         String?
+  body            String                @db.Text
+  coverImageUrl   String?
+  categoryId      String
+  category        ContentCategory       @relation(fields: [categoryId], references: [id], onDelete: Restrict)
+  authorId        String
+  author          User                  @relation("ContentPostAuthor", fields: [authorId], references: [id], onDelete: Restrict)
+  approvalStatus  ContentApprovalStatus @default(DRAFT)
+  rejectionReason String?
+  publishedAt     DateTime?
+  isPublished     Boolean               @default(false)
+  createdAt       DateTime              @default(now())
+  updatedAt       DateTime              @updatedAt
+
+  @@index([approvalStatus])
+  @@index([authorId])
+  @@index([categoryId])
+  @@index([isPublished, publishedAt])
+}
+
+model Complaint {
+  id               String          @id @default(cuid())
+  customerId       String
+  doctorId         String?
+  aiTechnicianId   String?
+  adminAssigneeId  String?
+  serviceRequestId String?
+  billingRecordId  String?
+  status           ComplaintStatus @default(OPEN)
+  resolutionNotes  String?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+
+  customer       CustomerProfile      @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  doctor         DoctorProfile?       @relation(fields: [doctorId], references: [id], onDelete: SetNull)
+  aiTechnician   AiTechnicianProfile? @relation(fields: [aiTechnicianId], references: [id], onDelete: SetNull)
+  adminAssignee  User?                @relation("ComplaintAssignee", fields: [adminAssigneeId], references: [id], onDelete: SetNull)
+  serviceRequest ServiceRequest?      @relation(fields: [serviceRequestId], references: [id], onDelete: SetNull)
+  billingRecord  BillingRecord?       @relation(fields: [billingRecordId], references: [id], onDelete: SetNull)
+
+  @@index([status])
+  @@index([customerId])
+  @@index([adminAssigneeId])
+}
+
 model Notification {
-  id           String    @id @default(cuid())
+  id           String           @id @default(cuid())
   userId       String
-  type         String
+  type         NotificationType @default(SYSTEM)
   title        String
   body         String
   readAt       DateTime?
   metadataJson Json?
-  createdAt    DateTime  @default(now())
+  createdAt    DateTime         @default(now())
 
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId, readAt])
+  @@index([type])
 }
 
 model Setting {

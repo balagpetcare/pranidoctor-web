@@ -30,24 +30,49 @@ export type BillingRecordAvgAggregateOutputType = {
   subtotal: runtime.Decimal | null
   tax: runtime.Decimal | null
   total: runtime.Decimal | null
+  serviceFee: runtime.Decimal | null
+  travelCost: runtime.Decimal | null
+  medicineCost: runtime.Decimal | null
+  discountAmount: runtime.Decimal | null
+  totalCollected: runtime.Decimal | null
+  platformCommission: runtime.Decimal | null
+  providerPayout: runtime.Decimal | null
 }
 
 export type BillingRecordSumAggregateOutputType = {
   subtotal: runtime.Decimal | null
   tax: runtime.Decimal | null
   total: runtime.Decimal | null
+  serviceFee: runtime.Decimal | null
+  travelCost: runtime.Decimal | null
+  medicineCost: runtime.Decimal | null
+  discountAmount: runtime.Decimal | null
+  totalCollected: runtime.Decimal | null
+  platformCommission: runtime.Decimal | null
+  providerPayout: runtime.Decimal | null
 }
 
 export type BillingRecordMinAggregateOutputType = {
   id: string | null
   serviceRequestId: string | null
+  treatmentCaseId: string | null
   doctorId: string | null
+  aiTechnicianId: string | null
   customerId: string | null
-  status: $Enums.BillingRecordStatus | null
+  status: $Enums.BillingStatus | null
   currency: string | null
   subtotal: runtime.Decimal | null
   tax: runtime.Decimal | null
   total: runtime.Decimal | null
+  serviceFee: runtime.Decimal | null
+  travelCost: runtime.Decimal | null
+  medicineCost: runtime.Decimal | null
+  discountAmount: runtime.Decimal | null
+  totalCollected: runtime.Decimal | null
+  platformCommission: runtime.Decimal | null
+  providerPayout: runtime.Decimal | null
+  paymentMethod: $Enums.PaymentMethod | null
+  paymentStatus: $Enums.PaymentStatus | null
   issuedAt: Date | null
   paidAt: Date | null
   notes: string | null
@@ -58,13 +83,24 @@ export type BillingRecordMinAggregateOutputType = {
 export type BillingRecordMaxAggregateOutputType = {
   id: string | null
   serviceRequestId: string | null
+  treatmentCaseId: string | null
   doctorId: string | null
+  aiTechnicianId: string | null
   customerId: string | null
-  status: $Enums.BillingRecordStatus | null
+  status: $Enums.BillingStatus | null
   currency: string | null
   subtotal: runtime.Decimal | null
   tax: runtime.Decimal | null
   total: runtime.Decimal | null
+  serviceFee: runtime.Decimal | null
+  travelCost: runtime.Decimal | null
+  medicineCost: runtime.Decimal | null
+  discountAmount: runtime.Decimal | null
+  totalCollected: runtime.Decimal | null
+  platformCommission: runtime.Decimal | null
+  providerPayout: runtime.Decimal | null
+  paymentMethod: $Enums.PaymentMethod | null
+  paymentStatus: $Enums.PaymentStatus | null
   issuedAt: Date | null
   paidAt: Date | null
   notes: string | null
@@ -75,13 +111,24 @@ export type BillingRecordMaxAggregateOutputType = {
 export type BillingRecordCountAggregateOutputType = {
   id: number
   serviceRequestId: number
+  treatmentCaseId: number
   doctorId: number
+  aiTechnicianId: number
   customerId: number
   status: number
   currency: number
   subtotal: number
   tax: number
   total: number
+  serviceFee: number
+  travelCost: number
+  medicineCost: number
+  discountAmount: number
+  totalCollected: number
+  platformCommission: number
+  providerPayout: number
+  paymentMethod: number
+  paymentStatus: number
   issuedAt: number
   paidAt: number
   notes: number
@@ -95,24 +142,49 @@ export type BillingRecordAvgAggregateInputType = {
   subtotal?: true
   tax?: true
   total?: true
+  serviceFee?: true
+  travelCost?: true
+  medicineCost?: true
+  discountAmount?: true
+  totalCollected?: true
+  platformCommission?: true
+  providerPayout?: true
 }
 
 export type BillingRecordSumAggregateInputType = {
   subtotal?: true
   tax?: true
   total?: true
+  serviceFee?: true
+  travelCost?: true
+  medicineCost?: true
+  discountAmount?: true
+  totalCollected?: true
+  platformCommission?: true
+  providerPayout?: true
 }
 
 export type BillingRecordMinAggregateInputType = {
   id?: true
   serviceRequestId?: true
+  treatmentCaseId?: true
   doctorId?: true
+  aiTechnicianId?: true
   customerId?: true
   status?: true
   currency?: true
   subtotal?: true
   tax?: true
   total?: true
+  serviceFee?: true
+  travelCost?: true
+  medicineCost?: true
+  discountAmount?: true
+  totalCollected?: true
+  platformCommission?: true
+  providerPayout?: true
+  paymentMethod?: true
+  paymentStatus?: true
   issuedAt?: true
   paidAt?: true
   notes?: true
@@ -123,13 +195,24 @@ export type BillingRecordMinAggregateInputType = {
 export type BillingRecordMaxAggregateInputType = {
   id?: true
   serviceRequestId?: true
+  treatmentCaseId?: true
   doctorId?: true
+  aiTechnicianId?: true
   customerId?: true
   status?: true
   currency?: true
   subtotal?: true
   tax?: true
   total?: true
+  serviceFee?: true
+  travelCost?: true
+  medicineCost?: true
+  discountAmount?: true
+  totalCollected?: true
+  platformCommission?: true
+  providerPayout?: true
+  paymentMethod?: true
+  paymentStatus?: true
   issuedAt?: true
   paidAt?: true
   notes?: true
@@ -140,13 +223,24 @@ export type BillingRecordMaxAggregateInputType = {
 export type BillingRecordCountAggregateInputType = {
   id?: true
   serviceRequestId?: true
+  treatmentCaseId?: true
   doctorId?: true
+  aiTechnicianId?: true
   customerId?: true
   status?: true
   currency?: true
   subtotal?: true
   tax?: true
   total?: true
+  serviceFee?: true
+  travelCost?: true
+  medicineCost?: true
+  discountAmount?: true
+  totalCollected?: true
+  platformCommission?: true
+  providerPayout?: true
+  paymentMethod?: true
+  paymentStatus?: true
   issuedAt?: true
   paidAt?: true
   notes?: true
@@ -244,13 +338,24 @@ export type BillingRecordGroupByArgs<ExtArgs extends runtime.Types.Extensions.In
 export type BillingRecordGroupByOutputType = {
   id: string
   serviceRequestId: string
-  doctorId: string
+  treatmentCaseId: string | null
+  doctorId: string | null
+  aiTechnicianId: string | null
   customerId: string
-  status: $Enums.BillingRecordStatus
+  status: $Enums.BillingStatus
   currency: string
-  subtotal: runtime.Decimal
-  tax: runtime.Decimal
-  total: runtime.Decimal
+  subtotal: runtime.Decimal | null
+  tax: runtime.Decimal | null
+  total: runtime.Decimal | null
+  serviceFee: runtime.Decimal | null
+  travelCost: runtime.Decimal | null
+  medicineCost: runtime.Decimal | null
+  discountAmount: runtime.Decimal | null
+  totalCollected: runtime.Decimal | null
+  platformCommission: runtime.Decimal | null
+  providerPayout: runtime.Decimal | null
+  paymentMethod: $Enums.PaymentMethod | null
+  paymentStatus: $Enums.PaymentStatus
   issuedAt: Date | null
   paidAt: Date | null
   notes: string | null
@@ -284,41 +389,71 @@ export type BillingRecordWhereInput = {
   NOT?: Prisma.BillingRecordWhereInput | Prisma.BillingRecordWhereInput[]
   id?: Prisma.StringFilter<"BillingRecord"> | string
   serviceRequestId?: Prisma.StringFilter<"BillingRecord"> | string
-  doctorId?: Prisma.StringFilter<"BillingRecord"> | string
+  treatmentCaseId?: Prisma.StringNullableFilter<"BillingRecord"> | string | null
+  doctorId?: Prisma.StringNullableFilter<"BillingRecord"> | string | null
+  aiTechnicianId?: Prisma.StringNullableFilter<"BillingRecord"> | string | null
   customerId?: Prisma.StringFilter<"BillingRecord"> | string
-  status?: Prisma.EnumBillingRecordStatusFilter<"BillingRecord"> | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFilter<"BillingRecord"> | $Enums.BillingStatus
   currency?: Prisma.StringFilter<"BillingRecord"> | string
-  subtotal?: Prisma.DecimalFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.EnumPaymentMethodNullableFilter<"BillingRecord"> | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFilter<"BillingRecord"> | $Enums.PaymentStatus
   issuedAt?: Prisma.DateTimeNullableFilter<"BillingRecord"> | Date | string | null
   paidAt?: Prisma.DateTimeNullableFilter<"BillingRecord"> | Date | string | null
   notes?: Prisma.StringNullableFilter<"BillingRecord"> | string | null
   createdAt?: Prisma.DateTimeFilter<"BillingRecord"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BillingRecord"> | Date | string
   serviceRequest?: Prisma.XOR<Prisma.ServiceRequestScalarRelationFilter, Prisma.ServiceRequestWhereInput>
-  doctor?: Prisma.XOR<Prisma.DoctorProfileScalarRelationFilter, Prisma.DoctorProfileWhereInput>
+  treatmentCase?: Prisma.XOR<Prisma.TreatmentCaseNullableScalarRelationFilter, Prisma.TreatmentCaseWhereInput> | null
+  doctor?: Prisma.XOR<Prisma.DoctorProfileNullableScalarRelationFilter, Prisma.DoctorProfileWhereInput> | null
+  aiTechnician?: Prisma.XOR<Prisma.AiTechnicianProfileNullableScalarRelationFilter, Prisma.AiTechnicianProfileWhereInput> | null
   customer?: Prisma.XOR<Prisma.CustomerProfileScalarRelationFilter, Prisma.CustomerProfileWhereInput>
+  paymentRecords?: Prisma.PaymentRecordListRelationFilter
+  complaints?: Prisma.ComplaintListRelationFilter
 }
 
 export type BillingRecordOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   serviceRequestId?: Prisma.SortOrder
-  doctorId?: Prisma.SortOrder
+  treatmentCaseId?: Prisma.SortOrderInput | Prisma.SortOrder
+  doctorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  aiTechnicianId?: Prisma.SortOrderInput | Prisma.SortOrder
   customerId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   currency?: Prisma.SortOrder
-  subtotal?: Prisma.SortOrder
-  tax?: Prisma.SortOrder
-  total?: Prisma.SortOrder
+  subtotal?: Prisma.SortOrderInput | Prisma.SortOrder
+  tax?: Prisma.SortOrderInput | Prisma.SortOrder
+  total?: Prisma.SortOrderInput | Prisma.SortOrder
+  serviceFee?: Prisma.SortOrderInput | Prisma.SortOrder
+  travelCost?: Prisma.SortOrderInput | Prisma.SortOrder
+  medicineCost?: Prisma.SortOrderInput | Prisma.SortOrder
+  discountAmount?: Prisma.SortOrderInput | Prisma.SortOrder
+  totalCollected?: Prisma.SortOrderInput | Prisma.SortOrder
+  platformCommission?: Prisma.SortOrderInput | Prisma.SortOrder
+  providerPayout?: Prisma.SortOrderInput | Prisma.SortOrder
+  paymentMethod?: Prisma.SortOrderInput | Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   issuedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   paidAt?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   serviceRequest?: Prisma.ServiceRequestOrderByWithRelationInput
+  treatmentCase?: Prisma.TreatmentCaseOrderByWithRelationInput
   doctor?: Prisma.DoctorProfileOrderByWithRelationInput
+  aiTechnician?: Prisma.AiTechnicianProfileOrderByWithRelationInput
   customer?: Prisma.CustomerProfileOrderByWithRelationInput
+  paymentRecords?: Prisma.PaymentRecordOrderByRelationAggregateInput
+  complaints?: Prisma.ComplaintOrderByRelationAggregateInput
 }
 
 export type BillingRecordWhereUniqueInput = Prisma.AtLeast<{
@@ -327,33 +462,59 @@ export type BillingRecordWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.BillingRecordWhereInput[]
   NOT?: Prisma.BillingRecordWhereInput | Prisma.BillingRecordWhereInput[]
   serviceRequestId?: Prisma.StringFilter<"BillingRecord"> | string
-  doctorId?: Prisma.StringFilter<"BillingRecord"> | string
+  treatmentCaseId?: Prisma.StringNullableFilter<"BillingRecord"> | string | null
+  doctorId?: Prisma.StringNullableFilter<"BillingRecord"> | string | null
+  aiTechnicianId?: Prisma.StringNullableFilter<"BillingRecord"> | string | null
   customerId?: Prisma.StringFilter<"BillingRecord"> | string
-  status?: Prisma.EnumBillingRecordStatusFilter<"BillingRecord"> | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFilter<"BillingRecord"> | $Enums.BillingStatus
   currency?: Prisma.StringFilter<"BillingRecord"> | string
-  subtotal?: Prisma.DecimalFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.EnumPaymentMethodNullableFilter<"BillingRecord"> | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFilter<"BillingRecord"> | $Enums.PaymentStatus
   issuedAt?: Prisma.DateTimeNullableFilter<"BillingRecord"> | Date | string | null
   paidAt?: Prisma.DateTimeNullableFilter<"BillingRecord"> | Date | string | null
   notes?: Prisma.StringNullableFilter<"BillingRecord"> | string | null
   createdAt?: Prisma.DateTimeFilter<"BillingRecord"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"BillingRecord"> | Date | string
   serviceRequest?: Prisma.XOR<Prisma.ServiceRequestScalarRelationFilter, Prisma.ServiceRequestWhereInput>
-  doctor?: Prisma.XOR<Prisma.DoctorProfileScalarRelationFilter, Prisma.DoctorProfileWhereInput>
+  treatmentCase?: Prisma.XOR<Prisma.TreatmentCaseNullableScalarRelationFilter, Prisma.TreatmentCaseWhereInput> | null
+  doctor?: Prisma.XOR<Prisma.DoctorProfileNullableScalarRelationFilter, Prisma.DoctorProfileWhereInput> | null
+  aiTechnician?: Prisma.XOR<Prisma.AiTechnicianProfileNullableScalarRelationFilter, Prisma.AiTechnicianProfileWhereInput> | null
   customer?: Prisma.XOR<Prisma.CustomerProfileScalarRelationFilter, Prisma.CustomerProfileWhereInput>
+  paymentRecords?: Prisma.PaymentRecordListRelationFilter
+  complaints?: Prisma.ComplaintListRelationFilter
 }, "id">
 
 export type BillingRecordOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   serviceRequestId?: Prisma.SortOrder
-  doctorId?: Prisma.SortOrder
+  treatmentCaseId?: Prisma.SortOrderInput | Prisma.SortOrder
+  doctorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  aiTechnicianId?: Prisma.SortOrderInput | Prisma.SortOrder
   customerId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   currency?: Prisma.SortOrder
-  subtotal?: Prisma.SortOrder
-  tax?: Prisma.SortOrder
-  total?: Prisma.SortOrder
+  subtotal?: Prisma.SortOrderInput | Prisma.SortOrder
+  tax?: Prisma.SortOrderInput | Prisma.SortOrder
+  total?: Prisma.SortOrderInput | Prisma.SortOrder
+  serviceFee?: Prisma.SortOrderInput | Prisma.SortOrder
+  travelCost?: Prisma.SortOrderInput | Prisma.SortOrder
+  medicineCost?: Prisma.SortOrderInput | Prisma.SortOrder
+  discountAmount?: Prisma.SortOrderInput | Prisma.SortOrder
+  totalCollected?: Prisma.SortOrderInput | Prisma.SortOrder
+  platformCommission?: Prisma.SortOrderInput | Prisma.SortOrder
+  providerPayout?: Prisma.SortOrderInput | Prisma.SortOrder
+  paymentMethod?: Prisma.SortOrderInput | Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   issuedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   paidAt?: Prisma.SortOrderInput | Prisma.SortOrder
   notes?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -372,13 +533,24 @@ export type BillingRecordScalarWhereWithAggregatesInput = {
   NOT?: Prisma.BillingRecordScalarWhereWithAggregatesInput | Prisma.BillingRecordScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"BillingRecord"> | string
   serviceRequestId?: Prisma.StringWithAggregatesFilter<"BillingRecord"> | string
-  doctorId?: Prisma.StringWithAggregatesFilter<"BillingRecord"> | string
+  treatmentCaseId?: Prisma.StringNullableWithAggregatesFilter<"BillingRecord"> | string | null
+  doctorId?: Prisma.StringNullableWithAggregatesFilter<"BillingRecord"> | string | null
+  aiTechnicianId?: Prisma.StringNullableWithAggregatesFilter<"BillingRecord"> | string | null
   customerId?: Prisma.StringWithAggregatesFilter<"BillingRecord"> | string
-  status?: Prisma.EnumBillingRecordStatusWithAggregatesFilter<"BillingRecord"> | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusWithAggregatesFilter<"BillingRecord"> | $Enums.BillingStatus
   currency?: Prisma.StringWithAggregatesFilter<"BillingRecord"> | string
-  subtotal?: Prisma.DecimalWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.DecimalNullableWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.DecimalNullableWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.DecimalNullableWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.DecimalNullableWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.DecimalNullableWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.DecimalNullableWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.DecimalNullableWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.DecimalNullableWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.DecimalNullableWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.DecimalNullableWithAggregatesFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.EnumPaymentMethodNullableWithAggregatesFilter<"BillingRecord"> | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusWithAggregatesFilter<"BillingRecord"> | $Enums.PaymentStatus
   issuedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"BillingRecord"> | Date | string | null
   paidAt?: Prisma.DateTimeNullableWithAggregatesFilter<"BillingRecord"> | Date | string | null
   notes?: Prisma.StringNullableWithAggregatesFilter<"BillingRecord"> | string | null
@@ -388,82 +560,145 @@ export type BillingRecordScalarWhereWithAggregatesInput = {
 
 export type BillingRecordCreateInput = {
   id?: string
-  status?: $Enums.BillingRecordStatus
+  status?: $Enums.BillingStatus
   currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax: runtime.Decimal | runtime.DecimalJsLike | number | string
-  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
   issuedAt?: Date | string | null
   paidAt?: Date | string | null
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequest: Prisma.ServiceRequestCreateNestedOneWithoutBillingRecordsInput
-  doctor: Prisma.DoctorProfileCreateNestedOneWithoutBillingRecordsInput
+  treatmentCase?: Prisma.TreatmentCaseCreateNestedOneWithoutBillingRecordsInput
+  doctor?: Prisma.DoctorProfileCreateNestedOneWithoutBillingRecordsInput
+  aiTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutBillingRecordsInput
   customer: Prisma.CustomerProfileCreateNestedOneWithoutBillingRecordsInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutBillingRecordInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutBillingRecordInput
 }
 
 export type BillingRecordUncheckedCreateInput = {
   id?: string
   serviceRequestId: string
-  doctorId: string
+  treatmentCaseId?: string | null
+  doctorId?: string | null
+  aiTechnicianId?: string | null
   customerId: string
-  status?: $Enums.BillingRecordStatus
+  status?: $Enums.BillingStatus
   currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax: runtime.Decimal | runtime.DecimalJsLike | number | string
-  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
   issuedAt?: Date | string | null
   paidAt?: Date | string | null
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutBillingRecordInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutBillingRecordInput
 }
 
 export type BillingRecordUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequest?: Prisma.ServiceRequestUpdateOneRequiredWithoutBillingRecordsNestedInput
-  doctor?: Prisma.DoctorProfileUpdateOneRequiredWithoutBillingRecordsNestedInput
+  treatmentCase?: Prisma.TreatmentCaseUpdateOneWithoutBillingRecordsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneWithoutBillingRecordsNestedInput
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutBillingRecordsNestedInput
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutBillingRecordsNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutBillingRecordNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutBillingRecordNestedInput
 }
 
 export type BillingRecordUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
-  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  treatmentCaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutBillingRecordNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutBillingRecordNestedInput
 }
 
 export type BillingRecordCreateManyInput = {
   id?: string
   serviceRequestId: string
-  doctorId: string
+  treatmentCaseId?: string | null
+  doctorId?: string | null
+  aiTechnicianId?: string | null
   customerId: string
-  status?: $Enums.BillingRecordStatus
+  status?: $Enums.BillingStatus
   currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax: runtime.Decimal | runtime.DecimalJsLike | number | string
-  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
   issuedAt?: Date | string | null
   paidAt?: Date | string | null
   notes?: string | null
@@ -473,11 +708,20 @@ export type BillingRecordCreateManyInput = {
 
 export type BillingRecordUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -488,13 +732,24 @@ export type BillingRecordUpdateManyMutationInput = {
 export type BillingRecordUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
-  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  treatmentCaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -515,13 +770,24 @@ export type BillingRecordOrderByRelationAggregateInput = {
 export type BillingRecordCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   serviceRequestId?: Prisma.SortOrder
+  treatmentCaseId?: Prisma.SortOrder
   doctorId?: Prisma.SortOrder
+  aiTechnicianId?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   tax?: Prisma.SortOrder
   total?: Prisma.SortOrder
+  serviceFee?: Prisma.SortOrder
+  travelCost?: Prisma.SortOrder
+  medicineCost?: Prisma.SortOrder
+  discountAmount?: Prisma.SortOrder
+  totalCollected?: Prisma.SortOrder
+  platformCommission?: Prisma.SortOrder
+  providerPayout?: Prisma.SortOrder
+  paymentMethod?: Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   issuedAt?: Prisma.SortOrder
   paidAt?: Prisma.SortOrder
   notes?: Prisma.SortOrder
@@ -533,18 +799,36 @@ export type BillingRecordAvgOrderByAggregateInput = {
   subtotal?: Prisma.SortOrder
   tax?: Prisma.SortOrder
   total?: Prisma.SortOrder
+  serviceFee?: Prisma.SortOrder
+  travelCost?: Prisma.SortOrder
+  medicineCost?: Prisma.SortOrder
+  discountAmount?: Prisma.SortOrder
+  totalCollected?: Prisma.SortOrder
+  platformCommission?: Prisma.SortOrder
+  providerPayout?: Prisma.SortOrder
 }
 
 export type BillingRecordMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   serviceRequestId?: Prisma.SortOrder
+  treatmentCaseId?: Prisma.SortOrder
   doctorId?: Prisma.SortOrder
+  aiTechnicianId?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   tax?: Prisma.SortOrder
   total?: Prisma.SortOrder
+  serviceFee?: Prisma.SortOrder
+  travelCost?: Prisma.SortOrder
+  medicineCost?: Prisma.SortOrder
+  discountAmount?: Prisma.SortOrder
+  totalCollected?: Prisma.SortOrder
+  platformCommission?: Prisma.SortOrder
+  providerPayout?: Prisma.SortOrder
+  paymentMethod?: Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   issuedAt?: Prisma.SortOrder
   paidAt?: Prisma.SortOrder
   notes?: Prisma.SortOrder
@@ -555,13 +839,24 @@ export type BillingRecordMaxOrderByAggregateInput = {
 export type BillingRecordMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   serviceRequestId?: Prisma.SortOrder
+  treatmentCaseId?: Prisma.SortOrder
   doctorId?: Prisma.SortOrder
+  aiTechnicianId?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   currency?: Prisma.SortOrder
   subtotal?: Prisma.SortOrder
   tax?: Prisma.SortOrder
   total?: Prisma.SortOrder
+  serviceFee?: Prisma.SortOrder
+  travelCost?: Prisma.SortOrder
+  medicineCost?: Prisma.SortOrder
+  discountAmount?: Prisma.SortOrder
+  totalCollected?: Prisma.SortOrder
+  platformCommission?: Prisma.SortOrder
+  providerPayout?: Prisma.SortOrder
+  paymentMethod?: Prisma.SortOrder
+  paymentStatus?: Prisma.SortOrder
   issuedAt?: Prisma.SortOrder
   paidAt?: Prisma.SortOrder
   notes?: Prisma.SortOrder
@@ -573,6 +868,18 @@ export type BillingRecordSumOrderByAggregateInput = {
   subtotal?: Prisma.SortOrder
   tax?: Prisma.SortOrder
   total?: Prisma.SortOrder
+  serviceFee?: Prisma.SortOrder
+  travelCost?: Prisma.SortOrder
+  medicineCost?: Prisma.SortOrder
+  discountAmount?: Prisma.SortOrder
+  totalCollected?: Prisma.SortOrder
+  platformCommission?: Prisma.SortOrder
+  providerPayout?: Prisma.SortOrder
+}
+
+export type BillingRecordNullableScalarRelationFilter = {
+  is?: Prisma.BillingRecordWhereInput | null
+  isNot?: Prisma.BillingRecordWhereInput | null
 }
 
 export type BillingRecordCreateNestedManyWithoutDoctorInput = {
@@ -614,6 +921,48 @@ export type BillingRecordUncheckedUpdateManyWithoutDoctorNestedInput = {
   connect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
   update?: Prisma.BillingRecordUpdateWithWhereUniqueWithoutDoctorInput | Prisma.BillingRecordUpdateWithWhereUniqueWithoutDoctorInput[]
   updateMany?: Prisma.BillingRecordUpdateManyWithWhereWithoutDoctorInput | Prisma.BillingRecordUpdateManyWithWhereWithoutDoctorInput[]
+  deleteMany?: Prisma.BillingRecordScalarWhereInput | Prisma.BillingRecordScalarWhereInput[]
+}
+
+export type BillingRecordCreateNestedManyWithoutAiTechnicianInput = {
+  create?: Prisma.XOR<Prisma.BillingRecordCreateWithoutAiTechnicianInput, Prisma.BillingRecordUncheckedCreateWithoutAiTechnicianInput> | Prisma.BillingRecordCreateWithoutAiTechnicianInput[] | Prisma.BillingRecordUncheckedCreateWithoutAiTechnicianInput[]
+  connectOrCreate?: Prisma.BillingRecordCreateOrConnectWithoutAiTechnicianInput | Prisma.BillingRecordCreateOrConnectWithoutAiTechnicianInput[]
+  createMany?: Prisma.BillingRecordCreateManyAiTechnicianInputEnvelope
+  connect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+}
+
+export type BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput = {
+  create?: Prisma.XOR<Prisma.BillingRecordCreateWithoutAiTechnicianInput, Prisma.BillingRecordUncheckedCreateWithoutAiTechnicianInput> | Prisma.BillingRecordCreateWithoutAiTechnicianInput[] | Prisma.BillingRecordUncheckedCreateWithoutAiTechnicianInput[]
+  connectOrCreate?: Prisma.BillingRecordCreateOrConnectWithoutAiTechnicianInput | Prisma.BillingRecordCreateOrConnectWithoutAiTechnicianInput[]
+  createMany?: Prisma.BillingRecordCreateManyAiTechnicianInputEnvelope
+  connect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+}
+
+export type BillingRecordUpdateManyWithoutAiTechnicianNestedInput = {
+  create?: Prisma.XOR<Prisma.BillingRecordCreateWithoutAiTechnicianInput, Prisma.BillingRecordUncheckedCreateWithoutAiTechnicianInput> | Prisma.BillingRecordCreateWithoutAiTechnicianInput[] | Prisma.BillingRecordUncheckedCreateWithoutAiTechnicianInput[]
+  connectOrCreate?: Prisma.BillingRecordCreateOrConnectWithoutAiTechnicianInput | Prisma.BillingRecordCreateOrConnectWithoutAiTechnicianInput[]
+  upsert?: Prisma.BillingRecordUpsertWithWhereUniqueWithoutAiTechnicianInput | Prisma.BillingRecordUpsertWithWhereUniqueWithoutAiTechnicianInput[]
+  createMany?: Prisma.BillingRecordCreateManyAiTechnicianInputEnvelope
+  set?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  disconnect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  delete?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  connect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  update?: Prisma.BillingRecordUpdateWithWhereUniqueWithoutAiTechnicianInput | Prisma.BillingRecordUpdateWithWhereUniqueWithoutAiTechnicianInput[]
+  updateMany?: Prisma.BillingRecordUpdateManyWithWhereWithoutAiTechnicianInput | Prisma.BillingRecordUpdateManyWithWhereWithoutAiTechnicianInput[]
+  deleteMany?: Prisma.BillingRecordScalarWhereInput | Prisma.BillingRecordScalarWhereInput[]
+}
+
+export type BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput = {
+  create?: Prisma.XOR<Prisma.BillingRecordCreateWithoutAiTechnicianInput, Prisma.BillingRecordUncheckedCreateWithoutAiTechnicianInput> | Prisma.BillingRecordCreateWithoutAiTechnicianInput[] | Prisma.BillingRecordUncheckedCreateWithoutAiTechnicianInput[]
+  connectOrCreate?: Prisma.BillingRecordCreateOrConnectWithoutAiTechnicianInput | Prisma.BillingRecordCreateOrConnectWithoutAiTechnicianInput[]
+  upsert?: Prisma.BillingRecordUpsertWithWhereUniqueWithoutAiTechnicianInput | Prisma.BillingRecordUpsertWithWhereUniqueWithoutAiTechnicianInput[]
+  createMany?: Prisma.BillingRecordCreateManyAiTechnicianInputEnvelope
+  set?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  disconnect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  delete?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  connect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  update?: Prisma.BillingRecordUpdateWithWhereUniqueWithoutAiTechnicianInput | Prisma.BillingRecordUpdateWithWhereUniqueWithoutAiTechnicianInput[]
+  updateMany?: Prisma.BillingRecordUpdateManyWithWhereWithoutAiTechnicianInput | Prisma.BillingRecordUpdateManyWithWhereWithoutAiTechnicianInput[]
   deleteMany?: Prisma.BillingRecordScalarWhereInput | Prisma.BillingRecordScalarWhereInput[]
 }
 
@@ -701,48 +1050,148 @@ export type BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput = {
   deleteMany?: Prisma.BillingRecordScalarWhereInput | Prisma.BillingRecordScalarWhereInput[]
 }
 
-export type EnumBillingRecordStatusFieldUpdateOperationsInput = {
-  set?: $Enums.BillingRecordStatus
+export type BillingRecordCreateNestedManyWithoutTreatmentCaseInput = {
+  create?: Prisma.XOR<Prisma.BillingRecordCreateWithoutTreatmentCaseInput, Prisma.BillingRecordUncheckedCreateWithoutTreatmentCaseInput> | Prisma.BillingRecordCreateWithoutTreatmentCaseInput[] | Prisma.BillingRecordUncheckedCreateWithoutTreatmentCaseInput[]
+  connectOrCreate?: Prisma.BillingRecordCreateOrConnectWithoutTreatmentCaseInput | Prisma.BillingRecordCreateOrConnectWithoutTreatmentCaseInput[]
+  createMany?: Prisma.BillingRecordCreateManyTreatmentCaseInputEnvelope
+  connect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
 }
 
-export type DecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+export type BillingRecordUncheckedCreateNestedManyWithoutTreatmentCaseInput = {
+  create?: Prisma.XOR<Prisma.BillingRecordCreateWithoutTreatmentCaseInput, Prisma.BillingRecordUncheckedCreateWithoutTreatmentCaseInput> | Prisma.BillingRecordCreateWithoutTreatmentCaseInput[] | Prisma.BillingRecordUncheckedCreateWithoutTreatmentCaseInput[]
+  connectOrCreate?: Prisma.BillingRecordCreateOrConnectWithoutTreatmentCaseInput | Prisma.BillingRecordCreateOrConnectWithoutTreatmentCaseInput[]
+  createMany?: Prisma.BillingRecordCreateManyTreatmentCaseInputEnvelope
+  connect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+}
+
+export type BillingRecordUpdateManyWithoutTreatmentCaseNestedInput = {
+  create?: Prisma.XOR<Prisma.BillingRecordCreateWithoutTreatmentCaseInput, Prisma.BillingRecordUncheckedCreateWithoutTreatmentCaseInput> | Prisma.BillingRecordCreateWithoutTreatmentCaseInput[] | Prisma.BillingRecordUncheckedCreateWithoutTreatmentCaseInput[]
+  connectOrCreate?: Prisma.BillingRecordCreateOrConnectWithoutTreatmentCaseInput | Prisma.BillingRecordCreateOrConnectWithoutTreatmentCaseInput[]
+  upsert?: Prisma.BillingRecordUpsertWithWhereUniqueWithoutTreatmentCaseInput | Prisma.BillingRecordUpsertWithWhereUniqueWithoutTreatmentCaseInput[]
+  createMany?: Prisma.BillingRecordCreateManyTreatmentCaseInputEnvelope
+  set?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  disconnect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  delete?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  connect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  update?: Prisma.BillingRecordUpdateWithWhereUniqueWithoutTreatmentCaseInput | Prisma.BillingRecordUpdateWithWhereUniqueWithoutTreatmentCaseInput[]
+  updateMany?: Prisma.BillingRecordUpdateManyWithWhereWithoutTreatmentCaseInput | Prisma.BillingRecordUpdateManyWithWhereWithoutTreatmentCaseInput[]
+  deleteMany?: Prisma.BillingRecordScalarWhereInput | Prisma.BillingRecordScalarWhereInput[]
+}
+
+export type BillingRecordUncheckedUpdateManyWithoutTreatmentCaseNestedInput = {
+  create?: Prisma.XOR<Prisma.BillingRecordCreateWithoutTreatmentCaseInput, Prisma.BillingRecordUncheckedCreateWithoutTreatmentCaseInput> | Prisma.BillingRecordCreateWithoutTreatmentCaseInput[] | Prisma.BillingRecordUncheckedCreateWithoutTreatmentCaseInput[]
+  connectOrCreate?: Prisma.BillingRecordCreateOrConnectWithoutTreatmentCaseInput | Prisma.BillingRecordCreateOrConnectWithoutTreatmentCaseInput[]
+  upsert?: Prisma.BillingRecordUpsertWithWhereUniqueWithoutTreatmentCaseInput | Prisma.BillingRecordUpsertWithWhereUniqueWithoutTreatmentCaseInput[]
+  createMany?: Prisma.BillingRecordCreateManyTreatmentCaseInputEnvelope
+  set?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  disconnect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  delete?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  connect?: Prisma.BillingRecordWhereUniqueInput | Prisma.BillingRecordWhereUniqueInput[]
+  update?: Prisma.BillingRecordUpdateWithWhereUniqueWithoutTreatmentCaseInput | Prisma.BillingRecordUpdateWithWhereUniqueWithoutTreatmentCaseInput[]
+  updateMany?: Prisma.BillingRecordUpdateManyWithWhereWithoutTreatmentCaseInput | Prisma.BillingRecordUpdateManyWithWhereWithoutTreatmentCaseInput[]
+  deleteMany?: Prisma.BillingRecordScalarWhereInput | Prisma.BillingRecordScalarWhereInput[]
+}
+
+export type EnumBillingStatusFieldUpdateOperationsInput = {
+  set?: $Enums.BillingStatus
+}
+
+export type NullableEnumPaymentMethodFieldUpdateOperationsInput = {
+  set?: $Enums.PaymentMethod | null
+}
+
+export type EnumPaymentStatusFieldUpdateOperationsInput = {
+  set?: $Enums.PaymentStatus
+}
+
+export type BillingRecordCreateNestedOneWithoutPaymentRecordsInput = {
+  create?: Prisma.XOR<Prisma.BillingRecordCreateWithoutPaymentRecordsInput, Prisma.BillingRecordUncheckedCreateWithoutPaymentRecordsInput>
+  connectOrCreate?: Prisma.BillingRecordCreateOrConnectWithoutPaymentRecordsInput
+  connect?: Prisma.BillingRecordWhereUniqueInput
+}
+
+export type BillingRecordUpdateOneWithoutPaymentRecordsNestedInput = {
+  create?: Prisma.XOR<Prisma.BillingRecordCreateWithoutPaymentRecordsInput, Prisma.BillingRecordUncheckedCreateWithoutPaymentRecordsInput>
+  connectOrCreate?: Prisma.BillingRecordCreateOrConnectWithoutPaymentRecordsInput
+  upsert?: Prisma.BillingRecordUpsertWithoutPaymentRecordsInput
+  disconnect?: Prisma.BillingRecordWhereInput | boolean
+  delete?: Prisma.BillingRecordWhereInput | boolean
+  connect?: Prisma.BillingRecordWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BillingRecordUpdateToOneWithWhereWithoutPaymentRecordsInput, Prisma.BillingRecordUpdateWithoutPaymentRecordsInput>, Prisma.BillingRecordUncheckedUpdateWithoutPaymentRecordsInput>
+}
+
+export type BillingRecordCreateNestedOneWithoutComplaintsInput = {
+  create?: Prisma.XOR<Prisma.BillingRecordCreateWithoutComplaintsInput, Prisma.BillingRecordUncheckedCreateWithoutComplaintsInput>
+  connectOrCreate?: Prisma.BillingRecordCreateOrConnectWithoutComplaintsInput
+  connect?: Prisma.BillingRecordWhereUniqueInput
+}
+
+export type BillingRecordUpdateOneWithoutComplaintsNestedInput = {
+  create?: Prisma.XOR<Prisma.BillingRecordCreateWithoutComplaintsInput, Prisma.BillingRecordUncheckedCreateWithoutComplaintsInput>
+  connectOrCreate?: Prisma.BillingRecordCreateOrConnectWithoutComplaintsInput
+  upsert?: Prisma.BillingRecordUpsertWithoutComplaintsInput
+  disconnect?: Prisma.BillingRecordWhereInput | boolean
+  delete?: Prisma.BillingRecordWhereInput | boolean
+  connect?: Prisma.BillingRecordWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.BillingRecordUpdateToOneWithWhereWithoutComplaintsInput, Prisma.BillingRecordUpdateWithoutComplaintsInput>, Prisma.BillingRecordUncheckedUpdateWithoutComplaintsInput>
 }
 
 export type BillingRecordCreateWithoutDoctorInput = {
   id?: string
-  status?: $Enums.BillingRecordStatus
+  status?: $Enums.BillingStatus
   currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax: runtime.Decimal | runtime.DecimalJsLike | number | string
-  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
   issuedAt?: Date | string | null
   paidAt?: Date | string | null
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequest: Prisma.ServiceRequestCreateNestedOneWithoutBillingRecordsInput
+  treatmentCase?: Prisma.TreatmentCaseCreateNestedOneWithoutBillingRecordsInput
+  aiTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutBillingRecordsInput
   customer: Prisma.CustomerProfileCreateNestedOneWithoutBillingRecordsInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutBillingRecordInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutBillingRecordInput
 }
 
 export type BillingRecordUncheckedCreateWithoutDoctorInput = {
   id?: string
   serviceRequestId: string
+  treatmentCaseId?: string | null
+  aiTechnicianId?: string | null
   customerId: string
-  status?: $Enums.BillingRecordStatus
+  status?: $Enums.BillingStatus
   currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax: runtime.Decimal | runtime.DecimalJsLike | number | string
-  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
   issuedAt?: Date | string | null
   paidAt?: Date | string | null
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutBillingRecordInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutBillingRecordInput
 }
 
 export type BillingRecordCreateOrConnectWithoutDoctorInput = {
@@ -777,13 +1226,24 @@ export type BillingRecordScalarWhereInput = {
   NOT?: Prisma.BillingRecordScalarWhereInput | Prisma.BillingRecordScalarWhereInput[]
   id?: Prisma.StringFilter<"BillingRecord"> | string
   serviceRequestId?: Prisma.StringFilter<"BillingRecord"> | string
-  doctorId?: Prisma.StringFilter<"BillingRecord"> | string
+  treatmentCaseId?: Prisma.StringNullableFilter<"BillingRecord"> | string | null
+  doctorId?: Prisma.StringNullableFilter<"BillingRecord"> | string | null
+  aiTechnicianId?: Prisma.StringNullableFilter<"BillingRecord"> | string | null
   customerId?: Prisma.StringFilter<"BillingRecord"> | string
-  status?: Prisma.EnumBillingRecordStatusFilter<"BillingRecord"> | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFilter<"BillingRecord"> | $Enums.BillingStatus
   currency?: Prisma.StringFilter<"BillingRecord"> | string
-  subtotal?: Prisma.DecimalFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.DecimalNullableFilter<"BillingRecord"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.EnumPaymentMethodNullableFilter<"BillingRecord"> | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFilter<"BillingRecord"> | $Enums.PaymentStatus
   issuedAt?: Prisma.DateTimeNullableFilter<"BillingRecord"> | Date | string | null
   paidAt?: Prisma.DateTimeNullableFilter<"BillingRecord"> | Date | string | null
   notes?: Prisma.StringNullableFilter<"BillingRecord"> | string | null
@@ -791,36 +1251,146 @@ export type BillingRecordScalarWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"BillingRecord"> | Date | string
 }
 
-export type BillingRecordCreateWithoutCustomerInput = {
+export type BillingRecordCreateWithoutAiTechnicianInput = {
   id?: string
-  status?: $Enums.BillingRecordStatus
+  status?: $Enums.BillingStatus
   currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax: runtime.Decimal | runtime.DecimalJsLike | number | string
-  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
   issuedAt?: Date | string | null
   paidAt?: Date | string | null
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequest: Prisma.ServiceRequestCreateNestedOneWithoutBillingRecordsInput
-  doctor: Prisma.DoctorProfileCreateNestedOneWithoutBillingRecordsInput
+  treatmentCase?: Prisma.TreatmentCaseCreateNestedOneWithoutBillingRecordsInput
+  doctor?: Prisma.DoctorProfileCreateNestedOneWithoutBillingRecordsInput
+  customer: Prisma.CustomerProfileCreateNestedOneWithoutBillingRecordsInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutBillingRecordInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutBillingRecordInput
 }
 
-export type BillingRecordUncheckedCreateWithoutCustomerInput = {
+export type BillingRecordUncheckedCreateWithoutAiTechnicianInput = {
   id?: string
   serviceRequestId: string
-  doctorId: string
-  status?: $Enums.BillingRecordStatus
+  treatmentCaseId?: string | null
+  doctorId?: string | null
+  customerId: string
+  status?: $Enums.BillingStatus
   currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax: runtime.Decimal | runtime.DecimalJsLike | number | string
-  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
   issuedAt?: Date | string | null
   paidAt?: Date | string | null
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutBillingRecordInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutBillingRecordInput
+}
+
+export type BillingRecordCreateOrConnectWithoutAiTechnicianInput = {
+  where: Prisma.BillingRecordWhereUniqueInput
+  create: Prisma.XOR<Prisma.BillingRecordCreateWithoutAiTechnicianInput, Prisma.BillingRecordUncheckedCreateWithoutAiTechnicianInput>
+}
+
+export type BillingRecordCreateManyAiTechnicianInputEnvelope = {
+  data: Prisma.BillingRecordCreateManyAiTechnicianInput | Prisma.BillingRecordCreateManyAiTechnicianInput[]
+  skipDuplicates?: boolean
+}
+
+export type BillingRecordUpsertWithWhereUniqueWithoutAiTechnicianInput = {
+  where: Prisma.BillingRecordWhereUniqueInput
+  update: Prisma.XOR<Prisma.BillingRecordUpdateWithoutAiTechnicianInput, Prisma.BillingRecordUncheckedUpdateWithoutAiTechnicianInput>
+  create: Prisma.XOR<Prisma.BillingRecordCreateWithoutAiTechnicianInput, Prisma.BillingRecordUncheckedCreateWithoutAiTechnicianInput>
+}
+
+export type BillingRecordUpdateWithWhereUniqueWithoutAiTechnicianInput = {
+  where: Prisma.BillingRecordWhereUniqueInput
+  data: Prisma.XOR<Prisma.BillingRecordUpdateWithoutAiTechnicianInput, Prisma.BillingRecordUncheckedUpdateWithoutAiTechnicianInput>
+}
+
+export type BillingRecordUpdateManyWithWhereWithoutAiTechnicianInput = {
+  where: Prisma.BillingRecordScalarWhereInput
+  data: Prisma.XOR<Prisma.BillingRecordUpdateManyMutationInput, Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianInput>
+}
+
+export type BillingRecordCreateWithoutCustomerInput = {
+  id?: string
+  status?: $Enums.BillingStatus
+  currency?: string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
+  issuedAt?: Date | string | null
+  paidAt?: Date | string | null
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  serviceRequest: Prisma.ServiceRequestCreateNestedOneWithoutBillingRecordsInput
+  treatmentCase?: Prisma.TreatmentCaseCreateNestedOneWithoutBillingRecordsInput
+  doctor?: Prisma.DoctorProfileCreateNestedOneWithoutBillingRecordsInput
+  aiTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutBillingRecordsInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutBillingRecordInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutBillingRecordInput
+}
+
+export type BillingRecordUncheckedCreateWithoutCustomerInput = {
+  id?: string
+  serviceRequestId: string
+  treatmentCaseId?: string | null
+  doctorId?: string | null
+  aiTechnicianId?: string | null
+  status?: $Enums.BillingStatus
+  currency?: string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
+  issuedAt?: Date | string | null
+  paidAt?: Date | string | null
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutBillingRecordInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutBillingRecordInput
 }
 
 export type BillingRecordCreateOrConnectWithoutCustomerInput = {
@@ -851,34 +1421,60 @@ export type BillingRecordUpdateManyWithWhereWithoutCustomerInput = {
 
 export type BillingRecordCreateWithoutServiceRequestInput = {
   id?: string
-  status?: $Enums.BillingRecordStatus
+  status?: $Enums.BillingStatus
   currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax: runtime.Decimal | runtime.DecimalJsLike | number | string
-  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
   issuedAt?: Date | string | null
   paidAt?: Date | string | null
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  doctor: Prisma.DoctorProfileCreateNestedOneWithoutBillingRecordsInput
+  treatmentCase?: Prisma.TreatmentCaseCreateNestedOneWithoutBillingRecordsInput
+  doctor?: Prisma.DoctorProfileCreateNestedOneWithoutBillingRecordsInput
+  aiTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutBillingRecordsInput
   customer: Prisma.CustomerProfileCreateNestedOneWithoutBillingRecordsInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutBillingRecordInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutBillingRecordInput
 }
 
 export type BillingRecordUncheckedCreateWithoutServiceRequestInput = {
   id?: string
-  doctorId: string
+  treatmentCaseId?: string | null
+  doctorId?: string | null
+  aiTechnicianId?: string | null
   customerId: string
-  status?: $Enums.BillingRecordStatus
+  status?: $Enums.BillingStatus
   currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax: runtime.Decimal | runtime.DecimalJsLike | number | string
-  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
   issuedAt?: Date | string | null
   paidAt?: Date | string | null
   notes?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutBillingRecordInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutBillingRecordInput
 }
 
 export type BillingRecordCreateOrConnectWithoutServiceRequestInput = {
@@ -907,15 +1503,374 @@ export type BillingRecordUpdateManyWithWhereWithoutServiceRequestInput = {
   data: Prisma.XOR<Prisma.BillingRecordUpdateManyMutationInput, Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestInput>
 }
 
+export type BillingRecordCreateWithoutTreatmentCaseInput = {
+  id?: string
+  status?: $Enums.BillingStatus
+  currency?: string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
+  issuedAt?: Date | string | null
+  paidAt?: Date | string | null
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  serviceRequest: Prisma.ServiceRequestCreateNestedOneWithoutBillingRecordsInput
+  doctor?: Prisma.DoctorProfileCreateNestedOneWithoutBillingRecordsInput
+  aiTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutBillingRecordsInput
+  customer: Prisma.CustomerProfileCreateNestedOneWithoutBillingRecordsInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutBillingRecordInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutBillingRecordInput
+}
+
+export type BillingRecordUncheckedCreateWithoutTreatmentCaseInput = {
+  id?: string
+  serviceRequestId: string
+  doctorId?: string | null
+  aiTechnicianId?: string | null
+  customerId: string
+  status?: $Enums.BillingStatus
+  currency?: string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
+  issuedAt?: Date | string | null
+  paidAt?: Date | string | null
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutBillingRecordInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutBillingRecordInput
+}
+
+export type BillingRecordCreateOrConnectWithoutTreatmentCaseInput = {
+  where: Prisma.BillingRecordWhereUniqueInput
+  create: Prisma.XOR<Prisma.BillingRecordCreateWithoutTreatmentCaseInput, Prisma.BillingRecordUncheckedCreateWithoutTreatmentCaseInput>
+}
+
+export type BillingRecordCreateManyTreatmentCaseInputEnvelope = {
+  data: Prisma.BillingRecordCreateManyTreatmentCaseInput | Prisma.BillingRecordCreateManyTreatmentCaseInput[]
+  skipDuplicates?: boolean
+}
+
+export type BillingRecordUpsertWithWhereUniqueWithoutTreatmentCaseInput = {
+  where: Prisma.BillingRecordWhereUniqueInput
+  update: Prisma.XOR<Prisma.BillingRecordUpdateWithoutTreatmentCaseInput, Prisma.BillingRecordUncheckedUpdateWithoutTreatmentCaseInput>
+  create: Prisma.XOR<Prisma.BillingRecordCreateWithoutTreatmentCaseInput, Prisma.BillingRecordUncheckedCreateWithoutTreatmentCaseInput>
+}
+
+export type BillingRecordUpdateWithWhereUniqueWithoutTreatmentCaseInput = {
+  where: Prisma.BillingRecordWhereUniqueInput
+  data: Prisma.XOR<Prisma.BillingRecordUpdateWithoutTreatmentCaseInput, Prisma.BillingRecordUncheckedUpdateWithoutTreatmentCaseInput>
+}
+
+export type BillingRecordUpdateManyWithWhereWithoutTreatmentCaseInput = {
+  where: Prisma.BillingRecordScalarWhereInput
+  data: Prisma.XOR<Prisma.BillingRecordUpdateManyMutationInput, Prisma.BillingRecordUncheckedUpdateManyWithoutTreatmentCaseInput>
+}
+
+export type BillingRecordCreateWithoutPaymentRecordsInput = {
+  id?: string
+  status?: $Enums.BillingStatus
+  currency?: string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
+  issuedAt?: Date | string | null
+  paidAt?: Date | string | null
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  serviceRequest: Prisma.ServiceRequestCreateNestedOneWithoutBillingRecordsInput
+  treatmentCase?: Prisma.TreatmentCaseCreateNestedOneWithoutBillingRecordsInput
+  doctor?: Prisma.DoctorProfileCreateNestedOneWithoutBillingRecordsInput
+  aiTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutBillingRecordsInput
+  customer: Prisma.CustomerProfileCreateNestedOneWithoutBillingRecordsInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutBillingRecordInput
+}
+
+export type BillingRecordUncheckedCreateWithoutPaymentRecordsInput = {
+  id?: string
+  serviceRequestId: string
+  treatmentCaseId?: string | null
+  doctorId?: string | null
+  aiTechnicianId?: string | null
+  customerId: string
+  status?: $Enums.BillingStatus
+  currency?: string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
+  issuedAt?: Date | string | null
+  paidAt?: Date | string | null
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutBillingRecordInput
+}
+
+export type BillingRecordCreateOrConnectWithoutPaymentRecordsInput = {
+  where: Prisma.BillingRecordWhereUniqueInput
+  create: Prisma.XOR<Prisma.BillingRecordCreateWithoutPaymentRecordsInput, Prisma.BillingRecordUncheckedCreateWithoutPaymentRecordsInput>
+}
+
+export type BillingRecordUpsertWithoutPaymentRecordsInput = {
+  update: Prisma.XOR<Prisma.BillingRecordUpdateWithoutPaymentRecordsInput, Prisma.BillingRecordUncheckedUpdateWithoutPaymentRecordsInput>
+  create: Prisma.XOR<Prisma.BillingRecordCreateWithoutPaymentRecordsInput, Prisma.BillingRecordUncheckedCreateWithoutPaymentRecordsInput>
+  where?: Prisma.BillingRecordWhereInput
+}
+
+export type BillingRecordUpdateToOneWithWhereWithoutPaymentRecordsInput = {
+  where?: Prisma.BillingRecordWhereInput
+  data: Prisma.XOR<Prisma.BillingRecordUpdateWithoutPaymentRecordsInput, Prisma.BillingRecordUncheckedUpdateWithoutPaymentRecordsInput>
+}
+
+export type BillingRecordUpdateWithoutPaymentRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  serviceRequest?: Prisma.ServiceRequestUpdateOneRequiredWithoutBillingRecordsNestedInput
+  treatmentCase?: Prisma.TreatmentCaseUpdateOneWithoutBillingRecordsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneWithoutBillingRecordsNestedInput
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutBillingRecordsNestedInput
+  customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutBillingRecordsNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutBillingRecordNestedInput
+}
+
+export type BillingRecordUncheckedUpdateWithoutPaymentRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  treatmentCaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutBillingRecordNestedInput
+}
+
+export type BillingRecordCreateWithoutComplaintsInput = {
+  id?: string
+  status?: $Enums.BillingStatus
+  currency?: string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
+  issuedAt?: Date | string | null
+  paidAt?: Date | string | null
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  serviceRequest: Prisma.ServiceRequestCreateNestedOneWithoutBillingRecordsInput
+  treatmentCase?: Prisma.TreatmentCaseCreateNestedOneWithoutBillingRecordsInput
+  doctor?: Prisma.DoctorProfileCreateNestedOneWithoutBillingRecordsInput
+  aiTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutBillingRecordsInput
+  customer: Prisma.CustomerProfileCreateNestedOneWithoutBillingRecordsInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutBillingRecordInput
+}
+
+export type BillingRecordUncheckedCreateWithoutComplaintsInput = {
+  id?: string
+  serviceRequestId: string
+  treatmentCaseId?: string | null
+  doctorId?: string | null
+  aiTechnicianId?: string | null
+  customerId: string
+  status?: $Enums.BillingStatus
+  currency?: string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
+  issuedAt?: Date | string | null
+  paidAt?: Date | string | null
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutBillingRecordInput
+}
+
+export type BillingRecordCreateOrConnectWithoutComplaintsInput = {
+  where: Prisma.BillingRecordWhereUniqueInput
+  create: Prisma.XOR<Prisma.BillingRecordCreateWithoutComplaintsInput, Prisma.BillingRecordUncheckedCreateWithoutComplaintsInput>
+}
+
+export type BillingRecordUpsertWithoutComplaintsInput = {
+  update: Prisma.XOR<Prisma.BillingRecordUpdateWithoutComplaintsInput, Prisma.BillingRecordUncheckedUpdateWithoutComplaintsInput>
+  create: Prisma.XOR<Prisma.BillingRecordCreateWithoutComplaintsInput, Prisma.BillingRecordUncheckedCreateWithoutComplaintsInput>
+  where?: Prisma.BillingRecordWhereInput
+}
+
+export type BillingRecordUpdateToOneWithWhereWithoutComplaintsInput = {
+  where?: Prisma.BillingRecordWhereInput
+  data: Prisma.XOR<Prisma.BillingRecordUpdateWithoutComplaintsInput, Prisma.BillingRecordUncheckedUpdateWithoutComplaintsInput>
+}
+
+export type BillingRecordUpdateWithoutComplaintsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  serviceRequest?: Prisma.ServiceRequestUpdateOneRequiredWithoutBillingRecordsNestedInput
+  treatmentCase?: Prisma.TreatmentCaseUpdateOneWithoutBillingRecordsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneWithoutBillingRecordsNestedInput
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutBillingRecordsNestedInput
+  customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutBillingRecordsNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutBillingRecordNestedInput
+}
+
+export type BillingRecordUncheckedUpdateWithoutComplaintsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  treatmentCaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutBillingRecordNestedInput
+}
+
 export type BillingRecordCreateManyDoctorInput = {
   id?: string
   serviceRequestId: string
+  treatmentCaseId?: string | null
+  aiTechnicianId?: string | null
   customerId: string
-  status?: $Enums.BillingRecordStatus
+  status?: $Enums.BillingStatus
   currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax: runtime.Decimal | runtime.DecimalJsLike | number | string
-  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
   issuedAt?: Date | string | null
   paidAt?: Date | string | null
   notes?: string | null
@@ -925,29 +1880,82 @@ export type BillingRecordCreateManyDoctorInput = {
 
 export type BillingRecordUpdateWithoutDoctorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequest?: Prisma.ServiceRequestUpdateOneRequiredWithoutBillingRecordsNestedInput
+  treatmentCase?: Prisma.TreatmentCaseUpdateOneWithoutBillingRecordsNestedInput
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutBillingRecordsNestedInput
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutBillingRecordsNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutBillingRecordNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutBillingRecordNestedInput
 }
 
 export type BillingRecordUncheckedUpdateWithoutDoctorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  treatmentCaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutBillingRecordNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutBillingRecordNestedInput
+}
+
+export type BillingRecordUncheckedUpdateManyWithoutDoctorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  treatmentCaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -955,15 +1963,111 @@ export type BillingRecordUncheckedUpdateWithoutDoctorInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type BillingRecordUncheckedUpdateManyWithoutDoctorInput = {
+export type BillingRecordCreateManyAiTechnicianInput = {
+  id?: string
+  serviceRequestId: string
+  treatmentCaseId?: string | null
+  doctorId?: string | null
+  customerId: string
+  status?: $Enums.BillingStatus
+  currency?: string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
+  issuedAt?: Date | string | null
+  paidAt?: Date | string | null
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type BillingRecordUpdateWithoutAiTechnicianInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  serviceRequest?: Prisma.ServiceRequestUpdateOneRequiredWithoutBillingRecordsNestedInput
+  treatmentCase?: Prisma.TreatmentCaseUpdateOneWithoutBillingRecordsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneWithoutBillingRecordsNestedInput
+  customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutBillingRecordsNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutBillingRecordNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutBillingRecordNestedInput
+}
+
+export type BillingRecordUncheckedUpdateWithoutAiTechnicianInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  treatmentCaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutBillingRecordNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutBillingRecordNestedInput
+}
+
+export type BillingRecordUncheckedUpdateManyWithoutAiTechnicianInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  treatmentCaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -974,12 +2078,23 @@ export type BillingRecordUncheckedUpdateManyWithoutDoctorInput = {
 export type BillingRecordCreateManyCustomerInput = {
   id?: string
   serviceRequestId: string
-  doctorId: string
-  status?: $Enums.BillingRecordStatus
+  treatmentCaseId?: string | null
+  doctorId?: string | null
+  aiTechnicianId?: string | null
+  status?: $Enums.BillingStatus
   currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax: runtime.Decimal | runtime.DecimalJsLike | number | string
-  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
   issuedAt?: Date | string | null
   paidAt?: Date | string | null
   notes?: string | null
@@ -989,45 +2104,82 @@ export type BillingRecordCreateManyCustomerInput = {
 
 export type BillingRecordUpdateWithoutCustomerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequest?: Prisma.ServiceRequestUpdateOneRequiredWithoutBillingRecordsNestedInput
-  doctor?: Prisma.DoctorProfileUpdateOneRequiredWithoutBillingRecordsNestedInput
+  treatmentCase?: Prisma.TreatmentCaseUpdateOneWithoutBillingRecordsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneWithoutBillingRecordsNestedInput
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutBillingRecordsNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutBillingRecordNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutBillingRecordNestedInput
 }
 
 export type BillingRecordUncheckedUpdateWithoutCustomerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
-  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  treatmentCaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutBillingRecordNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutBillingRecordNestedInput
 }
 
 export type BillingRecordUncheckedUpdateManyWithoutCustomerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
-  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  treatmentCaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1037,13 +2189,24 @@ export type BillingRecordUncheckedUpdateManyWithoutCustomerInput = {
 
 export type BillingRecordCreateManyServiceRequestInput = {
   id?: string
-  doctorId: string
+  treatmentCaseId?: string | null
+  doctorId?: string | null
+  aiTechnicianId?: string | null
   customerId: string
-  status?: $Enums.BillingRecordStatus
+  status?: $Enums.BillingStatus
   currency?: string
-  subtotal: runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax: runtime.Decimal | runtime.DecimalJsLike | number | string
-  total: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
   issuedAt?: Date | string | null
   paidAt?: Date | string | null
   notes?: string | null
@@ -1053,45 +2216,82 @@ export type BillingRecordCreateManyServiceRequestInput = {
 
 export type BillingRecordUpdateWithoutServiceRequestInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  doctor?: Prisma.DoctorProfileUpdateOneRequiredWithoutBillingRecordsNestedInput
+  treatmentCase?: Prisma.TreatmentCaseUpdateOneWithoutBillingRecordsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneWithoutBillingRecordsNestedInput
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutBillingRecordsNestedInput
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutBillingRecordsNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutBillingRecordNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutBillingRecordNestedInput
 }
 
 export type BillingRecordUncheckedUpdateWithoutServiceRequestInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  treatmentCaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutBillingRecordNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutBillingRecordNestedInput
 }
 
 export type BillingRecordUncheckedUpdateManyWithoutServiceRequestInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  treatmentCaseId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
-  status?: Prisma.EnumBillingRecordStatusFieldUpdateOperationsInput | $Enums.BillingRecordStatus
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
   currency?: Prisma.StringFieldUpdateOperationsInput | string
-  subtotal?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  tax?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  total?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
   issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1099,78 +2299,281 @@ export type BillingRecordUncheckedUpdateManyWithoutServiceRequestInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type BillingRecordCreateManyTreatmentCaseInput = {
+  id?: string
+  serviceRequestId: string
+  doctorId?: string | null
+  aiTechnicianId?: string | null
+  customerId: string
+  status?: $Enums.BillingStatus
+  currency?: string
+  subtotal?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: $Enums.PaymentMethod | null
+  paymentStatus?: $Enums.PaymentStatus
+  issuedAt?: Date | string | null
+  paidAt?: Date | string | null
+  notes?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type BillingRecordUpdateWithoutTreatmentCaseInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  serviceRequest?: Prisma.ServiceRequestUpdateOneRequiredWithoutBillingRecordsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneWithoutBillingRecordsNestedInput
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutBillingRecordsNestedInput
+  customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutBillingRecordsNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutBillingRecordNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutBillingRecordNestedInput
+}
+
+export type BillingRecordUncheckedUpdateWithoutTreatmentCaseInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutBillingRecordNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutBillingRecordNestedInput
+}
+
+export type BillingRecordUncheckedUpdateManyWithoutTreatmentCaseInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumBillingStatusFieldUpdateOperationsInput | $Enums.BillingStatus
+  currency?: Prisma.StringFieldUpdateOperationsInput | string
+  subtotal?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  tax?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  serviceFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  travelCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  medicineCost?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountAmount?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  totalCollected?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  platformCommission?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  providerPayout?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  paymentMethod?: Prisma.NullableEnumPaymentMethodFieldUpdateOperationsInput | $Enums.PaymentMethod | null
+  paymentStatus?: Prisma.EnumPaymentStatusFieldUpdateOperationsInput | $Enums.PaymentStatus
+  issuedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  paidAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+
+/**
+ * Count Type BillingRecordCountOutputType
+ */
+
+export type BillingRecordCountOutputType = {
+  paymentRecords: number
+  complaints: number
+}
+
+export type BillingRecordCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  paymentRecords?: boolean | BillingRecordCountOutputTypeCountPaymentRecordsArgs
+  complaints?: boolean | BillingRecordCountOutputTypeCountComplaintsArgs
+}
+
+/**
+ * BillingRecordCountOutputType without action
+ */
+export type BillingRecordCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the BillingRecordCountOutputType
+   */
+  select?: Prisma.BillingRecordCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * BillingRecordCountOutputType without action
+ */
+export type BillingRecordCountOutputTypeCountPaymentRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PaymentRecordWhereInput
+}
+
+/**
+ * BillingRecordCountOutputType without action
+ */
+export type BillingRecordCountOutputTypeCountComplaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComplaintWhereInput
+}
 
 
 export type BillingRecordSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   serviceRequestId?: boolean
+  treatmentCaseId?: boolean
   doctorId?: boolean
+  aiTechnicianId?: boolean
   customerId?: boolean
   status?: boolean
   currency?: boolean
   subtotal?: boolean
   tax?: boolean
   total?: boolean
+  serviceFee?: boolean
+  travelCost?: boolean
+  medicineCost?: boolean
+  discountAmount?: boolean
+  totalCollected?: boolean
+  platformCommission?: boolean
+  providerPayout?: boolean
+  paymentMethod?: boolean
+  paymentStatus?: boolean
   issuedAt?: boolean
   paidAt?: boolean
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   serviceRequest?: boolean | Prisma.ServiceRequestDefaultArgs<ExtArgs>
-  doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>
+  treatmentCase?: boolean | Prisma.BillingRecord$treatmentCaseArgs<ExtArgs>
+  doctor?: boolean | Prisma.BillingRecord$doctorArgs<ExtArgs>
+  aiTechnician?: boolean | Prisma.BillingRecord$aiTechnicianArgs<ExtArgs>
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
+  paymentRecords?: boolean | Prisma.BillingRecord$paymentRecordsArgs<ExtArgs>
+  complaints?: boolean | Prisma.BillingRecord$complaintsArgs<ExtArgs>
+  _count?: boolean | Prisma.BillingRecordCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["billingRecord"]>
 
 export type BillingRecordSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   serviceRequestId?: boolean
+  treatmentCaseId?: boolean
   doctorId?: boolean
+  aiTechnicianId?: boolean
   customerId?: boolean
   status?: boolean
   currency?: boolean
   subtotal?: boolean
   tax?: boolean
   total?: boolean
+  serviceFee?: boolean
+  travelCost?: boolean
+  medicineCost?: boolean
+  discountAmount?: boolean
+  totalCollected?: boolean
+  platformCommission?: boolean
+  providerPayout?: boolean
+  paymentMethod?: boolean
+  paymentStatus?: boolean
   issuedAt?: boolean
   paidAt?: boolean
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   serviceRequest?: boolean | Prisma.ServiceRequestDefaultArgs<ExtArgs>
-  doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>
+  treatmentCase?: boolean | Prisma.BillingRecord$treatmentCaseArgs<ExtArgs>
+  doctor?: boolean | Prisma.BillingRecord$doctorArgs<ExtArgs>
+  aiTechnician?: boolean | Prisma.BillingRecord$aiTechnicianArgs<ExtArgs>
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["billingRecord"]>
 
 export type BillingRecordSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   serviceRequestId?: boolean
+  treatmentCaseId?: boolean
   doctorId?: boolean
+  aiTechnicianId?: boolean
   customerId?: boolean
   status?: boolean
   currency?: boolean
   subtotal?: boolean
   tax?: boolean
   total?: boolean
+  serviceFee?: boolean
+  travelCost?: boolean
+  medicineCost?: boolean
+  discountAmount?: boolean
+  totalCollected?: boolean
+  platformCommission?: boolean
+  providerPayout?: boolean
+  paymentMethod?: boolean
+  paymentStatus?: boolean
   issuedAt?: boolean
   paidAt?: boolean
   notes?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   serviceRequest?: boolean | Prisma.ServiceRequestDefaultArgs<ExtArgs>
-  doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>
+  treatmentCase?: boolean | Prisma.BillingRecord$treatmentCaseArgs<ExtArgs>
+  doctor?: boolean | Prisma.BillingRecord$doctorArgs<ExtArgs>
+  aiTechnician?: boolean | Prisma.BillingRecord$aiTechnicianArgs<ExtArgs>
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["billingRecord"]>
 
 export type BillingRecordSelectScalar = {
   id?: boolean
   serviceRequestId?: boolean
+  treatmentCaseId?: boolean
   doctorId?: boolean
+  aiTechnicianId?: boolean
   customerId?: boolean
   status?: boolean
   currency?: boolean
   subtotal?: boolean
   tax?: boolean
   total?: boolean
+  serviceFee?: boolean
+  travelCost?: boolean
+  medicineCost?: boolean
+  discountAmount?: boolean
+  totalCollected?: boolean
+  platformCommission?: boolean
+  providerPayout?: boolean
+  paymentMethod?: boolean
+  paymentStatus?: boolean
   issuedAt?: boolean
   paidAt?: boolean
   notes?: boolean
@@ -1178,20 +2581,29 @@ export type BillingRecordSelectScalar = {
   updatedAt?: boolean
 }
 
-export type BillingRecordOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "serviceRequestId" | "doctorId" | "customerId" | "status" | "currency" | "subtotal" | "tax" | "total" | "issuedAt" | "paidAt" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["billingRecord"]>
+export type BillingRecordOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "serviceRequestId" | "treatmentCaseId" | "doctorId" | "aiTechnicianId" | "customerId" | "status" | "currency" | "subtotal" | "tax" | "total" | "serviceFee" | "travelCost" | "medicineCost" | "discountAmount" | "totalCollected" | "platformCommission" | "providerPayout" | "paymentMethod" | "paymentStatus" | "issuedAt" | "paidAt" | "notes" | "createdAt" | "updatedAt", ExtArgs["result"]["billingRecord"]>
 export type BillingRecordInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   serviceRequest?: boolean | Prisma.ServiceRequestDefaultArgs<ExtArgs>
-  doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>
+  treatmentCase?: boolean | Prisma.BillingRecord$treatmentCaseArgs<ExtArgs>
+  doctor?: boolean | Prisma.BillingRecord$doctorArgs<ExtArgs>
+  aiTechnician?: boolean | Prisma.BillingRecord$aiTechnicianArgs<ExtArgs>
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
+  paymentRecords?: boolean | Prisma.BillingRecord$paymentRecordsArgs<ExtArgs>
+  complaints?: boolean | Prisma.BillingRecord$complaintsArgs<ExtArgs>
+  _count?: boolean | Prisma.BillingRecordCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type BillingRecordIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   serviceRequest?: boolean | Prisma.ServiceRequestDefaultArgs<ExtArgs>
-  doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>
+  treatmentCase?: boolean | Prisma.BillingRecord$treatmentCaseArgs<ExtArgs>
+  doctor?: boolean | Prisma.BillingRecord$doctorArgs<ExtArgs>
+  aiTechnician?: boolean | Prisma.BillingRecord$aiTechnicianArgs<ExtArgs>
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
 }
 export type BillingRecordIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   serviceRequest?: boolean | Prisma.ServiceRequestDefaultArgs<ExtArgs>
-  doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>
+  treatmentCase?: boolean | Prisma.BillingRecord$treatmentCaseArgs<ExtArgs>
+  doctor?: boolean | Prisma.BillingRecord$doctorArgs<ExtArgs>
+  aiTechnician?: boolean | Prisma.BillingRecord$aiTechnicianArgs<ExtArgs>
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
 }
 
@@ -1199,19 +2611,43 @@ export type $BillingRecordPayload<ExtArgs extends runtime.Types.Extensions.Inter
   name: "BillingRecord"
   objects: {
     serviceRequest: Prisma.$ServiceRequestPayload<ExtArgs>
-    doctor: Prisma.$DoctorProfilePayload<ExtArgs>
+    treatmentCase: Prisma.$TreatmentCasePayload<ExtArgs> | null
+    doctor: Prisma.$DoctorProfilePayload<ExtArgs> | null
+    aiTechnician: Prisma.$AiTechnicianProfilePayload<ExtArgs> | null
     customer: Prisma.$CustomerProfilePayload<ExtArgs>
+    paymentRecords: Prisma.$PaymentRecordPayload<ExtArgs>[]
+    complaints: Prisma.$ComplaintPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     serviceRequestId: string
-    doctorId: string
+    treatmentCaseId: string | null
+    doctorId: string | null
+    aiTechnicianId: string | null
     customerId: string
-    status: $Enums.BillingRecordStatus
+    status: $Enums.BillingStatus
     currency: string
-    subtotal: runtime.Decimal
-    tax: runtime.Decimal
-    total: runtime.Decimal
+    /**
+     * Legacy aggregates — nullable while migrating to fee breakdown fields.
+     */
+    subtotal: runtime.Decimal | null
+    tax: runtime.Decimal | null
+    total: runtime.Decimal | null
+    serviceFee: runtime.Decimal | null
+    travelCost: runtime.Decimal | null
+    medicineCost: runtime.Decimal | null
+    discountAmount: runtime.Decimal | null
+    totalCollected: runtime.Decimal | null
+    platformCommission: runtime.Decimal | null
+    providerPayout: runtime.Decimal | null
+    /**
+     * Primary/settlement method for this invoice (optional if only PaymentRecord lines are used).
+     */
+    paymentMethod: $Enums.PaymentMethod | null
+    /**
+     * MVP payment settlement status at invoice level (distinct from BillingStatus lifecycle).
+     */
+    paymentStatus: $Enums.PaymentStatus
     issuedAt: Date | null
     paidAt: Date | null
     notes: string | null
@@ -1612,8 +3048,12 @@ readonly fields: BillingRecordFieldRefs;
 export interface Prisma__BillingRecordClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   serviceRequest<T extends Prisma.ServiceRequestDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequestDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceRequestClient<runtime.Types.Result.GetResult<Prisma.$ServiceRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  doctor<T extends Prisma.DoctorProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DoctorProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__DoctorProfileClient<runtime.Types.Result.GetResult<Prisma.$DoctorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  treatmentCase<T extends Prisma.BillingRecord$treatmentCaseArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BillingRecord$treatmentCaseArgs<ExtArgs>>): Prisma.Prisma__TreatmentCaseClient<runtime.Types.Result.GetResult<Prisma.$TreatmentCasePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  doctor<T extends Prisma.BillingRecord$doctorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BillingRecord$doctorArgs<ExtArgs>>): Prisma.Prisma__DoctorProfileClient<runtime.Types.Result.GetResult<Prisma.$DoctorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  aiTechnician<T extends Prisma.BillingRecord$aiTechnicianArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BillingRecord$aiTechnicianArgs<ExtArgs>>): Prisma.Prisma__AiTechnicianProfileClient<runtime.Types.Result.GetResult<Prisma.$AiTechnicianProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   customer<T extends Prisma.CustomerProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CustomerProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__CustomerProfileClient<runtime.Types.Result.GetResult<Prisma.$CustomerProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  paymentRecords<T extends Prisma.BillingRecord$paymentRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BillingRecord$paymentRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  complaints<T extends Prisma.BillingRecord$complaintsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.BillingRecord$complaintsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1645,13 +3085,24 @@ export interface Prisma__BillingRecordClient<T, Null = never, ExtArgs extends ru
 export interface BillingRecordFieldRefs {
   readonly id: Prisma.FieldRef<"BillingRecord", 'String'>
   readonly serviceRequestId: Prisma.FieldRef<"BillingRecord", 'String'>
+  readonly treatmentCaseId: Prisma.FieldRef<"BillingRecord", 'String'>
   readonly doctorId: Prisma.FieldRef<"BillingRecord", 'String'>
+  readonly aiTechnicianId: Prisma.FieldRef<"BillingRecord", 'String'>
   readonly customerId: Prisma.FieldRef<"BillingRecord", 'String'>
-  readonly status: Prisma.FieldRef<"BillingRecord", 'BillingRecordStatus'>
+  readonly status: Prisma.FieldRef<"BillingRecord", 'BillingStatus'>
   readonly currency: Prisma.FieldRef<"BillingRecord", 'String'>
   readonly subtotal: Prisma.FieldRef<"BillingRecord", 'Decimal'>
   readonly tax: Prisma.FieldRef<"BillingRecord", 'Decimal'>
   readonly total: Prisma.FieldRef<"BillingRecord", 'Decimal'>
+  readonly serviceFee: Prisma.FieldRef<"BillingRecord", 'Decimal'>
+  readonly travelCost: Prisma.FieldRef<"BillingRecord", 'Decimal'>
+  readonly medicineCost: Prisma.FieldRef<"BillingRecord", 'Decimal'>
+  readonly discountAmount: Prisma.FieldRef<"BillingRecord", 'Decimal'>
+  readonly totalCollected: Prisma.FieldRef<"BillingRecord", 'Decimal'>
+  readonly platformCommission: Prisma.FieldRef<"BillingRecord", 'Decimal'>
+  readonly providerPayout: Prisma.FieldRef<"BillingRecord", 'Decimal'>
+  readonly paymentMethod: Prisma.FieldRef<"BillingRecord", 'PaymentMethod'>
+  readonly paymentStatus: Prisma.FieldRef<"BillingRecord", 'PaymentStatus'>
   readonly issuedAt: Prisma.FieldRef<"BillingRecord", 'DateTime'>
   readonly paidAt: Prisma.FieldRef<"BillingRecord", 'DateTime'>
   readonly notes: Prisma.FieldRef<"BillingRecord", 'String'>
@@ -2055,6 +3506,111 @@ export type BillingRecordDeleteManyArgs<ExtArgs extends runtime.Types.Extensions
    * Limit how many BillingRecords to delete.
    */
   limit?: number
+}
+
+/**
+ * BillingRecord.treatmentCase
+ */
+export type BillingRecord$treatmentCaseArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TreatmentCase
+   */
+  select?: Prisma.TreatmentCaseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TreatmentCase
+   */
+  omit?: Prisma.TreatmentCaseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TreatmentCaseInclude<ExtArgs> | null
+  where?: Prisma.TreatmentCaseWhereInput
+}
+
+/**
+ * BillingRecord.doctor
+ */
+export type BillingRecord$doctorArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DoctorProfile
+   */
+  select?: Prisma.DoctorProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DoctorProfile
+   */
+  omit?: Prisma.DoctorProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DoctorProfileInclude<ExtArgs> | null
+  where?: Prisma.DoctorProfileWhereInput
+}
+
+/**
+ * BillingRecord.aiTechnician
+ */
+export type BillingRecord$aiTechnicianArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiTechnicianProfile
+   */
+  select?: Prisma.AiTechnicianProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiTechnicianProfile
+   */
+  omit?: Prisma.AiTechnicianProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiTechnicianProfileInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianProfileWhereInput
+}
+
+/**
+ * BillingRecord.paymentRecords
+ */
+export type BillingRecord$paymentRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PaymentRecord
+   */
+  select?: Prisma.PaymentRecordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PaymentRecord
+   */
+  omit?: Prisma.PaymentRecordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PaymentRecordInclude<ExtArgs> | null
+  where?: Prisma.PaymentRecordWhereInput
+  orderBy?: Prisma.PaymentRecordOrderByWithRelationInput | Prisma.PaymentRecordOrderByWithRelationInput[]
+  cursor?: Prisma.PaymentRecordWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PaymentRecordScalarFieldEnum | Prisma.PaymentRecordScalarFieldEnum[]
+}
+
+/**
+ * BillingRecord.complaints
+ */
+export type BillingRecord$complaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Complaint
+   */
+  select?: Prisma.ComplaintSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Complaint
+   */
+  omit?: Prisma.ComplaintOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComplaintInclude<ExtArgs> | null
+  where?: Prisma.ComplaintWhereInput
+  orderBy?: Prisma.ComplaintOrderByWithRelationInput | Prisma.ComplaintOrderByWithRelationInput[]
+  cursor?: Prisma.ComplaintWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComplaintScalarFieldEnum | Prisma.ComplaintScalarFieldEnum[]
 }
 
 /**

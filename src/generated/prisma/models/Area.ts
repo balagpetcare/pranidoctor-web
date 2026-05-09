@@ -14,21 +14,37 @@ import type * as Prisma from "../internal/prismaNamespace"
 
 /**
  * Model Area
- * 
+ * Unified hierarchical area tree for Bangladesh geography (admin/API).
+ * Coexists with normalized `Division`…`Village` tables; `ServiceRequest.areaId` remains optional during migration.
  */
 export type AreaModel = runtime.Types.Result.DefaultSelection<Prisma.$AreaPayload>
 
 export type AggregateArea = {
   _count: AreaCountAggregateOutputType | null
+  _avg: AreaAvgAggregateOutputType | null
+  _sum: AreaSumAggregateOutputType | null
   _min: AreaMinAggregateOutputType | null
   _max: AreaMaxAggregateOutputType | null
+}
+
+export type AreaAvgAggregateOutputType = {
+  sortOrder: number | null
+}
+
+export type AreaSumAggregateOutputType = {
+  sortOrder: number | null
 }
 
 export type AreaMinAggregateOutputType = {
   id: string | null
   name: string | null
+  nameBn: string | null
   slug: string | null
+  code: string | null
+  type: $Enums.AreaType | null
   parentId: string | null
+  sortOrder: number | null
+  isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -36,8 +52,13 @@ export type AreaMinAggregateOutputType = {
 export type AreaMaxAggregateOutputType = {
   id: string | null
   name: string | null
+  nameBn: string | null
   slug: string | null
+  code: string | null
+  type: $Enums.AreaType | null
   parentId: string | null
+  sortOrder: number | null
+  isActive: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -45,8 +66,13 @@ export type AreaMaxAggregateOutputType = {
 export type AreaCountAggregateOutputType = {
   id: number
   name: number
+  nameBn: number
   slug: number
+  code: number
+  type: number
   parentId: number
+  sortOrder: number
+  isActive: number
   metadataJson: number
   createdAt: number
   updatedAt: number
@@ -54,11 +80,24 @@ export type AreaCountAggregateOutputType = {
 }
 
 
+export type AreaAvgAggregateInputType = {
+  sortOrder?: true
+}
+
+export type AreaSumAggregateInputType = {
+  sortOrder?: true
+}
+
 export type AreaMinAggregateInputType = {
   id?: true
   name?: true
+  nameBn?: true
   slug?: true
+  code?: true
+  type?: true
   parentId?: true
+  sortOrder?: true
+  isActive?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -66,8 +105,13 @@ export type AreaMinAggregateInputType = {
 export type AreaMaxAggregateInputType = {
   id?: true
   name?: true
+  nameBn?: true
   slug?: true
+  code?: true
+  type?: true
   parentId?: true
+  sortOrder?: true
+  isActive?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -75,8 +119,13 @@ export type AreaMaxAggregateInputType = {
 export type AreaCountAggregateInputType = {
   id?: true
   name?: true
+  nameBn?: true
   slug?: true
+  code?: true
+  type?: true
   parentId?: true
+  sortOrder?: true
+  isActive?: true
   metadataJson?: true
   createdAt?: true
   updatedAt?: true
@@ -121,6 +170,18 @@ export type AreaAggregateArgs<ExtArgs extends runtime.Types.Extensions.InternalA
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: AreaAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: AreaSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: AreaMinAggregateInputType
@@ -151,6 +212,8 @@ export type AreaGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
   take?: number
   skip?: number
   _count?: AreaCountAggregateInputType | true
+  _avg?: AreaAvgAggregateInputType
+  _sum?: AreaSumAggregateInputType
   _min?: AreaMinAggregateInputType
   _max?: AreaMaxAggregateInputType
 }
@@ -158,12 +221,19 @@ export type AreaGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type AreaGroupByOutputType = {
   id: string
   name: string
+  nameBn: string | null
   slug: string
+  code: string | null
+  type: $Enums.AreaType
   parentId: string | null
+  sortOrder: number
+  isActive: boolean
   metadataJson: runtime.JsonValue | null
   createdAt: Date
   updatedAt: Date
   _count: AreaCountAggregateOutputType | null
+  _avg: AreaAvgAggregateOutputType | null
+  _sum: AreaSumAggregateOutputType | null
   _min: AreaMinAggregateOutputType | null
   _max: AreaMaxAggregateOutputType | null
 }
@@ -189,27 +259,41 @@ export type AreaWhereInput = {
   NOT?: Prisma.AreaWhereInput | Prisma.AreaWhereInput[]
   id?: Prisma.StringFilter<"Area"> | string
   name?: Prisma.StringFilter<"Area"> | string
+  nameBn?: Prisma.StringNullableFilter<"Area"> | string | null
   slug?: Prisma.StringFilter<"Area"> | string
+  code?: Prisma.StringNullableFilter<"Area"> | string | null
+  type?: Prisma.EnumAreaTypeFilter<"Area"> | $Enums.AreaType
   parentId?: Prisma.StringNullableFilter<"Area"> | string | null
+  sortOrder?: Prisma.IntFilter<"Area"> | number
+  isActive?: Prisma.BoolFilter<"Area"> | boolean
   metadataJson?: Prisma.JsonNullableFilter<"Area">
   createdAt?: Prisma.DateTimeFilter<"Area"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Area"> | Date | string
   parent?: Prisma.XOR<Prisma.AreaNullableScalarRelationFilter, Prisma.AreaWhereInput> | null
   children?: Prisma.AreaListRelationFilter
   serviceRequests?: Prisma.ServiceRequestListRelationFilter
+  doctorProfileAreas?: Prisma.DoctorProfileAreaListRelationFilter
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaListRelationFilter
 }
 
 export type AreaOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrder
+  code?: Prisma.SortOrderInput | Prisma.SortOrder
+  type?: Prisma.SortOrder
   parentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   metadataJson?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   parent?: Prisma.AreaOrderByWithRelationInput
   children?: Prisma.AreaOrderByRelationAggregateInput
   serviceRequests?: Prisma.ServiceRequestOrderByRelationAggregateInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaOrderByRelationAggregateInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaOrderByRelationAggregateInput
 }
 
 export type AreaWhereUniqueInput = Prisma.AtLeast<{
@@ -219,26 +303,40 @@ export type AreaWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.AreaWhereInput[]
   NOT?: Prisma.AreaWhereInput | Prisma.AreaWhereInput[]
   name?: Prisma.StringFilter<"Area"> | string
+  nameBn?: Prisma.StringNullableFilter<"Area"> | string | null
+  code?: Prisma.StringNullableFilter<"Area"> | string | null
+  type?: Prisma.EnumAreaTypeFilter<"Area"> | $Enums.AreaType
   parentId?: Prisma.StringNullableFilter<"Area"> | string | null
+  sortOrder?: Prisma.IntFilter<"Area"> | number
+  isActive?: Prisma.BoolFilter<"Area"> | boolean
   metadataJson?: Prisma.JsonNullableFilter<"Area">
   createdAt?: Prisma.DateTimeFilter<"Area"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Area"> | Date | string
   parent?: Prisma.XOR<Prisma.AreaNullableScalarRelationFilter, Prisma.AreaWhereInput> | null
   children?: Prisma.AreaListRelationFilter
   serviceRequests?: Prisma.ServiceRequestListRelationFilter
+  doctorProfileAreas?: Prisma.DoctorProfileAreaListRelationFilter
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaListRelationFilter
 }, "id" | "slug">
 
 export type AreaOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrder
+  code?: Prisma.SortOrderInput | Prisma.SortOrder
+  type?: Prisma.SortOrder
   parentId?: Prisma.SortOrderInput | Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   metadataJson?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.AreaCountOrderByAggregateInput
+  _avg?: Prisma.AreaAvgOrderByAggregateInput
   _max?: Prisma.AreaMaxOrderByAggregateInput
   _min?: Prisma.AreaMinOrderByAggregateInput
+  _sum?: Prisma.AreaSumOrderByAggregateInput
 }
 
 export type AreaScalarWhereWithAggregatesInput = {
@@ -247,8 +345,13 @@ export type AreaScalarWhereWithAggregatesInput = {
   NOT?: Prisma.AreaScalarWhereWithAggregatesInput | Prisma.AreaScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Area"> | string
   name?: Prisma.StringWithAggregatesFilter<"Area"> | string
+  nameBn?: Prisma.StringNullableWithAggregatesFilter<"Area"> | string | null
   slug?: Prisma.StringWithAggregatesFilter<"Area"> | string
+  code?: Prisma.StringNullableWithAggregatesFilter<"Area"> | string | null
+  type?: Prisma.EnumAreaTypeWithAggregatesFilter<"Area"> | $Enums.AreaType
   parentId?: Prisma.StringNullableWithAggregatesFilter<"Area"> | string | null
+  sortOrder?: Prisma.IntWithAggregatesFilter<"Area"> | number
+  isActive?: Prisma.BoolWithAggregatesFilter<"Area"> | boolean
   metadataJson?: Prisma.JsonNullableWithAggregatesFilter<"Area">
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Area"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Area"> | Date | string
@@ -257,56 +360,89 @@ export type AreaScalarWhereWithAggregatesInput = {
 export type AreaCreateInput = {
   id?: string
   name: string
+  nameBn?: string | null
   slug: string
+  code?: string | null
+  type?: $Enums.AreaType
+  sortOrder?: number
+  isActive?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   parent?: Prisma.AreaCreateNestedOneWithoutChildrenInput
   children?: Prisma.AreaCreateNestedManyWithoutParentInput
   serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAreaInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaCreateNestedManyWithoutAreaInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAreaInput
 }
 
 export type AreaUncheckedCreateInput = {
   id?: string
   name: string
+  nameBn?: string | null
   slug: string
+  code?: string | null
+  type?: $Enums.AreaType
   parentId?: string | null
+  sortOrder?: number
+  isActive?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   children?: Prisma.AreaUncheckedCreateNestedManyWithoutParentInput
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAreaInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUncheckedCreateNestedManyWithoutAreaInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAreaInput
 }
 
 export type AreaUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   parent?: Prisma.AreaUpdateOneWithoutChildrenNestedInput
   children?: Prisma.AreaUpdateManyWithoutParentNestedInput
   serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutAreaNestedInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUpdateManyWithoutAreaNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAreaNestedInput
 }
 
 export type AreaUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   children?: Prisma.AreaUncheckedUpdateManyWithoutParentNestedInput
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAreaNestedInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUncheckedUpdateManyWithoutAreaNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAreaNestedInput
 }
 
 export type AreaCreateManyInput = {
   id?: string
   name: string
+  nameBn?: string | null
   slug: string
+  code?: string | null
+  type?: $Enums.AreaType
   parentId?: string | null
+  sortOrder?: number
+  isActive?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -315,7 +451,12 @@ export type AreaCreateManyInput = {
 export type AreaUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -324,8 +465,13 @@ export type AreaUpdateManyMutationInput = {
 export type AreaUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -349,18 +495,32 @@ export type AreaOrderByRelationAggregateInput = {
 export type AreaCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  code?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   parentId?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   metadataJson?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
+export type AreaAvgOrderByAggregateInput = {
+  sortOrder?: Prisma.SortOrder
+}
+
 export type AreaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  code?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   parentId?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -368,10 +528,19 @@ export type AreaMaxOrderByAggregateInput = {
 export type AreaMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrder
   slug?: Prisma.SortOrder
+  code?: Prisma.SortOrder
+  type?: Prisma.SortOrder
   parentId?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type AreaSumOrderByAggregateInput = {
+  sortOrder?: Prisma.SortOrder
 }
 
 export type AreaScalarRelationFilter = {
@@ -397,6 +566,10 @@ export type AreaUncheckedCreateNestedManyWithoutParentInput = {
   connectOrCreate?: Prisma.AreaCreateOrConnectWithoutParentInput | Prisma.AreaCreateOrConnectWithoutParentInput[]
   createMany?: Prisma.AreaCreateManyParentInputEnvelope
   connect?: Prisma.AreaWhereUniqueInput | Prisma.AreaWhereUniqueInput[]
+}
+
+export type EnumAreaTypeFieldUpdateOperationsInput = {
+  set?: $Enums.AreaType
 }
 
 export type AreaUpdateOneWithoutChildrenNestedInput = {
@@ -437,16 +610,46 @@ export type AreaUncheckedUpdateManyWithoutParentNestedInput = {
   deleteMany?: Prisma.AreaScalarWhereInput | Prisma.AreaScalarWhereInput[]
 }
 
+export type AreaCreateNestedOneWithoutDoctorProfileAreasInput = {
+  create?: Prisma.XOR<Prisma.AreaCreateWithoutDoctorProfileAreasInput, Prisma.AreaUncheckedCreateWithoutDoctorProfileAreasInput>
+  connectOrCreate?: Prisma.AreaCreateOrConnectWithoutDoctorProfileAreasInput
+  connect?: Prisma.AreaWhereUniqueInput
+}
+
+export type AreaUpdateOneRequiredWithoutDoctorProfileAreasNestedInput = {
+  create?: Prisma.XOR<Prisma.AreaCreateWithoutDoctorProfileAreasInput, Prisma.AreaUncheckedCreateWithoutDoctorProfileAreasInput>
+  connectOrCreate?: Prisma.AreaCreateOrConnectWithoutDoctorProfileAreasInput
+  upsert?: Prisma.AreaUpsertWithoutDoctorProfileAreasInput
+  connect?: Prisma.AreaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AreaUpdateToOneWithWhereWithoutDoctorProfileAreasInput, Prisma.AreaUpdateWithoutDoctorProfileAreasInput>, Prisma.AreaUncheckedUpdateWithoutDoctorProfileAreasInput>
+}
+
+export type AreaCreateNestedOneWithoutAiTechnicianProfileAreasInput = {
+  create?: Prisma.XOR<Prisma.AreaCreateWithoutAiTechnicianProfileAreasInput, Prisma.AreaUncheckedCreateWithoutAiTechnicianProfileAreasInput>
+  connectOrCreate?: Prisma.AreaCreateOrConnectWithoutAiTechnicianProfileAreasInput
+  connect?: Prisma.AreaWhereUniqueInput
+}
+
+export type AreaUpdateOneRequiredWithoutAiTechnicianProfileAreasNestedInput = {
+  create?: Prisma.XOR<Prisma.AreaCreateWithoutAiTechnicianProfileAreasInput, Prisma.AreaUncheckedCreateWithoutAiTechnicianProfileAreasInput>
+  connectOrCreate?: Prisma.AreaCreateOrConnectWithoutAiTechnicianProfileAreasInput
+  upsert?: Prisma.AreaUpsertWithoutAiTechnicianProfileAreasInput
+  connect?: Prisma.AreaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AreaUpdateToOneWithWhereWithoutAiTechnicianProfileAreasInput, Prisma.AreaUpdateWithoutAiTechnicianProfileAreasInput>, Prisma.AreaUncheckedUpdateWithoutAiTechnicianProfileAreasInput>
+}
+
 export type AreaCreateNestedOneWithoutServiceRequestsInput = {
   create?: Prisma.XOR<Prisma.AreaCreateWithoutServiceRequestsInput, Prisma.AreaUncheckedCreateWithoutServiceRequestsInput>
   connectOrCreate?: Prisma.AreaCreateOrConnectWithoutServiceRequestsInput
   connect?: Prisma.AreaWhereUniqueInput
 }
 
-export type AreaUpdateOneRequiredWithoutServiceRequestsNestedInput = {
+export type AreaUpdateOneWithoutServiceRequestsNestedInput = {
   create?: Prisma.XOR<Prisma.AreaCreateWithoutServiceRequestsInput, Prisma.AreaUncheckedCreateWithoutServiceRequestsInput>
   connectOrCreate?: Prisma.AreaCreateOrConnectWithoutServiceRequestsInput
   upsert?: Prisma.AreaUpsertWithoutServiceRequestsInput
+  disconnect?: Prisma.AreaWhereInput | boolean
+  delete?: Prisma.AreaWhereInput | boolean
   connect?: Prisma.AreaWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.AreaUpdateToOneWithWhereWithoutServiceRequestsInput, Prisma.AreaUpdateWithoutServiceRequestsInput>, Prisma.AreaUncheckedUpdateWithoutServiceRequestsInput>
 }
@@ -454,23 +657,37 @@ export type AreaUpdateOneRequiredWithoutServiceRequestsNestedInput = {
 export type AreaCreateWithoutChildrenInput = {
   id?: string
   name: string
+  nameBn?: string | null
   slug: string
+  code?: string | null
+  type?: $Enums.AreaType
+  sortOrder?: number
+  isActive?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   parent?: Prisma.AreaCreateNestedOneWithoutChildrenInput
   serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAreaInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaCreateNestedManyWithoutAreaInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAreaInput
 }
 
 export type AreaUncheckedCreateWithoutChildrenInput = {
   id?: string
   name: string
+  nameBn?: string | null
   slug: string
+  code?: string | null
+  type?: $Enums.AreaType
   parentId?: string | null
+  sortOrder?: number
+  isActive?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAreaInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUncheckedCreateNestedManyWithoutAreaInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAreaInput
 }
 
 export type AreaCreateOrConnectWithoutChildrenInput = {
@@ -481,23 +698,37 @@ export type AreaCreateOrConnectWithoutChildrenInput = {
 export type AreaCreateWithoutParentInput = {
   id?: string
   name: string
+  nameBn?: string | null
   slug: string
+  code?: string | null
+  type?: $Enums.AreaType
+  sortOrder?: number
+  isActive?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   children?: Prisma.AreaCreateNestedManyWithoutParentInput
   serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAreaInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaCreateNestedManyWithoutAreaInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAreaInput
 }
 
 export type AreaUncheckedCreateWithoutParentInput = {
   id?: string
   name: string
+  nameBn?: string | null
   slug: string
+  code?: string | null
+  type?: $Enums.AreaType
+  sortOrder?: number
+  isActive?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   children?: Prisma.AreaUncheckedCreateNestedManyWithoutParentInput
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAreaInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUncheckedCreateNestedManyWithoutAreaInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAreaInput
 }
 
 export type AreaCreateOrConnectWithoutParentInput = {
@@ -524,23 +755,37 @@ export type AreaUpdateToOneWithWhereWithoutChildrenInput = {
 export type AreaUpdateWithoutChildrenInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   parent?: Prisma.AreaUpdateOneWithoutChildrenNestedInput
   serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutAreaNestedInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUpdateManyWithoutAreaNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAreaNestedInput
 }
 
 export type AreaUncheckedUpdateWithoutChildrenInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAreaNestedInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUncheckedUpdateManyWithoutAreaNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAreaNestedInput
 }
 
 export type AreaUpsertWithWhereUniqueWithoutParentInput = {
@@ -565,33 +810,228 @@ export type AreaScalarWhereInput = {
   NOT?: Prisma.AreaScalarWhereInput | Prisma.AreaScalarWhereInput[]
   id?: Prisma.StringFilter<"Area"> | string
   name?: Prisma.StringFilter<"Area"> | string
+  nameBn?: Prisma.StringNullableFilter<"Area"> | string | null
   slug?: Prisma.StringFilter<"Area"> | string
+  code?: Prisma.StringNullableFilter<"Area"> | string | null
+  type?: Prisma.EnumAreaTypeFilter<"Area"> | $Enums.AreaType
   parentId?: Prisma.StringNullableFilter<"Area"> | string | null
+  sortOrder?: Prisma.IntFilter<"Area"> | number
+  isActive?: Prisma.BoolFilter<"Area"> | boolean
   metadataJson?: Prisma.JsonNullableFilter<"Area">
   createdAt?: Prisma.DateTimeFilter<"Area"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Area"> | Date | string
 }
 
-export type AreaCreateWithoutServiceRequestsInput = {
+export type AreaCreateWithoutDoctorProfileAreasInput = {
   id?: string
   name: string
+  nameBn?: string | null
   slug: string
+  code?: string | null
+  type?: $Enums.AreaType
+  sortOrder?: number
+  isActive?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   parent?: Prisma.AreaCreateNestedOneWithoutChildrenInput
   children?: Prisma.AreaCreateNestedManyWithoutParentInput
+  serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAreaInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAreaInput
+}
+
+export type AreaUncheckedCreateWithoutDoctorProfileAreasInput = {
+  id?: string
+  name: string
+  nameBn?: string | null
+  slug: string
+  code?: string | null
+  type?: $Enums.AreaType
+  parentId?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  children?: Prisma.AreaUncheckedCreateNestedManyWithoutParentInput
+  serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAreaInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAreaInput
+}
+
+export type AreaCreateOrConnectWithoutDoctorProfileAreasInput = {
+  where: Prisma.AreaWhereUniqueInput
+  create: Prisma.XOR<Prisma.AreaCreateWithoutDoctorProfileAreasInput, Prisma.AreaUncheckedCreateWithoutDoctorProfileAreasInput>
+}
+
+export type AreaUpsertWithoutDoctorProfileAreasInput = {
+  update: Prisma.XOR<Prisma.AreaUpdateWithoutDoctorProfileAreasInput, Prisma.AreaUncheckedUpdateWithoutDoctorProfileAreasInput>
+  create: Prisma.XOR<Prisma.AreaCreateWithoutDoctorProfileAreasInput, Prisma.AreaUncheckedCreateWithoutDoctorProfileAreasInput>
+  where?: Prisma.AreaWhereInput
+}
+
+export type AreaUpdateToOneWithWhereWithoutDoctorProfileAreasInput = {
+  where?: Prisma.AreaWhereInput
+  data: Prisma.XOR<Prisma.AreaUpdateWithoutDoctorProfileAreasInput, Prisma.AreaUncheckedUpdateWithoutDoctorProfileAreasInput>
+}
+
+export type AreaUpdateWithoutDoctorProfileAreasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  parent?: Prisma.AreaUpdateOneWithoutChildrenNestedInput
+  children?: Prisma.AreaUpdateManyWithoutParentNestedInput
+  serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutAreaNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAreaNestedInput
+}
+
+export type AreaUncheckedUpdateWithoutDoctorProfileAreasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
+  parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  children?: Prisma.AreaUncheckedUpdateManyWithoutParentNestedInput
+  serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAreaNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAreaNestedInput
+}
+
+export type AreaCreateWithoutAiTechnicianProfileAreasInput = {
+  id?: string
+  name: string
+  nameBn?: string | null
+  slug: string
+  code?: string | null
+  type?: $Enums.AreaType
+  sortOrder?: number
+  isActive?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  parent?: Prisma.AreaCreateNestedOneWithoutChildrenInput
+  children?: Prisma.AreaCreateNestedManyWithoutParentInput
+  serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAreaInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaCreateNestedManyWithoutAreaInput
+}
+
+export type AreaUncheckedCreateWithoutAiTechnicianProfileAreasInput = {
+  id?: string
+  name: string
+  nameBn?: string | null
+  slug: string
+  code?: string | null
+  type?: $Enums.AreaType
+  parentId?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  children?: Prisma.AreaUncheckedCreateNestedManyWithoutParentInput
+  serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAreaInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUncheckedCreateNestedManyWithoutAreaInput
+}
+
+export type AreaCreateOrConnectWithoutAiTechnicianProfileAreasInput = {
+  where: Prisma.AreaWhereUniqueInput
+  create: Prisma.XOR<Prisma.AreaCreateWithoutAiTechnicianProfileAreasInput, Prisma.AreaUncheckedCreateWithoutAiTechnicianProfileAreasInput>
+}
+
+export type AreaUpsertWithoutAiTechnicianProfileAreasInput = {
+  update: Prisma.XOR<Prisma.AreaUpdateWithoutAiTechnicianProfileAreasInput, Prisma.AreaUncheckedUpdateWithoutAiTechnicianProfileAreasInput>
+  create: Prisma.XOR<Prisma.AreaCreateWithoutAiTechnicianProfileAreasInput, Prisma.AreaUncheckedCreateWithoutAiTechnicianProfileAreasInput>
+  where?: Prisma.AreaWhereInput
+}
+
+export type AreaUpdateToOneWithWhereWithoutAiTechnicianProfileAreasInput = {
+  where?: Prisma.AreaWhereInput
+  data: Prisma.XOR<Prisma.AreaUpdateWithoutAiTechnicianProfileAreasInput, Prisma.AreaUncheckedUpdateWithoutAiTechnicianProfileAreasInput>
+}
+
+export type AreaUpdateWithoutAiTechnicianProfileAreasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  parent?: Prisma.AreaUpdateOneWithoutChildrenNestedInput
+  children?: Prisma.AreaUpdateManyWithoutParentNestedInput
+  serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutAreaNestedInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUpdateManyWithoutAreaNestedInput
+}
+
+export type AreaUncheckedUpdateWithoutAiTechnicianProfileAreasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
+  parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  children?: Prisma.AreaUncheckedUpdateManyWithoutParentNestedInput
+  serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAreaNestedInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUncheckedUpdateManyWithoutAreaNestedInput
+}
+
+export type AreaCreateWithoutServiceRequestsInput = {
+  id?: string
+  name: string
+  nameBn?: string | null
+  slug: string
+  code?: string | null
+  type?: $Enums.AreaType
+  sortOrder?: number
+  isActive?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  parent?: Prisma.AreaCreateNestedOneWithoutChildrenInput
+  children?: Prisma.AreaCreateNestedManyWithoutParentInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaCreateNestedManyWithoutAreaInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAreaInput
 }
 
 export type AreaUncheckedCreateWithoutServiceRequestsInput = {
   id?: string
   name: string
+  nameBn?: string | null
   slug: string
+  code?: string | null
+  type?: $Enums.AreaType
   parentId?: string | null
+  sortOrder?: number
+  isActive?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
   children?: Prisma.AreaUncheckedCreateNestedManyWithoutParentInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUncheckedCreateNestedManyWithoutAreaInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAreaInput
 }
 
 export type AreaCreateOrConnectWithoutServiceRequestsInput = {
@@ -613,29 +1053,48 @@ export type AreaUpdateToOneWithWhereWithoutServiceRequestsInput = {
 export type AreaUpdateWithoutServiceRequestsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   parent?: Prisma.AreaUpdateOneWithoutChildrenNestedInput
   children?: Prisma.AreaUpdateManyWithoutParentNestedInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUpdateManyWithoutAreaNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAreaNestedInput
 }
 
 export type AreaUncheckedUpdateWithoutServiceRequestsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
   parentId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   children?: Prisma.AreaUncheckedUpdateManyWithoutParentNestedInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUncheckedUpdateManyWithoutAreaNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAreaNestedInput
 }
 
 export type AreaCreateManyParentInput = {
   id?: string
   name: string
+  nameBn?: string | null
   slug: string
+  code?: string | null
+  type?: $Enums.AreaType
+  sortOrder?: number
+  isActive?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Date | string
   updatedAt?: Date | string
@@ -644,29 +1103,48 @@ export type AreaCreateManyParentInput = {
 export type AreaUpdateWithoutParentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   children?: Prisma.AreaUpdateManyWithoutParentNestedInput
   serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutAreaNestedInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUpdateManyWithoutAreaNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAreaNestedInput
 }
 
 export type AreaUncheckedUpdateWithoutParentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   children?: Prisma.AreaUncheckedUpdateManyWithoutParentNestedInput
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAreaNestedInput
+  doctorProfileAreas?: Prisma.DoctorProfileAreaUncheckedUpdateManyWithoutAreaNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAreaNestedInput
 }
 
 export type AreaUncheckedUpdateManyWithoutParentInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  type?: Prisma.EnumAreaTypeFieldUpdateOperationsInput | $Enums.AreaType
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -680,11 +1158,15 @@ export type AreaUncheckedUpdateManyWithoutParentInput = {
 export type AreaCountOutputType = {
   children: number
   serviceRequests: number
+  doctorProfileAreas: number
+  aiTechnicianProfileAreas: number
 }
 
 export type AreaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   children?: boolean | AreaCountOutputTypeCountChildrenArgs
   serviceRequests?: boolean | AreaCountOutputTypeCountServiceRequestsArgs
+  doctorProfileAreas?: boolean | AreaCountOutputTypeCountDoctorProfileAreasArgs
+  aiTechnicianProfileAreas?: boolean | AreaCountOutputTypeCountAiTechnicianProfileAreasArgs
 }
 
 /**
@@ -711,26 +1193,52 @@ export type AreaCountOutputTypeCountServiceRequestsArgs<ExtArgs extends runtime.
   where?: Prisma.ServiceRequestWhereInput
 }
 
+/**
+ * AreaCountOutputType without action
+ */
+export type AreaCountOutputTypeCountDoctorProfileAreasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.DoctorProfileAreaWhereInput
+}
+
+/**
+ * AreaCountOutputType without action
+ */
+export type AreaCountOutputTypeCountAiTechnicianProfileAreasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiTechnicianProfileAreaWhereInput
+}
+
 
 export type AreaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  nameBn?: boolean
   slug?: boolean
+  code?: boolean
+  type?: boolean
   parentId?: boolean
+  sortOrder?: boolean
+  isActive?: boolean
   metadataJson?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   parent?: boolean | Prisma.Area$parentArgs<ExtArgs>
   children?: boolean | Prisma.Area$childrenArgs<ExtArgs>
   serviceRequests?: boolean | Prisma.Area$serviceRequestsArgs<ExtArgs>
+  doctorProfileAreas?: boolean | Prisma.Area$doctorProfileAreasArgs<ExtArgs>
+  aiTechnicianProfileAreas?: boolean | Prisma.Area$aiTechnicianProfileAreasArgs<ExtArgs>
   _count?: boolean | Prisma.AreaCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["area"]>
 
 export type AreaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  nameBn?: boolean
   slug?: boolean
+  code?: boolean
+  type?: boolean
   parentId?: boolean
+  sortOrder?: boolean
+  isActive?: boolean
   metadataJson?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -740,8 +1248,13 @@ export type AreaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 export type AreaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  nameBn?: boolean
   slug?: boolean
+  code?: boolean
+  type?: boolean
   parentId?: boolean
+  sortOrder?: boolean
+  isActive?: boolean
   metadataJson?: boolean
   createdAt?: boolean
   updatedAt?: boolean
@@ -751,18 +1264,25 @@ export type AreaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensio
 export type AreaSelectScalar = {
   id?: boolean
   name?: boolean
+  nameBn?: boolean
   slug?: boolean
+  code?: boolean
+  type?: boolean
   parentId?: boolean
+  sortOrder?: boolean
+  isActive?: boolean
   metadataJson?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type AreaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "parentId" | "metadataJson" | "createdAt" | "updatedAt", ExtArgs["result"]["area"]>
+export type AreaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "nameBn" | "slug" | "code" | "type" | "parentId" | "sortOrder" | "isActive" | "metadataJson" | "createdAt" | "updatedAt", ExtArgs["result"]["area"]>
 export type AreaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   parent?: boolean | Prisma.Area$parentArgs<ExtArgs>
   children?: boolean | Prisma.Area$childrenArgs<ExtArgs>
   serviceRequests?: boolean | Prisma.Area$serviceRequestsArgs<ExtArgs>
+  doctorProfileAreas?: boolean | Prisma.Area$doctorProfileAreasArgs<ExtArgs>
+  aiTechnicianProfileAreas?: boolean | Prisma.Area$aiTechnicianProfileAreasArgs<ExtArgs>
   _count?: boolean | Prisma.AreaCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type AreaIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -778,12 +1298,19 @@ export type $AreaPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     parent: Prisma.$AreaPayload<ExtArgs> | null
     children: Prisma.$AreaPayload<ExtArgs>[]
     serviceRequests: Prisma.$ServiceRequestPayload<ExtArgs>[]
+    doctorProfileAreas: Prisma.$DoctorProfileAreaPayload<ExtArgs>[]
+    aiTechnicianProfileAreas: Prisma.$AiTechnicianProfileAreaPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     name: string
+    nameBn: string | null
     slug: string
+    code: string | null
+    type: $Enums.AreaType
     parentId: string | null
+    sortOrder: number
+    isActive: boolean
     metadataJson: runtime.JsonValue | null
     createdAt: Date
     updatedAt: Date
@@ -1184,6 +1711,8 @@ export interface Prisma__AreaClient<T, Null = never, ExtArgs extends runtime.Typ
   parent<T extends Prisma.Area$parentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Area$parentArgs<ExtArgs>>): Prisma.Prisma__AreaClient<runtime.Types.Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   children<T extends Prisma.Area$childrenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Area$childrenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   serviceRequests<T extends Prisma.Area$serviceRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Area$serviceRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServiceRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  doctorProfileAreas<T extends Prisma.Area$doctorProfileAreasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Area$doctorProfileAreasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$DoctorProfileAreaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  aiTechnicianProfileAreas<T extends Prisma.Area$aiTechnicianProfileAreasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Area$aiTechnicianProfileAreasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianProfileAreaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1215,8 +1744,13 @@ export interface Prisma__AreaClient<T, Null = never, ExtArgs extends runtime.Typ
 export interface AreaFieldRefs {
   readonly id: Prisma.FieldRef<"Area", 'String'>
   readonly name: Prisma.FieldRef<"Area", 'String'>
+  readonly nameBn: Prisma.FieldRef<"Area", 'String'>
   readonly slug: Prisma.FieldRef<"Area", 'String'>
+  readonly code: Prisma.FieldRef<"Area", 'String'>
+  readonly type: Prisma.FieldRef<"Area", 'AreaType'>
   readonly parentId: Prisma.FieldRef<"Area", 'String'>
+  readonly sortOrder: Prisma.FieldRef<"Area", 'Int'>
+  readonly isActive: Prisma.FieldRef<"Area", 'Boolean'>
   readonly metadataJson: Prisma.FieldRef<"Area", 'Json'>
   readonly createdAt: Prisma.FieldRef<"Area", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Area", 'DateTime'>
@@ -1685,6 +2219,54 @@ export type Area$serviceRequestsArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.ServiceRequestScalarFieldEnum | Prisma.ServiceRequestScalarFieldEnum[]
+}
+
+/**
+ * Area.doctorProfileAreas
+ */
+export type Area$doctorProfileAreasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DoctorProfileArea
+   */
+  select?: Prisma.DoctorProfileAreaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DoctorProfileArea
+   */
+  omit?: Prisma.DoctorProfileAreaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DoctorProfileAreaInclude<ExtArgs> | null
+  where?: Prisma.DoctorProfileAreaWhereInput
+  orderBy?: Prisma.DoctorProfileAreaOrderByWithRelationInput | Prisma.DoctorProfileAreaOrderByWithRelationInput[]
+  cursor?: Prisma.DoctorProfileAreaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.DoctorProfileAreaScalarFieldEnum | Prisma.DoctorProfileAreaScalarFieldEnum[]
+}
+
+/**
+ * Area.aiTechnicianProfileAreas
+ */
+export type Area$aiTechnicianProfileAreasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiTechnicianProfileArea
+   */
+  select?: Prisma.AiTechnicianProfileAreaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiTechnicianProfileArea
+   */
+  omit?: Prisma.AiTechnicianProfileAreaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiTechnicianProfileAreaInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianProfileAreaWhereInput
+  orderBy?: Prisma.AiTechnicianProfileAreaOrderByWithRelationInput | Prisma.AiTechnicianProfileAreaOrderByWithRelationInput[]
+  cursor?: Prisma.AiTechnicianProfileAreaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiTechnicianProfileAreaScalarFieldEnum | Prisma.AiTechnicianProfileAreaScalarFieldEnum[]
 }
 
 /**

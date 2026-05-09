@@ -1,0 +1,12 @@
+import { DoctorServiceRequestsList } from "@/components/doctor/DoctorServiceRequestsList";
+
+export default function DoctorActiveCasesPage() {
+  return (
+    <div className="space-y-4">
+      <h2 className="text-xl font-semibold text-zinc-900 dark:text-zinc-50">
+        চলমান কেস
+      </h2>
+      <DoctorServiceRequestsList tab="active" />
+    </div>
+  );
+}

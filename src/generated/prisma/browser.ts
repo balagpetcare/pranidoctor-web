@@ -33,45 +33,141 @@ export type AdminProfile = Prisma.AdminProfileModel
  */
 export type DoctorProfile = Prisma.DoctorProfileModel
 /**
+ * Model AiTechnicianProfile
+ * 
+ */
+export type AiTechnicianProfile = Prisma.AiTechnicianProfileModel
+/**
  * Model CustomerProfile
  * 
  */
 export type CustomerProfile = Prisma.CustomerProfileModel
 /**
- * Model AnimalProfile
+ * Model MobileOtpChallenge
+ * One active OTP challenge per normalized Bangladesh mobile (customer login).
+ */
+export type MobileOtpChallenge = Prisma.MobileOtpChallengeModel
+/**
+ * Model Division
  * 
  */
-export type AnimalProfile = Prisma.AnimalProfileModel
+export type Division = Prisma.DivisionModel
+/**
+ * Model District
+ * 
+ */
+export type District = Prisma.DistrictModel
+/**
+ * Model Upazila
+ * 
+ */
+export type Upazila = Prisma.UpazilaModel
+/**
+ * Model Union
+ * 
+ */
+export type Union = Prisma.UnionModel
+/**
+ * Model Village
+ * 
+ */
+export type Village = Prisma.VillageModel
 /**
  * Model Area
- * 
+ * Unified hierarchical area tree for Bangladesh geography (admin/API).
+ * Coexists with normalized `Division`…`Village` tables; `ServiceRequest.areaId` remains optional during migration.
  */
 export type Area = Prisma.AreaModel
+/**
+ * Model DoctorServiceArea
+ * 
+ */
+export type DoctorServiceArea = Prisma.DoctorServiceAreaModel
+/**
+ * Model AiTechnicianServiceArea
+ * 
+ */
+export type AiTechnicianServiceArea = Prisma.AiTechnicianServiceAreaModel
 /**
  * Model ServiceCategory
  * 
  */
 export type ServiceCategory = Prisma.ServiceCategoryModel
 /**
+ * Model DoctorProfileArea
+ * Many-to-many: doctor coverage using the unified `Area` tree (admin geography).
+ */
+export type DoctorProfileArea = Prisma.DoctorProfileAreaModel
+/**
+ * Model AiTechnicianProfileArea
+ * Many-to-many: AI technician coverage using the unified `Area` tree (parallel to `DoctorProfileArea`).
+ */
+export type AiTechnicianProfileArea = Prisma.AiTechnicianProfileAreaModel
+/**
+ * Model DoctorProfileServiceCategory
+ * Many-to-many: which service categories a doctor offers.
+ */
+export type DoctorProfileServiceCategory = Prisma.DoctorProfileServiceCategoryModel
+/**
+ * Model AiTechnicianProfileServiceCategory
+ * Many-to-many: which catalog services an AI technician provides (e.g. slug `ai-service`).
+ */
+export type AiTechnicianProfileServiceCategory = Prisma.AiTechnicianProfileServiceCategoryModel
+/**
+ * Model AnimalProfile
+ * 
+ */
+export type AnimalProfile = Prisma.AnimalProfileModel
+/**
  * Model ServiceRequest
  * 
  */
 export type ServiceRequest = Prisma.ServiceRequestModel
 /**
- * Model TreatmentRecord
- * 
+ * Model TreatmentCase
+ * Former `TreatmentRecord` table — mapped to preserve existing rows.
  */
-export type TreatmentRecord = Prisma.TreatmentRecordModel
+export type TreatmentCase = Prisma.TreatmentCaseModel
 /**
  * Model Prescription
  * 
  */
 export type Prescription = Prisma.PrescriptionModel
 /**
+ * Model PrescriptionItem
+ * 
+ */
+export type PrescriptionItem = Prisma.PrescriptionItemModel
+/**
  * Model BillingRecord
  * 
  */
 export type BillingRecord = Prisma.BillingRecordModel
+/**
+ * Model PaymentRecord
+ * 
+ */
+export type PaymentRecord = Prisma.PaymentRecordModel
+/**
+ * Model Review
+ * 
+ */
+export type Review = Prisma.ReviewModel
+/**
+ * Model ContentCategory
+ * Tutorial / Knowledge Hub article (author = `User`: doctor or admin).
+ */
+export type ContentCategory = Prisma.ContentCategoryModel
+/**
+ * Model ContentPost
+ * 
+ */
+export type ContentPost = Prisma.ContentPostModel
+/**
+ * Model Complaint
+ * 
+ */
+export type Complaint = Prisma.ComplaintModel
 /**
  * Model Notification
  * 

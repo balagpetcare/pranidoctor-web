@@ -198,6 +198,8 @@ export type CustomerProfileWhereInput = {
   animals?: Prisma.AnimalProfileListRelationFilter
   serviceRequests?: Prisma.ServiceRequestListRelationFilter
   billingRecords?: Prisma.BillingRecordListRelationFilter
+  reviews?: Prisma.ReviewListRelationFilter
+  complaints?: Prisma.ComplaintListRelationFilter
 }
 
 export type CustomerProfileOrderByWithRelationInput = {
@@ -212,6 +214,8 @@ export type CustomerProfileOrderByWithRelationInput = {
   animals?: Prisma.AnimalProfileOrderByRelationAggregateInput
   serviceRequests?: Prisma.ServiceRequestOrderByRelationAggregateInput
   billingRecords?: Prisma.BillingRecordOrderByRelationAggregateInput
+  reviews?: Prisma.ReviewOrderByRelationAggregateInput
+  complaints?: Prisma.ComplaintOrderByRelationAggregateInput
 }
 
 export type CustomerProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -229,6 +233,8 @@ export type CustomerProfileWhereUniqueInput = Prisma.AtLeast<{
   animals?: Prisma.AnimalProfileListRelationFilter
   serviceRequests?: Prisma.ServiceRequestListRelationFilter
   billingRecords?: Prisma.BillingRecordListRelationFilter
+  reviews?: Prisma.ReviewListRelationFilter
+  complaints?: Prisma.ComplaintListRelationFilter
 }, "id" | "userId">
 
 export type CustomerProfileOrderByWithAggregationInput = {
@@ -268,6 +274,8 @@ export type CustomerProfileCreateInput = {
   animals?: Prisma.AnimalProfileCreateNestedManyWithoutCustomerInput
   serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutCustomerInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutCustomerInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutCustomerInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerProfileUncheckedCreateInput = {
@@ -281,6 +289,8 @@ export type CustomerProfileUncheckedCreateInput = {
   animals?: Prisma.AnimalProfileUncheckedCreateNestedManyWithoutCustomerInput
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutCustomerInput
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutCustomerInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutCustomerInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerProfileUpdateInput = {
@@ -294,6 +304,8 @@ export type CustomerProfileUpdateInput = {
   animals?: Prisma.AnimalProfileUpdateManyWithoutCustomerNestedInput
   serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutCustomerNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutCustomerNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutCustomerNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerProfileUncheckedUpdateInput = {
@@ -307,6 +319,8 @@ export type CustomerProfileUncheckedUpdateInput = {
   animals?: Prisma.AnimalProfileUncheckedUpdateManyWithoutCustomerNestedInput
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutCustomerNestedInput
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutCustomerNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutCustomerNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerProfileCreateManyInput = {
@@ -450,6 +464,34 @@ export type CustomerProfileUpdateOneRequiredWithoutBillingRecordsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.CustomerProfileUpdateToOneWithWhereWithoutBillingRecordsInput, Prisma.CustomerProfileUpdateWithoutBillingRecordsInput>, Prisma.CustomerProfileUncheckedUpdateWithoutBillingRecordsInput>
 }
 
+export type CustomerProfileCreateNestedOneWithoutReviewsInput = {
+  create?: Prisma.XOR<Prisma.CustomerProfileCreateWithoutReviewsInput, Prisma.CustomerProfileUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.CustomerProfileCreateOrConnectWithoutReviewsInput
+  connect?: Prisma.CustomerProfileWhereUniqueInput
+}
+
+export type CustomerProfileUpdateOneRequiredWithoutReviewsNestedInput = {
+  create?: Prisma.XOR<Prisma.CustomerProfileCreateWithoutReviewsInput, Prisma.CustomerProfileUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.CustomerProfileCreateOrConnectWithoutReviewsInput
+  upsert?: Prisma.CustomerProfileUpsertWithoutReviewsInput
+  connect?: Prisma.CustomerProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CustomerProfileUpdateToOneWithWhereWithoutReviewsInput, Prisma.CustomerProfileUpdateWithoutReviewsInput>, Prisma.CustomerProfileUncheckedUpdateWithoutReviewsInput>
+}
+
+export type CustomerProfileCreateNestedOneWithoutComplaintsInput = {
+  create?: Prisma.XOR<Prisma.CustomerProfileCreateWithoutComplaintsInput, Prisma.CustomerProfileUncheckedCreateWithoutComplaintsInput>
+  connectOrCreate?: Prisma.CustomerProfileCreateOrConnectWithoutComplaintsInput
+  connect?: Prisma.CustomerProfileWhereUniqueInput
+}
+
+export type CustomerProfileUpdateOneRequiredWithoutComplaintsNestedInput = {
+  create?: Prisma.XOR<Prisma.CustomerProfileCreateWithoutComplaintsInput, Prisma.CustomerProfileUncheckedCreateWithoutComplaintsInput>
+  connectOrCreate?: Prisma.CustomerProfileCreateOrConnectWithoutComplaintsInput
+  upsert?: Prisma.CustomerProfileUpsertWithoutComplaintsInput
+  connect?: Prisma.CustomerProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.CustomerProfileUpdateToOneWithWhereWithoutComplaintsInput, Prisma.CustomerProfileUpdateWithoutComplaintsInput>, Prisma.CustomerProfileUncheckedUpdateWithoutComplaintsInput>
+}
+
 export type CustomerProfileCreateWithoutUserInput = {
   id?: string
   displayName: string
@@ -460,6 +502,8 @@ export type CustomerProfileCreateWithoutUserInput = {
   animals?: Prisma.AnimalProfileCreateNestedManyWithoutCustomerInput
   serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutCustomerInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutCustomerInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutCustomerInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerProfileUncheckedCreateWithoutUserInput = {
@@ -472,6 +516,8 @@ export type CustomerProfileUncheckedCreateWithoutUserInput = {
   animals?: Prisma.AnimalProfileUncheckedCreateNestedManyWithoutCustomerInput
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutCustomerInput
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutCustomerInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutCustomerInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerProfileCreateOrConnectWithoutUserInput = {
@@ -500,6 +546,8 @@ export type CustomerProfileUpdateWithoutUserInput = {
   animals?: Prisma.AnimalProfileUpdateManyWithoutCustomerNestedInput
   serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutCustomerNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutCustomerNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutCustomerNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerProfileUncheckedUpdateWithoutUserInput = {
@@ -512,6 +560,8 @@ export type CustomerProfileUncheckedUpdateWithoutUserInput = {
   animals?: Prisma.AnimalProfileUncheckedUpdateManyWithoutCustomerNestedInput
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutCustomerNestedInput
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutCustomerNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutCustomerNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerProfileCreateWithoutAnimalsInput = {
@@ -524,6 +574,8 @@ export type CustomerProfileCreateWithoutAnimalsInput = {
   user: Prisma.UserCreateNestedOneWithoutCustomerProfileInput
   serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutCustomerInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutCustomerInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutCustomerInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerProfileUncheckedCreateWithoutAnimalsInput = {
@@ -536,6 +588,8 @@ export type CustomerProfileUncheckedCreateWithoutAnimalsInput = {
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutCustomerInput
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutCustomerInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutCustomerInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerProfileCreateOrConnectWithoutAnimalsInput = {
@@ -564,6 +618,8 @@ export type CustomerProfileUpdateWithoutAnimalsInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutCustomerProfileNestedInput
   serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutCustomerNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutCustomerNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutCustomerNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerProfileUncheckedUpdateWithoutAnimalsInput = {
@@ -576,6 +632,8 @@ export type CustomerProfileUncheckedUpdateWithoutAnimalsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutCustomerNestedInput
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutCustomerNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutCustomerNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerProfileCreateWithoutServiceRequestsInput = {
@@ -588,6 +646,8 @@ export type CustomerProfileCreateWithoutServiceRequestsInput = {
   user: Prisma.UserCreateNestedOneWithoutCustomerProfileInput
   animals?: Prisma.AnimalProfileCreateNestedManyWithoutCustomerInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutCustomerInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutCustomerInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerProfileUncheckedCreateWithoutServiceRequestsInput = {
@@ -600,6 +660,8 @@ export type CustomerProfileUncheckedCreateWithoutServiceRequestsInput = {
   updatedAt?: Date | string
   animals?: Prisma.AnimalProfileUncheckedCreateNestedManyWithoutCustomerInput
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutCustomerInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutCustomerInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerProfileCreateOrConnectWithoutServiceRequestsInput = {
@@ -628,6 +690,8 @@ export type CustomerProfileUpdateWithoutServiceRequestsInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutCustomerProfileNestedInput
   animals?: Prisma.AnimalProfileUpdateManyWithoutCustomerNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutCustomerNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutCustomerNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerProfileUncheckedUpdateWithoutServiceRequestsInput = {
@@ -640,6 +704,8 @@ export type CustomerProfileUncheckedUpdateWithoutServiceRequestsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   animals?: Prisma.AnimalProfileUncheckedUpdateManyWithoutCustomerNestedInput
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutCustomerNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutCustomerNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerProfileCreateWithoutBillingRecordsInput = {
@@ -652,6 +718,8 @@ export type CustomerProfileCreateWithoutBillingRecordsInput = {
   user: Prisma.UserCreateNestedOneWithoutCustomerProfileInput
   animals?: Prisma.AnimalProfileCreateNestedManyWithoutCustomerInput
   serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutCustomerInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutCustomerInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerProfileUncheckedCreateWithoutBillingRecordsInput = {
@@ -664,6 +732,8 @@ export type CustomerProfileUncheckedCreateWithoutBillingRecordsInput = {
   updatedAt?: Date | string
   animals?: Prisma.AnimalProfileUncheckedCreateNestedManyWithoutCustomerInput
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutCustomerInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutCustomerInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutCustomerInput
 }
 
 export type CustomerProfileCreateOrConnectWithoutBillingRecordsInput = {
@@ -692,6 +762,8 @@ export type CustomerProfileUpdateWithoutBillingRecordsInput = {
   user?: Prisma.UserUpdateOneRequiredWithoutCustomerProfileNestedInput
   animals?: Prisma.AnimalProfileUpdateManyWithoutCustomerNestedInput
   serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutCustomerNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutCustomerNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutCustomerNestedInput
 }
 
 export type CustomerProfileUncheckedUpdateWithoutBillingRecordsInput = {
@@ -704,6 +776,152 @@ export type CustomerProfileUncheckedUpdateWithoutBillingRecordsInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   animals?: Prisma.AnimalProfileUncheckedUpdateManyWithoutCustomerNestedInput
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutCustomerNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutCustomerNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+}
+
+export type CustomerProfileCreateWithoutReviewsInput = {
+  id?: string
+  displayName: string
+  locale?: string | null
+  addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutCustomerProfileInput
+  animals?: Prisma.AnimalProfileCreateNestedManyWithoutCustomerInput
+  serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutCustomerInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutCustomerInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutCustomerInput
+}
+
+export type CustomerProfileUncheckedCreateWithoutReviewsInput = {
+  id?: string
+  userId: string
+  displayName: string
+  locale?: string | null
+  addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  animals?: Prisma.AnimalProfileUncheckedCreateNestedManyWithoutCustomerInput
+  serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutCustomerInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutCustomerInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutCustomerInput
+}
+
+export type CustomerProfileCreateOrConnectWithoutReviewsInput = {
+  where: Prisma.CustomerProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.CustomerProfileCreateWithoutReviewsInput, Prisma.CustomerProfileUncheckedCreateWithoutReviewsInput>
+}
+
+export type CustomerProfileUpsertWithoutReviewsInput = {
+  update: Prisma.XOR<Prisma.CustomerProfileUpdateWithoutReviewsInput, Prisma.CustomerProfileUncheckedUpdateWithoutReviewsInput>
+  create: Prisma.XOR<Prisma.CustomerProfileCreateWithoutReviewsInput, Prisma.CustomerProfileUncheckedCreateWithoutReviewsInput>
+  where?: Prisma.CustomerProfileWhereInput
+}
+
+export type CustomerProfileUpdateToOneWithWhereWithoutReviewsInput = {
+  where?: Prisma.CustomerProfileWhereInput
+  data: Prisma.XOR<Prisma.CustomerProfileUpdateWithoutReviewsInput, Prisma.CustomerProfileUncheckedUpdateWithoutReviewsInput>
+}
+
+export type CustomerProfileUpdateWithoutReviewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutCustomerProfileNestedInput
+  animals?: Prisma.AnimalProfileUpdateManyWithoutCustomerNestedInput
+  serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutCustomerNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutCustomerNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutCustomerNestedInput
+}
+
+export type CustomerProfileUncheckedUpdateWithoutReviewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  animals?: Prisma.AnimalProfileUncheckedUpdateManyWithoutCustomerNestedInput
+  serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutCustomerNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutCustomerNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+}
+
+export type CustomerProfileCreateWithoutComplaintsInput = {
+  id?: string
+  displayName: string
+  locale?: string | null
+  addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutCustomerProfileInput
+  animals?: Prisma.AnimalProfileCreateNestedManyWithoutCustomerInput
+  serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutCustomerInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutCustomerInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutCustomerInput
+}
+
+export type CustomerProfileUncheckedCreateWithoutComplaintsInput = {
+  id?: string
+  userId: string
+  displayName: string
+  locale?: string | null
+  addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  animals?: Prisma.AnimalProfileUncheckedCreateNestedManyWithoutCustomerInput
+  serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutCustomerInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutCustomerInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutCustomerInput
+}
+
+export type CustomerProfileCreateOrConnectWithoutComplaintsInput = {
+  where: Prisma.CustomerProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.CustomerProfileCreateWithoutComplaintsInput, Prisma.CustomerProfileUncheckedCreateWithoutComplaintsInput>
+}
+
+export type CustomerProfileUpsertWithoutComplaintsInput = {
+  update: Prisma.XOR<Prisma.CustomerProfileUpdateWithoutComplaintsInput, Prisma.CustomerProfileUncheckedUpdateWithoutComplaintsInput>
+  create: Prisma.XOR<Prisma.CustomerProfileCreateWithoutComplaintsInput, Prisma.CustomerProfileUncheckedCreateWithoutComplaintsInput>
+  where?: Prisma.CustomerProfileWhereInput
+}
+
+export type CustomerProfileUpdateToOneWithWhereWithoutComplaintsInput = {
+  where?: Prisma.CustomerProfileWhereInput
+  data: Prisma.XOR<Prisma.CustomerProfileUpdateWithoutComplaintsInput, Prisma.CustomerProfileUncheckedUpdateWithoutComplaintsInput>
+}
+
+export type CustomerProfileUpdateWithoutComplaintsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutCustomerProfileNestedInput
+  animals?: Prisma.AnimalProfileUpdateManyWithoutCustomerNestedInput
+  serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutCustomerNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutCustomerNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutCustomerNestedInput
+}
+
+export type CustomerProfileUncheckedUpdateWithoutComplaintsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.StringFieldUpdateOperationsInput | string
+  locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  animals?: Prisma.AnimalProfileUncheckedUpdateManyWithoutCustomerNestedInput
+  serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutCustomerNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutCustomerNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutCustomerNestedInput
 }
 
 
@@ -715,12 +933,16 @@ export type CustomerProfileCountOutputType = {
   animals: number
   serviceRequests: number
   billingRecords: number
+  reviews: number
+  complaints: number
 }
 
 export type CustomerProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   animals?: boolean | CustomerProfileCountOutputTypeCountAnimalsArgs
   serviceRequests?: boolean | CustomerProfileCountOutputTypeCountServiceRequestsArgs
   billingRecords?: boolean | CustomerProfileCountOutputTypeCountBillingRecordsArgs
+  reviews?: boolean | CustomerProfileCountOutputTypeCountReviewsArgs
+  complaints?: boolean | CustomerProfileCountOutputTypeCountComplaintsArgs
 }
 
 /**
@@ -754,6 +976,20 @@ export type CustomerProfileCountOutputTypeCountBillingRecordsArgs<ExtArgs extend
   where?: Prisma.BillingRecordWhereInput
 }
 
+/**
+ * CustomerProfileCountOutputType without action
+ */
+export type CustomerProfileCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReviewWhereInput
+}
+
+/**
+ * CustomerProfileCountOutputType without action
+ */
+export type CustomerProfileCountOutputTypeCountComplaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComplaintWhereInput
+}
+
 
 export type CustomerProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -767,6 +1003,8 @@ export type CustomerProfileSelect<ExtArgs extends runtime.Types.Extensions.Inter
   animals?: boolean | Prisma.CustomerProfile$animalsArgs<ExtArgs>
   serviceRequests?: boolean | Prisma.CustomerProfile$serviceRequestsArgs<ExtArgs>
   billingRecords?: boolean | Prisma.CustomerProfile$billingRecordsArgs<ExtArgs>
+  reviews?: boolean | Prisma.CustomerProfile$reviewsArgs<ExtArgs>
+  complaints?: boolean | Prisma.CustomerProfile$complaintsArgs<ExtArgs>
   _count?: boolean | Prisma.CustomerProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["customerProfile"]>
 
@@ -808,6 +1046,8 @@ export type CustomerProfileInclude<ExtArgs extends runtime.Types.Extensions.Inte
   animals?: boolean | Prisma.CustomerProfile$animalsArgs<ExtArgs>
   serviceRequests?: boolean | Prisma.CustomerProfile$serviceRequestsArgs<ExtArgs>
   billingRecords?: boolean | Prisma.CustomerProfile$billingRecordsArgs<ExtArgs>
+  reviews?: boolean | Prisma.CustomerProfile$reviewsArgs<ExtArgs>
+  complaints?: boolean | Prisma.CustomerProfile$complaintsArgs<ExtArgs>
   _count?: boolean | Prisma.CustomerProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type CustomerProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -824,6 +1064,8 @@ export type $CustomerProfilePayload<ExtArgs extends runtime.Types.Extensions.Int
     animals: Prisma.$AnimalProfilePayload<ExtArgs>[]
     serviceRequests: Prisma.$ServiceRequestPayload<ExtArgs>[]
     billingRecords: Prisma.$BillingRecordPayload<ExtArgs>[]
+    reviews: Prisma.$ReviewPayload<ExtArgs>[]
+    complaints: Prisma.$ComplaintPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1231,6 +1473,8 @@ export interface Prisma__CustomerProfileClient<T, Null = never, ExtArgs extends 
   animals<T extends Prisma.CustomerProfile$animalsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CustomerProfile$animalsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AnimalProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   serviceRequests<T extends Prisma.CustomerProfile$serviceRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CustomerProfile$serviceRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServiceRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   billingRecords<T extends Prisma.CustomerProfile$billingRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CustomerProfile$billingRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BillingRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reviews<T extends Prisma.CustomerProfile$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CustomerProfile$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  complaints<T extends Prisma.CustomerProfile$complaintsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CustomerProfile$complaintsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1737,6 +1981,54 @@ export type CustomerProfile$billingRecordsArgs<ExtArgs extends runtime.Types.Ext
   take?: number
   skip?: number
   distinct?: Prisma.BillingRecordScalarFieldEnum | Prisma.BillingRecordScalarFieldEnum[]
+}
+
+/**
+ * CustomerProfile.reviews
+ */
+export type CustomerProfile$reviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Review
+   */
+  select?: Prisma.ReviewSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Review
+   */
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReviewInclude<ExtArgs> | null
+  where?: Prisma.ReviewWhereInput
+  orderBy?: Prisma.ReviewOrderByWithRelationInput | Prisma.ReviewOrderByWithRelationInput[]
+  cursor?: Prisma.ReviewWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReviewScalarFieldEnum | Prisma.ReviewScalarFieldEnum[]
+}
+
+/**
+ * CustomerProfile.complaints
+ */
+export type CustomerProfile$complaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Complaint
+   */
+  select?: Prisma.ComplaintSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Complaint
+   */
+  omit?: Prisma.ComplaintOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComplaintInclude<ExtArgs> | null
+  where?: Prisma.ComplaintWhereInput
+  orderBy?: Prisma.ComplaintOrderByWithRelationInput | Prisma.ComplaintOrderByWithRelationInput[]
+  cursor?: Prisma.ComplaintWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComplaintScalarFieldEnum | Prisma.ComplaintScalarFieldEnum[]
 }
 
 /**

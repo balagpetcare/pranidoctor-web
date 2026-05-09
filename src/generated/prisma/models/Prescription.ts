@@ -28,6 +28,7 @@ export type PrescriptionMinAggregateOutputType = {
   id: string | null
   serviceRequestId: string | null
   doctorId: string | null
+  aiTechnicianId: string | null
   animalId: string | null
   status: $Enums.PrescriptionStatus | null
   instructions: string | null
@@ -40,6 +41,7 @@ export type PrescriptionMaxAggregateOutputType = {
   id: string | null
   serviceRequestId: string | null
   doctorId: string | null
+  aiTechnicianId: string | null
   animalId: string | null
   status: $Enums.PrescriptionStatus | null
   instructions: string | null
@@ -52,6 +54,7 @@ export type PrescriptionCountAggregateOutputType = {
   id: number
   serviceRequestId: number
   doctorId: number
+  aiTechnicianId: number
   animalId: number
   status: number
   instructions: number
@@ -66,6 +69,7 @@ export type PrescriptionMinAggregateInputType = {
   id?: true
   serviceRequestId?: true
   doctorId?: true
+  aiTechnicianId?: true
   animalId?: true
   status?: true
   instructions?: true
@@ -78,6 +82,7 @@ export type PrescriptionMaxAggregateInputType = {
   id?: true
   serviceRequestId?: true
   doctorId?: true
+  aiTechnicianId?: true
   animalId?: true
   status?: true
   instructions?: true
@@ -90,6 +95,7 @@ export type PrescriptionCountAggregateInputType = {
   id?: true
   serviceRequestId?: true
   doctorId?: true
+  aiTechnicianId?: true
   animalId?: true
   status?: true
   instructions?: true
@@ -174,7 +180,8 @@ export type PrescriptionGroupByArgs<ExtArgs extends runtime.Types.Extensions.Int
 export type PrescriptionGroupByOutputType = {
   id: string
   serviceRequestId: string
-  doctorId: string
+  doctorId: string | null
+  aiTechnicianId: string | null
   animalId: string
   status: $Enums.PrescriptionStatus
   instructions: string | null
@@ -207,7 +214,8 @@ export type PrescriptionWhereInput = {
   NOT?: Prisma.PrescriptionWhereInput | Prisma.PrescriptionWhereInput[]
   id?: Prisma.StringFilter<"Prescription"> | string
   serviceRequestId?: Prisma.StringFilter<"Prescription"> | string
-  doctorId?: Prisma.StringFilter<"Prescription"> | string
+  doctorId?: Prisma.StringNullableFilter<"Prescription"> | string | null
+  aiTechnicianId?: Prisma.StringNullableFilter<"Prescription"> | string | null
   animalId?: Prisma.StringFilter<"Prescription"> | string
   status?: Prisma.EnumPrescriptionStatusFilter<"Prescription"> | $Enums.PrescriptionStatus
   instructions?: Prisma.StringNullableFilter<"Prescription"> | string | null
@@ -215,14 +223,17 @@ export type PrescriptionWhereInput = {
   createdAt?: Prisma.DateTimeFilter<"Prescription"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Prescription"> | Date | string
   serviceRequest?: Prisma.XOR<Prisma.ServiceRequestScalarRelationFilter, Prisma.ServiceRequestWhereInput>
-  doctor?: Prisma.XOR<Prisma.DoctorProfileScalarRelationFilter, Prisma.DoctorProfileWhereInput>
+  doctor?: Prisma.XOR<Prisma.DoctorProfileNullableScalarRelationFilter, Prisma.DoctorProfileWhereInput> | null
+  aiTechnician?: Prisma.XOR<Prisma.AiTechnicianProfileNullableScalarRelationFilter, Prisma.AiTechnicianProfileWhereInput> | null
   animal?: Prisma.XOR<Prisma.AnimalProfileScalarRelationFilter, Prisma.AnimalProfileWhereInput>
+  items?: Prisma.PrescriptionItemListRelationFilter
 }
 
 export type PrescriptionOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   serviceRequestId?: Prisma.SortOrder
-  doctorId?: Prisma.SortOrder
+  doctorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  aiTechnicianId?: Prisma.SortOrderInput | Prisma.SortOrder
   animalId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   instructions?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -231,7 +242,9 @@ export type PrescriptionOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   serviceRequest?: Prisma.ServiceRequestOrderByWithRelationInput
   doctor?: Prisma.DoctorProfileOrderByWithRelationInput
+  aiTechnician?: Prisma.AiTechnicianProfileOrderByWithRelationInput
   animal?: Prisma.AnimalProfileOrderByWithRelationInput
+  items?: Prisma.PrescriptionItemOrderByRelationAggregateInput
 }
 
 export type PrescriptionWhereUniqueInput = Prisma.AtLeast<{
@@ -240,7 +253,8 @@ export type PrescriptionWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.PrescriptionWhereInput[]
   NOT?: Prisma.PrescriptionWhereInput | Prisma.PrescriptionWhereInput[]
   serviceRequestId?: Prisma.StringFilter<"Prescription"> | string
-  doctorId?: Prisma.StringFilter<"Prescription"> | string
+  doctorId?: Prisma.StringNullableFilter<"Prescription"> | string | null
+  aiTechnicianId?: Prisma.StringNullableFilter<"Prescription"> | string | null
   animalId?: Prisma.StringFilter<"Prescription"> | string
   status?: Prisma.EnumPrescriptionStatusFilter<"Prescription"> | $Enums.PrescriptionStatus
   instructions?: Prisma.StringNullableFilter<"Prescription"> | string | null
@@ -248,14 +262,17 @@ export type PrescriptionWhereUniqueInput = Prisma.AtLeast<{
   createdAt?: Prisma.DateTimeFilter<"Prescription"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Prescription"> | Date | string
   serviceRequest?: Prisma.XOR<Prisma.ServiceRequestScalarRelationFilter, Prisma.ServiceRequestWhereInput>
-  doctor?: Prisma.XOR<Prisma.DoctorProfileScalarRelationFilter, Prisma.DoctorProfileWhereInput>
+  doctor?: Prisma.XOR<Prisma.DoctorProfileNullableScalarRelationFilter, Prisma.DoctorProfileWhereInput> | null
+  aiTechnician?: Prisma.XOR<Prisma.AiTechnicianProfileNullableScalarRelationFilter, Prisma.AiTechnicianProfileWhereInput> | null
   animal?: Prisma.XOR<Prisma.AnimalProfileScalarRelationFilter, Prisma.AnimalProfileWhereInput>
+  items?: Prisma.PrescriptionItemListRelationFilter
 }, "id">
 
 export type PrescriptionOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   serviceRequestId?: Prisma.SortOrder
-  doctorId?: Prisma.SortOrder
+  doctorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  aiTechnicianId?: Prisma.SortOrderInput | Prisma.SortOrder
   animalId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   instructions?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -273,7 +290,8 @@ export type PrescriptionScalarWhereWithAggregatesInput = {
   NOT?: Prisma.PrescriptionScalarWhereWithAggregatesInput | Prisma.PrescriptionScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Prescription"> | string
   serviceRequestId?: Prisma.StringWithAggregatesFilter<"Prescription"> | string
-  doctorId?: Prisma.StringWithAggregatesFilter<"Prescription"> | string
+  doctorId?: Prisma.StringNullableWithAggregatesFilter<"Prescription"> | string | null
+  aiTechnicianId?: Prisma.StringNullableWithAggregatesFilter<"Prescription"> | string | null
   animalId?: Prisma.StringWithAggregatesFilter<"Prescription"> | string
   status?: Prisma.EnumPrescriptionStatusWithAggregatesFilter<"Prescription"> | $Enums.PrescriptionStatus
   instructions?: Prisma.StringNullableWithAggregatesFilter<"Prescription"> | string | null
@@ -290,20 +308,24 @@ export type PrescriptionCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequest: Prisma.ServiceRequestCreateNestedOneWithoutPrescriptionsInput
-  doctor: Prisma.DoctorProfileCreateNestedOneWithoutPrescriptionsInput
+  doctor?: Prisma.DoctorProfileCreateNestedOneWithoutPrescriptionsInput
+  aiTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutPrescriptionsInput
   animal: Prisma.AnimalProfileCreateNestedOneWithoutPrescriptionsInput
+  items?: Prisma.PrescriptionItemCreateNestedManyWithoutPrescriptionInput
 }
 
 export type PrescriptionUncheckedCreateInput = {
   id?: string
   serviceRequestId: string
-  doctorId: string
+  doctorId?: string | null
+  aiTechnicianId?: string | null
   animalId: string
   status?: $Enums.PrescriptionStatus
   instructions?: string | null
   validUntil?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  items?: Prisma.PrescriptionItemUncheckedCreateNestedManyWithoutPrescriptionInput
 }
 
 export type PrescriptionUpdateInput = {
@@ -314,26 +336,31 @@ export type PrescriptionUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequest?: Prisma.ServiceRequestUpdateOneRequiredWithoutPrescriptionsNestedInput
-  doctor?: Prisma.DoctorProfileUpdateOneRequiredWithoutPrescriptionsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneWithoutPrescriptionsNestedInput
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutPrescriptionsNestedInput
   animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutPrescriptionsNestedInput
+  items?: Prisma.PrescriptionItemUpdateManyWithoutPrescriptionNestedInput
 }
 
 export type PrescriptionUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
-  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
   instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  items?: Prisma.PrescriptionItemUncheckedUpdateManyWithoutPrescriptionNestedInput
 }
 
 export type PrescriptionCreateManyInput = {
   id?: string
   serviceRequestId: string
-  doctorId: string
+  doctorId?: string | null
+  aiTechnicianId?: string | null
   animalId: string
   status?: $Enums.PrescriptionStatus
   instructions?: string | null
@@ -354,7 +381,8 @@ export type PrescriptionUpdateManyMutationInput = {
 export type PrescriptionUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
-  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
   instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -377,6 +405,7 @@ export type PrescriptionCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   serviceRequestId?: Prisma.SortOrder
   doctorId?: Prisma.SortOrder
+  aiTechnicianId?: Prisma.SortOrder
   animalId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   instructions?: Prisma.SortOrder
@@ -389,6 +418,7 @@ export type PrescriptionMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   serviceRequestId?: Prisma.SortOrder
   doctorId?: Prisma.SortOrder
+  aiTechnicianId?: Prisma.SortOrder
   animalId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   instructions?: Prisma.SortOrder
@@ -401,12 +431,18 @@ export type PrescriptionMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   serviceRequestId?: Prisma.SortOrder
   doctorId?: Prisma.SortOrder
+  aiTechnicianId?: Prisma.SortOrder
   animalId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   instructions?: Prisma.SortOrder
   validUntil?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type PrescriptionScalarRelationFilter = {
+  is?: Prisma.PrescriptionWhereInput
+  isNot?: Prisma.PrescriptionWhereInput
 }
 
 export type PrescriptionCreateNestedManyWithoutDoctorInput = {
@@ -448,6 +484,48 @@ export type PrescriptionUncheckedUpdateManyWithoutDoctorNestedInput = {
   connect?: Prisma.PrescriptionWhereUniqueInput | Prisma.PrescriptionWhereUniqueInput[]
   update?: Prisma.PrescriptionUpdateWithWhereUniqueWithoutDoctorInput | Prisma.PrescriptionUpdateWithWhereUniqueWithoutDoctorInput[]
   updateMany?: Prisma.PrescriptionUpdateManyWithWhereWithoutDoctorInput | Prisma.PrescriptionUpdateManyWithWhereWithoutDoctorInput[]
+  deleteMany?: Prisma.PrescriptionScalarWhereInput | Prisma.PrescriptionScalarWhereInput[]
+}
+
+export type PrescriptionCreateNestedManyWithoutAiTechnicianInput = {
+  create?: Prisma.XOR<Prisma.PrescriptionCreateWithoutAiTechnicianInput, Prisma.PrescriptionUncheckedCreateWithoutAiTechnicianInput> | Prisma.PrescriptionCreateWithoutAiTechnicianInput[] | Prisma.PrescriptionUncheckedCreateWithoutAiTechnicianInput[]
+  connectOrCreate?: Prisma.PrescriptionCreateOrConnectWithoutAiTechnicianInput | Prisma.PrescriptionCreateOrConnectWithoutAiTechnicianInput[]
+  createMany?: Prisma.PrescriptionCreateManyAiTechnicianInputEnvelope
+  connect?: Prisma.PrescriptionWhereUniqueInput | Prisma.PrescriptionWhereUniqueInput[]
+}
+
+export type PrescriptionUncheckedCreateNestedManyWithoutAiTechnicianInput = {
+  create?: Prisma.XOR<Prisma.PrescriptionCreateWithoutAiTechnicianInput, Prisma.PrescriptionUncheckedCreateWithoutAiTechnicianInput> | Prisma.PrescriptionCreateWithoutAiTechnicianInput[] | Prisma.PrescriptionUncheckedCreateWithoutAiTechnicianInput[]
+  connectOrCreate?: Prisma.PrescriptionCreateOrConnectWithoutAiTechnicianInput | Prisma.PrescriptionCreateOrConnectWithoutAiTechnicianInput[]
+  createMany?: Prisma.PrescriptionCreateManyAiTechnicianInputEnvelope
+  connect?: Prisma.PrescriptionWhereUniqueInput | Prisma.PrescriptionWhereUniqueInput[]
+}
+
+export type PrescriptionUpdateManyWithoutAiTechnicianNestedInput = {
+  create?: Prisma.XOR<Prisma.PrescriptionCreateWithoutAiTechnicianInput, Prisma.PrescriptionUncheckedCreateWithoutAiTechnicianInput> | Prisma.PrescriptionCreateWithoutAiTechnicianInput[] | Prisma.PrescriptionUncheckedCreateWithoutAiTechnicianInput[]
+  connectOrCreate?: Prisma.PrescriptionCreateOrConnectWithoutAiTechnicianInput | Prisma.PrescriptionCreateOrConnectWithoutAiTechnicianInput[]
+  upsert?: Prisma.PrescriptionUpsertWithWhereUniqueWithoutAiTechnicianInput | Prisma.PrescriptionUpsertWithWhereUniqueWithoutAiTechnicianInput[]
+  createMany?: Prisma.PrescriptionCreateManyAiTechnicianInputEnvelope
+  set?: Prisma.PrescriptionWhereUniqueInput | Prisma.PrescriptionWhereUniqueInput[]
+  disconnect?: Prisma.PrescriptionWhereUniqueInput | Prisma.PrescriptionWhereUniqueInput[]
+  delete?: Prisma.PrescriptionWhereUniqueInput | Prisma.PrescriptionWhereUniqueInput[]
+  connect?: Prisma.PrescriptionWhereUniqueInput | Prisma.PrescriptionWhereUniqueInput[]
+  update?: Prisma.PrescriptionUpdateWithWhereUniqueWithoutAiTechnicianInput | Prisma.PrescriptionUpdateWithWhereUniqueWithoutAiTechnicianInput[]
+  updateMany?: Prisma.PrescriptionUpdateManyWithWhereWithoutAiTechnicianInput | Prisma.PrescriptionUpdateManyWithWhereWithoutAiTechnicianInput[]
+  deleteMany?: Prisma.PrescriptionScalarWhereInput | Prisma.PrescriptionScalarWhereInput[]
+}
+
+export type PrescriptionUncheckedUpdateManyWithoutAiTechnicianNestedInput = {
+  create?: Prisma.XOR<Prisma.PrescriptionCreateWithoutAiTechnicianInput, Prisma.PrescriptionUncheckedCreateWithoutAiTechnicianInput> | Prisma.PrescriptionCreateWithoutAiTechnicianInput[] | Prisma.PrescriptionUncheckedCreateWithoutAiTechnicianInput[]
+  connectOrCreate?: Prisma.PrescriptionCreateOrConnectWithoutAiTechnicianInput | Prisma.PrescriptionCreateOrConnectWithoutAiTechnicianInput[]
+  upsert?: Prisma.PrescriptionUpsertWithWhereUniqueWithoutAiTechnicianInput | Prisma.PrescriptionUpsertWithWhereUniqueWithoutAiTechnicianInput[]
+  createMany?: Prisma.PrescriptionCreateManyAiTechnicianInputEnvelope
+  set?: Prisma.PrescriptionWhereUniqueInput | Prisma.PrescriptionWhereUniqueInput[]
+  disconnect?: Prisma.PrescriptionWhereUniqueInput | Prisma.PrescriptionWhereUniqueInput[]
+  delete?: Prisma.PrescriptionWhereUniqueInput | Prisma.PrescriptionWhereUniqueInput[]
+  connect?: Prisma.PrescriptionWhereUniqueInput | Prisma.PrescriptionWhereUniqueInput[]
+  update?: Prisma.PrescriptionUpdateWithWhereUniqueWithoutAiTechnicianInput | Prisma.PrescriptionUpdateWithWhereUniqueWithoutAiTechnicianInput[]
+  updateMany?: Prisma.PrescriptionUpdateManyWithWhereWithoutAiTechnicianInput | Prisma.PrescriptionUpdateManyWithWhereWithoutAiTechnicianInput[]
   deleteMany?: Prisma.PrescriptionScalarWhereInput | Prisma.PrescriptionScalarWhereInput[]
 }
 
@@ -539,6 +617,20 @@ export type EnumPrescriptionStatusFieldUpdateOperationsInput = {
   set?: $Enums.PrescriptionStatus
 }
 
+export type PrescriptionCreateNestedOneWithoutItemsInput = {
+  create?: Prisma.XOR<Prisma.PrescriptionCreateWithoutItemsInput, Prisma.PrescriptionUncheckedCreateWithoutItemsInput>
+  connectOrCreate?: Prisma.PrescriptionCreateOrConnectWithoutItemsInput
+  connect?: Prisma.PrescriptionWhereUniqueInput
+}
+
+export type PrescriptionUpdateOneRequiredWithoutItemsNestedInput = {
+  create?: Prisma.XOR<Prisma.PrescriptionCreateWithoutItemsInput, Prisma.PrescriptionUncheckedCreateWithoutItemsInput>
+  connectOrCreate?: Prisma.PrescriptionCreateOrConnectWithoutItemsInput
+  upsert?: Prisma.PrescriptionUpsertWithoutItemsInput
+  connect?: Prisma.PrescriptionWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.PrescriptionUpdateToOneWithWhereWithoutItemsInput, Prisma.PrescriptionUpdateWithoutItemsInput>, Prisma.PrescriptionUncheckedUpdateWithoutItemsInput>
+}
+
 export type PrescriptionCreateWithoutDoctorInput = {
   id?: string
   status?: $Enums.PrescriptionStatus
@@ -547,18 +639,22 @@ export type PrescriptionCreateWithoutDoctorInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequest: Prisma.ServiceRequestCreateNestedOneWithoutPrescriptionsInput
+  aiTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutPrescriptionsInput
   animal: Prisma.AnimalProfileCreateNestedOneWithoutPrescriptionsInput
+  items?: Prisma.PrescriptionItemCreateNestedManyWithoutPrescriptionInput
 }
 
 export type PrescriptionUncheckedCreateWithoutDoctorInput = {
   id?: string
   serviceRequestId: string
+  aiTechnicianId?: string | null
   animalId: string
   status?: $Enums.PrescriptionStatus
   instructions?: string | null
   validUntil?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  items?: Prisma.PrescriptionItemUncheckedCreateNestedManyWithoutPrescriptionInput
 }
 
 export type PrescriptionCreateOrConnectWithoutDoctorInput = {
@@ -593,13 +689,66 @@ export type PrescriptionScalarWhereInput = {
   NOT?: Prisma.PrescriptionScalarWhereInput | Prisma.PrescriptionScalarWhereInput[]
   id?: Prisma.StringFilter<"Prescription"> | string
   serviceRequestId?: Prisma.StringFilter<"Prescription"> | string
-  doctorId?: Prisma.StringFilter<"Prescription"> | string
+  doctorId?: Prisma.StringNullableFilter<"Prescription"> | string | null
+  aiTechnicianId?: Prisma.StringNullableFilter<"Prescription"> | string | null
   animalId?: Prisma.StringFilter<"Prescription"> | string
   status?: Prisma.EnumPrescriptionStatusFilter<"Prescription"> | $Enums.PrescriptionStatus
   instructions?: Prisma.StringNullableFilter<"Prescription"> | string | null
   validUntil?: Prisma.DateTimeNullableFilter<"Prescription"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"Prescription"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Prescription"> | Date | string
+}
+
+export type PrescriptionCreateWithoutAiTechnicianInput = {
+  id?: string
+  status?: $Enums.PrescriptionStatus
+  instructions?: string | null
+  validUntil?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  serviceRequest: Prisma.ServiceRequestCreateNestedOneWithoutPrescriptionsInput
+  doctor?: Prisma.DoctorProfileCreateNestedOneWithoutPrescriptionsInput
+  animal: Prisma.AnimalProfileCreateNestedOneWithoutPrescriptionsInput
+  items?: Prisma.PrescriptionItemCreateNestedManyWithoutPrescriptionInput
+}
+
+export type PrescriptionUncheckedCreateWithoutAiTechnicianInput = {
+  id?: string
+  serviceRequestId: string
+  doctorId?: string | null
+  animalId: string
+  status?: $Enums.PrescriptionStatus
+  instructions?: string | null
+  validUntil?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  items?: Prisma.PrescriptionItemUncheckedCreateNestedManyWithoutPrescriptionInput
+}
+
+export type PrescriptionCreateOrConnectWithoutAiTechnicianInput = {
+  where: Prisma.PrescriptionWhereUniqueInput
+  create: Prisma.XOR<Prisma.PrescriptionCreateWithoutAiTechnicianInput, Prisma.PrescriptionUncheckedCreateWithoutAiTechnicianInput>
+}
+
+export type PrescriptionCreateManyAiTechnicianInputEnvelope = {
+  data: Prisma.PrescriptionCreateManyAiTechnicianInput | Prisma.PrescriptionCreateManyAiTechnicianInput[]
+  skipDuplicates?: boolean
+}
+
+export type PrescriptionUpsertWithWhereUniqueWithoutAiTechnicianInput = {
+  where: Prisma.PrescriptionWhereUniqueInput
+  update: Prisma.XOR<Prisma.PrescriptionUpdateWithoutAiTechnicianInput, Prisma.PrescriptionUncheckedUpdateWithoutAiTechnicianInput>
+  create: Prisma.XOR<Prisma.PrescriptionCreateWithoutAiTechnicianInput, Prisma.PrescriptionUncheckedCreateWithoutAiTechnicianInput>
+}
+
+export type PrescriptionUpdateWithWhereUniqueWithoutAiTechnicianInput = {
+  where: Prisma.PrescriptionWhereUniqueInput
+  data: Prisma.XOR<Prisma.PrescriptionUpdateWithoutAiTechnicianInput, Prisma.PrescriptionUncheckedUpdateWithoutAiTechnicianInput>
+}
+
+export type PrescriptionUpdateManyWithWhereWithoutAiTechnicianInput = {
+  where: Prisma.PrescriptionScalarWhereInput
+  data: Prisma.XOR<Prisma.PrescriptionUpdateManyMutationInput, Prisma.PrescriptionUncheckedUpdateManyWithoutAiTechnicianInput>
 }
 
 export type PrescriptionCreateWithoutAnimalInput = {
@@ -610,18 +759,22 @@ export type PrescriptionCreateWithoutAnimalInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequest: Prisma.ServiceRequestCreateNestedOneWithoutPrescriptionsInput
-  doctor: Prisma.DoctorProfileCreateNestedOneWithoutPrescriptionsInput
+  doctor?: Prisma.DoctorProfileCreateNestedOneWithoutPrescriptionsInput
+  aiTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutPrescriptionsInput
+  items?: Prisma.PrescriptionItemCreateNestedManyWithoutPrescriptionInput
 }
 
 export type PrescriptionUncheckedCreateWithoutAnimalInput = {
   id?: string
   serviceRequestId: string
-  doctorId: string
+  doctorId?: string | null
+  aiTechnicianId?: string | null
   status?: $Enums.PrescriptionStatus
   instructions?: string | null
   validUntil?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  items?: Prisma.PrescriptionItemUncheckedCreateNestedManyWithoutPrescriptionInput
 }
 
 export type PrescriptionCreateOrConnectWithoutAnimalInput = {
@@ -657,19 +810,23 @@ export type PrescriptionCreateWithoutServiceRequestInput = {
   validUntil?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
-  doctor: Prisma.DoctorProfileCreateNestedOneWithoutPrescriptionsInput
+  doctor?: Prisma.DoctorProfileCreateNestedOneWithoutPrescriptionsInput
+  aiTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutPrescriptionsInput
   animal: Prisma.AnimalProfileCreateNestedOneWithoutPrescriptionsInput
+  items?: Prisma.PrescriptionItemCreateNestedManyWithoutPrescriptionInput
 }
 
 export type PrescriptionUncheckedCreateWithoutServiceRequestInput = {
   id?: string
-  doctorId: string
+  doctorId?: string | null
+  aiTechnicianId?: string | null
   animalId: string
   status?: $Enums.PrescriptionStatus
   instructions?: string | null
   validUntil?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  items?: Prisma.PrescriptionItemUncheckedCreateNestedManyWithoutPrescriptionInput
 }
 
 export type PrescriptionCreateOrConnectWithoutServiceRequestInput = {
@@ -698,9 +855,78 @@ export type PrescriptionUpdateManyWithWhereWithoutServiceRequestInput = {
   data: Prisma.XOR<Prisma.PrescriptionUpdateManyMutationInput, Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestInput>
 }
 
+export type PrescriptionCreateWithoutItemsInput = {
+  id?: string
+  status?: $Enums.PrescriptionStatus
+  instructions?: string | null
+  validUntil?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  serviceRequest: Prisma.ServiceRequestCreateNestedOneWithoutPrescriptionsInput
+  doctor?: Prisma.DoctorProfileCreateNestedOneWithoutPrescriptionsInput
+  aiTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutPrescriptionsInput
+  animal: Prisma.AnimalProfileCreateNestedOneWithoutPrescriptionsInput
+}
+
+export type PrescriptionUncheckedCreateWithoutItemsInput = {
+  id?: string
+  serviceRequestId: string
+  doctorId?: string | null
+  aiTechnicianId?: string | null
+  animalId: string
+  status?: $Enums.PrescriptionStatus
+  instructions?: string | null
+  validUntil?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type PrescriptionCreateOrConnectWithoutItemsInput = {
+  where: Prisma.PrescriptionWhereUniqueInput
+  create: Prisma.XOR<Prisma.PrescriptionCreateWithoutItemsInput, Prisma.PrescriptionUncheckedCreateWithoutItemsInput>
+}
+
+export type PrescriptionUpsertWithoutItemsInput = {
+  update: Prisma.XOR<Prisma.PrescriptionUpdateWithoutItemsInput, Prisma.PrescriptionUncheckedUpdateWithoutItemsInput>
+  create: Prisma.XOR<Prisma.PrescriptionCreateWithoutItemsInput, Prisma.PrescriptionUncheckedCreateWithoutItemsInput>
+  where?: Prisma.PrescriptionWhereInput
+}
+
+export type PrescriptionUpdateToOneWithWhereWithoutItemsInput = {
+  where?: Prisma.PrescriptionWhereInput
+  data: Prisma.XOR<Prisma.PrescriptionUpdateWithoutItemsInput, Prisma.PrescriptionUncheckedUpdateWithoutItemsInput>
+}
+
+export type PrescriptionUpdateWithoutItemsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
+  instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  validUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  serviceRequest?: Prisma.ServiceRequestUpdateOneRequiredWithoutPrescriptionsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneWithoutPrescriptionsNestedInput
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutPrescriptionsNestedInput
+  animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutPrescriptionsNestedInput
+}
+
+export type PrescriptionUncheckedUpdateWithoutItemsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  animalId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
+  instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  validUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 export type PrescriptionCreateManyDoctorInput = {
   id?: string
   serviceRequestId: string
+  aiTechnicianId?: string | null
   animalId: string
   status?: $Enums.PrescriptionStatus
   instructions?: string | null
@@ -717,12 +943,28 @@ export type PrescriptionUpdateWithoutDoctorInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequest?: Prisma.ServiceRequestUpdateOneRequiredWithoutPrescriptionsNestedInput
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutPrescriptionsNestedInput
   animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutPrescriptionsNestedInput
+  items?: Prisma.PrescriptionItemUpdateManyWithoutPrescriptionNestedInput
 }
 
 export type PrescriptionUncheckedUpdateWithoutDoctorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  animalId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
+  instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  validUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  items?: Prisma.PrescriptionItemUncheckedUpdateManyWithoutPrescriptionNestedInput
+}
+
+export type PrescriptionUncheckedUpdateManyWithoutDoctorInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
   instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -731,9 +973,48 @@ export type PrescriptionUncheckedUpdateWithoutDoctorInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
-export type PrescriptionUncheckedUpdateManyWithoutDoctorInput = {
+export type PrescriptionCreateManyAiTechnicianInput = {
+  id?: string
+  serviceRequestId: string
+  doctorId?: string | null
+  animalId: string
+  status?: $Enums.PrescriptionStatus
+  instructions?: string | null
+  validUntil?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type PrescriptionUpdateWithoutAiTechnicianInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
+  instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  validUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  serviceRequest?: Prisma.ServiceRequestUpdateOneRequiredWithoutPrescriptionsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneWithoutPrescriptionsNestedInput
+  animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutPrescriptionsNestedInput
+  items?: Prisma.PrescriptionItemUpdateManyWithoutPrescriptionNestedInput
+}
+
+export type PrescriptionUncheckedUpdateWithoutAiTechnicianInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  animalId?: Prisma.StringFieldUpdateOperationsInput | string
+  status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
+  instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  validUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  items?: Prisma.PrescriptionItemUncheckedUpdateManyWithoutPrescriptionNestedInput
+}
+
+export type PrescriptionUncheckedUpdateManyWithoutAiTechnicianInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
   instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -745,7 +1026,8 @@ export type PrescriptionUncheckedUpdateManyWithoutDoctorInput = {
 export type PrescriptionCreateManyAnimalInput = {
   id?: string
   serviceRequestId: string
-  doctorId: string
+  doctorId?: string | null
+  aiTechnicianId?: string | null
   status?: $Enums.PrescriptionStatus
   instructions?: string | null
   validUntil?: Date | string | null
@@ -761,24 +1043,29 @@ export type PrescriptionUpdateWithoutAnimalInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequest?: Prisma.ServiceRequestUpdateOneRequiredWithoutPrescriptionsNestedInput
-  doctor?: Prisma.DoctorProfileUpdateOneRequiredWithoutPrescriptionsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneWithoutPrescriptionsNestedInput
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutPrescriptionsNestedInput
+  items?: Prisma.PrescriptionItemUpdateManyWithoutPrescriptionNestedInput
 }
 
 export type PrescriptionUncheckedUpdateWithoutAnimalInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
-  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
   instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  items?: Prisma.PrescriptionItemUncheckedUpdateManyWithoutPrescriptionNestedInput
 }
 
 export type PrescriptionUncheckedUpdateManyWithoutAnimalInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   serviceRequestId?: Prisma.StringFieldUpdateOperationsInput | string
-  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
   instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -788,7 +1075,8 @@ export type PrescriptionUncheckedUpdateManyWithoutAnimalInput = {
 
 export type PrescriptionCreateManyServiceRequestInput = {
   id?: string
-  doctorId: string
+  doctorId?: string | null
+  aiTechnicianId?: string | null
   animalId: string
   status?: $Enums.PrescriptionStatus
   instructions?: string | null
@@ -804,24 +1092,29 @@ export type PrescriptionUpdateWithoutServiceRequestInput = {
   validUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  doctor?: Prisma.DoctorProfileUpdateOneRequiredWithoutPrescriptionsNestedInput
+  doctor?: Prisma.DoctorProfileUpdateOneWithoutPrescriptionsNestedInput
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutPrescriptionsNestedInput
   animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutPrescriptionsNestedInput
+  items?: Prisma.PrescriptionItemUpdateManyWithoutPrescriptionNestedInput
 }
 
 export type PrescriptionUncheckedUpdateWithoutServiceRequestInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
   instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   validUntil?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  items?: Prisma.PrescriptionItemUncheckedUpdateManyWithoutPrescriptionNestedInput
 }
 
 export type PrescriptionUncheckedUpdateManyWithoutServiceRequestInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
-  doctorId?: Prisma.StringFieldUpdateOperationsInput | string
+  doctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  aiTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
   status?: Prisma.EnumPrescriptionStatusFieldUpdateOperationsInput | $Enums.PrescriptionStatus
   instructions?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -830,12 +1123,42 @@ export type PrescriptionUncheckedUpdateManyWithoutServiceRequestInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+
+/**
+ * Count Type PrescriptionCountOutputType
+ */
+
+export type PrescriptionCountOutputType = {
+  items: number
+}
+
+export type PrescriptionCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  items?: boolean | PrescriptionCountOutputTypeCountItemsArgs
+}
+
+/**
+ * PrescriptionCountOutputType without action
+ */
+export type PrescriptionCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PrescriptionCountOutputType
+   */
+  select?: Prisma.PrescriptionCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * PrescriptionCountOutputType without action
+ */
+export type PrescriptionCountOutputTypeCountItemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PrescriptionItemWhereInput
+}
 
 
 export type PrescriptionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   serviceRequestId?: boolean
   doctorId?: boolean
+  aiTechnicianId?: boolean
   animalId?: boolean
   status?: boolean
   instructions?: boolean
@@ -843,14 +1166,18 @@ export type PrescriptionSelect<ExtArgs extends runtime.Types.Extensions.Internal
   createdAt?: boolean
   updatedAt?: boolean
   serviceRequest?: boolean | Prisma.ServiceRequestDefaultArgs<ExtArgs>
-  doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>
+  doctor?: boolean | Prisma.Prescription$doctorArgs<ExtArgs>
+  aiTechnician?: boolean | Prisma.Prescription$aiTechnicianArgs<ExtArgs>
   animal?: boolean | Prisma.AnimalProfileDefaultArgs<ExtArgs>
+  items?: boolean | Prisma.Prescription$itemsArgs<ExtArgs>
+  _count?: boolean | Prisma.PrescriptionCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["prescription"]>
 
 export type PrescriptionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   serviceRequestId?: boolean
   doctorId?: boolean
+  aiTechnicianId?: boolean
   animalId?: boolean
   status?: boolean
   instructions?: boolean
@@ -858,7 +1185,8 @@ export type PrescriptionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.
   createdAt?: boolean
   updatedAt?: boolean
   serviceRequest?: boolean | Prisma.ServiceRequestDefaultArgs<ExtArgs>
-  doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>
+  doctor?: boolean | Prisma.Prescription$doctorArgs<ExtArgs>
+  aiTechnician?: boolean | Prisma.Prescription$aiTechnicianArgs<ExtArgs>
   animal?: boolean | Prisma.AnimalProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["prescription"]>
 
@@ -866,6 +1194,7 @@ export type PrescriptionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   id?: boolean
   serviceRequestId?: boolean
   doctorId?: boolean
+  aiTechnicianId?: boolean
   animalId?: boolean
   status?: boolean
   instructions?: boolean
@@ -873,7 +1202,8 @@ export type PrescriptionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.
   createdAt?: boolean
   updatedAt?: boolean
   serviceRequest?: boolean | Prisma.ServiceRequestDefaultArgs<ExtArgs>
-  doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>
+  doctor?: boolean | Prisma.Prescription$doctorArgs<ExtArgs>
+  aiTechnician?: boolean | Prisma.Prescription$aiTechnicianArgs<ExtArgs>
   animal?: boolean | Prisma.AnimalProfileDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["prescription"]>
 
@@ -881,6 +1211,7 @@ export type PrescriptionSelectScalar = {
   id?: boolean
   serviceRequestId?: boolean
   doctorId?: boolean
+  aiTechnicianId?: boolean
   animalId?: boolean
   status?: boolean
   instructions?: boolean
@@ -889,20 +1220,25 @@ export type PrescriptionSelectScalar = {
   updatedAt?: boolean
 }
 
-export type PrescriptionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "serviceRequestId" | "doctorId" | "animalId" | "status" | "instructions" | "validUntil" | "createdAt" | "updatedAt", ExtArgs["result"]["prescription"]>
+export type PrescriptionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "serviceRequestId" | "doctorId" | "aiTechnicianId" | "animalId" | "status" | "instructions" | "validUntil" | "createdAt" | "updatedAt", ExtArgs["result"]["prescription"]>
 export type PrescriptionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   serviceRequest?: boolean | Prisma.ServiceRequestDefaultArgs<ExtArgs>
-  doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>
+  doctor?: boolean | Prisma.Prescription$doctorArgs<ExtArgs>
+  aiTechnician?: boolean | Prisma.Prescription$aiTechnicianArgs<ExtArgs>
   animal?: boolean | Prisma.AnimalProfileDefaultArgs<ExtArgs>
+  items?: boolean | Prisma.Prescription$itemsArgs<ExtArgs>
+  _count?: boolean | Prisma.PrescriptionCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type PrescriptionIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   serviceRequest?: boolean | Prisma.ServiceRequestDefaultArgs<ExtArgs>
-  doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>
+  doctor?: boolean | Prisma.Prescription$doctorArgs<ExtArgs>
+  aiTechnician?: boolean | Prisma.Prescription$aiTechnicianArgs<ExtArgs>
   animal?: boolean | Prisma.AnimalProfileDefaultArgs<ExtArgs>
 }
 export type PrescriptionIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   serviceRequest?: boolean | Prisma.ServiceRequestDefaultArgs<ExtArgs>
-  doctor?: boolean | Prisma.DoctorProfileDefaultArgs<ExtArgs>
+  doctor?: boolean | Prisma.Prescription$doctorArgs<ExtArgs>
+  aiTechnician?: boolean | Prisma.Prescription$aiTechnicianArgs<ExtArgs>
   animal?: boolean | Prisma.AnimalProfileDefaultArgs<ExtArgs>
 }
 
@@ -910,13 +1246,16 @@ export type $PrescriptionPayload<ExtArgs extends runtime.Types.Extensions.Intern
   name: "Prescription"
   objects: {
     serviceRequest: Prisma.$ServiceRequestPayload<ExtArgs>
-    doctor: Prisma.$DoctorProfilePayload<ExtArgs>
+    doctor: Prisma.$DoctorProfilePayload<ExtArgs> | null
+    aiTechnician: Prisma.$AiTechnicianProfilePayload<ExtArgs> | null
     animal: Prisma.$AnimalProfilePayload<ExtArgs>
+    items: Prisma.$PrescriptionItemPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     serviceRequestId: string
-    doctorId: string
+    doctorId: string | null
+    aiTechnicianId: string | null
     animalId: string
     status: $Enums.PrescriptionStatus
     instructions: string | null
@@ -1318,8 +1657,10 @@ readonly fields: PrescriptionFieldRefs;
 export interface Prisma__PrescriptionClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   serviceRequest<T extends Prisma.ServiceRequestDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequestDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceRequestClient<runtime.Types.Result.GetResult<Prisma.$ServiceRequestPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  doctor<T extends Prisma.DoctorProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DoctorProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__DoctorProfileClient<runtime.Types.Result.GetResult<Prisma.$DoctorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  doctor<T extends Prisma.Prescription$doctorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Prescription$doctorArgs<ExtArgs>>): Prisma.Prisma__DoctorProfileClient<runtime.Types.Result.GetResult<Prisma.$DoctorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  aiTechnician<T extends Prisma.Prescription$aiTechnicianArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Prescription$aiTechnicianArgs<ExtArgs>>): Prisma.Prisma__AiTechnicianProfileClient<runtime.Types.Result.GetResult<Prisma.$AiTechnicianProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   animal<T extends Prisma.AnimalProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AnimalProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__AnimalProfileClient<runtime.Types.Result.GetResult<Prisma.$AnimalProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  items<T extends Prisma.Prescription$itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Prescription$itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrescriptionItemPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1352,6 +1693,7 @@ export interface PrescriptionFieldRefs {
   readonly id: Prisma.FieldRef<"Prescription", 'String'>
   readonly serviceRequestId: Prisma.FieldRef<"Prescription", 'String'>
   readonly doctorId: Prisma.FieldRef<"Prescription", 'String'>
+  readonly aiTechnicianId: Prisma.FieldRef<"Prescription", 'String'>
   readonly animalId: Prisma.FieldRef<"Prescription", 'String'>
   readonly status: Prisma.FieldRef<"Prescription", 'PrescriptionStatus'>
   readonly instructions: Prisma.FieldRef<"Prescription", 'String'>
@@ -1756,6 +2098,68 @@ export type PrescriptionDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.
    * Limit how many Prescriptions to delete.
    */
   limit?: number
+}
+
+/**
+ * Prescription.doctor
+ */
+export type Prescription$doctorArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the DoctorProfile
+   */
+  select?: Prisma.DoctorProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the DoctorProfile
+   */
+  omit?: Prisma.DoctorProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DoctorProfileInclude<ExtArgs> | null
+  where?: Prisma.DoctorProfileWhereInput
+}
+
+/**
+ * Prescription.aiTechnician
+ */
+export type Prescription$aiTechnicianArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiTechnicianProfile
+   */
+  select?: Prisma.AiTechnicianProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiTechnicianProfile
+   */
+  omit?: Prisma.AiTechnicianProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiTechnicianProfileInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianProfileWhereInput
+}
+
+/**
+ * Prescription.items
+ */
+export type Prescription$itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PrescriptionItem
+   */
+  select?: Prisma.PrescriptionItemSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PrescriptionItem
+   */
+  omit?: Prisma.PrescriptionItemOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PrescriptionItemInclude<ExtArgs> | null
+  where?: Prisma.PrescriptionItemWhereInput
+  orderBy?: Prisma.PrescriptionItemOrderByWithRelationInput | Prisma.PrescriptionItemOrderByWithRelationInput[]
+  cursor?: Prisma.PrescriptionItemWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PrescriptionItemScalarFieldEnum | Prisma.PrescriptionItemScalarFieldEnum[]
 }
 
 /**

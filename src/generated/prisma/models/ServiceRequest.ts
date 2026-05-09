@@ -29,13 +29,26 @@ export type ServiceRequestMinAggregateOutputType = {
   customerId: string | null
   animalId: string | null
   areaId: string | null
+  villageId: string | null
   serviceCategoryId: string | null
+  serviceType: $Enums.ServiceRequestType | null
   assignedDoctorId: string | null
+  assignedTechnicianId: string | null
   status: $Enums.ServiceRequestStatus | null
   urgency: string | null
-  symptoms: string | null
-  preferredWindow: string | null
-  locationNotes: string | null
+  problemOrSymptom: string | null
+  description: string | null
+  preferredTime: string | null
+  locationText: string | null
+  scheduledStart: Date | null
+  scheduledEnd: Date | null
+  isEmergency: boolean | null
+  emergencyNotes: string | null
+  submittedAt: Date | null
+  assignedAt: Date | null
+  startedAt: Date | null
+  cancelledAt: Date | null
+  cancelReason: string | null
   createdAt: Date | null
   updatedAt: Date | null
   completedAt: Date | null
@@ -46,13 +59,26 @@ export type ServiceRequestMaxAggregateOutputType = {
   customerId: string | null
   animalId: string | null
   areaId: string | null
+  villageId: string | null
   serviceCategoryId: string | null
+  serviceType: $Enums.ServiceRequestType | null
   assignedDoctorId: string | null
+  assignedTechnicianId: string | null
   status: $Enums.ServiceRequestStatus | null
   urgency: string | null
-  symptoms: string | null
-  preferredWindow: string | null
-  locationNotes: string | null
+  problemOrSymptom: string | null
+  description: string | null
+  preferredTime: string | null
+  locationText: string | null
+  scheduledStart: Date | null
+  scheduledEnd: Date | null
+  isEmergency: boolean | null
+  emergencyNotes: string | null
+  submittedAt: Date | null
+  assignedAt: Date | null
+  startedAt: Date | null
+  cancelledAt: Date | null
+  cancelReason: string | null
   createdAt: Date | null
   updatedAt: Date | null
   completedAt: Date | null
@@ -63,13 +89,26 @@ export type ServiceRequestCountAggregateOutputType = {
   customerId: number
   animalId: number
   areaId: number
+  villageId: number
   serviceCategoryId: number
+  serviceType: number
   assignedDoctorId: number
+  assignedTechnicianId: number
   status: number
   urgency: number
-  symptoms: number
-  preferredWindow: number
-  locationNotes: number
+  problemOrSymptom: number
+  description: number
+  preferredTime: number
+  locationText: number
+  scheduledStart: number
+  scheduledEnd: number
+  isEmergency: number
+  emergencyNotes: number
+  submittedAt: number
+  assignedAt: number
+  startedAt: number
+  cancelledAt: number
+  cancelReason: number
   createdAt: number
   updatedAt: number
   completedAt: number
@@ -82,13 +121,26 @@ export type ServiceRequestMinAggregateInputType = {
   customerId?: true
   animalId?: true
   areaId?: true
+  villageId?: true
   serviceCategoryId?: true
+  serviceType?: true
   assignedDoctorId?: true
+  assignedTechnicianId?: true
   status?: true
   urgency?: true
-  symptoms?: true
-  preferredWindow?: true
-  locationNotes?: true
+  problemOrSymptom?: true
+  description?: true
+  preferredTime?: true
+  locationText?: true
+  scheduledStart?: true
+  scheduledEnd?: true
+  isEmergency?: true
+  emergencyNotes?: true
+  submittedAt?: true
+  assignedAt?: true
+  startedAt?: true
+  cancelledAt?: true
+  cancelReason?: true
   createdAt?: true
   updatedAt?: true
   completedAt?: true
@@ -99,13 +151,26 @@ export type ServiceRequestMaxAggregateInputType = {
   customerId?: true
   animalId?: true
   areaId?: true
+  villageId?: true
   serviceCategoryId?: true
+  serviceType?: true
   assignedDoctorId?: true
+  assignedTechnicianId?: true
   status?: true
   urgency?: true
-  symptoms?: true
-  preferredWindow?: true
-  locationNotes?: true
+  problemOrSymptom?: true
+  description?: true
+  preferredTime?: true
+  locationText?: true
+  scheduledStart?: true
+  scheduledEnd?: true
+  isEmergency?: true
+  emergencyNotes?: true
+  submittedAt?: true
+  assignedAt?: true
+  startedAt?: true
+  cancelledAt?: true
+  cancelReason?: true
   createdAt?: true
   updatedAt?: true
   completedAt?: true
@@ -116,13 +181,26 @@ export type ServiceRequestCountAggregateInputType = {
   customerId?: true
   animalId?: true
   areaId?: true
+  villageId?: true
   serviceCategoryId?: true
+  serviceType?: true
   assignedDoctorId?: true
+  assignedTechnicianId?: true
   status?: true
   urgency?: true
-  symptoms?: true
-  preferredWindow?: true
-  locationNotes?: true
+  problemOrSymptom?: true
+  description?: true
+  preferredTime?: true
+  locationText?: true
+  scheduledStart?: true
+  scheduledEnd?: true
+  isEmergency?: true
+  emergencyNotes?: true
+  submittedAt?: true
+  assignedAt?: true
+  startedAt?: true
+  cancelledAt?: true
+  cancelReason?: true
   createdAt?: true
   updatedAt?: true
   completedAt?: true
@@ -205,14 +283,27 @@ export type ServiceRequestGroupByOutputType = {
   id: string
   customerId: string
   animalId: string
-  areaId: string
+  areaId: string | null
+  villageId: string | null
   serviceCategoryId: string
+  serviceType: $Enums.ServiceRequestType
   assignedDoctorId: string | null
+  assignedTechnicianId: string | null
   status: $Enums.ServiceRequestStatus
   urgency: string | null
-  symptoms: string | null
-  preferredWindow: string | null
-  locationNotes: string | null
+  problemOrSymptom: string | null
+  description: string | null
+  preferredTime: string | null
+  locationText: string | null
+  scheduledStart: Date | null
+  scheduledEnd: Date | null
+  isEmergency: boolean
+  emergencyNotes: string | null
+  submittedAt: Date
+  assignedAt: Date | null
+  startedAt: Date | null
+  cancelledAt: Date | null
+  cancelReason: string | null
   createdAt: Date
   updatedAt: Date
   completedAt: Date | null
@@ -243,50 +334,86 @@ export type ServiceRequestWhereInput = {
   id?: Prisma.StringFilter<"ServiceRequest"> | string
   customerId?: Prisma.StringFilter<"ServiceRequest"> | string
   animalId?: Prisma.StringFilter<"ServiceRequest"> | string
-  areaId?: Prisma.StringFilter<"ServiceRequest"> | string
+  areaId?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  villageId?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
   serviceCategoryId?: Prisma.StringFilter<"ServiceRequest"> | string
+  serviceType?: Prisma.EnumServiceRequestTypeFilter<"ServiceRequest"> | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  assignedTechnicianId?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
   status?: Prisma.EnumServiceRequestStatusFilter<"ServiceRequest"> | $Enums.ServiceRequestStatus
   urgency?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
-  symptoms?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
-  preferredWindow?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
-  locationNotes?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  problemOrSymptom?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  description?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  preferredTime?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  locationText?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  scheduledStart?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  scheduledEnd?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  isEmergency?: Prisma.BoolFilter<"ServiceRequest"> | boolean
+  emergencyNotes?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  submittedAt?: Prisma.DateTimeFilter<"ServiceRequest"> | Date | string
+  assignedAt?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  startedAt?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  cancelledAt?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  cancelReason?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ServiceRequest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ServiceRequest"> | Date | string
   completedAt?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
   customer?: Prisma.XOR<Prisma.CustomerProfileScalarRelationFilter, Prisma.CustomerProfileWhereInput>
   animal?: Prisma.XOR<Prisma.AnimalProfileScalarRelationFilter, Prisma.AnimalProfileWhereInput>
-  area?: Prisma.XOR<Prisma.AreaScalarRelationFilter, Prisma.AreaWhereInput>
+  area?: Prisma.XOR<Prisma.AreaNullableScalarRelationFilter, Prisma.AreaWhereInput> | null
+  village?: Prisma.XOR<Prisma.VillageNullableScalarRelationFilter, Prisma.VillageWhereInput> | null
   serviceCategory?: Prisma.XOR<Prisma.ServiceCategoryScalarRelationFilter, Prisma.ServiceCategoryWhereInput>
   assignedDoctor?: Prisma.XOR<Prisma.DoctorProfileNullableScalarRelationFilter, Prisma.DoctorProfileWhereInput> | null
-  treatmentRecords?: Prisma.TreatmentRecordListRelationFilter
+  assignedTechnician?: Prisma.XOR<Prisma.AiTechnicianProfileNullableScalarRelationFilter, Prisma.AiTechnicianProfileWhereInput> | null
+  treatmentCases?: Prisma.TreatmentCaseListRelationFilter
   prescriptions?: Prisma.PrescriptionListRelationFilter
   billingRecords?: Prisma.BillingRecordListRelationFilter
+  paymentRecords?: Prisma.PaymentRecordListRelationFilter
+  reviews?: Prisma.ReviewListRelationFilter
+  complaints?: Prisma.ComplaintListRelationFilter
 }
 
 export type ServiceRequestOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
   animalId?: Prisma.SortOrder
-  areaId?: Prisma.SortOrder
+  areaId?: Prisma.SortOrderInput | Prisma.SortOrder
+  villageId?: Prisma.SortOrderInput | Prisma.SortOrder
   serviceCategoryId?: Prisma.SortOrder
+  serviceType?: Prisma.SortOrder
   assignedDoctorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedTechnicianId?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   urgency?: Prisma.SortOrderInput | Prisma.SortOrder
-  symptoms?: Prisma.SortOrderInput | Prisma.SortOrder
-  preferredWindow?: Prisma.SortOrderInput | Prisma.SortOrder
-  locationNotes?: Prisma.SortOrderInput | Prisma.SortOrder
+  problemOrSymptom?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  preferredTime?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationText?: Prisma.SortOrderInput | Prisma.SortOrder
+  scheduledStart?: Prisma.SortOrderInput | Prisma.SortOrder
+  scheduledEnd?: Prisma.SortOrderInput | Prisma.SortOrder
+  isEmergency?: Prisma.SortOrder
+  emergencyNotes?: Prisma.SortOrderInput | Prisma.SortOrder
+  submittedAt?: Prisma.SortOrder
+  assignedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  startedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancelledAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancelReason?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   completedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   customer?: Prisma.CustomerProfileOrderByWithRelationInput
   animal?: Prisma.AnimalProfileOrderByWithRelationInput
   area?: Prisma.AreaOrderByWithRelationInput
+  village?: Prisma.VillageOrderByWithRelationInput
   serviceCategory?: Prisma.ServiceCategoryOrderByWithRelationInput
   assignedDoctor?: Prisma.DoctorProfileOrderByWithRelationInput
-  treatmentRecords?: Prisma.TreatmentRecordOrderByRelationAggregateInput
+  assignedTechnician?: Prisma.AiTechnicianProfileOrderByWithRelationInput
+  treatmentCases?: Prisma.TreatmentCaseOrderByRelationAggregateInput
   prescriptions?: Prisma.PrescriptionOrderByRelationAggregateInput
   billingRecords?: Prisma.BillingRecordOrderByRelationAggregateInput
+  paymentRecords?: Prisma.PaymentRecordOrderByRelationAggregateInput
+  reviews?: Prisma.ReviewOrderByRelationAggregateInput
+  complaints?: Prisma.ComplaintOrderByRelationAggregateInput
 }
 
 export type ServiceRequestWhereUniqueInput = Prisma.AtLeast<{
@@ -296,39 +423,70 @@ export type ServiceRequestWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.ServiceRequestWhereInput | Prisma.ServiceRequestWhereInput[]
   customerId?: Prisma.StringFilter<"ServiceRequest"> | string
   animalId?: Prisma.StringFilter<"ServiceRequest"> | string
-  areaId?: Prisma.StringFilter<"ServiceRequest"> | string
+  areaId?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  villageId?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
   serviceCategoryId?: Prisma.StringFilter<"ServiceRequest"> | string
+  serviceType?: Prisma.EnumServiceRequestTypeFilter<"ServiceRequest"> | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  assignedTechnicianId?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
   status?: Prisma.EnumServiceRequestStatusFilter<"ServiceRequest"> | $Enums.ServiceRequestStatus
   urgency?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
-  symptoms?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
-  preferredWindow?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
-  locationNotes?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  problemOrSymptom?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  description?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  preferredTime?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  locationText?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  scheduledStart?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  scheduledEnd?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  isEmergency?: Prisma.BoolFilter<"ServiceRequest"> | boolean
+  emergencyNotes?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  submittedAt?: Prisma.DateTimeFilter<"ServiceRequest"> | Date | string
+  assignedAt?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  startedAt?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  cancelledAt?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  cancelReason?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ServiceRequest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ServiceRequest"> | Date | string
   completedAt?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
   customer?: Prisma.XOR<Prisma.CustomerProfileScalarRelationFilter, Prisma.CustomerProfileWhereInput>
   animal?: Prisma.XOR<Prisma.AnimalProfileScalarRelationFilter, Prisma.AnimalProfileWhereInput>
-  area?: Prisma.XOR<Prisma.AreaScalarRelationFilter, Prisma.AreaWhereInput>
+  area?: Prisma.XOR<Prisma.AreaNullableScalarRelationFilter, Prisma.AreaWhereInput> | null
+  village?: Prisma.XOR<Prisma.VillageNullableScalarRelationFilter, Prisma.VillageWhereInput> | null
   serviceCategory?: Prisma.XOR<Prisma.ServiceCategoryScalarRelationFilter, Prisma.ServiceCategoryWhereInput>
   assignedDoctor?: Prisma.XOR<Prisma.DoctorProfileNullableScalarRelationFilter, Prisma.DoctorProfileWhereInput> | null
-  treatmentRecords?: Prisma.TreatmentRecordListRelationFilter
+  assignedTechnician?: Prisma.XOR<Prisma.AiTechnicianProfileNullableScalarRelationFilter, Prisma.AiTechnicianProfileWhereInput> | null
+  treatmentCases?: Prisma.TreatmentCaseListRelationFilter
   prescriptions?: Prisma.PrescriptionListRelationFilter
   billingRecords?: Prisma.BillingRecordListRelationFilter
+  paymentRecords?: Prisma.PaymentRecordListRelationFilter
+  reviews?: Prisma.ReviewListRelationFilter
+  complaints?: Prisma.ComplaintListRelationFilter
 }, "id">
 
 export type ServiceRequestOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   customerId?: Prisma.SortOrder
   animalId?: Prisma.SortOrder
-  areaId?: Prisma.SortOrder
+  areaId?: Prisma.SortOrderInput | Prisma.SortOrder
+  villageId?: Prisma.SortOrderInput | Prisma.SortOrder
   serviceCategoryId?: Prisma.SortOrder
+  serviceType?: Prisma.SortOrder
   assignedDoctorId?: Prisma.SortOrderInput | Prisma.SortOrder
+  assignedTechnicianId?: Prisma.SortOrderInput | Prisma.SortOrder
   status?: Prisma.SortOrder
   urgency?: Prisma.SortOrderInput | Prisma.SortOrder
-  symptoms?: Prisma.SortOrderInput | Prisma.SortOrder
-  preferredWindow?: Prisma.SortOrderInput | Prisma.SortOrder
-  locationNotes?: Prisma.SortOrderInput | Prisma.SortOrder
+  problemOrSymptom?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
+  preferredTime?: Prisma.SortOrderInput | Prisma.SortOrder
+  locationText?: Prisma.SortOrderInput | Prisma.SortOrder
+  scheduledStart?: Prisma.SortOrderInput | Prisma.SortOrder
+  scheduledEnd?: Prisma.SortOrderInput | Prisma.SortOrder
+  isEmergency?: Prisma.SortOrder
+  emergencyNotes?: Prisma.SortOrderInput | Prisma.SortOrder
+  submittedAt?: Prisma.SortOrder
+  assignedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  startedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancelledAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  cancelReason?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   completedAt?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -344,14 +502,27 @@ export type ServiceRequestScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"ServiceRequest"> | string
   customerId?: Prisma.StringWithAggregatesFilter<"ServiceRequest"> | string
   animalId?: Prisma.StringWithAggregatesFilter<"ServiceRequest"> | string
-  areaId?: Prisma.StringWithAggregatesFilter<"ServiceRequest"> | string
+  areaId?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
+  villageId?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
   serviceCategoryId?: Prisma.StringWithAggregatesFilter<"ServiceRequest"> | string
+  serviceType?: Prisma.EnumServiceRequestTypeWithAggregatesFilter<"ServiceRequest"> | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
+  assignedTechnicianId?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
   status?: Prisma.EnumServiceRequestStatusWithAggregatesFilter<"ServiceRequest"> | $Enums.ServiceRequestStatus
   urgency?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
-  symptoms?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
-  preferredWindow?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
-  locationNotes?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
+  problemOrSymptom?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
+  description?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
+  preferredTime?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
+  locationText?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
+  scheduledStart?: Prisma.DateTimeNullableWithAggregatesFilter<"ServiceRequest"> | Date | string | null
+  scheduledEnd?: Prisma.DateTimeNullableWithAggregatesFilter<"ServiceRequest"> | Date | string | null
+  isEmergency?: Prisma.BoolWithAggregatesFilter<"ServiceRequest"> | boolean
+  emergencyNotes?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
+  submittedAt?: Prisma.DateTimeWithAggregatesFilter<"ServiceRequest"> | Date | string
+  assignedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ServiceRequest"> | Date | string | null
+  startedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ServiceRequest"> | Date | string | null
+  cancelledAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ServiceRequest"> | Date | string | null
+  cancelReason?: Prisma.StringNullableWithAggregatesFilter<"ServiceRequest"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"ServiceRequest"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"ServiceRequest"> | Date | string
   completedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"ServiceRequest"> | Date | string | null
@@ -359,96 +530,173 @@ export type ServiceRequestScalarWhereWithAggregatesInput = {
 
 export type ServiceRequestCreateInput = {
   id?: string
+  serviceType?: $Enums.ServiceRequestType
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
   customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
   animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
-  area: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
   serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
   assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
-  treatmentRecords?: Prisma.TreatmentRecordCreateNestedManyWithoutServiceRequestInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestUncheckedCreateInput = {
   id?: string
   customerId: string
   animalId: string
-  areaId: string
+  areaId?: string | null
+  villageId?: string | null
   serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
   assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
   prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
   animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
-  area?: Prisma.AreaUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
   serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
   assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUpdateManyWithoutServiceRequestNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestCreateManyInput = {
   id?: string
   customerId: string
   animalId: string
-  areaId: string
+  areaId?: string | null
+  villageId?: string | null
   serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
   assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
@@ -456,11 +704,22 @@ export type ServiceRequestCreateManyInput = {
 
 export type ServiceRequestUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -470,14 +729,27 @@ export type ServiceRequestUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -498,13 +770,26 @@ export type ServiceRequestCountOrderByAggregateInput = {
   customerId?: Prisma.SortOrder
   animalId?: Prisma.SortOrder
   areaId?: Prisma.SortOrder
+  villageId?: Prisma.SortOrder
   serviceCategoryId?: Prisma.SortOrder
+  serviceType?: Prisma.SortOrder
   assignedDoctorId?: Prisma.SortOrder
+  assignedTechnicianId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   urgency?: Prisma.SortOrder
-  symptoms?: Prisma.SortOrder
-  preferredWindow?: Prisma.SortOrder
-  locationNotes?: Prisma.SortOrder
+  problemOrSymptom?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  preferredTime?: Prisma.SortOrder
+  locationText?: Prisma.SortOrder
+  scheduledStart?: Prisma.SortOrder
+  scheduledEnd?: Prisma.SortOrder
+  isEmergency?: Prisma.SortOrder
+  emergencyNotes?: Prisma.SortOrder
+  submittedAt?: Prisma.SortOrder
+  assignedAt?: Prisma.SortOrder
+  startedAt?: Prisma.SortOrder
+  cancelledAt?: Prisma.SortOrder
+  cancelReason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   completedAt?: Prisma.SortOrder
@@ -515,13 +800,26 @@ export type ServiceRequestMaxOrderByAggregateInput = {
   customerId?: Prisma.SortOrder
   animalId?: Prisma.SortOrder
   areaId?: Prisma.SortOrder
+  villageId?: Prisma.SortOrder
   serviceCategoryId?: Prisma.SortOrder
+  serviceType?: Prisma.SortOrder
   assignedDoctorId?: Prisma.SortOrder
+  assignedTechnicianId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   urgency?: Prisma.SortOrder
-  symptoms?: Prisma.SortOrder
-  preferredWindow?: Prisma.SortOrder
-  locationNotes?: Prisma.SortOrder
+  problemOrSymptom?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  preferredTime?: Prisma.SortOrder
+  locationText?: Prisma.SortOrder
+  scheduledStart?: Prisma.SortOrder
+  scheduledEnd?: Prisma.SortOrder
+  isEmergency?: Prisma.SortOrder
+  emergencyNotes?: Prisma.SortOrder
+  submittedAt?: Prisma.SortOrder
+  assignedAt?: Prisma.SortOrder
+  startedAt?: Prisma.SortOrder
+  cancelledAt?: Prisma.SortOrder
+  cancelReason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   completedAt?: Prisma.SortOrder
@@ -532,13 +830,26 @@ export type ServiceRequestMinOrderByAggregateInput = {
   customerId?: Prisma.SortOrder
   animalId?: Prisma.SortOrder
   areaId?: Prisma.SortOrder
+  villageId?: Prisma.SortOrder
   serviceCategoryId?: Prisma.SortOrder
+  serviceType?: Prisma.SortOrder
   assignedDoctorId?: Prisma.SortOrder
+  assignedTechnicianId?: Prisma.SortOrder
   status?: Prisma.SortOrder
   urgency?: Prisma.SortOrder
-  symptoms?: Prisma.SortOrder
-  preferredWindow?: Prisma.SortOrder
-  locationNotes?: Prisma.SortOrder
+  problemOrSymptom?: Prisma.SortOrder
+  description?: Prisma.SortOrder
+  preferredTime?: Prisma.SortOrder
+  locationText?: Prisma.SortOrder
+  scheduledStart?: Prisma.SortOrder
+  scheduledEnd?: Prisma.SortOrder
+  isEmergency?: Prisma.SortOrder
+  emergencyNotes?: Prisma.SortOrder
+  submittedAt?: Prisma.SortOrder
+  assignedAt?: Prisma.SortOrder
+  startedAt?: Prisma.SortOrder
+  cancelledAt?: Prisma.SortOrder
+  cancelReason?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   completedAt?: Prisma.SortOrder
@@ -547,6 +858,11 @@ export type ServiceRequestMinOrderByAggregateInput = {
 export type ServiceRequestScalarRelationFilter = {
   is?: Prisma.ServiceRequestWhereInput
   isNot?: Prisma.ServiceRequestWhereInput
+}
+
+export type ServiceRequestNullableScalarRelationFilter = {
+  is?: Prisma.ServiceRequestWhereInput | null
+  isNot?: Prisma.ServiceRequestWhereInput | null
 }
 
 export type ServiceRequestCreateNestedManyWithoutAssignedDoctorInput = {
@@ -588,6 +904,48 @@ export type ServiceRequestUncheckedUpdateManyWithoutAssignedDoctorNestedInput = 
   connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
   update?: Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAssignedDoctorInput | Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAssignedDoctorInput[]
   updateMany?: Prisma.ServiceRequestUpdateManyWithWhereWithoutAssignedDoctorInput | Prisma.ServiceRequestUpdateManyWithWhereWithoutAssignedDoctorInput[]
+  deleteMany?: Prisma.ServiceRequestScalarWhereInput | Prisma.ServiceRequestScalarWhereInput[]
+}
+
+export type ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAssignedTechnicianInput, Prisma.ServiceRequestUncheckedCreateWithoutAssignedTechnicianInput> | Prisma.ServiceRequestCreateWithoutAssignedTechnicianInput[] | Prisma.ServiceRequestUncheckedCreateWithoutAssignedTechnicianInput[]
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutAssignedTechnicianInput | Prisma.ServiceRequestCreateOrConnectWithoutAssignedTechnicianInput[]
+  createMany?: Prisma.ServiceRequestCreateManyAssignedTechnicianInputEnvelope
+  connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+}
+
+export type ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAssignedTechnicianInput, Prisma.ServiceRequestUncheckedCreateWithoutAssignedTechnicianInput> | Prisma.ServiceRequestCreateWithoutAssignedTechnicianInput[] | Prisma.ServiceRequestUncheckedCreateWithoutAssignedTechnicianInput[]
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutAssignedTechnicianInput | Prisma.ServiceRequestCreateOrConnectWithoutAssignedTechnicianInput[]
+  createMany?: Prisma.ServiceRequestCreateManyAssignedTechnicianInputEnvelope
+  connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+}
+
+export type ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAssignedTechnicianInput, Prisma.ServiceRequestUncheckedCreateWithoutAssignedTechnicianInput> | Prisma.ServiceRequestCreateWithoutAssignedTechnicianInput[] | Prisma.ServiceRequestUncheckedCreateWithoutAssignedTechnicianInput[]
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutAssignedTechnicianInput | Prisma.ServiceRequestCreateOrConnectWithoutAssignedTechnicianInput[]
+  upsert?: Prisma.ServiceRequestUpsertWithWhereUniqueWithoutAssignedTechnicianInput | Prisma.ServiceRequestUpsertWithWhereUniqueWithoutAssignedTechnicianInput[]
+  createMany?: Prisma.ServiceRequestCreateManyAssignedTechnicianInputEnvelope
+  set?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  disconnect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  delete?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  update?: Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAssignedTechnicianInput | Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAssignedTechnicianInput[]
+  updateMany?: Prisma.ServiceRequestUpdateManyWithWhereWithoutAssignedTechnicianInput | Prisma.ServiceRequestUpdateManyWithWhereWithoutAssignedTechnicianInput[]
+  deleteMany?: Prisma.ServiceRequestScalarWhereInput | Prisma.ServiceRequestScalarWhereInput[]
+}
+
+export type ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAssignedTechnicianInput, Prisma.ServiceRequestUncheckedCreateWithoutAssignedTechnicianInput> | Prisma.ServiceRequestCreateWithoutAssignedTechnicianInput[] | Prisma.ServiceRequestUncheckedCreateWithoutAssignedTechnicianInput[]
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutAssignedTechnicianInput | Prisma.ServiceRequestCreateOrConnectWithoutAssignedTechnicianInput[]
+  upsert?: Prisma.ServiceRequestUpsertWithWhereUniqueWithoutAssignedTechnicianInput | Prisma.ServiceRequestUpsertWithWhereUniqueWithoutAssignedTechnicianInput[]
+  createMany?: Prisma.ServiceRequestCreateManyAssignedTechnicianInputEnvelope
+  set?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  disconnect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  delete?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  update?: Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAssignedTechnicianInput | Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAssignedTechnicianInput[]
+  updateMany?: Prisma.ServiceRequestUpdateManyWithWhereWithoutAssignedTechnicianInput | Prisma.ServiceRequestUpdateManyWithWhereWithoutAssignedTechnicianInput[]
   deleteMany?: Prisma.ServiceRequestScalarWhereInput | Prisma.ServiceRequestScalarWhereInput[]
 }
 
@@ -633,45 +991,45 @@ export type ServiceRequestUncheckedUpdateManyWithoutCustomerNestedInput = {
   deleteMany?: Prisma.ServiceRequestScalarWhereInput | Prisma.ServiceRequestScalarWhereInput[]
 }
 
-export type ServiceRequestCreateNestedManyWithoutAnimalInput = {
-  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAnimalInput, Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput> | Prisma.ServiceRequestCreateWithoutAnimalInput[] | Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput[]
-  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput | Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput[]
-  createMany?: Prisma.ServiceRequestCreateManyAnimalInputEnvelope
+export type ServiceRequestCreateNestedManyWithoutVillageInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutVillageInput, Prisma.ServiceRequestUncheckedCreateWithoutVillageInput> | Prisma.ServiceRequestCreateWithoutVillageInput[] | Prisma.ServiceRequestUncheckedCreateWithoutVillageInput[]
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutVillageInput | Prisma.ServiceRequestCreateOrConnectWithoutVillageInput[]
+  createMany?: Prisma.ServiceRequestCreateManyVillageInputEnvelope
   connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
 }
 
-export type ServiceRequestUncheckedCreateNestedManyWithoutAnimalInput = {
-  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAnimalInput, Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput> | Prisma.ServiceRequestCreateWithoutAnimalInput[] | Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput[]
-  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput | Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput[]
-  createMany?: Prisma.ServiceRequestCreateManyAnimalInputEnvelope
+export type ServiceRequestUncheckedCreateNestedManyWithoutVillageInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutVillageInput, Prisma.ServiceRequestUncheckedCreateWithoutVillageInput> | Prisma.ServiceRequestCreateWithoutVillageInput[] | Prisma.ServiceRequestUncheckedCreateWithoutVillageInput[]
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutVillageInput | Prisma.ServiceRequestCreateOrConnectWithoutVillageInput[]
+  createMany?: Prisma.ServiceRequestCreateManyVillageInputEnvelope
   connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
 }
 
-export type ServiceRequestUpdateManyWithoutAnimalNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAnimalInput, Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput> | Prisma.ServiceRequestCreateWithoutAnimalInput[] | Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput[]
-  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput | Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput[]
-  upsert?: Prisma.ServiceRequestUpsertWithWhereUniqueWithoutAnimalInput | Prisma.ServiceRequestUpsertWithWhereUniqueWithoutAnimalInput[]
-  createMany?: Prisma.ServiceRequestCreateManyAnimalInputEnvelope
+export type ServiceRequestUpdateManyWithoutVillageNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutVillageInput, Prisma.ServiceRequestUncheckedCreateWithoutVillageInput> | Prisma.ServiceRequestCreateWithoutVillageInput[] | Prisma.ServiceRequestUncheckedCreateWithoutVillageInput[]
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutVillageInput | Prisma.ServiceRequestCreateOrConnectWithoutVillageInput[]
+  upsert?: Prisma.ServiceRequestUpsertWithWhereUniqueWithoutVillageInput | Prisma.ServiceRequestUpsertWithWhereUniqueWithoutVillageInput[]
+  createMany?: Prisma.ServiceRequestCreateManyVillageInputEnvelope
   set?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
   disconnect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
   delete?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
   connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
-  update?: Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAnimalInput | Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAnimalInput[]
-  updateMany?: Prisma.ServiceRequestUpdateManyWithWhereWithoutAnimalInput | Prisma.ServiceRequestUpdateManyWithWhereWithoutAnimalInput[]
+  update?: Prisma.ServiceRequestUpdateWithWhereUniqueWithoutVillageInput | Prisma.ServiceRequestUpdateWithWhereUniqueWithoutVillageInput[]
+  updateMany?: Prisma.ServiceRequestUpdateManyWithWhereWithoutVillageInput | Prisma.ServiceRequestUpdateManyWithWhereWithoutVillageInput[]
   deleteMany?: Prisma.ServiceRequestScalarWhereInput | Prisma.ServiceRequestScalarWhereInput[]
 }
 
-export type ServiceRequestUncheckedUpdateManyWithoutAnimalNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAnimalInput, Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput> | Prisma.ServiceRequestCreateWithoutAnimalInput[] | Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput[]
-  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput | Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput[]
-  upsert?: Prisma.ServiceRequestUpsertWithWhereUniqueWithoutAnimalInput | Prisma.ServiceRequestUpsertWithWhereUniqueWithoutAnimalInput[]
-  createMany?: Prisma.ServiceRequestCreateManyAnimalInputEnvelope
+export type ServiceRequestUncheckedUpdateManyWithoutVillageNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutVillageInput, Prisma.ServiceRequestUncheckedCreateWithoutVillageInput> | Prisma.ServiceRequestCreateWithoutVillageInput[] | Prisma.ServiceRequestUncheckedCreateWithoutVillageInput[]
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutVillageInput | Prisma.ServiceRequestCreateOrConnectWithoutVillageInput[]
+  upsert?: Prisma.ServiceRequestUpsertWithWhereUniqueWithoutVillageInput | Prisma.ServiceRequestUpsertWithWhereUniqueWithoutVillageInput[]
+  createMany?: Prisma.ServiceRequestCreateManyVillageInputEnvelope
   set?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
   disconnect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
   delete?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
   connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
-  update?: Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAnimalInput | Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAnimalInput[]
-  updateMany?: Prisma.ServiceRequestUpdateManyWithWhereWithoutAnimalInput | Prisma.ServiceRequestUpdateManyWithWhereWithoutAnimalInput[]
+  update?: Prisma.ServiceRequestUpdateWithWhereUniqueWithoutVillageInput | Prisma.ServiceRequestUpdateWithWhereUniqueWithoutVillageInput[]
+  updateMany?: Prisma.ServiceRequestUpdateManyWithWhereWithoutVillageInput | Prisma.ServiceRequestUpdateManyWithWhereWithoutVillageInput[]
   deleteMany?: Prisma.ServiceRequestScalarWhereInput | Prisma.ServiceRequestScalarWhereInput[]
 }
 
@@ -759,22 +1117,68 @@ export type ServiceRequestUncheckedUpdateManyWithoutServiceCategoryNestedInput =
   deleteMany?: Prisma.ServiceRequestScalarWhereInput | Prisma.ServiceRequestScalarWhereInput[]
 }
 
+export type ServiceRequestCreateNestedManyWithoutAnimalInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAnimalInput, Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput> | Prisma.ServiceRequestCreateWithoutAnimalInput[] | Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput[]
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput | Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput[]
+  createMany?: Prisma.ServiceRequestCreateManyAnimalInputEnvelope
+  connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+}
+
+export type ServiceRequestUncheckedCreateNestedManyWithoutAnimalInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAnimalInput, Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput> | Prisma.ServiceRequestCreateWithoutAnimalInput[] | Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput[]
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput | Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput[]
+  createMany?: Prisma.ServiceRequestCreateManyAnimalInputEnvelope
+  connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+}
+
+export type ServiceRequestUpdateManyWithoutAnimalNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAnimalInput, Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput> | Prisma.ServiceRequestCreateWithoutAnimalInput[] | Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput[]
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput | Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput[]
+  upsert?: Prisma.ServiceRequestUpsertWithWhereUniqueWithoutAnimalInput | Prisma.ServiceRequestUpsertWithWhereUniqueWithoutAnimalInput[]
+  createMany?: Prisma.ServiceRequestCreateManyAnimalInputEnvelope
+  set?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  disconnect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  delete?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  update?: Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAnimalInput | Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAnimalInput[]
+  updateMany?: Prisma.ServiceRequestUpdateManyWithWhereWithoutAnimalInput | Prisma.ServiceRequestUpdateManyWithWhereWithoutAnimalInput[]
+  deleteMany?: Prisma.ServiceRequestScalarWhereInput | Prisma.ServiceRequestScalarWhereInput[]
+}
+
+export type ServiceRequestUncheckedUpdateManyWithoutAnimalNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAnimalInput, Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput> | Prisma.ServiceRequestCreateWithoutAnimalInput[] | Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput[]
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput | Prisma.ServiceRequestCreateOrConnectWithoutAnimalInput[]
+  upsert?: Prisma.ServiceRequestUpsertWithWhereUniqueWithoutAnimalInput | Prisma.ServiceRequestUpsertWithWhereUniqueWithoutAnimalInput[]
+  createMany?: Prisma.ServiceRequestCreateManyAnimalInputEnvelope
+  set?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  disconnect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  delete?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  connect?: Prisma.ServiceRequestWhereUniqueInput | Prisma.ServiceRequestWhereUniqueInput[]
+  update?: Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAnimalInput | Prisma.ServiceRequestUpdateWithWhereUniqueWithoutAnimalInput[]
+  updateMany?: Prisma.ServiceRequestUpdateManyWithWhereWithoutAnimalInput | Prisma.ServiceRequestUpdateManyWithWhereWithoutAnimalInput[]
+  deleteMany?: Prisma.ServiceRequestScalarWhereInput | Prisma.ServiceRequestScalarWhereInput[]
+}
+
+export type EnumServiceRequestTypeFieldUpdateOperationsInput = {
+  set?: $Enums.ServiceRequestType
+}
+
 export type EnumServiceRequestStatusFieldUpdateOperationsInput = {
   set?: $Enums.ServiceRequestStatus
 }
 
-export type ServiceRequestCreateNestedOneWithoutTreatmentRecordsInput = {
-  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutTreatmentRecordsInput, Prisma.ServiceRequestUncheckedCreateWithoutTreatmentRecordsInput>
-  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutTreatmentRecordsInput
+export type ServiceRequestCreateNestedOneWithoutTreatmentCasesInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutTreatmentCasesInput, Prisma.ServiceRequestUncheckedCreateWithoutTreatmentCasesInput>
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutTreatmentCasesInput
   connect?: Prisma.ServiceRequestWhereUniqueInput
 }
 
-export type ServiceRequestUpdateOneRequiredWithoutTreatmentRecordsNestedInput = {
-  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutTreatmentRecordsInput, Prisma.ServiceRequestUncheckedCreateWithoutTreatmentRecordsInput>
-  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutTreatmentRecordsInput
-  upsert?: Prisma.ServiceRequestUpsertWithoutTreatmentRecordsInput
+export type ServiceRequestUpdateOneRequiredWithoutTreatmentCasesNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutTreatmentCasesInput, Prisma.ServiceRequestUncheckedCreateWithoutTreatmentCasesInput>
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutTreatmentCasesInput
+  upsert?: Prisma.ServiceRequestUpsertWithoutTreatmentCasesInput
   connect?: Prisma.ServiceRequestWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceRequestUpdateToOneWithWhereWithoutTreatmentRecordsInput, Prisma.ServiceRequestUpdateWithoutTreatmentRecordsInput>, Prisma.ServiceRequestUncheckedUpdateWithoutTreatmentRecordsInput>
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceRequestUpdateToOneWithWhereWithoutTreatmentCasesInput, Prisma.ServiceRequestUpdateWithoutTreatmentCasesInput>, Prisma.ServiceRequestUncheckedUpdateWithoutTreatmentCasesInput>
 }
 
 export type ServiceRequestCreateNestedOneWithoutPrescriptionsInput = {
@@ -805,42 +1209,122 @@ export type ServiceRequestUpdateOneRequiredWithoutBillingRecordsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceRequestUpdateToOneWithWhereWithoutBillingRecordsInput, Prisma.ServiceRequestUpdateWithoutBillingRecordsInput>, Prisma.ServiceRequestUncheckedUpdateWithoutBillingRecordsInput>
 }
 
+export type ServiceRequestCreateNestedOneWithoutPaymentRecordsInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutPaymentRecordsInput, Prisma.ServiceRequestUncheckedCreateWithoutPaymentRecordsInput>
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutPaymentRecordsInput
+  connect?: Prisma.ServiceRequestWhereUniqueInput
+}
+
+export type ServiceRequestUpdateOneWithoutPaymentRecordsNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutPaymentRecordsInput, Prisma.ServiceRequestUncheckedCreateWithoutPaymentRecordsInput>
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutPaymentRecordsInput
+  upsert?: Prisma.ServiceRequestUpsertWithoutPaymentRecordsInput
+  disconnect?: Prisma.ServiceRequestWhereInput | boolean
+  delete?: Prisma.ServiceRequestWhereInput | boolean
+  connect?: Prisma.ServiceRequestWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceRequestUpdateToOneWithWhereWithoutPaymentRecordsInput, Prisma.ServiceRequestUpdateWithoutPaymentRecordsInput>, Prisma.ServiceRequestUncheckedUpdateWithoutPaymentRecordsInput>
+}
+
+export type ServiceRequestCreateNestedOneWithoutReviewsInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutReviewsInput, Prisma.ServiceRequestUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutReviewsInput
+  connect?: Prisma.ServiceRequestWhereUniqueInput
+}
+
+export type ServiceRequestUpdateOneWithoutReviewsNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutReviewsInput, Prisma.ServiceRequestUncheckedCreateWithoutReviewsInput>
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutReviewsInput
+  upsert?: Prisma.ServiceRequestUpsertWithoutReviewsInput
+  disconnect?: Prisma.ServiceRequestWhereInput | boolean
+  delete?: Prisma.ServiceRequestWhereInput | boolean
+  connect?: Prisma.ServiceRequestWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceRequestUpdateToOneWithWhereWithoutReviewsInput, Prisma.ServiceRequestUpdateWithoutReviewsInput>, Prisma.ServiceRequestUncheckedUpdateWithoutReviewsInput>
+}
+
+export type ServiceRequestCreateNestedOneWithoutComplaintsInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutComplaintsInput, Prisma.ServiceRequestUncheckedCreateWithoutComplaintsInput>
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutComplaintsInput
+  connect?: Prisma.ServiceRequestWhereUniqueInput
+}
+
+export type ServiceRequestUpdateOneWithoutComplaintsNestedInput = {
+  create?: Prisma.XOR<Prisma.ServiceRequestCreateWithoutComplaintsInput, Prisma.ServiceRequestUncheckedCreateWithoutComplaintsInput>
+  connectOrCreate?: Prisma.ServiceRequestCreateOrConnectWithoutComplaintsInput
+  upsert?: Prisma.ServiceRequestUpsertWithoutComplaintsInput
+  disconnect?: Prisma.ServiceRequestWhereInput | boolean
+  delete?: Prisma.ServiceRequestWhereInput | boolean
+  connect?: Prisma.ServiceRequestWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ServiceRequestUpdateToOneWithWhereWithoutComplaintsInput, Prisma.ServiceRequestUpdateWithoutComplaintsInput>, Prisma.ServiceRequestUncheckedUpdateWithoutComplaintsInput>
+}
+
 export type ServiceRequestCreateWithoutAssignedDoctorInput = {
   id?: string
+  serviceType?: $Enums.ServiceRequestType
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
   customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
   animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
-  area: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
   serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
-  treatmentRecords?: Prisma.TreatmentRecordCreateNestedManyWithoutServiceRequestInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestUncheckedCreateWithoutAssignedDoctorInput = {
   id?: string
   customerId: string
   animalId: string
-  areaId: string
+  areaId?: string | null
+  villageId?: string | null
   serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
   prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestCreateOrConnectWithoutAssignedDoctorInput = {
@@ -876,55 +1360,196 @@ export type ServiceRequestScalarWhereInput = {
   id?: Prisma.StringFilter<"ServiceRequest"> | string
   customerId?: Prisma.StringFilter<"ServiceRequest"> | string
   animalId?: Prisma.StringFilter<"ServiceRequest"> | string
-  areaId?: Prisma.StringFilter<"ServiceRequest"> | string
+  areaId?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  villageId?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
   serviceCategoryId?: Prisma.StringFilter<"ServiceRequest"> | string
+  serviceType?: Prisma.EnumServiceRequestTypeFilter<"ServiceRequest"> | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  assignedTechnicianId?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
   status?: Prisma.EnumServiceRequestStatusFilter<"ServiceRequest"> | $Enums.ServiceRequestStatus
   urgency?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
-  symptoms?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
-  preferredWindow?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
-  locationNotes?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  problemOrSymptom?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  description?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  preferredTime?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  locationText?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  scheduledStart?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  scheduledEnd?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  isEmergency?: Prisma.BoolFilter<"ServiceRequest"> | boolean
+  emergencyNotes?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
+  submittedAt?: Prisma.DateTimeFilter<"ServiceRequest"> | Date | string
+  assignedAt?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  startedAt?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  cancelledAt?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
+  cancelReason?: Prisma.StringNullableFilter<"ServiceRequest"> | string | null
   createdAt?: Prisma.DateTimeFilter<"ServiceRequest"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"ServiceRequest"> | Date | string
   completedAt?: Prisma.DateTimeNullableFilter<"ServiceRequest"> | Date | string | null
 }
 
-export type ServiceRequestCreateWithoutCustomerInput = {
+export type ServiceRequestCreateWithoutAssignedTechnicianInput = {
   id?: string
+  serviceType?: $Enums.ServiceRequestType
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+  customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
+  animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
+  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
+  assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
+}
+
+export type ServiceRequestUncheckedCreateWithoutAssignedTechnicianInput = {
+  id?: string
+  customerId: string
+  animalId: string
+  areaId?: string | null
+  villageId?: string | null
+  serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
+  assignedDoctorId?: string | null
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
+}
+
+export type ServiceRequestCreateOrConnectWithoutAssignedTechnicianInput = {
+  where: Prisma.ServiceRequestWhereUniqueInput
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAssignedTechnicianInput, Prisma.ServiceRequestUncheckedCreateWithoutAssignedTechnicianInput>
+}
+
+export type ServiceRequestCreateManyAssignedTechnicianInputEnvelope = {
+  data: Prisma.ServiceRequestCreateManyAssignedTechnicianInput | Prisma.ServiceRequestCreateManyAssignedTechnicianInput[]
+  skipDuplicates?: boolean
+}
+
+export type ServiceRequestUpsertWithWhereUniqueWithoutAssignedTechnicianInput = {
+  where: Prisma.ServiceRequestWhereUniqueInput
+  update: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutAssignedTechnicianInput, Prisma.ServiceRequestUncheckedUpdateWithoutAssignedTechnicianInput>
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAssignedTechnicianInput, Prisma.ServiceRequestUncheckedCreateWithoutAssignedTechnicianInput>
+}
+
+export type ServiceRequestUpdateWithWhereUniqueWithoutAssignedTechnicianInput = {
+  where: Prisma.ServiceRequestWhereUniqueInput
+  data: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutAssignedTechnicianInput, Prisma.ServiceRequestUncheckedUpdateWithoutAssignedTechnicianInput>
+}
+
+export type ServiceRequestUpdateManyWithWhereWithoutAssignedTechnicianInput = {
+  where: Prisma.ServiceRequestScalarWhereInput
+  data: Prisma.XOR<Prisma.ServiceRequestUpdateManyMutationInput, Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianInput>
+}
+
+export type ServiceRequestCreateWithoutCustomerInput = {
+  id?: string
+  serviceType?: $Enums.ServiceRequestType
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
   animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
-  area: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
   serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
   assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
-  treatmentRecords?: Prisma.TreatmentRecordCreateNestedManyWithoutServiceRequestInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestUncheckedCreateWithoutCustomerInput = {
   id?: string
   animalId: string
-  areaId: string
+  areaId?: string | null
+  villageId?: string | null
   serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
   assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
   prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestCreateOrConnectWithoutCustomerInput = {
@@ -953,106 +1578,170 @@ export type ServiceRequestUpdateManyWithWhereWithoutCustomerInput = {
   data: Prisma.XOR<Prisma.ServiceRequestUpdateManyMutationInput, Prisma.ServiceRequestUncheckedUpdateManyWithoutCustomerInput>
 }
 
-export type ServiceRequestCreateWithoutAnimalInput = {
+export type ServiceRequestCreateWithoutVillageInput = {
   id?: string
+  serviceType?: $Enums.ServiceRequestType
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  completedAt?: Date | string | null
-  customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
-  area: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
-  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
-  assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
-  treatmentRecords?: Prisma.TreatmentRecordCreateNestedManyWithoutServiceRequestInput
-  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
-  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
-}
-
-export type ServiceRequestUncheckedCreateWithoutAnimalInput = {
-  id?: string
-  customerId: string
-  areaId: string
-  serviceCategoryId: string
-  assignedDoctorId?: string | null
-  status?: $Enums.ServiceRequestStatus
-  urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
-  createdAt?: Date | string
-  updatedAt?: Date | string
-  completedAt?: Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
-  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
-  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
-}
-
-export type ServiceRequestCreateOrConnectWithoutAnimalInput = {
-  where: Prisma.ServiceRequestWhereUniqueInput
-  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAnimalInput, Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput>
-}
-
-export type ServiceRequestCreateManyAnimalInputEnvelope = {
-  data: Prisma.ServiceRequestCreateManyAnimalInput | Prisma.ServiceRequestCreateManyAnimalInput[]
-  skipDuplicates?: boolean
-}
-
-export type ServiceRequestUpsertWithWhereUniqueWithoutAnimalInput = {
-  where: Prisma.ServiceRequestWhereUniqueInput
-  update: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutAnimalInput, Prisma.ServiceRequestUncheckedUpdateWithoutAnimalInput>
-  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAnimalInput, Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput>
-}
-
-export type ServiceRequestUpdateWithWhereUniqueWithoutAnimalInput = {
-  where: Prisma.ServiceRequestWhereUniqueInput
-  data: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutAnimalInput, Prisma.ServiceRequestUncheckedUpdateWithoutAnimalInput>
-}
-
-export type ServiceRequestUpdateManyWithWhereWithoutAnimalInput = {
-  where: Prisma.ServiceRequestScalarWhereInput
-  data: Prisma.XOR<Prisma.ServiceRequestUpdateManyMutationInput, Prisma.ServiceRequestUncheckedUpdateManyWithoutAnimalInput>
-}
-
-export type ServiceRequestCreateWithoutAreaInput = {
-  id?: string
-  status?: $Enums.ServiceRequestStatus
-  urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
   customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
   animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
   serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
   assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
-  treatmentRecords?: Prisma.TreatmentRecordCreateNestedManyWithoutServiceRequestInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
+}
+
+export type ServiceRequestUncheckedCreateWithoutVillageInput = {
+  id?: string
+  customerId: string
+  animalId: string
+  areaId?: string | null
+  serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
+  assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
+}
+
+export type ServiceRequestCreateOrConnectWithoutVillageInput = {
+  where: Prisma.ServiceRequestWhereUniqueInput
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutVillageInput, Prisma.ServiceRequestUncheckedCreateWithoutVillageInput>
+}
+
+export type ServiceRequestCreateManyVillageInputEnvelope = {
+  data: Prisma.ServiceRequestCreateManyVillageInput | Prisma.ServiceRequestCreateManyVillageInput[]
+  skipDuplicates?: boolean
+}
+
+export type ServiceRequestUpsertWithWhereUniqueWithoutVillageInput = {
+  where: Prisma.ServiceRequestWhereUniqueInput
+  update: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutVillageInput, Prisma.ServiceRequestUncheckedUpdateWithoutVillageInput>
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutVillageInput, Prisma.ServiceRequestUncheckedCreateWithoutVillageInput>
+}
+
+export type ServiceRequestUpdateWithWhereUniqueWithoutVillageInput = {
+  where: Prisma.ServiceRequestWhereUniqueInput
+  data: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutVillageInput, Prisma.ServiceRequestUncheckedUpdateWithoutVillageInput>
+}
+
+export type ServiceRequestUpdateManyWithWhereWithoutVillageInput = {
+  where: Prisma.ServiceRequestScalarWhereInput
+  data: Prisma.XOR<Prisma.ServiceRequestUpdateManyMutationInput, Prisma.ServiceRequestUncheckedUpdateManyWithoutVillageInput>
+}
+
+export type ServiceRequestCreateWithoutAreaInput = {
+  id?: string
+  serviceType?: $Enums.ServiceRequestType
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+  customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
+  animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
+  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
+  assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestUncheckedCreateWithoutAreaInput = {
   id?: string
   customerId: string
   animalId: string
+  villageId?: string | null
   serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
   assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
   prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestCreateOrConnectWithoutAreaInput = {
@@ -1083,40 +1772,72 @@ export type ServiceRequestUpdateManyWithWhereWithoutAreaInput = {
 
 export type ServiceRequestCreateWithoutServiceCategoryInput = {
   id?: string
+  serviceType?: $Enums.ServiceRequestType
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
   customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
   animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
-  area: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
   assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
-  treatmentRecords?: Prisma.TreatmentRecordCreateNestedManyWithoutServiceRequestInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestUncheckedCreateWithoutServiceCategoryInput = {
   id?: string
   customerId: string
   animalId: string
-  areaId: string
+  areaId?: string | null
+  villageId?: string | null
+  serviceType?: $Enums.ServiceRequestType
   assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
   prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestCreateOrConnectWithoutServiceCategoryInput = {
@@ -1145,134 +1866,326 @@ export type ServiceRequestUpdateManyWithWhereWithoutServiceCategoryInput = {
   data: Prisma.XOR<Prisma.ServiceRequestUpdateManyMutationInput, Prisma.ServiceRequestUncheckedUpdateManyWithoutServiceCategoryInput>
 }
 
-export type ServiceRequestCreateWithoutTreatmentRecordsInput = {
+export type ServiceRequestCreateWithoutAnimalInput = {
   id?: string
+  serviceType?: $Enums.ServiceRequestType
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+  customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
+  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
+  assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
+}
+
+export type ServiceRequestUncheckedCreateWithoutAnimalInput = {
+  id?: string
+  customerId: string
+  areaId?: string | null
+  villageId?: string | null
+  serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
+  assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
+}
+
+export type ServiceRequestCreateOrConnectWithoutAnimalInput = {
+  where: Prisma.ServiceRequestWhereUniqueInput
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAnimalInput, Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput>
+}
+
+export type ServiceRequestCreateManyAnimalInputEnvelope = {
+  data: Prisma.ServiceRequestCreateManyAnimalInput | Prisma.ServiceRequestCreateManyAnimalInput[]
+  skipDuplicates?: boolean
+}
+
+export type ServiceRequestUpsertWithWhereUniqueWithoutAnimalInput = {
+  where: Prisma.ServiceRequestWhereUniqueInput
+  update: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutAnimalInput, Prisma.ServiceRequestUncheckedUpdateWithoutAnimalInput>
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutAnimalInput, Prisma.ServiceRequestUncheckedCreateWithoutAnimalInput>
+}
+
+export type ServiceRequestUpdateWithWhereUniqueWithoutAnimalInput = {
+  where: Prisma.ServiceRequestWhereUniqueInput
+  data: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutAnimalInput, Prisma.ServiceRequestUncheckedUpdateWithoutAnimalInput>
+}
+
+export type ServiceRequestUpdateManyWithWhereWithoutAnimalInput = {
+  where: Prisma.ServiceRequestScalarWhereInput
+  data: Prisma.XOR<Prisma.ServiceRequestUpdateManyMutationInput, Prisma.ServiceRequestUncheckedUpdateManyWithoutAnimalInput>
+}
+
+export type ServiceRequestCreateWithoutTreatmentCasesInput = {
+  id?: string
+  serviceType?: $Enums.ServiceRequestType
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
   customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
   animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
-  area: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
   serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
   assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
 }
 
-export type ServiceRequestUncheckedCreateWithoutTreatmentRecordsInput = {
+export type ServiceRequestUncheckedCreateWithoutTreatmentCasesInput = {
   id?: string
   customerId: string
   animalId: string
-  areaId: string
+  areaId?: string | null
+  villageId?: string | null
   serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
   assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
   prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
 }
 
-export type ServiceRequestCreateOrConnectWithoutTreatmentRecordsInput = {
+export type ServiceRequestCreateOrConnectWithoutTreatmentCasesInput = {
   where: Prisma.ServiceRequestWhereUniqueInput
-  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutTreatmentRecordsInput, Prisma.ServiceRequestUncheckedCreateWithoutTreatmentRecordsInput>
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutTreatmentCasesInput, Prisma.ServiceRequestUncheckedCreateWithoutTreatmentCasesInput>
 }
 
-export type ServiceRequestUpsertWithoutTreatmentRecordsInput = {
-  update: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutTreatmentRecordsInput, Prisma.ServiceRequestUncheckedUpdateWithoutTreatmentRecordsInput>
-  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutTreatmentRecordsInput, Prisma.ServiceRequestUncheckedCreateWithoutTreatmentRecordsInput>
+export type ServiceRequestUpsertWithoutTreatmentCasesInput = {
+  update: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutTreatmentCasesInput, Prisma.ServiceRequestUncheckedUpdateWithoutTreatmentCasesInput>
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutTreatmentCasesInput, Prisma.ServiceRequestUncheckedCreateWithoutTreatmentCasesInput>
   where?: Prisma.ServiceRequestWhereInput
 }
 
-export type ServiceRequestUpdateToOneWithWhereWithoutTreatmentRecordsInput = {
+export type ServiceRequestUpdateToOneWithWhereWithoutTreatmentCasesInput = {
   where?: Prisma.ServiceRequestWhereInput
-  data: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutTreatmentRecordsInput, Prisma.ServiceRequestUncheckedUpdateWithoutTreatmentRecordsInput>
+  data: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutTreatmentCasesInput, Prisma.ServiceRequestUncheckedUpdateWithoutTreatmentCasesInput>
 }
 
-export type ServiceRequestUpdateWithoutTreatmentRecordsInput = {
+export type ServiceRequestUpdateWithoutTreatmentCasesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
   animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
-  area?: Prisma.AreaUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
   serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
   assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
 }
 
-export type ServiceRequestUncheckedUpdateWithoutTreatmentRecordsInput = {
+export type ServiceRequestUncheckedUpdateWithoutTreatmentCasesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestCreateWithoutPrescriptionsInput = {
   id?: string
+  serviceType?: $Enums.ServiceRequestType
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
   customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
   animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
-  area: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
   serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
   assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
-  treatmentRecords?: Prisma.TreatmentRecordCreateNestedManyWithoutServiceRequestInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestUncheckedCreateWithoutPrescriptionsInput = {
   id?: string
   customerId: string
   animalId: string
-  areaId: string
+  areaId?: string | null
+  villageId?: string | null
   serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
   assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestCreateOrConnectWithoutPrescriptionsInput = {
@@ -1293,78 +2206,142 @@ export type ServiceRequestUpdateToOneWithWhereWithoutPrescriptionsInput = {
 
 export type ServiceRequestUpdateWithoutPrescriptionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
   animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
-  area?: Prisma.AreaUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
   serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
   assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUpdateManyWithoutServiceRequestNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestUncheckedUpdateWithoutPrescriptionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestCreateWithoutBillingRecordsInput = {
   id?: string
+  serviceType?: $Enums.ServiceRequestType
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
   customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
   animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
-  area: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
   serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
   assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
-  treatmentRecords?: Prisma.TreatmentRecordCreateNestedManyWithoutServiceRequestInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestUncheckedCreateWithoutBillingRecordsInput = {
   id?: string
   customerId: string
   animalId: string
-  areaId: string
+  areaId?: string | null
+  villageId?: string | null
   serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
   assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
   prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
 }
 
 export type ServiceRequestCreateOrConnectWithoutBillingRecordsInput = {
@@ -1385,53 +2362,566 @@ export type ServiceRequestUpdateToOneWithWhereWithoutBillingRecordsInput = {
 
 export type ServiceRequestUpdateWithoutBillingRecordsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
   animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
-  area?: Prisma.AreaUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
   serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
   assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUpdateManyWithoutServiceRequestNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestUncheckedUpdateWithoutBillingRecordsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
+}
+
+export type ServiceRequestCreateWithoutPaymentRecordsInput = {
+  id?: string
+  serviceType?: $Enums.ServiceRequestType
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+  customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
+  animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
+  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
+  assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
+}
+
+export type ServiceRequestUncheckedCreateWithoutPaymentRecordsInput = {
+  id?: string
+  customerId: string
+  animalId: string
+  areaId?: string | null
+  villageId?: string | null
+  serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
+  assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
+}
+
+export type ServiceRequestCreateOrConnectWithoutPaymentRecordsInput = {
+  where: Prisma.ServiceRequestWhereUniqueInput
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutPaymentRecordsInput, Prisma.ServiceRequestUncheckedCreateWithoutPaymentRecordsInput>
+}
+
+export type ServiceRequestUpsertWithoutPaymentRecordsInput = {
+  update: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutPaymentRecordsInput, Prisma.ServiceRequestUncheckedUpdateWithoutPaymentRecordsInput>
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutPaymentRecordsInput, Prisma.ServiceRequestUncheckedCreateWithoutPaymentRecordsInput>
+  where?: Prisma.ServiceRequestWhereInput
+}
+
+export type ServiceRequestUpdateToOneWithWhereWithoutPaymentRecordsInput = {
+  where?: Prisma.ServiceRequestWhereInput
+  data: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutPaymentRecordsInput, Prisma.ServiceRequestUncheckedUpdateWithoutPaymentRecordsInput>
+}
+
+export type ServiceRequestUpdateWithoutPaymentRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
+  urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
+  animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
+  serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
+  assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
+}
+
+export type ServiceRequestUncheckedUpdateWithoutPaymentRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  animalId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
+  urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
+}
+
+export type ServiceRequestCreateWithoutReviewsInput = {
+  id?: string
+  serviceType?: $Enums.ServiceRequestType
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+  customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
+  animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
+  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
+  assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutServiceRequestInput
+}
+
+export type ServiceRequestUncheckedCreateWithoutReviewsInput = {
+  id?: string
+  customerId: string
+  animalId: string
+  areaId?: string | null
+  villageId?: string | null
+  serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
+  assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutServiceRequestInput
+}
+
+export type ServiceRequestCreateOrConnectWithoutReviewsInput = {
+  where: Prisma.ServiceRequestWhereUniqueInput
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutReviewsInput, Prisma.ServiceRequestUncheckedCreateWithoutReviewsInput>
+}
+
+export type ServiceRequestUpsertWithoutReviewsInput = {
+  update: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutReviewsInput, Prisma.ServiceRequestUncheckedUpdateWithoutReviewsInput>
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutReviewsInput, Prisma.ServiceRequestUncheckedCreateWithoutReviewsInput>
+  where?: Prisma.ServiceRequestWhereInput
+}
+
+export type ServiceRequestUpdateToOneWithWhereWithoutReviewsInput = {
+  where?: Prisma.ServiceRequestWhereInput
+  data: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutReviewsInput, Prisma.ServiceRequestUncheckedUpdateWithoutReviewsInput>
+}
+
+export type ServiceRequestUpdateWithoutReviewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
+  urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
+  animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
+  serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
+  assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
+}
+
+export type ServiceRequestUncheckedUpdateWithoutReviewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  animalId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
+  urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
+}
+
+export type ServiceRequestCreateWithoutComplaintsInput = {
+  id?: string
+  serviceType?: $Enums.ServiceRequestType
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+  customer: Prisma.CustomerProfileCreateNestedOneWithoutServiceRequestsInput
+  animal: Prisma.AnimalProfileCreateNestedOneWithoutServiceRequestsInput
+  area?: Prisma.AreaCreateNestedOneWithoutServiceRequestsInput
+  village?: Prisma.VillageCreateNestedOneWithoutServiceRequestsInput
+  serviceCategory: Prisma.ServiceCategoryCreateNestedOneWithoutServiceRequestsInput
+  assignedDoctor?: Prisma.DoctorProfileCreateNestedOneWithoutAssignedRequestsInput
+  assignedTechnician?: Prisma.AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutServiceRequestInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutServiceRequestInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutServiceRequestInput
+}
+
+export type ServiceRequestUncheckedCreateWithoutComplaintsInput = {
+  id?: string
+  customerId: string
+  animalId: string
+  areaId?: string | null
+  villageId?: string | null
+  serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
+  assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutServiceRequestInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutServiceRequestInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedCreateNestedManyWithoutServiceRequestInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutServiceRequestInput
+}
+
+export type ServiceRequestCreateOrConnectWithoutComplaintsInput = {
+  where: Prisma.ServiceRequestWhereUniqueInput
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutComplaintsInput, Prisma.ServiceRequestUncheckedCreateWithoutComplaintsInput>
+}
+
+export type ServiceRequestUpsertWithoutComplaintsInput = {
+  update: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutComplaintsInput, Prisma.ServiceRequestUncheckedUpdateWithoutComplaintsInput>
+  create: Prisma.XOR<Prisma.ServiceRequestCreateWithoutComplaintsInput, Prisma.ServiceRequestUncheckedCreateWithoutComplaintsInput>
+  where?: Prisma.ServiceRequestWhereInput
+}
+
+export type ServiceRequestUpdateToOneWithWhereWithoutComplaintsInput = {
+  where?: Prisma.ServiceRequestWhereInput
+  data: Prisma.XOR<Prisma.ServiceRequestUpdateWithoutComplaintsInput, Prisma.ServiceRequestUncheckedUpdateWithoutComplaintsInput>
+}
+
+export type ServiceRequestUpdateWithoutComplaintsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
+  urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
+  animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
+  serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
+  assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+}
+
+export type ServiceRequestUncheckedUpdateWithoutComplaintsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  animalId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
+  urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestCreateManyAssignedDoctorInput = {
   id?: string
   customerId: string
   animalId: string
-  areaId: string
+  areaId?: string | null
+  villageId?: string | null
   serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
@@ -1439,53 +2929,226 @@ export type ServiceRequestCreateManyAssignedDoctorInput = {
 
 export type ServiceRequestUpdateWithoutAssignedDoctorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
   animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
-  area?: Prisma.AreaUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
   serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUpdateManyWithoutServiceRequestNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestUncheckedUpdateWithoutAssignedDoctorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestUncheckedUpdateManyWithoutAssignedDoctorInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type ServiceRequestCreateManyAssignedTechnicianInput = {
+  id?: string
+  customerId: string
+  animalId: string
+  areaId?: string | null
+  villageId?: string | null
+  serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
+  assignedDoctorId?: string | null
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+}
+
+export type ServiceRequestUpdateWithoutAssignedTechnicianInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
+  urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
+  animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
+  serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
+  assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
+}
+
+export type ServiceRequestUncheckedUpdateWithoutAssignedTechnicianInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  animalId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
+  urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
+}
+
+export type ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  animalId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
+  urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1494,14 +3157,27 @@ export type ServiceRequestUncheckedUpdateManyWithoutAssignedDoctorInput = {
 export type ServiceRequestCreateManyCustomerInput = {
   id?: string
   animalId: string
-  areaId: string
+  areaId?: string | null
+  villageId?: string | null
   serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
   assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
@@ -1509,123 +3185,226 @@ export type ServiceRequestCreateManyCustomerInput = {
 
 export type ServiceRequestUpdateWithoutCustomerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
-  area?: Prisma.AreaUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
   serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
   assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUpdateManyWithoutServiceRequestNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestUncheckedUpdateWithoutCustomerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestUncheckedUpdateManyWithoutCustomerInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
-export type ServiceRequestCreateManyAnimalInput = {
+export type ServiceRequestCreateManyVillageInput = {
   id?: string
   customerId: string
-  areaId: string
+  animalId: string
+  areaId?: string | null
   serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
   assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
 }
 
-export type ServiceRequestUpdateWithoutAnimalInput = {
+export type ServiceRequestUpdateWithoutVillageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
-  area?: Prisma.AreaUpdateOneRequiredWithoutServiceRequestsNestedInput
+  animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
   serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
   assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUpdateManyWithoutServiceRequestNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
 }
 
-export type ServiceRequestUncheckedUpdateWithoutAnimalInput = {
+export type ServiceRequestUncheckedUpdateWithoutVillageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  animalId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
 }
 
-export type ServiceRequestUncheckedUpdateManyWithoutAnimalInput = {
+export type ServiceRequestUncheckedUpdateManyWithoutVillageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  animalId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1635,13 +3414,26 @@ export type ServiceRequestCreateManyAreaInput = {
   id?: string
   customerId: string
   animalId: string
+  villageId?: string | null
   serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
   assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
@@ -1649,53 +3441,98 @@ export type ServiceRequestCreateManyAreaInput = {
 
 export type ServiceRequestUpdateWithoutAreaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
   animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
   serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
   assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUpdateManyWithoutServiceRequestNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestUncheckedUpdateWithoutAreaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestUncheckedUpdateManyWithoutAreaInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1705,13 +3542,26 @@ export type ServiceRequestCreateManyServiceCategoryInput = {
   id?: string
   customerId: string
   animalId: string
-  areaId: string
+  areaId?: string | null
+  villageId?: string | null
+  serviceType?: $Enums.ServiceRequestType
   assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
   status?: $Enums.ServiceRequestStatus
   urgency?: string | null
-  symptoms?: string | null
-  preferredWindow?: string | null
-  locationNotes?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   completedAt?: Date | string | null
@@ -1719,53 +3569,226 @@ export type ServiceRequestCreateManyServiceCategoryInput = {
 
 export type ServiceRequestUpdateWithoutServiceCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
   animal?: Prisma.AnimalProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
-  area?: Prisma.AreaUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
   assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
-  treatmentRecords?: Prisma.TreatmentRecordUpdateManyWithoutServiceRequestNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestUncheckedUpdateWithoutServiceCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  treatmentRecords?: Prisma.TreatmentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
   prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
 }
 
 export type ServiceRequestUncheckedUpdateManyWithoutServiceCategoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   customerId?: Prisma.StringFieldUpdateOperationsInput | string
   animalId?: Prisma.StringFieldUpdateOperationsInput | string
-  areaId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
   assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
   urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  symptoms?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  preferredWindow?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  locationNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+}
+
+export type ServiceRequestCreateManyAnimalInput = {
+  id?: string
+  customerId: string
+  areaId?: string | null
+  villageId?: string | null
+  serviceCategoryId: string
+  serviceType?: $Enums.ServiceRequestType
+  assignedDoctorId?: string | null
+  assignedTechnicianId?: string | null
+  status?: $Enums.ServiceRequestStatus
+  urgency?: string | null
+  problemOrSymptom?: string | null
+  description?: string | null
+  preferredTime?: string | null
+  locationText?: string | null
+  scheduledStart?: Date | string | null
+  scheduledEnd?: Date | string | null
+  isEmergency?: boolean
+  emergencyNotes?: string | null
+  submittedAt?: Date | string
+  assignedAt?: Date | string | null
+  startedAt?: Date | string | null
+  cancelledAt?: Date | string | null
+  cancelReason?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  completedAt?: Date | string | null
+}
+
+export type ServiceRequestUpdateWithoutAnimalInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
+  urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  customer?: Prisma.CustomerProfileUpdateOneRequiredWithoutServiceRequestsNestedInput
+  area?: Prisma.AreaUpdateOneWithoutServiceRequestsNestedInput
+  village?: Prisma.VillageUpdateOneWithoutServiceRequestsNestedInput
+  serviceCategory?: Prisma.ServiceCategoryUpdateOneRequiredWithoutServiceRequestsNestedInput
+  assignedDoctor?: Prisma.DoctorProfileUpdateOneWithoutAssignedRequestsNestedInput
+  assignedTechnician?: Prisma.AiTechnicianProfileUpdateOneWithoutAssignedRequestsNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutServiceRequestNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutServiceRequestNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutServiceRequestNestedInput
+}
+
+export type ServiceRequestUncheckedUpdateWithoutAnimalInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
+  urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutServiceRequestNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutServiceRequestNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  paymentRecords?: Prisma.PaymentRecordUncheckedUpdateManyWithoutServiceRequestNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutServiceRequestNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutServiceRequestNestedInput
+}
+
+export type ServiceRequestUncheckedUpdateManyWithoutAnimalInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  customerId?: Prisma.StringFieldUpdateOperationsInput | string
+  areaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  villageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceCategoryId?: Prisma.StringFieldUpdateOperationsInput | string
+  serviceType?: Prisma.EnumServiceRequestTypeFieldUpdateOperationsInput | $Enums.ServiceRequestType
+  assignedDoctorId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  assignedTechnicianId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  status?: Prisma.EnumServiceRequestStatusFieldUpdateOperationsInput | $Enums.ServiceRequestStatus
+  urgency?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  problemOrSymptom?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferredTime?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  locationText?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  scheduledStart?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  scheduledEnd?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  isEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  emergencyNotes?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  submittedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  startedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelledAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  cancelReason?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   completedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -1777,15 +3800,21 @@ export type ServiceRequestUncheckedUpdateManyWithoutServiceCategoryInput = {
  */
 
 export type ServiceRequestCountOutputType = {
-  treatmentRecords: number
+  treatmentCases: number
   prescriptions: number
   billingRecords: number
+  paymentRecords: number
+  reviews: number
+  complaints: number
 }
 
 export type ServiceRequestCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  treatmentRecords?: boolean | ServiceRequestCountOutputTypeCountTreatmentRecordsArgs
+  treatmentCases?: boolean | ServiceRequestCountOutputTypeCountTreatmentCasesArgs
   prescriptions?: boolean | ServiceRequestCountOutputTypeCountPrescriptionsArgs
   billingRecords?: boolean | ServiceRequestCountOutputTypeCountBillingRecordsArgs
+  paymentRecords?: boolean | ServiceRequestCountOutputTypeCountPaymentRecordsArgs
+  reviews?: boolean | ServiceRequestCountOutputTypeCountReviewsArgs
+  complaints?: boolean | ServiceRequestCountOutputTypeCountComplaintsArgs
 }
 
 /**
@@ -1801,8 +3830,8 @@ export type ServiceRequestCountOutputTypeDefaultArgs<ExtArgs extends runtime.Typ
 /**
  * ServiceRequestCountOutputType without action
  */
-export type ServiceRequestCountOutputTypeCountTreatmentRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.TreatmentRecordWhereInput
+export type ServiceRequestCountOutputTypeCountTreatmentCasesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TreatmentCaseWhereInput
 }
 
 /**
@@ -1819,30 +3848,69 @@ export type ServiceRequestCountOutputTypeCountBillingRecordsArgs<ExtArgs extends
   where?: Prisma.BillingRecordWhereInput
 }
 
+/**
+ * ServiceRequestCountOutputType without action
+ */
+export type ServiceRequestCountOutputTypeCountPaymentRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.PaymentRecordWhereInput
+}
+
+/**
+ * ServiceRequestCountOutputType without action
+ */
+export type ServiceRequestCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ReviewWhereInput
+}
+
+/**
+ * ServiceRequestCountOutputType without action
+ */
+export type ServiceRequestCountOutputTypeCountComplaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.ComplaintWhereInput
+}
+
 
 export type ServiceRequestSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   customerId?: boolean
   animalId?: boolean
   areaId?: boolean
+  villageId?: boolean
   serviceCategoryId?: boolean
+  serviceType?: boolean
   assignedDoctorId?: boolean
+  assignedTechnicianId?: boolean
   status?: boolean
   urgency?: boolean
-  symptoms?: boolean
-  preferredWindow?: boolean
-  locationNotes?: boolean
+  problemOrSymptom?: boolean
+  description?: boolean
+  preferredTime?: boolean
+  locationText?: boolean
+  scheduledStart?: boolean
+  scheduledEnd?: boolean
+  isEmergency?: boolean
+  emergencyNotes?: boolean
+  submittedAt?: boolean
+  assignedAt?: boolean
+  startedAt?: boolean
+  cancelledAt?: boolean
+  cancelReason?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   completedAt?: boolean
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
   animal?: boolean | Prisma.AnimalProfileDefaultArgs<ExtArgs>
-  area?: boolean | Prisma.AreaDefaultArgs<ExtArgs>
+  area?: boolean | Prisma.ServiceRequest$areaArgs<ExtArgs>
+  village?: boolean | Prisma.ServiceRequest$villageArgs<ExtArgs>
   serviceCategory?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
   assignedDoctor?: boolean | Prisma.ServiceRequest$assignedDoctorArgs<ExtArgs>
-  treatmentRecords?: boolean | Prisma.ServiceRequest$treatmentRecordsArgs<ExtArgs>
+  assignedTechnician?: boolean | Prisma.ServiceRequest$assignedTechnicianArgs<ExtArgs>
+  treatmentCases?: boolean | Prisma.ServiceRequest$treatmentCasesArgs<ExtArgs>
   prescriptions?: boolean | Prisma.ServiceRequest$prescriptionsArgs<ExtArgs>
   billingRecords?: boolean | Prisma.ServiceRequest$billingRecordsArgs<ExtArgs>
+  paymentRecords?: boolean | Prisma.ServiceRequest$paymentRecordsArgs<ExtArgs>
+  reviews?: boolean | Prisma.ServiceRequest$reviewsArgs<ExtArgs>
+  complaints?: boolean | Prisma.ServiceRequest$complaintsArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceRequestCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["serviceRequest"]>
 
@@ -1851,21 +3919,36 @@ export type ServiceRequestSelectCreateManyAndReturn<ExtArgs extends runtime.Type
   customerId?: boolean
   animalId?: boolean
   areaId?: boolean
+  villageId?: boolean
   serviceCategoryId?: boolean
+  serviceType?: boolean
   assignedDoctorId?: boolean
+  assignedTechnicianId?: boolean
   status?: boolean
   urgency?: boolean
-  symptoms?: boolean
-  preferredWindow?: boolean
-  locationNotes?: boolean
+  problemOrSymptom?: boolean
+  description?: boolean
+  preferredTime?: boolean
+  locationText?: boolean
+  scheduledStart?: boolean
+  scheduledEnd?: boolean
+  isEmergency?: boolean
+  emergencyNotes?: boolean
+  submittedAt?: boolean
+  assignedAt?: boolean
+  startedAt?: boolean
+  cancelledAt?: boolean
+  cancelReason?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   completedAt?: boolean
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
   animal?: boolean | Prisma.AnimalProfileDefaultArgs<ExtArgs>
-  area?: boolean | Prisma.AreaDefaultArgs<ExtArgs>
+  area?: boolean | Prisma.ServiceRequest$areaArgs<ExtArgs>
+  village?: boolean | Prisma.ServiceRequest$villageArgs<ExtArgs>
   serviceCategory?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
   assignedDoctor?: boolean | Prisma.ServiceRequest$assignedDoctorArgs<ExtArgs>
+  assignedTechnician?: boolean | Prisma.ServiceRequest$assignedTechnicianArgs<ExtArgs>
 }, ExtArgs["result"]["serviceRequest"]>
 
 export type ServiceRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -1873,21 +3956,36 @@ export type ServiceRequestSelectUpdateManyAndReturn<ExtArgs extends runtime.Type
   customerId?: boolean
   animalId?: boolean
   areaId?: boolean
+  villageId?: boolean
   serviceCategoryId?: boolean
+  serviceType?: boolean
   assignedDoctorId?: boolean
+  assignedTechnicianId?: boolean
   status?: boolean
   urgency?: boolean
-  symptoms?: boolean
-  preferredWindow?: boolean
-  locationNotes?: boolean
+  problemOrSymptom?: boolean
+  description?: boolean
+  preferredTime?: boolean
+  locationText?: boolean
+  scheduledStart?: boolean
+  scheduledEnd?: boolean
+  isEmergency?: boolean
+  emergencyNotes?: boolean
+  submittedAt?: boolean
+  assignedAt?: boolean
+  startedAt?: boolean
+  cancelledAt?: boolean
+  cancelReason?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   completedAt?: boolean
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
   animal?: boolean | Prisma.AnimalProfileDefaultArgs<ExtArgs>
-  area?: boolean | Prisma.AreaDefaultArgs<ExtArgs>
+  area?: boolean | Prisma.ServiceRequest$areaArgs<ExtArgs>
+  village?: boolean | Prisma.ServiceRequest$villageArgs<ExtArgs>
   serviceCategory?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
   assignedDoctor?: boolean | Prisma.ServiceRequest$assignedDoctorArgs<ExtArgs>
+  assignedTechnician?: boolean | Prisma.ServiceRequest$assignedTechnicianArgs<ExtArgs>
 }, ExtArgs["result"]["serviceRequest"]>
 
 export type ServiceRequestSelectScalar = {
@@ -1895,43 +3993,65 @@ export type ServiceRequestSelectScalar = {
   customerId?: boolean
   animalId?: boolean
   areaId?: boolean
+  villageId?: boolean
   serviceCategoryId?: boolean
+  serviceType?: boolean
   assignedDoctorId?: boolean
+  assignedTechnicianId?: boolean
   status?: boolean
   urgency?: boolean
-  symptoms?: boolean
-  preferredWindow?: boolean
-  locationNotes?: boolean
+  problemOrSymptom?: boolean
+  description?: boolean
+  preferredTime?: boolean
+  locationText?: boolean
+  scheduledStart?: boolean
+  scheduledEnd?: boolean
+  isEmergency?: boolean
+  emergencyNotes?: boolean
+  submittedAt?: boolean
+  assignedAt?: boolean
+  startedAt?: boolean
+  cancelledAt?: boolean
+  cancelReason?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   completedAt?: boolean
 }
 
-export type ServiceRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "customerId" | "animalId" | "areaId" | "serviceCategoryId" | "assignedDoctorId" | "status" | "urgency" | "symptoms" | "preferredWindow" | "locationNotes" | "createdAt" | "updatedAt" | "completedAt", ExtArgs["result"]["serviceRequest"]>
+export type ServiceRequestOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "customerId" | "animalId" | "areaId" | "villageId" | "serviceCategoryId" | "serviceType" | "assignedDoctorId" | "assignedTechnicianId" | "status" | "urgency" | "problemOrSymptom" | "description" | "preferredTime" | "locationText" | "scheduledStart" | "scheduledEnd" | "isEmergency" | "emergencyNotes" | "submittedAt" | "assignedAt" | "startedAt" | "cancelledAt" | "cancelReason" | "createdAt" | "updatedAt" | "completedAt", ExtArgs["result"]["serviceRequest"]>
 export type ServiceRequestInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
   animal?: boolean | Prisma.AnimalProfileDefaultArgs<ExtArgs>
-  area?: boolean | Prisma.AreaDefaultArgs<ExtArgs>
+  area?: boolean | Prisma.ServiceRequest$areaArgs<ExtArgs>
+  village?: boolean | Prisma.ServiceRequest$villageArgs<ExtArgs>
   serviceCategory?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
   assignedDoctor?: boolean | Prisma.ServiceRequest$assignedDoctorArgs<ExtArgs>
-  treatmentRecords?: boolean | Prisma.ServiceRequest$treatmentRecordsArgs<ExtArgs>
+  assignedTechnician?: boolean | Prisma.ServiceRequest$assignedTechnicianArgs<ExtArgs>
+  treatmentCases?: boolean | Prisma.ServiceRequest$treatmentCasesArgs<ExtArgs>
   prescriptions?: boolean | Prisma.ServiceRequest$prescriptionsArgs<ExtArgs>
   billingRecords?: boolean | Prisma.ServiceRequest$billingRecordsArgs<ExtArgs>
+  paymentRecords?: boolean | Prisma.ServiceRequest$paymentRecordsArgs<ExtArgs>
+  reviews?: boolean | Prisma.ServiceRequest$reviewsArgs<ExtArgs>
+  complaints?: boolean | Prisma.ServiceRequest$complaintsArgs<ExtArgs>
   _count?: boolean | Prisma.ServiceRequestCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type ServiceRequestIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
   animal?: boolean | Prisma.AnimalProfileDefaultArgs<ExtArgs>
-  area?: boolean | Prisma.AreaDefaultArgs<ExtArgs>
+  area?: boolean | Prisma.ServiceRequest$areaArgs<ExtArgs>
+  village?: boolean | Prisma.ServiceRequest$villageArgs<ExtArgs>
   serviceCategory?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
   assignedDoctor?: boolean | Prisma.ServiceRequest$assignedDoctorArgs<ExtArgs>
+  assignedTechnician?: boolean | Prisma.ServiceRequest$assignedTechnicianArgs<ExtArgs>
 }
 export type ServiceRequestIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   customer?: boolean | Prisma.CustomerProfileDefaultArgs<ExtArgs>
   animal?: boolean | Prisma.AnimalProfileDefaultArgs<ExtArgs>
-  area?: boolean | Prisma.AreaDefaultArgs<ExtArgs>
+  area?: boolean | Prisma.ServiceRequest$areaArgs<ExtArgs>
+  village?: boolean | Prisma.ServiceRequest$villageArgs<ExtArgs>
   serviceCategory?: boolean | Prisma.ServiceCategoryDefaultArgs<ExtArgs>
   assignedDoctor?: boolean | Prisma.ServiceRequest$assignedDoctorArgs<ExtArgs>
+  assignedTechnician?: boolean | Prisma.ServiceRequest$assignedTechnicianArgs<ExtArgs>
 }
 
 export type $ServiceRequestPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1939,25 +4059,61 @@ export type $ServiceRequestPayload<ExtArgs extends runtime.Types.Extensions.Inte
   objects: {
     customer: Prisma.$CustomerProfilePayload<ExtArgs>
     animal: Prisma.$AnimalProfilePayload<ExtArgs>
-    area: Prisma.$AreaPayload<ExtArgs>
+    area: Prisma.$AreaPayload<ExtArgs> | null
+    village: Prisma.$VillagePayload<ExtArgs> | null
     serviceCategory: Prisma.$ServiceCategoryPayload<ExtArgs>
     assignedDoctor: Prisma.$DoctorProfilePayload<ExtArgs> | null
-    treatmentRecords: Prisma.$TreatmentRecordPayload<ExtArgs>[]
+    assignedTechnician: Prisma.$AiTechnicianProfilePayload<ExtArgs> | null
+    treatmentCases: Prisma.$TreatmentCasePayload<ExtArgs>[]
     prescriptions: Prisma.$PrescriptionPayload<ExtArgs>[]
     billingRecords: Prisma.$BillingRecordPayload<ExtArgs>[]
+    paymentRecords: Prisma.$PaymentRecordPayload<ExtArgs>[]
+    reviews: Prisma.$ReviewPayload<ExtArgs>[]
+    complaints: Prisma.$ComplaintPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     customerId: string
     animalId: string
-    areaId: string
+    /**
+     * Legacy link — prefer `villageId` for new records.
+     */
+    areaId: string | null
+    villageId: string | null
     serviceCategoryId: string
+    /**
+     * Stored as `requestType` in PostgreSQL (historic column name).
+     */
+    serviceType: $Enums.ServiceRequestType
     assignedDoctorId: string | null
+    /**
+     * Stored as `assignedAiTechnicianId` in PostgreSQL (historic column name).
+     */
+    assignedTechnicianId: string | null
     status: $Enums.ServiceRequestStatus
     urgency: string | null
-    symptoms: string | null
-    preferredWindow: string | null
-    locationNotes: string | null
+    /**
+     * Stored as `symptoms` in PostgreSQL.
+     */
+    problemOrSymptom: string | null
+    description: string | null
+    /**
+     * Stored as `preferredWindow` in PostgreSQL.
+     */
+    preferredTime: string | null
+    /**
+     * Stored as `locationNotes` in PostgreSQL.
+     */
+    locationText: string | null
+    scheduledStart: Date | null
+    scheduledEnd: Date | null
+    isEmergency: boolean
+    emergencyNotes: string | null
+    submittedAt: Date
+    assignedAt: Date | null
+    startedAt: Date | null
+    cancelledAt: Date | null
+    cancelReason: string | null
     createdAt: Date
     updatedAt: Date
     completedAt: Date | null
@@ -2357,12 +4513,17 @@ export interface Prisma__ServiceRequestClient<T, Null = never, ExtArgs extends r
   readonly [Symbol.toStringTag]: "PrismaPromise"
   customer<T extends Prisma.CustomerProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.CustomerProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__CustomerProfileClient<runtime.Types.Result.GetResult<Prisma.$CustomerProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   animal<T extends Prisma.AnimalProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AnimalProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__AnimalProfileClient<runtime.Types.Result.GetResult<Prisma.$AnimalProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  area<T extends Prisma.AreaDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AreaDefaultArgs<ExtArgs>>): Prisma.Prisma__AreaClient<runtime.Types.Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  area<T extends Prisma.ServiceRequest$areaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequest$areaArgs<ExtArgs>>): Prisma.Prisma__AreaClient<runtime.Types.Result.GetResult<Prisma.$AreaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  village<T extends Prisma.ServiceRequest$villageArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequest$villageArgs<ExtArgs>>): Prisma.Prisma__VillageClient<runtime.Types.Result.GetResult<Prisma.$VillagePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   serviceCategory<T extends Prisma.ServiceCategoryDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceCategoryDefaultArgs<ExtArgs>>): Prisma.Prisma__ServiceCategoryClient<runtime.Types.Result.GetResult<Prisma.$ServiceCategoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   assignedDoctor<T extends Prisma.ServiceRequest$assignedDoctorArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequest$assignedDoctorArgs<ExtArgs>>): Prisma.Prisma__DoctorProfileClient<runtime.Types.Result.GetResult<Prisma.$DoctorProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-  treatmentRecords<T extends Prisma.ServiceRequest$treatmentRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequest$treatmentRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TreatmentRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  assignedTechnician<T extends Prisma.ServiceRequest$assignedTechnicianArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequest$assignedTechnicianArgs<ExtArgs>>): Prisma.Prisma__AiTechnicianProfileClient<runtime.Types.Result.GetResult<Prisma.$AiTechnicianProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  treatmentCases<T extends Prisma.ServiceRequest$treatmentCasesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequest$treatmentCasesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TreatmentCasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   prescriptions<T extends Prisma.ServiceRequest$prescriptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequest$prescriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrescriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   billingRecords<T extends Prisma.ServiceRequest$billingRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequest$billingRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$BillingRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  paymentRecords<T extends Prisma.ServiceRequest$paymentRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequest$paymentRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PaymentRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reviews<T extends Prisma.ServiceRequest$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequest$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  complaints<T extends Prisma.ServiceRequest$complaintsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ServiceRequest$complaintsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2396,13 +4557,26 @@ export interface ServiceRequestFieldRefs {
   readonly customerId: Prisma.FieldRef<"ServiceRequest", 'String'>
   readonly animalId: Prisma.FieldRef<"ServiceRequest", 'String'>
   readonly areaId: Prisma.FieldRef<"ServiceRequest", 'String'>
+  readonly villageId: Prisma.FieldRef<"ServiceRequest", 'String'>
   readonly serviceCategoryId: Prisma.FieldRef<"ServiceRequest", 'String'>
+  readonly serviceType: Prisma.FieldRef<"ServiceRequest", 'ServiceRequestType'>
   readonly assignedDoctorId: Prisma.FieldRef<"ServiceRequest", 'String'>
+  readonly assignedTechnicianId: Prisma.FieldRef<"ServiceRequest", 'String'>
   readonly status: Prisma.FieldRef<"ServiceRequest", 'ServiceRequestStatus'>
   readonly urgency: Prisma.FieldRef<"ServiceRequest", 'String'>
-  readonly symptoms: Prisma.FieldRef<"ServiceRequest", 'String'>
-  readonly preferredWindow: Prisma.FieldRef<"ServiceRequest", 'String'>
-  readonly locationNotes: Prisma.FieldRef<"ServiceRequest", 'String'>
+  readonly problemOrSymptom: Prisma.FieldRef<"ServiceRequest", 'String'>
+  readonly description: Prisma.FieldRef<"ServiceRequest", 'String'>
+  readonly preferredTime: Prisma.FieldRef<"ServiceRequest", 'String'>
+  readonly locationText: Prisma.FieldRef<"ServiceRequest", 'String'>
+  readonly scheduledStart: Prisma.FieldRef<"ServiceRequest", 'DateTime'>
+  readonly scheduledEnd: Prisma.FieldRef<"ServiceRequest", 'DateTime'>
+  readonly isEmergency: Prisma.FieldRef<"ServiceRequest", 'Boolean'>
+  readonly emergencyNotes: Prisma.FieldRef<"ServiceRequest", 'String'>
+  readonly submittedAt: Prisma.FieldRef<"ServiceRequest", 'DateTime'>
+  readonly assignedAt: Prisma.FieldRef<"ServiceRequest", 'DateTime'>
+  readonly startedAt: Prisma.FieldRef<"ServiceRequest", 'DateTime'>
+  readonly cancelledAt: Prisma.FieldRef<"ServiceRequest", 'DateTime'>
+  readonly cancelReason: Prisma.FieldRef<"ServiceRequest", 'String'>
   readonly createdAt: Prisma.FieldRef<"ServiceRequest", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"ServiceRequest", 'DateTime'>
   readonly completedAt: Prisma.FieldRef<"ServiceRequest", 'DateTime'>
@@ -2807,6 +4981,44 @@ export type ServiceRequestDeleteManyArgs<ExtArgs extends runtime.Types.Extension
 }
 
 /**
+ * ServiceRequest.area
+ */
+export type ServiceRequest$areaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Area
+   */
+  select?: Prisma.AreaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Area
+   */
+  omit?: Prisma.AreaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AreaInclude<ExtArgs> | null
+  where?: Prisma.AreaWhereInput
+}
+
+/**
+ * ServiceRequest.village
+ */
+export type ServiceRequest$villageArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Village
+   */
+  select?: Prisma.VillageSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Village
+   */
+  omit?: Prisma.VillageOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.VillageInclude<ExtArgs> | null
+  where?: Prisma.VillageWhereInput
+}
+
+/**
  * ServiceRequest.assignedDoctor
  */
 export type ServiceRequest$assignedDoctorArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2826,27 +5038,46 @@ export type ServiceRequest$assignedDoctorArgs<ExtArgs extends runtime.Types.Exte
 }
 
 /**
- * ServiceRequest.treatmentRecords
+ * ServiceRequest.assignedTechnician
  */
-export type ServiceRequest$treatmentRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+export type ServiceRequest$assignedTechnicianArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   /**
-   * Select specific fields to fetch from the TreatmentRecord
+   * Select specific fields to fetch from the AiTechnicianProfile
    */
-  select?: Prisma.TreatmentRecordSelect<ExtArgs> | null
+  select?: Prisma.AiTechnicianProfileSelect<ExtArgs> | null
   /**
-   * Omit specific fields from the TreatmentRecord
+   * Omit specific fields from the AiTechnicianProfile
    */
-  omit?: Prisma.TreatmentRecordOmit<ExtArgs> | null
+  omit?: Prisma.AiTechnicianProfileOmit<ExtArgs> | null
   /**
    * Choose, which related nodes to fetch as well
    */
-  include?: Prisma.TreatmentRecordInclude<ExtArgs> | null
-  where?: Prisma.TreatmentRecordWhereInput
-  orderBy?: Prisma.TreatmentRecordOrderByWithRelationInput | Prisma.TreatmentRecordOrderByWithRelationInput[]
-  cursor?: Prisma.TreatmentRecordWhereUniqueInput
+  include?: Prisma.AiTechnicianProfileInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianProfileWhereInput
+}
+
+/**
+ * ServiceRequest.treatmentCases
+ */
+export type ServiceRequest$treatmentCasesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TreatmentCase
+   */
+  select?: Prisma.TreatmentCaseSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TreatmentCase
+   */
+  omit?: Prisma.TreatmentCaseOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TreatmentCaseInclude<ExtArgs> | null
+  where?: Prisma.TreatmentCaseWhereInput
+  orderBy?: Prisma.TreatmentCaseOrderByWithRelationInput | Prisma.TreatmentCaseOrderByWithRelationInput[]
+  cursor?: Prisma.TreatmentCaseWhereUniqueInput
   take?: number
   skip?: number
-  distinct?: Prisma.TreatmentRecordScalarFieldEnum | Prisma.TreatmentRecordScalarFieldEnum[]
+  distinct?: Prisma.TreatmentCaseScalarFieldEnum | Prisma.TreatmentCaseScalarFieldEnum[]
 }
 
 /**
@@ -2895,6 +5126,78 @@ export type ServiceRequest$billingRecordsArgs<ExtArgs extends runtime.Types.Exte
   take?: number
   skip?: number
   distinct?: Prisma.BillingRecordScalarFieldEnum | Prisma.BillingRecordScalarFieldEnum[]
+}
+
+/**
+ * ServiceRequest.paymentRecords
+ */
+export type ServiceRequest$paymentRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the PaymentRecord
+   */
+  select?: Prisma.PaymentRecordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the PaymentRecord
+   */
+  omit?: Prisma.PaymentRecordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.PaymentRecordInclude<ExtArgs> | null
+  where?: Prisma.PaymentRecordWhereInput
+  orderBy?: Prisma.PaymentRecordOrderByWithRelationInput | Prisma.PaymentRecordOrderByWithRelationInput[]
+  cursor?: Prisma.PaymentRecordWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.PaymentRecordScalarFieldEnum | Prisma.PaymentRecordScalarFieldEnum[]
+}
+
+/**
+ * ServiceRequest.reviews
+ */
+export type ServiceRequest$reviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Review
+   */
+  select?: Prisma.ReviewSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Review
+   */
+  omit?: Prisma.ReviewOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ReviewInclude<ExtArgs> | null
+  where?: Prisma.ReviewWhereInput
+  orderBy?: Prisma.ReviewOrderByWithRelationInput | Prisma.ReviewOrderByWithRelationInput[]
+  cursor?: Prisma.ReviewWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReviewScalarFieldEnum | Prisma.ReviewScalarFieldEnum[]
+}
+
+/**
+ * ServiceRequest.complaints
+ */
+export type ServiceRequest$complaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Complaint
+   */
+  select?: Prisma.ComplaintSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Complaint
+   */
+  omit?: Prisma.ComplaintOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.ComplaintInclude<ExtArgs> | null
+  where?: Prisma.ComplaintWhereInput
+  orderBy?: Prisma.ComplaintOrderByWithRelationInput | Prisma.ComplaintOrderByWithRelationInput[]
+  cursor?: Prisma.ComplaintWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ComplaintScalarFieldEnum | Prisma.ComplaintScalarFieldEnum[]
 }
 
 /**
