@@ -23,8 +23,8 @@ For a usable **admin login** after seeding, also set `ADMIN_SEED_EMAIL` and `ADM
 
 | Kind | Examples | Notes |
 |------|-----------|--------|
-| **Local-only** | `NODE_ENV=development`, `APP_URL=http://localhost:3000`, `SMS_PROVIDER=local`, `ENABLE_DEV_OTP=true`, `OTP_DEV_CODE`, `MAIL_ENABLED=false`, `PAYMENT_ENABLED=false` | Dev OTP and fixed codes must **never** ship enabled to production |
-| **Change in production** | All JWT/`AUTH_SECRET` values, `DATABASE_URL`, payment/S3/SMS credentials, `NEXT_PUBLIC_*` pointing at prod URLs | Rotate secrets if exposed; use a secrets manager |
+| **Local-only** | `NODE_ENV=development`, `APP_URL=http://localhost:3000`, `OTP_MODE=dev`, `SMS_PROVIDER=local`, `MAIL_ENABLED=false`, `PAYMENT_ENABLED=false` | `OTP_MODE=dev` logs OTP to the server terminal — **never** use in production |
+| **Change in production** | `OTP_MODE=live`, SMS credentials, all JWT/`AUTH_SECRET` values, `DATABASE_URL`, payment/S3 credentials, `NEXT_PUBLIC_*` pointing at prod URLs | Rotate secrets if exposed; use a secrets manager |
 
 ---
 
@@ -62,8 +62,8 @@ npm run build
 ## Code vs `.env` naming (important)
 
 - **Admin session cookie name** is currently **`prani_admin_session`** in `src/lib/admin-auth/constants.ts`. A `SESSION_COOKIE_NAME` variable in `.env` is **reserved / future use** — the app does not read it yet.
-- **SMS (implemented):** `SMS_PROVIDER` (`local` \| `noop` \| `http`), and for `http`: `SMS_HTTP_URL`, `SMS_HTTP_API_KEY`. Names like `SMS_BASE_URL` / `SMS_API_KEY` are placeholders for vendors or future wiring; align with your provider’s docs when integrating.
-- **OTP timing / limits** for mobile are largely in `src/lib/mobile-auth/otp-constants.ts` (e.g. TTL 600s). Env vars such as `OTP_EXPIRES_MINUTES` are for **future** alignment or ops tooling unless you wire them in code.
+- **SMS (implemented):** `SMS_PROVIDER` (`local` \| `noop` \| `http`), and for `http`: `SMS_HTTP_URL`, `SMS_HTTP_API_KEY`. **Live mobile OTP** (`OTP_MODE=live`) uses `SMS_BASE_URL` (or `SMS_HTTP_URL`) and `SMS_API_KEY` (or `SMS_HTTP_API_KEY`) via `src/lib/mobile-auth/otp-live-sms.ts`.
+- **Mobile OTP:** `OTP_MODE`, `OTP_TTL_MINUTES`, `OTP_LENGTH`, `OTP_MAX_ATTEMPTS`, `OTP_RESEND_COOLDOWN_SECONDS`, `OTP_MAX_SENDS_PER_HOUR`, `OTP_SEND_WINDOW_MINUTES`, `OTP_DEBUG_PANEL_ENABLED` — see `src/lib/mobile-auth/otp-env.ts` and `docs/OTP_LOCAL_AND_LIVE.md`.
 - **NextAuth:** `NEXTAUTH_*` keys are placeholders unless you add NextAuth; they do not affect the current custom JWT flows.
 
 ---
@@ -77,4 +77,4 @@ Many keys in `.env.example` (payments, S3, mail, `FEATURE_*`) are **future-ready
 ## Related docs
 
 - `docs/ADMIN_CREDENTIAL_SETUP.md` — panel admin credentials and JWT fallbacks
-- `docs/MVP_AUDIT_AND_LAUNCH_CHECKLIST.md` — broader env checklist
+- `docs/OTP_LOCAL_AND_LIVE.md` — dev vs live OTP, local testing, SMS activation

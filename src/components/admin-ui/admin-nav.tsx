@@ -5,6 +5,7 @@ import {
   ClipboardList,
   Cpu,
   FileText,
+  FlaskConical,
   LayoutDashboard,
   MapPin,
   PawPrint,
@@ -98,6 +99,12 @@ export const ADMIN_NAV_ITEMS: AdminNavItem[] = [
     labelBn: "নোটিফিকেশন ও SMS",
     titleEn: "Notifications & SMS",
     icon: Bell,
+  },
+  {
+    href: "/admin/dev-tools/otp-logs",
+    labelBn: "(ডেভ) OTP লগ",
+    titleEn: "Dev OTP logs",
+    icon: FlaskConical,
   },
   {
     href: "/admin/settings",

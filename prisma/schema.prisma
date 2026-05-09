@@ -299,6 +299,8 @@ model MobileOtpChallenge {
   verifyAttempts      Int       @default(0)
   sendWindowStartedAt DateTime?
   sendsInWindow       Int       @default(0)
+  /// Last time an OTP was successfully issued (for resend cooldown).
+  lastOtpSentAt       DateTime?
   createdAt           DateTime  @default(now())
   updatedAt           DateTime  @updatedAt
 

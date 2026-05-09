@@ -1,7 +1,7 @@
 import { z } from "zod";
 
 import { jsonError, jsonOk } from "@/lib/api-response";
-import { MOBILE_OTP_TTL_SECONDS } from "@/lib/mobile-auth/otp-constants";
+import { getOtpConfig } from "@/lib/mobile-auth/otp-env";
 import { requestMobileCustomerOtp } from "@/lib/mobile-auth/otp-service";
 import { getMobileJwtSecret } from "@/lib/mobile-auth/secrets";
 
@@ -47,6 +47,6 @@ export async function POST(request: Request) {
 
   return jsonOk({
     sent: true as const,
-    otpTtlSeconds: MOBILE_OTP_TTL_SECONDS,
+    otpTtlSeconds: getOtpConfig().ttlSeconds,
   });
 }

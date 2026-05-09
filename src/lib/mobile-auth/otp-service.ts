@@ -2,15 +2,15 @@ import bcrypt from "bcryptjs";
 import { randomBytes, randomInt } from "node:crypto";
 
 import { UserRole, UserStatus } from "@/generated/prisma/client";
-import { notifyOtpSms } from "@/lib/notifications/events";
 import { prisma } from "@/lib/prisma";
 
+import { dispatchMobileOtpDelivery } from "./otp-dispatch";
+import { getOtpConfig, warnIfProdDevOtpMode } from "./otp-env";
 import {
-  MOBILE_OTP_MAX_SENDS_PER_HOUR,
-  MOBILE_OTP_MAX_VERIFY_ATTEMPTS,
-  MOBILE_OTP_SEND_WINDOW_MS,
-  MOBILE_OTP_TTL_SECONDS,
-} from "./otp-constants";
+  OTP_MSG,
+  otpHourlyRateLimitMessage,
+  otpResendCooldownMessage,
+} from "./otp-messages";
 import { normalizeBdMobilePhone } from "./phone";
 
 export type OtpServiceFailure = {
@@ -24,25 +24,34 @@ export type OtpRequestSuccess = { ok: true };
 
 export type OtpVerifySuccess = { ok: true; userId: string };
 
-function otpGenericFailure(): OtpServiceFailure {
-  return {
-    ok: false,
-    httpStatus: 401,
-    code: "INVALID_OTP",
-    message: "Invalid or expired verification code. Request a new code and try again.",
-  };
+class RateLimitHourlyError extends Error {
+  override name = "RateLimitHourlyError";
+}
+
+class OtpCooldownError extends Error {
+  constructor(readonly secondsRemaining: number) {
+    super("OTP_COOLDOWN");
+    this.name = "OtpCooldownError";
+  }
+}
+
+function generateNumericOtp(length: number): string {
+  const max = 10 ** length;
+  return randomInt(0, max).toString().padStart(length, "0");
 }
 
 export async function requestMobileCustomerOtp(
   rawPhone: string,
 ): Promise<OtpRequestSuccess | OtpServiceFailure> {
+  warnIfProdDevOtpMode();
+  const cfg = getOtpConfig();
   const normalizedPhone = normalizeBdMobilePhone(rawPhone);
   if (!normalizedPhone) {
     return {
       ok: false,
       httpStatus: 422,
       code: "VALIDATION_ERROR",
-      message: "Enter a valid Bangladesh mobile number.",
+      message: OTP_MSG.validationPhone,
     };
   }
 
@@ -55,26 +64,38 @@ export async function requestMobileCustomerOtp(
       });
 
       const now = new Date();
+
+      if (
+        row?.lastOtpSentAt &&
+        cfg.resendCooldownSeconds > 0 &&
+        now.getTime() - row.lastOtpSentAt.getTime() <
+          cfg.resendCooldownSeconds * 1000
+      ) {
+        const elapsed = Math.floor(
+          (now.getTime() - row.lastOtpSentAt.getTime()) / 1000,
+        );
+        const remaining = Math.max(0, cfg.resendCooldownSeconds - elapsed);
+        throw new OtpCooldownError(remaining);
+      }
+
       let windowStart = row?.sendWindowStartedAt ?? null;
       let sendsInWindow = row?.sendsInWindow ?? 0;
 
       if (
         !windowStart ||
-        now.getTime() - windowStart.getTime() > MOBILE_OTP_SEND_WINDOW_MS
+        now.getTime() - windowStart.getTime() > cfg.sendWindowMs
       ) {
         windowStart = now;
         sendsInWindow = 0;
       }
 
-      if (sendsInWindow >= MOBILE_OTP_MAX_SENDS_PER_HOUR) {
-        throw Object.assign(new Error("RATE_LIMIT"), { name: "RateLimitError" });
+      if (sendsInWindow >= cfg.maxSendsPerHour) {
+        throw new RateLimitHourlyError();
       }
 
-      const code = randomInt(0, 1_000_000).toString().padStart(6, "0");
+      const code = generateNumericOtp(cfg.length);
       const codeHash = await bcrypt.hash(code, 10);
-      const expiresAt = new Date(
-        now.getTime() + MOBILE_OTP_TTL_SECONDS * 1000,
-      );
+      const expiresAt = new Date(now.getTime() + cfg.ttlSeconds * 1000);
 
       await tx.mobileOtpChallenge.upsert({
         where: { normalizedPhone },
@@ -85,6 +106,7 @@ export async function requestMobileCustomerOtp(
           verifyAttempts: 0,
           sendWindowStartedAt: windowStart,
           sendsInWindow: sendsInWindow + 1,
+          lastOtpSentAt: now,
         },
         update: {
           codeHash,
@@ -92,19 +114,27 @@ export async function requestMobileCustomerOtp(
           verifyAttempts: 0,
           sendWindowStartedAt: windowStart,
           sendsInWindow: sendsInWindow + 1,
+          lastOtpSentAt: now,
         },
       });
 
       return code;
     });
   } catch (e) {
-    if (e instanceof Error && e.name === "RateLimitError") {
+    if (e instanceof OtpCooldownError) {
+      return {
+        ok: false,
+        httpStatus: 429,
+        code: "RESEND_COOLDOWN",
+        message: otpResendCooldownMessage(e.secondsRemaining),
+      };
+    }
+    if (e instanceof RateLimitHourlyError) {
       return {
         ok: false,
         httpStatus: 429,
         code: "RATE_LIMITED",
-        message:
-          "Too many verification codes requested for this number. Try again later.",
+        message: otpHourlyRateLimitMessage(),
       };
     }
     console.error("[mobile-otp] request transaction failed", e);
@@ -112,19 +142,31 @@ export async function requestMobileCustomerOtp(
       ok: false,
       httpStatus: 500,
       code: "OTP_REQUEST_FAILED",
-      message: "Could not send verification code. Try again in a moment.",
+      message: OTP_MSG.requestFailed,
     };
   }
 
-  try {
-    await notifyOtpSms({ phone: normalizedPhone, code: plainCode });
-  } catch (e) {
-    console.error("[mobile-otp] SMS send failed", e);
+  const expiresAt = new Date(Date.now() + cfg.ttlSeconds * 1000);
+  const delivered = await dispatchMobileOtpDelivery({
+    normalizedPhone,
+    plainCode,
+    ttlSeconds: cfg.ttlSeconds,
+    expiresAt,
+  });
+
+  if (!delivered.ok) {
+    try {
+      await prisma.mobileOtpChallenge.deleteMany({
+        where: { normalizedPhone },
+      });
+    } catch (delErr) {
+      console.error("[mobile-otp] rollback challenge after SMS failure", delErr);
+    }
     return {
       ok: false,
       httpStatus: 503,
       code: "SMS_UNAVAILABLE",
-      message: "Could not send SMS right now. Try again shortly.",
+      message: OTP_MSG.smsUnavailable,
     };
   }
 
@@ -149,7 +191,7 @@ async function ensureCustomerUserForPhone(
         ok: false,
         httpStatus: 403,
         code: "LOGIN_NOT_ALLOWED",
-        message: "Unable to sign in with this phone number.",
+        message: OTP_MSG.loginNotAllowed,
       };
     }
     return { ok: true, userId: existing.id };
@@ -180,7 +222,7 @@ async function ensureCustomerUserForPhone(
       ok: false,
       httpStatus: 500,
       code: "SIGNUP_FAILED",
-      message: "Could not complete sign-in. Try again.",
+      message: OTP_MSG.signupFailed,
     };
   }
 }
@@ -189,10 +231,18 @@ export async function verifyMobileCustomerOtp(
   rawPhone: string,
   rawCode: string,
 ): Promise<OtpVerifySuccess | OtpServiceFailure> {
+  const cfg = getOtpConfig();
   const normalizedPhone = normalizeBdMobilePhone(rawPhone);
   const code = rawCode.replace(/\s/g, "");
-  if (!normalizedPhone || !/^\d{6}$/.test(code)) {
-    return otpGenericFailure();
+  const codeOk = new RegExp(`^\\d{${cfg.length}}$`).test(code);
+
+  if (!normalizedPhone || !codeOk) {
+    return {
+      ok: false,
+      httpStatus: 401,
+      code: "WRONG_OTP",
+      message: OTP_MSG.wrongCode,
+    };
   }
 
   const challenge = await prisma.mobileOtpChallenge.findUnique({
@@ -200,7 +250,12 @@ export async function verifyMobileCustomerOtp(
   });
 
   if (!challenge) {
-    return otpGenericFailure();
+    return {
+      ok: false,
+      httpStatus: 401,
+      code: "EXPIRED_OTP",
+      message: OTP_MSG.expired,
+    };
   }
 
   const now = new Date();
@@ -208,23 +263,50 @@ export async function verifyMobileCustomerOtp(
     await prisma.mobileOtpChallenge.deleteMany({
       where: { normalizedPhone },
     });
-    return otpGenericFailure();
+    return {
+      ok: false,
+      httpStatus: 401,
+      code: "EXPIRED_OTP",
+      message: OTP_MSG.expired,
+    };
   }
 
-  if (challenge.verifyAttempts >= MOBILE_OTP_MAX_VERIFY_ATTEMPTS) {
+  if (challenge.verifyAttempts >= cfg.maxAttempts) {
     await prisma.mobileOtpChallenge.deleteMany({
       where: { normalizedPhone },
     });
-    return otpGenericFailure();
+    return {
+      ok: false,
+      httpStatus: 401,
+      code: "TOO_MANY_ATTEMPTS",
+      message: OTP_MSG.tooManyAttempts,
+    };
   }
 
   const matches = await bcrypt.compare(code, challenge.codeHash);
   if (!matches) {
+    const nextAttempts = challenge.verifyAttempts + 1;
+    if (nextAttempts >= cfg.maxAttempts) {
+      await prisma.mobileOtpChallenge.deleteMany({
+        where: { normalizedPhone },
+      });
+      return {
+        ok: false,
+        httpStatus: 401,
+        code: "TOO_MANY_ATTEMPTS",
+        message: OTP_MSG.tooManyAttempts,
+      };
+    }
     await prisma.mobileOtpChallenge.update({
       where: { normalizedPhone },
       data: { verifyAttempts: { increment: 1 } },
     });
-    return otpGenericFailure();
+    return {
+      ok: false,
+      httpStatus: 401,
+      code: "WRONG_OTP",
+      message: OTP_MSG.wrongCode,
+    };
   }
 
   await prisma.mobileOtpChallenge.deleteMany({

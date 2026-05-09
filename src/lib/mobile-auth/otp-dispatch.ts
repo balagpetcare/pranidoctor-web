@@ -1,0 +1,36 @@
+import { recordOtpDevSend } from "@/lib/mobile-auth/otp-dev-log";
+import { getOtpMode } from "@/lib/mobile-auth/otp-env";
+import { sendLiveOtpSms } from "@/lib/mobile-auth/otp-live-sms";
+
+/**
+ * After persisting a hashed OTP, deliver via dev log or live SMS.
+ * Dev: prints OTP to terminal (and optional in-memory dev log for admin).
+ * Live: SMS only; no plain OTP in server logs.
+ */
+export async function dispatchMobileOtpDelivery(params: {
+  normalizedPhone: string;
+  plainCode: string;
+  ttlSeconds: number;
+  expiresAt: Date;
+}): Promise<{ ok: true } | { ok: false; reason: "LIVE_SMS_FAILED" }> {
+  const mode = getOtpMode();
+  const ttlMin = Math.max(1, Math.ceil(params.ttlSeconds / 60));
+
+  if (mode === "dev") {
+    console.info(
+      `[PraniDoctor OTP DEV] phone=${params.normalizedPhone} otp=${params.plainCode} expiresIn=${ttlMin}m`,
+    );
+    recordOtpDevSend({
+      phoneNormalized: params.normalizedPhone,
+      plainCode: params.plainCode,
+      expiresAt: params.expiresAt,
+    });
+    return { ok: true };
+  }
+
+  const sent = await sendLiveOtpSms(params.normalizedPhone, params.plainCode);
+  if (!sent.ok) {
+    return { ok: false, reason: "LIVE_SMS_FAILED" };
+  }
+  return { ok: true };
+}

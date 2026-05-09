@@ -19,9 +19,9 @@ async function smsIfPhone(userPhone: string | null | undefined, body: string) {
 /**
  * Sends OTP SMS only (no in-app notification row — avoids persisting OTP context).
  *
- * **Integration:** There is currently no `/api/mobile/auth/*` OTP endpoint in this repo.
- * When added, call this helper after generating `code` — **never** include `code` in HTTP JSON
- * responses in production.
+ * Mobile customer login uses {@link dispatchMobileOtpDelivery} in `otp-dispatch.ts`
+ * (dev: terminal log; live: SMS). This helper remains for other flows that need a
+ * direct SMS send with an explicit code.
  */
 export async function notifyOtpSms(params: {
   phone: string;
