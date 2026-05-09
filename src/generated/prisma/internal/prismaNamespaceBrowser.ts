@@ -187,6 +187,7 @@ export const MobileOtpChallengeScalarFieldEnum = {
   verifyAttempts: 'verifyAttempts',
   sendWindowStartedAt: 'sendWindowStartedAt',
   sendsInWindow: 'sendsInWindow',
+  lastOtpSentAt: 'lastOtpSentAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const

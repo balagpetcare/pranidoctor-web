@@ -44,6 +44,7 @@ export type MobileOtpChallengeMinAggregateOutputType = {
   verifyAttempts: number | null
   sendWindowStartedAt: Date | null
   sendsInWindow: number | null
+  lastOtpSentAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -56,6 +57,7 @@ export type MobileOtpChallengeMaxAggregateOutputType = {
   verifyAttempts: number | null
   sendWindowStartedAt: Date | null
   sendsInWindow: number | null
+  lastOtpSentAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -68,6 +70,7 @@ export type MobileOtpChallengeCountAggregateOutputType = {
   verifyAttempts: number
   sendWindowStartedAt: number
   sendsInWindow: number
+  lastOtpSentAt: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -92,6 +95,7 @@ export type MobileOtpChallengeMinAggregateInputType = {
   verifyAttempts?: true
   sendWindowStartedAt?: true
   sendsInWindow?: true
+  lastOtpSentAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -104,6 +108,7 @@ export type MobileOtpChallengeMaxAggregateInputType = {
   verifyAttempts?: true
   sendWindowStartedAt?: true
   sendsInWindow?: true
+  lastOtpSentAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -116,6 +121,7 @@ export type MobileOtpChallengeCountAggregateInputType = {
   verifyAttempts?: true
   sendWindowStartedAt?: true
   sendsInWindow?: true
+  lastOtpSentAt?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -215,6 +221,7 @@ export type MobileOtpChallengeGroupByOutputType = {
   verifyAttempts: number
   sendWindowStartedAt: Date | null
   sendsInWindow: number
+  lastOtpSentAt: Date | null
   createdAt: Date
   updatedAt: Date
   _count: MobileOtpChallengeCountAggregateOutputType | null
@@ -250,6 +257,7 @@ export type MobileOtpChallengeWhereInput = {
   verifyAttempts?: Prisma.IntFilter<"MobileOtpChallenge"> | number
   sendWindowStartedAt?: Prisma.DateTimeNullableFilter<"MobileOtpChallenge"> | Date | string | null
   sendsInWindow?: Prisma.IntFilter<"MobileOtpChallenge"> | number
+  lastOtpSentAt?: Prisma.DateTimeNullableFilter<"MobileOtpChallenge"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"MobileOtpChallenge"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MobileOtpChallenge"> | Date | string
 }
@@ -262,6 +270,7 @@ export type MobileOtpChallengeOrderByWithRelationInput = {
   verifyAttempts?: Prisma.SortOrder
   sendWindowStartedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   sendsInWindow?: Prisma.SortOrder
+  lastOtpSentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -277,6 +286,7 @@ export type MobileOtpChallengeWhereUniqueInput = Prisma.AtLeast<{
   verifyAttempts?: Prisma.IntFilter<"MobileOtpChallenge"> | number
   sendWindowStartedAt?: Prisma.DateTimeNullableFilter<"MobileOtpChallenge"> | Date | string | null
   sendsInWindow?: Prisma.IntFilter<"MobileOtpChallenge"> | number
+  lastOtpSentAt?: Prisma.DateTimeNullableFilter<"MobileOtpChallenge"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"MobileOtpChallenge"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"MobileOtpChallenge"> | Date | string
 }, "id" | "normalizedPhone">
@@ -289,6 +299,7 @@ export type MobileOtpChallengeOrderByWithAggregationInput = {
   verifyAttempts?: Prisma.SortOrder
   sendWindowStartedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   sendsInWindow?: Prisma.SortOrder
+  lastOtpSentAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.MobileOtpChallengeCountOrderByAggregateInput
@@ -309,6 +320,7 @@ export type MobileOtpChallengeScalarWhereWithAggregatesInput = {
   verifyAttempts?: Prisma.IntWithAggregatesFilter<"MobileOtpChallenge"> | number
   sendWindowStartedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"MobileOtpChallenge"> | Date | string | null
   sendsInWindow?: Prisma.IntWithAggregatesFilter<"MobileOtpChallenge"> | number
+  lastOtpSentAt?: Prisma.DateTimeNullableWithAggregatesFilter<"MobileOtpChallenge"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"MobileOtpChallenge"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"MobileOtpChallenge"> | Date | string
 }
@@ -321,6 +333,7 @@ export type MobileOtpChallengeCreateInput = {
   verifyAttempts?: number
   sendWindowStartedAt?: Date | string | null
   sendsInWindow?: number
+  lastOtpSentAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -333,6 +346,7 @@ export type MobileOtpChallengeUncheckedCreateInput = {
   verifyAttempts?: number
   sendWindowStartedAt?: Date | string | null
   sendsInWindow?: number
+  lastOtpSentAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -345,6 +359,7 @@ export type MobileOtpChallengeUpdateInput = {
   verifyAttempts?: Prisma.IntFieldUpdateOperationsInput | number
   sendWindowStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sendsInWindow?: Prisma.IntFieldUpdateOperationsInput | number
+  lastOtpSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -357,6 +372,7 @@ export type MobileOtpChallengeUncheckedUpdateInput = {
   verifyAttempts?: Prisma.IntFieldUpdateOperationsInput | number
   sendWindowStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sendsInWindow?: Prisma.IntFieldUpdateOperationsInput | number
+  lastOtpSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -369,6 +385,7 @@ export type MobileOtpChallengeCreateManyInput = {
   verifyAttempts?: number
   sendWindowStartedAt?: Date | string | null
   sendsInWindow?: number
+  lastOtpSentAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -381,6 +398,7 @@ export type MobileOtpChallengeUpdateManyMutationInput = {
   verifyAttempts?: Prisma.IntFieldUpdateOperationsInput | number
   sendWindowStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sendsInWindow?: Prisma.IntFieldUpdateOperationsInput | number
+  lastOtpSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -393,6 +411,7 @@ export type MobileOtpChallengeUncheckedUpdateManyInput = {
   verifyAttempts?: Prisma.IntFieldUpdateOperationsInput | number
   sendWindowStartedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sendsInWindow?: Prisma.IntFieldUpdateOperationsInput | number
+  lastOtpSentAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -405,6 +424,7 @@ export type MobileOtpChallengeCountOrderByAggregateInput = {
   verifyAttempts?: Prisma.SortOrder
   sendWindowStartedAt?: Prisma.SortOrder
   sendsInWindow?: Prisma.SortOrder
+  lastOtpSentAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -422,6 +442,7 @@ export type MobileOtpChallengeMaxOrderByAggregateInput = {
   verifyAttempts?: Prisma.SortOrder
   sendWindowStartedAt?: Prisma.SortOrder
   sendsInWindow?: Prisma.SortOrder
+  lastOtpSentAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -434,6 +455,7 @@ export type MobileOtpChallengeMinOrderByAggregateInput = {
   verifyAttempts?: Prisma.SortOrder
   sendWindowStartedAt?: Prisma.SortOrder
   sendsInWindow?: Prisma.SortOrder
+  lastOtpSentAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -461,6 +483,7 @@ export type MobileOtpChallengeSelect<ExtArgs extends runtime.Types.Extensions.In
   verifyAttempts?: boolean
   sendWindowStartedAt?: boolean
   sendsInWindow?: boolean
+  lastOtpSentAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["mobileOtpChallenge"]>
@@ -473,6 +496,7 @@ export type MobileOtpChallengeSelectCreateManyAndReturn<ExtArgs extends runtime.
   verifyAttempts?: boolean
   sendWindowStartedAt?: boolean
   sendsInWindow?: boolean
+  lastOtpSentAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["mobileOtpChallenge"]>
@@ -485,6 +509,7 @@ export type MobileOtpChallengeSelectUpdateManyAndReturn<ExtArgs extends runtime.
   verifyAttempts?: boolean
   sendWindowStartedAt?: boolean
   sendsInWindow?: boolean
+  lastOtpSentAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["mobileOtpChallenge"]>
@@ -497,11 +522,12 @@ export type MobileOtpChallengeSelectScalar = {
   verifyAttempts?: boolean
   sendWindowStartedAt?: boolean
   sendsInWindow?: boolean
+  lastOtpSentAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type MobileOtpChallengeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "normalizedPhone" | "codeHash" | "expiresAt" | "verifyAttempts" | "sendWindowStartedAt" | "sendsInWindow" | "createdAt" | "updatedAt", ExtArgs["result"]["mobileOtpChallenge"]>
+export type MobileOtpChallengeOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "normalizedPhone" | "codeHash" | "expiresAt" | "verifyAttempts" | "sendWindowStartedAt" | "sendsInWindow" | "lastOtpSentAt" | "createdAt" | "updatedAt", ExtArgs["result"]["mobileOtpChallenge"]>
 
 export type $MobileOtpChallengePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "MobileOtpChallenge"
@@ -514,6 +540,10 @@ export type $MobileOtpChallengePayload<ExtArgs extends runtime.Types.Extensions.
     verifyAttempts: number
     sendWindowStartedAt: Date | null
     sendsInWindow: number
+    /**
+     * Last time an OTP was successfully issued (for resend cooldown).
+     */
+    lastOtpSentAt: Date | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["mobileOtpChallenge"]>
@@ -946,6 +976,7 @@ export interface MobileOtpChallengeFieldRefs {
   readonly verifyAttempts: Prisma.FieldRef<"MobileOtpChallenge", 'Int'>
   readonly sendWindowStartedAt: Prisma.FieldRef<"MobileOtpChallenge", 'DateTime'>
   readonly sendsInWindow: Prisma.FieldRef<"MobileOtpChallenge", 'Int'>
+  readonly lastOtpSentAt: Prisma.FieldRef<"MobileOtpChallenge", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"MobileOtpChallenge", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"MobileOtpChallenge", 'DateTime'>
 }
