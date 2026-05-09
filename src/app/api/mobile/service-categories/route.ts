@@ -1,11 +1,8 @@
 import { jsonError, jsonOk } from "@/lib/api-response";
-import { requireMobileCustomer } from "@/lib/mobile-auth/guard";
 import { prisma } from "@/lib/prisma";
 
-export async function GET(request: Request) {
-  const auth = await requireMobileCustomer(request);
-  if (!auth.ok) return auth.response;
-
+/** Public catalog — home shortcuts before login. */
+export async function GET() {
   try {
     const categories = await prisma.serviceCategory.findMany({
       orderBy: { name: "asc" },

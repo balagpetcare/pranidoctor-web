@@ -1,5 +1,4 @@
 import { jsonError, jsonOk } from "@/lib/api-response";
-import { requireMobileCustomer } from "@/lib/mobile-auth/guard";
 import { listDoctorsForMobile } from "@/lib/mobile-providers/provider-service";
 import { listMobileProvidersQuerySchema } from "@/lib/mobile-providers/schemas";
 
@@ -19,10 +18,8 @@ function parseListQuery(request: Request) {
   });
 }
 
+/** Public provider discovery — browse doctors before login. */
 export async function GET(request: Request) {
-  const auth = await requireMobileCustomer(request);
-  if (!auth.ok) return auth.response;
-
   const parsed = parseListQuery(request);
   if (!parsed.success) {
     return jsonError(

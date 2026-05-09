@@ -1,13 +1,9 @@
 import { jsonError, jsonOk } from "@/lib/api-response";
-import { requireMobileCustomer } from "@/lib/mobile-auth/guard";
 import { getTechnicianDetailForMobile } from "@/lib/mobile-providers/provider-service";
 
 type RouteCtx = { params: Promise<{ id: string }> };
 
-export async function GET(request: Request, ctx: RouteCtx) {
-  const auth = await requireMobileCustomer(request);
-  if (!auth.ok) return auth.response;
-
+export async function GET(_request: Request, ctx: RouteCtx) {
   const { id } = await ctx.params;
 
   try {

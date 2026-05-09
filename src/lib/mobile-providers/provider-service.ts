@@ -300,6 +300,7 @@ function serializeDoctorListItem(row: DoctorListRow) {
       reason: "booking_flow_not_implemented",
     },
     rating: null as number | null,
+    profilePhotoUrl: row.profilePhotoUrl?.trim() || null,
   };
 }
 
