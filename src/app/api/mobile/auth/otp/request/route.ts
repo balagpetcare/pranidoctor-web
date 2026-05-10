@@ -2,6 +2,7 @@ import { z } from "zod";
 
 import { jsonError, jsonOk } from "@/lib/api-response";
 import { getOtpConfig } from "@/lib/mobile-auth/otp-env";
+import { OTP_MSG } from "@/lib/mobile-auth/otp-messages";
 import { requestMobileCustomerOtp } from "@/lib/mobile-auth/otp-service";
 import { getMobileJwtSecret } from "@/lib/mobile-auth/secrets";
 
@@ -16,11 +17,7 @@ const bodySchema = z
  */
 export async function POST(request: Request) {
   if (!getMobileJwtSecret()) {
-    return jsonError(
-      "SERVER_MISCONFIGURED",
-      "Mobile authentication is not configured on the server",
-      500,
-    );
+    return jsonError("SERVER_MISCONFIGURED", OTP_MSG.serverMisconfigured, 500);
   }
 
   let json: unknown;

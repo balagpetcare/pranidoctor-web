@@ -12,7 +12,10 @@ export async function dispatchMobileOtpDelivery(params: {
   plainCode: string;
   ttlSeconds: number;
   expiresAt: Date;
-}): Promise<{ ok: true } | { ok: false; reason: "LIVE_SMS_FAILED" }> {
+}): Promise<
+  | { ok: true }
+  | { ok: false; reason: "LIVE_SMS_FAILED" | "SMS_NOT_CONFIGURED" }
+> {
   const mode = getOtpMode();
   const ttlMin = Math.max(1, Math.ceil(params.ttlSeconds / 60));
 
@@ -30,6 +33,9 @@ export async function dispatchMobileOtpDelivery(params: {
 
   const sent = await sendLiveOtpSms(params.normalizedPhone, params.plainCode);
   if (!sent.ok) {
+    if (sent.reason === "MISSING_CREDENTIALS") {
+      return { ok: false, reason: "SMS_NOT_CONFIGURED" };
+    }
     return { ok: false, reason: "LIVE_SMS_FAILED" };
   }
   return { ok: true };

@@ -1,9 +1,13 @@
 /**
  * Normalizes Bangladesh mobile numbers to digits-only `8801XXXXXXXXX` (13 digits).
- * Accepts common local inputs: `01XXXXXXXXX`, `8801XXXXXXXXX`, optional spaces/dashes.
+ * Accepts: `01…`, `8801…`, `+8801…`, optional spaces/dashes.
  */
 export function normalizeBdMobilePhone(raw: string): string | null {
-  const digits = raw.replace(/[\s-]/g, "");
+  let s = raw.trim();
+  if (s.startsWith("+")) {
+    s = s.slice(1);
+  }
+  const digits = s.replace(/[\s-]/g, "");
   if (!/^\d+$/.test(digits)) return null;
 
   if (digits.length === 11 && digits.startsWith("01")) {

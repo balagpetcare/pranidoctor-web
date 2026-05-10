@@ -10,7 +10,7 @@ function getEncodedSecret(): Uint8Array {
   const secret = getMobileJwtSecret();
   if (!secret) {
     throw new Error(
-      "MOBILE_JWT_SECRET or AUTH_SECRET must be set and at least 32 characters long",
+      "Mobile JWT secret missing: set MOBILE_JWT_SECRET or AUTH_SECRET (32+ chars in production; see docs/MOBILE_OTP_ENV.md).",
     );
   }
   return new TextEncoder().encode(secret);

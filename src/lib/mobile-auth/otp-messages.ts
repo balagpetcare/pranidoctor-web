@@ -1,12 +1,18 @@
 /** Bengali copy for mobile OTP API responses (customer app). */
 
 export const OTP_MSG = {
+  serverMisconfigured:
+    "মোবাইল প্রবেশের জন্য সার্ভারে JWT সিক্রেট সেট করা নেই। সাইট প্রশাসককে জানান।",
   validationPhone:
     "সঠিক বাংলাদেশি মোবাইল নম্বর দিন।",
   requestFailed:
     "যাচাইকরণ কোড পাঠানো যায়নি। কিছুক্ষণ পর আবার চেষ্টা করুন।",
   smsUnavailable:
     "এসএমএস পাঠানো যাচ্ছে না। কিছুক্ষণ পর আবার চেষ্টা করুন।",
+  smsNotConfigured:
+    "এসএমএস গেটওয়ে কনফিগার করা নেই। সাইট প্রশাসককে জানান।",
+  tokenIssueFailed:
+    "অ্যাক্সেস টোকেন তৈরি করা যায়নি। সার্ভার কনফিগারেশন পরীক্ষা করুন।",
   wrongCode: "ভুল যাচাইকরণ কোড। আবার চেষ্টা করুন।",
   expired: "কোডের মেয়াদ শেষ হয়েছে। নতুন কোড পাঠান।",
   tooManyAttempts:

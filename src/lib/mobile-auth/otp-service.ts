@@ -162,11 +162,14 @@ export async function requestMobileCustomerOtp(
     } catch (delErr) {
       console.error("[mobile-otp] rollback challenge after SMS failure", delErr);
     }
+    const missingGateway = delivered.reason === "SMS_NOT_CONFIGURED";
     return {
       ok: false,
       httpStatus: 503,
-      code: "SMS_UNAVAILABLE",
-      message: OTP_MSG.smsUnavailable,
+      code: missingGateway ? "SMS_NOT_CONFIGURED" : "SMS_UNAVAILABLE",
+      message: missingGateway
+        ? OTP_MSG.smsNotConfigured
+        : OTP_MSG.smsUnavailable,
     };
   }
 

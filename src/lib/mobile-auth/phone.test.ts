@@ -7,7 +7,11 @@ describe("normalizeBdMobilePhone", () => {
     expect(normalizeBdMobilePhone("01711223344")).toBe("8801711223344");
   });
 
-  it("accepts 8801XXXXXXXXX", () => {
+  it("accepts +8801XXXXXXXXX", () => {
+    expect(normalizeBdMobilePhone("+8801711223344")).toBe("8801711223344");
+  });
+
+  it("accepts 8801… without plus", () => {
     expect(normalizeBdMobilePhone("8801711223344")).toBe("8801711223344");
   });
 
