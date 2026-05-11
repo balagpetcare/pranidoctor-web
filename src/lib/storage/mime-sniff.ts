@@ -27,6 +27,14 @@ export function sniffMimeFromBuffer(buf: Buffer): string | null {
   if (buf.toString("ascii", 0, 5) === "%PDF-") {
     return "application/pdf";
   }
+  // ISO BMFF (MP4 / related); "ftyp" box at byte offset 4.
+  if (buf.length >= 12 && buf.toString("ascii", 4, 8) === "ftyp") {
+    return "video/mp4";
+  }
+  // WebM / Matroska EBML header
+  if (buf.length >= 4 && buf[0] === 0x1a && buf[1] === 0x45 && buf[2] === 0xdf && buf[3] === 0xa3) {
+    return "video/webm";
+  }
   return null;
 }
 
@@ -44,7 +52,9 @@ const DANGEROUS_MIMES = new Set([
 export function isDangerousMime(mime: string): boolean {
   const m = mime.trim().toLowerCase();
   if (DANGEROUS_MIMES.has(m)) return true;
-  if (m.startsWith("video/") || m.startsWith("audio/")) return true;
+  // Video/audio are only accepted when the upload purpose explicitly allows them
+  // (see `ingestMobileUpload` allowed MIME sets); do not blanket-block `video/*` here.
+  if (m.startsWith("audio/")) return true;
   return false;
 }
 

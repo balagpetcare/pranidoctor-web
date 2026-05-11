@@ -1,14 +1,22 @@
 import bcrypt from "bcryptjs";
 
 import {
+  AnimalType,
   AreaType,
   ContentApprovalStatus,
   ProviderStatus,
+  SemenProviderVerificationStatus,
   UserRole,
   UserStatus,
 } from "../src/generated/prisma/client";
 import { disconnectPrisma, prisma } from "../src/lib/prisma";
 import { seedBdReferenceLocations } from "./seed-data/bd-locations";
+import {
+  upsertDistrictByTrimmedCode,
+  upsertUnionByTrimmedCode,
+  upsertUpazilaByTrimmedCode,
+  upsertVillageByTrimmedCode,
+} from "./seed-data/location-trim-upserts";
 
 const DEFAULT_DEV_DOCTOR_EMAIL = "doctor@pranidoctor.local";
 const DEFAULT_DEV_DOCTOR_PASSWORD = "ChangeMe!Doctor123";
@@ -20,6 +28,67 @@ const BCRYPT_COST = 12;
 
 function isProduction(): boolean {
   return process.env.NODE_ENV === "production";
+}
+
+/**
+ * Idempotent semen provider + cattle breed masters for template authoring.
+ * Safe to re-run; does not delete existing rows.
+ */
+async function seedSemenReferenceMasters(): Promise<void> {
+  const providers: { slug: string; name: string; nameBn: string; sortOrder: number }[] = [
+    { slug: "brac", name: "BRAC", nameBn: "ব্র্যাক", sortOrder: 10 },
+    { slug: "aci", name: "ACI", nameBn: "এসিআই", sortOrder: 20 },
+    { slug: "adl", name: "ADL", nameBn: "এডিএল", sortOrder: 30 },
+    { slug: "dls-government", name: "DLS / Government", nameBn: "ডিএলএস / সরকারি", sortOrder: 40 },
+    { slug: "private-provider", name: "Private Provider", nameBn: "ব্যক্তিগত প্রদানকারী", sortOrder: 50 },
+    { slug: "others", name: "Others", nameBn: "অন্যান্য", sortOrder: 60 },
+  ];
+  for (const p of providers) {
+    await prisma.semenProvider.upsert({
+      where: { slug: p.slug },
+      create: {
+        slug: p.slug,
+        name: p.name,
+        nameBn: p.nameBn,
+        isActive: true,
+        verificationStatus: SemenProviderVerificationStatus.UNVERIFIED,
+        sortOrder: p.sortOrder,
+      },
+      update: {
+        name: p.name,
+        nameBn: p.nameBn,
+        isActive: true,
+        sortOrder: p.sortOrder,
+      },
+    });
+  }
+
+  const breeds: { slug: string; nameEn: string; nameBn: string }[] = [
+    { slug: "cattle-holstein-friesian", nameEn: "Holstein Friesian", nameBn: "হোলস্টাইন ফ্রিজিয়ান" },
+    { slug: "cattle-sahiwal", nameEn: "Sahiwal", nameBn: "সাহিওয়াল" },
+    { slug: "cattle-jersey", nameEn: "Jersey", nameBn: "জার্সি" },
+    { slug: "cattle-brahman", nameEn: "Brahman", nameBn: "ব্রাহমান" },
+    { slug: "cattle-local", nameEn: "Local", nameBn: "দেশি" },
+    { slug: "cattle-cross-breed", nameEn: "Cross Breed", nameBn: "ক্রস জাত" },
+  ];
+  for (const b of breeds) {
+    await prisma.livestockBreed.upsert({
+      where: { slug: b.slug },
+      create: {
+        slug: b.slug,
+        nameEn: b.nameEn,
+        nameBn: b.nameBn,
+        animalType: AnimalType.CATTLE,
+        isActive: true,
+      },
+      update: {
+        nameEn: b.nameEn,
+        nameBn: b.nameBn,
+        isActive: true,
+      },
+    });
+  }
+  console.log("[seed] Semen reference masters (providers + cattle breeds) upserted.");
 }
 
 /**
@@ -442,112 +511,57 @@ async function main(): Promise<void> {
     update: { name: "Dhaka Division", code: "30" },
   });
 
-  const districtDhaka = await prisma.district.upsert({
-    where: { slug: "dhaka-district" },
-    create: {
-      divisionId: division.id,
-      name: "Dhaka District",
-      slug: "dhaka-district",
-      code: "3026",
-    },
-    update: {
-      name: "Dhaka District",
-      divisionId: division.id,
-      code: "3026",
-    },
+  const districtDhaka = await upsertDistrictByTrimmedCode(prisma, {
+    divisionId: division.id,
+    slug: "dhaka-district",
+    name: "Dhaka District",
+    code: "3026",
   });
 
-  const districtGazipur = await prisma.district.upsert({
-    where: { slug: "gazipur-district" },
-    create: {
-      divisionId: division.id,
-      name: "Gazipur District",
-      slug: "gazipur-district",
-      code: "3033",
-    },
-    update: {
-      name: "Gazipur District",
-      divisionId: division.id,
-      code: "3033",
-    },
+  const districtGazipur = await upsertDistrictByTrimmedCode(prisma, {
+    divisionId: division.id,
+    slug: "gazipur-district",
+    name: "Gazipur District",
+    code: "3033",
   });
 
-  const upazilaSavar = await prisma.upazila.upsert({
-    where: { slug: "savar-upazila" },
-    create: {
-      districtId: districtDhaka.id,
-      name: "Savar Upazila",
-      slug: "savar-upazila",
-      code: "302633",
-    },
-    update: {
-      districtId: districtDhaka.id,
-      name: "Savar Upazila",
-      code: "302633",
-    },
+  const upazilaSavar = await upsertUpazilaByTrimmedCode(prisma, {
+    districtId: districtDhaka.id,
+    slug: "savar-upazila",
+    name: "Savar Upazila",
+    code: "302633",
   });
 
-  const upazilaGazipurSadar = await prisma.upazila.upsert({
-    where: { slug: "gazipur-sadar-upazila" },
-    create: {
-      districtId: districtGazipur.id,
-      name: "Gazipur Sadar Upazila",
-      slug: "gazipur-sadar-upazila",
-      code: "303318",
-    },
-    update: {
-      districtId: districtGazipur.id,
-      name: "Gazipur Sadar Upazila",
-      code: "303318",
-    },
+  const upazilaGazipurSadar = await upsertUpazilaByTrimmedCode(prisma, {
+    districtId: districtGazipur.id,
+    slug: "gazipur-sadar-upazila",
+    name: "Gazipur Sadar Upazila",
+    code: "303318",
   });
 
-  const unionAshulia = await prisma.union.upsert({
-    where: { slug: "ashulia-union" },
-    create: {
-      upazilaId: upazilaSavar.id,
-      name: "Ashulia Union",
-      slug: "ashulia-union",
-      code: "30263347",
-    },
-    update: {
-      upazilaId: upazilaSavar.id,
-      name: "Ashulia Union",
-      code: "30263347",
-    },
+  const unionAshulia = await upsertUnionByTrimmedCode(prisma, {
+    upazilaId: upazilaSavar.id,
+    slug: "ashulia-union",
+    name: "Ashulia Union",
+    code: "30263347",
   });
 
-  await prisma.union.upsert({
-    where: { slug: "konabari-union" },
-    create: {
-      upazilaId: upazilaGazipurSadar.id,
-      name: "Konabari Union",
-      slug: "konabari-union",
-      code: "30331863",
-    },
-    update: {
-      upazilaId: upazilaGazipurSadar.id,
-      name: "Konabari Union",
-      code: "30331863",
-    },
+  await upsertUnionByTrimmedCode(prisma, {
+    upazilaId: upazilaGazipurSadar.id,
+    slug: "konabari-union",
+    name: "Konabari Union",
+    code: "30331863",
   });
 
-  const village = await prisma.village.upsert({
-    where: { slug: "sample-service-village-001" },
-    create: {
-      unionId: unionAshulia.id,
-      name: "Ashulia (demo service village)",
-      slug: "sample-service-village-001",
-      code: "3026334701",
-    },
-    update: {
-      unionId: unionAshulia.id,
-      name: "Ashulia (demo service village)",
-      code: "3026334701",
-    },
+  const village = await upsertVillageByTrimmedCode(prisma, {
+    unionId: unionAshulia.id,
+    slug: "sample-service-village-001",
+    name: "Ashulia (demo service village)",
+    code: "3026334701",
   });
 
   await seedBdReferenceLocations(prisma);
+  await seedSemenReferenceMasters();
 
   await prisma.setting.upsert({
     where: { key: "app.name" },

@@ -28,13 +28,19 @@ export default function AdminLoginPage() {
             <PawPrint className="h-7 w-7" strokeWidth={1.75} />
           </div>
           <p className="text-xs font-medium uppercase tracking-wider text-emerald-800/80 dark:text-emerald-400/90">
-            Prani Doctor · অ্যাডমিন
+            Prani Doctor
           </p>
           <h1 className="mt-1 text-2xl font-bold text-zinc-900 dark:text-zinc-50">
-            প্রাণী ডাক্তার
+            Prani Doctor Admin
           </h1>
+          <p className="mt-1 text-sm font-medium text-zinc-700 dark:text-zinc-300">
+            Admin Dashboard Login
+          </p>
           <p className="mt-2 max-w-xs text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            পশুপাখির সেবা ও অপারেশন — শুধুমাত্র অনুমোদিত অ্যাডমিন
+            Authorized staff only. Use the email or phone on your admin account.
+          </p>
+          <p className="mt-2 max-w-xs text-xs leading-relaxed text-zinc-500 dark:text-zinc-500">
+            শুধুমাত্র অনুমোদিত অ্যাডমিন — আপনার অ্যাকাউন্টের ইমেইল বা মোবাইল নম্বর ব্যবহার করুন।
           </p>
         </header>
 
@@ -44,7 +50,7 @@ export default function AdminLoginPage() {
               className="rounded-2xl border border-zinc-200/80 bg-white/90 px-8 py-10 text-center text-sm text-zinc-600 dark:border-zinc-700 dark:bg-zinc-900/90 dark:text-zinc-400"
               lang="bn"
             >
-              লোড হচ্ছে…
+              লোড হচ্ছে… / Loading…
             </div>
           }
         >

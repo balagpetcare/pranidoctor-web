@@ -406,7 +406,13 @@ export const ModelName = {
   AiTechnicianDivisionServiceArea: 'AiTechnicianDivisionServiceArea',
   AiTechnicianDocument: 'AiTechnicianDocument',
   UploadedFile: 'UploadedFile',
+  SemenProvider: 'SemenProvider',
+  LivestockBreed: 'LivestockBreed',
+  SemenServiceTemplate: 'SemenServiceTemplate',
+  SemenServiceTemplateBreedMix: 'SemenServiceTemplateBreedMix',
+  SemenServiceTemplateMedia: 'SemenServiceTemplateMedia',
   AiTechnicianService: 'AiTechnicianService',
+  TechnicianSemenInventory: 'TechnicianSemenInventory',
   AiServiceRequest: 'AiServiceRequest',
   AiServiceRecord: 'AiServiceRecord',
   AiTechnicianReview: 'AiTechnicianReview',
@@ -439,7 +445,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "adminProfile" | "doctorProfile" | "aiTechnicianProfile" | "customerProfile" | "mobileOtpChallenge" | "division" | "district" | "upazila" | "union" | "village" | "area" | "doctorServiceArea" | "aiTechnicianServiceArea" | "serviceCategory" | "doctorProfileArea" | "aiTechnicianProfileArea" | "doctorProfileServiceCategory" | "aiTechnicianProfileServiceCategory" | "aiTechnicianDivisionServiceArea" | "aiTechnicianDocument" | "uploadedFile" | "aiTechnicianService" | "aiServiceRequest" | "aiServiceRecord" | "aiTechnicianReview" | "aiTechnicianComplaint" | "animalProfile" | "serviceRequest" | "treatmentCase" | "prescription" | "prescriptionItem" | "billingRecord" | "paymentRecord" | "review" | "contentCategory" | "contentPost" | "complaint" | "notification" | "setting"
+    modelProps: "user" | "adminProfile" | "doctorProfile" | "aiTechnicianProfile" | "customerProfile" | "mobileOtpChallenge" | "division" | "district" | "upazila" | "union" | "village" | "area" | "doctorServiceArea" | "aiTechnicianServiceArea" | "serviceCategory" | "doctorProfileArea" | "aiTechnicianProfileArea" | "doctorProfileServiceCategory" | "aiTechnicianProfileServiceCategory" | "aiTechnicianDivisionServiceArea" | "aiTechnicianDocument" | "uploadedFile" | "semenProvider" | "livestockBreed" | "semenServiceTemplate" | "semenServiceTemplateBreedMix" | "semenServiceTemplateMedia" | "aiTechnicianService" | "technicianSemenInventory" | "aiServiceRequest" | "aiServiceRecord" | "aiTechnicianReview" | "aiTechnicianComplaint" | "animalProfile" | "serviceRequest" | "treatmentCase" | "prescription" | "prescriptionItem" | "billingRecord" | "paymentRecord" | "review" | "contentCategory" | "contentPost" | "complaint" | "notification" | "setting"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2071,6 +2077,376 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    SemenProvider: {
+      payload: Prisma.$SemenProviderPayload<ExtArgs>
+      fields: Prisma.SemenProviderFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SemenProviderFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenProviderPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SemenProviderFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenProviderPayload>
+        }
+        findFirst: {
+          args: Prisma.SemenProviderFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenProviderPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SemenProviderFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenProviderPayload>
+        }
+        findMany: {
+          args: Prisma.SemenProviderFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenProviderPayload>[]
+        }
+        create: {
+          args: Prisma.SemenProviderCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenProviderPayload>
+        }
+        createMany: {
+          args: Prisma.SemenProviderCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SemenProviderCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenProviderPayload>[]
+        }
+        delete: {
+          args: Prisma.SemenProviderDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenProviderPayload>
+        }
+        update: {
+          args: Prisma.SemenProviderUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenProviderPayload>
+        }
+        deleteMany: {
+          args: Prisma.SemenProviderDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SemenProviderUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SemenProviderUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenProviderPayload>[]
+        }
+        upsert: {
+          args: Prisma.SemenProviderUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenProviderPayload>
+        }
+        aggregate: {
+          args: Prisma.SemenProviderAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSemenProvider>
+        }
+        groupBy: {
+          args: Prisma.SemenProviderGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SemenProviderGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SemenProviderCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SemenProviderCountAggregateOutputType> | number
+        }
+      }
+    }
+    LivestockBreed: {
+      payload: Prisma.$LivestockBreedPayload<ExtArgs>
+      fields: Prisma.LivestockBreedFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.LivestockBreedFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivestockBreedPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.LivestockBreedFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivestockBreedPayload>
+        }
+        findFirst: {
+          args: Prisma.LivestockBreedFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivestockBreedPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.LivestockBreedFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivestockBreedPayload>
+        }
+        findMany: {
+          args: Prisma.LivestockBreedFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivestockBreedPayload>[]
+        }
+        create: {
+          args: Prisma.LivestockBreedCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivestockBreedPayload>
+        }
+        createMany: {
+          args: Prisma.LivestockBreedCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.LivestockBreedCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivestockBreedPayload>[]
+        }
+        delete: {
+          args: Prisma.LivestockBreedDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivestockBreedPayload>
+        }
+        update: {
+          args: Prisma.LivestockBreedUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivestockBreedPayload>
+        }
+        deleteMany: {
+          args: Prisma.LivestockBreedDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.LivestockBreedUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.LivestockBreedUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivestockBreedPayload>[]
+        }
+        upsert: {
+          args: Prisma.LivestockBreedUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$LivestockBreedPayload>
+        }
+        aggregate: {
+          args: Prisma.LivestockBreedAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLivestockBreed>
+        }
+        groupBy: {
+          args: Prisma.LivestockBreedGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LivestockBreedGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.LivestockBreedCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.LivestockBreedCountAggregateOutputType> | number
+        }
+      }
+    }
+    SemenServiceTemplate: {
+      payload: Prisma.$SemenServiceTemplatePayload<ExtArgs>
+      fields: Prisma.SemenServiceTemplateFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SemenServiceTemplateFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplatePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SemenServiceTemplateFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplatePayload>
+        }
+        findFirst: {
+          args: Prisma.SemenServiceTemplateFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplatePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SemenServiceTemplateFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplatePayload>
+        }
+        findMany: {
+          args: Prisma.SemenServiceTemplateFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplatePayload>[]
+        }
+        create: {
+          args: Prisma.SemenServiceTemplateCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplatePayload>
+        }
+        createMany: {
+          args: Prisma.SemenServiceTemplateCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SemenServiceTemplateCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplatePayload>[]
+        }
+        delete: {
+          args: Prisma.SemenServiceTemplateDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplatePayload>
+        }
+        update: {
+          args: Prisma.SemenServiceTemplateUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplatePayload>
+        }
+        deleteMany: {
+          args: Prisma.SemenServiceTemplateDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SemenServiceTemplateUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SemenServiceTemplateUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplatePayload>[]
+        }
+        upsert: {
+          args: Prisma.SemenServiceTemplateUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplatePayload>
+        }
+        aggregate: {
+          args: Prisma.SemenServiceTemplateAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSemenServiceTemplate>
+        }
+        groupBy: {
+          args: Prisma.SemenServiceTemplateGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SemenServiceTemplateGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SemenServiceTemplateCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SemenServiceTemplateCountAggregateOutputType> | number
+        }
+      }
+    }
+    SemenServiceTemplateBreedMix: {
+      payload: Prisma.$SemenServiceTemplateBreedMixPayload<ExtArgs>
+      fields: Prisma.SemenServiceTemplateBreedMixFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SemenServiceTemplateBreedMixFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateBreedMixPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SemenServiceTemplateBreedMixFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateBreedMixPayload>
+        }
+        findFirst: {
+          args: Prisma.SemenServiceTemplateBreedMixFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateBreedMixPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SemenServiceTemplateBreedMixFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateBreedMixPayload>
+        }
+        findMany: {
+          args: Prisma.SemenServiceTemplateBreedMixFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateBreedMixPayload>[]
+        }
+        create: {
+          args: Prisma.SemenServiceTemplateBreedMixCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateBreedMixPayload>
+        }
+        createMany: {
+          args: Prisma.SemenServiceTemplateBreedMixCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SemenServiceTemplateBreedMixCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateBreedMixPayload>[]
+        }
+        delete: {
+          args: Prisma.SemenServiceTemplateBreedMixDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateBreedMixPayload>
+        }
+        update: {
+          args: Prisma.SemenServiceTemplateBreedMixUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateBreedMixPayload>
+        }
+        deleteMany: {
+          args: Prisma.SemenServiceTemplateBreedMixDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SemenServiceTemplateBreedMixUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SemenServiceTemplateBreedMixUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateBreedMixPayload>[]
+        }
+        upsert: {
+          args: Prisma.SemenServiceTemplateBreedMixUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateBreedMixPayload>
+        }
+        aggregate: {
+          args: Prisma.SemenServiceTemplateBreedMixAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSemenServiceTemplateBreedMix>
+        }
+        groupBy: {
+          args: Prisma.SemenServiceTemplateBreedMixGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SemenServiceTemplateBreedMixGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SemenServiceTemplateBreedMixCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SemenServiceTemplateBreedMixCountAggregateOutputType> | number
+        }
+      }
+    }
+    SemenServiceTemplateMedia: {
+      payload: Prisma.$SemenServiceTemplateMediaPayload<ExtArgs>
+      fields: Prisma.SemenServiceTemplateMediaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.SemenServiceTemplateMediaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateMediaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.SemenServiceTemplateMediaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateMediaPayload>
+        }
+        findFirst: {
+          args: Prisma.SemenServiceTemplateMediaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateMediaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.SemenServiceTemplateMediaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateMediaPayload>
+        }
+        findMany: {
+          args: Prisma.SemenServiceTemplateMediaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateMediaPayload>[]
+        }
+        create: {
+          args: Prisma.SemenServiceTemplateMediaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateMediaPayload>
+        }
+        createMany: {
+          args: Prisma.SemenServiceTemplateMediaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.SemenServiceTemplateMediaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateMediaPayload>[]
+        }
+        delete: {
+          args: Prisma.SemenServiceTemplateMediaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateMediaPayload>
+        }
+        update: {
+          args: Prisma.SemenServiceTemplateMediaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateMediaPayload>
+        }
+        deleteMany: {
+          args: Prisma.SemenServiceTemplateMediaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.SemenServiceTemplateMediaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.SemenServiceTemplateMediaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateMediaPayload>[]
+        }
+        upsert: {
+          args: Prisma.SemenServiceTemplateMediaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$SemenServiceTemplateMediaPayload>
+        }
+        aggregate: {
+          args: Prisma.SemenServiceTemplateMediaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateSemenServiceTemplateMedia>
+        }
+        groupBy: {
+          args: Prisma.SemenServiceTemplateMediaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SemenServiceTemplateMediaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.SemenServiceTemplateMediaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.SemenServiceTemplateMediaCountAggregateOutputType> | number
+        }
+      }
+    }
     AiTechnicianService: {
       payload: Prisma.$AiTechnicianServicePayload<ExtArgs>
       fields: Prisma.AiTechnicianServiceFieldRefs
@@ -2142,6 +2518,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.AiTechnicianServiceCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.AiTechnicianServiceCountAggregateOutputType> | number
+        }
+      }
+    }
+    TechnicianSemenInventory: {
+      payload: Prisma.$TechnicianSemenInventoryPayload<ExtArgs>
+      fields: Prisma.TechnicianSemenInventoryFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.TechnicianSemenInventoryFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TechnicianSemenInventoryPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.TechnicianSemenInventoryFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TechnicianSemenInventoryPayload>
+        }
+        findFirst: {
+          args: Prisma.TechnicianSemenInventoryFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TechnicianSemenInventoryPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.TechnicianSemenInventoryFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TechnicianSemenInventoryPayload>
+        }
+        findMany: {
+          args: Prisma.TechnicianSemenInventoryFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TechnicianSemenInventoryPayload>[]
+        }
+        create: {
+          args: Prisma.TechnicianSemenInventoryCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TechnicianSemenInventoryPayload>
+        }
+        createMany: {
+          args: Prisma.TechnicianSemenInventoryCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.TechnicianSemenInventoryCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TechnicianSemenInventoryPayload>[]
+        }
+        delete: {
+          args: Prisma.TechnicianSemenInventoryDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TechnicianSemenInventoryPayload>
+        }
+        update: {
+          args: Prisma.TechnicianSemenInventoryUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TechnicianSemenInventoryPayload>
+        }
+        deleteMany: {
+          args: Prisma.TechnicianSemenInventoryDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.TechnicianSemenInventoryUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.TechnicianSemenInventoryUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TechnicianSemenInventoryPayload>[]
+        }
+        upsert: {
+          args: Prisma.TechnicianSemenInventoryUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$TechnicianSemenInventoryPayload>
+        }
+        aggregate: {
+          args: Prisma.TechnicianSemenInventoryAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateTechnicianSemenInventory>
+        }
+        groupBy: {
+          args: Prisma.TechnicianSemenInventoryGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TechnicianSemenInventoryGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.TechnicianSemenInventoryCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.TechnicianSemenInventoryCountAggregateOutputType> | number
         }
       }
     }
@@ -3812,6 +4262,93 @@ export const UploadedFileScalarFieldEnum = {
 export type UploadedFileScalarFieldEnum = (typeof UploadedFileScalarFieldEnum)[keyof typeof UploadedFileScalarFieldEnum]
 
 
+export const SemenProviderScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  nameBn: 'nameBn',
+  description: 'description',
+  descriptionBn: 'descriptionBn',
+  logoUploadedFileId: 'logoUploadedFileId',
+  isActive: 'isActive',
+  verificationStatus: 'verificationStatus',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SemenProviderScalarFieldEnum = (typeof SemenProviderScalarFieldEnum)[keyof typeof SemenProviderScalarFieldEnum]
+
+
+export const LivestockBreedScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  nameEn: 'nameEn',
+  nameBn: 'nameBn',
+  animalType: 'animalType',
+  description: 'description',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LivestockBreedScalarFieldEnum = (typeof LivestockBreedScalarFieldEnum)[keyof typeof LivestockBreedScalarFieldEnum]
+
+
+export const SemenServiceTemplateScalarFieldEnum = {
+  id: 'id',
+  internalName: 'internalName',
+  animalType: 'animalType',
+  semenProviderId: 'semenProviderId',
+  semenProductKind: 'semenProductKind',
+  otherSemenLabel: 'otherSemenLabel',
+  shortDescription: 'shortDescription',
+  detailedDescription: 'detailedDescription',
+  expectedBenefits: 'expectedBenefits',
+  recommendedAnimalCondition: 'recommendedAnimalCondition',
+  warningsContraindications: 'warningsContraindications',
+  defaultBasePrice: 'defaultBasePrice',
+  defaultOfferPrice: 'defaultOfferPrice',
+  defaultDiscountPercent: 'defaultDiscountPercent',
+  tagsJson: 'tagsJson',
+  isActive: 'isActive',
+  approvalStatus: 'approvalStatus',
+  approvedById: 'approvedById',
+  approvedAt: 'approvedAt',
+  rejectedReason: 'rejectedReason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SemenServiceTemplateScalarFieldEnum = (typeof SemenServiceTemplateScalarFieldEnum)[keyof typeof SemenServiceTemplateScalarFieldEnum]
+
+
+export const SemenServiceTemplateBreedMixScalarFieldEnum = {
+  id: 'id',
+  templateId: 'templateId',
+  breedId: 'breedId',
+  percentage: 'percentage',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SemenServiceTemplateBreedMixScalarFieldEnum = (typeof SemenServiceTemplateBreedMixScalarFieldEnum)[keyof typeof SemenServiceTemplateBreedMixScalarFieldEnum]
+
+
+export const SemenServiceTemplateMediaScalarFieldEnum = {
+  id: 'id',
+  templateId: 'templateId',
+  kind: 'kind',
+  uploadedFileId: 'uploadedFileId',
+  externalUrl: 'externalUrl',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SemenServiceTemplateMediaScalarFieldEnum = (typeof SemenServiceTemplateMediaScalarFieldEnum)[keyof typeof SemenServiceTemplateMediaScalarFieldEnum]
+
+
 export const AiTechnicianServiceScalarFieldEnum = {
   id: 'id',
   aiTechnicianId: 'aiTechnicianId',
@@ -3825,11 +4362,35 @@ export const AiTechnicianServiceScalarFieldEnum = {
   repeatServicePolicy: 'repeatServicePolicy',
   followUpIncluded: 'followUpIncluded',
   status: 'status',
+  semenServiceTemplateId: 'semenServiceTemplateId',
+  offerPrice: 'offerPrice',
+  discountPercent: 'discountPercent',
+  isAvailable: 'isAvailable',
+  technicianServiceNote: 'technicianServiceNote',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type AiTechnicianServiceScalarFieldEnum = (typeof AiTechnicianServiceScalarFieldEnum)[keyof typeof AiTechnicianServiceScalarFieldEnum]
+
+
+export const TechnicianSemenInventoryScalarFieldEnum = {
+  id: 'id',
+  aiTechnicianServiceId: 'aiTechnicianServiceId',
+  currentQuantity: 'currentQuantity',
+  reservedQuantity: 'reservedQuantity',
+  usedQuantity: 'usedQuantity',
+  minStockAlert: 'minStockAlert',
+  batchNumber: 'batchNumber',
+  expiryDate: 'expiryDate',
+  sourceNote: 'sourceNote',
+  storageNote: 'storageNote',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TechnicianSemenInventoryScalarFieldEnum = (typeof TechnicianSemenInventoryScalarFieldEnum)[keyof typeof TechnicianSemenInventoryScalarFieldEnum]
 
 
 export const AiServiceRequestScalarFieldEnum = {
@@ -4440,6 +5001,20 @@ export type ListEnumUploadedFileStatusFieldRefInput<$PrismaModel> = FieldRefInpu
 
 
 /**
+ * Reference to a field of type 'SemenProviderVerificationStatus'
+ */
+export type EnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SemenProviderVerificationStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'SemenProviderVerificationStatus[]'
+ */
+export type ListEnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SemenProviderVerificationStatus[]'>
+    
+
+
+/**
  * Reference to a field of type 'AnimalType'
  */
 export type EnumAnimalTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnimalType'>
@@ -4450,6 +5025,48 @@ export type EnumAnimalTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Prism
  * Reference to a field of type 'AnimalType[]'
  */
 export type ListEnumAnimalTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnimalType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SemenProductKind'
+ */
+export type EnumSemenProductKindFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SemenProductKind'>
+    
+
+
+/**
+ * Reference to a field of type 'SemenProductKind[]'
+ */
+export type ListEnumSemenProductKindFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SemenProductKind[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SemenTemplateApprovalStatus'
+ */
+export type EnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SemenTemplateApprovalStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'SemenTemplateApprovalStatus[]'
+ */
+export type ListEnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SemenTemplateApprovalStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'SemenTemplateMediaKind'
+ */
+export type EnumSemenTemplateMediaKindFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SemenTemplateMediaKind'>
+    
+
+
+/**
+ * Reference to a field of type 'SemenTemplateMediaKind[]'
+ */
+export type ListEnumSemenTemplateMediaKindFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'SemenTemplateMediaKind[]'>
     
 
 
@@ -4850,7 +5467,13 @@ export type GlobalOmitConfig = {
   aiTechnicianDivisionServiceArea?: Prisma.AiTechnicianDivisionServiceAreaOmit
   aiTechnicianDocument?: Prisma.AiTechnicianDocumentOmit
   uploadedFile?: Prisma.UploadedFileOmit
+  semenProvider?: Prisma.SemenProviderOmit
+  livestockBreed?: Prisma.LivestockBreedOmit
+  semenServiceTemplate?: Prisma.SemenServiceTemplateOmit
+  semenServiceTemplateBreedMix?: Prisma.SemenServiceTemplateBreedMixOmit
+  semenServiceTemplateMedia?: Prisma.SemenServiceTemplateMediaOmit
   aiTechnicianService?: Prisma.AiTechnicianServiceOmit
+  technicianSemenInventory?: Prisma.TechnicianSemenInventoryOmit
   aiServiceRequest?: Prisma.AiServiceRequestOmit
   aiServiceRecord?: Prisma.AiServiceRecordOmit
   aiTechnicianReview?: Prisma.AiTechnicianReviewOmit

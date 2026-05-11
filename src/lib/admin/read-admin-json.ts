@@ -12,7 +12,7 @@ export async function readAdminJson<T>(res: Response): Promise<T> {
 
   const body = parsed as
     | { ok: true; data: T }
-    | { ok: false; error?: { message?: string } };
+    | { ok: false; error?: { code?: string; message?: string } };
 
   if (res.status === 401) {
     const next = `${window.location.pathname}${window.location.search}`;
@@ -21,7 +21,9 @@ export async function readAdminJson<T>(res: Response): Promise<T> {
   }
 
   if (!body.ok || !("data" in body)) {
-    throw new Error(body.error?.message ?? "Request failed");
+    const code = body.error?.code?.trim();
+    const msg = body.error?.message?.trim() || "Request failed";
+    throw new Error(code ? `${code}: ${msg}` : msg);
   }
 
   return body.data;

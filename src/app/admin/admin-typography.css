@@ -1,0 +1,40 @@
+/**
+ * Admin-wide typography (login + dashboard). Loaded from `app/admin/layout.tsx`.
+ * Font CSS variables come from `next/font/google` on the `.pd-admin-app-fonts` wrapper.
+ */
+
+.pd-admin-app-fonts {
+  font-family: var(--font-pd-admin-inter), var(--font-pd-admin-hind), "Hind Siliguri", "Inter",
+    ui-sans-serif, system-ui, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.6;
+}
+
+/* Page titles (in-shell) */
+#pd-admin-root .pd-admin-page-title {
+  font-size: 1.5rem; /* 24px */
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: -0.02em;
+}
+
+#pd-admin-root .pd-admin-page-description {
+  font-size: 0.8125rem; /* 13px helper */
+  line-height: 1.65;
+  color: var(--pd-admin-muted);
+}
+
+#pd-admin-root .pd-admin-topbar-title {
+  font-size: 1rem; /* 16px section context */
+  font-weight: 600;
+  line-height: 1.45;
+}
+
+#pd-admin-root .pd-admin-section-title {
+  font-size: 1.125rem; /* 18px */
+  font-weight: 700;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}

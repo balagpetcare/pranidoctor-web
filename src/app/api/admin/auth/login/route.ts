@@ -9,13 +9,35 @@ import { setAdminSessionCookie } from "@/lib/admin-auth/cookies";
 import { signAdminToken } from "@/lib/admin-auth/jwt";
 import { getAdminJwtSecret } from "@/lib/admin-auth/secrets";
 import { jsonError, jsonOk } from "@/lib/api-response";
+import { normalizeBdMobilePhone } from "@/lib/mobile-auth/phone";
 import { prisma } from "@/lib/prisma";
 import { Prisma, UserRole, UserStatus } from "@/generated/prisma/client";
 
 const bodySchema = z.object({
-  email: z.string().trim().email(),
+  /** Legacy clients — any string; validated when treated as an email address. */
+  email: z.string().trim().optional(),
+  /** Preferred: admin email or Bangladesh mobile (matches `User.email` / `User.phone`). */
+  identifier: z.string().trim().optional(),
   password: z.string().min(1),
 });
+
+function resolveLoginIdentifier(data: z.infer<typeof bodySchema>): string {
+  const fromEmail = data.email?.trim() || "";
+  const fromId = data.identifier?.trim() || "";
+  return fromEmail || fromId;
+}
+
+function buildAdminUserWhere(loginId: string): Prisma.UserWhereInput {
+  const id = loginId.trim();
+  if (id.includes("@")) {
+    return { email: { equals: id, mode: "insensitive" } };
+  }
+  const normalized = normalizeBdMobilePhone(id);
+  const phones = new Set<string>();
+  if (normalized) phones.add(normalized);
+  phones.add(id);
+  return { OR: [...phones].map((phone) => ({ phone })) };
+}
 
 export async function POST(request: Request) {
   let json: unknown;
@@ -41,7 +63,30 @@ export async function POST(request: Request) {
     );
   }
 
-  const { email, password } = parsed.data;
+  const loginId = resolveLoginIdentifier(parsed.data);
+  if (!loginId) {
+    logAdminLoginFailure("server_error");
+    return jsonError(
+      "server_error",
+      "Invalid email or password payload",
+      422,
+    );
+  }
+
+  if (loginId.includes("@")) {
+    const emailOk = z.string().email().safeParse(loginId);
+    if (!emailOk.success) {
+      logAdminLoginFailure("server_error");
+      return jsonError(
+        "server_error",
+        "Invalid email or password payload",
+        422,
+        emailOk.error.flatten(),
+      );
+    }
+  }
+
+  const { password } = parsed.data;
 
   if (!getAdminJwtSecret()) {
     logAdminLoginFailure("server_error");
@@ -55,7 +100,7 @@ export async function POST(request: Request) {
   let user;
   try {
     user = await prisma.user.findFirst({
-      where: { email: { equals: email, mode: "insensitive" } },
+      where: buildAdminUserWhere(loginId),
       include: { adminProfile: true },
     });
   } catch (e: unknown) {

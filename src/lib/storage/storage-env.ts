@@ -16,6 +16,7 @@ export type StorageEnv = {
   maxDocumentBytes: number;
   allowedImageMimes: Set<string>;
   allowedDocumentMimes: Set<string>;
+  allowedVideoMimes: Set<string>;
 };
 
 function parseMb(name: string, fallback: number): number {
@@ -55,6 +56,10 @@ export function getStorageEnv(): StorageEnv {
     allowedDocumentMimes: parseMimeList(
       process.env.UPLOAD_ALLOWED_DOCUMENT_TYPES,
       "application/pdf,image/jpeg,image/png,image/webp",
+    ),
+    allowedVideoMimes: parseMimeList(
+      process.env.UPLOAD_ALLOWED_VIDEO_TYPES,
+      "video/mp4,video/webm",
     ),
   };
 }

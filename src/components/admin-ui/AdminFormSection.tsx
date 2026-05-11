@@ -24,12 +24,10 @@ export function AdminFormSection({
       {title || description ? (
         <div className="space-y-1 border-b border-zinc-100 pb-4 dark:border-zinc-800">
           {title ? (
-            <h2 className="text-base font-semibold text-zinc-900 dark:text-zinc-50">
-              {title}
-            </h2>
+            <h2 className="pd-admin-section-title text-zinc-900 dark:text-zinc-50">{title}</h2>
           ) : null}
           {description ? (
-            <p className="text-sm text-zinc-600 dark:text-zinc-400">{description}</p>
+            <p className="pd-admin-page-description">{description}</p>
           ) : null}
         </div>
       ) : null}

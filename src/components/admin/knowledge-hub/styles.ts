@@ -2,14 +2,16 @@ import { cn } from "@/lib/cn";
 
 export function khInputClass(): string {
   return cn(
-    "mt-1 block w-full rounded-lg border border-zinc-300 bg-white px-3 py-2 text-sm",
-    "outline-none ring-emerald-600 focus:border-emerald-600 focus:ring-2",
-    "dark:border-zinc-600 dark:bg-zinc-950 dark:text-zinc-100",
+    "mt-1.5 block min-h-[2.875rem] w-full rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-[16px] leading-[1.6] text-zinc-900 placeholder:text-zinc-500 placeholder:opacity-90",
+    "outline-none transition-colors hover:border-zinc-400",
+    "focus-visible:border-emerald-600 focus-visible:ring-2 focus-visible:ring-emerald-600/25",
+    "disabled:cursor-not-allowed disabled:bg-zinc-100 disabled:text-zinc-500 disabled:opacity-90 dark:disabled:bg-zinc-900",
+    "dark:border-zinc-600 dark:bg-zinc-950 dark:text-zinc-100 dark:placeholder:text-zinc-400 dark:hover:border-zinc-500",
   );
 }
 
 export function khLabelClass(): string {
-  return "block text-sm font-medium text-zinc-700 dark:text-zinc-300";
+  return "block text-[15px] font-semibold leading-[1.55] text-zinc-800 dark:text-zinc-200";
 }
 
 export function khCardClass(): string {

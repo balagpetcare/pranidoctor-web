@@ -6,7 +6,8 @@
  */
 
 #pd-admin-root {
-  --pd-admin-sidebar-w-expanded: 18rem;
+  /* Larkon default main nav width ≈ 280px */
+  --pd-admin-sidebar-w-expanded: 17.5rem;
   --pd-admin-sidebar-w-collapsed: 4.5rem;
   --pd-admin-sidebar-w: var(--pd-admin-sidebar-w-expanded);
   --pd-admin-topbar-h: 3.75rem;
@@ -124,3 +125,339 @@
 }
 
 /* Shell footer (`.pd-admin-footer`): sibling below scrolling `AdminContent`; uses appearance tokens. */
+
+/* -------------------------------------------------------------------------- */
+/* Larkon-style vertical nav (scoped). Pattern refs: _vertical.scss + AppMenu  */
+/* -------------------------------------------------------------------------- */
+
+#pd-admin-root .pd-larkon-sidebar {
+  --pd-larkon-nav-pad-x: 1.25rem;
+  --pd-larkon-nav-pad-y: 0.5rem;
+  --pd-larkon-nav-font: 0.9375rem; /* 15px — Bengali-first sidebar */
+  --pd-larkon-nav-icon: 1.25rem; /* 20px */
+  --pd-larkon-nav-gap: 0.625rem;
+  --pd-larkon-submenu-pad-left: 1rem;
+  --pd-larkon-accent: var(--pd-admin-primary);
+  --pd-larkon-muted: var(--pd-admin-sidebar-muted);
+  box-shadow: inset -8px 0 8px -8px rgb(134 110 110 / 0.12);
+}
+
+#pd-admin-root .pd-larkon-sidebar-header {
+  padding-inline: var(--pd-larkon-nav-pad-x);
+}
+
+#pd-admin-root .pd-larkon-sidebar-scroll {
+  padding-block: 0.25rem 0.5rem;
+}
+
+#pd-admin-root .pd-larkon-sidebar-nav {
+  padding-inline: 0.125rem;
+}
+
+#pd-admin-root .pd-admin-nav-section-head-wrap {
+  margin: 0;
+  padding: 0.875rem 1rem 0.25rem;
+  list-style: none;
+}
+
+#pd-admin-root .pd-admin-nav-section-head-wrap:first-child {
+  padding-top: 0.35rem;
+}
+
+#pd-admin-root .pd-admin-nav-section-head {
+  margin: 0;
+  padding: 0 0 0.35rem;
+  border-bottom: 1px solid var(--pd-admin-sidebar-border);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  line-height: 1.35;
+  color: var(--pd-admin-sidebar-muted);
+}
+
+#pd-admin-root .pd-larkon-navbar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#pd-admin-root .pd-larkon-nav-item {
+  padding-block: calc(var(--pd-larkon-nav-pad-y) * 0.1);
+}
+
+#pd-admin-root .pd-larkon-nav-link,
+#pd-admin-root .pd-larkon-sub-nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--pd-larkon-nav-gap);
+  width: 100%;
+  line-height: 1.45;
+  white-space: nowrap;
+  text-decoration: none;
+  border-radius: 0.25rem;
+  font-size: var(--pd-larkon-nav-font);
+  font-weight: 500;
+  color: var(--pd-admin-sidebar-link-fg);
+  padding: var(--pd-larkon-nav-pad-y) var(--pd-larkon-nav-pad-x);
+  border-left: 3px solid transparent;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+#pd-admin-root .pd-larkon-nav-link--parent {
+  cursor: pointer;
+  text-align: left;
+  background: transparent;
+}
+
+#pd-admin-root .pd-larkon-nav-link:hover,
+#pd-admin-root .pd-larkon-nav-link:focus-visible,
+#pd-admin-root .pd-larkon-sub-nav-link:hover,
+#pd-admin-root .pd-larkon-sub-nav-link:focus-visible {
+  color: var(--pd-larkon-accent);
+  background-color: var(--pd-admin-sidebar-hover-bg);
+}
+
+#pd-admin-root .pd-larkon-nav-link.active,
+#pd-admin-root .pd-larkon-sub-nav-link.active {
+  font-weight: 600;
+  color: var(--pd-admin-sidebar-active-fg);
+  background-color: var(--pd-admin-sidebar-active-bg);
+  border-left-color: var(--pd-larkon-accent);
+}
+
+#pd-admin-root .pd-larkon-nav-link.active .pd-larkon-icon-svg,
+#pd-admin-root .pd-larkon-sub-nav-link.active .pd-larkon-icon-svg {
+  color: var(--pd-larkon-accent);
+}
+
+#pd-admin-root .pd-larkon-nav-link--parent.active {
+  border-left-color: transparent;
+  color: var(--pd-larkon-accent);
+  background-color: var(--pd-admin-sidebar-hover-bg);
+}
+
+#pd-admin-root .pd-larkon-nav-link:focus-visible,
+#pd-admin-root .pd-larkon-sub-nav-link:focus-visible,
+#pd-admin-root .pd-larkon-sidebar-logout:focus-visible {
+  outline: 2px solid var(--pd-admin-primary);
+  outline-offset: 2px;
+}
+
+#pd-admin-root .pd-larkon-nav-icon {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+}
+
+#pd-admin-root .pd-larkon-icon-svg {
+  width: var(--pd-larkon-nav-icon);
+  height: var(--pd-larkon-nav-icon);
+  color: inherit;
+  opacity: 0.92;
+}
+
+#pd-admin-root .pd-larkon-icon-svg--sub {
+  width: calc(var(--pd-larkon-nav-icon) * 0.92);
+  height: calc(var(--pd-larkon-nav-icon) * 0.92);
+}
+
+#pd-admin-root .pd-larkon-nav-link.active .pd-larkon-nav-text,
+#pd-admin-root .pd-larkon-sub-nav-link.active .pd-larkon-nav-text {
+  color: inherit;
+}
+
+#pd-admin-root .pd-larkon-nav-text {
+  flex: 1;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  color: var(--pd-admin-sidebar-link-fg);
+  font-size: inherit;
+}
+
+#pd-admin-root .pd-larkon-nav-link--parent .pd-larkon-nav-text {
+  color: var(--pd-admin-sidebar-link-fg);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  opacity: 0.92;
+}
+
+#pd-admin-root .pd-larkon-nav-link--parent:hover .pd-larkon-nav-text,
+#pd-admin-root .pd-larkon-nav-link--parent.active .pd-larkon-nav-text,
+#pd-admin-root .pd-larkon-nav-link--parent.show .pd-larkon-nav-text {
+  color: var(--pd-larkon-accent);
+  opacity: 1;
+}
+
+#pd-admin-root .pd-larkon-menu-arrow {
+  margin-left: auto;
+  width: 1.125rem;
+  height: 1.125rem;
+  flex-shrink: 0;
+  opacity: 0.55;
+  transition: transform 0.2s ease, color 0.2s ease, opacity 0.2s ease;
+}
+
+#pd-admin-root .pd-larkon-nav-link--parent.show .pd-larkon-menu-arrow,
+#pd-admin-root .pd-larkon-menu-arrow--open {
+  transform: rotate(-180deg);
+  opacity: 1;
+  color: var(--pd-larkon-accent);
+}
+
+#pd-admin-root .pd-larkon-submenu-wrap {
+  display: grid;
+  transition: grid-template-rows 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#pd-admin-root .pd-larkon-submenu-wrap--closed {
+  grid-template-rows: 0fr;
+}
+
+#pd-admin-root .pd-larkon-submenu-wrap--open {
+  grid-template-rows: 1fr;
+}
+
+#pd-admin-root .pd-larkon-submenu-inner {
+  min-height: 0;
+  overflow: hidden;
+}
+
+#pd-admin-root .pd-larkon-sub-navbar-nav {
+  list-style: none;
+  margin: 0;
+  padding: 0 0 0.25rem var(--pd-larkon-submenu-pad-left);
+  flex-direction: column;
+}
+
+#pd-admin-root .pd-larkon-sub-nav-item {
+  padding: calc(var(--pd-larkon-nav-pad-y) * 0.5) var(--pd-larkon-nav-pad-x);
+}
+
+#pd-admin-root .pd-larkon-sub-nav-link {
+  font-size: 0.9375rem;
+  font-weight: 500;
+  padding: calc(var(--pd-larkon-nav-pad-y) * 0.55) var(--pd-larkon-nav-pad-x);
+  border-left: 3px solid transparent;
+}
+
+#pd-admin-root .pd-larkon-sub-nav-link::before {
+  content: "";
+  position: absolute;
+  left: 0.35rem;
+  top: 50%;
+  width: 3px;
+  height: 0;
+  transform: translateY(-50%);
+  border-radius: 2px;
+  background-color: var(--pd-larkon-accent);
+  opacity: 0;
+  transition:
+    height 0.2s ease,
+    opacity 0.2s ease;
+}
+
+#pd-admin-root .pd-larkon-sub-nav-link:hover::before,
+#pd-admin-root .pd-larkon-sub-nav-link.active::before {
+  height: 60%;
+  opacity: 1;
+}
+
+#pd-admin-root .pd-larkon-sub-nav-link:hover {
+  transform: translateX(4px);
+}
+
+#pd-admin-root .pd-larkon-sub-nav-link.active {
+  font-weight: 500;
+}
+
+#pd-admin-root .pd-larkon-sidebar-footer {
+  padding-inline: var(--pd-larkon-nav-pad-x);
+  padding-block: 0.5rem;
+}
+
+#pd-admin-root .pd-larkon-sidebar-logout {
+  cursor: pointer;
+  color: var(--pd-larkon-muted);
+}
+
+#pd-admin-root .pd-larkon-sidebar-logout:hover,
+#pd-admin-root .pd-larkon-sidebar-logout:focus-visible {
+  color: var(--pd-larkon-accent);
+  background-color: var(--pd-admin-sidebar-hover-bg);
+}
+
+@media (min-width: 768px) {
+  #pd-admin-root[data-sidebar-mode="collapsed"] .pd-larkon-sidebar .pd-larkon-nav-link--collapsed-rail {
+    justify-content: center;
+    padding-inline: 0.5rem;
+  }
+}
+
+/* --- Semen template admin: modal enter (scoped to admin root) --- */
+@keyframes pd-semen-backdrop-enter {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes pd-semen-panel-enter {
+  from {
+    opacity: 0;
+    transform: translateY(12px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+#pd-admin-root .pd-semen-backdrop-enter {
+  animation: pd-semen-backdrop-enter 0.2s ease-out both;
+}
+
+#pd-admin-root .pd-semen-panel-enter {
+  animation: pd-semen-panel-enter 0.26s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+/* Crop modal — range thumb polish (WebKit / Firefox) */
+#pd-admin-root .pd-semen-crop-zoom::-webkit-slider-thumb {
+  appearance: none;
+  height: 1.125rem;
+  width: 1.125rem;
+  border-radius: 9999px;
+  background: rgb(5 122 85);
+  border: 2px solid rgb(255 255 255);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.18);
+  cursor: grab;
+}
+
+#pd-admin-root[data-admin-appearance="dark"] .pd-semen-crop-zoom::-webkit-slider-thumb {
+  background: rgb(52 211 153);
+  border-color: rgb(24 24 27);
+}
+
+#pd-admin-root .pd-semen-crop-zoom::-moz-range-thumb {
+  height: 1.125rem;
+  width: 1.125rem;
+  border-radius: 9999px;
+  background: rgb(5 122 85);
+  border: 2px solid rgb(255 255 255);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 0.18);
+  cursor: grab;
+}
+
+#pd-admin-root[data-admin-appearance="dark"] .pd-semen-crop-zoom::-moz-range-thumb {
+  background: rgb(52 211 153);
+  border-color: rgb(24 24 27);
+}
+

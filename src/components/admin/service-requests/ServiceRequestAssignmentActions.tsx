@@ -4,9 +4,11 @@ import { useCallback, useEffect, useMemo, useState } from "react";
 
 import { AdminActionButton } from "@/components/admin-ui/AdminActionButton";
 import { AdminFormSection } from "@/components/admin-ui/AdminFormSection";
+import { FormAsyncControlSkeleton } from "@/components/admin-ui/FormAsyncControlSkeleton";
 import { adminFetch } from "@/lib/admin/admin-fetch";
 import type { AdminServiceRequestDto } from "@/lib/admin-service-requests/service-request-admin-service";
 import { readAdminJson } from "@/lib/admin/read-admin-json";
+import { useClientMountReady } from "@/lib/admin/use-client-mount-ready";
 import { cn } from "@/lib/cn";
 import { ServiceRequestStatus } from "@/generated/prisma/browser";
 
@@ -81,6 +83,8 @@ export function ServiceRequestAssignmentActions({
   const [technicians, setTechnicians] = useState<PickerTechnician[]>([]);
   const [pickersLoading, setPickersLoading] = useState(true);
   const [pickersError, setPickersError] = useState<string | null>(null);
+  const clientMountReady = useClientMountReady();
+  const pickersLocked = !clientMountReady || pickersLoading;
 
   const [doctorId, setDoctorId] = useState(() => row.assignedDoctorId ?? "");
   const [technicianId, setTechnicianId] = useState(
@@ -275,26 +279,33 @@ export function ServiceRequestAssignmentActions({
             <>
               <label className="mt-2 block text-xs font-medium text-zinc-700 dark:text-zinc-300">
                 ডাক্তার
-                <select
-                  className={inputClass()}
-                  value={doctorId}
-                  disabled={pickersLoading || doctorBusy}
-                  onChange={(e) => setDoctorId(e.target.value)}
-                >
-                  <option value="">— বেছে নিন —</option>
-                  {doctorOptions.map((d) => (
-                    <option key={d.id} value={d.id}>
-                      {(d.displayName?.trim() || "নামহীন") +
-                        ` (${d.id.slice(0, 8)}…)`}
-                    </option>
-                  ))}
-                </select>
+                {pickersLocked ? (
+                  <FormAsyncControlSkeleton
+                    label="ডাক্তারের তালিকা লোড হচ্ছে"
+                    className={inputClass()}
+                  />
+                ) : (
+                  <select
+                    className={inputClass()}
+                    value={doctorId}
+                    disabled={doctorBusy}
+                    onChange={(e) => setDoctorId(e.target.value)}
+                  >
+                    <option value="">— বেছে নিন —</option>
+                    {doctorOptions.map((d) => (
+                      <option key={d.id} value={d.id}>
+                        {(d.displayName?.trim() || "নামহীন") +
+                          ` (${d.id.slice(0, 8)}…)`}
+                      </option>
+                    ))}
+                  </select>
+                )}
               </label>
               <AdminActionButton
                 type="button"
                 variant="primary"
                 className="mt-3"
-                disabled={pickersLoading || doctorBusy || !doctorId.trim()}
+                disabled={pickersLocked || doctorBusy || !doctorId.trim()}
                 onClick={() => void submitDoctor()}
               >
                 {doctorBusy ? "সংরক্ষণ…" : "ডাক্তার বরাদ্দ সংরক্ষণ"}
@@ -324,26 +335,33 @@ export function ServiceRequestAssignmentActions({
             <>
               <label className="mt-2 block text-xs font-medium text-zinc-700 dark:text-zinc-300">
                 এআই টেকনিশিয়ান
-                <select
-                  className={inputClass()}
-                  value={technicianId}
-                  disabled={pickersLoading || techBusy}
-                  onChange={(e) => setTechnicianId(e.target.value)}
-                >
-                  <option value="">— বেছে নিন —</option>
-                  {technicianOptions.map((t) => (
-                    <option key={t.id} value={t.id}>
-                      {(t.displayName?.trim() || "নামহীন") +
-                        ` (${t.id.slice(0, 8)}…)`}
-                    </option>
-                  ))}
-                </select>
+                {pickersLocked ? (
+                  <FormAsyncControlSkeleton
+                    label="টেকনিশিয়ান তালিকা লোড হচ্ছে"
+                    className={inputClass()}
+                  />
+                ) : (
+                  <select
+                    className={inputClass()}
+                    value={technicianId}
+                    disabled={techBusy}
+                    onChange={(e) => setTechnicianId(e.target.value)}
+                  >
+                    <option value="">— বেছে নিন —</option>
+                    {technicianOptions.map((t) => (
+                      <option key={t.id} value={t.id}>
+                        {(t.displayName?.trim() || "নামহীন") +
+                          ` (${t.id.slice(0, 8)}…)`}
+                      </option>
+                    ))}
+                  </select>
+                )}
               </label>
               <AdminActionButton
                 type="button"
                 variant="primary"
                 className="mt-3"
-                disabled={pickersLoading || techBusy || !technicianId.trim()}
+                disabled={pickersLocked || techBusy || !technicianId.trim()}
                 onClick={() => void submitTechnician()}
               >
                 {techBusy ? "সংরক্ষণ…" : "টেকনিশিয়ান বরাদ্দ সংরক্ষণ"}

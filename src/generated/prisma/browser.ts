@@ -130,10 +130,40 @@ export type AiTechnicianDocument = Prisma.AiTechnicianDocumentModel
  */
 export type UploadedFile = Prisma.UploadedFileModel
 /**
+ * Model SemenProvider
+ * Semen company / organization master (BRAC, ACI, DLS, etc.).
+ */
+export type SemenProvider = Prisma.SemenProviderModel
+/**
+ * Model LivestockBreed
+ * Livestock breed master (Bangla + English); used in semen template composition.
+ */
+export type LivestockBreed = Prisma.LivestockBreedModel
+/**
+ * Model SemenServiceTemplate
+ * Admin-authored semen service template (locked fields for technician listings).
+ */
+export type SemenServiceTemplate = Prisma.SemenServiceTemplateModel
+/**
+ * Model SemenServiceTemplateBreedMix
+ * 
+ */
+export type SemenServiceTemplateBreedMix = Prisma.SemenServiceTemplateBreedMixModel
+/**
+ * Model SemenServiceTemplateMedia
+ * 
+ */
+export type SemenServiceTemplateMedia = Prisma.SemenServiceTemplateMediaModel
+/**
  * Model AiTechnicianService
  * Technician-published service / gig (pricing + animal scope).
  */
 export type AiTechnicianService = Prisma.AiTechnicianServiceModel
+/**
+ * Model TechnicianSemenInventory
+ * Per-batch / lot stock for a technician semen service (one public listing per template).
+ */
+export type TechnicianSemenInventory = Prisma.TechnicianSemenInventoryModel
 /**
  * Model AiServiceRequest
  * Farmer-initiated AI service booking (module-native). Optional link to legacy `ServiceRequest` for integration.

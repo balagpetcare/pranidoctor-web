@@ -309,10 +309,55 @@ export const MobileUploadPurpose = {
   AI_TECHNICIAN_AI_CERTIFICATE: 'AI_TECHNICIAN_AI_CERTIFICATE',
   AI_TECHNICIAN_OTHER: 'AI_TECHNICIAN_OTHER',
   CUSTOMER_PROFILE_PHOTO: 'CUSTOMER_PROFILE_PHOTO',
-  CUSTOMER_COVER_IMAGE: 'CUSTOMER_COVER_IMAGE'
+  CUSTOMER_COVER_IMAGE: 'CUSTOMER_COVER_IMAGE',
+  ADMIN_SEMEN_PROVIDER_LOGO: 'ADMIN_SEMEN_PROVIDER_LOGO',
+  ADMIN_SEMEN_TEMPLATE_COVER: 'ADMIN_SEMEN_TEMPLATE_COVER',
+  ADMIN_SEMEN_TEMPLATE_GALLERY: 'ADMIN_SEMEN_TEMPLATE_GALLERY',
+  ADMIN_SEMEN_TEMPLATE_VIDEO: 'ADMIN_SEMEN_TEMPLATE_VIDEO'
 } as const
 
 export type MobileUploadPurpose = (typeof MobileUploadPurpose)[keyof typeof MobileUploadPurpose]
+
+
+export const SemenProductKind = {
+  NORMAL: 'NORMAL',
+  SEXED: 'SEXED',
+  PREMIUM: 'PREMIUM',
+  IMPORTED: 'IMPORTED',
+  LOCAL: 'LOCAL',
+  OTHER: 'OTHER'
+} as const
+
+export type SemenProductKind = (typeof SemenProductKind)[keyof typeof SemenProductKind]
+
+
+export const SemenProviderVerificationStatus = {
+  UNVERIFIED: 'UNVERIFIED',
+  PARTNER: 'PARTNER',
+  OFFICIAL: 'OFFICIAL'
+} as const
+
+export type SemenProviderVerificationStatus = (typeof SemenProviderVerificationStatus)[keyof typeof SemenProviderVerificationStatus]
+
+
+export const SemenTemplateApprovalStatus = {
+  DRAFT: 'DRAFT',
+  PENDING_REVIEW: 'PENDING_REVIEW',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type SemenTemplateApprovalStatus = (typeof SemenTemplateApprovalStatus)[keyof typeof SemenTemplateApprovalStatus]
+
+
+export const SemenTemplateMediaKind = {
+  COVER: 'COVER',
+  GALLERY: 'GALLERY',
+  VIDEO_UPLOAD: 'VIDEO_UPLOAD',
+  VIDEO_URL: 'VIDEO_URL'
+} as const
+
+export type SemenTemplateMediaKind = (typeof SemenTemplateMediaKind)[keyof typeof SemenTemplateMediaKind]
 
 
 export const UploadedFileStatus = {

@@ -9,7 +9,7 @@ function getEncodedSecret(): Uint8Array {
   const secret = getAdminJwtSecret();
   if (!secret) {
     throw new Error(
-      "ADMIN_JWT_SECRET, AUTH_SECRET, or JWT_SECRET must be set and at least 32 characters long",
+      "ADMIN_JWT_SECRET, AUTH_SECRET, or JWT_SECRET must be set (≥32 chars in production, ≥16 in development)",
     );
   }
   return new TextEncoder().encode(secret);

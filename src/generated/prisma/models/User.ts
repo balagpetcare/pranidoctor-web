@@ -215,6 +215,7 @@ export type UserWhereInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordListRelationFilter
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewListRelationFilter
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintListRelationFilter
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
   contentPostsAuthored?: Prisma.ContentPostListRelationFilter
   complaintsAssigned?: Prisma.ComplaintListRelationFilter
@@ -239,6 +240,7 @@ export type UserOrderByWithRelationInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordOrderByRelationAggregateInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewOrderByRelationAggregateInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintOrderByRelationAggregateInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateOrderByRelationAggregateInput
   notifications?: Prisma.NotificationOrderByRelationAggregateInput
   contentPostsAuthored?: Prisma.ContentPostOrderByRelationAggregateInput
   complaintsAssigned?: Prisma.ComplaintOrderByRelationAggregateInput
@@ -266,6 +268,7 @@ export type UserWhereUniqueInput = Prisma.AtLeast<{
   customerAiServiceRecords?: Prisma.AiServiceRecordListRelationFilter
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewListRelationFilter
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintListRelationFilter
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateListRelationFilter
   notifications?: Prisma.NotificationListRelationFilter
   contentPostsAuthored?: Prisma.ContentPostListRelationFilter
   complaintsAssigned?: Prisma.ComplaintListRelationFilter
@@ -318,6 +321,7 @@ export type UserCreateInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
@@ -342,6 +346,7 @@ export type UserUncheckedCreateInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
@@ -366,6 +371,7 @@ export type UserUpdateInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
@@ -390,6 +396,7 @@ export type UserUncheckedUpdateInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
@@ -578,6 +585,22 @@ export type UserUpdateOneRequiredWithoutUploadedFilesNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutUploadedFilesInput, Prisma.UserUpdateWithoutUploadedFilesInput>, Prisma.UserUncheckedUpdateWithoutUploadedFilesInput>
 }
 
+export type UserCreateNestedOneWithoutSemenTemplatesApprovedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSemenTemplatesApprovedInput, Prisma.UserUncheckedCreateWithoutSemenTemplatesApprovedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSemenTemplatesApprovedInput
+  connect?: Prisma.UserWhereUniqueInput
+}
+
+export type UserUpdateOneWithoutSemenTemplatesApprovedNestedInput = {
+  create?: Prisma.XOR<Prisma.UserCreateWithoutSemenTemplatesApprovedInput, Prisma.UserUncheckedCreateWithoutSemenTemplatesApprovedInput>
+  connectOrCreate?: Prisma.UserCreateOrConnectWithoutSemenTemplatesApprovedInput
+  upsert?: Prisma.UserUpsertWithoutSemenTemplatesApprovedInput
+  disconnect?: Prisma.UserWhereInput | boolean
+  delete?: Prisma.UserWhereInput | boolean
+  connect?: Prisma.UserWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UserUpdateToOneWithWhereWithoutSemenTemplatesApprovedInput, Prisma.UserUpdateWithoutSemenTemplatesApprovedInput>, Prisma.UserUncheckedUpdateWithoutSemenTemplatesApprovedInput>
+}
+
 export type UserCreateNestedOneWithoutCustomerAiServiceRequestsInput = {
   create?: Prisma.XOR<Prisma.UserCreateWithoutCustomerAiServiceRequestsInput, Prisma.UserUncheckedCreateWithoutCustomerAiServiceRequestsInput>
   connectOrCreate?: Prisma.UserCreateOrConnectWithoutCustomerAiServiceRequestsInput
@@ -695,6 +718,7 @@ export type UserCreateWithoutAdminProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
@@ -718,6 +742,7 @@ export type UserUncheckedCreateWithoutAdminProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
@@ -757,6 +782,7 @@ export type UserUpdateWithoutAdminProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
@@ -780,6 +806,7 @@ export type UserUncheckedUpdateWithoutAdminProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
@@ -803,6 +830,7 @@ export type UserCreateWithoutDoctorProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
@@ -826,6 +854,7 @@ export type UserUncheckedCreateWithoutDoctorProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
@@ -865,6 +894,7 @@ export type UserUpdateWithoutDoctorProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
@@ -888,6 +918,7 @@ export type UserUncheckedUpdateWithoutDoctorProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
@@ -911,6 +942,7 @@ export type UserCreateWithoutAiTechnicianProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
@@ -934,6 +966,7 @@ export type UserUncheckedCreateWithoutAiTechnicianProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
@@ -962,6 +995,7 @@ export type UserCreateWithoutAiTechnicianProfilesReviewedInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
@@ -985,6 +1019,7 @@ export type UserUncheckedCreateWithoutAiTechnicianProfilesReviewedInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
@@ -1024,6 +1059,7 @@ export type UserUpdateWithoutAiTechnicianProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
@@ -1047,6 +1083,7 @@ export type UserUncheckedUpdateWithoutAiTechnicianProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
@@ -1081,6 +1118,7 @@ export type UserUpdateWithoutAiTechnicianProfilesReviewedInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
@@ -1104,6 +1142,7 @@ export type UserUncheckedUpdateWithoutAiTechnicianProfilesReviewedInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
@@ -1127,6 +1166,7 @@ export type UserCreateWithoutCustomerProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
@@ -1150,6 +1190,7 @@ export type UserUncheckedCreateWithoutCustomerProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
@@ -1189,6 +1230,7 @@ export type UserUpdateWithoutCustomerProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
@@ -1212,6 +1254,7 @@ export type UserUncheckedUpdateWithoutCustomerProfileInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
@@ -1236,6 +1279,7 @@ export type UserCreateWithoutUploadedFilesInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
@@ -1259,6 +1303,7 @@ export type UserUncheckedCreateWithoutUploadedFilesInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
@@ -1298,6 +1343,7 @@ export type UserUpdateWithoutUploadedFilesInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
@@ -1321,9 +1367,122 @@ export type UserUncheckedUpdateWithoutUploadedFilesInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
+}
+
+export type UserCreateWithoutSemenTemplatesApprovedInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  passwordHash: string
+  role: $Enums.UserRole
+  status?: $Enums.UserStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  adminProfile?: Prisma.AdminProfileCreateNestedOneWithoutUserInput
+  doctorProfile?: Prisma.DoctorProfileCreateNestedOneWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileCreateNestedOneWithoutUserInput
+  aiTechnicianProfilesReviewed?: Prisma.AiTechnicianProfileCreateNestedManyWithoutReviewedByInput
+  customerAiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutCustomerInput
+  customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
+  aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
+  aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
+  uploadedFiles?: Prisma.UploadedFileCreateNestedManyWithoutOwnerInput
+}
+
+export type UserUncheckedCreateWithoutSemenTemplatesApprovedInput = {
+  id?: string
+  email: string
+  phone?: string | null
+  passwordHash: string
+  role: $Enums.UserRole
+  status?: $Enums.UserStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  adminProfile?: Prisma.AdminProfileUncheckedCreateNestedOneWithoutUserInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedCreateNestedOneWithoutUserInput
+  customerProfile?: Prisma.CustomerProfileUncheckedCreateNestedOneWithoutUserInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedCreateNestedOneWithoutUserInput
+  aiTechnicianProfilesReviewed?: Prisma.AiTechnicianProfileUncheckedCreateNestedManyWithoutReviewedByInput
+  customerAiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutCustomerInput
+  customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
+  aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
+  aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
+  uploadedFiles?: Prisma.UploadedFileUncheckedCreateNestedManyWithoutOwnerInput
+}
+
+export type UserCreateOrConnectWithoutSemenTemplatesApprovedInput = {
+  where: Prisma.UserWhereUniqueInput
+  create: Prisma.XOR<Prisma.UserCreateWithoutSemenTemplatesApprovedInput, Prisma.UserUncheckedCreateWithoutSemenTemplatesApprovedInput>
+}
+
+export type UserUpsertWithoutSemenTemplatesApprovedInput = {
+  update: Prisma.XOR<Prisma.UserUpdateWithoutSemenTemplatesApprovedInput, Prisma.UserUncheckedUpdateWithoutSemenTemplatesApprovedInput>
+  create: Prisma.XOR<Prisma.UserCreateWithoutSemenTemplatesApprovedInput, Prisma.UserUncheckedCreateWithoutSemenTemplatesApprovedInput>
+  where?: Prisma.UserWhereInput
+}
+
+export type UserUpdateToOneWithWhereWithoutSemenTemplatesApprovedInput = {
+  where?: Prisma.UserWhereInput
+  data: Prisma.XOR<Prisma.UserUpdateWithoutSemenTemplatesApprovedInput, Prisma.UserUncheckedUpdateWithoutSemenTemplatesApprovedInput>
+}
+
+export type UserUpdateWithoutSemenTemplatesApprovedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  adminProfile?: Prisma.AdminProfileUpdateOneWithoutUserNestedInput
+  doctorProfile?: Prisma.DoctorProfileUpdateOneWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUpdateOneWithoutUserNestedInput
+  aiTechnicianProfilesReviewed?: Prisma.AiTechnicianProfileUpdateManyWithoutReviewedByNestedInput
+  customerAiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutCustomerNestedInput
+  customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
+  aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
+  aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
+  uploadedFiles?: Prisma.UploadedFileUpdateManyWithoutOwnerNestedInput
+}
+
+export type UserUncheckedUpdateWithoutSemenTemplatesApprovedInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  passwordHash?: Prisma.StringFieldUpdateOperationsInput | string
+  role?: Prisma.EnumUserRoleFieldUpdateOperationsInput | $Enums.UserRole
+  status?: Prisma.EnumUserStatusFieldUpdateOperationsInput | $Enums.UserStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  adminProfile?: Prisma.AdminProfileUncheckedUpdateOneWithoutUserNestedInput
+  doctorProfile?: Prisma.DoctorProfileUncheckedUpdateOneWithoutUserNestedInput
+  customerProfile?: Prisma.CustomerProfileUncheckedUpdateOneWithoutUserNestedInput
+  aiTechnicianProfile?: Prisma.AiTechnicianProfileUncheckedUpdateOneWithoutUserNestedInput
+  aiTechnicianProfilesReviewed?: Prisma.AiTechnicianProfileUncheckedUpdateManyWithoutReviewedByNestedInput
+  customerAiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutCustomerNestedInput
+  customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
+  aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
+  aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
+  contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
+  complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
+  uploadedFiles?: Prisma.UploadedFileUncheckedUpdateManyWithoutOwnerNestedInput
 }
 
 export type UserCreateWithoutCustomerAiServiceRequestsInput = {
@@ -1343,6 +1502,7 @@ export type UserCreateWithoutCustomerAiServiceRequestsInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
@@ -1366,6 +1526,7 @@ export type UserUncheckedCreateWithoutCustomerAiServiceRequestsInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
@@ -1405,6 +1566,7 @@ export type UserUpdateWithoutCustomerAiServiceRequestsInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
@@ -1428,6 +1590,7 @@ export type UserUncheckedUpdateWithoutCustomerAiServiceRequestsInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
@@ -1451,6 +1614,7 @@ export type UserCreateWithoutCustomerAiServiceRecordsInput = {
   customerAiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
@@ -1474,6 +1638,7 @@ export type UserUncheckedCreateWithoutCustomerAiServiceRecordsInput = {
   customerAiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
@@ -1513,6 +1678,7 @@ export type UserUpdateWithoutCustomerAiServiceRecordsInput = {
   customerAiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
@@ -1536,6 +1702,7 @@ export type UserUncheckedUpdateWithoutCustomerAiServiceRecordsInput = {
   customerAiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
@@ -1559,6 +1726,7 @@ export type UserCreateWithoutAiTechnicianModuleReviewsWrittenInput = {
   customerAiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutCustomerInput
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
@@ -1582,6 +1750,7 @@ export type UserUncheckedCreateWithoutAiTechnicianModuleReviewsWrittenInput = {
   customerAiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutCustomerInput
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
@@ -1621,6 +1790,7 @@ export type UserUpdateWithoutAiTechnicianModuleReviewsWrittenInput = {
   customerAiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutCustomerNestedInput
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
@@ -1644,6 +1814,7 @@ export type UserUncheckedUpdateWithoutAiTechnicianModuleReviewsWrittenInput = {
   customerAiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutCustomerNestedInput
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
@@ -1667,6 +1838,7 @@ export type UserCreateWithoutAiTechnicianModuleComplaintsFiledInput = {
   customerAiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutCustomerInput
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
@@ -1690,6 +1862,7 @@ export type UserUncheckedCreateWithoutAiTechnicianModuleComplaintsFiledInput = {
   customerAiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutCustomerInput
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
@@ -1729,6 +1902,7 @@ export type UserUpdateWithoutAiTechnicianModuleComplaintsFiledInput = {
   customerAiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutCustomerNestedInput
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
@@ -1752,6 +1926,7 @@ export type UserUncheckedUpdateWithoutAiTechnicianModuleComplaintsFiledInput = {
   customerAiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutCustomerNestedInput
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
@@ -1776,6 +1951,7 @@ export type UserCreateWithoutContentPostsAuthoredInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
   uploadedFiles?: Prisma.UploadedFileCreateNestedManyWithoutOwnerInput
@@ -1799,6 +1975,7 @@ export type UserUncheckedCreateWithoutContentPostsAuthoredInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
   uploadedFiles?: Prisma.UploadedFileUncheckedCreateNestedManyWithoutOwnerInput
@@ -1838,6 +2015,7 @@ export type UserUpdateWithoutContentPostsAuthoredInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
   uploadedFiles?: Prisma.UploadedFileUpdateManyWithoutOwnerNestedInput
@@ -1861,6 +2039,7 @@ export type UserUncheckedUpdateWithoutContentPostsAuthoredInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
   uploadedFiles?: Prisma.UploadedFileUncheckedUpdateManyWithoutOwnerNestedInput
@@ -1884,6 +2063,7 @@ export type UserCreateWithoutComplaintsAssignedInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   uploadedFiles?: Prisma.UploadedFileCreateNestedManyWithoutOwnerInput
@@ -1907,6 +2087,7 @@ export type UserUncheckedCreateWithoutComplaintsAssignedInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   notifications?: Prisma.NotificationUncheckedCreateNestedManyWithoutUserInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   uploadedFiles?: Prisma.UploadedFileUncheckedCreateNestedManyWithoutOwnerInput
@@ -1946,6 +2127,7 @@ export type UserUpdateWithoutComplaintsAssignedInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   uploadedFiles?: Prisma.UploadedFileUpdateManyWithoutOwnerNestedInput
@@ -1969,6 +2151,7 @@ export type UserUncheckedUpdateWithoutComplaintsAssignedInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   notifications?: Prisma.NotificationUncheckedUpdateManyWithoutUserNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   uploadedFiles?: Prisma.UploadedFileUncheckedUpdateManyWithoutOwnerNestedInput
@@ -1992,6 +2175,7 @@ export type UserCreateWithoutNotificationsInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateCreateNestedManyWithoutApprovedByInput
   contentPostsAuthored?: Prisma.ContentPostCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintCreateNestedManyWithoutAdminAssigneeInput
   uploadedFiles?: Prisma.UploadedFileCreateNestedManyWithoutOwnerInput
@@ -2015,6 +2199,7 @@ export type UserUncheckedCreateWithoutNotificationsInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutCustomerInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutCustomerInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedCreateNestedManyWithoutApprovedByInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedCreateNestedManyWithoutAuthorInput
   complaintsAssigned?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAdminAssigneeInput
   uploadedFiles?: Prisma.UploadedFileUncheckedCreateNestedManyWithoutOwnerInput
@@ -2054,6 +2239,7 @@ export type UserUpdateWithoutNotificationsInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUpdateManyWithoutApprovedByNestedInput
   contentPostsAuthored?: Prisma.ContentPostUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUpdateManyWithoutAdminAssigneeNestedInput
   uploadedFiles?: Prisma.UploadedFileUpdateManyWithoutOwnerNestedInput
@@ -2077,6 +2263,7 @@ export type UserUncheckedUpdateWithoutNotificationsInput = {
   customerAiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleReviewsWritten?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutCustomerNestedInput
   aiTechnicianModuleComplaintsFiled?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutCustomerNestedInput
+  semenTemplatesApproved?: Prisma.SemenServiceTemplateUncheckedUpdateManyWithoutApprovedByNestedInput
   contentPostsAuthored?: Prisma.ContentPostUncheckedUpdateManyWithoutAuthorNestedInput
   complaintsAssigned?: Prisma.ComplaintUncheckedUpdateManyWithoutAdminAssigneeNestedInput
   uploadedFiles?: Prisma.UploadedFileUncheckedUpdateManyWithoutOwnerNestedInput
@@ -2093,6 +2280,7 @@ export type UserCountOutputType = {
   customerAiServiceRecords: number
   aiTechnicianModuleReviewsWritten: number
   aiTechnicianModuleComplaintsFiled: number
+  semenTemplatesApproved: number
   notifications: number
   contentPostsAuthored: number
   complaintsAssigned: number
@@ -2105,6 +2293,7 @@ export type UserCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.I
   customerAiServiceRecords?: boolean | UserCountOutputTypeCountCustomerAiServiceRecordsArgs
   aiTechnicianModuleReviewsWritten?: boolean | UserCountOutputTypeCountAiTechnicianModuleReviewsWrittenArgs
   aiTechnicianModuleComplaintsFiled?: boolean | UserCountOutputTypeCountAiTechnicianModuleComplaintsFiledArgs
+  semenTemplatesApproved?: boolean | UserCountOutputTypeCountSemenTemplatesApprovedArgs
   notifications?: boolean | UserCountOutputTypeCountNotificationsArgs
   contentPostsAuthored?: boolean | UserCountOutputTypeCountContentPostsAuthoredArgs
   complaintsAssigned?: boolean | UserCountOutputTypeCountComplaintsAssignedArgs
@@ -2159,6 +2348,13 @@ export type UserCountOutputTypeCountAiTechnicianModuleComplaintsFiledArgs<ExtArg
 /**
  * UserCountOutputType without action
  */
+export type UserCountOutputTypeCountSemenTemplatesApprovedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.SemenServiceTemplateWhereInput
+}
+
+/**
+ * UserCountOutputType without action
+ */
 export type UserCountOutputTypeCountNotificationsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.NotificationWhereInput
 }
@@ -2203,6 +2399,7 @@ export type UserSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = r
   customerAiServiceRecords?: boolean | Prisma.User$customerAiServiceRecordsArgs<ExtArgs>
   aiTechnicianModuleReviewsWritten?: boolean | Prisma.User$aiTechnicianModuleReviewsWrittenArgs<ExtArgs>
   aiTechnicianModuleComplaintsFiled?: boolean | Prisma.User$aiTechnicianModuleComplaintsFiledArgs<ExtArgs>
+  semenTemplatesApproved?: boolean | Prisma.User$semenTemplatesApprovedArgs<ExtArgs>
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   contentPostsAuthored?: boolean | Prisma.User$contentPostsAuthoredArgs<ExtArgs>
   complaintsAssigned?: boolean | Prisma.User$complaintsAssignedArgs<ExtArgs>
@@ -2254,6 +2451,7 @@ export type UserInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
   customerAiServiceRecords?: boolean | Prisma.User$customerAiServiceRecordsArgs<ExtArgs>
   aiTechnicianModuleReviewsWritten?: boolean | Prisma.User$aiTechnicianModuleReviewsWrittenArgs<ExtArgs>
   aiTechnicianModuleComplaintsFiled?: boolean | Prisma.User$aiTechnicianModuleComplaintsFiledArgs<ExtArgs>
+  semenTemplatesApproved?: boolean | Prisma.User$semenTemplatesApprovedArgs<ExtArgs>
   notifications?: boolean | Prisma.User$notificationsArgs<ExtArgs>
   contentPostsAuthored?: boolean | Prisma.User$contentPostsAuthoredArgs<ExtArgs>
   complaintsAssigned?: boolean | Prisma.User$complaintsAssignedArgs<ExtArgs>
@@ -2278,6 +2476,10 @@ export type $UserPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs =
     customerAiServiceRecords: Prisma.$AiServiceRecordPayload<ExtArgs>[]
     aiTechnicianModuleReviewsWritten: Prisma.$AiTechnicianReviewPayload<ExtArgs>[]
     aiTechnicianModuleComplaintsFiled: Prisma.$AiTechnicianComplaintPayload<ExtArgs>[]
+    /**
+     * Semen service templates this admin user approved (audit).
+     */
+    semenTemplatesApproved: Prisma.$SemenServiceTemplatePayload<ExtArgs>[]
     notifications: Prisma.$NotificationPayload<ExtArgs>[]
     contentPostsAuthored: Prisma.$ContentPostPayload<ExtArgs>[]
     complaintsAssigned: Prisma.$ComplaintPayload<ExtArgs>[]
@@ -2695,6 +2897,7 @@ export interface Prisma__UserClient<T, Null = never, ExtArgs extends runtime.Typ
   customerAiServiceRecords<T extends Prisma.User$customerAiServiceRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$customerAiServiceRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiServiceRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   aiTechnicianModuleReviewsWritten<T extends Prisma.User$aiTechnicianModuleReviewsWrittenArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$aiTechnicianModuleReviewsWrittenArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   aiTechnicianModuleComplaintsFiled<T extends Prisma.User$aiTechnicianModuleComplaintsFiledArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$aiTechnicianModuleComplaintsFiledArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  semenTemplatesApproved<T extends Prisma.User$semenTemplatesApprovedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$semenTemplatesApprovedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$SemenServiceTemplatePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   notifications<T extends Prisma.User$notificationsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$notificationsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$NotificationPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   contentPostsAuthored<T extends Prisma.User$contentPostsAuthoredArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$contentPostsAuthoredArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ContentPostPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   complaintsAssigned<T extends Prisma.User$complaintsAssignedArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.User$complaintsAssignedArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3322,6 +3525,30 @@ export type User$aiTechnicianModuleComplaintsFiledArgs<ExtArgs extends runtime.T
   take?: number
   skip?: number
   distinct?: Prisma.AiTechnicianComplaintScalarFieldEnum | Prisma.AiTechnicianComplaintScalarFieldEnum[]
+}
+
+/**
+ * User.semenTemplatesApproved
+ */
+export type User$semenTemplatesApprovedArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SemenServiceTemplate
+   */
+  select?: Prisma.SemenServiceTemplateSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SemenServiceTemplate
+   */
+  omit?: Prisma.SemenServiceTemplateOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SemenServiceTemplateInclude<ExtArgs> | null
+  where?: Prisma.SemenServiceTemplateWhereInput
+  orderBy?: Prisma.SemenServiceTemplateOrderByWithRelationInput | Prisma.SemenServiceTemplateOrderByWithRelationInput[]
+  cursor?: Prisma.SemenServiceTemplateWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.SemenServiceTemplateScalarFieldEnum | Prisma.SemenServiceTemplateScalarFieldEnum[]
 }
 
 /**

@@ -43,6 +43,25 @@ export async function GET(request: Request, context: RouteContext) {
     return Response.redirect(signed.url, 302);
   }
 
+  const SEMEN_TEMPLATE_MEDIA_DOWNLOAD_PURPOSES: MobileUploadPurpose[] = [
+    MobileUploadPurpose.ADMIN_SEMEN_TEMPLATE_COVER,
+    MobileUploadPurpose.ADMIN_SEMEN_TEMPLATE_GALLERY,
+    MobileUploadPurpose.ADMIN_SEMEN_TEMPLATE_VIDEO,
+  ];
+
+  if (SEMEN_TEMPLATE_MEDIA_DOWNLOAD_PURPOSES.includes(row.fileCategory)) {
+    const auth = await requireMobileAiTechnicianModuleUser(request);
+    if (!auth.ok) return auth.response;
+    const signed = await getSignedDownloadUrlForUploadedFile(id);
+    if (signed === "NOT_FOUND") {
+      return jsonError("NOT_FOUND", "ফাইল পাওয়া যায়নি", 404);
+    }
+    if (signed === "NOT_CONFIGURED") {
+      return jsonError("STORAGE_NOT_CONFIGURED", "স্টোরেজ কনফিগার করা নেই", 503);
+    }
+    return Response.redirect(signed.url, 302);
+  }
+
   const auth = await requireMobileAiTechnicianModuleUser(request);
   if (!auth.ok) return auth.response;
 

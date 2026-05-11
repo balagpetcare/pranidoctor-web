@@ -73,7 +73,13 @@ export const ModelName = {
   AiTechnicianDivisionServiceArea: 'AiTechnicianDivisionServiceArea',
   AiTechnicianDocument: 'AiTechnicianDocument',
   UploadedFile: 'UploadedFile',
+  SemenProvider: 'SemenProvider',
+  LivestockBreed: 'LivestockBreed',
+  SemenServiceTemplate: 'SemenServiceTemplate',
+  SemenServiceTemplateBreedMix: 'SemenServiceTemplateBreedMix',
+  SemenServiceTemplateMedia: 'SemenServiceTemplateMedia',
   AiTechnicianService: 'AiTechnicianService',
+  TechnicianSemenInventory: 'TechnicianSemenInventory',
   AiServiceRequest: 'AiServiceRequest',
   AiServiceRecord: 'AiServiceRecord',
   AiTechnicianReview: 'AiTechnicianReview',
@@ -479,6 +485,93 @@ export const UploadedFileScalarFieldEnum = {
 export type UploadedFileScalarFieldEnum = (typeof UploadedFileScalarFieldEnum)[keyof typeof UploadedFileScalarFieldEnum]
 
 
+export const SemenProviderScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  name: 'name',
+  nameBn: 'nameBn',
+  description: 'description',
+  descriptionBn: 'descriptionBn',
+  logoUploadedFileId: 'logoUploadedFileId',
+  isActive: 'isActive',
+  verificationStatus: 'verificationStatus',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SemenProviderScalarFieldEnum = (typeof SemenProviderScalarFieldEnum)[keyof typeof SemenProviderScalarFieldEnum]
+
+
+export const LivestockBreedScalarFieldEnum = {
+  id: 'id',
+  slug: 'slug',
+  nameEn: 'nameEn',
+  nameBn: 'nameBn',
+  animalType: 'animalType',
+  description: 'description',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type LivestockBreedScalarFieldEnum = (typeof LivestockBreedScalarFieldEnum)[keyof typeof LivestockBreedScalarFieldEnum]
+
+
+export const SemenServiceTemplateScalarFieldEnum = {
+  id: 'id',
+  internalName: 'internalName',
+  animalType: 'animalType',
+  semenProviderId: 'semenProviderId',
+  semenProductKind: 'semenProductKind',
+  otherSemenLabel: 'otherSemenLabel',
+  shortDescription: 'shortDescription',
+  detailedDescription: 'detailedDescription',
+  expectedBenefits: 'expectedBenefits',
+  recommendedAnimalCondition: 'recommendedAnimalCondition',
+  warningsContraindications: 'warningsContraindications',
+  defaultBasePrice: 'defaultBasePrice',
+  defaultOfferPrice: 'defaultOfferPrice',
+  defaultDiscountPercent: 'defaultDiscountPercent',
+  tagsJson: 'tagsJson',
+  isActive: 'isActive',
+  approvalStatus: 'approvalStatus',
+  approvedById: 'approvedById',
+  approvedAt: 'approvedAt',
+  rejectedReason: 'rejectedReason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SemenServiceTemplateScalarFieldEnum = (typeof SemenServiceTemplateScalarFieldEnum)[keyof typeof SemenServiceTemplateScalarFieldEnum]
+
+
+export const SemenServiceTemplateBreedMixScalarFieldEnum = {
+  id: 'id',
+  templateId: 'templateId',
+  breedId: 'breedId',
+  percentage: 'percentage',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SemenServiceTemplateBreedMixScalarFieldEnum = (typeof SemenServiceTemplateBreedMixScalarFieldEnum)[keyof typeof SemenServiceTemplateBreedMixScalarFieldEnum]
+
+
+export const SemenServiceTemplateMediaScalarFieldEnum = {
+  id: 'id',
+  templateId: 'templateId',
+  kind: 'kind',
+  uploadedFileId: 'uploadedFileId',
+  externalUrl: 'externalUrl',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type SemenServiceTemplateMediaScalarFieldEnum = (typeof SemenServiceTemplateMediaScalarFieldEnum)[keyof typeof SemenServiceTemplateMediaScalarFieldEnum]
+
+
 export const AiTechnicianServiceScalarFieldEnum = {
   id: 'id',
   aiTechnicianId: 'aiTechnicianId',
@@ -492,11 +585,35 @@ export const AiTechnicianServiceScalarFieldEnum = {
   repeatServicePolicy: 'repeatServicePolicy',
   followUpIncluded: 'followUpIncluded',
   status: 'status',
+  semenServiceTemplateId: 'semenServiceTemplateId',
+  offerPrice: 'offerPrice',
+  discountPercent: 'discountPercent',
+  isAvailable: 'isAvailable',
+  technicianServiceNote: 'technicianServiceNote',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
 
 export type AiTechnicianServiceScalarFieldEnum = (typeof AiTechnicianServiceScalarFieldEnum)[keyof typeof AiTechnicianServiceScalarFieldEnum]
+
+
+export const TechnicianSemenInventoryScalarFieldEnum = {
+  id: 'id',
+  aiTechnicianServiceId: 'aiTechnicianServiceId',
+  currentQuantity: 'currentQuantity',
+  reservedQuantity: 'reservedQuantity',
+  usedQuantity: 'usedQuantity',
+  minStockAlert: 'minStockAlert',
+  batchNumber: 'batchNumber',
+  expiryDate: 'expiryDate',
+  sourceNote: 'sourceNote',
+  storageNote: 'storageNote',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type TechnicianSemenInventoryScalarFieldEnum = (typeof TechnicianSemenInventoryScalarFieldEnum)[keyof typeof TechnicianSemenInventoryScalarFieldEnum]
 
 
 export const AiServiceRequestScalarFieldEnum = {

@@ -2,10 +2,11 @@
 
 import { usePathname } from "next/navigation";
 import { useState } from "react";
+import { Toaster } from "sonner";
 
 import { cn } from "@/lib/cn";
 
-import { ADMIN_NAV_ITEMS, getSectionTitleFromPath } from "./admin-nav";
+import { ADMIN_NAV_GROUPS, getSectionTitleFromPath } from "./admin-nav";
 import { AdminContent } from "./AdminContent";
 import { AdminFooter } from "./AdminFooter";
 import { AdminSidebar } from "./AdminSidebar";
@@ -61,7 +62,7 @@ function AdminLayoutShellInner({
           "fixed inset-y-0 left-0 z-50 transition-[transform,width] duration-200 md:static md:z-auto md:translate-x-0",
           mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0",
         )}
-        items={ADMIN_NAV_ITEMS}
+        groups={ADMIN_NAV_GROUPS}
         pathname={pathname}
         onCloseMobile={() => setMobileOpen(false)}
         onSignOut={signOut}
@@ -75,6 +76,12 @@ function AdminLayoutShellInner({
         />
         <AdminContent contained={contentWidth === "contained"}>{children}</AdminContent>
         <AdminFooter />
+        <Toaster
+          richColors
+          closeButton
+          position="top-center"
+          theme={appearance === "system" ? "system" : appearance}
+        />
       </div>
     </div>
   );

@@ -1,0 +1,237 @@
+/* Scoped rich editor — import only from RichTextEditor (admin bundle). */
+/* Enterprise Auto-Height Editor System v2 */
+
+#pd-admin-root .pd-rich-editor {
+  --pd-rich-editor-fg: rgb(24 24 27);
+  --pd-rich-editor-placeholder: rgb(113 113 122);
+  --pd-rich-editor-quote-border: rgb(16 185 129 / 0.35);
+  --pd-rich-editor-min-height: 220px;
+  --pd-rich-editor-min-height-compact: 140px;
+  --pd-rich-editor-min-height-large: 280px;
+}
+
+#pd-admin-root[data-admin-appearance="dark"] .pd-rich-editor {
+  --pd-rich-editor-fg: rgb(250 250 250);
+  --pd-rich-editor-placeholder: rgb(161 161 170);
+  --pd-rich-editor-quote-border: rgb(52 211 153 / 0.45);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   AUTO-HEIGHT EDITOR CONTAINER
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+#pd-admin-root .pd-rich-editor {
+  display: flex;
+  flex-direction: column;
+  border-radius: var(--pd-admin-radius, 0.75rem);
+  border: 1px solid color-mix(in srgb, var(--pd-admin-border) 90%, transparent);
+  background: var(--pd-admin-surface);
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.04),
+    0 4px 12px -4px rgb(0 0 0 / 0.06);
+  transition:
+    border-color 0.25s ease,
+    box-shadow 0.25s ease;
+  overflow: visible;
+}
+
+#pd-admin-root .pd-rich-editor:focus-within {
+  border-color: var(--pd-admin-primary);
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--pd-admin-primary) 12%, transparent),
+    0 1px 2px rgb(0 0 0 / 0.04),
+    0 4px 12px -4px rgb(0 0 0 / 0.08);
+}
+
+#pd-admin-root[data-admin-appearance="dark"] .pd-rich-editor {
+  box-shadow:
+    0 1px 2px rgb(0 0 0 / 0.15),
+    0 4px 12px -4px rgb(0 0 0 / 0.25);
+}
+
+#pd-admin-root[data-admin-appearance="dark"] .pd-rich-editor:focus-within {
+  box-shadow:
+    0 0 0 3px color-mix(in srgb, var(--pd-admin-primary) 18%, transparent),
+    0 1px 2px rgb(0 0 0 / 0.15),
+    0 4px 12px -4px rgb(0 0 0 / 0.25);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   AUTO-HEIGHT CONTENT AREA — NO INTERNAL SCROLLBARS
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+#pd-admin-root .pd-rich-editor-content {
+  flex: 1 1 auto;
+  min-height: var(--pd-rich-editor-min-height);
+  overflow: visible;
+}
+
+#pd-admin-root .pd-rich-editor-content--compact {
+  min-height: var(--pd-rich-editor-min-height-compact);
+}
+
+#pd-admin-root .pd-rich-editor-content--large {
+  min-height: var(--pd-rich-editor-min-height-large);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   PROSE SURFACE — BENGALI-FIRST TYPOGRAPHY + AUTO-GROW
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+#pd-admin-root .pd-rich-editor .ProseMirror {
+  font-family:
+    var(--font-pd-admin-hind),
+    "Hind Siliguri",
+    var(--font-pd-admin-inter),
+    ui-sans-serif,
+    system-ui,
+    sans-serif;
+  font-size: 0.9375rem;
+  line-height: 1.85;
+  letter-spacing: 0.012em;
+  color: var(--pd-rich-editor-fg);
+  caret-color: var(--pd-admin-primary);
+  min-height: inherit;
+  height: auto;
+  padding: 1rem 1.125rem;
+  overflow: visible;
+}
+
+@media (min-width: 640px) {
+  #pd-admin-root .pd-rich-editor .ProseMirror {
+    font-size: 1rem;
+    line-height: 1.9;
+    padding: 1.125rem 1.25rem;
+  }
+}
+
+@media (min-width: 768px) {
+  #pd-admin-root .pd-rich-editor .ProseMirror {
+    font-size: 1.0625rem;
+    padding: 1.25rem 1.5rem;
+  }
+}
+
+#pd-admin-root .pd-rich-editor .ProseMirror:focus,
+#pd-admin-root .pd-rich-editor .ProseMirror:focus-visible {
+  outline: none;
+}
+
+#pd-admin-root .pd-rich-editor .ProseMirror ::selection {
+  background: color-mix(in srgb, var(--pd-admin-primary) 26%, transparent);
+}
+
+#pd-admin-root[data-admin-appearance="dark"] .pd-rich-editor .ProseMirror ::selection {
+  background: color-mix(in srgb, var(--pd-admin-primary) 38%, transparent);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   TYPOGRAPHY — PARAGRAPHS & SPACING
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+#pd-admin-root .pd-rich-editor .ProseMirror p {
+  margin-block: 0.75em;
+}
+
+#pd-admin-root .pd-rich-editor .ProseMirror p:first-child {
+  margin-block-start: 0;
+}
+
+#pd-admin-root .pd-rich-editor .ProseMirror p:last-child {
+  margin-block-end: 0;
+}
+
+#pd-admin-root .pd-rich-editor .ProseMirror h2 {
+  margin-block: 1em 0.5em;
+  font-size: 1.1875rem;
+  font-weight: 700;
+  letter-spacing: -0.025em;
+  line-height: 1.35;
+  color: var(--pd-rich-editor-fg);
+}
+
+#pd-admin-root .pd-rich-editor .ProseMirror h3 {
+  margin-block: 0.875em 0.45em;
+  font-size: 1.0625rem;
+  font-weight: 650;
+  letter-spacing: -0.018em;
+  line-height: 1.4;
+  color: var(--pd-rich-editor-fg);
+}
+
+#pd-admin-root .pd-rich-editor .ProseMirror ul,
+#pd-admin-root .pd-rich-editor .ProseMirror ol {
+  margin-block: 0.75em;
+  padding-inline-start: 1.5rem;
+}
+
+#pd-admin-root .pd-rich-editor .ProseMirror li {
+  margin-block: 0.4em;
+}
+
+#pd-admin-root .pd-rich-editor .ProseMirror blockquote {
+  margin-block: 0.875em;
+  margin-inline: 0;
+  padding: 0.75rem 1rem;
+  padding-inline-start: 1.25rem;
+  border-inline-start: 4px solid var(--pd-rich-editor-quote-border);
+  border-radius: 0 0.5rem 0.5rem 0;
+  background: color-mix(in srgb, var(--pd-admin-primary-soft) 30%, transparent);
+  color: color-mix(in srgb, var(--pd-rich-editor-fg) 90%, transparent);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   PLACEHOLDER STYLING
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+#pd-admin-root .pd-rich-editor .ProseMirror p.is-editor-empty:first-child::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: var(--pd-rich-editor-placeholder);
+  font-style: italic;
+  opacity: 0.85;
+}
+
+#pd-admin-root .pd-rich-editor .ProseMirror.is-editor-empty::before {
+  content: attr(data-placeholder);
+  float: left;
+  height: 0;
+  pointer-events: none;
+  color: var(--pd-rich-editor-placeholder);
+  font-style: italic;
+  opacity: 0.85;
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   EDITOR LABEL STYLING
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+#pd-admin-root .pd-rich-editor-label {
+  display: block;
+  margin-bottom: 0.625rem;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+  color: var(--pd-admin-app-fg);
+}
+
+#pd-admin-root .pd-rich-editor-label-hint {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.75rem;
+  font-weight: 400;
+  color: var(--pd-admin-muted);
+}
+
+/* ══════════════════════════════════════════════════════════════════════════════
+   RESPONSIVE ADJUSTMENTS
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+@media (max-width: 639px) {
+  #pd-admin-root .pd-rich-editor {
+    --pd-rich-editor-min-height: 180px;
+    --pd-rich-editor-min-height-large: 220px;
+  }
+}

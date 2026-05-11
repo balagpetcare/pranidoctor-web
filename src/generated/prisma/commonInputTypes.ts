@@ -450,11 +450,45 @@ export type EnumUploadedFileStatusWithAggregatesFilter<$PrismaModel = never> = {
   _max?: Prisma.NestedEnumUploadedFileStatusFilter<$PrismaModel>
 }
 
+export type EnumSemenProviderVerificationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenProviderVerificationStatus | Prisma.EnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenProviderVerificationStatus[] | Prisma.ListEnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenProviderVerificationStatus[] | Prisma.ListEnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenProviderVerificationStatusFilter<$PrismaModel> | $Enums.SemenProviderVerificationStatus
+}
+
+export type EnumSemenProviderVerificationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenProviderVerificationStatus | Prisma.EnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenProviderVerificationStatus[] | Prisma.ListEnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenProviderVerificationStatus[] | Prisma.ListEnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenProviderVerificationStatusWithAggregatesFilter<$PrismaModel> | $Enums.SemenProviderVerificationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSemenProviderVerificationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSemenProviderVerificationStatusFilter<$PrismaModel>
+}
+
 export type EnumAnimalTypeFilter<$PrismaModel = never> = {
   equals?: $Enums.AnimalType | Prisma.EnumAnimalTypeFieldRefInput<$PrismaModel>
   in?: $Enums.AnimalType[] | Prisma.ListEnumAnimalTypeFieldRefInput<$PrismaModel>
   notIn?: $Enums.AnimalType[] | Prisma.ListEnumAnimalTypeFieldRefInput<$PrismaModel>
   not?: Prisma.NestedEnumAnimalTypeFilter<$PrismaModel> | $Enums.AnimalType
+}
+
+export type EnumAnimalTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AnimalType | Prisma.EnumAnimalTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.AnimalType[] | Prisma.ListEnumAnimalTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AnimalType[] | Prisma.ListEnumAnimalTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAnimalTypeWithAggregatesFilter<$PrismaModel> | $Enums.AnimalType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumAnimalTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumAnimalTypeFilter<$PrismaModel>
+}
+
+export type EnumSemenProductKindFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenProductKind | Prisma.EnumSemenProductKindFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenProductKind[] | Prisma.ListEnumSemenProductKindFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenProductKind[] | Prisma.ListEnumSemenProductKindFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenProductKindFilter<$PrismaModel> | $Enums.SemenProductKind
 }
 
 export type DecimalFilter<$PrismaModel = never> = {
@@ -468,21 +502,21 @@ export type DecimalFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDecimalFilter<$PrismaModel> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type EnumAiTechnicianServiceStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.AiTechnicianServiceStatus | Prisma.EnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.AiTechnicianServiceStatus[] | Prisma.ListEnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.AiTechnicianServiceStatus[] | Prisma.ListEnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumAiTechnicianServiceStatusFilter<$PrismaModel> | $Enums.AiTechnicianServiceStatus
+export type EnumSemenTemplateApprovalStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenTemplateApprovalStatus | Prisma.EnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenTemplateApprovalStatus[] | Prisma.ListEnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenTemplateApprovalStatus[] | Prisma.ListEnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenTemplateApprovalStatusFilter<$PrismaModel> | $Enums.SemenTemplateApprovalStatus
 }
 
-export type EnumAnimalTypeWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.AnimalType | Prisma.EnumAnimalTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.AnimalType[] | Prisma.ListEnumAnimalTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.AnimalType[] | Prisma.ListEnumAnimalTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumAnimalTypeWithAggregatesFilter<$PrismaModel> | $Enums.AnimalType
+export type EnumSemenProductKindWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenProductKind | Prisma.EnumSemenProductKindFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenProductKind[] | Prisma.ListEnumSemenProductKindFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenProductKind[] | Prisma.ListEnumSemenProductKindFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenProductKindWithAggregatesFilter<$PrismaModel> | $Enums.SemenProductKind
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumAnimalTypeFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumAnimalTypeFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSemenProductKindFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSemenProductKindFilter<$PrismaModel>
 }
 
 export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
@@ -499,6 +533,40 @@ export type DecimalWithAggregatesFilter<$PrismaModel = never> = {
   _sum?: Prisma.NestedDecimalFilter<$PrismaModel>
   _min?: Prisma.NestedDecimalFilter<$PrismaModel>
   _max?: Prisma.NestedDecimalFilter<$PrismaModel>
+}
+
+export type EnumSemenTemplateApprovalStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenTemplateApprovalStatus | Prisma.EnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenTemplateApprovalStatus[] | Prisma.ListEnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenTemplateApprovalStatus[] | Prisma.ListEnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenTemplateApprovalStatusWithAggregatesFilter<$PrismaModel> | $Enums.SemenTemplateApprovalStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSemenTemplateApprovalStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSemenTemplateApprovalStatusFilter<$PrismaModel>
+}
+
+export type EnumSemenTemplateMediaKindFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenTemplateMediaKind | Prisma.EnumSemenTemplateMediaKindFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenTemplateMediaKind[] | Prisma.ListEnumSemenTemplateMediaKindFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenTemplateMediaKind[] | Prisma.ListEnumSemenTemplateMediaKindFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenTemplateMediaKindFilter<$PrismaModel> | $Enums.SemenTemplateMediaKind
+}
+
+export type EnumSemenTemplateMediaKindWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenTemplateMediaKind | Prisma.EnumSemenTemplateMediaKindFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenTemplateMediaKind[] | Prisma.ListEnumSemenTemplateMediaKindFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenTemplateMediaKind[] | Prisma.ListEnumSemenTemplateMediaKindFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenTemplateMediaKindWithAggregatesFilter<$PrismaModel> | $Enums.SemenTemplateMediaKind
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSemenTemplateMediaKindFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSemenTemplateMediaKindFilter<$PrismaModel>
+}
+
+export type EnumAiTechnicianServiceStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.AiTechnicianServiceStatus | Prisma.EnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.AiTechnicianServiceStatus[] | Prisma.ListEnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AiTechnicianServiceStatus[] | Prisma.ListEnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAiTechnicianServiceStatusFilter<$PrismaModel> | $Enums.AiTechnicianServiceStatus
 }
 
 export type EnumAiTechnicianServiceStatusWithAggregatesFilter<$PrismaModel = never> = {
@@ -1307,11 +1375,45 @@ export type NestedEnumUploadedFileStatusWithAggregatesFilter<$PrismaModel = neve
   _max?: Prisma.NestedEnumUploadedFileStatusFilter<$PrismaModel>
 }
 
+export type NestedEnumSemenProviderVerificationStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenProviderVerificationStatus | Prisma.EnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenProviderVerificationStatus[] | Prisma.ListEnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenProviderVerificationStatus[] | Prisma.ListEnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenProviderVerificationStatusFilter<$PrismaModel> | $Enums.SemenProviderVerificationStatus
+}
+
+export type NestedEnumSemenProviderVerificationStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenProviderVerificationStatus | Prisma.EnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenProviderVerificationStatus[] | Prisma.ListEnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenProviderVerificationStatus[] | Prisma.ListEnumSemenProviderVerificationStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenProviderVerificationStatusWithAggregatesFilter<$PrismaModel> | $Enums.SemenProviderVerificationStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSemenProviderVerificationStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSemenProviderVerificationStatusFilter<$PrismaModel>
+}
+
 export type NestedEnumAnimalTypeFilter<$PrismaModel = never> = {
   equals?: $Enums.AnimalType | Prisma.EnumAnimalTypeFieldRefInput<$PrismaModel>
   in?: $Enums.AnimalType[] | Prisma.ListEnumAnimalTypeFieldRefInput<$PrismaModel>
   notIn?: $Enums.AnimalType[] | Prisma.ListEnumAnimalTypeFieldRefInput<$PrismaModel>
   not?: Prisma.NestedEnumAnimalTypeFilter<$PrismaModel> | $Enums.AnimalType
+}
+
+export type NestedEnumAnimalTypeWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.AnimalType | Prisma.EnumAnimalTypeFieldRefInput<$PrismaModel>
+  in?: $Enums.AnimalType[] | Prisma.ListEnumAnimalTypeFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AnimalType[] | Prisma.ListEnumAnimalTypeFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAnimalTypeWithAggregatesFilter<$PrismaModel> | $Enums.AnimalType
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumAnimalTypeFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumAnimalTypeFilter<$PrismaModel>
+}
+
+export type NestedEnumSemenProductKindFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenProductKind | Prisma.EnumSemenProductKindFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenProductKind[] | Prisma.ListEnumSemenProductKindFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenProductKind[] | Prisma.ListEnumSemenProductKindFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenProductKindFilter<$PrismaModel> | $Enums.SemenProductKind
 }
 
 export type NestedDecimalFilter<$PrismaModel = never> = {
@@ -1325,21 +1427,21 @@ export type NestedDecimalFilter<$PrismaModel = never> = {
   not?: Prisma.NestedDecimalFilter<$PrismaModel> | runtime.Decimal | runtime.DecimalJsLike | number | string
 }
 
-export type NestedEnumAiTechnicianServiceStatusFilter<$PrismaModel = never> = {
-  equals?: $Enums.AiTechnicianServiceStatus | Prisma.EnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel>
-  in?: $Enums.AiTechnicianServiceStatus[] | Prisma.ListEnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel>
-  notIn?: $Enums.AiTechnicianServiceStatus[] | Prisma.ListEnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumAiTechnicianServiceStatusFilter<$PrismaModel> | $Enums.AiTechnicianServiceStatus
+export type NestedEnumSemenTemplateApprovalStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenTemplateApprovalStatus | Prisma.EnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenTemplateApprovalStatus[] | Prisma.ListEnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenTemplateApprovalStatus[] | Prisma.ListEnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenTemplateApprovalStatusFilter<$PrismaModel> | $Enums.SemenTemplateApprovalStatus
 }
 
-export type NestedEnumAnimalTypeWithAggregatesFilter<$PrismaModel = never> = {
-  equals?: $Enums.AnimalType | Prisma.EnumAnimalTypeFieldRefInput<$PrismaModel>
-  in?: $Enums.AnimalType[] | Prisma.ListEnumAnimalTypeFieldRefInput<$PrismaModel>
-  notIn?: $Enums.AnimalType[] | Prisma.ListEnumAnimalTypeFieldRefInput<$PrismaModel>
-  not?: Prisma.NestedEnumAnimalTypeWithAggregatesFilter<$PrismaModel> | $Enums.AnimalType
+export type NestedEnumSemenProductKindWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenProductKind | Prisma.EnumSemenProductKindFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenProductKind[] | Prisma.ListEnumSemenProductKindFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenProductKind[] | Prisma.ListEnumSemenProductKindFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenProductKindWithAggregatesFilter<$PrismaModel> | $Enums.SemenProductKind
   _count?: Prisma.NestedIntFilter<$PrismaModel>
-  _min?: Prisma.NestedEnumAnimalTypeFilter<$PrismaModel>
-  _max?: Prisma.NestedEnumAnimalTypeFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSemenProductKindFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSemenProductKindFilter<$PrismaModel>
 }
 
 export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
@@ -1356,6 +1458,40 @@ export type NestedDecimalWithAggregatesFilter<$PrismaModel = never> = {
   _sum?: Prisma.NestedDecimalFilter<$PrismaModel>
   _min?: Prisma.NestedDecimalFilter<$PrismaModel>
   _max?: Prisma.NestedDecimalFilter<$PrismaModel>
+}
+
+export type NestedEnumSemenTemplateApprovalStatusWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenTemplateApprovalStatus | Prisma.EnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenTemplateApprovalStatus[] | Prisma.ListEnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenTemplateApprovalStatus[] | Prisma.ListEnumSemenTemplateApprovalStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenTemplateApprovalStatusWithAggregatesFilter<$PrismaModel> | $Enums.SemenTemplateApprovalStatus
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSemenTemplateApprovalStatusFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSemenTemplateApprovalStatusFilter<$PrismaModel>
+}
+
+export type NestedEnumSemenTemplateMediaKindFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenTemplateMediaKind | Prisma.EnumSemenTemplateMediaKindFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenTemplateMediaKind[] | Prisma.ListEnumSemenTemplateMediaKindFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenTemplateMediaKind[] | Prisma.ListEnumSemenTemplateMediaKindFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenTemplateMediaKindFilter<$PrismaModel> | $Enums.SemenTemplateMediaKind
+}
+
+export type NestedEnumSemenTemplateMediaKindWithAggregatesFilter<$PrismaModel = never> = {
+  equals?: $Enums.SemenTemplateMediaKind | Prisma.EnumSemenTemplateMediaKindFieldRefInput<$PrismaModel>
+  in?: $Enums.SemenTemplateMediaKind[] | Prisma.ListEnumSemenTemplateMediaKindFieldRefInput<$PrismaModel>
+  notIn?: $Enums.SemenTemplateMediaKind[] | Prisma.ListEnumSemenTemplateMediaKindFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumSemenTemplateMediaKindWithAggregatesFilter<$PrismaModel> | $Enums.SemenTemplateMediaKind
+  _count?: Prisma.NestedIntFilter<$PrismaModel>
+  _min?: Prisma.NestedEnumSemenTemplateMediaKindFilter<$PrismaModel>
+  _max?: Prisma.NestedEnumSemenTemplateMediaKindFilter<$PrismaModel>
+}
+
+export type NestedEnumAiTechnicianServiceStatusFilter<$PrismaModel = never> = {
+  equals?: $Enums.AiTechnicianServiceStatus | Prisma.EnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel>
+  in?: $Enums.AiTechnicianServiceStatus[] | Prisma.ListEnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel>
+  notIn?: $Enums.AiTechnicianServiceStatus[] | Prisma.ListEnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel>
+  not?: Prisma.NestedEnumAiTechnicianServiceStatusFilter<$PrismaModel> | $Enums.AiTechnicianServiceStatus
 }
 
 export type NestedEnumAiTechnicianServiceStatusWithAggregatesFilter<$PrismaModel = never> = {

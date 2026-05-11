@@ -36,7 +36,7 @@ export function AdminTopbar({ sectionTitle, onOpenMobileMenu, onSignOut }: Admin
         >
           <Menu className="h-5 w-5" aria-hidden />
         </button>
-        <h1 className="min-w-0 flex-1 truncate text-center text-sm font-semibold text-zinc-900 dark:text-zinc-50">
+        <h1 className="min-w-0 flex-1 truncate text-center text-sm font-semibold leading-snug text-zinc-900 dark:text-zinc-50 md:text-base">
           {sectionTitle}
         </h1>
         <div className="flex shrink-0 items-center gap-0.5 sm:gap-1">
@@ -78,7 +78,7 @@ export function AdminTopbar({ sectionTitle, onOpenMobileMenu, onSignOut }: Admin
             প্রাণী ডাক্তার
           </span>
           <span className="h-4 w-px shrink-0 bg-[var(--pd-admin-border)]" aria-hidden />
-          <h1 className="min-w-0 truncate text-base font-semibold leading-snug text-zinc-900 dark:text-zinc-50">
+          <h1 className="pd-admin-topbar-title min-w-0 truncate text-zinc-900 dark:text-zinc-50">
             {sectionTitle}
           </h1>
         </div>

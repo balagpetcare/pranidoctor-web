@@ -11,18 +11,17 @@ type ApiEnvelope<T> =
   | { ok: true; data: T }
   | { ok: false; error: { code: string; message: string } };
 
-/** Bengali-first copy; maps API `error.code` from `POST /api/admin/auth/login`. */
+/** Maps API `error.code` from `POST /api/admin/auth/login`. */
 function loginErrorBn(code: string): string {
   switch (code) {
     case "invalid_credentials":
-      return "ভুল ইমেইল বা পাসওয়ার্ড";
+      return "ভুল ইমেইল/ফোন বা পাসওয়ার্ড";
     case "db_unavailable":
       return "সার্ভারের সাথে সংযোগ করা যাচ্ছে না";
     case "server_error":
       return "সিস্টেম সাময়িকভাবে ব্যস্ত";
-    // Legacy codes (older deployments / cached bundles)
     case "INVALID_CREDENTIALS":
-      return "ভুল ইমেইল বা পাসওয়ার্ড";
+      return "ভুল ইমেইল/ফোন বা পাসওয়ার্ড";
     case "DATABASE_UNAVAILABLE":
       return "সার্ভারের সাথে সংযোগ করা যাচ্ছে না";
     case "SERVER_MISCONFIGURED":
@@ -34,9 +33,30 @@ function loginErrorBn(code: string): string {
   }
 }
 
+function loginErrorEn(code: string): string {
+  switch (code) {
+    case "invalid_credentials":
+      return "Incorrect email or phone, or password.";
+    case "db_unavailable":
+      return "We could not reach the database. Please try again shortly.";
+    case "server_error":
+      return "Something went wrong. Please try again in a moment.";
+    case "INVALID_CREDENTIALS":
+      return "Incorrect email or phone, or password.";
+    case "DATABASE_UNAVAILABLE":
+      return "We could not reach the database. Please try again shortly.";
+    case "SERVER_MISCONFIGURED":
+    case "VALIDATION_ERROR":
+    case "INVALID_JSON":
+      return "Something went wrong. Please try again in a moment.";
+    default:
+      return "Something went wrong. Please try again in a moment.";
+  }
+}
+
 export function AdminLoginForm() {
   const searchParams = useSearchParams();
-  const [email, setEmail] = useState("");
+  const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
@@ -46,17 +66,26 @@ export function AdminLoginForm() {
     setError(null);
     setLoading(true);
     try {
+      const trimmed = identifier.trim();
+      const payload: { password: string; email?: string; identifier?: string } =
+        { password };
+      if (trimmed.includes("@")) {
+        payload.email = trimmed;
+      } else {
+        payload.identifier = trimmed;
+      }
+
       const res = await fetch("/api/admin/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email: email.trim(), password }),
+        body: JSON.stringify(payload),
       });
 
       let body: unknown;
       try {
         body = await res.json();
       } catch {
-        setError(loginErrorBn("UNKNOWN"));
+        setError(`${loginErrorEn("UNKNOWN")} — ${loginErrorBn("server_error")}`);
         return;
       }
 
@@ -65,19 +94,20 @@ export function AdminLoginForm() {
       }>;
 
       if (!parsed || typeof parsed !== "object" || !("ok" in parsed)) {
-        setError(loginErrorBn("UNKNOWN"));
+        setError(`${loginErrorEn("UNKNOWN")} — ${loginErrorBn("server_error")}`);
         return;
       }
 
       if (!parsed.ok) {
-        setError(loginErrorBn(parsed.error.code));
+        const code = parsed.error.code;
+        setError(`${loginErrorEn(code)} — ${loginErrorBn(code)}`);
         return;
       }
 
       const next = searchParams.get("next");
       window.location.assign(getSafeAdminNextPath(next));
     } catch {
-      setError(loginErrorBn("UNKNOWN"));
+      setError(`${loginErrorEn("UNKNOWN")} — ${loginErrorBn("server_error")}`);
     } finally {
       setLoading(false);
     }
@@ -99,40 +129,37 @@ export function AdminLoginForm() {
       </div>
 
       <div className="space-y-1 text-center sm:text-left">
-        <h1 className="text-lg font-semibold leading-snug text-zinc-900 dark:text-zinc-50 sm:text-xl">
-          প্রাণী ডাক্তার অ্যাডমিন
-        </h1>
+        <h2 className="text-lg font-semibold leading-snug text-zinc-900 dark:text-zinc-50 sm:text-xl">
+          Sign in
+        </h2>
         <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          পশুচিকিৎসা ও সেবা ব্যবস্থাপনার জন্য নিরাপদ প্রবেশ
+          Email or Bangladesh mobile number, and your password.
         </p>
-        <p className="text-xs text-zinc-500 dark:text-zinc-500">
-          Prani Doctor — operations sign-in
+        <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-500">
+          ইমেইল বা বাংলাদেশি মোবাইল নম্বর, এবং পাসওয়ার্ড।
         </p>
       </div>
 
       <div className="space-y-4">
         <label className="block text-sm font-medium text-zinc-800 dark:text-zinc-200">
-          <span className="block">ইমেইল</span>
-          <span className="sr-only">Email</span>
+          <span className="block">Email or phone / ইমেইল বা ফোন</span>
           <input
-            type="email"
-            name="email"
+            type="text"
+            name="identifier"
             autoComplete="username"
-            inputMode="email"
             required
-            value={email}
-            onChange={(ev) => setEmail(ev.target.value)}
+            value={identifier}
+            onChange={(ev) => setIdentifier(ev.target.value)}
             className={cn(
               "mt-1.5 block w-full min-h-11 rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-base text-zinc-900 sm:text-sm",
               "outline-none ring-emerald-600/30 focus:border-emerald-600 focus:ring-2",
               "dark:border-zinc-600 dark:bg-zinc-950 dark:text-zinc-100",
             )}
-            placeholder="you@example.com"
+            placeholder="admin@example.com or 017…"
           />
         </label>
         <label className="block text-sm font-medium text-zinc-800 dark:text-zinc-200">
-          <span className="block">পাসওয়ার্ড</span>
-          <span className="sr-only">Password</span>
+          <span className="block">Password / পাসওয়ার্ড</span>
           <input
             type="password"
             name="password"
@@ -154,7 +181,6 @@ export function AdminLoginForm() {
         <p
           className="rounded-lg bg-red-50 px-3 py-2.5 text-sm leading-relaxed text-red-900 dark:bg-red-950/50 dark:text-red-100"
           role="alert"
-          lang="bn"
         >
           {error}
         </p>
@@ -169,7 +195,7 @@ export function AdminLoginForm() {
           "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600",
         )}
       >
-        {loading ? "লগ ইন হচ্ছে…" : "প্রবেশ করুন"}
+        {loading ? "Signing in… / লগ ইন হচ্ছে…" : "Log in / প্রবেশ করুন"}
       </button>
     </form>
   );

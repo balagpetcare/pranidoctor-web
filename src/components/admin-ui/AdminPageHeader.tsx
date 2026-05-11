@@ -22,13 +22,11 @@ export function AdminPageHeader({
       )}
     >
       <div className="min-w-0 space-y-1">
-        <h1 className="text-xl font-semibold tracking-tight text-zinc-900 sm:text-2xl dark:text-zinc-50">
+        <h1 className="pd-admin-page-title min-w-0 flex-1 truncate text-zinc-900 dark:text-zinc-50">
           {title}
         </h1>
         {description ? (
-          <div className="max-w-2xl text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-            {description}
-          </div>
+          <div className="pd-admin-page-description max-w-2xl">{description}</div>
         ) : null}
       </div>
       {actions ? (

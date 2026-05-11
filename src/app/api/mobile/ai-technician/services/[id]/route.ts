@@ -1,6 +1,5 @@
 import { jsonError, jsonOk } from "@/lib/api-response";
 import { requireMobileAiTechnicianModuleUser } from "@/lib/mobile-ai-technician/mobile-module-guard";
-import { patchAiTechnicianServiceBodySchema } from "@/lib/mobile-ai-technician/technician-services-schemas";
 import {
   deactivateTechnicianServiceForMobileUser,
   patchTechnicianServiceForMobileUser,
@@ -21,22 +20,8 @@ export async function PATCH(request: Request, context: RouteContext) {
     return jsonError("INVALID_JSON", "অনুরোধ JSON হতে হবে", 400);
   }
 
-  const parsed = patchAiTechnicianServiceBodySchema.safeParse(json);
-  if (!parsed.success) {
-    return jsonError(
-      "VALIDATION_ERROR",
-      "তথ্য সঠিক নয়",
-      422,
-      parsed.error.flatten(),
-    );
-  }
-
   try {
-    const result = await patchTechnicianServiceForMobileUser(
-      auth.ctx.userId,
-      id,
-      parsed.data,
-    );
+    const result = await patchTechnicianServiceForMobileUser(auth.ctx.userId, id, json);
     if (result.ok === "NO_PROFILE") {
       return jsonError(
         "NO_PROFILE",
@@ -62,6 +47,9 @@ export async function PATCH(request: Request, context: RouteContext) {
         409,
         { status: result.status },
       );
+    }
+    if (result.ok === "VALIDATION_ERROR") {
+      return jsonError("VALIDATION_ERROR", "তথ্য সঠিক নয়", 422, result.issues);
     }
     return jsonOk({ service: result.service });
   } catch {

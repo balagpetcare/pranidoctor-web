@@ -10,6 +10,7 @@ import {
   UserStatus,
 } from "@/generated/prisma/client";
 import { prisma } from "@/lib/prisma";
+import { aggregateStockForService } from "@/lib/mobile-ai-technician/semen-inventory-service";
 
 import type {
   CreateAiServiceRequestBody,
@@ -59,6 +60,67 @@ function publishedTechnicianBaseWhere(): Prisma.AiTechnicianProfileWhereInput {
     providerStatus: ProviderStatus.ACTIVE,
     user: { is: { status: UserStatus.ACTIVE } },
   };
+}
+
+const publicServiceInclude = {
+  semenServiceTemplate: {
+    include: {
+      semenProvider: { select: { id: true, slug: true, name: true, nameBn: true } },
+      breedMixes: {
+        include: { breed: { select: { nameEn: true, nameBn: true } } },
+      },
+      media: { orderBy: { sortOrder: "asc" }, take: 8 },
+    },
+  },
+} satisfies Prisma.AiTechnicianServiceInclude;
+
+type PublicServiceRow = Prisma.AiTechnicianServiceGetPayload<{
+  include: typeof publicServiceInclude;
+}>;
+
+async function serializePublicAiTechnicianServiceListing(s: PublicServiceRow) {
+  const stockSummary = await aggregateStockForService(s.id);
+  const base = {
+    id: s.id,
+    title: s.title,
+    animalType: s.animalType,
+    breedOrSemenType: s.breedOrSemenType,
+    description: s.description,
+    basePrice: s.basePrice.toString(),
+    visitFee: s.visitFee?.toString() ?? null,
+    emergencyFee: s.emergencyFee?.toString() ?? null,
+    followUpIncluded: s.followUpIncluded,
+    isAvailable: s.isAvailable,
+    offerPrice: s.offerPrice?.toString() ?? null,
+    discountPercent: s.discountPercent?.toString() ?? null,
+    stockSummary,
+    semenServiceTemplateId: s.semenServiceTemplateId,
+  };
+  if (s.semenServiceTemplate) {
+    const t = s.semenServiceTemplate;
+    return {
+      ...base,
+      semenTemplateLocked: {
+        templateId: t.id,
+        internalName: t.internalName,
+        semenProductKind: t.semenProductKind,
+        shortDescription: t.shortDescription,
+        warningsContraindications: t.warningsContraindications,
+        provider: t.semenProvider,
+        breedMix: t.breedMixes.map((m) => ({
+          percentage: m.percentage.toString(),
+          nameEn: m.breed.nameEn,
+          nameBn: m.breed.nameBn,
+        })),
+        media: t.media.map((m) => ({
+          kind: m.kind,
+          uploadedFileId: m.uploadedFileId,
+          externalUrl: m.externalUrl,
+        })),
+      },
+    };
+  }
+  return { ...base, semenTemplateLocked: null };
 }
 
 export async function ratingStatsForTechnicians(
@@ -114,6 +176,7 @@ export async function listAiServiceTechniciansPublic(
 
   const serviceSome: Prisma.AiTechnicianServiceWhereInput = {
     status: AiTechnicianServiceStatus.ACTIVE,
+    isAvailable: true,
     ...(query.animalType ? { animalType: query.animalType } : {}),
   };
 
@@ -144,6 +207,17 @@ export async function listAiServiceTechniciansPublic(
         technicianServices: {
           where: serviceSome,
           orderBy: { basePrice: "asc" },
+          include: {
+            semenServiceTemplate: {
+              include: {
+                semenProvider: { select: { id: true, slug: true, name: true, nameBn: true } },
+                breedMixes: {
+                  include: { breed: { select: { nameEn: true, nameBn: true } } },
+                },
+                media: { orderBy: { sortOrder: "asc" }, take: 6 },
+              },
+            },
+          },
         },
         divisionCoverageAreas: {
           where: { isActive: true },
@@ -166,41 +240,48 @@ export async function listAiServiceTechniciansPublic(
   const dNorm = query.district.trim().toLowerCase();
   const uNorm = query.upazila.trim().toLowerCase();
 
-  const technicians = rows.map((row) => {
-    const services = row.technicianServices;
-    const prices = services.map((s) => Number(s.basePrice));
-    const starting = prices.length ? Math.min(...prices) : null;
-    const stat = mergeLegacyAndModuleRating(
-      ratings.get(row.id),
-      moduleRatings.get(row.id),
-    );
-    const matchingAreas = row.divisionCoverageAreas.filter(
-      (a) =>
-        a.district.trim().toLowerCase() === dNorm &&
-        a.upazila.trim().toLowerCase() === uNorm,
-    );
-    const areaLines = matchingAreas.slice(0, 3).map(
-      (a) =>
-        `${a.district} · ${a.upazila}` +
-        (a.unionOrArea?.trim() ? ` · ${a.unionOrArea.trim()}` : ""),
-    );
+  const technicians = await Promise.all(
+    rows.map(async (row) => {
+      const services = row.technicianServices;
+      const prices = services.map((s) => Number(s.basePrice));
+      const starting = prices.length ? Math.min(...prices) : null;
+      const stat = mergeLegacyAndModuleRating(
+        ratings.get(row.id),
+        moduleRatings.get(row.id),
+      );
+      const matchingAreas = row.divisionCoverageAreas.filter(
+        (a) =>
+          a.district.trim().toLowerCase() === dNorm &&
+          a.upazila.trim().toLowerCase() === uNorm,
+      );
+      const areaLines = matchingAreas.slice(0, 3).map(
+        (a) =>
+          `${a.district} · ${a.upazila}` +
+          (a.unionOrArea?.trim() ? ` · ${a.unionOrArea.trim()}` : ""),
+      );
 
-    return {
-      id: row.id,
-      displayName: row.displayName?.trim() || "এআই টেকনিশিয়ান",
-      district: row.district,
-      upazila: row.upazila,
-      serviceAreaSummary:
-        areaLines[0] ?? `${query.district.trim()} · ${query.upazila.trim()}`,
-      verified: row.verifiedAt != null,
-      acceptsEmergency: row.acceptsEmergency,
-      startingPriceBdt: starting != null ? String(starting) : null,
-      serviceTitles: services.map((s) => s.title),
-      ratingAverage: stat.count > 0 ? stat.avg : null,
-      ratingCount: stat.count,
-      completedServicesCount: completed.get(row.id) ?? 0,
-    };
-  });
+      const serviceListings = await Promise.all(
+        services.map((s) => serializePublicAiTechnicianServiceListing(s)),
+      );
+
+      return {
+        id: row.id,
+        displayName: row.displayName?.trim() || "এআই টেকনিশিয়ান",
+        district: row.district,
+        upazila: row.upazila,
+        serviceAreaSummary:
+          areaLines[0] ?? `${query.district.trim()} · ${query.upazila.trim()}`,
+        verified: row.verifiedAt != null,
+        acceptsEmergency: row.acceptsEmergency,
+        startingPriceBdt: starting != null ? String(starting) : null,
+        serviceTitles: services.map((s) => s.title),
+        serviceListings,
+        ratingAverage: stat.count > 0 ? stat.avg : null,
+        ratingCount: stat.count,
+        completedServicesCount: completed.get(row.id) ?? 0,
+      };
+    }),
+  );
 
   return {
     technicians,
@@ -220,7 +301,10 @@ export async function getAiServiceTechnicianPublic(id: string) {
       publishedTechnicianBaseWhere(),
       {
         technicianServices: {
-          some: { status: AiTechnicianServiceStatus.ACTIVE },
+          some: {
+            status: AiTechnicianServiceStatus.ACTIVE,
+            isAvailable: true,
+          },
         },
       },
     ],
@@ -231,8 +315,12 @@ export async function getAiServiceTechnicianPublic(id: string) {
     include: {
       user: { select: { id: true } },
       technicianServices: {
-        where: { status: AiTechnicianServiceStatus.ACTIVE },
+        where: {
+          status: AiTechnicianServiceStatus.ACTIVE,
+          isAvailable: true,
+        },
         orderBy: { updatedAt: "desc" },
+        include: publicServiceInclude,
       },
       divisionCoverageAreas: {
         where: { isActive: true },
@@ -310,17 +398,9 @@ export async function getAiServiceTechnicianPublic(id: string) {
           unionOrArea: a.unionOrArea,
         }),
       ),
-      services: row.technicianServices.map((s) => ({
-        id: s.id,
-        title: s.title,
-        animalType: s.animalType,
-        breedOrSemenType: s.breedOrSemenType,
-        description: s.description,
-        basePrice: s.basePrice.toString(),
-        visitFee: s.visitFee?.toString() ?? null,
-        emergencyFee: s.emergencyFee?.toString() ?? null,
-        followUpIncluded: s.followUpIncluded,
-      })),
+      services: await Promise.all(
+        row.technicianServices.map((s) => serializePublicAiTechnicianServiceListing(s)),
+      ),
     },
   };
 }
@@ -428,6 +508,7 @@ export async function createAiServiceRequestForCustomer(
       where: {
         id: serviceId,
         status: AiTechnicianServiceStatus.ACTIVE,
+        isAvailable: true,
       },
       select: { id: true, aiTechnicianId: true, animalType: true },
     });

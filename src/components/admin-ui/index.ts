@@ -1,5 +1,12 @@
-export { ADMIN_NAV_ITEMS, getSectionTitleFromPath } from "./admin-nav";
-export type { AdminNavItem } from "./admin-nav";
+export {
+  ADMIN_NAV_GROUPS,
+  ADMIN_NAV_ITEMS,
+  filterAdminNavGroups,
+  flattenAdminNavGroups,
+  getSectionTitleFromPath,
+  resolveAdminActiveHref,
+} from "./admin-nav";
+export type { AdminNavGroup, AdminNavItem } from "./admin-nav";
 export { AdminActionButton } from "./AdminActionButton";
 export type { AdminActionButtonProps } from "./AdminActionButton";
 export { AdminBadge } from "./AdminBadge";
@@ -13,6 +20,8 @@ export type { AdminErrorStateProps } from "./AdminErrorState";
 export { AdminFormSection } from "./AdminFormSection";
 export type { AdminFormSectionProps } from "./AdminFormSection";
 export { AdminFooter } from "./AdminFooter";
+export { FormAsyncControlSkeleton } from "./FormAsyncControlSkeleton";
+export type { FormAsyncControlSkeletonProps } from "./FormAsyncControlSkeleton";
 export { AdminNotificationsMenu } from "./AdminNotificationsMenu";
 export { AdminProfileMenu } from "./AdminProfileMenu";
 export type { AdminProfileMenuProps } from "./AdminProfileMenu";
@@ -41,6 +50,13 @@ export { AdminPageHeader } from "./AdminPageHeader";
 export type { AdminPageHeaderProps } from "./AdminPageHeader";
 export { AdminSidebar } from "./AdminSidebar";
 export type { AdminSidebarProps } from "./AdminSidebar";
+export {
+  AdminSidebarCollapsedLink,
+  AdminSidebarGroup,
+  AdminSidebarSingleGroup,
+  linkIsActive,
+} from "./AdminSidebarGroup";
+export type { AdminSidebarGroupProps } from "./AdminSidebarGroup";
 export { AdminStatCard } from "./AdminStatCard";
 export type { AdminStatCardProps } from "./AdminStatCard";
 export { AdminTable } from "./AdminTable";

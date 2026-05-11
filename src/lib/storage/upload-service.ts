@@ -45,6 +45,12 @@ function purposeMaxBytes(env: StorageEnv, purpose: MobileUploadPurpose): number 
     case MobileUploadPurpose.AI_TECHNICIAN_AI_CERTIFICATE:
     case MobileUploadPurpose.AI_TECHNICIAN_OTHER:
       return mb("UPLOAD_MAX_AI_TECHNICIAN_DOCUMENT_MB", 8);
+    case MobileUploadPurpose.ADMIN_SEMEN_PROVIDER_LOGO:
+    case MobileUploadPurpose.ADMIN_SEMEN_TEMPLATE_COVER:
+    case MobileUploadPurpose.ADMIN_SEMEN_TEMPLATE_GALLERY:
+      return mb("UPLOAD_MAX_IMAGE_MB", 5);
+    case MobileUploadPurpose.ADMIN_SEMEN_TEMPLATE_VIDEO:
+      return mb("UPLOAD_MAX_SEMEN_TEMPLATE_VIDEO_MB", 80);
     default:
       return env.maxImageBytes;
   }
@@ -58,6 +64,9 @@ function parseMbEnv(name: string, fallback: number): number {
 }
 
 function allowedMimeForPurpose(env: StorageEnv, purpose: MobileUploadPurpose): Set<string> {
+  if (purpose === MobileUploadPurpose.ADMIN_SEMEN_TEMPLATE_VIDEO) {
+    return env.allowedVideoMimes;
+  }
   const docPurposes: MobileUploadPurpose[] = [
     MobileUploadPurpose.AI_TECHNICIAN_TRAINING_CERTIFICATE,
     MobileUploadPurpose.AI_TECHNICIAN_AI_CERTIFICATE,
@@ -159,19 +168,24 @@ export async function ingestMobileUpload(params: {
   const processed =
     sniffed === "application/pdf"
       ? { buffer: params.fileBuffer, mimeType: sniffed }
-      : await maybeProcessImage(params.fileBuffer, sniffed);
+      : sniffed.startsWith("video/")
+        ? { buffer: params.fileBuffer, mimeType: sniffed }
+        : await maybeProcessImage(params.fileBuffer, sniffed);
 
   const checksum = createHash("sha256").update(processed.buffer).digest("hex");
   const safe = sanitizeBaseName(params.originalName);
   const id = randomUUID();
-  const ext =
-    processed.mimeType === "application/pdf"
-      ? "pdf"
-      : processed.mimeType === "image/webp"
-        ? "webp"
-        : processed.mimeType === "image/png"
-          ? "png"
-          : "jpg";
+  const ext = (() => {
+    const mt = processed.mimeType;
+    if (mt === "application/pdf") return "pdf";
+    if (mt === "image/webp") return "webp";
+    if (mt === "image/png") return "png";
+    if (mt.startsWith("video/")) {
+      if (mt === "video/webm") return "webm";
+      return "mp4";
+    }
+    return "jpg";
+  })();
   const storageKey = `uploads/v1/${params.ownerUserId}/${params.purpose}/${id}-${safe}.${ext}`;
 
   await putObjectBytes({

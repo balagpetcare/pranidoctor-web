@@ -306,6 +306,8 @@ export type UploadedFileWhereInput = {
   updatedAt?: Prisma.DateTimeFilter<"UploadedFile"> | Date | string
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   aiTechnicianDocument?: Prisma.XOR<Prisma.AiTechnicianDocumentNullableScalarRelationFilter, Prisma.AiTechnicianDocumentWhereInput> | null
+  semenProviderLogo?: Prisma.XOR<Prisma.SemenProviderNullableScalarRelationFilter, Prisma.SemenProviderWhereInput> | null
+  semenTemplateMedia?: Prisma.XOR<Prisma.SemenServiceTemplateMediaNullableScalarRelationFilter, Prisma.SemenServiceTemplateMediaWhereInput> | null
 }
 
 export type UploadedFileOrderByWithRelationInput = {
@@ -326,6 +328,8 @@ export type UploadedFileOrderByWithRelationInput = {
   updatedAt?: Prisma.SortOrder
   owner?: Prisma.UserOrderByWithRelationInput
   aiTechnicianDocument?: Prisma.AiTechnicianDocumentOrderByWithRelationInput
+  semenProviderLogo?: Prisma.SemenProviderOrderByWithRelationInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaOrderByWithRelationInput
 }
 
 export type UploadedFileWhereUniqueInput = Prisma.AtLeast<{
@@ -349,6 +353,8 @@ export type UploadedFileWhereUniqueInput = Prisma.AtLeast<{
   updatedAt?: Prisma.DateTimeFilter<"UploadedFile"> | Date | string
   owner?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
   aiTechnicianDocument?: Prisma.XOR<Prisma.AiTechnicianDocumentNullableScalarRelationFilter, Prisma.AiTechnicianDocumentWhereInput> | null
+  semenProviderLogo?: Prisma.XOR<Prisma.SemenProviderNullableScalarRelationFilter, Prisma.SemenProviderWhereInput> | null
+  semenTemplateMedia?: Prisma.XOR<Prisma.SemenServiceTemplateMediaNullableScalarRelationFilter, Prisma.SemenServiceTemplateMediaWhereInput> | null
 }, "id" | "storageKey">
 
 export type UploadedFileOrderByWithAggregationInput = {
@@ -412,6 +418,8 @@ export type UploadedFileCreateInput = {
   updatedAt?: Date | string
   owner: Prisma.UserCreateNestedOneWithoutUploadedFilesInput
   aiTechnicianDocument?: Prisma.AiTechnicianDocumentCreateNestedOneWithoutUploadedFileInput
+  semenProviderLogo?: Prisma.SemenProviderCreateNestedOneWithoutLogoUploadedFileInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaCreateNestedOneWithoutUploadedFileInput
 }
 
 export type UploadedFileUncheckedCreateInput = {
@@ -431,6 +439,8 @@ export type UploadedFileUncheckedCreateInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   aiTechnicianDocument?: Prisma.AiTechnicianDocumentUncheckedCreateNestedOneWithoutUploadedFileInput
+  semenProviderLogo?: Prisma.SemenProviderUncheckedCreateNestedOneWithoutLogoUploadedFileInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaUncheckedCreateNestedOneWithoutUploadedFileInput
 }
 
 export type UploadedFileUpdateInput = {
@@ -450,6 +460,8 @@ export type UploadedFileUpdateInput = {
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   owner?: Prisma.UserUpdateOneRequiredWithoutUploadedFilesNestedInput
   aiTechnicianDocument?: Prisma.AiTechnicianDocumentUpdateOneWithoutUploadedFileNestedInput
+  semenProviderLogo?: Prisma.SemenProviderUpdateOneWithoutLogoUploadedFileNestedInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaUpdateOneWithoutUploadedFileNestedInput
 }
 
 export type UploadedFileUncheckedUpdateInput = {
@@ -469,6 +481,8 @@ export type UploadedFileUncheckedUpdateInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   aiTechnicianDocument?: Prisma.AiTechnicianDocumentUncheckedUpdateOneWithoutUploadedFileNestedInput
+  semenProviderLogo?: Prisma.SemenProviderUncheckedUpdateOneWithoutLogoUploadedFileNestedInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaUncheckedUpdateOneWithoutUploadedFileNestedInput
 }
 
 export type UploadedFileCreateManyInput = {
@@ -671,6 +685,38 @@ export type EnumUploadedFileStatusFieldUpdateOperationsInput = {
   set?: $Enums.UploadedFileStatus
 }
 
+export type UploadedFileCreateNestedOneWithoutSemenProviderLogoInput = {
+  create?: Prisma.XOR<Prisma.UploadedFileCreateWithoutSemenProviderLogoInput, Prisma.UploadedFileUncheckedCreateWithoutSemenProviderLogoInput>
+  connectOrCreate?: Prisma.UploadedFileCreateOrConnectWithoutSemenProviderLogoInput
+  connect?: Prisma.UploadedFileWhereUniqueInput
+}
+
+export type UploadedFileUpdateOneWithoutSemenProviderLogoNestedInput = {
+  create?: Prisma.XOR<Prisma.UploadedFileCreateWithoutSemenProviderLogoInput, Prisma.UploadedFileUncheckedCreateWithoutSemenProviderLogoInput>
+  connectOrCreate?: Prisma.UploadedFileCreateOrConnectWithoutSemenProviderLogoInput
+  upsert?: Prisma.UploadedFileUpsertWithoutSemenProviderLogoInput
+  disconnect?: Prisma.UploadedFileWhereInput | boolean
+  delete?: Prisma.UploadedFileWhereInput | boolean
+  connect?: Prisma.UploadedFileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UploadedFileUpdateToOneWithWhereWithoutSemenProviderLogoInput, Prisma.UploadedFileUpdateWithoutSemenProviderLogoInput>, Prisma.UploadedFileUncheckedUpdateWithoutSemenProviderLogoInput>
+}
+
+export type UploadedFileCreateNestedOneWithoutSemenTemplateMediaInput = {
+  create?: Prisma.XOR<Prisma.UploadedFileCreateWithoutSemenTemplateMediaInput, Prisma.UploadedFileUncheckedCreateWithoutSemenTemplateMediaInput>
+  connectOrCreate?: Prisma.UploadedFileCreateOrConnectWithoutSemenTemplateMediaInput
+  connect?: Prisma.UploadedFileWhereUniqueInput
+}
+
+export type UploadedFileUpdateOneWithoutSemenTemplateMediaNestedInput = {
+  create?: Prisma.XOR<Prisma.UploadedFileCreateWithoutSemenTemplateMediaInput, Prisma.UploadedFileUncheckedCreateWithoutSemenTemplateMediaInput>
+  connectOrCreate?: Prisma.UploadedFileCreateOrConnectWithoutSemenTemplateMediaInput
+  upsert?: Prisma.UploadedFileUpsertWithoutSemenTemplateMediaInput
+  disconnect?: Prisma.UploadedFileWhereInput | boolean
+  delete?: Prisma.UploadedFileWhereInput | boolean
+  connect?: Prisma.UploadedFileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UploadedFileUpdateToOneWithWhereWithoutSemenTemplateMediaInput, Prisma.UploadedFileUpdateWithoutSemenTemplateMediaInput>, Prisma.UploadedFileUncheckedUpdateWithoutSemenTemplateMediaInput>
+}
+
 export type UploadedFileCreateWithoutOwnerInput = {
   id?: string
   bucket: string
@@ -687,6 +733,8 @@ export type UploadedFileCreateWithoutOwnerInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   aiTechnicianDocument?: Prisma.AiTechnicianDocumentCreateNestedOneWithoutUploadedFileInput
+  semenProviderLogo?: Prisma.SemenProviderCreateNestedOneWithoutLogoUploadedFileInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaCreateNestedOneWithoutUploadedFileInput
 }
 
 export type UploadedFileUncheckedCreateWithoutOwnerInput = {
@@ -705,6 +753,8 @@ export type UploadedFileUncheckedCreateWithoutOwnerInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   aiTechnicianDocument?: Prisma.AiTechnicianDocumentUncheckedCreateNestedOneWithoutUploadedFileInput
+  semenProviderLogo?: Prisma.SemenProviderUncheckedCreateNestedOneWithoutLogoUploadedFileInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaUncheckedCreateNestedOneWithoutUploadedFileInput
 }
 
 export type UploadedFileCreateOrConnectWithoutOwnerInput = {
@@ -770,6 +820,8 @@ export type UploadedFileCreateWithoutAiTechnicianDocumentInput = {
   createdAt?: Date | string
   updatedAt?: Date | string
   owner: Prisma.UserCreateNestedOneWithoutUploadedFilesInput
+  semenProviderLogo?: Prisma.SemenProviderCreateNestedOneWithoutLogoUploadedFileInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaCreateNestedOneWithoutUploadedFileInput
 }
 
 export type UploadedFileUncheckedCreateWithoutAiTechnicianDocumentInput = {
@@ -788,6 +840,8 @@ export type UploadedFileUncheckedCreateWithoutAiTechnicianDocumentInput = {
   status?: $Enums.UploadedFileStatus
   createdAt?: Date | string
   updatedAt?: Date | string
+  semenProviderLogo?: Prisma.SemenProviderUncheckedCreateNestedOneWithoutLogoUploadedFileInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaUncheckedCreateNestedOneWithoutUploadedFileInput
 }
 
 export type UploadedFileCreateOrConnectWithoutAiTechnicianDocumentInput = {
@@ -822,6 +876,8 @@ export type UploadedFileUpdateWithoutAiTechnicianDocumentInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   owner?: Prisma.UserUpdateOneRequiredWithoutUploadedFilesNestedInput
+  semenProviderLogo?: Prisma.SemenProviderUpdateOneWithoutLogoUploadedFileNestedInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaUpdateOneWithoutUploadedFileNestedInput
 }
 
 export type UploadedFileUncheckedUpdateWithoutAiTechnicianDocumentInput = {
@@ -840,6 +896,200 @@ export type UploadedFileUncheckedUpdateWithoutAiTechnicianDocumentInput = {
   status?: Prisma.EnumUploadedFileStatusFieldUpdateOperationsInput | $Enums.UploadedFileStatus
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  semenProviderLogo?: Prisma.SemenProviderUncheckedUpdateOneWithoutLogoUploadedFileNestedInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaUncheckedUpdateOneWithoutUploadedFileNestedInput
+}
+
+export type UploadedFileCreateWithoutSemenProviderLogoInput = {
+  id?: string
+  bucket: string
+  storageKey: string
+  originalName: string
+  mimeType: string
+  sizeBytes: number
+  fileCategory: $Enums.MobileUploadPurpose
+  publicUrl?: string | null
+  checksum?: string | null
+  width?: number | null
+  height?: number | null
+  status?: $Enums.UploadedFileStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutUploadedFilesInput
+  aiTechnicianDocument?: Prisma.AiTechnicianDocumentCreateNestedOneWithoutUploadedFileInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaCreateNestedOneWithoutUploadedFileInput
+}
+
+export type UploadedFileUncheckedCreateWithoutSemenProviderLogoInput = {
+  id?: string
+  ownerUserId: string
+  bucket: string
+  storageKey: string
+  originalName: string
+  mimeType: string
+  sizeBytes: number
+  fileCategory: $Enums.MobileUploadPurpose
+  publicUrl?: string | null
+  checksum?: string | null
+  width?: number | null
+  height?: number | null
+  status?: $Enums.UploadedFileStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  aiTechnicianDocument?: Prisma.AiTechnicianDocumentUncheckedCreateNestedOneWithoutUploadedFileInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaUncheckedCreateNestedOneWithoutUploadedFileInput
+}
+
+export type UploadedFileCreateOrConnectWithoutSemenProviderLogoInput = {
+  where: Prisma.UploadedFileWhereUniqueInput
+  create: Prisma.XOR<Prisma.UploadedFileCreateWithoutSemenProviderLogoInput, Prisma.UploadedFileUncheckedCreateWithoutSemenProviderLogoInput>
+}
+
+export type UploadedFileUpsertWithoutSemenProviderLogoInput = {
+  update: Prisma.XOR<Prisma.UploadedFileUpdateWithoutSemenProviderLogoInput, Prisma.UploadedFileUncheckedUpdateWithoutSemenProviderLogoInput>
+  create: Prisma.XOR<Prisma.UploadedFileCreateWithoutSemenProviderLogoInput, Prisma.UploadedFileUncheckedCreateWithoutSemenProviderLogoInput>
+  where?: Prisma.UploadedFileWhereInput
+}
+
+export type UploadedFileUpdateToOneWithWhereWithoutSemenProviderLogoInput = {
+  where?: Prisma.UploadedFileWhereInput
+  data: Prisma.XOR<Prisma.UploadedFileUpdateWithoutSemenProviderLogoInput, Prisma.UploadedFileUncheckedUpdateWithoutSemenProviderLogoInput>
+}
+
+export type UploadedFileUpdateWithoutSemenProviderLogoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bucket?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  fileCategory?: Prisma.EnumMobileUploadPurposeFieldUpdateOperationsInput | $Enums.MobileUploadPurpose
+  publicUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumUploadedFileStatusFieldUpdateOperationsInput | $Enums.UploadedFileStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutUploadedFilesNestedInput
+  aiTechnicianDocument?: Prisma.AiTechnicianDocumentUpdateOneWithoutUploadedFileNestedInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaUpdateOneWithoutUploadedFileNestedInput
+}
+
+export type UploadedFileUncheckedUpdateWithoutSemenProviderLogoInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ownerUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  bucket?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  fileCategory?: Prisma.EnumMobileUploadPurposeFieldUpdateOperationsInput | $Enums.MobileUploadPurpose
+  publicUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumUploadedFileStatusFieldUpdateOperationsInput | $Enums.UploadedFileStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  aiTechnicianDocument?: Prisma.AiTechnicianDocumentUncheckedUpdateOneWithoutUploadedFileNestedInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaUncheckedUpdateOneWithoutUploadedFileNestedInput
+}
+
+export type UploadedFileCreateWithoutSemenTemplateMediaInput = {
+  id?: string
+  bucket: string
+  storageKey: string
+  originalName: string
+  mimeType: string
+  sizeBytes: number
+  fileCategory: $Enums.MobileUploadPurpose
+  publicUrl?: string | null
+  checksum?: string | null
+  width?: number | null
+  height?: number | null
+  status?: $Enums.UploadedFileStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  owner: Prisma.UserCreateNestedOneWithoutUploadedFilesInput
+  aiTechnicianDocument?: Prisma.AiTechnicianDocumentCreateNestedOneWithoutUploadedFileInput
+  semenProviderLogo?: Prisma.SemenProviderCreateNestedOneWithoutLogoUploadedFileInput
+}
+
+export type UploadedFileUncheckedCreateWithoutSemenTemplateMediaInput = {
+  id?: string
+  ownerUserId: string
+  bucket: string
+  storageKey: string
+  originalName: string
+  mimeType: string
+  sizeBytes: number
+  fileCategory: $Enums.MobileUploadPurpose
+  publicUrl?: string | null
+  checksum?: string | null
+  width?: number | null
+  height?: number | null
+  status?: $Enums.UploadedFileStatus
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  aiTechnicianDocument?: Prisma.AiTechnicianDocumentUncheckedCreateNestedOneWithoutUploadedFileInput
+  semenProviderLogo?: Prisma.SemenProviderUncheckedCreateNestedOneWithoutLogoUploadedFileInput
+}
+
+export type UploadedFileCreateOrConnectWithoutSemenTemplateMediaInput = {
+  where: Prisma.UploadedFileWhereUniqueInput
+  create: Prisma.XOR<Prisma.UploadedFileCreateWithoutSemenTemplateMediaInput, Prisma.UploadedFileUncheckedCreateWithoutSemenTemplateMediaInput>
+}
+
+export type UploadedFileUpsertWithoutSemenTemplateMediaInput = {
+  update: Prisma.XOR<Prisma.UploadedFileUpdateWithoutSemenTemplateMediaInput, Prisma.UploadedFileUncheckedUpdateWithoutSemenTemplateMediaInput>
+  create: Prisma.XOR<Prisma.UploadedFileCreateWithoutSemenTemplateMediaInput, Prisma.UploadedFileUncheckedCreateWithoutSemenTemplateMediaInput>
+  where?: Prisma.UploadedFileWhereInput
+}
+
+export type UploadedFileUpdateToOneWithWhereWithoutSemenTemplateMediaInput = {
+  where?: Prisma.UploadedFileWhereInput
+  data: Prisma.XOR<Prisma.UploadedFileUpdateWithoutSemenTemplateMediaInput, Prisma.UploadedFileUncheckedUpdateWithoutSemenTemplateMediaInput>
+}
+
+export type UploadedFileUpdateWithoutSemenTemplateMediaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  bucket?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  fileCategory?: Prisma.EnumMobileUploadPurposeFieldUpdateOperationsInput | $Enums.MobileUploadPurpose
+  publicUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumUploadedFileStatusFieldUpdateOperationsInput | $Enums.UploadedFileStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  owner?: Prisma.UserUpdateOneRequiredWithoutUploadedFilesNestedInput
+  aiTechnicianDocument?: Prisma.AiTechnicianDocumentUpdateOneWithoutUploadedFileNestedInput
+  semenProviderLogo?: Prisma.SemenProviderUpdateOneWithoutLogoUploadedFileNestedInput
+}
+
+export type UploadedFileUncheckedUpdateWithoutSemenTemplateMediaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  ownerUserId?: Prisma.StringFieldUpdateOperationsInput | string
+  bucket?: Prisma.StringFieldUpdateOperationsInput | string
+  storageKey?: Prisma.StringFieldUpdateOperationsInput | string
+  originalName?: Prisma.StringFieldUpdateOperationsInput | string
+  mimeType?: Prisma.StringFieldUpdateOperationsInput | string
+  sizeBytes?: Prisma.IntFieldUpdateOperationsInput | number
+  fileCategory?: Prisma.EnumMobileUploadPurposeFieldUpdateOperationsInput | $Enums.MobileUploadPurpose
+  publicUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  checksum?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  width?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  height?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  status?: Prisma.EnumUploadedFileStatusFieldUpdateOperationsInput | $Enums.UploadedFileStatus
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  aiTechnicianDocument?: Prisma.AiTechnicianDocumentUncheckedUpdateOneWithoutUploadedFileNestedInput
+  semenProviderLogo?: Prisma.SemenProviderUncheckedUpdateOneWithoutLogoUploadedFileNestedInput
 }
 
 export type UploadedFileCreateManyOwnerInput = {
@@ -875,6 +1125,8 @@ export type UploadedFileUpdateWithoutOwnerInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   aiTechnicianDocument?: Prisma.AiTechnicianDocumentUpdateOneWithoutUploadedFileNestedInput
+  semenProviderLogo?: Prisma.SemenProviderUpdateOneWithoutLogoUploadedFileNestedInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaUpdateOneWithoutUploadedFileNestedInput
 }
 
 export type UploadedFileUncheckedUpdateWithoutOwnerInput = {
@@ -893,6 +1145,8 @@ export type UploadedFileUncheckedUpdateWithoutOwnerInput = {
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   aiTechnicianDocument?: Prisma.AiTechnicianDocumentUncheckedUpdateOneWithoutUploadedFileNestedInput
+  semenProviderLogo?: Prisma.SemenProviderUncheckedUpdateOneWithoutLogoUploadedFileNestedInput
+  semenTemplateMedia?: Prisma.SemenServiceTemplateMediaUncheckedUpdateOneWithoutUploadedFileNestedInput
 }
 
 export type UploadedFileUncheckedUpdateManyWithoutOwnerInput = {
@@ -932,6 +1186,8 @@ export type UploadedFileSelect<ExtArgs extends runtime.Types.Extensions.Internal
   updatedAt?: boolean
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   aiTechnicianDocument?: boolean | Prisma.UploadedFile$aiTechnicianDocumentArgs<ExtArgs>
+  semenProviderLogo?: boolean | Prisma.UploadedFile$semenProviderLogoArgs<ExtArgs>
+  semenTemplateMedia?: boolean | Prisma.UploadedFile$semenTemplateMediaArgs<ExtArgs>
 }, ExtArgs["result"]["uploadedFile"]>
 
 export type UploadedFileSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -994,6 +1250,8 @@ export type UploadedFileOmit<ExtArgs extends runtime.Types.Extensions.InternalAr
 export type UploadedFileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   aiTechnicianDocument?: boolean | Prisma.UploadedFile$aiTechnicianDocumentArgs<ExtArgs>
+  semenProviderLogo?: boolean | Prisma.UploadedFile$semenProviderLogoArgs<ExtArgs>
+  semenTemplateMedia?: boolean | Prisma.UploadedFile$semenTemplateMediaArgs<ExtArgs>
 }
 export type UploadedFileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   owner?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1007,6 +1265,8 @@ export type $UploadedFilePayload<ExtArgs extends runtime.Types.Extensions.Intern
   objects: {
     owner: Prisma.$UserPayload<ExtArgs>
     aiTechnicianDocument: Prisma.$AiTechnicianDocumentPayload<ExtArgs> | null
+    semenProviderLogo: Prisma.$SemenProviderPayload<ExtArgs> | null
+    semenTemplateMedia: Prisma.$SemenServiceTemplateMediaPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1420,6 +1680,8 @@ export interface Prisma__UploadedFileClient<T, Null = never, ExtArgs extends run
   readonly [Symbol.toStringTag]: "PrismaPromise"
   owner<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   aiTechnicianDocument<T extends Prisma.UploadedFile$aiTechnicianDocumentArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UploadedFile$aiTechnicianDocumentArgs<ExtArgs>>): Prisma.Prisma__AiTechnicianDocumentClient<runtime.Types.Result.GetResult<Prisma.$AiTechnicianDocumentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  semenProviderLogo<T extends Prisma.UploadedFile$semenProviderLogoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UploadedFile$semenProviderLogoArgs<ExtArgs>>): Prisma.Prisma__SemenProviderClient<runtime.Types.Result.GetResult<Prisma.$SemenProviderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  semenTemplateMedia<T extends Prisma.UploadedFile$semenTemplateMediaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UploadedFile$semenTemplateMediaArgs<ExtArgs>>): Prisma.Prisma__SemenServiceTemplateMediaClient<runtime.Types.Result.GetResult<Prisma.$SemenServiceTemplateMediaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1881,6 +2143,44 @@ export type UploadedFile$aiTechnicianDocumentArgs<ExtArgs extends runtime.Types.
    */
   include?: Prisma.AiTechnicianDocumentInclude<ExtArgs> | null
   where?: Prisma.AiTechnicianDocumentWhereInput
+}
+
+/**
+ * UploadedFile.semenProviderLogo
+ */
+export type UploadedFile$semenProviderLogoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SemenProvider
+   */
+  select?: Prisma.SemenProviderSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SemenProvider
+   */
+  omit?: Prisma.SemenProviderOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SemenProviderInclude<ExtArgs> | null
+  where?: Prisma.SemenProviderWhereInput
+}
+
+/**
+ * UploadedFile.semenTemplateMedia
+ */
+export type UploadedFile$semenTemplateMediaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SemenServiceTemplateMedia
+   */
+  select?: Prisma.SemenServiceTemplateMediaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SemenServiceTemplateMedia
+   */
+  omit?: Prisma.SemenServiceTemplateMediaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SemenServiceTemplateMediaInclude<ExtArgs> | null
+  where?: Prisma.SemenServiceTemplateMediaWhereInput
 }
 
 /**

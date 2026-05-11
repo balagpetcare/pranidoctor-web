@@ -4,6 +4,12 @@
  */
 import type { PrismaClient } from "../../src/generated/prisma/client";
 
+import {
+  upsertDistrictByTrimmedCode,
+  upsertUnionByTrimmedCode,
+  upsertUpazilaByTrimmedCode,
+} from "./location-trim-upserts";
+
 /** Division rows keyed by stable `slug` (must match `Division.slug`). */
 export const BD_DIVISION_PATCHES = [
   {
@@ -29,7 +35,8 @@ export const BD_DISTRICT_ROWS = [
     divisionSlug: "dhaka-division-geo",
     nameBn: "টাঙ্গাইল",
     nameEn: "Tangail",
-    code: "3033",
+    /// BBS-style code; must not collide with `gazipur-district` (`3033`) under the same division (trim-code unique index).
+    code: "3034",
     sortOrder: 33,
   },
   {
@@ -56,7 +63,7 @@ export const BD_UPAZILA_ROWS = [
     districtSlug: "tangail-district",
     nameBn: "টাঙ্গাইল সদর",
     nameEn: "Tangail Sadar",
-    code: "303328",
+    code: "303418",
     sortOrder: 10,
   },
   {
@@ -83,7 +90,7 @@ export const BD_UNION_ROWS = [
     upazilaSlug: "tangail-sadar-upazila",
     nameBn: "কাগমারী",
     nameEn: "Kagmari",
-    code: "30332801",
+    code: "30341801",
     sortOrder: 11,
   },
   {
@@ -143,26 +150,15 @@ export async function seedBdReferenceLocations(prisma: PrismaClient): Promise<vo
       continue;
     }
     const label = row.nameEn;
-    const dist = await prisma.district.upsert({
-      where: { slug: row.slug },
-      create: {
-        divisionId: div.id,
-        name: label,
-        nameBn: row.nameBn,
-        nameEn: row.nameEn,
-        slug: row.slug,
-        code: row.code ?? null,
-        sortOrder: row.sortOrder ?? 0,
-        isActive: true,
-      },
-      update: {
-        divisionId: div.id,
-        nameBn: row.nameBn,
-        nameEn: row.nameEn,
-        code: row.code ?? undefined,
-        sortOrder: row.sortOrder ?? undefined,
-        isActive: true,
-      },
+    const dist = await upsertDistrictByTrimmedCode(prisma, {
+      divisionId: div.id,
+      slug: row.slug,
+      name: label,
+      nameBn: row.nameBn,
+      nameEn: row.nameEn,
+      code: row.code ?? null,
+      sortOrder: row.sortOrder ?? 0,
+      isActive: true,
     });
     districtBySlug.set(row.slug, { id: dist.id });
   }
@@ -178,26 +174,15 @@ export async function seedBdReferenceLocations(prisma: PrismaClient): Promise<vo
       continue;
     }
     const label = row.nameEn;
-    const up = await prisma.upazila.upsert({
-      where: { slug: row.slug },
-      create: {
-        districtId: dist.id,
-        name: label,
-        nameBn: row.nameBn,
-        nameEn: row.nameEn,
-        slug: row.slug,
-        code: row.code ?? null,
-        sortOrder: row.sortOrder ?? 0,
-        isActive: true,
-      },
-      update: {
-        districtId: dist.id,
-        nameBn: row.nameBn,
-        nameEn: row.nameEn,
-        code: row.code ?? undefined,
-        sortOrder: row.sortOrder ?? undefined,
-        isActive: true,
-      },
+    const up = await upsertUpazilaByTrimmedCode(prisma, {
+      districtId: dist.id,
+      slug: row.slug,
+      name: label,
+      nameBn: row.nameBn,
+      nameEn: row.nameEn,
+      code: row.code ?? null,
+      sortOrder: row.sortOrder ?? 0,
+      isActive: true,
     });
     upazilaBySlug.set(row.slug, { id: up.id });
   }
@@ -211,26 +196,15 @@ export async function seedBdReferenceLocations(prisma: PrismaClient): Promise<vo
       continue;
     }
     const label = row.nameEn;
-    await prisma.union.upsert({
-      where: { slug: row.slug },
-      create: {
-        upazilaId: up.id,
-        name: label,
-        nameBn: row.nameBn,
-        nameEn: row.nameEn,
-        slug: row.slug,
-        code: row.code ?? null,
-        sortOrder: row.sortOrder ?? 0,
-        isActive: true,
-      },
-      update: {
-        upazilaId: up.id,
-        nameBn: row.nameBn,
-        nameEn: row.nameEn,
-        code: row.code ?? undefined,
-        sortOrder: row.sortOrder ?? undefined,
-        isActive: true,
-      },
+    await upsertUnionByTrimmedCode(prisma, {
+      upazilaId: up.id,
+      slug: row.slug,
+      name: label,
+      nameBn: row.nameBn,
+      nameEn: row.nameEn,
+      code: row.code ?? null,
+      sortOrder: row.sortOrder ?? 0,
+      isActive: true,
     });
   }
 }

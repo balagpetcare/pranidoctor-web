@@ -30,12 +30,16 @@ export type AiTechnicianServiceAvgAggregateOutputType = {
   basePrice: runtime.Decimal | null
   visitFee: runtime.Decimal | null
   emergencyFee: runtime.Decimal | null
+  offerPrice: runtime.Decimal | null
+  discountPercent: runtime.Decimal | null
 }
 
 export type AiTechnicianServiceSumAggregateOutputType = {
   basePrice: runtime.Decimal | null
   visitFee: runtime.Decimal | null
   emergencyFee: runtime.Decimal | null
+  offerPrice: runtime.Decimal | null
+  discountPercent: runtime.Decimal | null
 }
 
 export type AiTechnicianServiceMinAggregateOutputType = {
@@ -51,6 +55,11 @@ export type AiTechnicianServiceMinAggregateOutputType = {
   repeatServicePolicy: string | null
   followUpIncluded: boolean | null
   status: $Enums.AiTechnicianServiceStatus | null
+  semenServiceTemplateId: string | null
+  offerPrice: runtime.Decimal | null
+  discountPercent: runtime.Decimal | null
+  isAvailable: boolean | null
+  technicianServiceNote: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -68,6 +77,11 @@ export type AiTechnicianServiceMaxAggregateOutputType = {
   repeatServicePolicy: string | null
   followUpIncluded: boolean | null
   status: $Enums.AiTechnicianServiceStatus | null
+  semenServiceTemplateId: string | null
+  offerPrice: runtime.Decimal | null
+  discountPercent: runtime.Decimal | null
+  isAvailable: boolean | null
+  technicianServiceNote: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -85,6 +99,11 @@ export type AiTechnicianServiceCountAggregateOutputType = {
   repeatServicePolicy: number
   followUpIncluded: number
   status: number
+  semenServiceTemplateId: number
+  offerPrice: number
+  discountPercent: number
+  isAvailable: number
+  technicianServiceNote: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -95,12 +114,16 @@ export type AiTechnicianServiceAvgAggregateInputType = {
   basePrice?: true
   visitFee?: true
   emergencyFee?: true
+  offerPrice?: true
+  discountPercent?: true
 }
 
 export type AiTechnicianServiceSumAggregateInputType = {
   basePrice?: true
   visitFee?: true
   emergencyFee?: true
+  offerPrice?: true
+  discountPercent?: true
 }
 
 export type AiTechnicianServiceMinAggregateInputType = {
@@ -116,6 +139,11 @@ export type AiTechnicianServiceMinAggregateInputType = {
   repeatServicePolicy?: true
   followUpIncluded?: true
   status?: true
+  semenServiceTemplateId?: true
+  offerPrice?: true
+  discountPercent?: true
+  isAvailable?: true
+  technicianServiceNote?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -133,6 +161,11 @@ export type AiTechnicianServiceMaxAggregateInputType = {
   repeatServicePolicy?: true
   followUpIncluded?: true
   status?: true
+  semenServiceTemplateId?: true
+  offerPrice?: true
+  discountPercent?: true
+  isAvailable?: true
+  technicianServiceNote?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -150,6 +183,11 @@ export type AiTechnicianServiceCountAggregateInputType = {
   repeatServicePolicy?: true
   followUpIncluded?: true
   status?: true
+  semenServiceTemplateId?: true
+  offerPrice?: true
+  discountPercent?: true
+  isAvailable?: true
+  technicianServiceNote?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -254,6 +292,11 @@ export type AiTechnicianServiceGroupByOutputType = {
   repeatServicePolicy: string | null
   followUpIncluded: boolean
   status: $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId: string | null
+  offerPrice: runtime.Decimal | null
+  discountPercent: runtime.Decimal | null
+  isAvailable: boolean
+  technicianServiceNote: string | null
   createdAt: Date
   updatedAt: Date
   _count: AiTechnicianServiceCountAggregateOutputType | null
@@ -294,10 +337,17 @@ export type AiTechnicianServiceWhereInput = {
   repeatServicePolicy?: Prisma.StringNullableFilter<"AiTechnicianService"> | string | null
   followUpIncluded?: Prisma.BoolFilter<"AiTechnicianService"> | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusFilter<"AiTechnicianService"> | $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: Prisma.StringNullableFilter<"AiTechnicianService"> | string | null
+  offerPrice?: Prisma.DecimalNullableFilter<"AiTechnicianService"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.DecimalNullableFilter<"AiTechnicianService"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFilter<"AiTechnicianService"> | boolean
+  technicianServiceNote?: Prisma.StringNullableFilter<"AiTechnicianService"> | string | null
   createdAt?: Prisma.DateTimeFilter<"AiTechnicianService"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AiTechnicianService"> | Date | string
   aiTechnician?: Prisma.XOR<Prisma.AiTechnicianProfileScalarRelationFilter, Prisma.AiTechnicianProfileWhereInput>
+  semenServiceTemplate?: Prisma.XOR<Prisma.SemenServiceTemplateNullableScalarRelationFilter, Prisma.SemenServiceTemplateWhereInput> | null
   aiServiceRequests?: Prisma.AiServiceRequestListRelationFilter
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryListRelationFilter
 }
 
 export type AiTechnicianServiceOrderByWithRelationInput = {
@@ -313,14 +363,22 @@ export type AiTechnicianServiceOrderByWithRelationInput = {
   repeatServicePolicy?: Prisma.SortOrderInput | Prisma.SortOrder
   followUpIncluded?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  semenServiceTemplateId?: Prisma.SortOrderInput | Prisma.SortOrder
+  offerPrice?: Prisma.SortOrderInput | Prisma.SortOrder
+  discountPercent?: Prisma.SortOrderInput | Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
+  technicianServiceNote?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   aiTechnician?: Prisma.AiTechnicianProfileOrderByWithRelationInput
+  semenServiceTemplate?: Prisma.SemenServiceTemplateOrderByWithRelationInput
   aiServiceRequests?: Prisma.AiServiceRequestOrderByRelationAggregateInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryOrderByRelationAggregateInput
 }
 
 export type AiTechnicianServiceWhereUniqueInput = Prisma.AtLeast<{
   id?: string
+  aiTechnicianId_semenServiceTemplateId?: Prisma.AiTechnicianServiceAiTechnicianIdSemenServiceTemplateIdCompoundUniqueInput
   AND?: Prisma.AiTechnicianServiceWhereInput | Prisma.AiTechnicianServiceWhereInput[]
   OR?: Prisma.AiTechnicianServiceWhereInput[]
   NOT?: Prisma.AiTechnicianServiceWhereInput | Prisma.AiTechnicianServiceWhereInput[]
@@ -335,11 +393,18 @@ export type AiTechnicianServiceWhereUniqueInput = Prisma.AtLeast<{
   repeatServicePolicy?: Prisma.StringNullableFilter<"AiTechnicianService"> | string | null
   followUpIncluded?: Prisma.BoolFilter<"AiTechnicianService"> | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusFilter<"AiTechnicianService"> | $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: Prisma.StringNullableFilter<"AiTechnicianService"> | string | null
+  offerPrice?: Prisma.DecimalNullableFilter<"AiTechnicianService"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.DecimalNullableFilter<"AiTechnicianService"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFilter<"AiTechnicianService"> | boolean
+  technicianServiceNote?: Prisma.StringNullableFilter<"AiTechnicianService"> | string | null
   createdAt?: Prisma.DateTimeFilter<"AiTechnicianService"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AiTechnicianService"> | Date | string
   aiTechnician?: Prisma.XOR<Prisma.AiTechnicianProfileScalarRelationFilter, Prisma.AiTechnicianProfileWhereInput>
+  semenServiceTemplate?: Prisma.XOR<Prisma.SemenServiceTemplateNullableScalarRelationFilter, Prisma.SemenServiceTemplateWhereInput> | null
   aiServiceRequests?: Prisma.AiServiceRequestListRelationFilter
-}, "id">
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryListRelationFilter
+}, "id" | "aiTechnicianId_semenServiceTemplateId">
 
 export type AiTechnicianServiceOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
@@ -354,6 +419,11 @@ export type AiTechnicianServiceOrderByWithAggregationInput = {
   repeatServicePolicy?: Prisma.SortOrderInput | Prisma.SortOrder
   followUpIncluded?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  semenServiceTemplateId?: Prisma.SortOrderInput | Prisma.SortOrder
+  offerPrice?: Prisma.SortOrderInput | Prisma.SortOrder
+  discountPercent?: Prisma.SortOrderInput | Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
+  technicianServiceNote?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.AiTechnicianServiceCountOrderByAggregateInput
@@ -379,6 +449,11 @@ export type AiTechnicianServiceScalarWhereWithAggregatesInput = {
   repeatServicePolicy?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianService"> | string | null
   followUpIncluded?: Prisma.BoolWithAggregatesFilter<"AiTechnicianService"> | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusWithAggregatesFilter<"AiTechnicianService"> | $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianService"> | string | null
+  offerPrice?: Prisma.DecimalNullableWithAggregatesFilter<"AiTechnicianService"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.DecimalNullableWithAggregatesFilter<"AiTechnicianService"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolWithAggregatesFilter<"AiTechnicianService"> | boolean
+  technicianServiceNote?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianService"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AiTechnicianService"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AiTechnicianService"> | Date | string
 }
@@ -395,10 +470,16 @@ export type AiTechnicianServiceCreateInput = {
   repeatServicePolicy?: string | null
   followUpIncluded?: boolean
   status?: $Enums.AiTechnicianServiceStatus
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   aiTechnician: Prisma.AiTechnicianProfileCreateNestedOneWithoutTechnicianServicesInput
+  semenServiceTemplate?: Prisma.SemenServiceTemplateCreateNestedOneWithoutTechnicianServicesInput
   aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutServiceInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryCreateNestedManyWithoutAiTechnicianServiceInput
 }
 
 export type AiTechnicianServiceUncheckedCreateInput = {
@@ -414,9 +495,15 @@ export type AiTechnicianServiceUncheckedCreateInput = {
   repeatServicePolicy?: string | null
   followUpIncluded?: boolean
   status?: $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: string | null
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutServiceInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryUncheckedCreateNestedManyWithoutAiTechnicianServiceInput
 }
 
 export type AiTechnicianServiceUpdateInput = {
@@ -431,10 +518,16 @@ export type AiTechnicianServiceUpdateInput = {
   repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   aiTechnician?: Prisma.AiTechnicianProfileUpdateOneRequiredWithoutTechnicianServicesNestedInput
+  semenServiceTemplate?: Prisma.SemenServiceTemplateUpdateOneWithoutTechnicianServicesNestedInput
   aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutServiceNestedInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryUpdateManyWithoutAiTechnicianServiceNestedInput
 }
 
 export type AiTechnicianServiceUncheckedUpdateInput = {
@@ -450,9 +543,15 @@ export type AiTechnicianServiceUncheckedUpdateInput = {
   repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutServiceNestedInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryUncheckedUpdateManyWithoutAiTechnicianServiceNestedInput
 }
 
 export type AiTechnicianServiceCreateManyInput = {
@@ -468,6 +567,11 @@ export type AiTechnicianServiceCreateManyInput = {
   repeatServicePolicy?: string | null
   followUpIncluded?: boolean
   status?: $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: string | null
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -484,6 +588,10 @@ export type AiTechnicianServiceUpdateManyMutationInput = {
   repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -501,6 +609,11 @@ export type AiTechnicianServiceUncheckedUpdateManyInput = {
   repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -513,6 +626,11 @@ export type AiTechnicianServiceListRelationFilter = {
 
 export type AiTechnicianServiceOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type AiTechnicianServiceAiTechnicianIdSemenServiceTemplateIdCompoundUniqueInput = {
+  aiTechnicianId: string
+  semenServiceTemplateId: string
 }
 
 export type AiTechnicianServiceCountOrderByAggregateInput = {
@@ -528,6 +646,11 @@ export type AiTechnicianServiceCountOrderByAggregateInput = {
   repeatServicePolicy?: Prisma.SortOrder
   followUpIncluded?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  semenServiceTemplateId?: Prisma.SortOrder
+  offerPrice?: Prisma.SortOrder
+  discountPercent?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
+  technicianServiceNote?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -536,6 +659,8 @@ export type AiTechnicianServiceAvgOrderByAggregateInput = {
   basePrice?: Prisma.SortOrder
   visitFee?: Prisma.SortOrder
   emergencyFee?: Prisma.SortOrder
+  offerPrice?: Prisma.SortOrder
+  discountPercent?: Prisma.SortOrder
 }
 
 export type AiTechnicianServiceMaxOrderByAggregateInput = {
@@ -551,6 +676,11 @@ export type AiTechnicianServiceMaxOrderByAggregateInput = {
   repeatServicePolicy?: Prisma.SortOrder
   followUpIncluded?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  semenServiceTemplateId?: Prisma.SortOrder
+  offerPrice?: Prisma.SortOrder
+  discountPercent?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
+  technicianServiceNote?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -568,6 +698,11 @@ export type AiTechnicianServiceMinOrderByAggregateInput = {
   repeatServicePolicy?: Prisma.SortOrder
   followUpIncluded?: Prisma.SortOrder
   status?: Prisma.SortOrder
+  semenServiceTemplateId?: Prisma.SortOrder
+  offerPrice?: Prisma.SortOrder
+  discountPercent?: Prisma.SortOrder
+  isAvailable?: Prisma.SortOrder
+  technicianServiceNote?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -576,6 +711,13 @@ export type AiTechnicianServiceSumOrderByAggregateInput = {
   basePrice?: Prisma.SortOrder
   visitFee?: Prisma.SortOrder
   emergencyFee?: Prisma.SortOrder
+  offerPrice?: Prisma.SortOrder
+  discountPercent?: Prisma.SortOrder
+}
+
+export type AiTechnicianServiceScalarRelationFilter = {
+  is?: Prisma.AiTechnicianServiceWhereInput
+  isNot?: Prisma.AiTechnicianServiceWhereInput
 }
 
 export type AiTechnicianServiceNullableScalarRelationFilter = {
@@ -625,20 +767,64 @@ export type AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
   deleteMany?: Prisma.AiTechnicianServiceScalarWhereInput | Prisma.AiTechnicianServiceScalarWhereInput[]
 }
 
-export type EnumAnimalTypeFieldUpdateOperationsInput = {
-  set?: $Enums.AnimalType
+export type AiTechnicianServiceCreateNestedManyWithoutSemenServiceTemplateInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianServiceCreateWithoutSemenServiceTemplateInput, Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenServiceTemplateInput> | Prisma.AiTechnicianServiceCreateWithoutSemenServiceTemplateInput[] | Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenServiceTemplateInput[]
+  connectOrCreate?: Prisma.AiTechnicianServiceCreateOrConnectWithoutSemenServiceTemplateInput | Prisma.AiTechnicianServiceCreateOrConnectWithoutSemenServiceTemplateInput[]
+  createMany?: Prisma.AiTechnicianServiceCreateManySemenServiceTemplateInputEnvelope
+  connect?: Prisma.AiTechnicianServiceWhereUniqueInput | Prisma.AiTechnicianServiceWhereUniqueInput[]
 }
 
-export type DecimalFieldUpdateOperationsInput = {
-  set?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  increment?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  decrement?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  multiply?: runtime.Decimal | runtime.DecimalJsLike | number | string
-  divide?: runtime.Decimal | runtime.DecimalJsLike | number | string
+export type AiTechnicianServiceUncheckedCreateNestedManyWithoutSemenServiceTemplateInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianServiceCreateWithoutSemenServiceTemplateInput, Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenServiceTemplateInput> | Prisma.AiTechnicianServiceCreateWithoutSemenServiceTemplateInput[] | Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenServiceTemplateInput[]
+  connectOrCreate?: Prisma.AiTechnicianServiceCreateOrConnectWithoutSemenServiceTemplateInput | Prisma.AiTechnicianServiceCreateOrConnectWithoutSemenServiceTemplateInput[]
+  createMany?: Prisma.AiTechnicianServiceCreateManySemenServiceTemplateInputEnvelope
+  connect?: Prisma.AiTechnicianServiceWhereUniqueInput | Prisma.AiTechnicianServiceWhereUniqueInput[]
+}
+
+export type AiTechnicianServiceUpdateManyWithoutSemenServiceTemplateNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianServiceCreateWithoutSemenServiceTemplateInput, Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenServiceTemplateInput> | Prisma.AiTechnicianServiceCreateWithoutSemenServiceTemplateInput[] | Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenServiceTemplateInput[]
+  connectOrCreate?: Prisma.AiTechnicianServiceCreateOrConnectWithoutSemenServiceTemplateInput | Prisma.AiTechnicianServiceCreateOrConnectWithoutSemenServiceTemplateInput[]
+  upsert?: Prisma.AiTechnicianServiceUpsertWithWhereUniqueWithoutSemenServiceTemplateInput | Prisma.AiTechnicianServiceUpsertWithWhereUniqueWithoutSemenServiceTemplateInput[]
+  createMany?: Prisma.AiTechnicianServiceCreateManySemenServiceTemplateInputEnvelope
+  set?: Prisma.AiTechnicianServiceWhereUniqueInput | Prisma.AiTechnicianServiceWhereUniqueInput[]
+  disconnect?: Prisma.AiTechnicianServiceWhereUniqueInput | Prisma.AiTechnicianServiceWhereUniqueInput[]
+  delete?: Prisma.AiTechnicianServiceWhereUniqueInput | Prisma.AiTechnicianServiceWhereUniqueInput[]
+  connect?: Prisma.AiTechnicianServiceWhereUniqueInput | Prisma.AiTechnicianServiceWhereUniqueInput[]
+  update?: Prisma.AiTechnicianServiceUpdateWithWhereUniqueWithoutSemenServiceTemplateInput | Prisma.AiTechnicianServiceUpdateWithWhereUniqueWithoutSemenServiceTemplateInput[]
+  updateMany?: Prisma.AiTechnicianServiceUpdateManyWithWhereWithoutSemenServiceTemplateInput | Prisma.AiTechnicianServiceUpdateManyWithWhereWithoutSemenServiceTemplateInput[]
+  deleteMany?: Prisma.AiTechnicianServiceScalarWhereInput | Prisma.AiTechnicianServiceScalarWhereInput[]
+}
+
+export type AiTechnicianServiceUncheckedUpdateManyWithoutSemenServiceTemplateNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianServiceCreateWithoutSemenServiceTemplateInput, Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenServiceTemplateInput> | Prisma.AiTechnicianServiceCreateWithoutSemenServiceTemplateInput[] | Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenServiceTemplateInput[]
+  connectOrCreate?: Prisma.AiTechnicianServiceCreateOrConnectWithoutSemenServiceTemplateInput | Prisma.AiTechnicianServiceCreateOrConnectWithoutSemenServiceTemplateInput[]
+  upsert?: Prisma.AiTechnicianServiceUpsertWithWhereUniqueWithoutSemenServiceTemplateInput | Prisma.AiTechnicianServiceUpsertWithWhereUniqueWithoutSemenServiceTemplateInput[]
+  createMany?: Prisma.AiTechnicianServiceCreateManySemenServiceTemplateInputEnvelope
+  set?: Prisma.AiTechnicianServiceWhereUniqueInput | Prisma.AiTechnicianServiceWhereUniqueInput[]
+  disconnect?: Prisma.AiTechnicianServiceWhereUniqueInput | Prisma.AiTechnicianServiceWhereUniqueInput[]
+  delete?: Prisma.AiTechnicianServiceWhereUniqueInput | Prisma.AiTechnicianServiceWhereUniqueInput[]
+  connect?: Prisma.AiTechnicianServiceWhereUniqueInput | Prisma.AiTechnicianServiceWhereUniqueInput[]
+  update?: Prisma.AiTechnicianServiceUpdateWithWhereUniqueWithoutSemenServiceTemplateInput | Prisma.AiTechnicianServiceUpdateWithWhereUniqueWithoutSemenServiceTemplateInput[]
+  updateMany?: Prisma.AiTechnicianServiceUpdateManyWithWhereWithoutSemenServiceTemplateInput | Prisma.AiTechnicianServiceUpdateManyWithWhereWithoutSemenServiceTemplateInput[]
+  deleteMany?: Prisma.AiTechnicianServiceScalarWhereInput | Prisma.AiTechnicianServiceScalarWhereInput[]
 }
 
 export type EnumAiTechnicianServiceStatusFieldUpdateOperationsInput = {
   set?: $Enums.AiTechnicianServiceStatus
+}
+
+export type AiTechnicianServiceCreateNestedOneWithoutSemenInventoryLotsInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianServiceCreateWithoutSemenInventoryLotsInput, Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenInventoryLotsInput>
+  connectOrCreate?: Prisma.AiTechnicianServiceCreateOrConnectWithoutSemenInventoryLotsInput
+  connect?: Prisma.AiTechnicianServiceWhereUniqueInput
+}
+
+export type AiTechnicianServiceUpdateOneRequiredWithoutSemenInventoryLotsNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianServiceCreateWithoutSemenInventoryLotsInput, Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenInventoryLotsInput>
+  connectOrCreate?: Prisma.AiTechnicianServiceCreateOrConnectWithoutSemenInventoryLotsInput
+  upsert?: Prisma.AiTechnicianServiceUpsertWithoutSemenInventoryLotsInput
+  connect?: Prisma.AiTechnicianServiceWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AiTechnicianServiceUpdateToOneWithWhereWithoutSemenInventoryLotsInput, Prisma.AiTechnicianServiceUpdateWithoutSemenInventoryLotsInput>, Prisma.AiTechnicianServiceUncheckedUpdateWithoutSemenInventoryLotsInput>
 }
 
 export type AiTechnicianServiceCreateNestedOneWithoutAiServiceRequestsInput = {
@@ -669,9 +855,15 @@ export type AiTechnicianServiceCreateWithoutAiTechnicianInput = {
   repeatServicePolicy?: string | null
   followUpIncluded?: boolean
   status?: $Enums.AiTechnicianServiceStatus
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  semenServiceTemplate?: Prisma.SemenServiceTemplateCreateNestedOneWithoutTechnicianServicesInput
   aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutServiceInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryCreateNestedManyWithoutAiTechnicianServiceInput
 }
 
 export type AiTechnicianServiceUncheckedCreateWithoutAiTechnicianInput = {
@@ -686,9 +878,15 @@ export type AiTechnicianServiceUncheckedCreateWithoutAiTechnicianInput = {
   repeatServicePolicy?: string | null
   followUpIncluded?: boolean
   status?: $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: string | null
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutServiceInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryUncheckedCreateNestedManyWithoutAiTechnicianServiceInput
 }
 
 export type AiTechnicianServiceCreateOrConnectWithoutAiTechnicianInput = {
@@ -733,8 +931,193 @@ export type AiTechnicianServiceScalarWhereInput = {
   repeatServicePolicy?: Prisma.StringNullableFilter<"AiTechnicianService"> | string | null
   followUpIncluded?: Prisma.BoolFilter<"AiTechnicianService"> | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusFilter<"AiTechnicianService"> | $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: Prisma.StringNullableFilter<"AiTechnicianService"> | string | null
+  offerPrice?: Prisma.DecimalNullableFilter<"AiTechnicianService"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.DecimalNullableFilter<"AiTechnicianService"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFilter<"AiTechnicianService"> | boolean
+  technicianServiceNote?: Prisma.StringNullableFilter<"AiTechnicianService"> | string | null
   createdAt?: Prisma.DateTimeFilter<"AiTechnicianService"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AiTechnicianService"> | Date | string
+}
+
+export type AiTechnicianServiceCreateWithoutSemenServiceTemplateInput = {
+  id?: string
+  title: string
+  animalType: $Enums.AnimalType
+  breedOrSemenType?: string | null
+  description?: string | null
+  basePrice: runtime.Decimal | runtime.DecimalJsLike | number | string
+  visitFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  emergencyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  repeatServicePolicy?: string | null
+  followUpIncluded?: boolean
+  status?: $Enums.AiTechnicianServiceStatus
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  aiTechnician: Prisma.AiTechnicianProfileCreateNestedOneWithoutTechnicianServicesInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutServiceInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryCreateNestedManyWithoutAiTechnicianServiceInput
+}
+
+export type AiTechnicianServiceUncheckedCreateWithoutSemenServiceTemplateInput = {
+  id?: string
+  aiTechnicianId: string
+  title: string
+  animalType: $Enums.AnimalType
+  breedOrSemenType?: string | null
+  description?: string | null
+  basePrice: runtime.Decimal | runtime.DecimalJsLike | number | string
+  visitFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  emergencyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  repeatServicePolicy?: string | null
+  followUpIncluded?: boolean
+  status?: $Enums.AiTechnicianServiceStatus
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutServiceInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryUncheckedCreateNestedManyWithoutAiTechnicianServiceInput
+}
+
+export type AiTechnicianServiceCreateOrConnectWithoutSemenServiceTemplateInput = {
+  where: Prisma.AiTechnicianServiceWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianServiceCreateWithoutSemenServiceTemplateInput, Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenServiceTemplateInput>
+}
+
+export type AiTechnicianServiceCreateManySemenServiceTemplateInputEnvelope = {
+  data: Prisma.AiTechnicianServiceCreateManySemenServiceTemplateInput | Prisma.AiTechnicianServiceCreateManySemenServiceTemplateInput[]
+  skipDuplicates?: boolean
+}
+
+export type AiTechnicianServiceUpsertWithWhereUniqueWithoutSemenServiceTemplateInput = {
+  where: Prisma.AiTechnicianServiceWhereUniqueInput
+  update: Prisma.XOR<Prisma.AiTechnicianServiceUpdateWithoutSemenServiceTemplateInput, Prisma.AiTechnicianServiceUncheckedUpdateWithoutSemenServiceTemplateInput>
+  create: Prisma.XOR<Prisma.AiTechnicianServiceCreateWithoutSemenServiceTemplateInput, Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenServiceTemplateInput>
+}
+
+export type AiTechnicianServiceUpdateWithWhereUniqueWithoutSemenServiceTemplateInput = {
+  where: Prisma.AiTechnicianServiceWhereUniqueInput
+  data: Prisma.XOR<Prisma.AiTechnicianServiceUpdateWithoutSemenServiceTemplateInput, Prisma.AiTechnicianServiceUncheckedUpdateWithoutSemenServiceTemplateInput>
+}
+
+export type AiTechnicianServiceUpdateManyWithWhereWithoutSemenServiceTemplateInput = {
+  where: Prisma.AiTechnicianServiceScalarWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianServiceUpdateManyMutationInput, Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutSemenServiceTemplateInput>
+}
+
+export type AiTechnicianServiceCreateWithoutSemenInventoryLotsInput = {
+  id?: string
+  title: string
+  animalType: $Enums.AnimalType
+  breedOrSemenType?: string | null
+  description?: string | null
+  basePrice: runtime.Decimal | runtime.DecimalJsLike | number | string
+  visitFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  emergencyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  repeatServicePolicy?: string | null
+  followUpIncluded?: boolean
+  status?: $Enums.AiTechnicianServiceStatus
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  aiTechnician: Prisma.AiTechnicianProfileCreateNestedOneWithoutTechnicianServicesInput
+  semenServiceTemplate?: Prisma.SemenServiceTemplateCreateNestedOneWithoutTechnicianServicesInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutServiceInput
+}
+
+export type AiTechnicianServiceUncheckedCreateWithoutSemenInventoryLotsInput = {
+  id?: string
+  aiTechnicianId: string
+  title: string
+  animalType: $Enums.AnimalType
+  breedOrSemenType?: string | null
+  description?: string | null
+  basePrice: runtime.Decimal | runtime.DecimalJsLike | number | string
+  visitFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  emergencyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  repeatServicePolicy?: string | null
+  followUpIncluded?: boolean
+  status?: $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: string | null
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutServiceInput
+}
+
+export type AiTechnicianServiceCreateOrConnectWithoutSemenInventoryLotsInput = {
+  where: Prisma.AiTechnicianServiceWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianServiceCreateWithoutSemenInventoryLotsInput, Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenInventoryLotsInput>
+}
+
+export type AiTechnicianServiceUpsertWithoutSemenInventoryLotsInput = {
+  update: Prisma.XOR<Prisma.AiTechnicianServiceUpdateWithoutSemenInventoryLotsInput, Prisma.AiTechnicianServiceUncheckedUpdateWithoutSemenInventoryLotsInput>
+  create: Prisma.XOR<Prisma.AiTechnicianServiceCreateWithoutSemenInventoryLotsInput, Prisma.AiTechnicianServiceUncheckedCreateWithoutSemenInventoryLotsInput>
+  where?: Prisma.AiTechnicianServiceWhereInput
+}
+
+export type AiTechnicianServiceUpdateToOneWithWhereWithoutSemenInventoryLotsInput = {
+  where?: Prisma.AiTechnicianServiceWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianServiceUpdateWithoutSemenInventoryLotsInput, Prisma.AiTechnicianServiceUncheckedUpdateWithoutSemenInventoryLotsInput>
+}
+
+export type AiTechnicianServiceUpdateWithoutSemenInventoryLotsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  animalType?: Prisma.EnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType
+  breedOrSemenType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  basePrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  visitFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  emergencyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneRequiredWithoutTechnicianServicesNestedInput
+  semenServiceTemplate?: Prisma.SemenServiceTemplateUpdateOneWithoutTechnicianServicesNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutServiceNestedInput
+}
+
+export type AiTechnicianServiceUncheckedUpdateWithoutSemenInventoryLotsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  aiTechnicianId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  animalType?: Prisma.EnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType
+  breedOrSemenType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  basePrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  visitFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  emergencyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutServiceNestedInput
 }
 
 export type AiTechnicianServiceCreateWithoutAiServiceRequestsInput = {
@@ -749,9 +1132,15 @@ export type AiTechnicianServiceCreateWithoutAiServiceRequestsInput = {
   repeatServicePolicy?: string | null
   followUpIncluded?: boolean
   status?: $Enums.AiTechnicianServiceStatus
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   aiTechnician: Prisma.AiTechnicianProfileCreateNestedOneWithoutTechnicianServicesInput
+  semenServiceTemplate?: Prisma.SemenServiceTemplateCreateNestedOneWithoutTechnicianServicesInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryCreateNestedManyWithoutAiTechnicianServiceInput
 }
 
 export type AiTechnicianServiceUncheckedCreateWithoutAiServiceRequestsInput = {
@@ -767,8 +1156,14 @@ export type AiTechnicianServiceUncheckedCreateWithoutAiServiceRequestsInput = {
   repeatServicePolicy?: string | null
   followUpIncluded?: boolean
   status?: $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: string | null
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryUncheckedCreateNestedManyWithoutAiTechnicianServiceInput
 }
 
 export type AiTechnicianServiceCreateOrConnectWithoutAiServiceRequestsInput = {
@@ -799,9 +1194,15 @@ export type AiTechnicianServiceUpdateWithoutAiServiceRequestsInput = {
   repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   aiTechnician?: Prisma.AiTechnicianProfileUpdateOneRequiredWithoutTechnicianServicesNestedInput
+  semenServiceTemplate?: Prisma.SemenServiceTemplateUpdateOneWithoutTechnicianServicesNestedInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryUpdateManyWithoutAiTechnicianServiceNestedInput
 }
 
 export type AiTechnicianServiceUncheckedUpdateWithoutAiServiceRequestsInput = {
@@ -817,8 +1218,14 @@ export type AiTechnicianServiceUncheckedUpdateWithoutAiServiceRequestsInput = {
   repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryUncheckedUpdateManyWithoutAiTechnicianServiceNestedInput
 }
 
 export type AiTechnicianServiceCreateManyAiTechnicianInput = {
@@ -833,6 +1240,11 @@ export type AiTechnicianServiceCreateManyAiTechnicianInput = {
   repeatServicePolicy?: string | null
   followUpIncluded?: boolean
   status?: $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: string | null
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -849,9 +1261,15 @@ export type AiTechnicianServiceUpdateWithoutAiTechnicianInput = {
   repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  semenServiceTemplate?: Prisma.SemenServiceTemplateUpdateOneWithoutTechnicianServicesNestedInput
   aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutServiceNestedInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryUpdateManyWithoutAiTechnicianServiceNestedInput
 }
 
 export type AiTechnicianServiceUncheckedUpdateWithoutAiTechnicianInput = {
@@ -866,9 +1284,15 @@ export type AiTechnicianServiceUncheckedUpdateWithoutAiTechnicianInput = {
   repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutServiceNestedInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryUncheckedUpdateManyWithoutAiTechnicianServiceNestedInput
 }
 
 export type AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianInput = {
@@ -883,6 +1307,99 @@ export type AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianInput = {
   repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
   status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  semenServiceTemplateId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AiTechnicianServiceCreateManySemenServiceTemplateInput = {
+  id?: string
+  aiTechnicianId: string
+  title: string
+  animalType: $Enums.AnimalType
+  breedOrSemenType?: string | null
+  description?: string | null
+  basePrice: runtime.Decimal | runtime.DecimalJsLike | number | string
+  visitFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  emergencyFee?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  repeatServicePolicy?: string | null
+  followUpIncluded?: boolean
+  status?: $Enums.AiTechnicianServiceStatus
+  offerPrice?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: boolean
+  technicianServiceNote?: string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type AiTechnicianServiceUpdateWithoutSemenServiceTemplateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  animalType?: Prisma.EnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType
+  breedOrSemenType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  basePrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  visitFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  emergencyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  aiTechnician?: Prisma.AiTechnicianProfileUpdateOneRequiredWithoutTechnicianServicesNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutServiceNestedInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryUpdateManyWithoutAiTechnicianServiceNestedInput
+}
+
+export type AiTechnicianServiceUncheckedUpdateWithoutSemenServiceTemplateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  aiTechnicianId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  animalType?: Prisma.EnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType
+  breedOrSemenType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  basePrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  visitFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  emergencyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutServiceNestedInput
+  semenInventoryLots?: Prisma.TechnicianSemenInventoryUncheckedUpdateManyWithoutAiTechnicianServiceNestedInput
+}
+
+export type AiTechnicianServiceUncheckedUpdateManyWithoutSemenServiceTemplateInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  aiTechnicianId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.StringFieldUpdateOperationsInput | string
+  animalType?: Prisma.EnumAnimalTypeFieldUpdateOperationsInput | $Enums.AnimalType
+  breedOrSemenType?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  basePrice?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  visitFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  emergencyFee?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  repeatServicePolicy?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  followUpIncluded?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  status?: Prisma.EnumAiTechnicianServiceStatusFieldUpdateOperationsInput | $Enums.AiTechnicianServiceStatus
+  offerPrice?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  discountPercent?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  isAvailable?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  technicianServiceNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -894,10 +1411,12 @@ export type AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianInput = {
 
 export type AiTechnicianServiceCountOutputType = {
   aiServiceRequests: number
+  semenInventoryLots: number
 }
 
 export type AiTechnicianServiceCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   aiServiceRequests?: boolean | AiTechnicianServiceCountOutputTypeCountAiServiceRequestsArgs
+  semenInventoryLots?: boolean | AiTechnicianServiceCountOutputTypeCountSemenInventoryLotsArgs
 }
 
 /**
@@ -917,6 +1436,13 @@ export type AiTechnicianServiceCountOutputTypeCountAiServiceRequestsArgs<ExtArgs
   where?: Prisma.AiServiceRequestWhereInput
 }
 
+/**
+ * AiTechnicianServiceCountOutputType without action
+ */
+export type AiTechnicianServiceCountOutputTypeCountSemenInventoryLotsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.TechnicianSemenInventoryWhereInput
+}
+
 
 export type AiTechnicianServiceSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -931,10 +1457,17 @@ export type AiTechnicianServiceSelect<ExtArgs extends runtime.Types.Extensions.I
   repeatServicePolicy?: boolean
   followUpIncluded?: boolean
   status?: boolean
+  semenServiceTemplateId?: boolean
+  offerPrice?: boolean
+  discountPercent?: boolean
+  isAvailable?: boolean
+  technicianServiceNote?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   aiTechnician?: boolean | Prisma.AiTechnicianProfileDefaultArgs<ExtArgs>
+  semenServiceTemplate?: boolean | Prisma.AiTechnicianService$semenServiceTemplateArgs<ExtArgs>
   aiServiceRequests?: boolean | Prisma.AiTechnicianService$aiServiceRequestsArgs<ExtArgs>
+  semenInventoryLots?: boolean | Prisma.AiTechnicianService$semenInventoryLotsArgs<ExtArgs>
   _count?: boolean | Prisma.AiTechnicianServiceCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["aiTechnicianService"]>
 
@@ -951,9 +1484,15 @@ export type AiTechnicianServiceSelectCreateManyAndReturn<ExtArgs extends runtime
   repeatServicePolicy?: boolean
   followUpIncluded?: boolean
   status?: boolean
+  semenServiceTemplateId?: boolean
+  offerPrice?: boolean
+  discountPercent?: boolean
+  isAvailable?: boolean
+  technicianServiceNote?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   aiTechnician?: boolean | Prisma.AiTechnicianProfileDefaultArgs<ExtArgs>
+  semenServiceTemplate?: boolean | Prisma.AiTechnicianService$semenServiceTemplateArgs<ExtArgs>
 }, ExtArgs["result"]["aiTechnicianService"]>
 
 export type AiTechnicianServiceSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -969,9 +1508,15 @@ export type AiTechnicianServiceSelectUpdateManyAndReturn<ExtArgs extends runtime
   repeatServicePolicy?: boolean
   followUpIncluded?: boolean
   status?: boolean
+  semenServiceTemplateId?: boolean
+  offerPrice?: boolean
+  discountPercent?: boolean
+  isAvailable?: boolean
+  technicianServiceNote?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   aiTechnician?: boolean | Prisma.AiTechnicianProfileDefaultArgs<ExtArgs>
+  semenServiceTemplate?: boolean | Prisma.AiTechnicianService$semenServiceTemplateArgs<ExtArgs>
 }, ExtArgs["result"]["aiTechnicianService"]>
 
 export type AiTechnicianServiceSelectScalar = {
@@ -987,28 +1532,39 @@ export type AiTechnicianServiceSelectScalar = {
   repeatServicePolicy?: boolean
   followUpIncluded?: boolean
   status?: boolean
+  semenServiceTemplateId?: boolean
+  offerPrice?: boolean
+  discountPercent?: boolean
+  isAvailable?: boolean
+  technicianServiceNote?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type AiTechnicianServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "aiTechnicianId" | "title" | "animalType" | "breedOrSemenType" | "description" | "basePrice" | "visitFee" | "emergencyFee" | "repeatServicePolicy" | "followUpIncluded" | "status" | "createdAt" | "updatedAt", ExtArgs["result"]["aiTechnicianService"]>
+export type AiTechnicianServiceOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "aiTechnicianId" | "title" | "animalType" | "breedOrSemenType" | "description" | "basePrice" | "visitFee" | "emergencyFee" | "repeatServicePolicy" | "followUpIncluded" | "status" | "semenServiceTemplateId" | "offerPrice" | "discountPercent" | "isAvailable" | "technicianServiceNote" | "createdAt" | "updatedAt", ExtArgs["result"]["aiTechnicianService"]>
 export type AiTechnicianServiceInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   aiTechnician?: boolean | Prisma.AiTechnicianProfileDefaultArgs<ExtArgs>
+  semenServiceTemplate?: boolean | Prisma.AiTechnicianService$semenServiceTemplateArgs<ExtArgs>
   aiServiceRequests?: boolean | Prisma.AiTechnicianService$aiServiceRequestsArgs<ExtArgs>
+  semenInventoryLots?: boolean | Prisma.AiTechnicianService$semenInventoryLotsArgs<ExtArgs>
   _count?: boolean | Prisma.AiTechnicianServiceCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type AiTechnicianServiceIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   aiTechnician?: boolean | Prisma.AiTechnicianProfileDefaultArgs<ExtArgs>
+  semenServiceTemplate?: boolean | Prisma.AiTechnicianService$semenServiceTemplateArgs<ExtArgs>
 }
 export type AiTechnicianServiceIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   aiTechnician?: boolean | Prisma.AiTechnicianProfileDefaultArgs<ExtArgs>
+  semenServiceTemplate?: boolean | Prisma.AiTechnicianService$semenServiceTemplateArgs<ExtArgs>
 }
 
 export type $AiTechnicianServicePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "AiTechnicianService"
   objects: {
     aiTechnician: Prisma.$AiTechnicianProfilePayload<ExtArgs>
+    semenServiceTemplate: Prisma.$SemenServiceTemplatePayload<ExtArgs> | null
     aiServiceRequests: Prisma.$AiServiceRequestPayload<ExtArgs>[]
+    semenInventoryLots: Prisma.$TechnicianSemenInventoryPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -1023,6 +1579,23 @@ export type $AiTechnicianServicePayload<ExtArgs extends runtime.Types.Extensions
     repeatServicePolicy: string | null
     followUpIncluded: boolean
     status: $Enums.AiTechnicianServiceStatus
+    /**
+     * When set, locked semen copy/media come from this approved template (read API merges live template).
+     */
+    semenServiceTemplateId: string | null
+    /**
+     * Technician listing: optional fixed offer price (mutually exclusive with `discountPercent`).
+     */
+    offerPrice: runtime.Decimal | null
+    /**
+     * Technician listing: optional discount % (mutually exclusive with `offerPrice`).
+     */
+    discountPercent: runtime.Decimal | null
+    /**
+     * Technician can hide listing without changing admin `status`.
+     */
+    isAvailable: boolean
+    technicianServiceNote: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["aiTechnicianService"]>
@@ -1420,7 +1993,9 @@ readonly fields: AiTechnicianServiceFieldRefs;
 export interface Prisma__AiTechnicianServiceClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   aiTechnician<T extends Prisma.AiTechnicianProfileDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfileDefaultArgs<ExtArgs>>): Prisma.Prisma__AiTechnicianProfileClient<runtime.Types.Result.GetResult<Prisma.$AiTechnicianProfilePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  semenServiceTemplate<T extends Prisma.AiTechnicianService$semenServiceTemplateArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianService$semenServiceTemplateArgs<ExtArgs>>): Prisma.Prisma__SemenServiceTemplateClient<runtime.Types.Result.GetResult<Prisma.$SemenServiceTemplatePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   aiServiceRequests<T extends Prisma.AiTechnicianService$aiServiceRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianService$aiServiceRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiServiceRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  semenInventoryLots<T extends Prisma.AiTechnicianService$semenInventoryLotsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianService$semenInventoryLotsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TechnicianSemenInventoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1462,6 +2037,11 @@ export interface AiTechnicianServiceFieldRefs {
   readonly repeatServicePolicy: Prisma.FieldRef<"AiTechnicianService", 'String'>
   readonly followUpIncluded: Prisma.FieldRef<"AiTechnicianService", 'Boolean'>
   readonly status: Prisma.FieldRef<"AiTechnicianService", 'AiTechnicianServiceStatus'>
+  readonly semenServiceTemplateId: Prisma.FieldRef<"AiTechnicianService", 'String'>
+  readonly offerPrice: Prisma.FieldRef<"AiTechnicianService", 'Decimal'>
+  readonly discountPercent: Prisma.FieldRef<"AiTechnicianService", 'Decimal'>
+  readonly isAvailable: Prisma.FieldRef<"AiTechnicianService", 'Boolean'>
+  readonly technicianServiceNote: Prisma.FieldRef<"AiTechnicianService", 'String'>
   readonly createdAt: Prisma.FieldRef<"AiTechnicianService", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"AiTechnicianService", 'DateTime'>
 }
@@ -1865,6 +2445,25 @@ export type AiTechnicianServiceDeleteManyArgs<ExtArgs extends runtime.Types.Exte
 }
 
 /**
+ * AiTechnicianService.semenServiceTemplate
+ */
+export type AiTechnicianService$semenServiceTemplateArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the SemenServiceTemplate
+   */
+  select?: Prisma.SemenServiceTemplateSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the SemenServiceTemplate
+   */
+  omit?: Prisma.SemenServiceTemplateOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.SemenServiceTemplateInclude<ExtArgs> | null
+  where?: Prisma.SemenServiceTemplateWhereInput
+}
+
+/**
  * AiTechnicianService.aiServiceRequests
  */
 export type AiTechnicianService$aiServiceRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1886,6 +2485,30 @@ export type AiTechnicianService$aiServiceRequestsArgs<ExtArgs extends runtime.Ty
   take?: number
   skip?: number
   distinct?: Prisma.AiServiceRequestScalarFieldEnum | Prisma.AiServiceRequestScalarFieldEnum[]
+}
+
+/**
+ * AiTechnicianService.semenInventoryLots
+ */
+export type AiTechnicianService$semenInventoryLotsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the TechnicianSemenInventory
+   */
+  select?: Prisma.TechnicianSemenInventorySelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the TechnicianSemenInventory
+   */
+  omit?: Prisma.TechnicianSemenInventoryOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.TechnicianSemenInventoryInclude<ExtArgs> | null
+  where?: Prisma.TechnicianSemenInventoryWhereInput
+  orderBy?: Prisma.TechnicianSemenInventoryOrderByWithRelationInput | Prisma.TechnicianSemenInventoryOrderByWithRelationInput[]
+  cursor?: Prisma.TechnicianSemenInventoryWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.TechnicianSemenInventoryScalarFieldEnum | Prisma.TechnicianSemenInventoryScalarFieldEnum[]
 }
 
 /**
