@@ -1,36 +1,55 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Prani Doctor — Web (Next.js)
 
-## Getting Started
+## Bangladesh Location Master
 
-First, run the development server:
+Geography (division → district → upazila → union → village) lives in normalized Prisma models `Division` … `Village`, with optional `latitude` / `longitude`, `source`, and `isVerified`. See `docs/LOCATION_MASTER_PLAN.md`.
+
+**Generate CSVs from HDX** (after exporting sheets from `bgd_admin_boundaries.xlsx` into `tmp/` — see `scripts/generate-master-csv-from-hdx-tmp.ts`):
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm run locations:generate-csv
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+**Migrate and import:**
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npx prisma migrate dev --name add_location_master
+npm run locations:import
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+**Public read APIs:** `/api/locations/divisions`, `/districts`, `/upazilas`, `/unions`, `/villages`, `/search`, `/tree`.
 
-## Learn More
+**Mobile:** `/api/mobile/locations/divisions`, `/districts`, `/upazilas`, `/unions`, `/villages`, `/search`.
 
-To learn more about Next.js, take a look at the following resources:
+**Admin (authenticated):** `/api/admin/locations/stats`, `/missing-coords`, `/pending-verification`, `/duplicates`, `/import-report` (query `level=` including `ALL`, `limit=`).
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+**Import dry-run:** `npm run locations:import:dry-run` (writes `import-report.json`, no DB writes).
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Normalize + QA (unions/villages from `raw/`):** `npm run locations:normalize`, `npm run locations:qa`.
 
-## Deploy on Vercel
+**Union parent mapping (nuhil ↔ HDX):** `npm run locations:suggest-union-mappings` (see `data/locations/SOURCE_COLLECTION_GUIDE.md` §5.1).
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+**Admin UI:** `/admin/locations` (+ missing-coords / pending-verification subpages).
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+**SQL QA:** `scripts/diagnostics/location-data-quality.sql`.
+
+Village bulk data is not pre-filled; see `data/locations/VILLAGE_DATA_TODO.md`.
+
+## Development
+
+```bash
+npm install
+npm run dev
+```
+
+Quality checks:
+
+```bash
+npm run lint
+npm run typecheck
+npx prisma validate
+```
+
+## Original create-next-app notes
+
+This project was bootstrapped with [create-next-app](https://nextjs.org/docs/app/api-reference/cli/create-next-app). See [Next.js documentation](https://nextjs.org/docs) for framework features.

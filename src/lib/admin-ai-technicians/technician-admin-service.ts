@@ -18,6 +18,7 @@ import {
 
 const BCRYPT_COST = 12;
 
+/** Shared include for admin technician profile API + application review detail. */
 export const technicianDetailInclude = {
   user: {
     select: {

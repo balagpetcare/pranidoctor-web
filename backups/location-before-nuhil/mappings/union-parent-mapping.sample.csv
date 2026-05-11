@@ -1,0 +1,2 @@
+source_division_code,source_district_code,source_upazila_code,source_division_name_en,source_district_name_en,source_upazila_name_en,source_division_name_bn,source_district_name_bn,source_upazila_name_bn,target_division_code,target_district_code,target_upazila_code,target_division_name_en,target_district_name_en,target_upazila_name_en,match_confidence,match_method,review_status,notes
+1,1,1,,,,,,,,,,,,,LOW,NONE,PENDING,Column layout example only — copy a row from union-parent-mapping-review.csv after verification; set APPROVED and fill all target_* cells from HDX master.

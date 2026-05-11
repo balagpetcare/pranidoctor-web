@@ -8,7 +8,8 @@
 | Variable | Purpose |
 |----------|---------|
 | `OTP_MODE` | `dev` (default if unset or not `live`) — no real SMS; OTP in server logs. `live` — send via HTTP SMS gateway. |
-| `OTP_TTL_MINUTES` | Challenge lifetime (default 5). |
+| `MOBILE_OTP_TTL_MINUTES` | Preferred challenge lifetime in minutes (default **15** when unset). Overrides `OTP_TTL_MINUTES`. |
+| `OTP_TTL_MINUTES` | Legacy alias — used only when `MOBILE_OTP_TTL_MINUTES` is unset (default **15**). |
 | `OTP_LENGTH` | Numeric code length (default 6). |
 | `OTP_MAX_ATTEMPTS` | Wrong tries before invalidation (default 5). |
 | `OTP_RESEND_COOLDOWN_SECONDS` | Min gap between sends per phone (default 60). |
@@ -43,7 +44,7 @@ Live mode **does not** log the OTP. On misconfiguration the API returns a Bengal
 5. **Mobile app:** point API base URL at this server; open customer login.
 6. Enter a valid BD mobile number; tap send OTP.
 7. **Read OTP** in the terminal line:  
-   `[PraniDoctor OTP DEV] phone=01XXXXXXXXX otp=XXXXXX expiresIn=5m`
+   `[PraniDoctor OTP DEV] phone=01XXXXXXXXX otp=XXXXXX expiresIn=15m`
 8. Enter the code in the app and complete login.
 
 Optional: open admin **(ডেভ) OTP লগ** at `/admin/dev-tools/otp-logs` (signed-in admin) to see recent dev sends in non-production (plain OTP shown only when not a production build and `OTP_MODE=dev`).

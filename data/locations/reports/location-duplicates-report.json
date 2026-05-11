@@ -1,0 +1,41 @@
+{
+  "generatedAt": "2026-05-11T00:23:58.451Z",
+  "summary": {
+    "duplicateDivisionGroups": 0,
+    "duplicateDistrictGroups": 0,
+    "duplicateUpazilaGroups": 0,
+    "duplicateUnionGroups": 0,
+    "duplicateVillageGroups": 0,
+    "duplicateDivisionRows": 0,
+    "duplicateDistrictRows": 0,
+    "duplicateUpazilaRows": 0,
+    "duplicateUnionRows": 0,
+    "duplicateVillageRows": 0,
+    "districtCodeCollisionGroups": 0,
+    "partialUniqueTrimCodeGroupsDivision": 0,
+    "partialUniqueTrimCodeGroupsDistrict": 0,
+    "partialUniqueTrimCodeGroupsUpazila": 0,
+    "partialUniqueTrimCodeGroupsUnion": 0,
+    "partialUniqueTrimCodeGroupsVillage": 0,
+    "partialUniqueTrimCodeUnsafeDivision": 0,
+    "partialUniqueTrimCodeUnsafeDistrict": 0,
+    "partialUniqueTrimCodeUnsafeUpazila": 0,
+    "partialUniqueTrimCodeUnsafeUnion": 0,
+    "partialUniqueTrimCodeUnsafeVillage": 0
+  },
+  "warnings": {
+    "districtSameCodeDifferentLabels": []
+  },
+  "divisions": [],
+  "districts": [],
+  "upazilas": [],
+  "unions": [],
+  "villages": [],
+  "partialUniqueTrimCodeConflicts": {
+    "divisions": [],
+    "districts": [],
+    "upazilas": [],
+    "unions": [],
+    "villages": []
+  }
+}

@@ -208,6 +208,121 @@ export const ReviewStatus = {
 export type ReviewStatus = (typeof ReviewStatus)[keyof typeof ReviewStatus]
 
 
+export const AiTechnicianStatus = {
+  DRAFT: 'DRAFT',
+  SUBMITTED: 'SUBMITTED',
+  UNDER_REVIEW: 'UNDER_REVIEW',
+  NEEDS_CORRECTION: 'NEEDS_CORRECTION',
+  APPROVED: 'APPROVED',
+  PUBLISHED: 'PUBLISHED',
+  REJECTED: 'REJECTED',
+  SUSPENDED: 'SUSPENDED'
+} as const
+
+export type AiTechnicianStatus = (typeof AiTechnicianStatus)[keyof typeof AiTechnicianStatus]
+
+
+export const AiTechnicianDocumentType = {
+  NID_FRONT: 'NID_FRONT',
+  NID_BACK: 'NID_BACK',
+  PROFILE_PHOTO: 'PROFILE_PHOTO',
+  COVER_IMAGE: 'COVER_IMAGE',
+  TRAINING_CERTIFICATE: 'TRAINING_CERTIFICATE',
+  AI_CERTIFICATE: 'AI_CERTIFICATE',
+  COMPANY_ID: 'COMPANY_ID',
+  EXPERIENCE_PROOF: 'EXPERIENCE_PROOF',
+  OTHER: 'OTHER'
+} as const
+
+export type AiTechnicianDocumentType = (typeof AiTechnicianDocumentType)[keyof typeof AiTechnicianDocumentType]
+
+
+export const AiTechnicianDocumentReviewStatus = {
+  PENDING_REVIEW: 'PENDING_REVIEW',
+  APPROVED: 'APPROVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type AiTechnicianDocumentReviewStatus = (typeof AiTechnicianDocumentReviewStatus)[keyof typeof AiTechnicianDocumentReviewStatus]
+
+
+export const AiTechnicianServiceStatus = {
+  DRAFT: 'DRAFT',
+  PENDING_REVIEW: 'PENDING_REVIEW',
+  ACTIVE: 'ACTIVE',
+  INACTIVE: 'INACTIVE',
+  REJECTED: 'REJECTED'
+} as const
+
+export type AiTechnicianServiceStatus = (typeof AiTechnicianServiceStatus)[keyof typeof AiTechnicianServiceStatus]
+
+
+export const AiServiceRequestStatus = {
+  PENDING: 'PENDING',
+  ACCEPTED: 'ACCEPTED',
+  DECLINED: 'DECLINED',
+  ON_THE_WAY: 'ON_THE_WAY',
+  ARRIVED: 'ARRIVED',
+  IN_PROGRESS: 'IN_PROGRESS',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+} as const
+
+export type AiServiceRequestStatus = (typeof AiServiceRequestStatus)[keyof typeof AiServiceRequestStatus]
+
+
+export const AiTechnicianReviewVisibility = {
+  VISIBLE: 'VISIBLE',
+  HIDDEN: 'HIDDEN'
+} as const
+
+export type AiTechnicianReviewVisibility = (typeof AiTechnicianReviewVisibility)[keyof typeof AiTechnicianReviewVisibility]
+
+
+export const AiTechnicianComplaintStatus = {
+  OPEN: 'OPEN',
+  UNDER_REVIEW: 'UNDER_REVIEW',
+  RESOLVED: 'RESOLVED',
+  REJECTED: 'REJECTED'
+} as const
+
+export type AiTechnicianComplaintStatus = (typeof AiTechnicianComplaintStatus)[keyof typeof AiTechnicianComplaintStatus]
+
+
+export const AiPaymentStatus = {
+  UNPAID: 'UNPAID',
+  CASH_PAID: 'CASH_PAID',
+  MANUAL_PAID: 'MANUAL_PAID',
+  DUE: 'DUE',
+  REFUNDED: 'REFUNDED'
+} as const
+
+export type AiPaymentStatus = (typeof AiPaymentStatus)[keyof typeof AiPaymentStatus]
+
+
+export const MobileUploadPurpose = {
+  AI_TECHNICIAN_NID_FRONT: 'AI_TECHNICIAN_NID_FRONT',
+  AI_TECHNICIAN_NID_BACK: 'AI_TECHNICIAN_NID_BACK',
+  AI_TECHNICIAN_PROFILE_PHOTO: 'AI_TECHNICIAN_PROFILE_PHOTO',
+  AI_TECHNICIAN_COVER_IMAGE: 'AI_TECHNICIAN_COVER_IMAGE',
+  AI_TECHNICIAN_TRAINING_CERTIFICATE: 'AI_TECHNICIAN_TRAINING_CERTIFICATE',
+  AI_TECHNICIAN_AI_CERTIFICATE: 'AI_TECHNICIAN_AI_CERTIFICATE',
+  AI_TECHNICIAN_OTHER: 'AI_TECHNICIAN_OTHER',
+  CUSTOMER_PROFILE_PHOTO: 'CUSTOMER_PROFILE_PHOTO',
+  CUSTOMER_COVER_IMAGE: 'CUSTOMER_COVER_IMAGE'
+} as const
+
+export type MobileUploadPurpose = (typeof MobileUploadPurpose)[keyof typeof MobileUploadPurpose]
+
+
+export const UploadedFileStatus = {
+  ACTIVE: 'ACTIVE',
+  DELETED: 'DELETED'
+} as const
+
+export type UploadedFileStatus = (typeof UploadedFileStatus)[keyof typeof UploadedFileStatus]
+
+
 export const AreaType = {
   DIVISION: 'DIVISION',
   DISTRICT: 'DISTRICT',

@@ -20,16 +20,38 @@ export type UpazilaModel = runtime.Types.Result.DefaultSelection<Prisma.$Upazila
 
 export type AggregateUpazila = {
   _count: UpazilaCountAggregateOutputType | null
+  _avg: UpazilaAvgAggregateOutputType | null
+  _sum: UpazilaSumAggregateOutputType | null
   _min: UpazilaMinAggregateOutputType | null
   _max: UpazilaMaxAggregateOutputType | null
+}
+
+export type UpazilaAvgAggregateOutputType = {
+  sortOrder: number | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+}
+
+export type UpazilaSumAggregateOutputType = {
+  sortOrder: number | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
 }
 
 export type UpazilaMinAggregateOutputType = {
   id: string | null
   districtId: string | null
   name: string | null
+  nameBn: string | null
+  nameEn: string | null
   slug: string | null
   code: string | null
+  sortOrder: number | null
+  isActive: boolean | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  source: string | null
+  isVerified: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -38,8 +60,16 @@ export type UpazilaMaxAggregateOutputType = {
   id: string | null
   districtId: string | null
   name: string | null
+  nameBn: string | null
+  nameEn: string | null
   slug: string | null
   code: string | null
+  sortOrder: number | null
+  isActive: boolean | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  source: string | null
+  isVerified: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -48,20 +78,48 @@ export type UpazilaCountAggregateOutputType = {
   id: number
   districtId: number
   name: number
+  nameBn: number
+  nameEn: number
   slug: number
   code: number
+  sortOrder: number
+  isActive: number
+  latitude: number
+  longitude: number
+  source: number
+  isVerified: number
   createdAt: number
   updatedAt: number
   _all: number
 }
 
 
+export type UpazilaAvgAggregateInputType = {
+  sortOrder?: true
+  latitude?: true
+  longitude?: true
+}
+
+export type UpazilaSumAggregateInputType = {
+  sortOrder?: true
+  latitude?: true
+  longitude?: true
+}
+
 export type UpazilaMinAggregateInputType = {
   id?: true
   districtId?: true
   name?: true
+  nameBn?: true
+  nameEn?: true
   slug?: true
   code?: true
+  sortOrder?: true
+  isActive?: true
+  latitude?: true
+  longitude?: true
+  source?: true
+  isVerified?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -70,8 +128,16 @@ export type UpazilaMaxAggregateInputType = {
   id?: true
   districtId?: true
   name?: true
+  nameBn?: true
+  nameEn?: true
   slug?: true
   code?: true
+  sortOrder?: true
+  isActive?: true
+  latitude?: true
+  longitude?: true
+  source?: true
+  isVerified?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -80,8 +146,16 @@ export type UpazilaCountAggregateInputType = {
   id?: true
   districtId?: true
   name?: true
+  nameBn?: true
+  nameEn?: true
   slug?: true
   code?: true
+  sortOrder?: true
+  isActive?: true
+  latitude?: true
+  longitude?: true
+  source?: true
+  isVerified?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -125,6 +199,18 @@ export type UpazilaAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: UpazilaAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: UpazilaSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: UpazilaMinAggregateInputType
@@ -155,6 +241,8 @@ export type UpazilaGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: UpazilaCountAggregateInputType | true
+  _avg?: UpazilaAvgAggregateInputType
+  _sum?: UpazilaSumAggregateInputType
   _min?: UpazilaMinAggregateInputType
   _max?: UpazilaMaxAggregateInputType
 }
@@ -163,11 +251,21 @@ export type UpazilaGroupByOutputType = {
   id: string
   districtId: string
   name: string
+  nameBn: string | null
+  nameEn: string | null
   slug: string
   code: string | null
+  sortOrder: number
+  isActive: boolean
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  source: string | null
+  isVerified: boolean
   createdAt: Date
   updatedAt: Date
   _count: UpazilaCountAggregateOutputType | null
+  _avg: UpazilaAvgAggregateOutputType | null
+  _sum: UpazilaSumAggregateOutputType | null
   _min: UpazilaMinAggregateOutputType | null
   _max: UpazilaMaxAggregateOutputType | null
 }
@@ -194,24 +292,44 @@ export type UpazilaWhereInput = {
   id?: Prisma.StringFilter<"Upazila"> | string
   districtId?: Prisma.StringFilter<"Upazila"> | string
   name?: Prisma.StringFilter<"Upazila"> | string
+  nameBn?: Prisma.StringNullableFilter<"Upazila"> | string | null
+  nameEn?: Prisma.StringNullableFilter<"Upazila"> | string | null
   slug?: Prisma.StringFilter<"Upazila"> | string
   code?: Prisma.StringNullableFilter<"Upazila"> | string | null
+  sortOrder?: Prisma.IntFilter<"Upazila"> | number
+  isActive?: Prisma.BoolFilter<"Upazila"> | boolean
+  latitude?: Prisma.DecimalNullableFilter<"Upazila"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Upazila"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.StringNullableFilter<"Upazila"> | string | null
+  isVerified?: Prisma.BoolFilter<"Upazila"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Upazila"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Upazila"> | Date | string
   district?: Prisma.XOR<Prisma.DistrictScalarRelationFilter, Prisma.DistrictWhereInput>
   unions?: Prisma.UnionListRelationFilter
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileListRelationFilter
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaListRelationFilter
 }
 
 export type UpazilaOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   districtId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrderInput | Prisma.SortOrder
+  nameEn?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrderInput | Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  source?: Prisma.SortOrderInput | Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   district?: Prisma.DistrictOrderByWithRelationInput
   unions?: Prisma.UnionOrderByRelationAggregateInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileOrderByRelationAggregateInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaOrderByRelationAggregateInput
 }
 
 export type UpazilaWhereUniqueInput = Prisma.AtLeast<{
@@ -222,24 +340,44 @@ export type UpazilaWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.UpazilaWhereInput | Prisma.UpazilaWhereInput[]
   districtId?: Prisma.StringFilter<"Upazila"> | string
   name?: Prisma.StringFilter<"Upazila"> | string
+  nameBn?: Prisma.StringNullableFilter<"Upazila"> | string | null
+  nameEn?: Prisma.StringNullableFilter<"Upazila"> | string | null
   code?: Prisma.StringNullableFilter<"Upazila"> | string | null
+  sortOrder?: Prisma.IntFilter<"Upazila"> | number
+  isActive?: Prisma.BoolFilter<"Upazila"> | boolean
+  latitude?: Prisma.DecimalNullableFilter<"Upazila"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Upazila"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.StringNullableFilter<"Upazila"> | string | null
+  isVerified?: Prisma.BoolFilter<"Upazila"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Upazila"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Upazila"> | Date | string
   district?: Prisma.XOR<Prisma.DistrictScalarRelationFilter, Prisma.DistrictWhereInput>
   unions?: Prisma.UnionListRelationFilter
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileListRelationFilter
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaListRelationFilter
 }, "id" | "slug">
 
 export type UpazilaOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   districtId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrderInput | Prisma.SortOrder
+  nameEn?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrderInput | Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  source?: Prisma.SortOrderInput | Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.UpazilaCountOrderByAggregateInput
+  _avg?: Prisma.UpazilaAvgOrderByAggregateInput
   _max?: Prisma.UpazilaMaxOrderByAggregateInput
   _min?: Prisma.UpazilaMinOrderByAggregateInput
+  _sum?: Prisma.UpazilaSumOrderByAggregateInput
 }
 
 export type UpazilaScalarWhereWithAggregatesInput = {
@@ -249,8 +387,16 @@ export type UpazilaScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Upazila"> | string
   districtId?: Prisma.StringWithAggregatesFilter<"Upazila"> | string
   name?: Prisma.StringWithAggregatesFilter<"Upazila"> | string
+  nameBn?: Prisma.StringNullableWithAggregatesFilter<"Upazila"> | string | null
+  nameEn?: Prisma.StringNullableWithAggregatesFilter<"Upazila"> | string | null
   slug?: Prisma.StringWithAggregatesFilter<"Upazila"> | string
   code?: Prisma.StringNullableWithAggregatesFilter<"Upazila"> | string | null
+  sortOrder?: Prisma.IntWithAggregatesFilter<"Upazila"> | number
+  isActive?: Prisma.BoolWithAggregatesFilter<"Upazila"> | boolean
+  latitude?: Prisma.DecimalNullableWithAggregatesFilter<"Upazila"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableWithAggregatesFilter<"Upazila"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.StringNullableWithAggregatesFilter<"Upazila"> | string | null
+  isVerified?: Prisma.BoolWithAggregatesFilter<"Upazila"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Upazila"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Upazila"> | Date | string
 }
@@ -258,53 +404,101 @@ export type UpazilaScalarWhereWithAggregatesInput = {
 export type UpazilaCreateInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   district: Prisma.DistrictCreateNestedOneWithoutUpazilasInput
   unions?: Prisma.UnionCreateNestedManyWithoutUpazilaInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileCreateNestedManyWithoutBdUpazilaInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutBdUpazilaInput
 }
 
 export type UpazilaUncheckedCreateInput = {
   id?: string
   districtId: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   unions?: Prisma.UnionUncheckedCreateNestedManyWithoutUpazilaInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileUncheckedCreateNestedManyWithoutBdUpazilaInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutBdUpazilaInput
 }
 
 export type UpazilaUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   district?: Prisma.DistrictUpdateOneRequiredWithoutUpazilasNestedInput
   unions?: Prisma.UnionUpdateManyWithoutUpazilaNestedInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileUpdateManyWithoutBdUpazilaNestedInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutBdUpazilaNestedInput
 }
 
 export type UpazilaUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   districtId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   unions?: Prisma.UnionUncheckedUpdateManyWithoutUpazilaNestedInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileUncheckedUpdateManyWithoutBdUpazilaNestedInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutBdUpazilaNestedInput
 }
 
 export type UpazilaCreateManyInput = {
   id?: string
   districtId: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -312,8 +506,16 @@ export type UpazilaCreateManyInput = {
 export type UpazilaUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -322,10 +524,23 @@ export type UpazilaUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   districtId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type UpazilaNullableScalarRelationFilter = {
+  is?: Prisma.UpazilaWhereInput | null
+  isNot?: Prisma.UpazilaWhereInput | null
 }
 
 export type UpazilaListRelationFilter = {
@@ -342,18 +557,40 @@ export type UpazilaCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   districtId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type UpazilaAvgOrderByAggregateInput = {
+  sortOrder?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type UpazilaMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   districtId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -362,15 +599,45 @@ export type UpazilaMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   districtId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type UpazilaSumOrderByAggregateInput = {
+  sortOrder?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type UpazilaScalarRelationFilter = {
   is?: Prisma.UpazilaWhereInput
   isNot?: Prisma.UpazilaWhereInput
+}
+
+export type UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput = {
+  create?: Prisma.XOR<Prisma.UpazilaCreateWithoutAiTechnicianProfilesAsUpazilaInput, Prisma.UpazilaUncheckedCreateWithoutAiTechnicianProfilesAsUpazilaInput>
+  connectOrCreate?: Prisma.UpazilaCreateOrConnectWithoutAiTechnicianProfilesAsUpazilaInput
+  connect?: Prisma.UpazilaWhereUniqueInput
+}
+
+export type UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput = {
+  create?: Prisma.XOR<Prisma.UpazilaCreateWithoutAiTechnicianProfilesAsUpazilaInput, Prisma.UpazilaUncheckedCreateWithoutAiTechnicianProfilesAsUpazilaInput>
+  connectOrCreate?: Prisma.UpazilaCreateOrConnectWithoutAiTechnicianProfilesAsUpazilaInput
+  upsert?: Prisma.UpazilaUpsertWithoutAiTechnicianProfilesAsUpazilaInput
+  disconnect?: Prisma.UpazilaWhereInput | boolean
+  delete?: Prisma.UpazilaWhereInput | boolean
+  connect?: Prisma.UpazilaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UpazilaUpdateToOneWithWhereWithoutAiTechnicianProfilesAsUpazilaInput, Prisma.UpazilaUpdateWithoutAiTechnicianProfilesAsUpazilaInput>, Prisma.UpazilaUncheckedUpdateWithoutAiTechnicianProfilesAsUpazilaInput>
 }
 
 export type UpazilaCreateNestedManyWithoutDistrictInput = {
@@ -429,24 +696,156 @@ export type UpazilaUpdateOneRequiredWithoutUnionsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.UpazilaUpdateToOneWithWhereWithoutUnionsInput, Prisma.UpazilaUpdateWithoutUnionsInput>, Prisma.UpazilaUncheckedUpdateWithoutUnionsInput>
 }
 
+export type UpazilaCreateNestedOneWithoutAiTechnicianDivisionAreasUpazilaInput = {
+  create?: Prisma.XOR<Prisma.UpazilaCreateWithoutAiTechnicianDivisionAreasUpazilaInput, Prisma.UpazilaUncheckedCreateWithoutAiTechnicianDivisionAreasUpazilaInput>
+  connectOrCreate?: Prisma.UpazilaCreateOrConnectWithoutAiTechnicianDivisionAreasUpazilaInput
+  connect?: Prisma.UpazilaWhereUniqueInput
+}
+
+export type UpazilaUpdateOneWithoutAiTechnicianDivisionAreasUpazilaNestedInput = {
+  create?: Prisma.XOR<Prisma.UpazilaCreateWithoutAiTechnicianDivisionAreasUpazilaInput, Prisma.UpazilaUncheckedCreateWithoutAiTechnicianDivisionAreasUpazilaInput>
+  connectOrCreate?: Prisma.UpazilaCreateOrConnectWithoutAiTechnicianDivisionAreasUpazilaInput
+  upsert?: Prisma.UpazilaUpsertWithoutAiTechnicianDivisionAreasUpazilaInput
+  disconnect?: Prisma.UpazilaWhereInput | boolean
+  delete?: Prisma.UpazilaWhereInput | boolean
+  connect?: Prisma.UpazilaWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.UpazilaUpdateToOneWithWhereWithoutAiTechnicianDivisionAreasUpazilaInput, Prisma.UpazilaUpdateWithoutAiTechnicianDivisionAreasUpazilaInput>, Prisma.UpazilaUncheckedUpdateWithoutAiTechnicianDivisionAreasUpazilaInput>
+}
+
+export type UpazilaCreateWithoutAiTechnicianProfilesAsUpazilaInput = {
+  id?: string
+  name: string
+  nameBn?: string | null
+  nameEn?: string | null
+  slug: string
+  code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  district: Prisma.DistrictCreateNestedOneWithoutUpazilasInput
+  unions?: Prisma.UnionCreateNestedManyWithoutUpazilaInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutBdUpazilaInput
+}
+
+export type UpazilaUncheckedCreateWithoutAiTechnicianProfilesAsUpazilaInput = {
+  id?: string
+  districtId: string
+  name: string
+  nameBn?: string | null
+  nameEn?: string | null
+  slug: string
+  code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  unions?: Prisma.UnionUncheckedCreateNestedManyWithoutUpazilaInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutBdUpazilaInput
+}
+
+export type UpazilaCreateOrConnectWithoutAiTechnicianProfilesAsUpazilaInput = {
+  where: Prisma.UpazilaWhereUniqueInput
+  create: Prisma.XOR<Prisma.UpazilaCreateWithoutAiTechnicianProfilesAsUpazilaInput, Prisma.UpazilaUncheckedCreateWithoutAiTechnicianProfilesAsUpazilaInput>
+}
+
+export type UpazilaUpsertWithoutAiTechnicianProfilesAsUpazilaInput = {
+  update: Prisma.XOR<Prisma.UpazilaUpdateWithoutAiTechnicianProfilesAsUpazilaInput, Prisma.UpazilaUncheckedUpdateWithoutAiTechnicianProfilesAsUpazilaInput>
+  create: Prisma.XOR<Prisma.UpazilaCreateWithoutAiTechnicianProfilesAsUpazilaInput, Prisma.UpazilaUncheckedCreateWithoutAiTechnicianProfilesAsUpazilaInput>
+  where?: Prisma.UpazilaWhereInput
+}
+
+export type UpazilaUpdateToOneWithWhereWithoutAiTechnicianProfilesAsUpazilaInput = {
+  where?: Prisma.UpazilaWhereInput
+  data: Prisma.XOR<Prisma.UpazilaUpdateWithoutAiTechnicianProfilesAsUpazilaInput, Prisma.UpazilaUncheckedUpdateWithoutAiTechnicianProfilesAsUpazilaInput>
+}
+
+export type UpazilaUpdateWithoutAiTechnicianProfilesAsUpazilaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  district?: Prisma.DistrictUpdateOneRequiredWithoutUpazilasNestedInput
+  unions?: Prisma.UnionUpdateManyWithoutUpazilaNestedInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutBdUpazilaNestedInput
+}
+
+export type UpazilaUncheckedUpdateWithoutAiTechnicianProfilesAsUpazilaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  districtId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  unions?: Prisma.UnionUncheckedUpdateManyWithoutUpazilaNestedInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutBdUpazilaNestedInput
+}
+
 export type UpazilaCreateWithoutDistrictInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   unions?: Prisma.UnionCreateNestedManyWithoutUpazilaInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileCreateNestedManyWithoutBdUpazilaInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutBdUpazilaInput
 }
 
 export type UpazilaUncheckedCreateWithoutDistrictInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   unions?: Prisma.UnionUncheckedCreateNestedManyWithoutUpazilaInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileUncheckedCreateNestedManyWithoutBdUpazilaInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutBdUpazilaInput
 }
 
 export type UpazilaCreateOrConnectWithoutDistrictInput = {
@@ -482,8 +881,16 @@ export type UpazilaScalarWhereInput = {
   id?: Prisma.StringFilter<"Upazila"> | string
   districtId?: Prisma.StringFilter<"Upazila"> | string
   name?: Prisma.StringFilter<"Upazila"> | string
+  nameBn?: Prisma.StringNullableFilter<"Upazila"> | string | null
+  nameEn?: Prisma.StringNullableFilter<"Upazila"> | string | null
   slug?: Prisma.StringFilter<"Upazila"> | string
   code?: Prisma.StringNullableFilter<"Upazila"> | string | null
+  sortOrder?: Prisma.IntFilter<"Upazila"> | number
+  isActive?: Prisma.BoolFilter<"Upazila"> | boolean
+  latitude?: Prisma.DecimalNullableFilter<"Upazila"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Upazila"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.StringNullableFilter<"Upazila"> | string | null
+  isVerified?: Prisma.BoolFilter<"Upazila"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Upazila"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Upazila"> | Date | string
 }
@@ -491,21 +898,41 @@ export type UpazilaScalarWhereInput = {
 export type UpazilaCreateWithoutUnionsInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   district: Prisma.DistrictCreateNestedOneWithoutUpazilasInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileCreateNestedManyWithoutBdUpazilaInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutBdUpazilaInput
 }
 
 export type UpazilaUncheckedCreateWithoutUnionsInput = {
   id?: string
   districtId: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileUncheckedCreateNestedManyWithoutBdUpazilaInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutBdUpazilaInput
 }
 
 export type UpazilaCreateOrConnectWithoutUnionsInput = {
@@ -527,28 +954,152 @@ export type UpazilaUpdateToOneWithWhereWithoutUnionsInput = {
 export type UpazilaUpdateWithoutUnionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   district?: Prisma.DistrictUpdateOneRequiredWithoutUpazilasNestedInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileUpdateManyWithoutBdUpazilaNestedInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutBdUpazilaNestedInput
 }
 
 export type UpazilaUncheckedUpdateWithoutUnionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   districtId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileUncheckedUpdateManyWithoutBdUpazilaNestedInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutBdUpazilaNestedInput
+}
+
+export type UpazilaCreateWithoutAiTechnicianDivisionAreasUpazilaInput = {
+  id?: string
+  name: string
+  nameBn?: string | null
+  nameEn?: string | null
+  slug: string
+  code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  district: Prisma.DistrictCreateNestedOneWithoutUpazilasInput
+  unions?: Prisma.UnionCreateNestedManyWithoutUpazilaInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileCreateNestedManyWithoutBdUpazilaInput
+}
+
+export type UpazilaUncheckedCreateWithoutAiTechnicianDivisionAreasUpazilaInput = {
+  id?: string
+  districtId: string
+  name: string
+  nameBn?: string | null
+  nameEn?: string | null
+  slug: string
+  code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  unions?: Prisma.UnionUncheckedCreateNestedManyWithoutUpazilaInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileUncheckedCreateNestedManyWithoutBdUpazilaInput
+}
+
+export type UpazilaCreateOrConnectWithoutAiTechnicianDivisionAreasUpazilaInput = {
+  where: Prisma.UpazilaWhereUniqueInput
+  create: Prisma.XOR<Prisma.UpazilaCreateWithoutAiTechnicianDivisionAreasUpazilaInput, Prisma.UpazilaUncheckedCreateWithoutAiTechnicianDivisionAreasUpazilaInput>
+}
+
+export type UpazilaUpsertWithoutAiTechnicianDivisionAreasUpazilaInput = {
+  update: Prisma.XOR<Prisma.UpazilaUpdateWithoutAiTechnicianDivisionAreasUpazilaInput, Prisma.UpazilaUncheckedUpdateWithoutAiTechnicianDivisionAreasUpazilaInput>
+  create: Prisma.XOR<Prisma.UpazilaCreateWithoutAiTechnicianDivisionAreasUpazilaInput, Prisma.UpazilaUncheckedCreateWithoutAiTechnicianDivisionAreasUpazilaInput>
+  where?: Prisma.UpazilaWhereInput
+}
+
+export type UpazilaUpdateToOneWithWhereWithoutAiTechnicianDivisionAreasUpazilaInput = {
+  where?: Prisma.UpazilaWhereInput
+  data: Prisma.XOR<Prisma.UpazilaUpdateWithoutAiTechnicianDivisionAreasUpazilaInput, Prisma.UpazilaUncheckedUpdateWithoutAiTechnicianDivisionAreasUpazilaInput>
+}
+
+export type UpazilaUpdateWithoutAiTechnicianDivisionAreasUpazilaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  district?: Prisma.DistrictUpdateOneRequiredWithoutUpazilasNestedInput
+  unions?: Prisma.UnionUpdateManyWithoutUpazilaNestedInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileUpdateManyWithoutBdUpazilaNestedInput
+}
+
+export type UpazilaUncheckedUpdateWithoutAiTechnicianDivisionAreasUpazilaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  districtId?: Prisma.StringFieldUpdateOperationsInput | string
+  name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  slug?: Prisma.StringFieldUpdateOperationsInput | string
+  code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  unions?: Prisma.UnionUncheckedUpdateManyWithoutUpazilaNestedInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileUncheckedUpdateManyWithoutBdUpazilaNestedInput
 }
 
 export type UpazilaCreateManyDistrictInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -556,28 +1107,56 @@ export type UpazilaCreateManyDistrictInput = {
 export type UpazilaUpdateWithoutDistrictInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   unions?: Prisma.UnionUpdateManyWithoutUpazilaNestedInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileUpdateManyWithoutBdUpazilaNestedInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutBdUpazilaNestedInput
 }
 
 export type UpazilaUncheckedUpdateWithoutDistrictInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   unions?: Prisma.UnionUncheckedUpdateManyWithoutUpazilaNestedInput
+  aiTechnicianProfilesAsUpazila?: Prisma.AiTechnicianProfileUncheckedUpdateManyWithoutBdUpazilaNestedInput
+  aiTechnicianDivisionAreasUpazila?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutBdUpazilaNestedInput
 }
 
 export type UpazilaUncheckedUpdateManyWithoutDistrictInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -589,10 +1168,14 @@ export type UpazilaUncheckedUpdateManyWithoutDistrictInput = {
 
 export type UpazilaCountOutputType = {
   unions: number
+  aiTechnicianProfilesAsUpazila: number
+  aiTechnicianDivisionAreasUpazila: number
 }
 
 export type UpazilaCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   unions?: boolean | UpazilaCountOutputTypeCountUnionsArgs
+  aiTechnicianProfilesAsUpazila?: boolean | UpazilaCountOutputTypeCountAiTechnicianProfilesAsUpazilaArgs
+  aiTechnicianDivisionAreasUpazila?: boolean | UpazilaCountOutputTypeCountAiTechnicianDivisionAreasUpazilaArgs
 }
 
 /**
@@ -612,17 +1195,41 @@ export type UpazilaCountOutputTypeCountUnionsArgs<ExtArgs extends runtime.Types.
   where?: Prisma.UnionWhereInput
 }
 
+/**
+ * UpazilaCountOutputType without action
+ */
+export type UpazilaCountOutputTypeCountAiTechnicianProfilesAsUpazilaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiTechnicianProfileWhereInput
+}
+
+/**
+ * UpazilaCountOutputType without action
+ */
+export type UpazilaCountOutputTypeCountAiTechnicianDivisionAreasUpazilaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiTechnicianDivisionServiceAreaWhereInput
+}
+
 
 export type UpazilaSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   districtId?: boolean
   name?: boolean
+  nameBn?: boolean
+  nameEn?: boolean
   slug?: boolean
   code?: boolean
+  sortOrder?: boolean
+  isActive?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  source?: boolean
+  isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   district?: boolean | Prisma.DistrictDefaultArgs<ExtArgs>
   unions?: boolean | Prisma.Upazila$unionsArgs<ExtArgs>
+  aiTechnicianProfilesAsUpazila?: boolean | Prisma.Upazila$aiTechnicianProfilesAsUpazilaArgs<ExtArgs>
+  aiTechnicianDivisionAreasUpazila?: boolean | Prisma.Upazila$aiTechnicianDivisionAreasUpazilaArgs<ExtArgs>
   _count?: boolean | Prisma.UpazilaCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["upazila"]>
 
@@ -630,8 +1237,16 @@ export type UpazilaSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   districtId?: boolean
   name?: boolean
+  nameBn?: boolean
+  nameEn?: boolean
   slug?: boolean
   code?: boolean
+  sortOrder?: boolean
+  isActive?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  source?: boolean
+  isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   district?: boolean | Prisma.DistrictDefaultArgs<ExtArgs>
@@ -641,8 +1256,16 @@ export type UpazilaSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   districtId?: boolean
   name?: boolean
+  nameBn?: boolean
+  nameEn?: boolean
   slug?: boolean
   code?: boolean
+  sortOrder?: boolean
+  isActive?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  source?: boolean
+  isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   district?: boolean | Prisma.DistrictDefaultArgs<ExtArgs>
@@ -652,16 +1275,26 @@ export type UpazilaSelectScalar = {
   id?: boolean
   districtId?: boolean
   name?: boolean
+  nameBn?: boolean
+  nameEn?: boolean
   slug?: boolean
   code?: boolean
+  sortOrder?: boolean
+  isActive?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  source?: boolean
+  isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type UpazilaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "districtId" | "name" | "slug" | "code" | "createdAt" | "updatedAt", ExtArgs["result"]["upazila"]>
+export type UpazilaOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "districtId" | "name" | "nameBn" | "nameEn" | "slug" | "code" | "sortOrder" | "isActive" | "latitude" | "longitude" | "source" | "isVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["upazila"]>
 export type UpazilaInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   district?: boolean | Prisma.DistrictDefaultArgs<ExtArgs>
   unions?: boolean | Prisma.Upazila$unionsArgs<ExtArgs>
+  aiTechnicianProfilesAsUpazila?: boolean | Prisma.Upazila$aiTechnicianProfilesAsUpazilaArgs<ExtArgs>
+  aiTechnicianDivisionAreasUpazila?: boolean | Prisma.Upazila$aiTechnicianDivisionAreasUpazilaArgs<ExtArgs>
   _count?: boolean | Prisma.UpazilaCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type UpazilaIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -676,13 +1309,23 @@ export type $UpazilaPayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   objects: {
     district: Prisma.$DistrictPayload<ExtArgs>
     unions: Prisma.$UnionPayload<ExtArgs>[]
+    aiTechnicianProfilesAsUpazila: Prisma.$AiTechnicianProfilePayload<ExtArgs>[]
+    aiTechnicianDivisionAreasUpazila: Prisma.$AiTechnicianDivisionServiceAreaPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     districtId: string
     name: string
+    nameBn: string | null
+    nameEn: string | null
     slug: string
     code: string | null
+    sortOrder: number
+    isActive: boolean
+    latitude: runtime.Decimal | null
+    longitude: runtime.Decimal | null
+    source: string | null
+    isVerified: boolean
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["upazila"]>
@@ -1081,6 +1724,8 @@ export interface Prisma__UpazilaClient<T, Null = never, ExtArgs extends runtime.
   readonly [Symbol.toStringTag]: "PrismaPromise"
   district<T extends Prisma.DistrictDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.DistrictDefaultArgs<ExtArgs>>): Prisma.Prisma__DistrictClient<runtime.Types.Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   unions<T extends Prisma.Upazila$unionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Upazila$unionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$UnionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  aiTechnicianProfilesAsUpazila<T extends Prisma.Upazila$aiTechnicianProfilesAsUpazilaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Upazila$aiTechnicianProfilesAsUpazilaArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianProfilePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  aiTechnicianDivisionAreasUpazila<T extends Prisma.Upazila$aiTechnicianDivisionAreasUpazilaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.Upazila$aiTechnicianDivisionAreasUpazilaArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianDivisionServiceAreaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1113,8 +1758,16 @@ export interface UpazilaFieldRefs {
   readonly id: Prisma.FieldRef<"Upazila", 'String'>
   readonly districtId: Prisma.FieldRef<"Upazila", 'String'>
   readonly name: Prisma.FieldRef<"Upazila", 'String'>
+  readonly nameBn: Prisma.FieldRef<"Upazila", 'String'>
+  readonly nameEn: Prisma.FieldRef<"Upazila", 'String'>
   readonly slug: Prisma.FieldRef<"Upazila", 'String'>
   readonly code: Prisma.FieldRef<"Upazila", 'String'>
+  readonly sortOrder: Prisma.FieldRef<"Upazila", 'Int'>
+  readonly isActive: Prisma.FieldRef<"Upazila", 'Boolean'>
+  readonly latitude: Prisma.FieldRef<"Upazila", 'Decimal'>
+  readonly longitude: Prisma.FieldRef<"Upazila", 'Decimal'>
+  readonly source: Prisma.FieldRef<"Upazila", 'String'>
+  readonly isVerified: Prisma.FieldRef<"Upazila", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Upazila", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Upazila", 'DateTime'>
 }
@@ -1539,6 +2192,54 @@ export type Upazila$unionsArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   distinct?: Prisma.UnionScalarFieldEnum | Prisma.UnionScalarFieldEnum[]
+}
+
+/**
+ * Upazila.aiTechnicianProfilesAsUpazila
+ */
+export type Upazila$aiTechnicianProfilesAsUpazilaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiTechnicianProfile
+   */
+  select?: Prisma.AiTechnicianProfileSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiTechnicianProfile
+   */
+  omit?: Prisma.AiTechnicianProfileOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiTechnicianProfileInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianProfileWhereInput
+  orderBy?: Prisma.AiTechnicianProfileOrderByWithRelationInput | Prisma.AiTechnicianProfileOrderByWithRelationInput[]
+  cursor?: Prisma.AiTechnicianProfileWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiTechnicianProfileScalarFieldEnum | Prisma.AiTechnicianProfileScalarFieldEnum[]
+}
+
+/**
+ * Upazila.aiTechnicianDivisionAreasUpazila
+ */
+export type Upazila$aiTechnicianDivisionAreasUpazilaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiTechnicianDivisionServiceArea
+   */
+  select?: Prisma.AiTechnicianDivisionServiceAreaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiTechnicianDivisionServiceArea
+   */
+  omit?: Prisma.AiTechnicianDivisionServiceAreaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiTechnicianDivisionServiceAreaInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianDivisionServiceAreaWhereInput
+  orderBy?: Prisma.AiTechnicianDivisionServiceAreaOrderByWithRelationInput | Prisma.AiTechnicianDivisionServiceAreaOrderByWithRelationInput[]
+  cursor?: Prisma.AiTechnicianDivisionServiceAreaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiTechnicianDivisionServiceAreaScalarFieldEnum | Prisma.AiTechnicianDivisionServiceAreaScalarFieldEnum[]
 }
 
 /**

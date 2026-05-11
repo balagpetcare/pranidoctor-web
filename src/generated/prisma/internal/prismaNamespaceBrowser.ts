@@ -70,6 +70,14 @@ export const ModelName = {
   AiTechnicianProfileArea: 'AiTechnicianProfileArea',
   DoctorProfileServiceCategory: 'DoctorProfileServiceCategory',
   AiTechnicianProfileServiceCategory: 'AiTechnicianProfileServiceCategory',
+  AiTechnicianDivisionServiceArea: 'AiTechnicianDivisionServiceArea',
+  AiTechnicianDocument: 'AiTechnicianDocument',
+  UploadedFile: 'UploadedFile',
+  AiTechnicianService: 'AiTechnicianService',
+  AiServiceRequest: 'AiServiceRequest',
+  AiServiceRecord: 'AiServiceRecord',
+  AiTechnicianReview: 'AiTechnicianReview',
+  AiTechnicianComplaint: 'AiTechnicianComplaint',
   AnimalProfile: 'AnimalProfile',
   ServiceRequest: 'ServiceRequest',
   TreatmentCase: 'TreatmentCase',
@@ -152,13 +160,34 @@ export const AiTechnicianProfileScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   displayName: 'displayName',
+  phone: 'phone',
+  email: 'email',
+  nidNumber: 'nidNumber',
+  dateOfBirth: 'dateOfBirth',
+  gender: 'gender',
+  presentAddress: 'presentAddress',
+  district: 'district',
+  upazila: 'upazila',
+  unionOrArea: 'unionOrArea',
+  districtId: 'districtId',
+  upazilaId: 'upazilaId',
+  unionId: 'unionId',
+  experienceYears: 'experienceYears',
+  trainingProvider: 'trainingProvider',
+  certificateNumber: 'certificateNumber',
   certification: 'certification',
   bio: 'bio',
   serviceFeeBdt: 'serviceFeeBdt',
   acceptsEmergency: 'acceptsEmergency',
   metadataJson: 'metadataJson',
+  status: 'status',
   providerStatus: 'providerStatus',
   verifiedAt: 'verifiedAt',
+  adminNote: 'adminNote',
+  correctionNote: 'correctionNote',
+  reviewedById: 'reviewedById',
+  reviewedAt: 'reviewedAt',
+  publishedAt: 'publishedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -172,6 +201,8 @@ export const CustomerProfileScalarFieldEnum = {
   displayName: 'displayName',
   locale: 'locale',
   addressJson: 'addressJson',
+  profilePhotoUrl: 'profilePhotoUrl',
+  coverPhotoUrl: 'coverPhotoUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -198,8 +229,16 @@ export type MobileOtpChallengeScalarFieldEnum = (typeof MobileOtpChallengeScalar
 export const DivisionScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  source: 'source',
+  isVerified: 'isVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -211,8 +250,16 @@ export const DistrictScalarFieldEnum = {
   id: 'id',
   divisionId: 'divisionId',
   name: 'name',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  source: 'source',
+  isVerified: 'isVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -224,8 +271,16 @@ export const UpazilaScalarFieldEnum = {
   id: 'id',
   districtId: 'districtId',
   name: 'name',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  source: 'source',
+  isVerified: 'isVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -237,8 +292,16 @@ export const UnionScalarFieldEnum = {
   id: 'id',
   upazilaId: 'upazilaId',
   name: 'name',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  source: 'source',
+  isVerified: 'isVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -250,8 +313,15 @@ export const VillageScalarFieldEnum = {
   id: 'id',
   unionId: 'unionId',
   name: 'name',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
+  isActive: 'isActive',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  source: 'source',
+  isVerified: 'isVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -351,6 +421,167 @@ export const AiTechnicianProfileServiceCategoryScalarFieldEnum = {
 } as const
 
 export type AiTechnicianProfileServiceCategoryScalarFieldEnum = (typeof AiTechnicianProfileServiceCategoryScalarFieldEnum)[keyof typeof AiTechnicianProfileServiceCategoryScalarFieldEnum]
+
+
+export const AiTechnicianDivisionServiceAreaScalarFieldEnum = {
+  id: 'id',
+  aiTechnicianId: 'aiTechnicianId',
+  district: 'district',
+  upazila: 'upazila',
+  unionOrArea: 'unionOrArea',
+  districtId: 'districtId',
+  upazilaId: 'upazilaId',
+  unionId: 'unionId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiTechnicianDivisionServiceAreaScalarFieldEnum = (typeof AiTechnicianDivisionServiceAreaScalarFieldEnum)[keyof typeof AiTechnicianDivisionServiceAreaScalarFieldEnum]
+
+
+export const AiTechnicianDocumentScalarFieldEnum = {
+  id: 'id',
+  aiTechnicianId: 'aiTechnicianId',
+  type: 'type',
+  title: 'title',
+  fileUrl: 'fileUrl',
+  storageKey: 'storageKey',
+  mimeType: 'mimeType',
+  uploadedFileId: 'uploadedFileId',
+  reviewStatus: 'reviewStatus',
+  uploadedAt: 'uploadedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiTechnicianDocumentScalarFieldEnum = (typeof AiTechnicianDocumentScalarFieldEnum)[keyof typeof AiTechnicianDocumentScalarFieldEnum]
+
+
+export const UploadedFileScalarFieldEnum = {
+  id: 'id',
+  ownerUserId: 'ownerUserId',
+  bucket: 'bucket',
+  storageKey: 'storageKey',
+  originalName: 'originalName',
+  mimeType: 'mimeType',
+  sizeBytes: 'sizeBytes',
+  fileCategory: 'fileCategory',
+  publicUrl: 'publicUrl',
+  checksum: 'checksum',
+  width: 'width',
+  height: 'height',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UploadedFileScalarFieldEnum = (typeof UploadedFileScalarFieldEnum)[keyof typeof UploadedFileScalarFieldEnum]
+
+
+export const AiTechnicianServiceScalarFieldEnum = {
+  id: 'id',
+  aiTechnicianId: 'aiTechnicianId',
+  title: 'title',
+  animalType: 'animalType',
+  breedOrSemenType: 'breedOrSemenType',
+  description: 'description',
+  basePrice: 'basePrice',
+  visitFee: 'visitFee',
+  emergencyFee: 'emergencyFee',
+  repeatServicePolicy: 'repeatServicePolicy',
+  followUpIncluded: 'followUpIncluded',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiTechnicianServiceScalarFieldEnum = (typeof AiTechnicianServiceScalarFieldEnum)[keyof typeof AiTechnicianServiceScalarFieldEnum]
+
+
+export const AiServiceRequestScalarFieldEnum = {
+  id: 'id',
+  customerUserId: 'customerUserId',
+  technicianProfileId: 'technicianProfileId',
+  serviceId: 'serviceId',
+  animalType: 'animalType',
+  breed: 'breed',
+  animalAge: 'animalAge',
+  lastHeatDate: 'lastHeatDate',
+  heatSymptoms: 'heatSymptoms',
+  previousAiHistory: 'previousAiHistory',
+  healthIssueNote: 'healthIssueNote',
+  district: 'district',
+  upazila: 'upazila',
+  unionOrArea: 'unionOrArea',
+  addressDetail: 'addressDetail',
+  preferredTime: 'preferredTime',
+  isEmergency: 'isEmergency',
+  declineReason: 'declineReason',
+  status: 'status',
+  estimatedFee: 'estimatedFee',
+  finalFee: 'finalFee',
+  paymentStatus: 'paymentStatus',
+  linkedServiceRequestId: 'linkedServiceRequestId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiServiceRequestScalarFieldEnum = (typeof AiServiceRequestScalarFieldEnum)[keyof typeof AiServiceRequestScalarFieldEnum]
+
+
+export const AiServiceRecordScalarFieldEnum = {
+  id: 'id',
+  aiServiceRequestId: 'aiServiceRequestId',
+  technicianProfileId: 'technicianProfileId',
+  customerUserId: 'customerUserId',
+  serviceDate: 'serviceDate',
+  animalType: 'animalType',
+  breedOrSemenType: 'breedOrSemenType',
+  semenBatch: 'semenBatch',
+  heatObservation: 'heatObservation',
+  inseminationTime: 'inseminationTime',
+  serviceNote: 'serviceNote',
+  nextFollowUpDate: 'nextFollowUpDate',
+  pregnancyCheckDate: 'pregnancyCheckDate',
+  totalFee: 'totalFee',
+  paymentStatus: 'paymentStatus',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiServiceRecordScalarFieldEnum = (typeof AiServiceRecordScalarFieldEnum)[keyof typeof AiServiceRecordScalarFieldEnum]
+
+
+export const AiTechnicianReviewScalarFieldEnum = {
+  id: 'id',
+  aiServiceRequestId: 'aiServiceRequestId',
+  technicianProfileId: 'technicianProfileId',
+  customerUserId: 'customerUserId',
+  rating: 'rating',
+  comment: 'comment',
+  visibility: 'visibility',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiTechnicianReviewScalarFieldEnum = (typeof AiTechnicianReviewScalarFieldEnum)[keyof typeof AiTechnicianReviewScalarFieldEnum]
+
+
+export const AiTechnicianComplaintScalarFieldEnum = {
+  id: 'id',
+  aiServiceRequestId: 'aiServiceRequestId',
+  technicianProfileId: 'technicianProfileId',
+  customerUserId: 'customerUserId',
+  category: 'category',
+  message: 'message',
+  status: 'status',
+  adminNote: 'adminNote',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiTechnicianComplaintScalarFieldEnum = (typeof AiTechnicianComplaintScalarFieldEnum)[keyof typeof AiTechnicianComplaintScalarFieldEnum]
 
 
 export const AnimalProfileScalarFieldEnum = {

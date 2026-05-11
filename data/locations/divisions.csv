@@ -1,0 +1,9 @@
+code,name_en,name_bn,lat,lng,source,is_verified
+1,Chattagram,চট্টগ্রাম,,,nuhil/bangladesh-geocode,false
+2,Rajshahi,রাজশাহী,,,nuhil/bangladesh-geocode,false
+3,Khulna,খুলনা,,,nuhil/bangladesh-geocode,false
+4,Barisal,বরিশাল,,,nuhil/bangladesh-geocode,false
+5,Sylhet,সিলেট,,,nuhil/bangladesh-geocode,false
+6,Dhaka,ঢাকা,,,nuhil/bangladesh-geocode,false
+7,Rangpur,রংপুর,,,nuhil/bangladesh-geocode,false
+8,Mymensingh,ময়মনসিংহ,,,nuhil/bangladesh-geocode,false

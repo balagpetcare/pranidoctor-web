@@ -1,0 +1,39 @@
+{
+  "generatedAt": "2026-05-10T17:31:32.842Z",
+  "hierarchyCsvCounts": {
+    "divisions": 8,
+    "districts": 64,
+    "upazilas": 494,
+    "unions": 4540
+  },
+  "nuhilBootstrapExpected": {
+    "divisions": 8,
+    "districts": 64,
+    "upazilas": 494,
+    "unions": 4540
+  },
+  "hierarchyMatchesNuhilBootstrapCounts": true,
+  "unions": {
+    "rowCount": 4540,
+    "missingSource": 0,
+    "invalidVerified": 0,
+    "invalidCoords": 0,
+    "missingParent": 0,
+    "duplicateUnionUnderUpazila": 0,
+    "validationErrors": 0
+  },
+  "villages": {
+    "rowCount": 0,
+    "missingSource": 0,
+    "invalidVerified": 0,
+    "invalidCoords": 0,
+    "missingParent": 0,
+    "duplicateVillageUnderUnion": 0,
+    "validationErrors": 0,
+    "unionNotInUnionsCsv": 0
+  },
+  "safeToImport": true,
+  "notes": [
+    "villages.csv has no data rows."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "generatedAt": "2026-05-10T16:18:03.660Z",
+  "helperCsv": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\mappings\\union-parent-mapping-helper.csv",
+  "approvedCsv": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\mappings\\union-parent-mapping.csv",
+  "totalApprovedRowsWritten": 0,
+  "appliedFromHelperThisRun": 0,
+  "skippedHelperApprovedInvalid": [],
+  "appliedDetails": []
+}

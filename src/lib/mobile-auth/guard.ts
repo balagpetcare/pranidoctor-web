@@ -2,6 +2,7 @@ import type { NextResponse } from "next/server";
 
 import { UserRole, UserStatus } from "@/generated/prisma/client";
 import { jsonError } from "@/lib/api-response";
+import { ensureMinimalCustomerProfile } from "@/lib/mobile-customer/ensure-customer-profile";
 import { prisma } from "@/lib/prisma";
 
 import { verifyMobileJwt } from "./jwt";
@@ -24,7 +25,8 @@ function extractBearer(request: Request): string | null {
 
 /**
  * Requires `Authorization: Bearer <jwt>` issued for audience `mobile` and role `CUSTOMER`,
- * with an active user and existing CustomerProfile. Admin cookies are ignored.
+ * with an active user. If no `CustomerProfile` exists yet, creates a minimal one.
+ * Admin cookies are ignored.
  */
 export async function requireMobileCustomer(
   request: Request,
@@ -54,12 +56,7 @@ export async function requireMobileCustomer(
     include: { customerProfile: true },
   });
 
-  if (
-    !user ||
-    user.role !== UserRole.CUSTOMER ||
-    user.status !== UserStatus.ACTIVE ||
-    !user.customerProfile
-  ) {
+  if (!user || user.role !== UserRole.CUSTOMER || user.status !== UserStatus.ACTIVE) {
     return {
       ok: false,
       response: jsonError(
@@ -70,11 +67,27 @@ export async function requireMobileCustomer(
     };
   }
 
+  let customerProfileId = user.customerProfile?.id;
+  if (!customerProfileId) {
+    try {
+      customerProfileId = await ensureMinimalCustomerProfile(user.id);
+    } catch {
+      return {
+        ok: false,
+        response: jsonError(
+          "DATABASE_ERROR",
+          "Could not initialize customer profile",
+          500,
+        ),
+      };
+    }
+  }
+
   return {
     ok: true,
     ctx: {
       userId: user.id,
-      customerProfileId: user.customerProfile.id,
+      customerProfileId,
     },
   };
 }

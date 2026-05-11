@@ -1,0 +1,51 @@
+{
+  "generatedAt": "2026-05-11T00:23:43.836Z",
+  "apply": true,
+  "conflictCount": 1,
+  "plans": [
+    {
+      "groupKey": "cmp06al59000pcw8o0m3behy8|3033",
+      "divisionId": "cmp06al59000pcw8o0m3behy8",
+      "divisionLabel": "Dhaka Division",
+      "trimmedCode": "3033",
+      "canonicalId": "cmp01tafx001ad48ocdcas83c",
+      "duplicateIds": [
+        "cmp01tafb0017d48on37ju3oh"
+      ],
+      "rows": [
+        {
+          "id": "cmp01tafb0017d48on37ju3oh",
+          "slug": "gazipur-district",
+          "code": "3033",
+          "name": "Gazipur District",
+          "nameBn": "গাজীপুর",
+          "nameEn": "Gazipur",
+          "displayEnglish": "Gazipur",
+          "upazilaCount": 5,
+          "aiTechnicianProfileCount": 0,
+          "aiTechnicianDivisionServiceAreaCount": 0,
+          "businessRefTotal": 0,
+          "isCanonical": false
+        },
+        {
+          "id": "cmp01tafx001ad48ocdcas83c",
+          "slug": "tangail-district",
+          "code": "3033",
+          "name": "Tangail",
+          "nameBn": "টাঙ্গাইল",
+          "nameEn": "Tangail",
+          "displayEnglish": "Tangail",
+          "upazilaCount": 12,
+          "aiTechnicianProfileCount": 0,
+          "aiTechnicianDivisionServiceAreaCount": 0,
+          "businessRefTotal": 0,
+          "isCanonical": true
+        }
+      ],
+      "steps": [
+        "Reassign district cmp01tafb0017d48on37ju3oh (Gazipur) → merge into canonical cmp01tafx001ad48ocdcas83c: move 5 upazila(s), 0 technician profile(s), 0 division service area row(s); then delete district cmp01tafb0017d48on37ju3oh.",
+        "If an upazila on a duplicate district shares the same trimmed code as one on the canonical district, child upazila rows are merged (unions + FKs moved, duplicate upazila deleted)."
+      ]
+    }
+  ]
+}

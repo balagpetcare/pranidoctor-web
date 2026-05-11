@@ -403,6 +403,14 @@ export const ModelName = {
   AiTechnicianProfileArea: 'AiTechnicianProfileArea',
   DoctorProfileServiceCategory: 'DoctorProfileServiceCategory',
   AiTechnicianProfileServiceCategory: 'AiTechnicianProfileServiceCategory',
+  AiTechnicianDivisionServiceArea: 'AiTechnicianDivisionServiceArea',
+  AiTechnicianDocument: 'AiTechnicianDocument',
+  UploadedFile: 'UploadedFile',
+  AiTechnicianService: 'AiTechnicianService',
+  AiServiceRequest: 'AiServiceRequest',
+  AiServiceRecord: 'AiServiceRecord',
+  AiTechnicianReview: 'AiTechnicianReview',
+  AiTechnicianComplaint: 'AiTechnicianComplaint',
   AnimalProfile: 'AnimalProfile',
   ServiceRequest: 'ServiceRequest',
   TreatmentCase: 'TreatmentCase',
@@ -431,7 +439,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "user" | "adminProfile" | "doctorProfile" | "aiTechnicianProfile" | "customerProfile" | "mobileOtpChallenge" | "division" | "district" | "upazila" | "union" | "village" | "area" | "doctorServiceArea" | "aiTechnicianServiceArea" | "serviceCategory" | "doctorProfileArea" | "aiTechnicianProfileArea" | "doctorProfileServiceCategory" | "aiTechnicianProfileServiceCategory" | "animalProfile" | "serviceRequest" | "treatmentCase" | "prescription" | "prescriptionItem" | "billingRecord" | "paymentRecord" | "review" | "contentCategory" | "contentPost" | "complaint" | "notification" | "setting"
+    modelProps: "user" | "adminProfile" | "doctorProfile" | "aiTechnicianProfile" | "customerProfile" | "mobileOtpChallenge" | "division" | "district" | "upazila" | "union" | "village" | "area" | "doctorServiceArea" | "aiTechnicianServiceArea" | "serviceCategory" | "doctorProfileArea" | "aiTechnicianProfileArea" | "doctorProfileServiceCategory" | "aiTechnicianProfileServiceCategory" | "aiTechnicianDivisionServiceArea" | "aiTechnicianDocument" | "uploadedFile" | "aiTechnicianService" | "aiServiceRequest" | "aiServiceRecord" | "aiTechnicianReview" | "aiTechnicianComplaint" | "animalProfile" | "serviceRequest" | "treatmentCase" | "prescription" | "prescriptionItem" | "billingRecord" | "paymentRecord" | "review" | "contentCategory" | "contentPost" | "complaint" | "notification" | "setting"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -1841,6 +1849,598 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    AiTechnicianDivisionServiceArea: {
+      payload: Prisma.$AiTechnicianDivisionServiceAreaPayload<ExtArgs>
+      fields: Prisma.AiTechnicianDivisionServiceAreaFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AiTechnicianDivisionServiceAreaFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDivisionServiceAreaPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AiTechnicianDivisionServiceAreaFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDivisionServiceAreaPayload>
+        }
+        findFirst: {
+          args: Prisma.AiTechnicianDivisionServiceAreaFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDivisionServiceAreaPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AiTechnicianDivisionServiceAreaFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDivisionServiceAreaPayload>
+        }
+        findMany: {
+          args: Prisma.AiTechnicianDivisionServiceAreaFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDivisionServiceAreaPayload>[]
+        }
+        create: {
+          args: Prisma.AiTechnicianDivisionServiceAreaCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDivisionServiceAreaPayload>
+        }
+        createMany: {
+          args: Prisma.AiTechnicianDivisionServiceAreaCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AiTechnicianDivisionServiceAreaCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDivisionServiceAreaPayload>[]
+        }
+        delete: {
+          args: Prisma.AiTechnicianDivisionServiceAreaDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDivisionServiceAreaPayload>
+        }
+        update: {
+          args: Prisma.AiTechnicianDivisionServiceAreaUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDivisionServiceAreaPayload>
+        }
+        deleteMany: {
+          args: Prisma.AiTechnicianDivisionServiceAreaDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AiTechnicianDivisionServiceAreaUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AiTechnicianDivisionServiceAreaUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDivisionServiceAreaPayload>[]
+        }
+        upsert: {
+          args: Prisma.AiTechnicianDivisionServiceAreaUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDivisionServiceAreaPayload>
+        }
+        aggregate: {
+          args: Prisma.AiTechnicianDivisionServiceAreaAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAiTechnicianDivisionServiceArea>
+        }
+        groupBy: {
+          args: Prisma.AiTechnicianDivisionServiceAreaGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiTechnicianDivisionServiceAreaGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AiTechnicianDivisionServiceAreaCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiTechnicianDivisionServiceAreaCountAggregateOutputType> | number
+        }
+      }
+    }
+    AiTechnicianDocument: {
+      payload: Prisma.$AiTechnicianDocumentPayload<ExtArgs>
+      fields: Prisma.AiTechnicianDocumentFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AiTechnicianDocumentFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDocumentPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AiTechnicianDocumentFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDocumentPayload>
+        }
+        findFirst: {
+          args: Prisma.AiTechnicianDocumentFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDocumentPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AiTechnicianDocumentFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDocumentPayload>
+        }
+        findMany: {
+          args: Prisma.AiTechnicianDocumentFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDocumentPayload>[]
+        }
+        create: {
+          args: Prisma.AiTechnicianDocumentCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDocumentPayload>
+        }
+        createMany: {
+          args: Prisma.AiTechnicianDocumentCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AiTechnicianDocumentCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDocumentPayload>[]
+        }
+        delete: {
+          args: Prisma.AiTechnicianDocumentDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDocumentPayload>
+        }
+        update: {
+          args: Prisma.AiTechnicianDocumentUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDocumentPayload>
+        }
+        deleteMany: {
+          args: Prisma.AiTechnicianDocumentDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AiTechnicianDocumentUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AiTechnicianDocumentUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDocumentPayload>[]
+        }
+        upsert: {
+          args: Prisma.AiTechnicianDocumentUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianDocumentPayload>
+        }
+        aggregate: {
+          args: Prisma.AiTechnicianDocumentAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAiTechnicianDocument>
+        }
+        groupBy: {
+          args: Prisma.AiTechnicianDocumentGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiTechnicianDocumentGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AiTechnicianDocumentCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiTechnicianDocumentCountAggregateOutputType> | number
+        }
+      }
+    }
+    UploadedFile: {
+      payload: Prisma.$UploadedFilePayload<ExtArgs>
+      fields: Prisma.UploadedFileFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.UploadedFileFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UploadedFilePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.UploadedFileFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UploadedFilePayload>
+        }
+        findFirst: {
+          args: Prisma.UploadedFileFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UploadedFilePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.UploadedFileFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UploadedFilePayload>
+        }
+        findMany: {
+          args: Prisma.UploadedFileFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UploadedFilePayload>[]
+        }
+        create: {
+          args: Prisma.UploadedFileCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UploadedFilePayload>
+        }
+        createMany: {
+          args: Prisma.UploadedFileCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.UploadedFileCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UploadedFilePayload>[]
+        }
+        delete: {
+          args: Prisma.UploadedFileDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UploadedFilePayload>
+        }
+        update: {
+          args: Prisma.UploadedFileUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UploadedFilePayload>
+        }
+        deleteMany: {
+          args: Prisma.UploadedFileDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.UploadedFileUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.UploadedFileUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UploadedFilePayload>[]
+        }
+        upsert: {
+          args: Prisma.UploadedFileUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$UploadedFilePayload>
+        }
+        aggregate: {
+          args: Prisma.UploadedFileAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateUploadedFile>
+        }
+        groupBy: {
+          args: Prisma.UploadedFileGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UploadedFileGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.UploadedFileCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.UploadedFileCountAggregateOutputType> | number
+        }
+      }
+    }
+    AiTechnicianService: {
+      payload: Prisma.$AiTechnicianServicePayload<ExtArgs>
+      fields: Prisma.AiTechnicianServiceFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AiTechnicianServiceFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianServicePayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AiTechnicianServiceFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianServicePayload>
+        }
+        findFirst: {
+          args: Prisma.AiTechnicianServiceFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianServicePayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AiTechnicianServiceFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianServicePayload>
+        }
+        findMany: {
+          args: Prisma.AiTechnicianServiceFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianServicePayload>[]
+        }
+        create: {
+          args: Prisma.AiTechnicianServiceCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianServicePayload>
+        }
+        createMany: {
+          args: Prisma.AiTechnicianServiceCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AiTechnicianServiceCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianServicePayload>[]
+        }
+        delete: {
+          args: Prisma.AiTechnicianServiceDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianServicePayload>
+        }
+        update: {
+          args: Prisma.AiTechnicianServiceUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianServicePayload>
+        }
+        deleteMany: {
+          args: Prisma.AiTechnicianServiceDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AiTechnicianServiceUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AiTechnicianServiceUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianServicePayload>[]
+        }
+        upsert: {
+          args: Prisma.AiTechnicianServiceUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianServicePayload>
+        }
+        aggregate: {
+          args: Prisma.AiTechnicianServiceAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAiTechnicianService>
+        }
+        groupBy: {
+          args: Prisma.AiTechnicianServiceGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiTechnicianServiceGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AiTechnicianServiceCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiTechnicianServiceCountAggregateOutputType> | number
+        }
+      }
+    }
+    AiServiceRequest: {
+      payload: Prisma.$AiServiceRequestPayload<ExtArgs>
+      fields: Prisma.AiServiceRequestFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AiServiceRequestFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRequestPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AiServiceRequestFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRequestPayload>
+        }
+        findFirst: {
+          args: Prisma.AiServiceRequestFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRequestPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AiServiceRequestFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRequestPayload>
+        }
+        findMany: {
+          args: Prisma.AiServiceRequestFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRequestPayload>[]
+        }
+        create: {
+          args: Prisma.AiServiceRequestCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRequestPayload>
+        }
+        createMany: {
+          args: Prisma.AiServiceRequestCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AiServiceRequestCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRequestPayload>[]
+        }
+        delete: {
+          args: Prisma.AiServiceRequestDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRequestPayload>
+        }
+        update: {
+          args: Prisma.AiServiceRequestUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRequestPayload>
+        }
+        deleteMany: {
+          args: Prisma.AiServiceRequestDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AiServiceRequestUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AiServiceRequestUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRequestPayload>[]
+        }
+        upsert: {
+          args: Prisma.AiServiceRequestUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRequestPayload>
+        }
+        aggregate: {
+          args: Prisma.AiServiceRequestAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAiServiceRequest>
+        }
+        groupBy: {
+          args: Prisma.AiServiceRequestGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiServiceRequestGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AiServiceRequestCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiServiceRequestCountAggregateOutputType> | number
+        }
+      }
+    }
+    AiServiceRecord: {
+      payload: Prisma.$AiServiceRecordPayload<ExtArgs>
+      fields: Prisma.AiServiceRecordFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AiServiceRecordFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRecordPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AiServiceRecordFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRecordPayload>
+        }
+        findFirst: {
+          args: Prisma.AiServiceRecordFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRecordPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AiServiceRecordFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRecordPayload>
+        }
+        findMany: {
+          args: Prisma.AiServiceRecordFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRecordPayload>[]
+        }
+        create: {
+          args: Prisma.AiServiceRecordCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRecordPayload>
+        }
+        createMany: {
+          args: Prisma.AiServiceRecordCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AiServiceRecordCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRecordPayload>[]
+        }
+        delete: {
+          args: Prisma.AiServiceRecordDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRecordPayload>
+        }
+        update: {
+          args: Prisma.AiServiceRecordUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRecordPayload>
+        }
+        deleteMany: {
+          args: Prisma.AiServiceRecordDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AiServiceRecordUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AiServiceRecordUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRecordPayload>[]
+        }
+        upsert: {
+          args: Prisma.AiServiceRecordUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiServiceRecordPayload>
+        }
+        aggregate: {
+          args: Prisma.AiServiceRecordAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAiServiceRecord>
+        }
+        groupBy: {
+          args: Prisma.AiServiceRecordGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiServiceRecordGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AiServiceRecordCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiServiceRecordCountAggregateOutputType> | number
+        }
+      }
+    }
+    AiTechnicianReview: {
+      payload: Prisma.$AiTechnicianReviewPayload<ExtArgs>
+      fields: Prisma.AiTechnicianReviewFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AiTechnicianReviewFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianReviewPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AiTechnicianReviewFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianReviewPayload>
+        }
+        findFirst: {
+          args: Prisma.AiTechnicianReviewFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianReviewPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AiTechnicianReviewFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianReviewPayload>
+        }
+        findMany: {
+          args: Prisma.AiTechnicianReviewFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianReviewPayload>[]
+        }
+        create: {
+          args: Prisma.AiTechnicianReviewCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianReviewPayload>
+        }
+        createMany: {
+          args: Prisma.AiTechnicianReviewCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AiTechnicianReviewCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianReviewPayload>[]
+        }
+        delete: {
+          args: Prisma.AiTechnicianReviewDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianReviewPayload>
+        }
+        update: {
+          args: Prisma.AiTechnicianReviewUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianReviewPayload>
+        }
+        deleteMany: {
+          args: Prisma.AiTechnicianReviewDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AiTechnicianReviewUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AiTechnicianReviewUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianReviewPayload>[]
+        }
+        upsert: {
+          args: Prisma.AiTechnicianReviewUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianReviewPayload>
+        }
+        aggregate: {
+          args: Prisma.AiTechnicianReviewAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAiTechnicianReview>
+        }
+        groupBy: {
+          args: Prisma.AiTechnicianReviewGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiTechnicianReviewGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AiTechnicianReviewCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiTechnicianReviewCountAggregateOutputType> | number
+        }
+      }
+    }
+    AiTechnicianComplaint: {
+      payload: Prisma.$AiTechnicianComplaintPayload<ExtArgs>
+      fields: Prisma.AiTechnicianComplaintFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.AiTechnicianComplaintFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianComplaintPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.AiTechnicianComplaintFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianComplaintPayload>
+        }
+        findFirst: {
+          args: Prisma.AiTechnicianComplaintFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianComplaintPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.AiTechnicianComplaintFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianComplaintPayload>
+        }
+        findMany: {
+          args: Prisma.AiTechnicianComplaintFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianComplaintPayload>[]
+        }
+        create: {
+          args: Prisma.AiTechnicianComplaintCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianComplaintPayload>
+        }
+        createMany: {
+          args: Prisma.AiTechnicianComplaintCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.AiTechnicianComplaintCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianComplaintPayload>[]
+        }
+        delete: {
+          args: Prisma.AiTechnicianComplaintDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianComplaintPayload>
+        }
+        update: {
+          args: Prisma.AiTechnicianComplaintUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianComplaintPayload>
+        }
+        deleteMany: {
+          args: Prisma.AiTechnicianComplaintDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.AiTechnicianComplaintUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.AiTechnicianComplaintUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianComplaintPayload>[]
+        }
+        upsert: {
+          args: Prisma.AiTechnicianComplaintUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$AiTechnicianComplaintPayload>
+        }
+        aggregate: {
+          args: Prisma.AiTechnicianComplaintAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateAiTechnicianComplaint>
+        }
+        groupBy: {
+          args: Prisma.AiTechnicianComplaintGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiTechnicianComplaintGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.AiTechnicianComplaintCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AiTechnicianComplaintCountAggregateOutputType> | number
+        }
+      }
+    }
     AnimalProfile: {
       payload: Prisma.$AnimalProfilePayload<ExtArgs>
       fields: Prisma.AnimalProfileFieldRefs
@@ -2893,13 +3493,34 @@ export const AiTechnicianProfileScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
   displayName: 'displayName',
+  phone: 'phone',
+  email: 'email',
+  nidNumber: 'nidNumber',
+  dateOfBirth: 'dateOfBirth',
+  gender: 'gender',
+  presentAddress: 'presentAddress',
+  district: 'district',
+  upazila: 'upazila',
+  unionOrArea: 'unionOrArea',
+  districtId: 'districtId',
+  upazilaId: 'upazilaId',
+  unionId: 'unionId',
+  experienceYears: 'experienceYears',
+  trainingProvider: 'trainingProvider',
+  certificateNumber: 'certificateNumber',
   certification: 'certification',
   bio: 'bio',
   serviceFeeBdt: 'serviceFeeBdt',
   acceptsEmergency: 'acceptsEmergency',
   metadataJson: 'metadataJson',
+  status: 'status',
   providerStatus: 'providerStatus',
   verifiedAt: 'verifiedAt',
+  adminNote: 'adminNote',
+  correctionNote: 'correctionNote',
+  reviewedById: 'reviewedById',
+  reviewedAt: 'reviewedAt',
+  publishedAt: 'publishedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2913,6 +3534,8 @@ export const CustomerProfileScalarFieldEnum = {
   displayName: 'displayName',
   locale: 'locale',
   addressJson: 'addressJson',
+  profilePhotoUrl: 'profilePhotoUrl',
+  coverPhotoUrl: 'coverPhotoUrl',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2939,8 +3562,16 @@ export type MobileOtpChallengeScalarFieldEnum = (typeof MobileOtpChallengeScalar
 export const DivisionScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  source: 'source',
+  isVerified: 'isVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2952,8 +3583,16 @@ export const DistrictScalarFieldEnum = {
   id: 'id',
   divisionId: 'divisionId',
   name: 'name',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  source: 'source',
+  isVerified: 'isVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2965,8 +3604,16 @@ export const UpazilaScalarFieldEnum = {
   id: 'id',
   districtId: 'districtId',
   name: 'name',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  source: 'source',
+  isVerified: 'isVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2978,8 +3625,16 @@ export const UnionScalarFieldEnum = {
   id: 'id',
   upazilaId: 'upazilaId',
   name: 'name',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
+  sortOrder: 'sortOrder',
+  isActive: 'isActive',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  source: 'source',
+  isVerified: 'isVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -2991,8 +3646,15 @@ export const VillageScalarFieldEnum = {
   id: 'id',
   unionId: 'unionId',
   name: 'name',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
+  isActive: 'isActive',
+  latitude: 'latitude',
+  longitude: 'longitude',
+  source: 'source',
+  isVerified: 'isVerified',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 } as const
@@ -3092,6 +3754,167 @@ export const AiTechnicianProfileServiceCategoryScalarFieldEnum = {
 } as const
 
 export type AiTechnicianProfileServiceCategoryScalarFieldEnum = (typeof AiTechnicianProfileServiceCategoryScalarFieldEnum)[keyof typeof AiTechnicianProfileServiceCategoryScalarFieldEnum]
+
+
+export const AiTechnicianDivisionServiceAreaScalarFieldEnum = {
+  id: 'id',
+  aiTechnicianId: 'aiTechnicianId',
+  district: 'district',
+  upazila: 'upazila',
+  unionOrArea: 'unionOrArea',
+  districtId: 'districtId',
+  upazilaId: 'upazilaId',
+  unionId: 'unionId',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiTechnicianDivisionServiceAreaScalarFieldEnum = (typeof AiTechnicianDivisionServiceAreaScalarFieldEnum)[keyof typeof AiTechnicianDivisionServiceAreaScalarFieldEnum]
+
+
+export const AiTechnicianDocumentScalarFieldEnum = {
+  id: 'id',
+  aiTechnicianId: 'aiTechnicianId',
+  type: 'type',
+  title: 'title',
+  fileUrl: 'fileUrl',
+  storageKey: 'storageKey',
+  mimeType: 'mimeType',
+  uploadedFileId: 'uploadedFileId',
+  reviewStatus: 'reviewStatus',
+  uploadedAt: 'uploadedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiTechnicianDocumentScalarFieldEnum = (typeof AiTechnicianDocumentScalarFieldEnum)[keyof typeof AiTechnicianDocumentScalarFieldEnum]
+
+
+export const UploadedFileScalarFieldEnum = {
+  id: 'id',
+  ownerUserId: 'ownerUserId',
+  bucket: 'bucket',
+  storageKey: 'storageKey',
+  originalName: 'originalName',
+  mimeType: 'mimeType',
+  sizeBytes: 'sizeBytes',
+  fileCategory: 'fileCategory',
+  publicUrl: 'publicUrl',
+  checksum: 'checksum',
+  width: 'width',
+  height: 'height',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type UploadedFileScalarFieldEnum = (typeof UploadedFileScalarFieldEnum)[keyof typeof UploadedFileScalarFieldEnum]
+
+
+export const AiTechnicianServiceScalarFieldEnum = {
+  id: 'id',
+  aiTechnicianId: 'aiTechnicianId',
+  title: 'title',
+  animalType: 'animalType',
+  breedOrSemenType: 'breedOrSemenType',
+  description: 'description',
+  basePrice: 'basePrice',
+  visitFee: 'visitFee',
+  emergencyFee: 'emergencyFee',
+  repeatServicePolicy: 'repeatServicePolicy',
+  followUpIncluded: 'followUpIncluded',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiTechnicianServiceScalarFieldEnum = (typeof AiTechnicianServiceScalarFieldEnum)[keyof typeof AiTechnicianServiceScalarFieldEnum]
+
+
+export const AiServiceRequestScalarFieldEnum = {
+  id: 'id',
+  customerUserId: 'customerUserId',
+  technicianProfileId: 'technicianProfileId',
+  serviceId: 'serviceId',
+  animalType: 'animalType',
+  breed: 'breed',
+  animalAge: 'animalAge',
+  lastHeatDate: 'lastHeatDate',
+  heatSymptoms: 'heatSymptoms',
+  previousAiHistory: 'previousAiHistory',
+  healthIssueNote: 'healthIssueNote',
+  district: 'district',
+  upazila: 'upazila',
+  unionOrArea: 'unionOrArea',
+  addressDetail: 'addressDetail',
+  preferredTime: 'preferredTime',
+  isEmergency: 'isEmergency',
+  declineReason: 'declineReason',
+  status: 'status',
+  estimatedFee: 'estimatedFee',
+  finalFee: 'finalFee',
+  paymentStatus: 'paymentStatus',
+  linkedServiceRequestId: 'linkedServiceRequestId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiServiceRequestScalarFieldEnum = (typeof AiServiceRequestScalarFieldEnum)[keyof typeof AiServiceRequestScalarFieldEnum]
+
+
+export const AiServiceRecordScalarFieldEnum = {
+  id: 'id',
+  aiServiceRequestId: 'aiServiceRequestId',
+  technicianProfileId: 'technicianProfileId',
+  customerUserId: 'customerUserId',
+  serviceDate: 'serviceDate',
+  animalType: 'animalType',
+  breedOrSemenType: 'breedOrSemenType',
+  semenBatch: 'semenBatch',
+  heatObservation: 'heatObservation',
+  inseminationTime: 'inseminationTime',
+  serviceNote: 'serviceNote',
+  nextFollowUpDate: 'nextFollowUpDate',
+  pregnancyCheckDate: 'pregnancyCheckDate',
+  totalFee: 'totalFee',
+  paymentStatus: 'paymentStatus',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiServiceRecordScalarFieldEnum = (typeof AiServiceRecordScalarFieldEnum)[keyof typeof AiServiceRecordScalarFieldEnum]
+
+
+export const AiTechnicianReviewScalarFieldEnum = {
+  id: 'id',
+  aiServiceRequestId: 'aiServiceRequestId',
+  technicianProfileId: 'technicianProfileId',
+  customerUserId: 'customerUserId',
+  rating: 'rating',
+  comment: 'comment',
+  visibility: 'visibility',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiTechnicianReviewScalarFieldEnum = (typeof AiTechnicianReviewScalarFieldEnum)[keyof typeof AiTechnicianReviewScalarFieldEnum]
+
+
+export const AiTechnicianComplaintScalarFieldEnum = {
+  id: 'id',
+  aiServiceRequestId: 'aiServiceRequestId',
+  technicianProfileId: 'technicianProfileId',
+  customerUserId: 'customerUserId',
+  category: 'category',
+  message: 'message',
+  status: 'status',
+  adminNote: 'adminNote',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type AiTechnicianComplaintScalarFieldEnum = (typeof AiTechnicianComplaintScalarFieldEnum)[keyof typeof AiTechnicianComplaintScalarFieldEnum]
 
 
 export const AnimalProfileScalarFieldEnum = {
@@ -3505,6 +4328,20 @@ export type ListEnumProviderStatusFieldRefInput<$PrismaModel> = FieldRefInputTyp
 
 
 /**
+ * Reference to a field of type 'Gender'
+ */
+export type EnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender'>
+    
+
+
+/**
+ * Reference to a field of type 'Gender[]'
+ */
+export type ListEnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender[]'>
+    
+
+
+/**
  * Reference to a field of type 'Json'
  */
 export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
@@ -3515,6 +4352,20 @@ export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'J
  * Reference to a field of type 'QueryMode'
  */
 export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+/**
+ * Reference to a field of type 'AiTechnicianStatus'
+ */
+export type EnumAiTechnicianStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiTechnicianStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AiTechnicianStatus[]'
+ */
+export type ListEnumAiTechnicianStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiTechnicianStatus[]'>
     
 
 
@@ -3533,16 +4384,58 @@ export type ListEnumAreaTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$Pri
 
 
 /**
- * Reference to a field of type 'AnimalCategory'
+ * Reference to a field of type 'AiTechnicianDocumentType'
  */
-export type EnumAnimalCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnimalCategory'>
+export type EnumAiTechnicianDocumentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiTechnicianDocumentType'>
     
 
 
 /**
- * Reference to a field of type 'AnimalCategory[]'
+ * Reference to a field of type 'AiTechnicianDocumentType[]'
  */
-export type ListEnumAnimalCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnimalCategory[]'>
+export type ListEnumAiTechnicianDocumentTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiTechnicianDocumentType[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AiTechnicianDocumentReviewStatus'
+ */
+export type EnumAiTechnicianDocumentReviewStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiTechnicianDocumentReviewStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AiTechnicianDocumentReviewStatus[]'
+ */
+export type ListEnumAiTechnicianDocumentReviewStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiTechnicianDocumentReviewStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'MobileUploadPurpose'
+ */
+export type EnumMobileUploadPurposeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MobileUploadPurpose'>
+    
+
+
+/**
+ * Reference to a field of type 'MobileUploadPurpose[]'
+ */
+export type ListEnumMobileUploadPurposeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'MobileUploadPurpose[]'>
+    
+
+
+/**
+ * Reference to a field of type 'UploadedFileStatus'
+ */
+export type EnumUploadedFileStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UploadedFileStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'UploadedFileStatus[]'
+ */
+export type ListEnumUploadedFileStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'UploadedFileStatus[]'>
     
 
 
@@ -3561,16 +4454,86 @@ export type ListEnumAnimalTypeFieldRefInput<$PrismaModel> = FieldRefInputType<$P
 
 
 /**
- * Reference to a field of type 'Gender'
+ * Reference to a field of type 'AiTechnicianServiceStatus'
  */
-export type EnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender'>
+export type EnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiTechnicianServiceStatus'>
     
 
 
 /**
- * Reference to a field of type 'Gender[]'
+ * Reference to a field of type 'AiTechnicianServiceStatus[]'
  */
-export type ListEnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender[]'>
+export type ListEnumAiTechnicianServiceStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiTechnicianServiceStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AiServiceRequestStatus'
+ */
+export type EnumAiServiceRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiServiceRequestStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AiServiceRequestStatus[]'
+ */
+export type ListEnumAiServiceRequestStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiServiceRequestStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AiPaymentStatus'
+ */
+export type EnumAiPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiPaymentStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AiPaymentStatus[]'
+ */
+export type ListEnumAiPaymentStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiPaymentStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AiTechnicianReviewVisibility'
+ */
+export type EnumAiTechnicianReviewVisibilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiTechnicianReviewVisibility'>
+    
+
+
+/**
+ * Reference to a field of type 'AiTechnicianReviewVisibility[]'
+ */
+export type ListEnumAiTechnicianReviewVisibilityFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiTechnicianReviewVisibility[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AiTechnicianComplaintStatus'
+ */
+export type EnumAiTechnicianComplaintStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiTechnicianComplaintStatus'>
+    
+
+
+/**
+ * Reference to a field of type 'AiTechnicianComplaintStatus[]'
+ */
+export type ListEnumAiTechnicianComplaintStatusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AiTechnicianComplaintStatus[]'>
+    
+
+
+/**
+ * Reference to a field of type 'AnimalCategory'
+ */
+export type EnumAnimalCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnimalCategory'>
+    
+
+
+/**
+ * Reference to a field of type 'AnimalCategory[]'
+ */
+export type ListEnumAnimalCategoryFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'AnimalCategory[]'>
     
 
 
@@ -3884,6 +4847,14 @@ export type GlobalOmitConfig = {
   aiTechnicianProfileArea?: Prisma.AiTechnicianProfileAreaOmit
   doctorProfileServiceCategory?: Prisma.DoctorProfileServiceCategoryOmit
   aiTechnicianProfileServiceCategory?: Prisma.AiTechnicianProfileServiceCategoryOmit
+  aiTechnicianDivisionServiceArea?: Prisma.AiTechnicianDivisionServiceAreaOmit
+  aiTechnicianDocument?: Prisma.AiTechnicianDocumentOmit
+  uploadedFile?: Prisma.UploadedFileOmit
+  aiTechnicianService?: Prisma.AiTechnicianServiceOmit
+  aiServiceRequest?: Prisma.AiServiceRequestOmit
+  aiServiceRecord?: Prisma.AiServiceRecordOmit
+  aiTechnicianReview?: Prisma.AiTechnicianReviewOmit
+  aiTechnicianComplaint?: Prisma.AiTechnicianComplaintOmit
   animalProfile?: Prisma.AnimalProfileOmit
   serviceRequest?: Prisma.ServiceRequestOmit
   treatmentCase?: Prisma.TreatmentCaseOmit

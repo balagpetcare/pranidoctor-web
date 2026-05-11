@@ -20,16 +20,35 @@ export type VillageModel = runtime.Types.Result.DefaultSelection<Prisma.$Village
 
 export type AggregateVillage = {
   _count: VillageCountAggregateOutputType | null
+  _avg: VillageAvgAggregateOutputType | null
+  _sum: VillageSumAggregateOutputType | null
   _min: VillageMinAggregateOutputType | null
   _max: VillageMaxAggregateOutputType | null
+}
+
+export type VillageAvgAggregateOutputType = {
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+}
+
+export type VillageSumAggregateOutputType = {
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
 }
 
 export type VillageMinAggregateOutputType = {
   id: string | null
   unionId: string | null
   name: string | null
+  nameBn: string | null
+  nameEn: string | null
   slug: string | null
   code: string | null
+  isActive: boolean | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  source: string | null
+  isVerified: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -38,8 +57,15 @@ export type VillageMaxAggregateOutputType = {
   id: string | null
   unionId: string | null
   name: string | null
+  nameBn: string | null
+  nameEn: string | null
   slug: string | null
   code: string | null
+  isActive: boolean | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  source: string | null
+  isVerified: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -48,20 +74,44 @@ export type VillageCountAggregateOutputType = {
   id: number
   unionId: number
   name: number
+  nameBn: number
+  nameEn: number
   slug: number
   code: number
+  isActive: number
+  latitude: number
+  longitude: number
+  source: number
+  isVerified: number
   createdAt: number
   updatedAt: number
   _all: number
 }
 
 
+export type VillageAvgAggregateInputType = {
+  latitude?: true
+  longitude?: true
+}
+
+export type VillageSumAggregateInputType = {
+  latitude?: true
+  longitude?: true
+}
+
 export type VillageMinAggregateInputType = {
   id?: true
   unionId?: true
   name?: true
+  nameBn?: true
+  nameEn?: true
   slug?: true
   code?: true
+  isActive?: true
+  latitude?: true
+  longitude?: true
+  source?: true
+  isVerified?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -70,8 +120,15 @@ export type VillageMaxAggregateInputType = {
   id?: true
   unionId?: true
   name?: true
+  nameBn?: true
+  nameEn?: true
   slug?: true
   code?: true
+  isActive?: true
+  latitude?: true
+  longitude?: true
+  source?: true
+  isVerified?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -80,8 +137,15 @@ export type VillageCountAggregateInputType = {
   id?: true
   unionId?: true
   name?: true
+  nameBn?: true
+  nameEn?: true
   slug?: true
   code?: true
+  isActive?: true
+  latitude?: true
+  longitude?: true
+  source?: true
+  isVerified?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -125,6 +189,18 @@ export type VillageAggregateArgs<ExtArgs extends runtime.Types.Extensions.Intern
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: VillageAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: VillageSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: VillageMinAggregateInputType
@@ -155,6 +231,8 @@ export type VillageGroupByArgs<ExtArgs extends runtime.Types.Extensions.Internal
   take?: number
   skip?: number
   _count?: VillageCountAggregateInputType | true
+  _avg?: VillageAvgAggregateInputType
+  _sum?: VillageSumAggregateInputType
   _min?: VillageMinAggregateInputType
   _max?: VillageMaxAggregateInputType
 }
@@ -163,11 +241,20 @@ export type VillageGroupByOutputType = {
   id: string
   unionId: string
   name: string
+  nameBn: string | null
+  nameEn: string | null
   slug: string
   code: string | null
+  isActive: boolean
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  source: string | null
+  isVerified: boolean
   createdAt: Date
   updatedAt: Date
   _count: VillageCountAggregateOutputType | null
+  _avg: VillageAvgAggregateOutputType | null
+  _sum: VillageSumAggregateOutputType | null
   _min: VillageMinAggregateOutputType | null
   _max: VillageMaxAggregateOutputType | null
 }
@@ -194,8 +281,15 @@ export type VillageWhereInput = {
   id?: Prisma.StringFilter<"Village"> | string
   unionId?: Prisma.StringFilter<"Village"> | string
   name?: Prisma.StringFilter<"Village"> | string
+  nameBn?: Prisma.StringNullableFilter<"Village"> | string | null
+  nameEn?: Prisma.StringNullableFilter<"Village"> | string | null
   slug?: Prisma.StringFilter<"Village"> | string
   code?: Prisma.StringNullableFilter<"Village"> | string | null
+  isActive?: Prisma.BoolFilter<"Village"> | boolean
+  latitude?: Prisma.DecimalNullableFilter<"Village"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Village"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.StringNullableFilter<"Village"> | string | null
+  isVerified?: Prisma.BoolFilter<"Village"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Village"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Village"> | Date | string
   union?: Prisma.XOR<Prisma.UnionScalarRelationFilter, Prisma.UnionWhereInput>
@@ -208,8 +302,15 @@ export type VillageOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   unionId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrderInput | Prisma.SortOrder
+  nameEn?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrderInput | Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  source?: Prisma.SortOrderInput | Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   union?: Prisma.UnionOrderByWithRelationInput
@@ -226,7 +327,14 @@ export type VillageWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.VillageWhereInput | Prisma.VillageWhereInput[]
   unionId?: Prisma.StringFilter<"Village"> | string
   name?: Prisma.StringFilter<"Village"> | string
+  nameBn?: Prisma.StringNullableFilter<"Village"> | string | null
+  nameEn?: Prisma.StringNullableFilter<"Village"> | string | null
   code?: Prisma.StringNullableFilter<"Village"> | string | null
+  isActive?: Prisma.BoolFilter<"Village"> | boolean
+  latitude?: Prisma.DecimalNullableFilter<"Village"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Village"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.StringNullableFilter<"Village"> | string | null
+  isVerified?: Prisma.BoolFilter<"Village"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Village"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Village"> | Date | string
   union?: Prisma.XOR<Prisma.UnionScalarRelationFilter, Prisma.UnionWhereInput>
@@ -239,13 +347,22 @@ export type VillageOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   unionId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrderInput | Prisma.SortOrder
+  nameEn?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrderInput | Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  source?: Prisma.SortOrderInput | Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.VillageCountOrderByAggregateInput
+  _avg?: Prisma.VillageAvgOrderByAggregateInput
   _max?: Prisma.VillageMaxOrderByAggregateInput
   _min?: Prisma.VillageMinOrderByAggregateInput
+  _sum?: Prisma.VillageSumOrderByAggregateInput
 }
 
 export type VillageScalarWhereWithAggregatesInput = {
@@ -255,8 +372,15 @@ export type VillageScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"Village"> | string
   unionId?: Prisma.StringWithAggregatesFilter<"Village"> | string
   name?: Prisma.StringWithAggregatesFilter<"Village"> | string
+  nameBn?: Prisma.StringNullableWithAggregatesFilter<"Village"> | string | null
+  nameEn?: Prisma.StringNullableWithAggregatesFilter<"Village"> | string | null
   slug?: Prisma.StringWithAggregatesFilter<"Village"> | string
   code?: Prisma.StringNullableWithAggregatesFilter<"Village"> | string | null
+  isActive?: Prisma.BoolWithAggregatesFilter<"Village"> | boolean
+  latitude?: Prisma.DecimalNullableWithAggregatesFilter<"Village"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableWithAggregatesFilter<"Village"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.StringNullableWithAggregatesFilter<"Village"> | string | null
+  isVerified?: Prisma.BoolWithAggregatesFilter<"Village"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Village"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Village"> | Date | string
 }
@@ -264,8 +388,15 @@ export type VillageScalarWhereWithAggregatesInput = {
 export type VillageCreateInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   union: Prisma.UnionCreateNestedOneWithoutVillagesInput
@@ -278,8 +409,15 @@ export type VillageUncheckedCreateInput = {
   id?: string
   unionId: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutVillageInput
@@ -290,8 +428,15 @@ export type VillageUncheckedCreateInput = {
 export type VillageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   union?: Prisma.UnionUpdateOneRequiredWithoutVillagesNestedInput
@@ -304,8 +449,15 @@ export type VillageUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   unionId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutVillageNestedInput
@@ -317,8 +469,15 @@ export type VillageCreateManyInput = {
   id?: string
   unionId: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -326,8 +485,15 @@ export type VillageCreateManyInput = {
 export type VillageUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -336,8 +502,15 @@ export type VillageUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   unionId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -356,18 +529,37 @@ export type VillageCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   unionId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type VillageAvgOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type VillageMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   unionId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -376,10 +568,22 @@ export type VillageMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   unionId?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type VillageSumOrderByAggregateInput = {
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type VillageScalarRelationFilter = {
@@ -481,8 +685,15 @@ export type VillageUpdateOneWithoutServiceRequestsNestedInput = {
 export type VillageCreateWithoutUnionInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestCreateNestedManyWithoutVillageInput
@@ -493,8 +704,15 @@ export type VillageCreateWithoutUnionInput = {
 export type VillageUncheckedCreateWithoutUnionInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutVillageInput
@@ -535,8 +753,15 @@ export type VillageScalarWhereInput = {
   id?: Prisma.StringFilter<"Village"> | string
   unionId?: Prisma.StringFilter<"Village"> | string
   name?: Prisma.StringFilter<"Village"> | string
+  nameBn?: Prisma.StringNullableFilter<"Village"> | string | null
+  nameEn?: Prisma.StringNullableFilter<"Village"> | string | null
   slug?: Prisma.StringFilter<"Village"> | string
   code?: Prisma.StringNullableFilter<"Village"> | string | null
+  isActive?: Prisma.BoolFilter<"Village"> | boolean
+  latitude?: Prisma.DecimalNullableFilter<"Village"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Village"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.StringNullableFilter<"Village"> | string | null
+  isVerified?: Prisma.BoolFilter<"Village"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Village"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Village"> | Date | string
 }
@@ -544,8 +769,15 @@ export type VillageScalarWhereInput = {
 export type VillageCreateWithoutDoctorServiceAreasInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   union: Prisma.UnionCreateNestedOneWithoutVillagesInput
@@ -557,8 +789,15 @@ export type VillageUncheckedCreateWithoutDoctorServiceAreasInput = {
   id?: string
   unionId: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutVillageInput
@@ -584,8 +823,15 @@ export type VillageUpdateToOneWithWhereWithoutDoctorServiceAreasInput = {
 export type VillageUpdateWithoutDoctorServiceAreasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   union?: Prisma.UnionUpdateOneRequiredWithoutVillagesNestedInput
@@ -597,8 +843,15 @@ export type VillageUncheckedUpdateWithoutDoctorServiceAreasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   unionId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutVillageNestedInput
@@ -608,8 +861,15 @@ export type VillageUncheckedUpdateWithoutDoctorServiceAreasInput = {
 export type VillageCreateWithoutAiTechnicianServiceAreasInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   union: Prisma.UnionCreateNestedOneWithoutVillagesInput
@@ -621,8 +881,15 @@ export type VillageUncheckedCreateWithoutAiTechnicianServiceAreasInput = {
   id?: string
   unionId: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutVillageInput
@@ -648,8 +915,15 @@ export type VillageUpdateToOneWithWhereWithoutAiTechnicianServiceAreasInput = {
 export type VillageUpdateWithoutAiTechnicianServiceAreasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   union?: Prisma.UnionUpdateOneRequiredWithoutVillagesNestedInput
@@ -661,8 +935,15 @@ export type VillageUncheckedUpdateWithoutAiTechnicianServiceAreasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   unionId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutVillageNestedInput
@@ -672,8 +953,15 @@ export type VillageUncheckedUpdateWithoutAiTechnicianServiceAreasInput = {
 export type VillageCreateWithoutServiceRequestsInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   union: Prisma.UnionCreateNestedOneWithoutVillagesInput
@@ -685,8 +973,15 @@ export type VillageUncheckedCreateWithoutServiceRequestsInput = {
   id?: string
   unionId: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   doctorServiceAreas?: Prisma.DoctorServiceAreaUncheckedCreateNestedManyWithoutVillageInput
@@ -712,8 +1007,15 @@ export type VillageUpdateToOneWithWhereWithoutServiceRequestsInput = {
 export type VillageUpdateWithoutServiceRequestsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   union?: Prisma.UnionUpdateOneRequiredWithoutVillagesNestedInput
@@ -725,8 +1027,15 @@ export type VillageUncheckedUpdateWithoutServiceRequestsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   unionId?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   doctorServiceAreas?: Prisma.DoctorServiceAreaUncheckedUpdateManyWithoutVillageNestedInput
@@ -736,8 +1045,15 @@ export type VillageUncheckedUpdateWithoutServiceRequestsInput = {
 export type VillageCreateManyUnionInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -745,8 +1061,15 @@ export type VillageCreateManyUnionInput = {
 export type VillageUpdateWithoutUnionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUpdateManyWithoutVillageNestedInput
@@ -757,8 +1080,15 @@ export type VillageUpdateWithoutUnionInput = {
 export type VillageUncheckedUpdateWithoutUnionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutVillageNestedInput
@@ -769,8 +1099,15 @@ export type VillageUncheckedUpdateWithoutUnionInput = {
 export type VillageUncheckedUpdateManyWithoutUnionInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -828,8 +1165,15 @@ export type VillageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   id?: boolean
   unionId?: boolean
   name?: boolean
+  nameBn?: boolean
+  nameEn?: boolean
   slug?: boolean
   code?: boolean
+  isActive?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  source?: boolean
+  isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
@@ -843,8 +1187,15 @@ export type VillageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   unionId?: boolean
   name?: boolean
+  nameBn?: boolean
+  nameEn?: boolean
   slug?: boolean
   code?: boolean
+  isActive?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  source?: boolean
+  isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
@@ -854,8 +1205,15 @@ export type VillageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
   id?: boolean
   unionId?: boolean
   name?: boolean
+  nameBn?: boolean
+  nameEn?: boolean
   slug?: boolean
   code?: boolean
+  isActive?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  source?: boolean
+  isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
@@ -865,13 +1223,20 @@ export type VillageSelectScalar = {
   id?: boolean
   unionId?: boolean
   name?: boolean
+  nameBn?: boolean
+  nameEn?: boolean
   slug?: boolean
   code?: boolean
+  isActive?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  source?: boolean
+  isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type VillageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "unionId" | "name" | "slug" | "code" | "createdAt" | "updatedAt", ExtArgs["result"]["village"]>
+export type VillageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "unionId" | "name" | "nameBn" | "nameEn" | "slug" | "code" | "isActive" | "latitude" | "longitude" | "source" | "isVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["village"]>
 export type VillageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   union?: boolean | Prisma.UnionDefaultArgs<ExtArgs>
   serviceRequests?: boolean | Prisma.Village$serviceRequestsArgs<ExtArgs>
@@ -897,9 +1262,19 @@ export type $VillagePayload<ExtArgs extends runtime.Types.Extensions.InternalArg
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     unionId: string
+    /**
+     * Legacy single label; prefer `nameBn` / `nameEn` when set.
+     */
     name: string
+    nameBn: string | null
+    nameEn: string | null
     slug: string
     code: string | null
+    isActive: boolean
+    latitude: runtime.Decimal | null
+    longitude: runtime.Decimal | null
+    source: string | null
+    isVerified: boolean
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["village"]>
@@ -1332,8 +1707,15 @@ export interface VillageFieldRefs {
   readonly id: Prisma.FieldRef<"Village", 'String'>
   readonly unionId: Prisma.FieldRef<"Village", 'String'>
   readonly name: Prisma.FieldRef<"Village", 'String'>
+  readonly nameBn: Prisma.FieldRef<"Village", 'String'>
+  readonly nameEn: Prisma.FieldRef<"Village", 'String'>
   readonly slug: Prisma.FieldRef<"Village", 'String'>
   readonly code: Prisma.FieldRef<"Village", 'String'>
+  readonly isActive: Prisma.FieldRef<"Village", 'Boolean'>
+  readonly latitude: Prisma.FieldRef<"Village", 'Decimal'>
+  readonly longitude: Prisma.FieldRef<"Village", 'Decimal'>
+  readonly source: Prisma.FieldRef<"Village", 'String'>
+  readonly isVerified: Prisma.FieldRef<"Village", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Village", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Village", 'DateTime'>
 }

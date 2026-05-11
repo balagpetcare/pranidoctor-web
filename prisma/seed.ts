@@ -8,6 +8,7 @@ import {
   UserStatus,
 } from "../src/generated/prisma/client";
 import { disconnectPrisma, prisma } from "../src/lib/prisma";
+import { seedBdReferenceLocations } from "./seed-data/bd-locations";
 
 const DEFAULT_DEV_DOCTOR_EMAIL = "doctor@pranidoctor.local";
 const DEFAULT_DEV_DOCTOR_PASSWORD = "ChangeMe!Doctor123";
@@ -545,6 +546,8 @@ async function main(): Promise<void> {
       code: "3026334701",
     },
   });
+
+  await seedBdReferenceLocations(prisma);
 
   await prisma.setting.upsert({
     where: { key: "app.name" },

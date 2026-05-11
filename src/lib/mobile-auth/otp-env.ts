@@ -32,6 +32,19 @@ function parseBoolEnv(key: string, def: boolean): boolean {
 }
 
 /**
+ * OTP lifetime for mobile customer login.
+ * Prefer MOBILE_OTP_TTL_MINUTES; fallback OTP_TTL_MINUTES (legacy); default 15 minutes.
+ */
+export function getMobileOtpTtlMinutes(): number {
+  const primary = process.env.MOBILE_OTP_TTL_MINUTES?.trim();
+  if (primary !== undefined && primary !== "") {
+    const n = Number.parseInt(primary, 10);
+    if (Number.isFinite(n)) return Math.min(60, Math.max(1, n));
+  }
+  return parseIntEnv("OTP_TTL_MINUTES", 15, 1, 60);
+}
+
+/**
  * `live` only when OTP_MODE=live. Any other or missing value uses dev (no real SMS).
  */
 export function getOtpMode(): OtpMode {
@@ -57,7 +70,7 @@ export function warnIfProdDevOtpMode(): void {
 }
 
 export function getOtpConfig(): OtpRuntimeConfig {
-  const ttlMinutes = parseIntEnv("OTP_TTL_MINUTES", 5, 1, 60);
+  const ttlMinutes = getMobileOtpTtlMinutes();
   const windowMinutes = parseIntEnv("OTP_SEND_WINDOW_MINUTES", 60, 5, 24 * 60);
   const mode = getOtpMode();
   return {

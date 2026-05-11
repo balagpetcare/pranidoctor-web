@@ -1,0 +1,65 @@
+{
+  "version": 1,
+  "sources": [
+    {
+      "sourceId": "hdx-cod-ab-bgd-adm123",
+      "sourceName": "OCHA HDX Bangladesh administrative boundaries (adm1–3)",
+      "sourceType": "official",
+      "sourceUrl": "https://data.humdata.org/dataset/cod-ab-bgd",
+      "localFile": "data/locations/divisions.csv (and districts, upazilas)",
+      "coverageLevel": "MIXED",
+      "coverageArea": "National divisions, districts, upazilas (not unions)",
+      "licenseNote": "Humanitarian use; attribute OCHA/HDX per dataset terms.",
+      "verificationRule": "Centroid coordinates from published boundaries; is_verified=true only after pipeline QA.",
+      "defaultIsVerified": true
+    },
+    {
+      "sourceId": "lgd-bbs-union-official",
+      "sourceName": "Bangladesh Local Government Division / BBS union list (machine-readable export)",
+      "sourceType": "official",
+      "sourceUrl": "https://lgd.gov.bd/ (and BBS publications as applicable)",
+      "localFile": "data/locations/raw/unions/<your-export>.csv",
+      "coverageLevel": "UNION",
+      "coverageArea": "As per file scope",
+      "licenseNote": "Government terms of use; document exact export date and file name in each row source field.",
+      "verificationRule": "Match to HDX/BBS parent codes; is_verified=true when row is verbatim official match.",
+      "defaultIsVerified": true
+    },
+    {
+      "sourceId": "bbs-phc-2022-community",
+      "sourceName": "BBS Population and Housing Census 2022 — community / locality tables (where licensed)",
+      "sourceType": "official",
+      "sourceUrl": "https://bbs.gov.bd/",
+      "localFile": "data/locations/raw/villages/<your-export>.csv",
+      "coverageLevel": "VILLAGE",
+      "coverageArea": "As per census geography released for reuse",
+      "licenseNote": "Census data reuse per BBS license; never scrape behind paywalls.",
+      "verificationRule": "Map mouza/ward to village row only when geography is explicit; note mouza in source string.",
+      "defaultIsVerified": true
+    },
+    {
+      "sourceId": "nuhil-bangladesh-geocode",
+      "sourceName": "nuhil/bangladesh-geocode (GitHub)",
+      "sourceType": "open_source",
+      "sourceUrl": "https://github.com/nuhil/bangladesh-geocode",
+      "localFile": "data/locations/raw/unions/nuhil-*.csv (see SOURCE_COLLECTION_GUIDE.md)",
+      "coverageLevel": "UNION",
+      "coverageArea": "National union names (internal numeric IDs; not BBS geo codes)",
+      "licenseNote": "Open dataset; upstream cites bangladesh.gov.bd / Wikipedia / Google Maps — treat as bootstrap only.",
+      "verificationRule": "Always set is_verified=false unless cross-checked against LGD/BBS row-by-row.",
+      "defaultIsVerified": false
+    },
+    {
+      "sourceId": "prani-field-manual",
+      "sourceName": "Prani Doctor field / admin manual collection",
+      "sourceType": "field_collected",
+      "sourceUrl": null,
+      "localFile": "data/locations/manual_collection_template_*.csv",
+      "coverageLevel": "MIXED",
+      "coverageArea": "Per collection batch (document in source column)",
+      "licenseNote": "Internal operational data; obtain consent where required.",
+      "verificationRule": "is_verified=false until supervisor signs off; then bulk update or re-export with is_verified=true.",
+      "defaultIsVerified": false
+    }
+  ]
+}

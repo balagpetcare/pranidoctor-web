@@ -1,0 +1,9 @@
+code,name_en,name_bn,lat,lng,source,is_verified
+10,Barishal,বরিশাল বিভাগ,22.39284273,90.40639487,HDX cod-ab-bgd v03 (OCHA admin boundaries; adm1/2/3 centroid lat/lon),true
+20,Chattogram,চট্টগ্রাম বিভাগ,22.70130794,91.70586117,HDX cod-ab-bgd v03 (OCHA admin boundaries; adm1/2/3 centroid lat/lon),true
+30,Dhaka,ঢাকা বিভাগ,23.83902131,90.24215888,HDX cod-ab-bgd v03 (OCHA admin boundaries; adm1/2/3 centroid lat/lon),true
+40,Khulna,খুলনা বিভাগ,22.83771757,89.3047787,HDX cod-ab-bgd v03 (OCHA admin boundaries; adm1/2/3 centroid lat/lon),true
+45,Mymensingh,ময়মনসিংহ বিভাগ,24.84783035,90.38174541,HDX cod-ab-bgd v03 (OCHA admin boundaries; adm1/2/3 centroid lat/lon),true
+50,Rajshahi,রাজশাহী বিভাগ,24.58933841,89.04636294,HDX cod-ab-bgd v03 (OCHA admin boundaries; adm1/2/3 centroid lat/lon),true
+55,Rangpur,রংপুর বিভাগ,25.78042102,89.05409536,HDX cod-ab-bgd v03 (OCHA admin boundaries; adm1/2/3 centroid lat/lon),true
+60,Sylhet,সিলেট বিভাগ,24.71528851,91.66471318,HDX cod-ab-bgd v03 (OCHA admin boundaries; adm1/2/3 centroid lat/lon),true

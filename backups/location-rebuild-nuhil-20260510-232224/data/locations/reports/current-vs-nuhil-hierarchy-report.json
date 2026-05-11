@@ -1,0 +1,75 @@
+{
+  "generatedAt": "2026-05-10T17:06:22.166Z",
+  "currentCsvCounts": {
+    "divisions": 8,
+    "districts": 64,
+    "upazilas": 507,
+    "unions": 3441
+  },
+  "nuhilNormalizedCounts": {
+    "divisions": 8,
+    "districts": 64,
+    "upazilas": 494,
+    "unions": 4540
+  },
+  "codeOverlap": {
+    "divisionCodesIntersectionCount": 0,
+    "districtKeysIntersectionCount": 0,
+    "upazilaKeysIntersectionCount": 0,
+    "codeSpaceDisjointAtDivisionLevel": true
+  },
+  "nameAlignment": {
+    "matchingDivisionsByNormalizedEnglishName": 6,
+    "matchingDistrictsByNormalizedEnglishName": 59
+  },
+  "currentOnlyUpazilasApprox": 507,
+  "nuhilOnlyUpazilasApprox": 494,
+  "potentialRenamedOrMovedSamples": {
+    "divisionsDifferentCodeSameNormalizedName": [
+      {
+        "currentCode": "50",
+        "nuhilCode": "2",
+        "nameEn": "Rajshahi"
+      },
+      {
+        "currentCode": "40",
+        "nuhilCode": "3",
+        "nameEn": "Khulna"
+      },
+      {
+        "currentCode": "60",
+        "nuhilCode": "5",
+        "nameEn": "Sylhet"
+      },
+      {
+        "currentCode": "30",
+        "nuhilCode": "6",
+        "nameEn": "Dhaka"
+      },
+      {
+        "currentCode": "55",
+        "nuhilCode": "7",
+        "nameEn": "Rangpur"
+      },
+      {
+        "currentCode": "45",
+        "nuhilCode": "8",
+        "nameEn": "Mymensingh"
+      }
+    ]
+  },
+  "expectedUnionCountAfterFullNuhilSwitch": 4540,
+  "expectedUnmatchedUnionCountAfterFullNuhilSwitchWithinCsv": 0,
+  "expectedUnmatchedUnionNote": "With a pure nuhil parent chain, union rows reference nuhil division/district/upazila ids — there is no HDX↔nuhil name mismatch inside the CSV. Database import is separate: existing Prisma rows use HDX-style `code` values and cuids; switching CSV codes without an id-mapping migration risks duplicate divisions and broken foreign keys.",
+  "apiRiskLevel": "HIGH",
+  "importRiskLevel": "HIGH",
+  "safeToSwitchCsv": false,
+  "safeToSwitchCsvReason": "Administrative codes differ between HDX and nuhil; switching CSVs without a DB/code/cuid migration would orphan or duplicate hierarchy rows and break FKs. Manual approval + migration plan required.",
+  "schemaMigrationNeeded": false,
+  "apiShapeChangesNeeded": false,
+  "recommendation": [
+    "Division (and likely district/upazila) **administrative codes** differ between HDX (e.g. 20) and nuhil (e.g. 1). Replacing CSVs alone does **not** migrate existing `Division`/`District`/… rows or mobile-stored **cuids** safely.",
+    "Before switching live CSVs: plan a **DB migration** (code remap or full re-seed) and retest all cascades; keep `villages.csv` unchanged per policy.",
+    "Until then: keep HDX parents + `normalize-unions` mapping workflow, or run imports only on a disposable database."
+  ]
+}

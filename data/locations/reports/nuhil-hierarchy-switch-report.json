@@ -1,0 +1,27 @@
+{
+  "generatedAt": "2026-05-10T17:22:27.609Z",
+  "dryRun": false,
+  "innerBackupDir": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\backups\\20260510-232227",
+  "replaced": [
+    {
+      "from": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\normalized\\nuhil-divisions.normalized.csv",
+      "to": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\divisions.csv"
+    },
+    {
+      "from": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\normalized\\nuhil-districts.normalized.csv",
+      "to": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\districts.csv"
+    },
+    {
+      "from": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\normalized\\nuhil-upazilas.normalized.csv",
+      "to": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\upazilas.csv"
+    },
+    {
+      "from": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\normalized\\nuhil-unions.normalized.csv",
+      "to": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\unions.csv"
+    }
+  ],
+  "notes": [
+    "Backed up current CSVs to D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\backups\\20260510-232227",
+    "Replaced divisions.csv, districts.csv, upazilas.csv, unions.csv with normalized nuhil exports."
+  ]
+}

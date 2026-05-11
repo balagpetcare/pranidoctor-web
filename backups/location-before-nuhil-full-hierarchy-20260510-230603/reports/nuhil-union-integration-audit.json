@@ -1,0 +1,118 @@
+{
+  "generatedAt": "2026-05-10T16:47:07.909Z",
+  "nuhilSource": {
+    "repositoryUrl": "https://github.com/nuhil/bangladesh-geocode",
+    "license": "MIT (see repository LICENSE)",
+    "attributionNote": "Community dataset; GitHub issues cite duplicate unions, missing unions, missing English names, and outdated upazila records — use only as unverified bootstrap."
+  },
+  "requiredOutputSchema": {
+    "file": "data/locations/unions.csv",
+    "columns": [
+      "division_code",
+      "district_code",
+      "upazila_code",
+      "union_code",
+      "name_en",
+      "name_bn",
+      "lat",
+      "lng",
+      "source",
+      "is_verified"
+    ],
+    "nuhilRowPolicy": {
+      "source": "nuhil/bangladesh-geocode",
+      "is_verified": false,
+      "latLngFromNuhilUnions": "Not used in current normalize path (empty in unions.csv for nuhil rows)."
+    }
+  },
+  "nuhilRawCounts": {
+    "divisions": 8,
+    "districts": 64,
+    "upazilas": 494,
+    "unions": 4540
+  },
+  "nuhilRawUnionQuality": {
+    "missingEnglishName": 0,
+    "missingBanglaName": 0,
+    "duplicateNameGroupsUnderSameUpazila": 3,
+    "unionRowsInThoseDuplicateGroups": 6
+  },
+  "unionsCsvSnapshot": {
+    "path": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\unions.csv",
+    "totalDataRows": 3441,
+    "rowsWithSourceNuhil": 3441,
+    "missingEnglishName": 0,
+    "missingBanglaName": 0,
+    "isVerifiedTrue": 0
+  },
+  "normalizationReportSnapshot": {
+    "generatedAt": "2026-05-10T16:45:50.685Z",
+    "inputFiles": [
+      "nuhil-districts.csv",
+      "nuhil-divisions.csv",
+      "nuhil-unions.csv",
+      "nuhil-upazilas.csv"
+    ],
+    "outputRowCount": 3441,
+    "unmatchedCount": 1099,
+    "duplicateWarnings": 0,
+    "notes": [
+      "Processing nuhil/bangladesh-geocode bundle (bootstrap, is_verified=false)."
+    ]
+  },
+  "parentMappingReportSnapshot": {
+    "uniqueSourceParentCombinations": 131,
+    "failureBreakdown": {
+      "nuhil_district_name_no_match": 37,
+      "nuhil_upazila_name_no_match": 94
+    },
+    "unmatchedUnionRowsBefore": 1099
+  },
+  "pipelineCounts": {
+    "nuhilUnionRowsInSource": 4540,
+    "matchedToHdxParentsByClassifier": 3441,
+    "unmatchedNuhilUnionRows": 1099,
+    "normalizedUnionRowsWritten": 3441,
+    "unmatchedUnionRowsReported": 1099,
+    "uniqueUnmatchedSourceParentContexts": 131,
+    "uniqueUnmatchedSourceParentContextsDerived": 131,
+    "unionsUnmatchedCsvDataRows": 1099
+  },
+  "parentMismatchReasons": {
+    "nuhil_upazila_name_no_match": 782,
+    "nuhil_district_name_no_match": 317
+  },
+  "lastImportReportSnapshot": {
+    "dryRun": true,
+    "unions": {
+      "imported": 714,
+      "updated": 2727,
+      "skipped": 0,
+      "invalid": 0,
+      "duplicateWarnings": 0
+    },
+    "summary": {
+      "missingParent": 0,
+      "invalidCoordinate": 0,
+      "pendingVerificationApprox": 2738,
+      "duplicateWarningsTotal": 0,
+      "missingCoordinatesInDb": 2738
+    }
+  },
+  "importSafety": {
+    "safeToImportIfQaPasses": "Run `npm run locations:qa` after each normalize; use `locations:import:dry-run` before production import. Import upserts — it does not delete existing unions.",
+    "nuhilDoesNotReplaceHdxParents": true
+  },
+  "canNuhilBeUsedAsBootstrapData": true,
+  "dataPipelineNotes": [
+    "nuhil CSVs from bangladesh-geocode are headerless; `loadNuhilBundle` uses `nuhilCsvBodyRows` so the first data row is not skipped (older `bodyRows` logic incorrectly dropped division id 1 and the first row of each nuhil file)."
+  ],
+  "recommendation": [
+    "Treat https://github.com/nuhil/bangladesh-geocode as **bootstrap only**: MIT license, community-maintained, with known gaps (duplicates, missing names, outdated boundaries per upstream issues).",
+    "Keep `source='nuhil/bangladesh-geocode'` and `is_verified=false` on all rows from this bundle until an official source verifies them.",
+    "Resolve parent mismatches only via **manually approved** `union-parent-mapping.csv` entries (simple review / helper workflows) — never auto-approve.",
+    "Prefer HDX (or LGED/BBS when available) for authoritative division/district/upazila; nuhil fills union-level gaps under those parents.",
+    "**1099** union rows remain unmatched to HDX parents — review `union-parent-mapping-simple-review.csv` in batches.",
+    "Raw nuhil unions show **3** duplicate-name groups under the same upazila — dedupe keys in normalization use upazila+union id+names; watch for data quality when verifying."
+  ]
+}

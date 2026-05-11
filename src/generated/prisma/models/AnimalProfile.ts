@@ -723,10 +723,6 @@ export type NullableEnumAnimalTypeFieldUpdateOperationsInput = {
   set?: $Enums.AnimalType | null
 }
 
-export type NullableEnumGenderFieldUpdateOperationsInput = {
-  set?: $Enums.Gender | null
-}
-
 export type NullableEnumPregnancyStatusFieldUpdateOperationsInput = {
   set?: $Enums.PregnancyStatus | null
 }

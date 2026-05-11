@@ -32,6 +32,8 @@ function serializeMe(user: {
   customerProfile: {
     displayName: string;
     addressJson: Prisma.JsonValue | null;
+    profilePhotoUrl: string | null;
+    coverPhotoUrl: string | null;
   };
 }) {
   const area = readAreaLabel(user.customerProfile.addressJson);
@@ -42,7 +44,8 @@ function serializeMe(user: {
     email: user.email,
     area,
     role: "customer" as const,
-    profilePhotoUrl: null as string | null,
+    profilePhotoUrl: user.customerProfile.profilePhotoUrl,
+    coverPhotoUrl: user.customerProfile.coverPhotoUrl,
   };
 }
 

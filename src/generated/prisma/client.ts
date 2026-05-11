@@ -138,6 +138,47 @@ export type DoctorProfileServiceCategory = Prisma.DoctorProfileServiceCategoryMo
  */
 export type AiTechnicianProfileServiceCategory = Prisma.AiTechnicianProfileServiceCategoryModel
 /**
+ * Model AiTechnicianDivisionServiceArea
+ * Declarative district-level service coverage (text labels or slugs).
+ * Legacy village-level coverage remains on `AiTechnicianServiceArea`.
+ */
+export type AiTechnicianDivisionServiceArea = Prisma.AiTechnicianDivisionServiceAreaModel
+/**
+ * Model AiTechnicianDocument
+ * 
+ */
+export type AiTechnicianDocument = Prisma.AiTechnicianDocumentModel
+/**
+ * Model UploadedFile
+ * Object storage metadata for universal mobile uploads (S3 / MinIO–compatible).
+ */
+export type UploadedFile = Prisma.UploadedFileModel
+/**
+ * Model AiTechnicianService
+ * Technician-published service / gig (pricing + animal scope).
+ */
+export type AiTechnicianService = Prisma.AiTechnicianServiceModel
+/**
+ * Model AiServiceRequest
+ * Farmer-initiated AI service booking (module-native). Optional link to legacy `ServiceRequest` for integration.
+ */
+export type AiServiceRequest = Prisma.AiServiceRequestModel
+/**
+ * Model AiServiceRecord
+ * Structured outcome for a completed (or in-progress) AI visit.
+ */
+export type AiServiceRecord = Prisma.AiServiceRecordModel
+/**
+ * Model AiTechnicianReview
+ * Farmer rating after a completed native AI visit (one per `AiServiceRequest`).
+ */
+export type AiTechnicianReview = Prisma.AiTechnicianReviewModel
+/**
+ * Model AiTechnicianComplaint
+ * Farmer complaint for AI technician module (native requests).
+ */
+export type AiTechnicianComplaint = Prisma.AiTechnicianComplaintModel
+/**
  * Model AnimalProfile
  * 
  */

@@ -1,0 +1,15 @@
+{
+  "generatedAt": "2026-05-10T16:45:50.685Z",
+  "inputFiles": [
+    "nuhil-districts.csv",
+    "nuhil-divisions.csv",
+    "nuhil-unions.csv",
+    "nuhil-upazilas.csv"
+  ],
+  "outputRowCount": 3441,
+  "unmatchedCount": 1099,
+  "duplicateWarnings": 0,
+  "notes": [
+    "Processing nuhil/bangladesh-geocode bundle (bootstrap, is_verified=false)."
+  ]
+}

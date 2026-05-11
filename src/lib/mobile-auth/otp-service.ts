@@ -312,14 +312,14 @@ export async function verifyMobileCustomerOtp(
     };
   }
 
-  await prisma.mobileOtpChallenge.deleteMany({
-    where: { normalizedPhone },
-  });
-
   const user = await ensureCustomerUserForPhone(normalizedPhone);
   if (!user.ok) {
     return user;
   }
+
+  await prisma.mobileOtpChallenge.deleteMany({
+    where: { normalizedPhone },
+  });
 
   return { ok: true, userId: user.userId };
 }

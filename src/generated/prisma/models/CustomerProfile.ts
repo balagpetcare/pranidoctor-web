@@ -29,6 +29,8 @@ export type CustomerProfileMinAggregateOutputType = {
   userId: string | null
   displayName: string | null
   locale: string | null
+  profilePhotoUrl: string | null
+  coverPhotoUrl: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -38,6 +40,8 @@ export type CustomerProfileMaxAggregateOutputType = {
   userId: string | null
   displayName: string | null
   locale: string | null
+  profilePhotoUrl: string | null
+  coverPhotoUrl: string | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -48,6 +52,8 @@ export type CustomerProfileCountAggregateOutputType = {
   displayName: number
   locale: number
   addressJson: number
+  profilePhotoUrl: number
+  coverPhotoUrl: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -59,6 +65,8 @@ export type CustomerProfileMinAggregateInputType = {
   userId?: true
   displayName?: true
   locale?: true
+  profilePhotoUrl?: true
+  coverPhotoUrl?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -68,6 +76,8 @@ export type CustomerProfileMaxAggregateInputType = {
   userId?: true
   displayName?: true
   locale?: true
+  profilePhotoUrl?: true
+  coverPhotoUrl?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -78,6 +88,8 @@ export type CustomerProfileCountAggregateInputType = {
   displayName?: true
   locale?: true
   addressJson?: true
+  profilePhotoUrl?: true
+  coverPhotoUrl?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -161,6 +173,8 @@ export type CustomerProfileGroupByOutputType = {
   displayName: string
   locale: string | null
   addressJson: runtime.JsonValue | null
+  profilePhotoUrl: string | null
+  coverPhotoUrl: string | null
   createdAt: Date
   updatedAt: Date
   _count: CustomerProfileCountAggregateOutputType | null
@@ -192,6 +206,8 @@ export type CustomerProfileWhereInput = {
   displayName?: Prisma.StringFilter<"CustomerProfile"> | string
   locale?: Prisma.StringNullableFilter<"CustomerProfile"> | string | null
   addressJson?: Prisma.JsonNullableFilter<"CustomerProfile">
+  profilePhotoUrl?: Prisma.StringNullableFilter<"CustomerProfile"> | string | null
+  coverPhotoUrl?: Prisma.StringNullableFilter<"CustomerProfile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"CustomerProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CustomerProfile"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -208,6 +224,8 @@ export type CustomerProfileOrderByWithRelationInput = {
   displayName?: Prisma.SortOrder
   locale?: Prisma.SortOrderInput | Prisma.SortOrder
   addressJson?: Prisma.SortOrderInput | Prisma.SortOrder
+  profilePhotoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  coverPhotoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
@@ -227,6 +245,8 @@ export type CustomerProfileWhereUniqueInput = Prisma.AtLeast<{
   displayName?: Prisma.StringFilter<"CustomerProfile"> | string
   locale?: Prisma.StringNullableFilter<"CustomerProfile"> | string | null
   addressJson?: Prisma.JsonNullableFilter<"CustomerProfile">
+  profilePhotoUrl?: Prisma.StringNullableFilter<"CustomerProfile"> | string | null
+  coverPhotoUrl?: Prisma.StringNullableFilter<"CustomerProfile"> | string | null
   createdAt?: Prisma.DateTimeFilter<"CustomerProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"CustomerProfile"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
@@ -243,6 +263,8 @@ export type CustomerProfileOrderByWithAggregationInput = {
   displayName?: Prisma.SortOrder
   locale?: Prisma.SortOrderInput | Prisma.SortOrder
   addressJson?: Prisma.SortOrderInput | Prisma.SortOrder
+  profilePhotoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
+  coverPhotoUrl?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.CustomerProfileCountOrderByAggregateInput
@@ -259,6 +281,8 @@ export type CustomerProfileScalarWhereWithAggregatesInput = {
   displayName?: Prisma.StringWithAggregatesFilter<"CustomerProfile"> | string
   locale?: Prisma.StringNullableWithAggregatesFilter<"CustomerProfile"> | string | null
   addressJson?: Prisma.JsonNullableWithAggregatesFilter<"CustomerProfile">
+  profilePhotoUrl?: Prisma.StringNullableWithAggregatesFilter<"CustomerProfile"> | string | null
+  coverPhotoUrl?: Prisma.StringNullableWithAggregatesFilter<"CustomerProfile"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"CustomerProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"CustomerProfile"> | Date | string
 }
@@ -268,6 +292,8 @@ export type CustomerProfileCreateInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCustomerProfileInput
@@ -284,6 +310,8 @@ export type CustomerProfileUncheckedCreateInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   animals?: Prisma.AnimalProfileUncheckedCreateNestedManyWithoutCustomerInput
@@ -298,6 +326,8 @@ export type CustomerProfileUpdateInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCustomerProfileNestedInput
@@ -314,6 +344,8 @@ export type CustomerProfileUncheckedUpdateInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   animals?: Prisma.AnimalProfileUncheckedUpdateManyWithoutCustomerNestedInput
@@ -329,6 +361,8 @@ export type CustomerProfileCreateManyInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -338,6 +372,8 @@ export type CustomerProfileUpdateManyMutationInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -348,6 +384,8 @@ export type CustomerProfileUncheckedUpdateManyInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -363,6 +401,8 @@ export type CustomerProfileCountOrderByAggregateInput = {
   displayName?: Prisma.SortOrder
   locale?: Prisma.SortOrder
   addressJson?: Prisma.SortOrder
+  profilePhotoUrl?: Prisma.SortOrder
+  coverPhotoUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -372,6 +412,8 @@ export type CustomerProfileMaxOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   displayName?: Prisma.SortOrder
   locale?: Prisma.SortOrder
+  profilePhotoUrl?: Prisma.SortOrder
+  coverPhotoUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -381,6 +423,8 @@ export type CustomerProfileMinOrderByAggregateInput = {
   userId?: Prisma.SortOrder
   displayName?: Prisma.SortOrder
   locale?: Prisma.SortOrder
+  profilePhotoUrl?: Prisma.SortOrder
+  coverPhotoUrl?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -497,6 +541,8 @@ export type CustomerProfileCreateWithoutUserInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   animals?: Prisma.AnimalProfileCreateNestedManyWithoutCustomerInput
@@ -511,6 +557,8 @@ export type CustomerProfileUncheckedCreateWithoutUserInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   animals?: Prisma.AnimalProfileUncheckedCreateNestedManyWithoutCustomerInput
@@ -541,6 +589,8 @@ export type CustomerProfileUpdateWithoutUserInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   animals?: Prisma.AnimalProfileUpdateManyWithoutCustomerNestedInput
@@ -555,6 +605,8 @@ export type CustomerProfileUncheckedUpdateWithoutUserInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   animals?: Prisma.AnimalProfileUncheckedUpdateManyWithoutCustomerNestedInput
@@ -569,6 +621,8 @@ export type CustomerProfileCreateWithoutAnimalsInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCustomerProfileInput
@@ -584,6 +638,8 @@ export type CustomerProfileUncheckedCreateWithoutAnimalsInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutCustomerInput
@@ -613,6 +669,8 @@ export type CustomerProfileUpdateWithoutAnimalsInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCustomerProfileNestedInput
@@ -628,6 +686,8 @@ export type CustomerProfileUncheckedUpdateWithoutAnimalsInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   serviceRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutCustomerNestedInput
@@ -641,6 +701,8 @@ export type CustomerProfileCreateWithoutServiceRequestsInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCustomerProfileInput
@@ -656,6 +718,8 @@ export type CustomerProfileUncheckedCreateWithoutServiceRequestsInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   animals?: Prisma.AnimalProfileUncheckedCreateNestedManyWithoutCustomerInput
@@ -685,6 +749,8 @@ export type CustomerProfileUpdateWithoutServiceRequestsInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCustomerProfileNestedInput
@@ -700,6 +766,8 @@ export type CustomerProfileUncheckedUpdateWithoutServiceRequestsInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   animals?: Prisma.AnimalProfileUncheckedUpdateManyWithoutCustomerNestedInput
@@ -713,6 +781,8 @@ export type CustomerProfileCreateWithoutBillingRecordsInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCustomerProfileInput
@@ -728,6 +798,8 @@ export type CustomerProfileUncheckedCreateWithoutBillingRecordsInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   animals?: Prisma.AnimalProfileUncheckedCreateNestedManyWithoutCustomerInput
@@ -757,6 +829,8 @@ export type CustomerProfileUpdateWithoutBillingRecordsInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCustomerProfileNestedInput
@@ -772,6 +846,8 @@ export type CustomerProfileUncheckedUpdateWithoutBillingRecordsInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   animals?: Prisma.AnimalProfileUncheckedUpdateManyWithoutCustomerNestedInput
@@ -785,6 +861,8 @@ export type CustomerProfileCreateWithoutReviewsInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCustomerProfileInput
@@ -800,6 +878,8 @@ export type CustomerProfileUncheckedCreateWithoutReviewsInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   animals?: Prisma.AnimalProfileUncheckedCreateNestedManyWithoutCustomerInput
@@ -829,6 +909,8 @@ export type CustomerProfileUpdateWithoutReviewsInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCustomerProfileNestedInput
@@ -844,6 +926,8 @@ export type CustomerProfileUncheckedUpdateWithoutReviewsInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   animals?: Prisma.AnimalProfileUncheckedUpdateManyWithoutCustomerNestedInput
@@ -857,6 +941,8 @@ export type CustomerProfileCreateWithoutComplaintsInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutCustomerProfileInput
@@ -872,6 +958,8 @@ export type CustomerProfileUncheckedCreateWithoutComplaintsInput = {
   displayName: string
   locale?: string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: string | null
+  coverPhotoUrl?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   animals?: Prisma.AnimalProfileUncheckedCreateNestedManyWithoutCustomerInput
@@ -901,6 +989,8 @@ export type CustomerProfileUpdateWithoutComplaintsInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutCustomerProfileNestedInput
@@ -916,6 +1006,8 @@ export type CustomerProfileUncheckedUpdateWithoutComplaintsInput = {
   displayName?: Prisma.StringFieldUpdateOperationsInput | string
   locale?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   addressJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  profilePhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  coverPhotoUrl?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   animals?: Prisma.AnimalProfileUncheckedUpdateManyWithoutCustomerNestedInput
@@ -997,6 +1089,8 @@ export type CustomerProfileSelect<ExtArgs extends runtime.Types.Extensions.Inter
   displayName?: boolean
   locale?: boolean
   addressJson?: boolean
+  profilePhotoUrl?: boolean
+  coverPhotoUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1014,6 +1108,8 @@ export type CustomerProfileSelectCreateManyAndReturn<ExtArgs extends runtime.Typ
   displayName?: boolean
   locale?: boolean
   addressJson?: boolean
+  profilePhotoUrl?: boolean
+  coverPhotoUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1025,6 +1121,8 @@ export type CustomerProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Typ
   displayName?: boolean
   locale?: boolean
   addressJson?: boolean
+  profilePhotoUrl?: boolean
+  coverPhotoUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
@@ -1036,11 +1134,13 @@ export type CustomerProfileSelectScalar = {
   displayName?: boolean
   locale?: boolean
   addressJson?: boolean
+  profilePhotoUrl?: boolean
+  coverPhotoUrl?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type CustomerProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "displayName" | "locale" | "addressJson" | "createdAt" | "updatedAt", ExtArgs["result"]["customerProfile"]>
+export type CustomerProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "displayName" | "locale" | "addressJson" | "profilePhotoUrl" | "coverPhotoUrl" | "createdAt" | "updatedAt", ExtArgs["result"]["customerProfile"]>
 export type CustomerProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
   animals?: boolean | Prisma.CustomerProfile$animalsArgs<ExtArgs>
@@ -1073,6 +1173,11 @@ export type $CustomerProfilePayload<ExtArgs extends runtime.Types.Extensions.Int
     displayName: string
     locale: string | null
     addressJson: runtime.JsonValue | null
+    /**
+     * HTTPS URL to display asset (same-origin `/api/mobile/uploads/:id` redirect or CDN).
+     */
+    profilePhotoUrl: string | null
+    coverPhotoUrl: string | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["customerProfile"]>
@@ -1509,6 +1614,8 @@ export interface CustomerProfileFieldRefs {
   readonly displayName: Prisma.FieldRef<"CustomerProfile", 'String'>
   readonly locale: Prisma.FieldRef<"CustomerProfile", 'String'>
   readonly addressJson: Prisma.FieldRef<"CustomerProfile", 'Json'>
+  readonly profilePhotoUrl: Prisma.FieldRef<"CustomerProfile", 'String'>
+  readonly coverPhotoUrl: Prisma.FieldRef<"CustomerProfile", 'String'>
   readonly createdAt: Prisma.FieldRef<"CustomerProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"CustomerProfile", 'DateTime'>
 }

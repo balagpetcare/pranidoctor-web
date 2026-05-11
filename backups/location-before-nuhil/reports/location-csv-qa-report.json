@@ -1,0 +1,26 @@
+{
+  "generatedAt": "2026-05-10T16:52:01.095Z",
+  "unions": {
+    "rowCount": 3441,
+    "missingSource": 0,
+    "invalidVerified": 0,
+    "invalidCoords": 0,
+    "missingParent": 0,
+    "duplicateUnionUnderUpazila": 0,
+    "validationErrors": 0
+  },
+  "villages": {
+    "rowCount": 0,
+    "missingSource": 0,
+    "invalidVerified": 0,
+    "invalidCoords": 0,
+    "missingParent": 0,
+    "duplicateVillageUnderUnion": 0,
+    "validationErrors": 0,
+    "unionNotInUnionsCsv": 0
+  },
+  "safeToImport": true,
+  "notes": [
+    "villages.csv has no data rows."
+  ]
+}

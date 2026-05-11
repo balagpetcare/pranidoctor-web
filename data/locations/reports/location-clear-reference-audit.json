@@ -1,0 +1,241 @@
+{
+  "generatedAt": "2026-05-10T17:22:49.801Z",
+  "summary": {
+    "canClearHierarchyWithScript": true,
+    "unexpectedPgForeignKeys": [],
+    "blockingRequiredForeignKeys": [],
+    "recommendation": "Run `npm run locations:clear-for-nuhil-rebuild -- --execute` after CSV switch + dry-run import review. Junction village coverage rows will CASCADE; ServiceRequest.villageId will be nullified."
+  },
+  "expectedNuhilCounts": {
+    "divisions": 8,
+    "districts": 64,
+    "upazilas": 494,
+    "unions": 4540
+  },
+  "references": [
+    {
+      "referencingModel": "District",
+      "prismaField": "divisionId",
+      "referencedModel": "Division",
+      "isRequired": true,
+      "onDelete": "Restrict",
+      "safeToNullify": false,
+      "deleteWouldBeBlocked": false,
+      "notes": "Hierarchy child; cleared when parent chain is deleted bottom-up.",
+      "rowCountWithNonNullReference": 64
+    },
+    {
+      "referencingModel": "Upazila",
+      "prismaField": "districtId",
+      "referencedModel": "District",
+      "isRequired": true,
+      "onDelete": "Restrict",
+      "safeToNullify": false,
+      "deleteWouldBeBlocked": false,
+      "notes": "Hierarchy child.",
+      "rowCountWithNonNullReference": 511
+    },
+    {
+      "referencingModel": "Union",
+      "prismaField": "upazilaId",
+      "referencedModel": "Upazila",
+      "isRequired": true,
+      "onDelete": "Restrict",
+      "safeToNullify": false,
+      "deleteWouldBeBlocked": false,
+      "notes": "Hierarchy child.",
+      "rowCountWithNonNullReference": 3445
+    },
+    {
+      "referencingModel": "Village",
+      "prismaField": "unionId",
+      "referencedModel": "Union",
+      "isRequired": true,
+      "onDelete": "Restrict",
+      "safeToNullify": false,
+      "deleteWouldBeBlocked": false,
+      "notes": "Hierarchy child; delete villages before unions.",
+      "rowCountWithNonNullReference": 2
+    },
+    {
+      "referencingModel": "AiTechnicianProfile",
+      "prismaField": "districtId",
+      "referencedModel": "District",
+      "isRequired": false,
+      "onDelete": "SetNull",
+      "safeToNullify": true,
+      "deleteWouldBeBlocked": false,
+      "notes": "Nullable FK; clear script sets null before hierarchy delete.",
+      "rowCountWithNonNullReference": 1
+    },
+    {
+      "referencingModel": "AiTechnicianProfile",
+      "prismaField": "upazilaId",
+      "referencedModel": "Upazila",
+      "isRequired": false,
+      "onDelete": "SetNull",
+      "safeToNullify": true,
+      "deleteWouldBeBlocked": false,
+      "notes": "Nullable FK; clear script sets null before hierarchy delete.",
+      "rowCountWithNonNullReference": 1
+    },
+    {
+      "referencingModel": "AiTechnicianProfile",
+      "prismaField": "unionId",
+      "referencedModel": "Union",
+      "isRequired": false,
+      "onDelete": "SetNull",
+      "safeToNullify": true,
+      "deleteWouldBeBlocked": false,
+      "notes": "Nullable FK; clear script sets null before hierarchy delete.",
+      "rowCountWithNonNullReference": 1
+    },
+    {
+      "referencingModel": "AiTechnicianDivisionServiceArea",
+      "prismaField": "districtId",
+      "referencedModel": "District",
+      "isRequired": false,
+      "onDelete": "SetNull",
+      "safeToNullify": true,
+      "deleteWouldBeBlocked": false,
+      "notes": "Nullable FK; clear script sets null.",
+      "rowCountWithNonNullReference": 1
+    },
+    {
+      "referencingModel": "AiTechnicianDivisionServiceArea",
+      "prismaField": "upazilaId",
+      "referencedModel": "Upazila",
+      "isRequired": false,
+      "onDelete": "SetNull",
+      "safeToNullify": true,
+      "deleteWouldBeBlocked": false,
+      "notes": "Nullable FK; clear script sets null.",
+      "rowCountWithNonNullReference": 1
+    },
+    {
+      "referencingModel": "AiTechnicianDivisionServiceArea",
+      "prismaField": "unionId",
+      "referencedModel": "Union",
+      "isRequired": false,
+      "onDelete": "SetNull",
+      "safeToNullify": true,
+      "deleteWouldBeBlocked": false,
+      "notes": "Nullable FK; clear script sets null.",
+      "rowCountWithNonNullReference": 1
+    },
+    {
+      "referencingModel": "ServiceRequest",
+      "prismaField": "villageId",
+      "referencedModel": "Village",
+      "isRequired": false,
+      "onDelete": "Restrict",
+      "safeToNullify": true,
+      "deleteWouldBeBlocked": true,
+      "notes": "Must nullify before Village delete (Restrict). Clear script nullifies; does not delete requests.",
+      "rowCountWithNonNullReference": 8
+    },
+    {
+      "referencingModel": "DoctorServiceArea",
+      "prismaField": "villageId",
+      "referencedModel": "Village",
+      "isRequired": true,
+      "onDelete": "Cascade",
+      "safeToNullify": false,
+      "deleteWouldBeBlocked": false,
+      "notes": "Junction rows; removed by ON DELETE CASCADE when Village is deleted. Doctor rows preserved.",
+      "rowCountWithNonNullReference": 5
+    },
+    {
+      "referencingModel": "AiTechnicianServiceArea",
+      "prismaField": "villageId",
+      "referencedModel": "Village",
+      "isRequired": true,
+      "onDelete": "Cascade",
+      "safeToNullify": false,
+      "deleteWouldBeBlocked": false,
+      "notes": "Junction rows; CASCADE on village delete. Technician profiles preserved.",
+      "rowCountWithNonNullReference": 3
+    }
+  ],
+  "databaseForeignKeysToLocationTables": [
+    {
+      "from_table": "\"AiTechnicianDivisionServiceArea\"",
+      "from_column": "districtId",
+      "to_table": "\"District\"",
+      "delete_rule": "SET NULL"
+    },
+    {
+      "from_table": "\"AiTechnicianDivisionServiceArea\"",
+      "from_column": "unionId",
+      "to_table": "\"Union\"",
+      "delete_rule": "SET NULL"
+    },
+    {
+      "from_table": "\"AiTechnicianDivisionServiceArea\"",
+      "from_column": "upazilaId",
+      "to_table": "\"Upazila\"",
+      "delete_rule": "SET NULL"
+    },
+    {
+      "from_table": "\"AiTechnicianProfile\"",
+      "from_column": "districtId",
+      "to_table": "\"District\"",
+      "delete_rule": "SET NULL"
+    },
+    {
+      "from_table": "\"AiTechnicianProfile\"",
+      "from_column": "unionId",
+      "to_table": "\"Union\"",
+      "delete_rule": "SET NULL"
+    },
+    {
+      "from_table": "\"AiTechnicianProfile\"",
+      "from_column": "upazilaId",
+      "to_table": "\"Upazila\"",
+      "delete_rule": "SET NULL"
+    },
+    {
+      "from_table": "\"AiTechnicianServiceArea\"",
+      "from_column": "villageId",
+      "to_table": "\"Village\"",
+      "delete_rule": "CASCADE"
+    },
+    {
+      "from_table": "\"District\"",
+      "from_column": "divisionId",
+      "to_table": "\"Division\"",
+      "delete_rule": "RESTRICT"
+    },
+    {
+      "from_table": "\"DoctorServiceArea\"",
+      "from_column": "villageId",
+      "to_table": "\"Village\"",
+      "delete_rule": "CASCADE"
+    },
+    {
+      "from_table": "\"ServiceRequest\"",
+      "from_column": "villageId",
+      "to_table": "\"Village\"",
+      "delete_rule": "RESTRICT"
+    },
+    {
+      "from_table": "\"Union\"",
+      "from_column": "upazilaId",
+      "to_table": "\"Upazila\"",
+      "delete_rule": "RESTRICT"
+    },
+    {
+      "from_table": "\"Upazila\"",
+      "from_column": "districtId",
+      "to_table": "\"District\"",
+      "delete_rule": "RESTRICT"
+    },
+    {
+      "from_table": "\"Village\"",
+      "from_column": "unionId",
+      "to_table": "\"Union\"",
+      "delete_rule": "RESTRICT"
+    }
+  ],
+  "note": "Area model is separate from Division…Village; not listed here. DoctorProfileArea / AiTechnicianProfileArea reference Area, not normalized BD tables."
+}

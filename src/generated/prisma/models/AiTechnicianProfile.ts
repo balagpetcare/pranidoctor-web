@@ -27,10 +27,12 @@ export type AggregateAiTechnicianProfile = {
 }
 
 export type AiTechnicianProfileAvgAggregateOutputType = {
+  experienceYears: number | null
   serviceFeeBdt: runtime.Decimal | null
 }
 
 export type AiTechnicianProfileSumAggregateOutputType = {
+  experienceYears: number | null
   serviceFeeBdt: runtime.Decimal | null
 }
 
@@ -38,12 +40,33 @@ export type AiTechnicianProfileMinAggregateOutputType = {
   id: string | null
   userId: string | null
   displayName: string | null
+  phone: string | null
+  email: string | null
+  nidNumber: string | null
+  dateOfBirth: Date | null
+  gender: $Enums.Gender | null
+  presentAddress: string | null
+  district: string | null
+  upazila: string | null
+  unionOrArea: string | null
+  districtId: string | null
+  upazilaId: string | null
+  unionId: string | null
+  experienceYears: number | null
+  trainingProvider: string | null
+  certificateNumber: string | null
   certification: string | null
   bio: string | null
   serviceFeeBdt: runtime.Decimal | null
   acceptsEmergency: boolean | null
+  status: $Enums.AiTechnicianStatus | null
   providerStatus: $Enums.ProviderStatus | null
   verifiedAt: Date | null
+  adminNote: string | null
+  correctionNote: string | null
+  reviewedById: string | null
+  reviewedAt: Date | null
+  publishedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -52,12 +75,33 @@ export type AiTechnicianProfileMaxAggregateOutputType = {
   id: string | null
   userId: string | null
   displayName: string | null
+  phone: string | null
+  email: string | null
+  nidNumber: string | null
+  dateOfBirth: Date | null
+  gender: $Enums.Gender | null
+  presentAddress: string | null
+  district: string | null
+  upazila: string | null
+  unionOrArea: string | null
+  districtId: string | null
+  upazilaId: string | null
+  unionId: string | null
+  experienceYears: number | null
+  trainingProvider: string | null
+  certificateNumber: string | null
   certification: string | null
   bio: string | null
   serviceFeeBdt: runtime.Decimal | null
   acceptsEmergency: boolean | null
+  status: $Enums.AiTechnicianStatus | null
   providerStatus: $Enums.ProviderStatus | null
   verifiedAt: Date | null
+  adminNote: string | null
+  correctionNote: string | null
+  reviewedById: string | null
+  reviewedAt: Date | null
+  publishedAt: Date | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -66,13 +110,34 @@ export type AiTechnicianProfileCountAggregateOutputType = {
   id: number
   userId: number
   displayName: number
+  phone: number
+  email: number
+  nidNumber: number
+  dateOfBirth: number
+  gender: number
+  presentAddress: number
+  district: number
+  upazila: number
+  unionOrArea: number
+  districtId: number
+  upazilaId: number
+  unionId: number
+  experienceYears: number
+  trainingProvider: number
+  certificateNumber: number
   certification: number
   bio: number
   serviceFeeBdt: number
   acceptsEmergency: number
   metadataJson: number
+  status: number
   providerStatus: number
   verifiedAt: number
+  adminNote: number
+  correctionNote: number
+  reviewedById: number
+  reviewedAt: number
+  publishedAt: number
   createdAt: number
   updatedAt: number
   _all: number
@@ -80,10 +145,12 @@ export type AiTechnicianProfileCountAggregateOutputType = {
 
 
 export type AiTechnicianProfileAvgAggregateInputType = {
+  experienceYears?: true
   serviceFeeBdt?: true
 }
 
 export type AiTechnicianProfileSumAggregateInputType = {
+  experienceYears?: true
   serviceFeeBdt?: true
 }
 
@@ -91,12 +158,33 @@ export type AiTechnicianProfileMinAggregateInputType = {
   id?: true
   userId?: true
   displayName?: true
+  phone?: true
+  email?: true
+  nidNumber?: true
+  dateOfBirth?: true
+  gender?: true
+  presentAddress?: true
+  district?: true
+  upazila?: true
+  unionOrArea?: true
+  districtId?: true
+  upazilaId?: true
+  unionId?: true
+  experienceYears?: true
+  trainingProvider?: true
+  certificateNumber?: true
   certification?: true
   bio?: true
   serviceFeeBdt?: true
   acceptsEmergency?: true
+  status?: true
   providerStatus?: true
   verifiedAt?: true
+  adminNote?: true
+  correctionNote?: true
+  reviewedById?: true
+  reviewedAt?: true
+  publishedAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -105,12 +193,33 @@ export type AiTechnicianProfileMaxAggregateInputType = {
   id?: true
   userId?: true
   displayName?: true
+  phone?: true
+  email?: true
+  nidNumber?: true
+  dateOfBirth?: true
+  gender?: true
+  presentAddress?: true
+  district?: true
+  upazila?: true
+  unionOrArea?: true
+  districtId?: true
+  upazilaId?: true
+  unionId?: true
+  experienceYears?: true
+  trainingProvider?: true
+  certificateNumber?: true
   certification?: true
   bio?: true
   serviceFeeBdt?: true
   acceptsEmergency?: true
+  status?: true
   providerStatus?: true
   verifiedAt?: true
+  adminNote?: true
+  correctionNote?: true
+  reviewedById?: true
+  reviewedAt?: true
+  publishedAt?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -119,13 +228,34 @@ export type AiTechnicianProfileCountAggregateInputType = {
   id?: true
   userId?: true
   displayName?: true
+  phone?: true
+  email?: true
+  nidNumber?: true
+  dateOfBirth?: true
+  gender?: true
+  presentAddress?: true
+  district?: true
+  upazila?: true
+  unionOrArea?: true
+  districtId?: true
+  upazilaId?: true
+  unionId?: true
+  experienceYears?: true
+  trainingProvider?: true
+  certificateNumber?: true
   certification?: true
   bio?: true
   serviceFeeBdt?: true
   acceptsEmergency?: true
   metadataJson?: true
+  status?: true
   providerStatus?: true
   verifiedAt?: true
+  adminNote?: true
+  correctionNote?: true
+  reviewedById?: true
+  reviewedAt?: true
+  publishedAt?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -221,13 +351,34 @@ export type AiTechnicianProfileGroupByOutputType = {
   id: string
   userId: string
   displayName: string | null
+  phone: string | null
+  email: string | null
+  nidNumber: string | null
+  dateOfBirth: Date | null
+  gender: $Enums.Gender | null
+  presentAddress: string | null
+  district: string | null
+  upazila: string | null
+  unionOrArea: string | null
+  districtId: string | null
+  upazilaId: string | null
+  unionId: string | null
+  experienceYears: number | null
+  trainingProvider: string | null
+  certificateNumber: string | null
   certification: string | null
   bio: string | null
   serviceFeeBdt: runtime.Decimal | null
   acceptsEmergency: boolean
   metadataJson: runtime.JsonValue | null
+  status: $Enums.AiTechnicianStatus
   providerStatus: $Enums.ProviderStatus
   verifiedAt: Date | null
+  adminNote: string | null
+  correctionNote: string | null
+  reviewedById: string | null
+  reviewedAt: Date | null
+  publishedAt: Date | null
   createdAt: Date
   updatedAt: Date
   _count: AiTechnicianProfileCountAggregateOutputType | null
@@ -259,16 +410,41 @@ export type AiTechnicianProfileWhereInput = {
   id?: Prisma.StringFilter<"AiTechnicianProfile"> | string
   userId?: Prisma.StringFilter<"AiTechnicianProfile"> | string
   displayName?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  phone?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  email?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  nidNumber?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableFilter<"AiTechnicianProfile"> | Date | string | null
+  gender?: Prisma.EnumGenderNullableFilter<"AiTechnicianProfile"> | $Enums.Gender | null
+  presentAddress?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  district?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  upazila?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  unionOrArea?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  districtId?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  upazilaId?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  unionId?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  experienceYears?: Prisma.IntNullableFilter<"AiTechnicianProfile"> | number | null
+  trainingProvider?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  certificateNumber?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
   certification?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
   bio?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
   serviceFeeBdt?: Prisma.DecimalNullableFilter<"AiTechnicianProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFilter<"AiTechnicianProfile"> | boolean
   metadataJson?: Prisma.JsonNullableFilter<"AiTechnicianProfile">
+  status?: Prisma.EnumAiTechnicianStatusFilter<"AiTechnicianProfile"> | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFilter<"AiTechnicianProfile"> | $Enums.ProviderStatus
   verifiedAt?: Prisma.DateTimeNullableFilter<"AiTechnicianProfile"> | Date | string | null
+  adminNote?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  correctionNote?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  reviewedById?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  reviewedAt?: Prisma.DateTimeNullableFilter<"AiTechnicianProfile"> | Date | string | null
+  publishedAt?: Prisma.DateTimeNullableFilter<"AiTechnicianProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"AiTechnicianProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AiTechnicianProfile"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  reviewedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  bdDistrict?: Prisma.XOR<Prisma.DistrictNullableScalarRelationFilter, Prisma.DistrictWhereInput> | null
+  bdUpazila?: Prisma.XOR<Prisma.UpazilaNullableScalarRelationFilter, Prisma.UpazilaWhereInput> | null
+  bdUnion?: Prisma.XOR<Prisma.UnionNullableScalarRelationFilter, Prisma.UnionWhereInput> | null
   assignedRequests?: Prisma.ServiceRequestListRelationFilter
   treatmentCases?: Prisma.TreatmentCaseListRelationFilter
   prescriptions?: Prisma.PrescriptionListRelationFilter
@@ -276,24 +452,56 @@ export type AiTechnicianProfileWhereInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaListRelationFilter
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaListRelationFilter
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryListRelationFilter
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaListRelationFilter
+  documents?: Prisma.AiTechnicianDocumentListRelationFilter
+  technicianServices?: Prisma.AiTechnicianServiceListRelationFilter
+  aiServiceRequests?: Prisma.AiServiceRequestListRelationFilter
+  aiServiceRecords?: Prisma.AiServiceRecordListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
   complaints?: Prisma.ComplaintListRelationFilter
+  moduleReviews?: Prisma.AiTechnicianReviewListRelationFilter
+  moduleComplaints?: Prisma.AiTechnicianComplaintListRelationFilter
 }
 
 export type AiTechnicianProfileOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   displayName?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrderInput | Prisma.SortOrder
+  nidNumber?: Prisma.SortOrderInput | Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrderInput | Prisma.SortOrder
+  gender?: Prisma.SortOrderInput | Prisma.SortOrder
+  presentAddress?: Prisma.SortOrderInput | Prisma.SortOrder
+  district?: Prisma.SortOrderInput | Prisma.SortOrder
+  upazila?: Prisma.SortOrderInput | Prisma.SortOrder
+  unionOrArea?: Prisma.SortOrderInput | Prisma.SortOrder
+  districtId?: Prisma.SortOrderInput | Prisma.SortOrder
+  upazilaId?: Prisma.SortOrderInput | Prisma.SortOrder
+  unionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  experienceYears?: Prisma.SortOrderInput | Prisma.SortOrder
+  trainingProvider?: Prisma.SortOrderInput | Prisma.SortOrder
+  certificateNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   certification?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
   serviceFeeBdt?: Prisma.SortOrderInput | Prisma.SortOrder
   acceptsEmergency?: Prisma.SortOrder
   metadataJson?: Prisma.SortOrderInput | Prisma.SortOrder
+  status?: Prisma.SortOrder
   providerStatus?: Prisma.SortOrder
   verifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  adminNote?: Prisma.SortOrderInput | Prisma.SortOrder
+  correctionNote?: Prisma.SortOrderInput | Prisma.SortOrder
+  reviewedById?: Prisma.SortOrderInput | Prisma.SortOrder
+  reviewedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   user?: Prisma.UserOrderByWithRelationInput
+  reviewedBy?: Prisma.UserOrderByWithRelationInput
+  bdDistrict?: Prisma.DistrictOrderByWithRelationInput
+  bdUpazila?: Prisma.UpazilaOrderByWithRelationInput
+  bdUnion?: Prisma.UnionOrderByWithRelationInput
   assignedRequests?: Prisma.ServiceRequestOrderByRelationAggregateInput
   treatmentCases?: Prisma.TreatmentCaseOrderByRelationAggregateInput
   prescriptions?: Prisma.PrescriptionOrderByRelationAggregateInput
@@ -301,8 +509,15 @@ export type AiTechnicianProfileOrderByWithRelationInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaOrderByRelationAggregateInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaOrderByRelationAggregateInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryOrderByRelationAggregateInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaOrderByRelationAggregateInput
+  documents?: Prisma.AiTechnicianDocumentOrderByRelationAggregateInput
+  technicianServices?: Prisma.AiTechnicianServiceOrderByRelationAggregateInput
+  aiServiceRequests?: Prisma.AiServiceRequestOrderByRelationAggregateInput
+  aiServiceRecords?: Prisma.AiServiceRecordOrderByRelationAggregateInput
   reviews?: Prisma.ReviewOrderByRelationAggregateInput
   complaints?: Prisma.ComplaintOrderByRelationAggregateInput
+  moduleReviews?: Prisma.AiTechnicianReviewOrderByRelationAggregateInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintOrderByRelationAggregateInput
 }
 
 export type AiTechnicianProfileWhereUniqueInput = Prisma.AtLeast<{
@@ -312,16 +527,41 @@ export type AiTechnicianProfileWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.AiTechnicianProfileWhereInput[]
   NOT?: Prisma.AiTechnicianProfileWhereInput | Prisma.AiTechnicianProfileWhereInput[]
   displayName?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  phone?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  email?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  nidNumber?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableFilter<"AiTechnicianProfile"> | Date | string | null
+  gender?: Prisma.EnumGenderNullableFilter<"AiTechnicianProfile"> | $Enums.Gender | null
+  presentAddress?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  district?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  upazila?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  unionOrArea?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  districtId?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  upazilaId?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  unionId?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  experienceYears?: Prisma.IntNullableFilter<"AiTechnicianProfile"> | number | null
+  trainingProvider?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  certificateNumber?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
   certification?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
   bio?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
   serviceFeeBdt?: Prisma.DecimalNullableFilter<"AiTechnicianProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFilter<"AiTechnicianProfile"> | boolean
   metadataJson?: Prisma.JsonNullableFilter<"AiTechnicianProfile">
+  status?: Prisma.EnumAiTechnicianStatusFilter<"AiTechnicianProfile"> | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFilter<"AiTechnicianProfile"> | $Enums.ProviderStatus
   verifiedAt?: Prisma.DateTimeNullableFilter<"AiTechnicianProfile"> | Date | string | null
+  adminNote?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  correctionNote?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  reviewedById?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  reviewedAt?: Prisma.DateTimeNullableFilter<"AiTechnicianProfile"> | Date | string | null
+  publishedAt?: Prisma.DateTimeNullableFilter<"AiTechnicianProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeFilter<"AiTechnicianProfile"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"AiTechnicianProfile"> | Date | string
   user?: Prisma.XOR<Prisma.UserScalarRelationFilter, Prisma.UserWhereInput>
+  reviewedBy?: Prisma.XOR<Prisma.UserNullableScalarRelationFilter, Prisma.UserWhereInput> | null
+  bdDistrict?: Prisma.XOR<Prisma.DistrictNullableScalarRelationFilter, Prisma.DistrictWhereInput> | null
+  bdUpazila?: Prisma.XOR<Prisma.UpazilaNullableScalarRelationFilter, Prisma.UpazilaWhereInput> | null
+  bdUnion?: Prisma.XOR<Prisma.UnionNullableScalarRelationFilter, Prisma.UnionWhereInput> | null
   assignedRequests?: Prisma.ServiceRequestListRelationFilter
   treatmentCases?: Prisma.TreatmentCaseListRelationFilter
   prescriptions?: Prisma.PrescriptionListRelationFilter
@@ -329,21 +569,49 @@ export type AiTechnicianProfileWhereUniqueInput = Prisma.AtLeast<{
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaListRelationFilter
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaListRelationFilter
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryListRelationFilter
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaListRelationFilter
+  documents?: Prisma.AiTechnicianDocumentListRelationFilter
+  technicianServices?: Prisma.AiTechnicianServiceListRelationFilter
+  aiServiceRequests?: Prisma.AiServiceRequestListRelationFilter
+  aiServiceRecords?: Prisma.AiServiceRecordListRelationFilter
   reviews?: Prisma.ReviewListRelationFilter
   complaints?: Prisma.ComplaintListRelationFilter
+  moduleReviews?: Prisma.AiTechnicianReviewListRelationFilter
+  moduleComplaints?: Prisma.AiTechnicianComplaintListRelationFilter
 }, "id" | "userId">
 
 export type AiTechnicianProfileOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   displayName?: Prisma.SortOrderInput | Prisma.SortOrder
+  phone?: Prisma.SortOrderInput | Prisma.SortOrder
+  email?: Prisma.SortOrderInput | Prisma.SortOrder
+  nidNumber?: Prisma.SortOrderInput | Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrderInput | Prisma.SortOrder
+  gender?: Prisma.SortOrderInput | Prisma.SortOrder
+  presentAddress?: Prisma.SortOrderInput | Prisma.SortOrder
+  district?: Prisma.SortOrderInput | Prisma.SortOrder
+  upazila?: Prisma.SortOrderInput | Prisma.SortOrder
+  unionOrArea?: Prisma.SortOrderInput | Prisma.SortOrder
+  districtId?: Prisma.SortOrderInput | Prisma.SortOrder
+  upazilaId?: Prisma.SortOrderInput | Prisma.SortOrder
+  unionId?: Prisma.SortOrderInput | Prisma.SortOrder
+  experienceYears?: Prisma.SortOrderInput | Prisma.SortOrder
+  trainingProvider?: Prisma.SortOrderInput | Prisma.SortOrder
+  certificateNumber?: Prisma.SortOrderInput | Prisma.SortOrder
   certification?: Prisma.SortOrderInput | Prisma.SortOrder
   bio?: Prisma.SortOrderInput | Prisma.SortOrder
   serviceFeeBdt?: Prisma.SortOrderInput | Prisma.SortOrder
   acceptsEmergency?: Prisma.SortOrder
   metadataJson?: Prisma.SortOrderInput | Prisma.SortOrder
+  status?: Prisma.SortOrder
   providerStatus?: Prisma.SortOrder
   verifiedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  adminNote?: Prisma.SortOrderInput | Prisma.SortOrder
+  correctionNote?: Prisma.SortOrderInput | Prisma.SortOrder
+  reviewedById?: Prisma.SortOrderInput | Prisma.SortOrder
+  reviewedAt?: Prisma.SortOrderInput | Prisma.SortOrder
+  publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.AiTechnicianProfileCountOrderByAggregateInput
@@ -360,13 +628,34 @@ export type AiTechnicianProfileScalarWhereWithAggregatesInput = {
   id?: Prisma.StringWithAggregatesFilter<"AiTechnicianProfile"> | string
   userId?: Prisma.StringWithAggregatesFilter<"AiTechnicianProfile"> | string
   displayName?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  phone?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  email?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  nidNumber?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableWithAggregatesFilter<"AiTechnicianProfile"> | Date | string | null
+  gender?: Prisma.EnumGenderNullableWithAggregatesFilter<"AiTechnicianProfile"> | $Enums.Gender | null
+  presentAddress?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  district?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  upazila?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  unionOrArea?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  districtId?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  upazilaId?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  unionId?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  experienceYears?: Prisma.IntNullableWithAggregatesFilter<"AiTechnicianProfile"> | number | null
+  trainingProvider?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  certificateNumber?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
   certification?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
   bio?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
   serviceFeeBdt?: Prisma.DecimalNullableWithAggregatesFilter<"AiTechnicianProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolWithAggregatesFilter<"AiTechnicianProfile"> | boolean
   metadataJson?: Prisma.JsonNullableWithAggregatesFilter<"AiTechnicianProfile">
+  status?: Prisma.EnumAiTechnicianStatusWithAggregatesFilter<"AiTechnicianProfile"> | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusWithAggregatesFilter<"AiTechnicianProfile"> | $Enums.ProviderStatus
   verifiedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"AiTechnicianProfile"> | Date | string | null
+  adminNote?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  correctionNote?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  reviewedById?: Prisma.StringNullableWithAggregatesFilter<"AiTechnicianProfile"> | string | null
+  reviewedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"AiTechnicianProfile"> | Date | string | null
+  publishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"AiTechnicianProfile"> | Date | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"AiTechnicianProfile"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"AiTechnicianProfile"> | Date | string
 }
@@ -374,16 +663,37 @@ export type AiTechnicianProfileScalarWhereWithAggregatesInput = {
 export type AiTechnicianProfileCreateInput = {
   id?: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
   assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
   treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
@@ -391,21 +701,49 @@ export type AiTechnicianProfileCreateInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileUncheckedCreateInput = {
   id?: string
   userId: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
@@ -415,23 +753,51 @@ export type AiTechnicianProfileUncheckedCreateInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
   assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
   treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
@@ -439,21 +805,49 @@ export type AiTechnicianProfileUpdateInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
@@ -463,21 +857,49 @@ export type AiTechnicianProfileUncheckedUpdateInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileCreateManyInput = {
   id?: string
   userId: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -485,13 +907,30 @@ export type AiTechnicianProfileCreateManyInput = {
 export type AiTechnicianProfileUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -500,13 +939,34 @@ export type AiTechnicianProfileUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -516,22 +976,54 @@ export type AiTechnicianProfileNullableScalarRelationFilter = {
   isNot?: Prisma.AiTechnicianProfileWhereInput | null
 }
 
+export type AiTechnicianProfileListRelationFilter = {
+  every?: Prisma.AiTechnicianProfileWhereInput
+  some?: Prisma.AiTechnicianProfileWhereInput
+  none?: Prisma.AiTechnicianProfileWhereInput
+}
+
+export type AiTechnicianProfileOrderByRelationAggregateInput = {
+  _count?: Prisma.SortOrder
+}
+
 export type AiTechnicianProfileCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   displayName?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  nidNumber?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  presentAddress?: Prisma.SortOrder
+  district?: Prisma.SortOrder
+  upazila?: Prisma.SortOrder
+  unionOrArea?: Prisma.SortOrder
+  districtId?: Prisma.SortOrder
+  upazilaId?: Prisma.SortOrder
+  unionId?: Prisma.SortOrder
+  experienceYears?: Prisma.SortOrder
+  trainingProvider?: Prisma.SortOrder
+  certificateNumber?: Prisma.SortOrder
   certification?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   serviceFeeBdt?: Prisma.SortOrder
   acceptsEmergency?: Prisma.SortOrder
   metadataJson?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   providerStatus?: Prisma.SortOrder
   verifiedAt?: Prisma.SortOrder
+  adminNote?: Prisma.SortOrder
+  correctionNote?: Prisma.SortOrder
+  reviewedById?: Prisma.SortOrder
+  reviewedAt?: Prisma.SortOrder
+  publishedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type AiTechnicianProfileAvgOrderByAggregateInput = {
+  experienceYears?: Prisma.SortOrder
   serviceFeeBdt?: Prisma.SortOrder
 }
 
@@ -539,12 +1031,33 @@ export type AiTechnicianProfileMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   displayName?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  nidNumber?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  presentAddress?: Prisma.SortOrder
+  district?: Prisma.SortOrder
+  upazila?: Prisma.SortOrder
+  unionOrArea?: Prisma.SortOrder
+  districtId?: Prisma.SortOrder
+  upazilaId?: Prisma.SortOrder
+  unionId?: Prisma.SortOrder
+  experienceYears?: Prisma.SortOrder
+  trainingProvider?: Prisma.SortOrder
+  certificateNumber?: Prisma.SortOrder
   certification?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   serviceFeeBdt?: Prisma.SortOrder
   acceptsEmergency?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   providerStatus?: Prisma.SortOrder
   verifiedAt?: Prisma.SortOrder
+  adminNote?: Prisma.SortOrder
+  correctionNote?: Prisma.SortOrder
+  reviewedById?: Prisma.SortOrder
+  reviewedAt?: Prisma.SortOrder
+  publishedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -553,17 +1066,39 @@ export type AiTechnicianProfileMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   userId?: Prisma.SortOrder
   displayName?: Prisma.SortOrder
+  phone?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  nidNumber?: Prisma.SortOrder
+  dateOfBirth?: Prisma.SortOrder
+  gender?: Prisma.SortOrder
+  presentAddress?: Prisma.SortOrder
+  district?: Prisma.SortOrder
+  upazila?: Prisma.SortOrder
+  unionOrArea?: Prisma.SortOrder
+  districtId?: Prisma.SortOrder
+  upazilaId?: Prisma.SortOrder
+  unionId?: Prisma.SortOrder
+  experienceYears?: Prisma.SortOrder
+  trainingProvider?: Prisma.SortOrder
+  certificateNumber?: Prisma.SortOrder
   certification?: Prisma.SortOrder
   bio?: Prisma.SortOrder
   serviceFeeBdt?: Prisma.SortOrder
   acceptsEmergency?: Prisma.SortOrder
+  status?: Prisma.SortOrder
   providerStatus?: Prisma.SortOrder
   verifiedAt?: Prisma.SortOrder
+  adminNote?: Prisma.SortOrder
+  correctionNote?: Prisma.SortOrder
+  reviewedById?: Prisma.SortOrder
+  reviewedAt?: Prisma.SortOrder
+  publishedAt?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
 
 export type AiTechnicianProfileSumOrderByAggregateInput = {
+  experienceYears?: Prisma.SortOrder
   serviceFeeBdt?: Prisma.SortOrder
 }
 
@@ -578,10 +1113,24 @@ export type AiTechnicianProfileCreateNestedOneWithoutUserInput = {
   connect?: Prisma.AiTechnicianProfileWhereUniqueInput
 }
 
+export type AiTechnicianProfileCreateNestedManyWithoutReviewedByInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutReviewedByInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutReviewedByInput> | Prisma.AiTechnicianProfileCreateWithoutReviewedByInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutReviewedByInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutReviewedByInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutReviewedByInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyReviewedByInputEnvelope
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+}
+
 export type AiTechnicianProfileUncheckedCreateNestedOneWithoutUserInput = {
   create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutUserInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutUserInput>
   connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutUserInput
   connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+}
+
+export type AiTechnicianProfileUncheckedCreateNestedManyWithoutReviewedByInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutReviewedByInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutReviewedByInput> | Prisma.AiTechnicianProfileCreateWithoutReviewedByInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutReviewedByInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutReviewedByInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutReviewedByInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyReviewedByInputEnvelope
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
 }
 
 export type AiTechnicianProfileUpdateOneWithoutUserNestedInput = {
@@ -594,6 +1143,20 @@ export type AiTechnicianProfileUpdateOneWithoutUserNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.AiTechnicianProfileUpdateToOneWithWhereWithoutUserInput, Prisma.AiTechnicianProfileUpdateWithoutUserInput>, Prisma.AiTechnicianProfileUncheckedUpdateWithoutUserInput>
 }
 
+export type AiTechnicianProfileUpdateManyWithoutReviewedByNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutReviewedByInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutReviewedByInput> | Prisma.AiTechnicianProfileCreateWithoutReviewedByInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutReviewedByInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutReviewedByInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutReviewedByInput[]
+  upsert?: Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutReviewedByInput | Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutReviewedByInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyReviewedByInputEnvelope
+  set?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  disconnect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  delete?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  update?: Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutReviewedByInput | Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutReviewedByInput[]
+  updateMany?: Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutReviewedByInput | Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutReviewedByInput[]
+  deleteMany?: Prisma.AiTechnicianProfileScalarWhereInput | Prisma.AiTechnicianProfileScalarWhereInput[]
+}
+
 export type AiTechnicianProfileUncheckedUpdateOneWithoutUserNestedInput = {
   create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutUserInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutUserInput>
   connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutUserInput
@@ -602,6 +1165,154 @@ export type AiTechnicianProfileUncheckedUpdateOneWithoutUserNestedInput = {
   delete?: Prisma.AiTechnicianProfileWhereInput | boolean
   connect?: Prisma.AiTechnicianProfileWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.AiTechnicianProfileUpdateToOneWithWhereWithoutUserInput, Prisma.AiTechnicianProfileUpdateWithoutUserInput>, Prisma.AiTechnicianProfileUncheckedUpdateWithoutUserInput>
+}
+
+export type AiTechnicianProfileUncheckedUpdateManyWithoutReviewedByNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutReviewedByInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutReviewedByInput> | Prisma.AiTechnicianProfileCreateWithoutReviewedByInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutReviewedByInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutReviewedByInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutReviewedByInput[]
+  upsert?: Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutReviewedByInput | Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutReviewedByInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyReviewedByInputEnvelope
+  set?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  disconnect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  delete?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  update?: Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutReviewedByInput | Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutReviewedByInput[]
+  updateMany?: Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutReviewedByInput | Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutReviewedByInput[]
+  deleteMany?: Prisma.AiTechnicianProfileScalarWhereInput | Prisma.AiTechnicianProfileScalarWhereInput[]
+}
+
+export type NullableEnumGenderFieldUpdateOperationsInput = {
+  set?: $Enums.Gender | null
+}
+
+export type EnumAiTechnicianStatusFieldUpdateOperationsInput = {
+  set?: $Enums.AiTechnicianStatus
+}
+
+export type AiTechnicianProfileCreateNestedManyWithoutBdDistrictInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdDistrictInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdDistrictInput> | Prisma.AiTechnicianProfileCreateWithoutBdDistrictInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutBdDistrictInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutBdDistrictInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutBdDistrictInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyBdDistrictInputEnvelope
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+}
+
+export type AiTechnicianProfileUncheckedCreateNestedManyWithoutBdDistrictInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdDistrictInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdDistrictInput> | Prisma.AiTechnicianProfileCreateWithoutBdDistrictInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutBdDistrictInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutBdDistrictInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutBdDistrictInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyBdDistrictInputEnvelope
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+}
+
+export type AiTechnicianProfileUpdateManyWithoutBdDistrictNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdDistrictInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdDistrictInput> | Prisma.AiTechnicianProfileCreateWithoutBdDistrictInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutBdDistrictInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutBdDistrictInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutBdDistrictInput[]
+  upsert?: Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutBdDistrictInput | Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutBdDistrictInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyBdDistrictInputEnvelope
+  set?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  disconnect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  delete?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  update?: Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutBdDistrictInput | Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutBdDistrictInput[]
+  updateMany?: Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutBdDistrictInput | Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutBdDistrictInput[]
+  deleteMany?: Prisma.AiTechnicianProfileScalarWhereInput | Prisma.AiTechnicianProfileScalarWhereInput[]
+}
+
+export type AiTechnicianProfileUncheckedUpdateManyWithoutBdDistrictNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdDistrictInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdDistrictInput> | Prisma.AiTechnicianProfileCreateWithoutBdDistrictInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutBdDistrictInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutBdDistrictInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutBdDistrictInput[]
+  upsert?: Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutBdDistrictInput | Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutBdDistrictInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyBdDistrictInputEnvelope
+  set?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  disconnect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  delete?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  update?: Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutBdDistrictInput | Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutBdDistrictInput[]
+  updateMany?: Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutBdDistrictInput | Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutBdDistrictInput[]
+  deleteMany?: Prisma.AiTechnicianProfileScalarWhereInput | Prisma.AiTechnicianProfileScalarWhereInput[]
+}
+
+export type AiTechnicianProfileCreateNestedManyWithoutBdUpazilaInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdUpazilaInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUpazilaInput> | Prisma.AiTechnicianProfileCreateWithoutBdUpazilaInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUpazilaInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUpazilaInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUpazilaInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyBdUpazilaInputEnvelope
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+}
+
+export type AiTechnicianProfileUncheckedCreateNestedManyWithoutBdUpazilaInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdUpazilaInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUpazilaInput> | Prisma.AiTechnicianProfileCreateWithoutBdUpazilaInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUpazilaInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUpazilaInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUpazilaInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyBdUpazilaInputEnvelope
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+}
+
+export type AiTechnicianProfileUpdateManyWithoutBdUpazilaNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdUpazilaInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUpazilaInput> | Prisma.AiTechnicianProfileCreateWithoutBdUpazilaInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUpazilaInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUpazilaInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUpazilaInput[]
+  upsert?: Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutBdUpazilaInput | Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutBdUpazilaInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyBdUpazilaInputEnvelope
+  set?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  disconnect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  delete?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  update?: Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutBdUpazilaInput | Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutBdUpazilaInput[]
+  updateMany?: Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutBdUpazilaInput | Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutBdUpazilaInput[]
+  deleteMany?: Prisma.AiTechnicianProfileScalarWhereInput | Prisma.AiTechnicianProfileScalarWhereInput[]
+}
+
+export type AiTechnicianProfileUncheckedUpdateManyWithoutBdUpazilaNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdUpazilaInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUpazilaInput> | Prisma.AiTechnicianProfileCreateWithoutBdUpazilaInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUpazilaInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUpazilaInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUpazilaInput[]
+  upsert?: Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutBdUpazilaInput | Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutBdUpazilaInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyBdUpazilaInputEnvelope
+  set?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  disconnect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  delete?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  update?: Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutBdUpazilaInput | Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutBdUpazilaInput[]
+  updateMany?: Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutBdUpazilaInput | Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutBdUpazilaInput[]
+  deleteMany?: Prisma.AiTechnicianProfileScalarWhereInput | Prisma.AiTechnicianProfileScalarWhereInput[]
+}
+
+export type AiTechnicianProfileCreateNestedManyWithoutBdUnionInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdUnionInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUnionInput> | Prisma.AiTechnicianProfileCreateWithoutBdUnionInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUnionInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUnionInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUnionInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyBdUnionInputEnvelope
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+}
+
+export type AiTechnicianProfileUncheckedCreateNestedManyWithoutBdUnionInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdUnionInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUnionInput> | Prisma.AiTechnicianProfileCreateWithoutBdUnionInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUnionInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUnionInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUnionInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyBdUnionInputEnvelope
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+}
+
+export type AiTechnicianProfileUpdateManyWithoutBdUnionNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdUnionInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUnionInput> | Prisma.AiTechnicianProfileCreateWithoutBdUnionInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUnionInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUnionInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUnionInput[]
+  upsert?: Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutBdUnionInput | Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutBdUnionInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyBdUnionInputEnvelope
+  set?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  disconnect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  delete?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  update?: Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutBdUnionInput | Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutBdUnionInput[]
+  updateMany?: Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutBdUnionInput | Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutBdUnionInput[]
+  deleteMany?: Prisma.AiTechnicianProfileScalarWhereInput | Prisma.AiTechnicianProfileScalarWhereInput[]
+}
+
+export type AiTechnicianProfileUncheckedUpdateManyWithoutBdUnionNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdUnionInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUnionInput> | Prisma.AiTechnicianProfileCreateWithoutBdUnionInput[] | Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUnionInput[]
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUnionInput | Prisma.AiTechnicianProfileCreateOrConnectWithoutBdUnionInput[]
+  upsert?: Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutBdUnionInput | Prisma.AiTechnicianProfileUpsertWithWhereUniqueWithoutBdUnionInput[]
+  createMany?: Prisma.AiTechnicianProfileCreateManyBdUnionInputEnvelope
+  set?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  disconnect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  delete?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput | Prisma.AiTechnicianProfileWhereUniqueInput[]
+  update?: Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutBdUnionInput | Prisma.AiTechnicianProfileUpdateWithWhereUniqueWithoutBdUnionInput[]
+  updateMany?: Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutBdUnionInput | Prisma.AiTechnicianProfileUpdateManyWithWhereWithoutBdUnionInput[]
+  deleteMany?: Prisma.AiTechnicianProfileScalarWhereInput | Prisma.AiTechnicianProfileScalarWhereInput[]
 }
 
 export type AiTechnicianProfileCreateNestedOneWithoutAiTechnicianServiceAreasInput = {
@@ -644,6 +1355,106 @@ export type AiTechnicianProfileUpdateOneRequiredWithoutAiTechnicianProfileServic
   upsert?: Prisma.AiTechnicianProfileUpsertWithoutAiTechnicianProfileServiceCategoriesInput
   connect?: Prisma.AiTechnicianProfileWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.AiTechnicianProfileUpdateToOneWithWhereWithoutAiTechnicianProfileServiceCategoriesInput, Prisma.AiTechnicianProfileUpdateWithoutAiTechnicianProfileServiceCategoriesInput>, Prisma.AiTechnicianProfileUncheckedUpdateWithoutAiTechnicianProfileServiceCategoriesInput>
+}
+
+export type AiTechnicianProfileCreateNestedOneWithoutDivisionCoverageAreasInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutDivisionCoverageAreasInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutDivisionCoverageAreasInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutDivisionCoverageAreasInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+}
+
+export type AiTechnicianProfileUpdateOneRequiredWithoutDivisionCoverageAreasNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutDivisionCoverageAreasInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutDivisionCoverageAreasInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutDivisionCoverageAreasInput
+  upsert?: Prisma.AiTechnicianProfileUpsertWithoutDivisionCoverageAreasInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AiTechnicianProfileUpdateToOneWithWhereWithoutDivisionCoverageAreasInput, Prisma.AiTechnicianProfileUpdateWithoutDivisionCoverageAreasInput>, Prisma.AiTechnicianProfileUncheckedUpdateWithoutDivisionCoverageAreasInput>
+}
+
+export type AiTechnicianProfileCreateNestedOneWithoutDocumentsInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutDocumentsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutDocumentsInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutDocumentsInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+}
+
+export type AiTechnicianProfileUpdateOneRequiredWithoutDocumentsNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutDocumentsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutDocumentsInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutDocumentsInput
+  upsert?: Prisma.AiTechnicianProfileUpsertWithoutDocumentsInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AiTechnicianProfileUpdateToOneWithWhereWithoutDocumentsInput, Prisma.AiTechnicianProfileUpdateWithoutDocumentsInput>, Prisma.AiTechnicianProfileUncheckedUpdateWithoutDocumentsInput>
+}
+
+export type AiTechnicianProfileCreateNestedOneWithoutTechnicianServicesInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutTechnicianServicesInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutTechnicianServicesInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutTechnicianServicesInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+}
+
+export type AiTechnicianProfileUpdateOneRequiredWithoutTechnicianServicesNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutTechnicianServicesInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutTechnicianServicesInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutTechnicianServicesInput
+  upsert?: Prisma.AiTechnicianProfileUpsertWithoutTechnicianServicesInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AiTechnicianProfileUpdateToOneWithWhereWithoutTechnicianServicesInput, Prisma.AiTechnicianProfileUpdateWithoutTechnicianServicesInput>, Prisma.AiTechnicianProfileUncheckedUpdateWithoutTechnicianServicesInput>
+}
+
+export type AiTechnicianProfileCreateNestedOneWithoutAiServiceRequestsInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutAiServiceRequestsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutAiServiceRequestsInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutAiServiceRequestsInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+}
+
+export type AiTechnicianProfileUpdateOneWithoutAiServiceRequestsNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutAiServiceRequestsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutAiServiceRequestsInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutAiServiceRequestsInput
+  upsert?: Prisma.AiTechnicianProfileUpsertWithoutAiServiceRequestsInput
+  disconnect?: Prisma.AiTechnicianProfileWhereInput | boolean
+  delete?: Prisma.AiTechnicianProfileWhereInput | boolean
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AiTechnicianProfileUpdateToOneWithWhereWithoutAiServiceRequestsInput, Prisma.AiTechnicianProfileUpdateWithoutAiServiceRequestsInput>, Prisma.AiTechnicianProfileUncheckedUpdateWithoutAiServiceRequestsInput>
+}
+
+export type AiTechnicianProfileCreateNestedOneWithoutAiServiceRecordsInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutAiServiceRecordsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutAiServiceRecordsInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutAiServiceRecordsInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+}
+
+export type AiTechnicianProfileUpdateOneRequiredWithoutAiServiceRecordsNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutAiServiceRecordsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutAiServiceRecordsInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutAiServiceRecordsInput
+  upsert?: Prisma.AiTechnicianProfileUpsertWithoutAiServiceRecordsInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AiTechnicianProfileUpdateToOneWithWhereWithoutAiServiceRecordsInput, Prisma.AiTechnicianProfileUpdateWithoutAiServiceRecordsInput>, Prisma.AiTechnicianProfileUncheckedUpdateWithoutAiServiceRecordsInput>
+}
+
+export type AiTechnicianProfileCreateNestedOneWithoutModuleReviewsInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutModuleReviewsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutModuleReviewsInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutModuleReviewsInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+}
+
+export type AiTechnicianProfileUpdateOneRequiredWithoutModuleReviewsNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutModuleReviewsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutModuleReviewsInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutModuleReviewsInput
+  upsert?: Prisma.AiTechnicianProfileUpsertWithoutModuleReviewsInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AiTechnicianProfileUpdateToOneWithWhereWithoutModuleReviewsInput, Prisma.AiTechnicianProfileUpdateWithoutModuleReviewsInput>, Prisma.AiTechnicianProfileUncheckedUpdateWithoutModuleReviewsInput>
+}
+
+export type AiTechnicianProfileCreateNestedOneWithoutModuleComplaintsInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutModuleComplaintsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutModuleComplaintsInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutModuleComplaintsInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+}
+
+export type AiTechnicianProfileUpdateOneRequiredWithoutModuleComplaintsNestedInput = {
+  create?: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutModuleComplaintsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutModuleComplaintsInput>
+  connectOrCreate?: Prisma.AiTechnicianProfileCreateOrConnectWithoutModuleComplaintsInput
+  upsert?: Prisma.AiTechnicianProfileUpsertWithoutModuleComplaintsInput
+  connect?: Prisma.AiTechnicianProfileWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.AiTechnicianProfileUpdateToOneWithWhereWithoutModuleComplaintsInput, Prisma.AiTechnicianProfileUpdateWithoutModuleComplaintsInput>, Prisma.AiTechnicianProfileUncheckedUpdateWithoutModuleComplaintsInput>
 }
 
 export type AiTechnicianProfileCreateNestedOneWithoutAssignedRequestsInput = {
@@ -745,15 +1556,36 @@ export type AiTechnicianProfileUpdateOneWithoutComplaintsNestedInput = {
 export type AiTechnicianProfileCreateWithoutUserInput = {
   id?: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
   assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
   treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
@@ -761,20 +1593,48 @@ export type AiTechnicianProfileCreateWithoutUserInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileUncheckedCreateWithoutUserInput = {
   id?: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
@@ -784,13 +1644,132 @@ export type AiTechnicianProfileUncheckedCreateWithoutUserInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileCreateOrConnectWithoutUserInput = {
   where: Prisma.AiTechnicianProfileWhereUniqueInput
   create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutUserInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutUserInput>
+}
+
+export type AiTechnicianProfileCreateWithoutReviewedByInput = {
+  id?: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
+  assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileUncheckedCreateWithoutReviewedByInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileCreateOrConnectWithoutReviewedByInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutReviewedByInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutReviewedByInput>
+}
+
+export type AiTechnicianProfileCreateManyReviewedByInputEnvelope = {
+  data: Prisma.AiTechnicianProfileCreateManyReviewedByInput | Prisma.AiTechnicianProfileCreateManyReviewedByInput[]
+  skipDuplicates?: boolean
 }
 
 export type AiTechnicianProfileUpsertWithoutUserInput = {
@@ -807,15 +1786,36 @@ export type AiTechnicianProfileUpdateToOneWithWhereWithoutUserInput = {
 export type AiTechnicianProfileUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
   assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
   treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
@@ -823,20 +1823,48 @@ export type AiTechnicianProfileUpdateWithoutUserInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileUncheckedUpdateWithoutUserInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
@@ -846,44 +1874,539 @@ export type AiTechnicianProfileUncheckedUpdateWithoutUserInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
 }
 
-export type AiTechnicianProfileCreateWithoutAiTechnicianServiceAreasInput = {
+export type AiTechnicianProfileUpsertWithWhereUniqueWithoutReviewedByInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  update: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutReviewedByInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutReviewedByInput>
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutReviewedByInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutReviewedByInput>
+}
+
+export type AiTechnicianProfileUpdateWithWhereUniqueWithoutReviewedByInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutReviewedByInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutReviewedByInput>
+}
+
+export type AiTechnicianProfileUpdateManyWithWhereWithoutReviewedByInput = {
+  where: Prisma.AiTechnicianProfileScalarWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateManyMutationInput, Prisma.AiTechnicianProfileUncheckedUpdateManyWithoutReviewedByInput>
+}
+
+export type AiTechnicianProfileScalarWhereInput = {
+  AND?: Prisma.AiTechnicianProfileScalarWhereInput | Prisma.AiTechnicianProfileScalarWhereInput[]
+  OR?: Prisma.AiTechnicianProfileScalarWhereInput[]
+  NOT?: Prisma.AiTechnicianProfileScalarWhereInput | Prisma.AiTechnicianProfileScalarWhereInput[]
+  id?: Prisma.StringFilter<"AiTechnicianProfile"> | string
+  userId?: Prisma.StringFilter<"AiTechnicianProfile"> | string
+  displayName?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  phone?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  email?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  nidNumber?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  dateOfBirth?: Prisma.DateTimeNullableFilter<"AiTechnicianProfile"> | Date | string | null
+  gender?: Prisma.EnumGenderNullableFilter<"AiTechnicianProfile"> | $Enums.Gender | null
+  presentAddress?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  district?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  upazila?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  unionOrArea?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  districtId?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  upazilaId?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  unionId?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  experienceYears?: Prisma.IntNullableFilter<"AiTechnicianProfile"> | number | null
+  trainingProvider?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  certificateNumber?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  certification?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  bio?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  serviceFeeBdt?: Prisma.DecimalNullableFilter<"AiTechnicianProfile"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFilter<"AiTechnicianProfile"> | boolean
+  metadataJson?: Prisma.JsonNullableFilter<"AiTechnicianProfile">
+  status?: Prisma.EnumAiTechnicianStatusFilter<"AiTechnicianProfile"> | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFilter<"AiTechnicianProfile"> | $Enums.ProviderStatus
+  verifiedAt?: Prisma.DateTimeNullableFilter<"AiTechnicianProfile"> | Date | string | null
+  adminNote?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  correctionNote?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  reviewedById?: Prisma.StringNullableFilter<"AiTechnicianProfile"> | string | null
+  reviewedAt?: Prisma.DateTimeNullableFilter<"AiTechnicianProfile"> | Date | string | null
+  publishedAt?: Prisma.DateTimeNullableFilter<"AiTechnicianProfile"> | Date | string | null
+  createdAt?: Prisma.DateTimeFilter<"AiTechnicianProfile"> | Date | string
+  updatedAt?: Prisma.DateTimeFilter<"AiTechnicianProfile"> | Date | string
+}
+
+export type AiTechnicianProfileCreateWithoutBdDistrictInput = {
   id?: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
+  assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileUncheckedCreateWithoutBdDistrictInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileCreateOrConnectWithoutBdDistrictInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdDistrictInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdDistrictInput>
+}
+
+export type AiTechnicianProfileCreateManyBdDistrictInputEnvelope = {
+  data: Prisma.AiTechnicianProfileCreateManyBdDistrictInput | Prisma.AiTechnicianProfileCreateManyBdDistrictInput[]
+  skipDuplicates?: boolean
+}
+
+export type AiTechnicianProfileUpsertWithWhereUniqueWithoutBdDistrictInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  update: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutBdDistrictInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutBdDistrictInput>
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdDistrictInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdDistrictInput>
+}
+
+export type AiTechnicianProfileUpdateWithWhereUniqueWithoutBdDistrictInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutBdDistrictInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutBdDistrictInput>
+}
+
+export type AiTechnicianProfileUpdateManyWithWhereWithoutBdDistrictInput = {
+  where: Prisma.AiTechnicianProfileScalarWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateManyMutationInput, Prisma.AiTechnicianProfileUncheckedUpdateManyWithoutBdDistrictInput>
+}
+
+export type AiTechnicianProfileCreateWithoutBdUpazilaInput = {
+  id?: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
+  assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileUncheckedCreateWithoutBdUpazilaInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileCreateOrConnectWithoutBdUpazilaInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdUpazilaInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUpazilaInput>
+}
+
+export type AiTechnicianProfileCreateManyBdUpazilaInputEnvelope = {
+  data: Prisma.AiTechnicianProfileCreateManyBdUpazilaInput | Prisma.AiTechnicianProfileCreateManyBdUpazilaInput[]
+  skipDuplicates?: boolean
+}
+
+export type AiTechnicianProfileUpsertWithWhereUniqueWithoutBdUpazilaInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  update: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutBdUpazilaInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutBdUpazilaInput>
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdUpazilaInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUpazilaInput>
+}
+
+export type AiTechnicianProfileUpdateWithWhereUniqueWithoutBdUpazilaInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutBdUpazilaInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutBdUpazilaInput>
+}
+
+export type AiTechnicianProfileUpdateManyWithWhereWithoutBdUpazilaInput = {
+  where: Prisma.AiTechnicianProfileScalarWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateManyMutationInput, Prisma.AiTechnicianProfileUncheckedUpdateManyWithoutBdUpazilaInput>
+}
+
+export type AiTechnicianProfileCreateWithoutBdUnionInput = {
+  id?: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileUncheckedCreateWithoutBdUnionInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileCreateOrConnectWithoutBdUnionInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdUnionInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUnionInput>
+}
+
+export type AiTechnicianProfileCreateManyBdUnionInputEnvelope = {
+  data: Prisma.AiTechnicianProfileCreateManyBdUnionInput | Prisma.AiTechnicianProfileCreateManyBdUnionInput[]
+  skipDuplicates?: boolean
+}
+
+export type AiTechnicianProfileUpsertWithWhereUniqueWithoutBdUnionInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  update: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutBdUnionInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutBdUnionInput>
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutBdUnionInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutBdUnionInput>
+}
+
+export type AiTechnicianProfileUpdateWithWhereUniqueWithoutBdUnionInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutBdUnionInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutBdUnionInput>
+}
+
+export type AiTechnicianProfileUpdateManyWithWhereWithoutBdUnionInput = {
+  where: Prisma.AiTechnicianProfileScalarWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateManyMutationInput, Prisma.AiTechnicianProfileUncheckedUpdateManyWithoutBdUnionInput>
+}
+
+export type AiTechnicianProfileCreateWithoutAiTechnicianServiceAreasInput = {
+  id?: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
   assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
   treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileUncheckedCreateWithoutAiTechnicianServiceAreasInput = {
   id?: string
   userId: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
@@ -892,8 +2415,15 @@ export type AiTechnicianProfileUncheckedCreateWithoutAiTechnicianServiceAreasInp
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileCreateOrConnectWithoutAiTechnicianServiceAreasInput = {
@@ -915,37 +2445,86 @@ export type AiTechnicianProfileUpdateToOneWithWhereWithoutAiTechnicianServiceAre
 export type AiTechnicianProfileUpdateWithoutAiTechnicianServiceAreasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
   assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
   treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileUncheckedUpdateWithoutAiTechnicianServiceAreasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
@@ -954,44 +2533,100 @@ export type AiTechnicianProfileUncheckedUpdateWithoutAiTechnicianServiceAreasInp
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileCreateWithoutAiTechnicianProfileAreasInput = {
   id?: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
   assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
   treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileUncheckedCreateWithoutAiTechnicianProfileAreasInput = {
   id?: string
   userId: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
@@ -1000,8 +2635,15 @@ export type AiTechnicianProfileUncheckedCreateWithoutAiTechnicianProfileAreasInp
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileCreateOrConnectWithoutAiTechnicianProfileAreasInput = {
@@ -1023,37 +2665,86 @@ export type AiTechnicianProfileUpdateToOneWithWhereWithoutAiTechnicianProfileAre
 export type AiTechnicianProfileUpdateWithoutAiTechnicianProfileAreasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
   assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
   treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileUncheckedUpdateWithoutAiTechnicianProfileAreasInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
@@ -1062,44 +2753,100 @@ export type AiTechnicianProfileUncheckedUpdateWithoutAiTechnicianProfileAreasInp
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileCreateWithoutAiTechnicianProfileServiceCategoriesInput = {
   id?: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
   assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
   treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileUncheckedCreateWithoutAiTechnicianProfileServiceCategoriesInput = {
   id?: string
   userId: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
@@ -1108,8 +2855,15 @@ export type AiTechnicianProfileUncheckedCreateWithoutAiTechnicianProfileServiceC
   billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileCreateOrConnectWithoutAiTechnicianProfileServiceCategoriesInput = {
@@ -1131,37 +2885,86 @@ export type AiTechnicianProfileUpdateToOneWithWhereWithoutAiTechnicianProfileSer
 export type AiTechnicianProfileUpdateWithoutAiTechnicianProfileServiceCategoriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
   assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
   treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileUncheckedUpdateWithoutAiTechnicianProfileServiceCategoriesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
@@ -1170,44 +2973,1640 @@ export type AiTechnicianProfileUncheckedUpdateWithoutAiTechnicianProfileServiceC
   billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
 }
 
-export type AiTechnicianProfileCreateWithoutAssignedRequestsInput = {
+export type AiTechnicianProfileCreateWithoutDivisionCoverageAreasInput = {
   id?: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
+  assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
   treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileUncheckedCreateWithoutDivisionCoverageAreasInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileCreateOrConnectWithoutDivisionCoverageAreasInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutDivisionCoverageAreasInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutDivisionCoverageAreasInput>
+}
+
+export type AiTechnicianProfileUpsertWithoutDivisionCoverageAreasInput = {
+  update: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutDivisionCoverageAreasInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutDivisionCoverageAreasInput>
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutDivisionCoverageAreasInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutDivisionCoverageAreasInput>
+  where?: Prisma.AiTechnicianProfileWhereInput
+}
+
+export type AiTechnicianProfileUpdateToOneWithWhereWithoutDivisionCoverageAreasInput = {
+  where?: Prisma.AiTechnicianProfileWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutDivisionCoverageAreasInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutDivisionCoverageAreasInput>
+}
+
+export type AiTechnicianProfileUpdateWithoutDivisionCoverageAreasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
+  assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateWithoutDivisionCoverageAreasInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileCreateWithoutDocumentsInput = {
+  id?: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
+  assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileUncheckedCreateWithoutDocumentsInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileCreateOrConnectWithoutDocumentsInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutDocumentsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutDocumentsInput>
+}
+
+export type AiTechnicianProfileUpsertWithoutDocumentsInput = {
+  update: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutDocumentsInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutDocumentsInput>
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutDocumentsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutDocumentsInput>
+  where?: Prisma.AiTechnicianProfileWhereInput
+}
+
+export type AiTechnicianProfileUpdateToOneWithWhereWithoutDocumentsInput = {
+  where?: Prisma.AiTechnicianProfileWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutDocumentsInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutDocumentsInput>
+}
+
+export type AiTechnicianProfileUpdateWithoutDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
+  assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateWithoutDocumentsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileCreateWithoutTechnicianServicesInput = {
+  id?: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
+  assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileUncheckedCreateWithoutTechnicianServicesInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileCreateOrConnectWithoutTechnicianServicesInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutTechnicianServicesInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutTechnicianServicesInput>
+}
+
+export type AiTechnicianProfileUpsertWithoutTechnicianServicesInput = {
+  update: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutTechnicianServicesInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutTechnicianServicesInput>
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutTechnicianServicesInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutTechnicianServicesInput>
+  where?: Prisma.AiTechnicianProfileWhereInput
+}
+
+export type AiTechnicianProfileUpdateToOneWithWhereWithoutTechnicianServicesInput = {
+  where?: Prisma.AiTechnicianProfileWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutTechnicianServicesInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutTechnicianServicesInput>
+}
+
+export type AiTechnicianProfileUpdateWithoutTechnicianServicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
+  assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateWithoutTechnicianServicesInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileCreateWithoutAiServiceRequestsInput = {
+  id?: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
+  assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileUncheckedCreateWithoutAiServiceRequestsInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileCreateOrConnectWithoutAiServiceRequestsInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutAiServiceRequestsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutAiServiceRequestsInput>
+}
+
+export type AiTechnicianProfileUpsertWithoutAiServiceRequestsInput = {
+  update: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutAiServiceRequestsInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutAiServiceRequestsInput>
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutAiServiceRequestsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutAiServiceRequestsInput>
+  where?: Prisma.AiTechnicianProfileWhereInput
+}
+
+export type AiTechnicianProfileUpdateToOneWithWhereWithoutAiServiceRequestsInput = {
+  where?: Prisma.AiTechnicianProfileWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutAiServiceRequestsInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutAiServiceRequestsInput>
+}
+
+export type AiTechnicianProfileUpdateWithoutAiServiceRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
+  assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateWithoutAiServiceRequestsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileCreateWithoutAiServiceRecordsInput = {
+  id?: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
+  assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileUncheckedCreateWithoutAiServiceRecordsInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileCreateOrConnectWithoutAiServiceRecordsInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutAiServiceRecordsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutAiServiceRecordsInput>
+}
+
+export type AiTechnicianProfileUpsertWithoutAiServiceRecordsInput = {
+  update: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutAiServiceRecordsInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutAiServiceRecordsInput>
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutAiServiceRecordsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutAiServiceRecordsInput>
+  where?: Prisma.AiTechnicianProfileWhereInput
+}
+
+export type AiTechnicianProfileUpdateToOneWithWhereWithoutAiServiceRecordsInput = {
+  where?: Prisma.AiTechnicianProfileWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutAiServiceRecordsInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutAiServiceRecordsInput>
+}
+
+export type AiTechnicianProfileUpdateWithoutAiServiceRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
+  assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateWithoutAiServiceRecordsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileCreateWithoutModuleReviewsInput = {
+  id?: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
+  assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileUncheckedCreateWithoutModuleReviewsInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileCreateOrConnectWithoutModuleReviewsInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutModuleReviewsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutModuleReviewsInput>
+}
+
+export type AiTechnicianProfileUpsertWithoutModuleReviewsInput = {
+  update: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutModuleReviewsInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutModuleReviewsInput>
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutModuleReviewsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutModuleReviewsInput>
+  where?: Prisma.AiTechnicianProfileWhereInput
+}
+
+export type AiTechnicianProfileUpdateToOneWithWhereWithoutModuleReviewsInput = {
+  where?: Prisma.AiTechnicianProfileWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutModuleReviewsInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutModuleReviewsInput>
+}
+
+export type AiTechnicianProfileUpdateWithoutModuleReviewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
+  assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateWithoutModuleReviewsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileCreateWithoutModuleComplaintsInput = {
+  id?: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
+  assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileUncheckedCreateWithoutModuleComplaintsInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionUncheckedCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+}
+
+export type AiTechnicianProfileCreateOrConnectWithoutModuleComplaintsInput = {
+  where: Prisma.AiTechnicianProfileWhereUniqueInput
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutModuleComplaintsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutModuleComplaintsInput>
+}
+
+export type AiTechnicianProfileUpsertWithoutModuleComplaintsInput = {
+  update: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutModuleComplaintsInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutModuleComplaintsInput>
+  create: Prisma.XOR<Prisma.AiTechnicianProfileCreateWithoutModuleComplaintsInput, Prisma.AiTechnicianProfileUncheckedCreateWithoutModuleComplaintsInput>
+  where?: Prisma.AiTechnicianProfileWhereInput
+}
+
+export type AiTechnicianProfileUpdateToOneWithWhereWithoutModuleComplaintsInput = {
+  where?: Prisma.AiTechnicianProfileWhereInput
+  data: Prisma.XOR<Prisma.AiTechnicianProfileUpdateWithoutModuleComplaintsInput, Prisma.AiTechnicianProfileUncheckedUpdateWithoutModuleComplaintsInput>
+}
+
+export type AiTechnicianProfileUpdateWithoutModuleComplaintsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
+  assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateWithoutModuleComplaintsInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileCreateWithoutAssignedRequestsInput = {
+  id?: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+  user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
+  treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
+  prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
+  billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
+  reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
+  complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileUncheckedCreateWithoutAssignedRequestsInput = {
   id?: string
   userId: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   treatmentCases?: Prisma.TreatmentCaseUncheckedCreateNestedManyWithoutAiTechnicianInput
@@ -1216,8 +4615,15 @@ export type AiTechnicianProfileUncheckedCreateWithoutAssignedRequestsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileCreateOrConnectWithoutAssignedRequestsInput = {
@@ -1239,37 +4645,86 @@ export type AiTechnicianProfileUpdateToOneWithWhereWithoutAssignedRequestsInput 
 export type AiTechnicianProfileUpdateWithoutAssignedRequestsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
   treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileUncheckedUpdateWithoutAssignedRequestsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAiTechnicianNestedInput
@@ -1278,44 +4733,100 @@ export type AiTechnicianProfileUncheckedUpdateWithoutAssignedRequestsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileCreateWithoutTreatmentCasesInput = {
   id?: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
   assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileUncheckedCreateWithoutTreatmentCasesInput = {
   id?: string
   userId: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
@@ -1324,8 +4835,15 @@ export type AiTechnicianProfileUncheckedCreateWithoutTreatmentCasesInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileCreateOrConnectWithoutTreatmentCasesInput = {
@@ -1347,37 +4865,86 @@ export type AiTechnicianProfileUpdateToOneWithWhereWithoutTreatmentCasesInput = 
 export type AiTechnicianProfileUpdateWithoutTreatmentCasesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
   assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileUncheckedUpdateWithoutTreatmentCasesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
@@ -1386,44 +4953,100 @@ export type AiTechnicianProfileUncheckedUpdateWithoutTreatmentCasesInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileCreateWithoutPrescriptionsInput = {
   id?: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
   assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
   treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
   billingRecords?: Prisma.BillingRecordCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileUncheckedCreateWithoutPrescriptionsInput = {
   id?: string
   userId: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
@@ -1432,8 +5055,15 @@ export type AiTechnicianProfileUncheckedCreateWithoutPrescriptionsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileCreateOrConnectWithoutPrescriptionsInput = {
@@ -1455,37 +5085,86 @@ export type AiTechnicianProfileUpdateToOneWithWhereWithoutPrescriptionsInput = {
 export type AiTechnicianProfileUpdateWithoutPrescriptionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
   assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
   treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
   billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileUncheckedUpdateWithoutPrescriptionsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
@@ -1494,44 +5173,100 @@ export type AiTechnicianProfileUncheckedUpdateWithoutPrescriptionsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileCreateWithoutBillingRecordsInput = {
   id?: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
   assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
   treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileUncheckedCreateWithoutBillingRecordsInput = {
   id?: string
   userId: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
@@ -1540,8 +5275,15 @@ export type AiTechnicianProfileUncheckedCreateWithoutBillingRecordsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileCreateOrConnectWithoutBillingRecordsInput = {
@@ -1563,37 +5305,86 @@ export type AiTechnicianProfileUpdateToOneWithWhereWithoutBillingRecordsInput = 
 export type AiTechnicianProfileUpdateWithoutBillingRecordsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
   assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
   treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileUncheckedUpdateWithoutBillingRecordsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
@@ -1602,23 +5393,51 @@ export type AiTechnicianProfileUncheckedUpdateWithoutBillingRecordsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileCreateWithoutReviewsInput = {
   id?: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
   assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
   treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
@@ -1626,20 +5445,48 @@ export type AiTechnicianProfileCreateWithoutReviewsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
   complaints?: Prisma.ComplaintCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileUncheckedCreateWithoutReviewsInput = {
   id?: string
   userId: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
@@ -1649,7 +5496,14 @@ export type AiTechnicianProfileUncheckedCreateWithoutReviewsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
   complaints?: Prisma.ComplaintUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileCreateOrConnectWithoutReviewsInput = {
@@ -1671,16 +5525,37 @@ export type AiTechnicianProfileUpdateToOneWithWhereWithoutReviewsInput = {
 export type AiTechnicianProfileUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
   assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
   treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
@@ -1688,20 +5563,48 @@ export type AiTechnicianProfileUpdateWithoutReviewsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
   complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileUncheckedUpdateWithoutReviewsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
@@ -1711,22 +5614,50 @@ export type AiTechnicianProfileUncheckedUpdateWithoutReviewsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
   complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileCreateWithoutComplaintsInput = {
   id?: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   user: Prisma.UserCreateNestedOneWithoutAiTechnicianProfileInput
+  reviewedBy?: Prisma.UserCreateNestedOneWithoutAiTechnicianProfilesReviewedInput
+  bdDistrict?: Prisma.DistrictCreateNestedOneWithoutAiTechnicianProfilesAsDistrictInput
+  bdUpazila?: Prisma.UpazilaCreateNestedOneWithoutAiTechnicianProfilesAsUpazilaInput
+  bdUnion?: Prisma.UnionCreateNestedOneWithoutAiTechnicianProfilesAsUnionInput
   assignedRequests?: Prisma.ServiceRequestCreateNestedManyWithoutAssignedTechnicianInput
   treatmentCases?: Prisma.TreatmentCaseCreateNestedManyWithoutAiTechnicianInput
   prescriptions?: Prisma.PrescriptionCreateNestedManyWithoutAiTechnicianInput
@@ -1734,20 +5665,48 @@ export type AiTechnicianProfileCreateWithoutComplaintsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileUncheckedCreateWithoutComplaintsInput = {
   id?: string
   userId: string
   displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
   certification?: string | null
   bio?: string | null
   serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
   providerStatus?: $Enums.ProviderStatus
   verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
   createdAt?: Date | string
   updatedAt?: Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedCreateNestedManyWithoutAssignedTechnicianInput
@@ -1757,7 +5716,14 @@ export type AiTechnicianProfileUncheckedCreateWithoutComplaintsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedCreateNestedManyWithoutAiTechnicianInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedCreateNestedManyWithoutAiTechnicianInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedCreateNestedManyWithoutAiTechnicianInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedCreateNestedManyWithoutAiTechnicianInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedCreateNestedManyWithoutTechnicianProfileInput
   reviews?: Prisma.ReviewUncheckedCreateNestedManyWithoutAiTechnicianInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedCreateNestedManyWithoutTechnicianProfileInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedCreateNestedManyWithoutTechnicianProfileInput
 }
 
 export type AiTechnicianProfileCreateOrConnectWithoutComplaintsInput = {
@@ -1779,16 +5745,37 @@ export type AiTechnicianProfileUpdateToOneWithWhereWithoutComplaintsInput = {
 export type AiTechnicianProfileUpdateWithoutComplaintsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
   assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
   treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
   prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
@@ -1796,20 +5783,48 @@ export type AiTechnicianProfileUpdateWithoutComplaintsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
 }
 
 export type AiTechnicianProfileUncheckedUpdateWithoutComplaintsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   userId?: Prisma.StringFieldUpdateOperationsInput | string
   displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
   metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
   providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
   verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
@@ -1819,7 +5834,702 @@ export type AiTechnicianProfileUncheckedUpdateWithoutComplaintsInput = {
   aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
   aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
   reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileCreateManyReviewedByInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type AiTechnicianProfileUpdateWithoutReviewedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
+  assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateWithoutReviewedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateManyWithoutReviewedByInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AiTechnicianProfileCreateManyBdDistrictInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  upazilaId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type AiTechnicianProfileUpdateWithoutBdDistrictInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
+  assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateWithoutBdDistrictInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateManyWithoutBdDistrictInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AiTechnicianProfileCreateManyBdUpazilaInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  unionId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type AiTechnicianProfileUpdateWithoutBdUpazilaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUnion?: Prisma.UnionUpdateOneWithoutAiTechnicianProfilesAsUnionNestedInput
+  assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateWithoutBdUpazilaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateManyWithoutBdUpazilaInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type AiTechnicianProfileCreateManyBdUnionInput = {
+  id?: string
+  userId: string
+  displayName?: string | null
+  phone?: string | null
+  email?: string | null
+  nidNumber?: string | null
+  dateOfBirth?: Date | string | null
+  gender?: $Enums.Gender | null
+  presentAddress?: string | null
+  district?: string | null
+  upazila?: string | null
+  unionOrArea?: string | null
+  districtId?: string | null
+  upazilaId?: string | null
+  experienceYears?: number | null
+  trainingProvider?: string | null
+  certificateNumber?: string | null
+  certification?: string | null
+  bio?: string | null
+  serviceFeeBdt?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: $Enums.AiTechnicianStatus
+  providerStatus?: $Enums.ProviderStatus
+  verifiedAt?: Date | string | null
+  adminNote?: string | null
+  correctionNote?: string | null
+  reviewedById?: string | null
+  reviewedAt?: Date | string | null
+  publishedAt?: Date | string | null
+  createdAt?: Date | string
+  updatedAt?: Date | string
+}
+
+export type AiTechnicianProfileUpdateWithoutBdUnionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  user?: Prisma.UserUpdateOneRequiredWithoutAiTechnicianProfileNestedInput
+  reviewedBy?: Prisma.UserUpdateOneWithoutAiTechnicianProfilesReviewedNestedInput
+  bdDistrict?: Prisma.DistrictUpdateOneWithoutAiTechnicianProfilesAsDistrictNestedInput
+  bdUpazila?: Prisma.UpazilaUpdateOneWithoutAiTechnicianProfilesAsUpazilaNestedInput
+  assignedRequests?: Prisma.ServiceRequestUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateWithoutBdUnionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  assignedRequests?: Prisma.ServiceRequestUncheckedUpdateManyWithoutAssignedTechnicianNestedInput
+  treatmentCases?: Prisma.TreatmentCaseUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  prescriptions?: Prisma.PrescriptionUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  billingRecords?: Prisma.BillingRecordUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianServiceAreas?: Prisma.AiTechnicianServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileAreas?: Prisma.AiTechnicianProfileAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiTechnicianProfileServiceCategories?: Prisma.AiTechnicianProfileServiceCategoryUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  divisionCoverageAreas?: Prisma.AiTechnicianDivisionServiceAreaUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  documents?: Prisma.AiTechnicianDocumentUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  technicianServices?: Prisma.AiTechnicianServiceUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  aiServiceRequests?: Prisma.AiServiceRequestUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  aiServiceRecords?: Prisma.AiServiceRecordUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  reviews?: Prisma.ReviewUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  complaints?: Prisma.ComplaintUncheckedUpdateManyWithoutAiTechnicianNestedInput
+  moduleReviews?: Prisma.AiTechnicianReviewUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+  moduleComplaints?: Prisma.AiTechnicianComplaintUncheckedUpdateManyWithoutTechnicianProfileNestedInput
+}
+
+export type AiTechnicianProfileUncheckedUpdateManyWithoutBdUnionInput = {
+  id?: Prisma.StringFieldUpdateOperationsInput | string
+  userId?: Prisma.StringFieldUpdateOperationsInput | string
+  displayName?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  phone?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nidNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dateOfBirth?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  gender?: Prisma.NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+  presentAddress?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  district?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazila?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  unionOrArea?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  districtId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  upazilaId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  experienceYears?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  trainingProvider?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certificateNumber?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  certification?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  bio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serviceFeeBdt?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  acceptsEmergency?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  metadataJson?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  status?: Prisma.EnumAiTechnicianStatusFieldUpdateOperationsInput | $Enums.AiTechnicianStatus
+  providerStatus?: Prisma.EnumProviderStatusFieldUpdateOperationsInput | $Enums.ProviderStatus
+  verifiedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  adminNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  correctionNote?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedById?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reviewedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
 
@@ -1835,8 +6545,15 @@ export type AiTechnicianProfileCountOutputType = {
   aiTechnicianServiceAreas: number
   aiTechnicianProfileAreas: number
   aiTechnicianProfileServiceCategories: number
+  divisionCoverageAreas: number
+  documents: number
+  technicianServices: number
+  aiServiceRequests: number
+  aiServiceRecords: number
   reviews: number
   complaints: number
+  moduleReviews: number
+  moduleComplaints: number
 }
 
 export type AiTechnicianProfileCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1847,8 +6564,15 @@ export type AiTechnicianProfileCountOutputTypeSelect<ExtArgs extends runtime.Typ
   aiTechnicianServiceAreas?: boolean | AiTechnicianProfileCountOutputTypeCountAiTechnicianServiceAreasArgs
   aiTechnicianProfileAreas?: boolean | AiTechnicianProfileCountOutputTypeCountAiTechnicianProfileAreasArgs
   aiTechnicianProfileServiceCategories?: boolean | AiTechnicianProfileCountOutputTypeCountAiTechnicianProfileServiceCategoriesArgs
+  divisionCoverageAreas?: boolean | AiTechnicianProfileCountOutputTypeCountDivisionCoverageAreasArgs
+  documents?: boolean | AiTechnicianProfileCountOutputTypeCountDocumentsArgs
+  technicianServices?: boolean | AiTechnicianProfileCountOutputTypeCountTechnicianServicesArgs
+  aiServiceRequests?: boolean | AiTechnicianProfileCountOutputTypeCountAiServiceRequestsArgs
+  aiServiceRecords?: boolean | AiTechnicianProfileCountOutputTypeCountAiServiceRecordsArgs
   reviews?: boolean | AiTechnicianProfileCountOutputTypeCountReviewsArgs
   complaints?: boolean | AiTechnicianProfileCountOutputTypeCountComplaintsArgs
+  moduleReviews?: boolean | AiTechnicianProfileCountOutputTypeCountModuleReviewsArgs
+  moduleComplaints?: boolean | AiTechnicianProfileCountOutputTypeCountModuleComplaintsArgs
 }
 
 /**
@@ -1913,6 +6637,41 @@ export type AiTechnicianProfileCountOutputTypeCountAiTechnicianProfileServiceCat
 /**
  * AiTechnicianProfileCountOutputType without action
  */
+export type AiTechnicianProfileCountOutputTypeCountDivisionCoverageAreasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiTechnicianDivisionServiceAreaWhereInput
+}
+
+/**
+ * AiTechnicianProfileCountOutputType without action
+ */
+export type AiTechnicianProfileCountOutputTypeCountDocumentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiTechnicianDocumentWhereInput
+}
+
+/**
+ * AiTechnicianProfileCountOutputType without action
+ */
+export type AiTechnicianProfileCountOutputTypeCountTechnicianServicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiTechnicianServiceWhereInput
+}
+
+/**
+ * AiTechnicianProfileCountOutputType without action
+ */
+export type AiTechnicianProfileCountOutputTypeCountAiServiceRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiServiceRequestWhereInput
+}
+
+/**
+ * AiTechnicianProfileCountOutputType without action
+ */
+export type AiTechnicianProfileCountOutputTypeCountAiServiceRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiServiceRecordWhereInput
+}
+
+/**
+ * AiTechnicianProfileCountOutputType without action
+ */
 export type AiTechnicianProfileCountOutputTypeCountReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.ReviewWhereInput
 }
@@ -1924,21 +6683,60 @@ export type AiTechnicianProfileCountOutputTypeCountComplaintsArgs<ExtArgs extend
   where?: Prisma.ComplaintWhereInput
 }
 
+/**
+ * AiTechnicianProfileCountOutputType without action
+ */
+export type AiTechnicianProfileCountOutputTypeCountModuleReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiTechnicianReviewWhereInput
+}
+
+/**
+ * AiTechnicianProfileCountOutputType without action
+ */
+export type AiTechnicianProfileCountOutputTypeCountModuleComplaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.AiTechnicianComplaintWhereInput
+}
+
 
 export type AiTechnicianProfileSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
   displayName?: boolean
+  phone?: boolean
+  email?: boolean
+  nidNumber?: boolean
+  dateOfBirth?: boolean
+  gender?: boolean
+  presentAddress?: boolean
+  district?: boolean
+  upazila?: boolean
+  unionOrArea?: boolean
+  districtId?: boolean
+  upazilaId?: boolean
+  unionId?: boolean
+  experienceYears?: boolean
+  trainingProvider?: boolean
+  certificateNumber?: boolean
   certification?: boolean
   bio?: boolean
   serviceFeeBdt?: boolean
   acceptsEmergency?: boolean
   metadataJson?: boolean
+  status?: boolean
   providerStatus?: boolean
   verifiedAt?: boolean
+  adminNote?: boolean
+  correctionNote?: boolean
+  reviewedById?: boolean
+  reviewedAt?: boolean
+  publishedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  reviewedBy?: boolean | Prisma.AiTechnicianProfile$reviewedByArgs<ExtArgs>
+  bdDistrict?: boolean | Prisma.AiTechnicianProfile$bdDistrictArgs<ExtArgs>
+  bdUpazila?: boolean | Prisma.AiTechnicianProfile$bdUpazilaArgs<ExtArgs>
+  bdUnion?: boolean | Prisma.AiTechnicianProfile$bdUnionArgs<ExtArgs>
   assignedRequests?: boolean | Prisma.AiTechnicianProfile$assignedRequestsArgs<ExtArgs>
   treatmentCases?: boolean | Prisma.AiTechnicianProfile$treatmentCasesArgs<ExtArgs>
   prescriptions?: boolean | Prisma.AiTechnicianProfile$prescriptionsArgs<ExtArgs>
@@ -1946,8 +6744,15 @@ export type AiTechnicianProfileSelect<ExtArgs extends runtime.Types.Extensions.I
   aiTechnicianServiceAreas?: boolean | Prisma.AiTechnicianProfile$aiTechnicianServiceAreasArgs<ExtArgs>
   aiTechnicianProfileAreas?: boolean | Prisma.AiTechnicianProfile$aiTechnicianProfileAreasArgs<ExtArgs>
   aiTechnicianProfileServiceCategories?: boolean | Prisma.AiTechnicianProfile$aiTechnicianProfileServiceCategoriesArgs<ExtArgs>
+  divisionCoverageAreas?: boolean | Prisma.AiTechnicianProfile$divisionCoverageAreasArgs<ExtArgs>
+  documents?: boolean | Prisma.AiTechnicianProfile$documentsArgs<ExtArgs>
+  technicianServices?: boolean | Prisma.AiTechnicianProfile$technicianServicesArgs<ExtArgs>
+  aiServiceRequests?: boolean | Prisma.AiTechnicianProfile$aiServiceRequestsArgs<ExtArgs>
+  aiServiceRecords?: boolean | Prisma.AiTechnicianProfile$aiServiceRecordsArgs<ExtArgs>
   reviews?: boolean | Prisma.AiTechnicianProfile$reviewsArgs<ExtArgs>
   complaints?: boolean | Prisma.AiTechnicianProfile$complaintsArgs<ExtArgs>
+  moduleReviews?: boolean | Prisma.AiTechnicianProfile$moduleReviewsArgs<ExtArgs>
+  moduleComplaints?: boolean | Prisma.AiTechnicianProfile$moduleComplaintsArgs<ExtArgs>
   _count?: boolean | Prisma.AiTechnicianProfileCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["aiTechnicianProfile"]>
 
@@ -1955,52 +6760,127 @@ export type AiTechnicianProfileSelectCreateManyAndReturn<ExtArgs extends runtime
   id?: boolean
   userId?: boolean
   displayName?: boolean
+  phone?: boolean
+  email?: boolean
+  nidNumber?: boolean
+  dateOfBirth?: boolean
+  gender?: boolean
+  presentAddress?: boolean
+  district?: boolean
+  upazila?: boolean
+  unionOrArea?: boolean
+  districtId?: boolean
+  upazilaId?: boolean
+  unionId?: boolean
+  experienceYears?: boolean
+  trainingProvider?: boolean
+  certificateNumber?: boolean
   certification?: boolean
   bio?: boolean
   serviceFeeBdt?: boolean
   acceptsEmergency?: boolean
   metadataJson?: boolean
+  status?: boolean
   providerStatus?: boolean
   verifiedAt?: boolean
+  adminNote?: boolean
+  correctionNote?: boolean
+  reviewedById?: boolean
+  reviewedAt?: boolean
+  publishedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  reviewedBy?: boolean | Prisma.AiTechnicianProfile$reviewedByArgs<ExtArgs>
+  bdDistrict?: boolean | Prisma.AiTechnicianProfile$bdDistrictArgs<ExtArgs>
+  bdUpazila?: boolean | Prisma.AiTechnicianProfile$bdUpazilaArgs<ExtArgs>
+  bdUnion?: boolean | Prisma.AiTechnicianProfile$bdUnionArgs<ExtArgs>
 }, ExtArgs["result"]["aiTechnicianProfile"]>
 
 export type AiTechnicianProfileSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   userId?: boolean
   displayName?: boolean
+  phone?: boolean
+  email?: boolean
+  nidNumber?: boolean
+  dateOfBirth?: boolean
+  gender?: boolean
+  presentAddress?: boolean
+  district?: boolean
+  upazila?: boolean
+  unionOrArea?: boolean
+  districtId?: boolean
+  upazilaId?: boolean
+  unionId?: boolean
+  experienceYears?: boolean
+  trainingProvider?: boolean
+  certificateNumber?: boolean
   certification?: boolean
   bio?: boolean
   serviceFeeBdt?: boolean
   acceptsEmergency?: boolean
   metadataJson?: boolean
+  status?: boolean
   providerStatus?: boolean
   verifiedAt?: boolean
+  adminNote?: boolean
+  correctionNote?: boolean
+  reviewedById?: boolean
+  reviewedAt?: boolean
+  publishedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  reviewedBy?: boolean | Prisma.AiTechnicianProfile$reviewedByArgs<ExtArgs>
+  bdDistrict?: boolean | Prisma.AiTechnicianProfile$bdDistrictArgs<ExtArgs>
+  bdUpazila?: boolean | Prisma.AiTechnicianProfile$bdUpazilaArgs<ExtArgs>
+  bdUnion?: boolean | Prisma.AiTechnicianProfile$bdUnionArgs<ExtArgs>
 }, ExtArgs["result"]["aiTechnicianProfile"]>
 
 export type AiTechnicianProfileSelectScalar = {
   id?: boolean
   userId?: boolean
   displayName?: boolean
+  phone?: boolean
+  email?: boolean
+  nidNumber?: boolean
+  dateOfBirth?: boolean
+  gender?: boolean
+  presentAddress?: boolean
+  district?: boolean
+  upazila?: boolean
+  unionOrArea?: boolean
+  districtId?: boolean
+  upazilaId?: boolean
+  unionId?: boolean
+  experienceYears?: boolean
+  trainingProvider?: boolean
+  certificateNumber?: boolean
   certification?: boolean
   bio?: boolean
   serviceFeeBdt?: boolean
   acceptsEmergency?: boolean
   metadataJson?: boolean
+  status?: boolean
   providerStatus?: boolean
   verifiedAt?: boolean
+  adminNote?: boolean
+  correctionNote?: boolean
+  reviewedById?: boolean
+  reviewedAt?: boolean
+  publishedAt?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type AiTechnicianProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "displayName" | "certification" | "bio" | "serviceFeeBdt" | "acceptsEmergency" | "metadataJson" | "providerStatus" | "verifiedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["aiTechnicianProfile"]>
+export type AiTechnicianProfileOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "userId" | "displayName" | "phone" | "email" | "nidNumber" | "dateOfBirth" | "gender" | "presentAddress" | "district" | "upazila" | "unionOrArea" | "districtId" | "upazilaId" | "unionId" | "experienceYears" | "trainingProvider" | "certificateNumber" | "certification" | "bio" | "serviceFeeBdt" | "acceptsEmergency" | "metadataJson" | "status" | "providerStatus" | "verifiedAt" | "adminNote" | "correctionNote" | "reviewedById" | "reviewedAt" | "publishedAt" | "createdAt" | "updatedAt", ExtArgs["result"]["aiTechnicianProfile"]>
 export type AiTechnicianProfileInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  reviewedBy?: boolean | Prisma.AiTechnicianProfile$reviewedByArgs<ExtArgs>
+  bdDistrict?: boolean | Prisma.AiTechnicianProfile$bdDistrictArgs<ExtArgs>
+  bdUpazila?: boolean | Prisma.AiTechnicianProfile$bdUpazilaArgs<ExtArgs>
+  bdUnion?: boolean | Prisma.AiTechnicianProfile$bdUnionArgs<ExtArgs>
   assignedRequests?: boolean | Prisma.AiTechnicianProfile$assignedRequestsArgs<ExtArgs>
   treatmentCases?: boolean | Prisma.AiTechnicianProfile$treatmentCasesArgs<ExtArgs>
   prescriptions?: boolean | Prisma.AiTechnicianProfile$prescriptionsArgs<ExtArgs>
@@ -2008,21 +6888,40 @@ export type AiTechnicianProfileInclude<ExtArgs extends runtime.Types.Extensions.
   aiTechnicianServiceAreas?: boolean | Prisma.AiTechnicianProfile$aiTechnicianServiceAreasArgs<ExtArgs>
   aiTechnicianProfileAreas?: boolean | Prisma.AiTechnicianProfile$aiTechnicianProfileAreasArgs<ExtArgs>
   aiTechnicianProfileServiceCategories?: boolean | Prisma.AiTechnicianProfile$aiTechnicianProfileServiceCategoriesArgs<ExtArgs>
+  divisionCoverageAreas?: boolean | Prisma.AiTechnicianProfile$divisionCoverageAreasArgs<ExtArgs>
+  documents?: boolean | Prisma.AiTechnicianProfile$documentsArgs<ExtArgs>
+  technicianServices?: boolean | Prisma.AiTechnicianProfile$technicianServicesArgs<ExtArgs>
+  aiServiceRequests?: boolean | Prisma.AiTechnicianProfile$aiServiceRequestsArgs<ExtArgs>
+  aiServiceRecords?: boolean | Prisma.AiTechnicianProfile$aiServiceRecordsArgs<ExtArgs>
   reviews?: boolean | Prisma.AiTechnicianProfile$reviewsArgs<ExtArgs>
   complaints?: boolean | Prisma.AiTechnicianProfile$complaintsArgs<ExtArgs>
+  moduleReviews?: boolean | Prisma.AiTechnicianProfile$moduleReviewsArgs<ExtArgs>
+  moduleComplaints?: boolean | Prisma.AiTechnicianProfile$moduleComplaintsArgs<ExtArgs>
   _count?: boolean | Prisma.AiTechnicianProfileCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type AiTechnicianProfileIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  reviewedBy?: boolean | Prisma.AiTechnicianProfile$reviewedByArgs<ExtArgs>
+  bdDistrict?: boolean | Prisma.AiTechnicianProfile$bdDistrictArgs<ExtArgs>
+  bdUpazila?: boolean | Prisma.AiTechnicianProfile$bdUpazilaArgs<ExtArgs>
+  bdUnion?: boolean | Prisma.AiTechnicianProfile$bdUnionArgs<ExtArgs>
 }
 export type AiTechnicianProfileIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   user?: boolean | Prisma.UserDefaultArgs<ExtArgs>
+  reviewedBy?: boolean | Prisma.AiTechnicianProfile$reviewedByArgs<ExtArgs>
+  bdDistrict?: boolean | Prisma.AiTechnicianProfile$bdDistrictArgs<ExtArgs>
+  bdUpazila?: boolean | Prisma.AiTechnicianProfile$bdUpazilaArgs<ExtArgs>
+  bdUnion?: boolean | Prisma.AiTechnicianProfile$bdUnionArgs<ExtArgs>
 }
 
 export type $AiTechnicianProfilePayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "AiTechnicianProfile"
   objects: {
     user: Prisma.$UserPayload<ExtArgs>
+    reviewedBy: Prisma.$UserPayload<ExtArgs> | null
+    bdDistrict: Prisma.$DistrictPayload<ExtArgs> | null
+    bdUpazila: Prisma.$UpazilaPayload<ExtArgs> | null
+    bdUnion: Prisma.$UnionPayload<ExtArgs> | null
     assignedRequests: Prisma.$ServiceRequestPayload<ExtArgs>[]
     treatmentCases: Prisma.$TreatmentCasePayload<ExtArgs>[]
     prescriptions: Prisma.$PrescriptionPayload<ExtArgs>[]
@@ -2030,8 +6929,15 @@ export type $AiTechnicianProfilePayload<ExtArgs extends runtime.Types.Extensions
     aiTechnicianServiceAreas: Prisma.$AiTechnicianServiceAreaPayload<ExtArgs>[]
     aiTechnicianProfileAreas: Prisma.$AiTechnicianProfileAreaPayload<ExtArgs>[]
     aiTechnicianProfileServiceCategories: Prisma.$AiTechnicianProfileServiceCategoryPayload<ExtArgs>[]
+    divisionCoverageAreas: Prisma.$AiTechnicianDivisionServiceAreaPayload<ExtArgs>[]
+    documents: Prisma.$AiTechnicianDocumentPayload<ExtArgs>[]
+    technicianServices: Prisma.$AiTechnicianServicePayload<ExtArgs>[]
+    aiServiceRequests: Prisma.$AiServiceRequestPayload<ExtArgs>[]
+    aiServiceRecords: Prisma.$AiServiceRecordPayload<ExtArgs>[]
     reviews: Prisma.$ReviewPayload<ExtArgs>[]
     complaints: Prisma.$ComplaintPayload<ExtArgs>[]
+    moduleReviews: Prisma.$AiTechnicianReviewPayload<ExtArgs>[]
+    moduleComplaints: Prisma.$AiTechnicianComplaintPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
@@ -2040,6 +6946,30 @@ export type $AiTechnicianProfilePayload<ExtArgs extends runtime.Types.Extensions
      * Display name shown to customers (identity email/phone stay on `User`).
      */
     displayName: string | null
+    /**
+     * Optional public contact; canonical phone remains on `User.phone` when set.
+     */
+    phone: string | null
+    /**
+     * Optional public contact; canonical email remains on `User.email`.
+     */
+    email: string | null
+    nidNumber: string | null
+    dateOfBirth: Date | null
+    gender: $Enums.Gender | null
+    presentAddress: string | null
+    district: string | null
+    upazila: string | null
+    unionOrArea: string | null
+    /**
+     * Optional FKs to normalized `District` / `Upazila` / `Union` (COMMAND 02). Legacy `district` / `upazila` / `unionOrArea` text retained.
+     */
+    districtId: string | null
+    upazilaId: string | null
+    unionId: string | null
+    experienceYears: number | null
+    trainingProvider: string | null
+    certificateNumber: string | null
     certification: string | null
     bio: string | null
     /**
@@ -2054,8 +6984,17 @@ export type $AiTechnicianProfilePayload<ExtArgs extends runtime.Types.Extensions
      * Optional tags for MVP: e.g. livestock breeds, semen services (`{ "livestockFocus": ["cattle"], "semenServices": true }`).
      */
     metadataJson: runtime.JsonValue | null
+    /**
+     * Admin / onboarding lifecycle for technician module (see `AiTechnicianStatus`).
+     */
+    status: $Enums.AiTechnicianStatus
     providerStatus: $Enums.ProviderStatus
     verifiedAt: Date | null
+    adminNote: string | null
+    correctionNote: string | null
+    reviewedById: string | null
+    reviewedAt: Date | null
+    publishedAt: Date | null
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["aiTechnicianProfile"]>
@@ -2453,6 +7392,10 @@ readonly fields: AiTechnicianProfileFieldRefs;
 export interface Prisma__AiTechnicianProfileClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   user<T extends Prisma.UserDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.UserDefaultArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  reviewedBy<T extends Prisma.AiTechnicianProfile$reviewedByArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$reviewedByArgs<ExtArgs>>): Prisma.Prisma__UserClient<runtime.Types.Result.GetResult<Prisma.$UserPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  bdDistrict<T extends Prisma.AiTechnicianProfile$bdDistrictArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$bdDistrictArgs<ExtArgs>>): Prisma.Prisma__DistrictClient<runtime.Types.Result.GetResult<Prisma.$DistrictPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  bdUpazila<T extends Prisma.AiTechnicianProfile$bdUpazilaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$bdUpazilaArgs<ExtArgs>>): Prisma.Prisma__UpazilaClient<runtime.Types.Result.GetResult<Prisma.$UpazilaPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  bdUnion<T extends Prisma.AiTechnicianProfile$bdUnionArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$bdUnionArgs<ExtArgs>>): Prisma.Prisma__UnionClient<runtime.Types.Result.GetResult<Prisma.$UnionPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   assignedRequests<T extends Prisma.AiTechnicianProfile$assignedRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$assignedRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ServiceRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   treatmentCases<T extends Prisma.AiTechnicianProfile$treatmentCasesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$treatmentCasesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$TreatmentCasePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   prescriptions<T extends Prisma.AiTechnicianProfile$prescriptionsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$prescriptionsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$PrescriptionPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2460,8 +7403,15 @@ export interface Prisma__AiTechnicianProfileClient<T, Null = never, ExtArgs exte
   aiTechnicianServiceAreas<T extends Prisma.AiTechnicianProfile$aiTechnicianServiceAreasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$aiTechnicianServiceAreasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianServiceAreaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   aiTechnicianProfileAreas<T extends Prisma.AiTechnicianProfile$aiTechnicianProfileAreasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$aiTechnicianProfileAreasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianProfileAreaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   aiTechnicianProfileServiceCategories<T extends Prisma.AiTechnicianProfile$aiTechnicianProfileServiceCategoriesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$aiTechnicianProfileServiceCategoriesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianProfileServiceCategoryPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  divisionCoverageAreas<T extends Prisma.AiTechnicianProfile$divisionCoverageAreasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$divisionCoverageAreasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianDivisionServiceAreaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  documents<T extends Prisma.AiTechnicianProfile$documentsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$documentsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianDocumentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  technicianServices<T extends Prisma.AiTechnicianProfile$technicianServicesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$technicianServicesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianServicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  aiServiceRequests<T extends Prisma.AiTechnicianProfile$aiServiceRequestsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$aiServiceRequestsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiServiceRequestPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  aiServiceRecords<T extends Prisma.AiTechnicianProfile$aiServiceRecordsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$aiServiceRecordsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiServiceRecordPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reviews<T extends Prisma.AiTechnicianProfile$reviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$reviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   complaints<T extends Prisma.AiTechnicianProfile$complaintsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$complaintsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  moduleReviews<T extends Prisma.AiTechnicianProfile$moduleReviewsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$moduleReviewsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianReviewPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  moduleComplaints<T extends Prisma.AiTechnicianProfile$moduleComplaintsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.AiTechnicianProfile$moduleComplaintsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$AiTechnicianComplaintPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2494,13 +7444,34 @@ export interface AiTechnicianProfileFieldRefs {
   readonly id: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
   readonly userId: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
   readonly displayName: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly phone: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly email: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly nidNumber: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly dateOfBirth: Prisma.FieldRef<"AiTechnicianProfile", 'DateTime'>
+  readonly gender: Prisma.FieldRef<"AiTechnicianProfile", 'Gender'>
+  readonly presentAddress: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly district: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly upazila: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly unionOrArea: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly districtId: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly upazilaId: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly unionId: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly experienceYears: Prisma.FieldRef<"AiTechnicianProfile", 'Int'>
+  readonly trainingProvider: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly certificateNumber: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
   readonly certification: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
   readonly bio: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
   readonly serviceFeeBdt: Prisma.FieldRef<"AiTechnicianProfile", 'Decimal'>
   readonly acceptsEmergency: Prisma.FieldRef<"AiTechnicianProfile", 'Boolean'>
   readonly metadataJson: Prisma.FieldRef<"AiTechnicianProfile", 'Json'>
+  readonly status: Prisma.FieldRef<"AiTechnicianProfile", 'AiTechnicianStatus'>
   readonly providerStatus: Prisma.FieldRef<"AiTechnicianProfile", 'ProviderStatus'>
   readonly verifiedAt: Prisma.FieldRef<"AiTechnicianProfile", 'DateTime'>
+  readonly adminNote: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly correctionNote: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly reviewedById: Prisma.FieldRef<"AiTechnicianProfile", 'String'>
+  readonly reviewedAt: Prisma.FieldRef<"AiTechnicianProfile", 'DateTime'>
+  readonly publishedAt: Prisma.FieldRef<"AiTechnicianProfile", 'DateTime'>
   readonly createdAt: Prisma.FieldRef<"AiTechnicianProfile", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"AiTechnicianProfile", 'DateTime'>
 }
@@ -2904,6 +7875,82 @@ export type AiTechnicianProfileDeleteManyArgs<ExtArgs extends runtime.Types.Exte
 }
 
 /**
+ * AiTechnicianProfile.reviewedBy
+ */
+export type AiTechnicianProfile$reviewedByArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the User
+   */
+  select?: Prisma.UserSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the User
+   */
+  omit?: Prisma.UserOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UserInclude<ExtArgs> | null
+  where?: Prisma.UserWhereInput
+}
+
+/**
+ * AiTechnicianProfile.bdDistrict
+ */
+export type AiTechnicianProfile$bdDistrictArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the District
+   */
+  select?: Prisma.DistrictSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the District
+   */
+  omit?: Prisma.DistrictOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.DistrictInclude<ExtArgs> | null
+  where?: Prisma.DistrictWhereInput
+}
+
+/**
+ * AiTechnicianProfile.bdUpazila
+ */
+export type AiTechnicianProfile$bdUpazilaArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Upazila
+   */
+  select?: Prisma.UpazilaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Upazila
+   */
+  omit?: Prisma.UpazilaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UpazilaInclude<ExtArgs> | null
+  where?: Prisma.UpazilaWhereInput
+}
+
+/**
+ * AiTechnicianProfile.bdUnion
+ */
+export type AiTechnicianProfile$bdUnionArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the Union
+   */
+  select?: Prisma.UnionSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the Union
+   */
+  omit?: Prisma.UnionOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.UnionInclude<ExtArgs> | null
+  where?: Prisma.UnionWhereInput
+}
+
+/**
  * AiTechnicianProfile.assignedRequests
  */
 export type AiTechnicianProfile$assignedRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3072,6 +8119,126 @@ export type AiTechnicianProfile$aiTechnicianProfileServiceCategoriesArgs<ExtArgs
 }
 
 /**
+ * AiTechnicianProfile.divisionCoverageAreas
+ */
+export type AiTechnicianProfile$divisionCoverageAreasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiTechnicianDivisionServiceArea
+   */
+  select?: Prisma.AiTechnicianDivisionServiceAreaSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiTechnicianDivisionServiceArea
+   */
+  omit?: Prisma.AiTechnicianDivisionServiceAreaOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiTechnicianDivisionServiceAreaInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianDivisionServiceAreaWhereInput
+  orderBy?: Prisma.AiTechnicianDivisionServiceAreaOrderByWithRelationInput | Prisma.AiTechnicianDivisionServiceAreaOrderByWithRelationInput[]
+  cursor?: Prisma.AiTechnicianDivisionServiceAreaWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiTechnicianDivisionServiceAreaScalarFieldEnum | Prisma.AiTechnicianDivisionServiceAreaScalarFieldEnum[]
+}
+
+/**
+ * AiTechnicianProfile.documents
+ */
+export type AiTechnicianProfile$documentsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiTechnicianDocument
+   */
+  select?: Prisma.AiTechnicianDocumentSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiTechnicianDocument
+   */
+  omit?: Prisma.AiTechnicianDocumentOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiTechnicianDocumentInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianDocumentWhereInput
+  orderBy?: Prisma.AiTechnicianDocumentOrderByWithRelationInput | Prisma.AiTechnicianDocumentOrderByWithRelationInput[]
+  cursor?: Prisma.AiTechnicianDocumentWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiTechnicianDocumentScalarFieldEnum | Prisma.AiTechnicianDocumentScalarFieldEnum[]
+}
+
+/**
+ * AiTechnicianProfile.technicianServices
+ */
+export type AiTechnicianProfile$technicianServicesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiTechnicianService
+   */
+  select?: Prisma.AiTechnicianServiceSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiTechnicianService
+   */
+  omit?: Prisma.AiTechnicianServiceOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiTechnicianServiceInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianServiceWhereInput
+  orderBy?: Prisma.AiTechnicianServiceOrderByWithRelationInput | Prisma.AiTechnicianServiceOrderByWithRelationInput[]
+  cursor?: Prisma.AiTechnicianServiceWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiTechnicianServiceScalarFieldEnum | Prisma.AiTechnicianServiceScalarFieldEnum[]
+}
+
+/**
+ * AiTechnicianProfile.aiServiceRequests
+ */
+export type AiTechnicianProfile$aiServiceRequestsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiServiceRequest
+   */
+  select?: Prisma.AiServiceRequestSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiServiceRequest
+   */
+  omit?: Prisma.AiServiceRequestOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiServiceRequestInclude<ExtArgs> | null
+  where?: Prisma.AiServiceRequestWhereInput
+  orderBy?: Prisma.AiServiceRequestOrderByWithRelationInput | Prisma.AiServiceRequestOrderByWithRelationInput[]
+  cursor?: Prisma.AiServiceRequestWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiServiceRequestScalarFieldEnum | Prisma.AiServiceRequestScalarFieldEnum[]
+}
+
+/**
+ * AiTechnicianProfile.aiServiceRecords
+ */
+export type AiTechnicianProfile$aiServiceRecordsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiServiceRecord
+   */
+  select?: Prisma.AiServiceRecordSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiServiceRecord
+   */
+  omit?: Prisma.AiServiceRecordOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiServiceRecordInclude<ExtArgs> | null
+  where?: Prisma.AiServiceRecordWhereInput
+  orderBy?: Prisma.AiServiceRecordOrderByWithRelationInput | Prisma.AiServiceRecordOrderByWithRelationInput[]
+  cursor?: Prisma.AiServiceRecordWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiServiceRecordScalarFieldEnum | Prisma.AiServiceRecordScalarFieldEnum[]
+}
+
+/**
  * AiTechnicianProfile.reviews
  */
 export type AiTechnicianProfile$reviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3117,6 +8284,54 @@ export type AiTechnicianProfile$complaintsArgs<ExtArgs extends runtime.Types.Ext
   take?: number
   skip?: number
   distinct?: Prisma.ComplaintScalarFieldEnum | Prisma.ComplaintScalarFieldEnum[]
+}
+
+/**
+ * AiTechnicianProfile.moduleReviews
+ */
+export type AiTechnicianProfile$moduleReviewsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiTechnicianReview
+   */
+  select?: Prisma.AiTechnicianReviewSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiTechnicianReview
+   */
+  omit?: Prisma.AiTechnicianReviewOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiTechnicianReviewInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianReviewWhereInput
+  orderBy?: Prisma.AiTechnicianReviewOrderByWithRelationInput | Prisma.AiTechnicianReviewOrderByWithRelationInput[]
+  cursor?: Prisma.AiTechnicianReviewWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiTechnicianReviewScalarFieldEnum | Prisma.AiTechnicianReviewScalarFieldEnum[]
+}
+
+/**
+ * AiTechnicianProfile.moduleComplaints
+ */
+export type AiTechnicianProfile$moduleComplaintsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the AiTechnicianComplaint
+   */
+  select?: Prisma.AiTechnicianComplaintSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the AiTechnicianComplaint
+   */
+  omit?: Prisma.AiTechnicianComplaintOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.AiTechnicianComplaintInclude<ExtArgs> | null
+  where?: Prisma.AiTechnicianComplaintWhereInput
+  orderBy?: Prisma.AiTechnicianComplaintOrderByWithRelationInput | Prisma.AiTechnicianComplaintOrderByWithRelationInput[]
+  cursor?: Prisma.AiTechnicianComplaintWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.AiTechnicianComplaintScalarFieldEnum | Prisma.AiTechnicianComplaintScalarFieldEnum[]
 }
 
 /**

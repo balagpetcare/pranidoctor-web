@@ -1,0 +1,495 @@
+district_code,upazila_code,name_en,name_bn,lat,lng,source,is_verified
+1,1,Debidwar,দেবিদ্বার,,,nuhil/bangladesh-geocode,false
+1,10,Nangalkot,নাঙ্গলকোট,,,nuhil/bangladesh-geocode,false
+11,100,Rowangchhari,রোয়াংছড়ি,,,nuhil/bangladesh-geocode,false
+11,101,Lama,লামা,,,nuhil/bangladesh-geocode,false
+11,102,Ruma,রুমা,,,nuhil/bangladesh-geocode,false
+11,103,Thanchi,থানচি,,,nuhil/bangladesh-geocode,false
+12,104,Belkuchi,বেলকুচি,,,nuhil/bangladesh-geocode,false
+12,105,Chauhali,চৌহালি,,,nuhil/bangladesh-geocode,false
+12,106,Kamarkhand,কামারখন্দ,,,nuhil/bangladesh-geocode,false
+12,107,Kazipur,কাজীপুর,,,nuhil/bangladesh-geocode,false
+12,108,Raigonj,রায়গঞ্জ,,,nuhil/bangladesh-geocode,false
+12,109,Shahjadpur,শাহজাদপুর,,,nuhil/bangladesh-geocode,false
+1,11,Comilla Sadar,কুমিল্লা সদর,,,nuhil/bangladesh-geocode,false
+12,110,Sirajganj Sadar,সিরাজগঞ্জ সদর,,,nuhil/bangladesh-geocode,false
+12,111,Tarash,তাড়াশ,,,nuhil/bangladesh-geocode,false
+12,112,Ullapara,উল্লাপাড়া,,,nuhil/bangladesh-geocode,false
+13,113,Sujanagar,সুজানগর,,,nuhil/bangladesh-geocode,false
+13,114,Ishurdi,ঈশ্বরদী,,,nuhil/bangladesh-geocode,false
+13,115,Bhangura,ভাঙ্গুড়া,,,nuhil/bangladesh-geocode,false
+13,116,Pabna Sadar,পাবনা সদর,,,nuhil/bangladesh-geocode,false
+13,117,Bera,বেড়া,,,nuhil/bangladesh-geocode,false
+13,118,Atghoria,আটঘরিয়া,,,nuhil/bangladesh-geocode,false
+13,119,Chatmohar,চাটমোহর,,,nuhil/bangladesh-geocode,false
+1,12,Meghna,মেঘনা,,,nuhil/bangladesh-geocode,false
+13,120,Santhia,সাঁথিয়া,,,nuhil/bangladesh-geocode,false
+13,121,Faridpur,ফরিদপুর,,,nuhil/bangladesh-geocode,false
+14,122,Kahaloo,কাহালু,,,nuhil/bangladesh-geocode,false
+14,123,Bogra Sadar,বগুড়া সদর,,,nuhil/bangladesh-geocode,false
+14,124,Shariakandi,সারিয়াকান্দি,,,nuhil/bangladesh-geocode,false
+14,125,Shajahanpur,শাজাহানপুর,,,nuhil/bangladesh-geocode,false
+14,126,Dupchanchia,দুপচাচিঁয়া,,,nuhil/bangladesh-geocode,false
+14,127,Adamdighi,আদমদিঘি,,,nuhil/bangladesh-geocode,false
+14,128,Nondigram,নন্দিগ্রাম,,,nuhil/bangladesh-geocode,false
+14,129,Sonatala,সোনাতলা,,,nuhil/bangladesh-geocode,false
+1,13,Monohargonj,মনোহরগঞ্জ,,,nuhil/bangladesh-geocode,false
+14,130,Dhunot,ধুনট,,,nuhil/bangladesh-geocode,false
+14,131,Gabtali,গাবতলী,,,nuhil/bangladesh-geocode,false
+14,132,Sherpur,শেরপুর,,,nuhil/bangladesh-geocode,false
+14,133,Shibganj,শিবগঞ্জ,,,nuhil/bangladesh-geocode,false
+15,134,Paba,পবা,,,nuhil/bangladesh-geocode,false
+15,135,Durgapur,দুর্গাপুর,,,nuhil/bangladesh-geocode,false
+15,136,Mohonpur,মোহনপুর,,,nuhil/bangladesh-geocode,false
+15,137,Charghat,চারঘাট,,,nuhil/bangladesh-geocode,false
+15,138,Puthia,পুঠিয়া,,,nuhil/bangladesh-geocode,false
+15,139,Bagha,বাঘা,,,nuhil/bangladesh-geocode,false
+1,14,Sadarsouth,সদর দক্ষিণ,,,nuhil/bangladesh-geocode,false
+15,140,Godagari,গোদাগাড়ী,,,nuhil/bangladesh-geocode,false
+15,141,Tanore,তানোর,,,nuhil/bangladesh-geocode,false
+15,142,Bagmara,বাগমারা,,,nuhil/bangladesh-geocode,false
+16,143,Natore Sadar,নাটোর সদর,,,nuhil/bangladesh-geocode,false
+16,144,Singra,সিংড়া,,,nuhil/bangladesh-geocode,false
+16,145,Baraigram,বড়াইগ্রাম,,,nuhil/bangladesh-geocode,false
+16,146,Bagatipara,বাগাতিপাড়া,,,nuhil/bangladesh-geocode,false
+16,147,Lalpur,লালপুর,,,nuhil/bangladesh-geocode,false
+16,148,Gurudaspur,গুরুদাসপুর,,,nuhil/bangladesh-geocode,false
+16,149,Naldanga,নলডাঙ্গা,,,nuhil/bangladesh-geocode,false
+1,15,Titas,তিতাস,,,nuhil/bangladesh-geocode,false
+17,150,Akkelpur,আক্কেলপুর,,,nuhil/bangladesh-geocode,false
+17,151,Kalai,কালাই,,,nuhil/bangladesh-geocode,false
+17,152,Khetlal,ক্ষেতলাল,,,nuhil/bangladesh-geocode,false
+17,153,Panchbibi,পাঁচবিবি,,,nuhil/bangladesh-geocode,false
+17,154,Joypurhat Sadar,জয়পুরহাট সদর,,,nuhil/bangladesh-geocode,false
+18,155,Chapainawabganj Sadar,চাঁপাইনবাবগঞ্জ সদর,,,nuhil/bangladesh-geocode,false
+18,156,Gomostapur,গোমস্তাপুর,,,nuhil/bangladesh-geocode,false
+18,157,Nachol,নাচোল,,,nuhil/bangladesh-geocode,false
+18,158,Bholahat,ভোলাহাট,,,nuhil/bangladesh-geocode,false
+18,159,Shibganj,শিবগঞ্জ,,,nuhil/bangladesh-geocode,false
+1,16,Burichang,বুড়িচং,,,nuhil/bangladesh-geocode,false
+19,160,Mohadevpur,মহাদেবপুর,,,nuhil/bangladesh-geocode,false
+19,161,Badalgachi,বদলগাছী,,,nuhil/bangladesh-geocode,false
+19,162,Patnitala,পত্নিতলা,,,nuhil/bangladesh-geocode,false
+19,163,Dhamoirhat,ধামইরহাট,,,nuhil/bangladesh-geocode,false
+19,164,Niamatpur,নিয়ামতপুর,,,nuhil/bangladesh-geocode,false
+19,165,Manda,মান্দা,,,nuhil/bangladesh-geocode,false
+19,166,Atrai,আত্রাই,,,nuhil/bangladesh-geocode,false
+19,167,Raninagar,রাণীনগর,,,nuhil/bangladesh-geocode,false
+19,168,Naogaon Sadar,নওগাঁ সদর,,,nuhil/bangladesh-geocode,false
+19,169,Porsha,পোরশা,,,nuhil/bangladesh-geocode,false
+1,17,Lalmai,লালমাই,,,nuhil/bangladesh-geocode,false
+19,170,Sapahar,সাপাহার,,,nuhil/bangladesh-geocode,false
+20,171,Manirampur,মণিরামপুর,,,nuhil/bangladesh-geocode,false
+20,172,Abhaynagar,অভয়নগর,,,nuhil/bangladesh-geocode,false
+20,173,Bagherpara,বাঘারপাড়া,,,nuhil/bangladesh-geocode,false
+20,174,Chougachha,চৌগাছা,,,nuhil/bangladesh-geocode,false
+20,175,Jhikargacha,ঝিকরগাছা,,,nuhil/bangladesh-geocode,false
+20,176,Keshabpur,কেশবপুর,,,nuhil/bangladesh-geocode,false
+20,177,Jessore Sadar,যশোর সদর,,,nuhil/bangladesh-geocode,false
+20,178,Sharsha,শার্শা,,,nuhil/bangladesh-geocode,false
+21,179,Assasuni,আশাশুনি,,,nuhil/bangladesh-geocode,false
+2,18,Chhagalnaiya,ছাগলনাইয়া,,,nuhil/bangladesh-geocode,false
+21,180,Debhata,দেবহাটা,,,nuhil/bangladesh-geocode,false
+21,181,Kalaroa,কলারোয়া,,,nuhil/bangladesh-geocode,false
+21,182,Satkhira Sadar,সাতক্ষীরা সদর,,,nuhil/bangladesh-geocode,false
+21,183,Shyamnagar,শ্যামনগর,,,nuhil/bangladesh-geocode,false
+21,184,Tala,তালা,,,nuhil/bangladesh-geocode,false
+21,185,Kaliganj,কালিগঞ্জ,,,nuhil/bangladesh-geocode,false
+22,186,Mujibnagar,মুজিবনগর,,,nuhil/bangladesh-geocode,false
+22,187,Meherpur Sadar,মেহেরপুর সদর,,,nuhil/bangladesh-geocode,false
+22,188,Gangni,গাংনী,,,nuhil/bangladesh-geocode,false
+23,189,Narail Sadar,নড়াইল সদর,,,nuhil/bangladesh-geocode,false
+2,19,Feni Sadar,ফেনী সদর,,,nuhil/bangladesh-geocode,false
+23,190,Lohagara,লোহাগড়া,,,nuhil/bangladesh-geocode,false
+23,191,Kalia,কালিয়া,,,nuhil/bangladesh-geocode,false
+24,192,Chuadanga Sadar,চুয়াডাঙ্গা সদর,,,nuhil/bangladesh-geocode,false
+24,193,Alamdanga,আলমডাঙ্গা,,,nuhil/bangladesh-geocode,false
+24,194,Damurhuda,দামুড়হুদা,,,nuhil/bangladesh-geocode,false
+24,195,Jibannagar,জীবননগর,,,nuhil/bangladesh-geocode,false
+25,196,Kushtia Sadar,কুষ্টিয়া সদর,,,nuhil/bangladesh-geocode,false
+25,197,Kumarkhali,কুমারখালী,,,nuhil/bangladesh-geocode,false
+25,198,Khoksa,খোকসা,,,nuhil/bangladesh-geocode,false
+25,199,Mirpur,মিরপুর,,,nuhil/bangladesh-geocode,false
+1,2,Barura,বরুড়া,,,nuhil/bangladesh-geocode,false
+2,20,Sonagazi,সোনাগাজী,,,nuhil/bangladesh-geocode,false
+25,200,Daulatpur,দৌলতপুর,,,nuhil/bangladesh-geocode,false
+25,201,Bheramara,ভেড়ামারা,,,nuhil/bangladesh-geocode,false
+26,202,Shalikha,শালিখা,,,nuhil/bangladesh-geocode,false
+26,203,Sreepur,শ্রীপুর,,,nuhil/bangladesh-geocode,false
+26,204,Magura Sadar,মাগুরা সদর,,,nuhil/bangladesh-geocode,false
+26,205,Mohammadpur,মহম্মদপুর,,,nuhil/bangladesh-geocode,false
+27,206,Paikgasa,পাইকগাছা,,,nuhil/bangladesh-geocode,false
+27,207,Fultola,ফুলতলা,,,nuhil/bangladesh-geocode,false
+27,208,Digholia,দিঘলিয়া,,,nuhil/bangladesh-geocode,false
+27,209,Rupsha,রূপসা,,,nuhil/bangladesh-geocode,false
+2,21,Fulgazi,ফুলগাজী,,,nuhil/bangladesh-geocode,false
+27,210,Terokhada,তেরখাদা,,,nuhil/bangladesh-geocode,false
+27,211,Dumuria,ডুমুরিয়া,,,nuhil/bangladesh-geocode,false
+27,212,Botiaghata,বটিয়াঘাটা,,,nuhil/bangladesh-geocode,false
+27,213,Dakop,দাকোপ,,,nuhil/bangladesh-geocode,false
+27,214,Koyra,কয়রা,,,nuhil/bangladesh-geocode,false
+28,215,Fakirhat,ফকিরহাট,,,nuhil/bangladesh-geocode,false
+28,216,Bagerhat Sadar,বাগেরহাট সদর,,,nuhil/bangladesh-geocode,false
+28,217,Mollahat,মোল্লাহাট,,,nuhil/bangladesh-geocode,false
+28,218,Sarankhola,শরণখোলা,,,nuhil/bangladesh-geocode,false
+28,219,Rampal,রামপাল,,,nuhil/bangladesh-geocode,false
+2,22,Parshuram,পরশুরাম,,,nuhil/bangladesh-geocode,false
+28,220,Morrelganj,মোড়েলগঞ্জ,,,nuhil/bangladesh-geocode,false
+28,221,Kachua,কচুয়া,,,nuhil/bangladesh-geocode,false
+28,222,Mongla,মোংলা,,,nuhil/bangladesh-geocode,false
+28,223,Chitalmari,চিতলমারী,,,nuhil/bangladesh-geocode,false
+29,224,Jhenaidah Sadar,ঝিনাইদহ সদর,,,nuhil/bangladesh-geocode,false
+29,225,Shailkupa,শৈলকুপা,,,nuhil/bangladesh-geocode,false
+29,226,Harinakundu,হরিণাকুন্ডু,,,nuhil/bangladesh-geocode,false
+29,227,Kaliganj,কালীগঞ্জ,,,nuhil/bangladesh-geocode,false
+29,228,Kotchandpur,কোটচাঁদপুর,,,nuhil/bangladesh-geocode,false
+29,229,Moheshpur,মহেশপুর,,,nuhil/bangladesh-geocode,false
+2,23,Daganbhuiyan,দাগনভূঞা,,,nuhil/bangladesh-geocode,false
+30,230,Jhalakathi Sadar,ঝালকাঠি সদর,,,nuhil/bangladesh-geocode,false
+30,231,Kathalia,কাঠালিয়া,,,nuhil/bangladesh-geocode,false
+30,232,Nalchity,নলছিটি,,,nuhil/bangladesh-geocode,false
+30,233,Rajapur,রাজাপুর,,,nuhil/bangladesh-geocode,false
+31,234,Bauphal,বাউফল,,,nuhil/bangladesh-geocode,false
+31,235,Patuakhali Sadar,পটুয়াখালী সদর,,,nuhil/bangladesh-geocode,false
+31,236,Dumki,দুমকি,,,nuhil/bangladesh-geocode,false
+31,237,Dashmina,দশমিনা,,,nuhil/bangladesh-geocode,false
+31,238,Kalapara,কলাপাড়া,,,nuhil/bangladesh-geocode,false
+31,239,Mirzaganj,মির্জাগঞ্জ,,,nuhil/bangladesh-geocode,false
+3,24,Brahmanbaria Sadar,ব্রাহ্মণবাড়িয়া সদর,,,nuhil/bangladesh-geocode,false
+31,240,Galachipa,গলাচিপা,,,nuhil/bangladesh-geocode,false
+31,241,Rangabali,রাঙ্গাবালী,,,nuhil/bangladesh-geocode,false
+32,242,Pirojpur Sadar,পিরোজপুর সদর,,,nuhil/bangladesh-geocode,false
+32,243,Nazirpur,নাজিরপুর,,,nuhil/bangladesh-geocode,false
+32,244,Kawkhali,কাউখালী,,,nuhil/bangladesh-geocode,false
+32,245,Zianagar,জিয়ানগর,,,nuhil/bangladesh-geocode,false
+32,246,Bhandaria,ভান্ডারিয়া,,,nuhil/bangladesh-geocode,false
+32,247,Mathbaria,মঠবাড়ীয়া,,,nuhil/bangladesh-geocode,false
+32,248,Nesarabad,নেছারাবাদ,,,nuhil/bangladesh-geocode,false
+33,249,Barisal Sadar,বরিশাল সদর,,,nuhil/bangladesh-geocode,false
+3,25,Kasba,কসবা,,,nuhil/bangladesh-geocode,false
+33,250,Bakerganj,বাকেরগঞ্জ,,,nuhil/bangladesh-geocode,false
+33,251,Babuganj,বাবুগঞ্জ,,,nuhil/bangladesh-geocode,false
+33,252,Wazirpur,উজিরপুর,,,nuhil/bangladesh-geocode,false
+33,253,Banaripara,বানারীপাড়া,,,nuhil/bangladesh-geocode,false
+33,254,Gournadi,গৌরনদী,,,nuhil/bangladesh-geocode,false
+33,255,Agailjhara,আগৈলঝাড়া,,,nuhil/bangladesh-geocode,false
+33,256,Mehendiganj,মেহেন্দিগঞ্জ,,,nuhil/bangladesh-geocode,false
+33,257,Muladi,মুলাদী,,,nuhil/bangladesh-geocode,false
+33,258,Hizla,হিজলা,,,nuhil/bangladesh-geocode,false
+34,259,Bhola Sadar,ভোলা সদর,,,nuhil/bangladesh-geocode,false
+3,26,Nasirnagar,নাসিরনগর,,,nuhil/bangladesh-geocode,false
+34,260,Borhan Sddin,বোরহান উদ্দিন,,,nuhil/bangladesh-geocode,false
+34,261,Charfesson,চরফ্যাশন,,,nuhil/bangladesh-geocode,false
+34,262,Doulatkhan,দৌলতখান,,,nuhil/bangladesh-geocode,false
+34,263,Monpura,মনপুরা,,,nuhil/bangladesh-geocode,false
+34,264,Tazumuddin,তজুমদ্দিন,,,nuhil/bangladesh-geocode,false
+34,265,Lalmohan,লালমোহন,,,nuhil/bangladesh-geocode,false
+35,266,Amtali,আমতলী,,,nuhil/bangladesh-geocode,false
+35,267,Barguna Sadar,বরগুনা সদর,,,nuhil/bangladesh-geocode,false
+35,268,Betagi,বেতাগী,,,nuhil/bangladesh-geocode,false
+35,269,Bamna,বামনা,,,nuhil/bangladesh-geocode,false
+3,27,Sarail,সরাইল,,,nuhil/bangladesh-geocode,false
+35,270,Pathorghata,পাথরঘাটা,,,nuhil/bangladesh-geocode,false
+35,271,Taltali,তালতলি,,,nuhil/bangladesh-geocode,false
+36,272,Balaganj,বালাগঞ্জ,,,nuhil/bangladesh-geocode,false
+36,273,Beanibazar,বিয়ানীবাজার,,,nuhil/bangladesh-geocode,false
+36,274,Bishwanath,বিশ্বনাথ,,,nuhil/bangladesh-geocode,false
+36,275,Companiganj,কোম্পানীগঞ্জ,,,nuhil/bangladesh-geocode,false
+36,276,Fenchuganj,ফেঞ্চুগঞ্জ,,,nuhil/bangladesh-geocode,false
+36,277,Golapganj,গোলাপগঞ্জ,,,nuhil/bangladesh-geocode,false
+36,278,Gowainghat,গোয়াইনঘাট,,,nuhil/bangladesh-geocode,false
+36,279,Jaintiapur,জৈন্তাপুর,,,nuhil/bangladesh-geocode,false
+3,28,Ashuganj,আশুগঞ্জ,,,nuhil/bangladesh-geocode,false
+36,280,Kanaighat,কানাইঘাট,,,nuhil/bangladesh-geocode,false
+36,281,Sylhet Sadar,সিলেট সদর,,,nuhil/bangladesh-geocode,false
+36,282,Zakiganj,জকিগঞ্জ,,,nuhil/bangladesh-geocode,false
+36,283,Dakshinsurma,দক্ষিণ সুরমা,,,nuhil/bangladesh-geocode,false
+36,284,Osmaninagar,ওসমানী নগর,,,nuhil/bangladesh-geocode,false
+37,285,Barlekha,বড়লেখা,,,nuhil/bangladesh-geocode,false
+37,286,Kamolganj,কমলগঞ্জ,,,nuhil/bangladesh-geocode,false
+37,287,Kulaura,কুলাউড়া,,,nuhil/bangladesh-geocode,false
+37,288,Moulvibazar Sadar,মৌলভীবাজার সদর,,,nuhil/bangladesh-geocode,false
+37,289,Rajnagar,রাজনগর,,,nuhil/bangladesh-geocode,false
+3,29,Akhaura,আখাউড়া,,,nuhil/bangladesh-geocode,false
+37,290,Sreemangal,শ্রীমঙ্গল,,,nuhil/bangladesh-geocode,false
+37,291,Juri,জুড়ী,,,nuhil/bangladesh-geocode,false
+38,292,Nabiganj,নবীগঞ্জ,,,nuhil/bangladesh-geocode,false
+38,293,Bahubal,বাহুবল,,,nuhil/bangladesh-geocode,false
+38,294,Ajmiriganj,আজমিরীগঞ্জ,,,nuhil/bangladesh-geocode,false
+38,295,Baniachong,বানিয়াচং,,,nuhil/bangladesh-geocode,false
+38,296,Lakhai,লাখাই,,,nuhil/bangladesh-geocode,false
+38,297,Chunarughat,চুনারুঘাট,,,nuhil/bangladesh-geocode,false
+38,298,Habiganj Sadar,হবিগঞ্জ সদর,,,nuhil/bangladesh-geocode,false
+38,299,Madhabpur,মাধবপুর,,,nuhil/bangladesh-geocode,false
+1,3,Brahmanpara,ব্রাহ্মণপাড়া,,,nuhil/bangladesh-geocode,false
+3,30,Nabinagar,নবীনগর,,,nuhil/bangladesh-geocode,false
+39,300,Sunamganj Sadar,সুনামগঞ্জ সদর,,,nuhil/bangladesh-geocode,false
+39,301,South Sunamganj,দক্ষিণ সুনামগঞ্জ,,,nuhil/bangladesh-geocode,false
+39,302,Bishwambarpur,বিশ্বম্ভরপুর,,,nuhil/bangladesh-geocode,false
+39,303,Chhatak,ছাতক,,,nuhil/bangladesh-geocode,false
+39,304,Jagannathpur,জগন্নাথপুর,,,nuhil/bangladesh-geocode,false
+39,305,Dowarabazar,দোয়ারাবাজার,,,nuhil/bangladesh-geocode,false
+39,306,Tahirpur,তাহিরপুর,,,nuhil/bangladesh-geocode,false
+39,307,Dharmapasha,ধর্মপাশা,,,nuhil/bangladesh-geocode,false
+39,308,Jamalganj,জামালগঞ্জ,,,nuhil/bangladesh-geocode,false
+39,309,Shalla,শাল্লা,,,nuhil/bangladesh-geocode,false
+3,31,Bancharampur,বাঞ্ছারামপুর,,,nuhil/bangladesh-geocode,false
+39,310,Derai,দিরাই,,,nuhil/bangladesh-geocode,false
+40,311,Belabo,বেলাবো,,,nuhil/bangladesh-geocode,false
+40,312,Monohardi,মনোহরদী,,,nuhil/bangladesh-geocode,false
+40,313,Narsingdi Sadar,নরসিংদী সদর,,,nuhil/bangladesh-geocode,false
+40,314,Palash,পলাশ,,,nuhil/bangladesh-geocode,false
+40,315,Raipura,রায়পুরা,,,nuhil/bangladesh-geocode,false
+40,316,Shibpur,শিবপুর,,,nuhil/bangladesh-geocode,false
+41,317,Kaliganj,কালীগঞ্জ,,,nuhil/bangladesh-geocode,false
+41,318,Kaliakair,কালিয়াকৈর,,,nuhil/bangladesh-geocode,false
+41,319,Kapasia,কাপাসিয়া,,,nuhil/bangladesh-geocode,false
+3,32,Bijoynagar,বিজয়নগর,,,nuhil/bangladesh-geocode,false
+41,320,Gazipur Sadar,গাজীপুর সদর,,,nuhil/bangladesh-geocode,false
+41,321,Sreepur,শ্রীপুর,,,nuhil/bangladesh-geocode,false
+42,322,Shariatpur Sadar,শরিয়তপুর সদর,,,nuhil/bangladesh-geocode,false
+42,323,Naria,নড়িয়া,,,nuhil/bangladesh-geocode,false
+42,324,Zajira,জাজিরা,,,nuhil/bangladesh-geocode,false
+42,325,Gosairhat,গোসাইরহাট,,,nuhil/bangladesh-geocode,false
+42,326,Bhedarganj,ভেদরগঞ্জ,,,nuhil/bangladesh-geocode,false
+42,327,Damudya,ডামুড্যা,,,nuhil/bangladesh-geocode,false
+43,328,Araihazar,আড়াইহাজার,,,nuhil/bangladesh-geocode,false
+43,329,Bandar,বন্দর,,,nuhil/bangladesh-geocode,false
+4,33,Rangamati Sadar,রাঙ্গামাটি সদর,,,nuhil/bangladesh-geocode,false
+43,330,Narayanganj Sadar,নারায়নগঞ্জ সদর,,,nuhil/bangladesh-geocode,false
+43,331,Rupganj,রূপগঞ্জ,,,nuhil/bangladesh-geocode,false
+43,332,Sonargaon,সোনারগাঁ,,,nuhil/bangladesh-geocode,false
+44,333,Basail,বাসাইল,,,nuhil/bangladesh-geocode,false
+44,334,Bhuapur,ভুয়াপুর,,,nuhil/bangladesh-geocode,false
+44,335,Delduar,দেলদুয়ার,,,nuhil/bangladesh-geocode,false
+44,336,Ghatail,ঘাটাইল,,,nuhil/bangladesh-geocode,false
+44,337,Gopalpur,গোপালপুর,,,nuhil/bangladesh-geocode,false
+44,338,Madhupur,মধুপুর,,,nuhil/bangladesh-geocode,false
+44,339,Mirzapur,মির্জাপুর,,,nuhil/bangladesh-geocode,false
+4,34,Kaptai,কাপ্তাই,,,nuhil/bangladesh-geocode,false
+44,340,Nagarpur,নাগরপুর,,,nuhil/bangladesh-geocode,false
+44,341,Sakhipur,সখিপুর,,,nuhil/bangladesh-geocode,false
+44,342,Tangail Sadar,টাঙ্গাইল সদর,,,nuhil/bangladesh-geocode,false
+44,343,Kalihati,কালিহাতী,,,nuhil/bangladesh-geocode,false
+44,344,Dhanbari,ধনবাড়ী,,,nuhil/bangladesh-geocode,false
+45,345,Itna,ইটনা,,,nuhil/bangladesh-geocode,false
+45,346,Katiadi,কটিয়াদী,,,nuhil/bangladesh-geocode,false
+45,347,Bhairab,ভৈরব,,,nuhil/bangladesh-geocode,false
+45,348,Tarail,তাড়াইল,,,nuhil/bangladesh-geocode,false
+45,349,Hossainpur,হোসেনপুর,,,nuhil/bangladesh-geocode,false
+4,35,Kawkhali,কাউখালী,,,nuhil/bangladesh-geocode,false
+45,350,Pakundia,পাকুন্দিয়া,,,nuhil/bangladesh-geocode,false
+45,351,Kuliarchar,কুলিয়ারচর,,,nuhil/bangladesh-geocode,false
+45,352,Kishoreganj Sadar,কিশোরগঞ্জ সদর,,,nuhil/bangladesh-geocode,false
+45,353,Karimgonj,করিমগঞ্জ,,,nuhil/bangladesh-geocode,false
+45,354,Bajitpur,বাজিতপুর,,,nuhil/bangladesh-geocode,false
+45,355,Austagram,অষ্টগ্রাম,,,nuhil/bangladesh-geocode,false
+45,356,Mithamoin,মিঠামইন,,,nuhil/bangladesh-geocode,false
+45,357,Nikli,নিকলী,,,nuhil/bangladesh-geocode,false
+46,358,Harirampur,হরিরামপুর,,,nuhil/bangladesh-geocode,false
+46,359,Saturia,সাটুরিয়া,,,nuhil/bangladesh-geocode,false
+4,36,Baghaichari,বাঘাইছড়ি,,,nuhil/bangladesh-geocode,false
+46,360,Manikganj Sadar,মানিকগঞ্জ সদর,,,nuhil/bangladesh-geocode,false
+46,361,Gior,ঘিওর,,,nuhil/bangladesh-geocode,false
+46,362,Shibaloy,শিবালয়,,,nuhil/bangladesh-geocode,false
+46,363,Doulatpur,দৌলতপুর,,,nuhil/bangladesh-geocode,false
+46,364,Singiar,সিংগাইর,,,nuhil/bangladesh-geocode,false
+47,365,Savar,সাভার,,,nuhil/bangladesh-geocode,false
+47,366,Dhamrai,ধামরাই,,,nuhil/bangladesh-geocode,false
+47,367,Keraniganj,কেরাণীগঞ্জ,,,nuhil/bangladesh-geocode,false
+47,368,Nawabganj,নবাবগঞ্জ,,,nuhil/bangladesh-geocode,false
+47,369,Dohar,দোহার,,,nuhil/bangladesh-geocode,false
+4,37,Barkal,বরকল,,,nuhil/bangladesh-geocode,false
+48,370,Munshiganj Sadar,মুন্সিগঞ্জ সদর,,,nuhil/bangladesh-geocode,false
+48,371,Sreenagar,শ্রীনগর,,,nuhil/bangladesh-geocode,false
+48,372,Sirajdikhan,সিরাজদিখান,,,nuhil/bangladesh-geocode,false
+48,373,Louhajanj,লৌহজং,,,nuhil/bangladesh-geocode,false
+48,374,Gajaria,গজারিয়া,,,nuhil/bangladesh-geocode,false
+48,375,Tongibari,টংগীবাড়ি,,,nuhil/bangladesh-geocode,false
+49,376,Rajbari Sadar,রাজবাড়ী সদর,,,nuhil/bangladesh-geocode,false
+49,377,Goalanda,গোয়ালন্দ,,,nuhil/bangladesh-geocode,false
+49,378,Pangsa,পাংশা,,,nuhil/bangladesh-geocode,false
+49,379,Baliakandi,বালিয়াকান্দি,,,nuhil/bangladesh-geocode,false
+4,38,Langadu,লংগদু,,,nuhil/bangladesh-geocode,false
+49,380,Kalukhali,কালুখালী,,,nuhil/bangladesh-geocode,false
+50,381,Madaripur Sadar,মাদারীপুর সদর,,,nuhil/bangladesh-geocode,false
+50,382,Shibchar,শিবচর,,,nuhil/bangladesh-geocode,false
+50,383,Kalkini,কালকিনি,,,nuhil/bangladesh-geocode,false
+50,384,Rajoir,রাজৈর,,,nuhil/bangladesh-geocode,false
+51,385,Gopalganj Sadar,গোপালগঞ্জ সদর,,,nuhil/bangladesh-geocode,false
+51,386,Kashiani,কাশিয়ানী,,,nuhil/bangladesh-geocode,false
+51,387,Tungipara,টুংগীপাড়া,,,nuhil/bangladesh-geocode,false
+51,388,Kotalipara,কোটালীপাড়া,,,nuhil/bangladesh-geocode,false
+51,389,Muksudpur,মুকসুদপুর,,,nuhil/bangladesh-geocode,false
+4,39,Rajasthali,রাজস্থলী,,,nuhil/bangladesh-geocode,false
+52,390,Faridpur Sadar,ফরিদপুর সদর,,,nuhil/bangladesh-geocode,false
+52,391,Alfadanga,আলফাডাঙ্গা,,,nuhil/bangladesh-geocode,false
+52,392,Boalmari,বোয়ালমারী,,,nuhil/bangladesh-geocode,false
+52,393,Sadarpur,সদরপুর,,,nuhil/bangladesh-geocode,false
+52,394,Nagarkanda,নগরকান্দা,,,nuhil/bangladesh-geocode,false
+52,395,Bhanga,ভাঙ্গা,,,nuhil/bangladesh-geocode,false
+52,396,Charbhadrasan,চরভদ্রাসন,,,nuhil/bangladesh-geocode,false
+52,397,Madhukhali,মধুখালী,,,nuhil/bangladesh-geocode,false
+52,398,Saltha,সালথা,,,nuhil/bangladesh-geocode,false
+53,399,Panchagarh Sadar,পঞ্চগড় সদর,,,nuhil/bangladesh-geocode,false
+1,4,Chandina,চান্দিনা,,,nuhil/bangladesh-geocode,false
+4,40,Belaichari,বিলাইছড়ি,,,nuhil/bangladesh-geocode,false
+53,400,Debiganj,দেবীগঞ্জ,,,nuhil/bangladesh-geocode,false
+53,401,Boda,বোদা,,,nuhil/bangladesh-geocode,false
+53,402,Atwari,আটোয়ারী,,,nuhil/bangladesh-geocode,false
+53,403,Tetulia,তেতুলিয়া,,,nuhil/bangladesh-geocode,false
+54,404,Nawabganj,নবাবগঞ্জ,,,nuhil/bangladesh-geocode,false
+54,405,Birganj,বীরগঞ্জ,,,nuhil/bangladesh-geocode,false
+54,406,Ghoraghat,ঘোড়াঘাট,,,nuhil/bangladesh-geocode,false
+54,407,Birampur,বিরামপুর,,,nuhil/bangladesh-geocode,false
+54,408,Parbatipur,পার্বতীপুর,,,nuhil/bangladesh-geocode,false
+54,409,Bochaganj,বোচাগঞ্জ,,,nuhil/bangladesh-geocode,false
+4,41,Juraichari,জুরাছড়ি,,,nuhil/bangladesh-geocode,false
+54,410,Kaharol,কাহারোল,,,nuhil/bangladesh-geocode,false
+54,411,Fulbari,ফুলবাড়ী,,,nuhil/bangladesh-geocode,false
+54,412,Dinajpur Sadar,দিনাজপুর সদর,,,nuhil/bangladesh-geocode,false
+54,413,Hakimpur,হাকিমপুর,,,nuhil/bangladesh-geocode,false
+54,414,Khansama,খানসামা,,,nuhil/bangladesh-geocode,false
+54,415,Birol,বিরল,,,nuhil/bangladesh-geocode,false
+54,416,Chirirbandar,চিরিরবন্দর,,,nuhil/bangladesh-geocode,false
+55,417,Lalmonirhat Sadar,লালমনিরহাট সদর,,,nuhil/bangladesh-geocode,false
+55,418,Kaliganj,কালীগঞ্জ,,,nuhil/bangladesh-geocode,false
+55,419,Hatibandha,হাতীবান্ধা,,,nuhil/bangladesh-geocode,false
+4,42,Naniarchar,নানিয়ারচর,,,nuhil/bangladesh-geocode,false
+55,420,Patgram,পাটগ্রাম,,,nuhil/bangladesh-geocode,false
+55,421,Aditmari,আদিতমারী,,,nuhil/bangladesh-geocode,false
+56,422,Syedpur,সৈয়দপুর,,,nuhil/bangladesh-geocode,false
+56,423,Domar,ডোমার,,,nuhil/bangladesh-geocode,false
+56,424,Dimla,ডিমলা,,,nuhil/bangladesh-geocode,false
+56,425,Jaldhaka,জলঢাকা,,,nuhil/bangladesh-geocode,false
+56,426,Kishorganj,কিশোরগঞ্জ,,,nuhil/bangladesh-geocode,false
+56,427,Nilphamari Sadar,নীলফামারী সদর,,,nuhil/bangladesh-geocode,false
+57,428,Sadullapur,সাদুল্লাপুর,,,nuhil/bangladesh-geocode,false
+57,429,Gaibandha Sadar,গাইবান্ধা সদর,,,nuhil/bangladesh-geocode,false
+5,43,Noakhali Sadar,নোয়াখালী সদর,,,nuhil/bangladesh-geocode,false
+57,430,Palashbari,পলাশবাড়ী,,,nuhil/bangladesh-geocode,false
+57,431,Saghata,সাঘাটা,,,nuhil/bangladesh-geocode,false
+57,432,Gobindaganj,গোবিন্দগঞ্জ,,,nuhil/bangladesh-geocode,false
+57,433,Sundarganj,সুন্দরগঞ্জ,,,nuhil/bangladesh-geocode,false
+57,434,Phulchari,ফুলছড়ি,,,nuhil/bangladesh-geocode,false
+58,435,Thakurgaon Sadar,ঠাকুরগাঁও সদর,,,nuhil/bangladesh-geocode,false
+58,436,Pirganj,পীরগঞ্জ,,,nuhil/bangladesh-geocode,false
+58,437,Ranisankail,রাণীশংকৈল,,,nuhil/bangladesh-geocode,false
+58,438,Haripur,হরিপুর,,,nuhil/bangladesh-geocode,false
+58,439,Baliadangi,বালিয়াডাঙ্গী,,,nuhil/bangladesh-geocode,false
+5,44,Companiganj,কোম্পানীগঞ্জ,,,nuhil/bangladesh-geocode,false
+59,440,Rangpur Sadar,রংপুর সদর,,,nuhil/bangladesh-geocode,false
+59,441,Gangachara,গংগাচড়া,,,nuhil/bangladesh-geocode,false
+59,442,Taragonj,তারাগঞ্জ,,,nuhil/bangladesh-geocode,false
+59,443,Badargonj,বদরগঞ্জ,,,nuhil/bangladesh-geocode,false
+59,444,Mithapukur,মিঠাপুকুর,,,nuhil/bangladesh-geocode,false
+59,445,Pirgonj,পীরগঞ্জ,,,nuhil/bangladesh-geocode,false
+59,446,Kaunia,কাউনিয়া,,,nuhil/bangladesh-geocode,false
+59,447,Pirgacha,পীরগাছা,,,nuhil/bangladesh-geocode,false
+60,448,Kurigram Sadar,কুড়িগ্রাম সদর,,,nuhil/bangladesh-geocode,false
+60,449,Nageshwari,নাগেশ্বরী,,,nuhil/bangladesh-geocode,false
+5,45,Begumganj,বেগমগঞ্জ,,,nuhil/bangladesh-geocode,false
+60,450,Bhurungamari,ভুরুঙ্গামারী,,,nuhil/bangladesh-geocode,false
+60,451,Phulbari,ফুলবাড়ী,,,nuhil/bangladesh-geocode,false
+60,452,Rajarhat,রাজারহাট,,,nuhil/bangladesh-geocode,false
+60,453,Ulipur,উলিপুর,,,nuhil/bangladesh-geocode,false
+60,454,Chilmari,চিলমারী,,,nuhil/bangladesh-geocode,false
+60,455,Rowmari,রৌমারী,,,nuhil/bangladesh-geocode,false
+60,456,Charrajibpur,চর রাজিবপুর,,,nuhil/bangladesh-geocode,false
+61,457,Sherpur Sadar,শেরপুর সদর,,,nuhil/bangladesh-geocode,false
+61,458,Nalitabari,নালিতাবাড়ী,,,nuhil/bangladesh-geocode,false
+61,459,Sreebordi,শ্রীবরদী,,,nuhil/bangladesh-geocode,false
+5,46,Hatia,হাতিয়া,,,nuhil/bangladesh-geocode,false
+61,460,Nokla,নকলা,,,nuhil/bangladesh-geocode,false
+61,461,Jhenaigati,ঝিনাইগাতী,,,nuhil/bangladesh-geocode,false
+62,462,Fulbaria,ফুলবাড়ীয়া,,,nuhil/bangladesh-geocode,false
+62,463,Trishal,ত্রিশাল,,,nuhil/bangladesh-geocode,false
+62,464,Bhaluka,ভালুকা,,,nuhil/bangladesh-geocode,false
+62,465,Muktagacha,মুক্তাগাছা,,,nuhil/bangladesh-geocode,false
+62,466,Mymensingh Sadar,ময়মনসিংহ সদর,,,nuhil/bangladesh-geocode,false
+62,467,Dhobaura,ধোবাউড়া,,,nuhil/bangladesh-geocode,false
+62,468,Phulpur,ফুলপুর,,,nuhil/bangladesh-geocode,false
+62,469,Haluaghat,হালুয়াঘাট,,,nuhil/bangladesh-geocode,false
+5,47,Subarnachar,সুবর্ণচর,,,nuhil/bangladesh-geocode,false
+62,470,Gouripur,গৌরীপুর,,,nuhil/bangladesh-geocode,false
+62,471,Gafargaon,গফরগাঁও,,,nuhil/bangladesh-geocode,false
+62,472,Iswarganj,ঈশ্বরগঞ্জ,,,nuhil/bangladesh-geocode,false
+62,473,Nandail,নান্দাইল,,,nuhil/bangladesh-geocode,false
+62,474,Tarakanda,তারাকান্দা,,,nuhil/bangladesh-geocode,false
+63,475,Jamalpur Sadar,জামালপুর সদর,,,nuhil/bangladesh-geocode,false
+63,476,Melandah,মেলান্দহ,,,nuhil/bangladesh-geocode,false
+63,477,Islampur,ইসলামপুর,,,nuhil/bangladesh-geocode,false
+63,478,Dewangonj,দেওয়ানগঞ্জ,,,nuhil/bangladesh-geocode,false
+63,479,Sarishabari,সরিষাবাড়ী,,,nuhil/bangladesh-geocode,false
+5,48,Kabirhat,কবিরহাট,,,nuhil/bangladesh-geocode,false
+63,480,Madarganj,মাদারগঞ্জ,,,nuhil/bangladesh-geocode,false
+63,481,Bokshiganj,বকশীগঞ্জ,,,nuhil/bangladesh-geocode,false
+64,482,Barhatta,বারহাট্টা,,,nuhil/bangladesh-geocode,false
+64,483,Durgapur,দুর্গাপুর,,,nuhil/bangladesh-geocode,false
+64,484,Kendua,কেন্দুয়া,,,nuhil/bangladesh-geocode,false
+64,485,Atpara,আটপাড়া,,,nuhil/bangladesh-geocode,false
+64,486,Madan,মদন,,,nuhil/bangladesh-geocode,false
+64,487,Khaliajuri,খালিয়াজুরী,,,nuhil/bangladesh-geocode,false
+64,488,Kalmakanda,কলমাকান্দা,,,nuhil/bangladesh-geocode,false
+64,489,Mohongonj,মোহনগঞ্জ,,,nuhil/bangladesh-geocode,false
+5,49,Senbug,সেনবাগ,,,nuhil/bangladesh-geocode,false
+64,490,Purbadhala,পূর্বধলা,,,nuhil/bangladesh-geocode,false
+64,491,Netrokona Sadar,নেত্রকোণা সদর,,,nuhil/bangladesh-geocode,false
+9,492,Eidgaon,ঈদগাঁও,,,nuhil/bangladesh-geocode,false
+39,493,Madhyanagar,মধ্যনগর,,,nuhil/bangladesh-geocode,false
+50,494,Dasar,ডাসার,,,nuhil/bangladesh-geocode,false
+1,5,Chauddagram,চৌদ্দগ্রাম,,,nuhil/bangladesh-geocode,false
+5,50,Chatkhil,চাটখিল,,,nuhil/bangladesh-geocode,false
+5,51,Sonaimori,সোনাইমুড়ী,,,nuhil/bangladesh-geocode,false
+6,52,Haimchar,হাইমচর,,,nuhil/bangladesh-geocode,false
+6,53,Kachua,কচুয়া,,,nuhil/bangladesh-geocode,false
+6,54,Shahrasti,শাহরাস্তি,,,nuhil/bangladesh-geocode,false
+6,55,Chandpur Sadar,চাঁদপুর সদর,,,nuhil/bangladesh-geocode,false
+6,56,Matlab South,মতলব দক্ষিণ,,,nuhil/bangladesh-geocode,false
+6,57,Hajiganj,হাজীগঞ্জ,,,nuhil/bangladesh-geocode,false
+6,58,Matlab North,মতলব উত্তর,,,nuhil/bangladesh-geocode,false
+6,59,Faridgonj,ফরিদগঞ্জ,,,nuhil/bangladesh-geocode,false
+1,6,Daudkandi,দাউদকান্দি,,,nuhil/bangladesh-geocode,false
+7,60,Lakshmipur Sadar,লক্ষ্মীপুর সদর,,,nuhil/bangladesh-geocode,false
+7,61,Kamalnagar,কমলনগর,,,nuhil/bangladesh-geocode,false
+7,62,Raipur,রায়পুর,,,nuhil/bangladesh-geocode,false
+7,63,Ramgati,রামগতি,,,nuhil/bangladesh-geocode,false
+7,64,Ramganj,রামগঞ্জ,,,nuhil/bangladesh-geocode,false
+8,65,Rangunia,রাঙ্গুনিয়া,,,nuhil/bangladesh-geocode,false
+8,66,Sitakunda,সীতাকুন্ড,,,nuhil/bangladesh-geocode,false
+8,67,Mirsharai,মীরসরাই,,,nuhil/bangladesh-geocode,false
+8,68,Patiya,পটিয়া,,,nuhil/bangladesh-geocode,false
+8,69,Sandwip,সন্দ্বীপ,,,nuhil/bangladesh-geocode,false
+1,7,Homna,হোমনা,,,nuhil/bangladesh-geocode,false
+8,70,Banshkhali,বাঁশখালী,,,nuhil/bangladesh-geocode,false
+8,71,Boalkhali,বোয়ালখালী,,,nuhil/bangladesh-geocode,false
+8,72,Anwara,আনোয়ারা,,,nuhil/bangladesh-geocode,false
+8,73,Chandanaish,চন্দনাইশ,,,nuhil/bangladesh-geocode,false
+8,74,Satkania,সাতকানিয়া,,,nuhil/bangladesh-geocode,false
+8,75,Lohagara,লোহাগাড়া,,,nuhil/bangladesh-geocode,false
+8,76,Hathazari,হাটহাজারী,,,nuhil/bangladesh-geocode,false
+8,77,Fatikchhari,ফটিকছড়ি,,,nuhil/bangladesh-geocode,false
+8,78,Raozan,রাউজান,,,nuhil/bangladesh-geocode,false
+8,79,Karnafuli,কর্ণফুলী,,,nuhil/bangladesh-geocode,false
+1,8,Laksam,লাকসাম,,,nuhil/bangladesh-geocode,false
+9,80,Coxsbazar Sadar,কক্সবাজার সদর,,,nuhil/bangladesh-geocode,false
+9,81,Chakaria,চকরিয়া,,,nuhil/bangladesh-geocode,false
+9,82,Kutubdia,কুতুবদিয়া,,,nuhil/bangladesh-geocode,false
+9,83,Ukhiya,উখিয়া,,,nuhil/bangladesh-geocode,false
+9,84,Moheshkhali,মহেশখালী,,,nuhil/bangladesh-geocode,false
+9,85,Pekua,পেকুয়া,,,nuhil/bangladesh-geocode,false
+9,86,Ramu,রামু,,,nuhil/bangladesh-geocode,false
+9,87,Teknaf,টেকনাফ,,,nuhil/bangladesh-geocode,false
+10,88,Khagrachhari Sadar,খাগড়াছড়ি সদর,,,nuhil/bangladesh-geocode,false
+10,89,Dighinala,দিঘীনালা,,,nuhil/bangladesh-geocode,false
+1,9,Muradnagar,মুরাদনগর,,,nuhil/bangladesh-geocode,false
+10,90,Panchari,পানছড়ি,,,nuhil/bangladesh-geocode,false
+10,91,Laxmichhari,লক্ষীছড়ি,,,nuhil/bangladesh-geocode,false
+10,92,Mohalchari,মহালছড়ি,,,nuhil/bangladesh-geocode,false
+10,93,Manikchari,মানিকছড়ি,,,nuhil/bangladesh-geocode,false
+10,94,Ramgarh,রামগড়,,,nuhil/bangladesh-geocode,false
+10,95,Matiranga,মাটিরাঙ্গা,,,nuhil/bangladesh-geocode,false
+10,96,Guimara,গুইমারা,,,nuhil/bangladesh-geocode,false
+11,97,Bandarban Sadar,বান্দরবান সদর,,,nuhil/bangladesh-geocode,false
+11,98,Alikadam,আলীকদম,,,nuhil/bangladesh-geocode,false
+11,99,Naikhongchhari,নাইক্ষ্যংছড়ি,,,nuhil/bangladesh-geocode,false

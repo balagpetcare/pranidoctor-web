@@ -6,7 +6,9 @@ import {
   Cpu,
   FileText,
   FlaskConical,
+  Inbox,
   LayoutDashboard,
+  MessageSquareWarning,
   MapPin,
   PawPrint,
   Pill,
@@ -14,6 +16,7 @@ import {
   Stethoscope,
   Users,
   Wallet2,
+  Globe2,
 } from "lucide-react";
 
 export type AdminNavItem = {
@@ -41,6 +44,12 @@ export const ADMIN_NAV_ITEMS: AdminNavItem[] = [
     icon: MapPin,
   },
   {
+    href: "/admin/locations",
+    labelBn: "লোকেশন মাস্টার",
+    titleEn: "BD location master (CSV / verify)",
+    icon: Globe2,
+  },
+  {
     href: "/admin/doctors",
     labelBn: "ডাক্তার",
     titleEn: "Doctors",
@@ -51,6 +60,18 @@ export const ADMIN_NAV_ITEMS: AdminNavItem[] = [
     labelBn: "এআই টেকনিশিয়ান",
     titleEn: "AI Technicians",
     icon: Cpu,
+  },
+  {
+    href: "/admin/ai-technicians/applications",
+    labelBn: "এআই আবেদন",
+    titleEn: "AI technician applications",
+    icon: Inbox,
+  },
+  {
+    href: "/admin/ai-technician-complaints",
+    labelBn: "এআই অভিযোগ",
+    titleEn: "AI technician complaints",
+    icon: MessageSquareWarning,
   },
   {
     href: "/admin/customers",

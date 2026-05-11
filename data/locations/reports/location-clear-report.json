@@ -1,0 +1,40 @@
+{
+  "generatedAt": "2026-05-10T17:29:59.907Z",
+  "executed": true,
+  "dryRun": false,
+  "pre": {
+    "villages": 2,
+    "unions": 3445,
+    "upazilas": 511,
+    "districts": 64,
+    "divisions": 8,
+    "serviceRequestWithVillage": 8,
+    "doctorServiceAreas": 5,
+    "aiTechnicianServiceAreas": 3
+  },
+  "counts": {
+    "serviceRequestVillageIdNullified": 8,
+    "aiTechnicianProfileDistrictNullified": 1,
+    "aiTechnicianProfileUpazilaNullified": 1,
+    "aiTechnicianProfileUnionNullified": 1,
+    "aiTechnicianDivisionServiceAreaDistrictNullified": 1,
+    "aiTechnicianDivisionServiceAreaUpazilaNullified": 1,
+    "aiTechnicianDivisionServiceAreaUnionNullified": 1,
+    "villagesDeleted": 2,
+    "unionsDeleted": 3445,
+    "upazilasDeleted": 511,
+    "districtsDeleted": 64,
+    "divisionsDeleted": 8
+  },
+  "post": {
+    "villages": 0,
+    "unions": 0,
+    "upazilas": 0,
+    "districts": 0,
+    "divisions": 0
+  },
+  "notes": [
+    "Normalized Division…Village tables cleared. Re-import with `npm run locations:import`.",
+    "Area tree untouched. CSV files on disk unchanged by this script."
+  ]
+}

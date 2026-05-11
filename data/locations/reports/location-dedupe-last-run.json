@@ -1,0 +1,24 @@
+{
+  "generatedAt": "2026-05-11T00:16:55.412Z",
+  "apply": true,
+  "trimWaves": [
+    {
+      "round": 0,
+      "divisions": 0,
+      "districts": 0,
+      "upazilas": 0,
+      "unions": 0,
+      "villages": 0
+    }
+  ],
+  "waves": [
+    {
+      "round": 0,
+      "divisions": 0,
+      "districts": 0,
+      "upazilas": 0,
+      "unions": 0,
+      "villages": 0
+    }
+  ]
+}

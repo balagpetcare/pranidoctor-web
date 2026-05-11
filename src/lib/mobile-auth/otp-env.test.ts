@@ -29,7 +29,22 @@ describe("otp-env", () => {
   it("applies OTP_TTL_MINUTES to ttlSeconds", async () => {
     vi.stubEnv("OTP_MODE", "dev");
     vi.stubEnv("OTP_TTL_MINUTES", "10");
+    vi.stubEnv("MOBILE_OTP_TTL_MINUTES", "");
     const { getOtpConfig } = await import("./otp-env");
     expect(getOtpConfig().ttlSeconds).toBe(600);
+  });
+
+  it("defaults ttl to 15 minutes when unset", async () => {
+    vi.stubEnv("OTP_MODE", "dev");
+    const { getOtpConfig } = await import("./otp-env");
+    expect(getOtpConfig().ttlSeconds).toBe(900);
+  });
+
+  it("prefers MOBILE_OTP_TTL_MINUTES over OTP_TTL_MINUTES", async () => {
+    vi.stubEnv("OTP_MODE", "dev");
+    vi.stubEnv("OTP_TTL_MINUTES", "10");
+    vi.stubEnv("MOBILE_OTP_TTL_MINUTES", "12");
+    const { getOtpConfig } = await import("./otp-env");
+    expect(getOtpConfig().ttlSeconds).toBe(12 * 60);
   });
 });

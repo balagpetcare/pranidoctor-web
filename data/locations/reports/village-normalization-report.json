@@ -1,0 +1,11 @@
+{
+  "generatedAt": "2026-05-10T15:48:52.224Z",
+  "inputFiles": [],
+  "outputRowCount": 0,
+  "unmatchedCount": 0,
+  "duplicateWarnings": 0,
+  "notes": [
+    "unions.csv has no data rows — village normalization cannot resolve parents; output header only unless canonical rows self-contain union_code.",
+    "No CSV files in data/locations/raw/villages — output header only."
+  ]
+}

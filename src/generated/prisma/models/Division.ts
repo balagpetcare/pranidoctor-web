@@ -20,15 +20,37 @@ export type DivisionModel = runtime.Types.Result.DefaultSelection<Prisma.$Divisi
 
 export type AggregateDivision = {
   _count: DivisionCountAggregateOutputType | null
+  _avg: DivisionAvgAggregateOutputType | null
+  _sum: DivisionSumAggregateOutputType | null
   _min: DivisionMinAggregateOutputType | null
   _max: DivisionMaxAggregateOutputType | null
+}
+
+export type DivisionAvgAggregateOutputType = {
+  sortOrder: number | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+}
+
+export type DivisionSumAggregateOutputType = {
+  sortOrder: number | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
 }
 
 export type DivisionMinAggregateOutputType = {
   id: string | null
   name: string | null
+  nameBn: string | null
+  nameEn: string | null
   slug: string | null
   code: string | null
+  sortOrder: number | null
+  isActive: boolean | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  source: string | null
+  isVerified: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -36,8 +58,16 @@ export type DivisionMinAggregateOutputType = {
 export type DivisionMaxAggregateOutputType = {
   id: string | null
   name: string | null
+  nameBn: string | null
+  nameEn: string | null
   slug: string | null
   code: string | null
+  sortOrder: number | null
+  isActive: boolean | null
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  source: string | null
+  isVerified: boolean | null
   createdAt: Date | null
   updatedAt: Date | null
 }
@@ -45,19 +75,47 @@ export type DivisionMaxAggregateOutputType = {
 export type DivisionCountAggregateOutputType = {
   id: number
   name: number
+  nameBn: number
+  nameEn: number
   slug: number
   code: number
+  sortOrder: number
+  isActive: number
+  latitude: number
+  longitude: number
+  source: number
+  isVerified: number
   createdAt: number
   updatedAt: number
   _all: number
 }
 
 
+export type DivisionAvgAggregateInputType = {
+  sortOrder?: true
+  latitude?: true
+  longitude?: true
+}
+
+export type DivisionSumAggregateInputType = {
+  sortOrder?: true
+  latitude?: true
+  longitude?: true
+}
+
 export type DivisionMinAggregateInputType = {
   id?: true
   name?: true
+  nameBn?: true
+  nameEn?: true
   slug?: true
   code?: true
+  sortOrder?: true
+  isActive?: true
+  latitude?: true
+  longitude?: true
+  source?: true
+  isVerified?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -65,8 +123,16 @@ export type DivisionMinAggregateInputType = {
 export type DivisionMaxAggregateInputType = {
   id?: true
   name?: true
+  nameBn?: true
+  nameEn?: true
   slug?: true
   code?: true
+  sortOrder?: true
+  isActive?: true
+  latitude?: true
+  longitude?: true
+  source?: true
+  isVerified?: true
   createdAt?: true
   updatedAt?: true
 }
@@ -74,8 +140,16 @@ export type DivisionMaxAggregateInputType = {
 export type DivisionCountAggregateInputType = {
   id?: true
   name?: true
+  nameBn?: true
+  nameEn?: true
   slug?: true
   code?: true
+  sortOrder?: true
+  isActive?: true
+  latitude?: true
+  longitude?: true
+  source?: true
+  isVerified?: true
   createdAt?: true
   updatedAt?: true
   _all?: true
@@ -119,6 +193,18 @@ export type DivisionAggregateArgs<ExtArgs extends runtime.Types.Extensions.Inter
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: DivisionAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: DivisionSumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: DivisionMinAggregateInputType
@@ -149,6 +235,8 @@ export type DivisionGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
   take?: number
   skip?: number
   _count?: DivisionCountAggregateInputType | true
+  _avg?: DivisionAvgAggregateInputType
+  _sum?: DivisionSumAggregateInputType
   _min?: DivisionMinAggregateInputType
   _max?: DivisionMaxAggregateInputType
 }
@@ -156,11 +244,21 @@ export type DivisionGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 export type DivisionGroupByOutputType = {
   id: string
   name: string
+  nameBn: string | null
+  nameEn: string | null
   slug: string
   code: string | null
+  sortOrder: number
+  isActive: boolean
+  latitude: runtime.Decimal | null
+  longitude: runtime.Decimal | null
+  source: string | null
+  isVerified: boolean
   createdAt: Date
   updatedAt: Date
   _count: DivisionCountAggregateOutputType | null
+  _avg: DivisionAvgAggregateOutputType | null
+  _sum: DivisionSumAggregateOutputType | null
   _min: DivisionMinAggregateOutputType | null
   _max: DivisionMaxAggregateOutputType | null
 }
@@ -186,8 +284,16 @@ export type DivisionWhereInput = {
   NOT?: Prisma.DivisionWhereInput | Prisma.DivisionWhereInput[]
   id?: Prisma.StringFilter<"Division"> | string
   name?: Prisma.StringFilter<"Division"> | string
+  nameBn?: Prisma.StringNullableFilter<"Division"> | string | null
+  nameEn?: Prisma.StringNullableFilter<"Division"> | string | null
   slug?: Prisma.StringFilter<"Division"> | string
   code?: Prisma.StringNullableFilter<"Division"> | string | null
+  sortOrder?: Prisma.IntFilter<"Division"> | number
+  isActive?: Prisma.BoolFilter<"Division"> | boolean
+  latitude?: Prisma.DecimalNullableFilter<"Division"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Division"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.StringNullableFilter<"Division"> | string | null
+  isVerified?: Prisma.BoolFilter<"Division"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Division"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Division"> | Date | string
   districts?: Prisma.DistrictListRelationFilter
@@ -196,8 +302,16 @@ export type DivisionWhereInput = {
 export type DivisionOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrderInput | Prisma.SortOrder
+  nameEn?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrderInput | Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  source?: Prisma.SortOrderInput | Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   districts?: Prisma.DistrictOrderByRelationAggregateInput
@@ -210,7 +324,15 @@ export type DivisionWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.DivisionWhereInput[]
   NOT?: Prisma.DivisionWhereInput | Prisma.DivisionWhereInput[]
   name?: Prisma.StringFilter<"Division"> | string
+  nameBn?: Prisma.StringNullableFilter<"Division"> | string | null
+  nameEn?: Prisma.StringNullableFilter<"Division"> | string | null
   code?: Prisma.StringNullableFilter<"Division"> | string | null
+  sortOrder?: Prisma.IntFilter<"Division"> | number
+  isActive?: Prisma.BoolFilter<"Division"> | boolean
+  latitude?: Prisma.DecimalNullableFilter<"Division"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableFilter<"Division"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.StringNullableFilter<"Division"> | string | null
+  isVerified?: Prisma.BoolFilter<"Division"> | boolean
   createdAt?: Prisma.DateTimeFilter<"Division"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Division"> | Date | string
   districts?: Prisma.DistrictListRelationFilter
@@ -219,13 +341,23 @@ export type DivisionWhereUniqueInput = Prisma.AtLeast<{
 export type DivisionOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrderInput | Prisma.SortOrder
+  nameEn?: Prisma.SortOrderInput | Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrderInput | Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  longitude?: Prisma.SortOrderInput | Prisma.SortOrder
+  source?: Prisma.SortOrderInput | Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
   _count?: Prisma.DivisionCountOrderByAggregateInput
+  _avg?: Prisma.DivisionAvgOrderByAggregateInput
   _max?: Prisma.DivisionMaxOrderByAggregateInput
   _min?: Prisma.DivisionMinOrderByAggregateInput
+  _sum?: Prisma.DivisionSumOrderByAggregateInput
 }
 
 export type DivisionScalarWhereWithAggregatesInput = {
@@ -234,8 +366,16 @@ export type DivisionScalarWhereWithAggregatesInput = {
   NOT?: Prisma.DivisionScalarWhereWithAggregatesInput | Prisma.DivisionScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Division"> | string
   name?: Prisma.StringWithAggregatesFilter<"Division"> | string
+  nameBn?: Prisma.StringNullableWithAggregatesFilter<"Division"> | string | null
+  nameEn?: Prisma.StringNullableWithAggregatesFilter<"Division"> | string | null
   slug?: Prisma.StringWithAggregatesFilter<"Division"> | string
   code?: Prisma.StringNullableWithAggregatesFilter<"Division"> | string | null
+  sortOrder?: Prisma.IntWithAggregatesFilter<"Division"> | number
+  isActive?: Prisma.BoolWithAggregatesFilter<"Division"> | boolean
+  latitude?: Prisma.DecimalNullableWithAggregatesFilter<"Division"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.DecimalNullableWithAggregatesFilter<"Division"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.StringNullableWithAggregatesFilter<"Division"> | string | null
+  isVerified?: Prisma.BoolWithAggregatesFilter<"Division"> | boolean
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Division"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Division"> | Date | string
 }
@@ -243,8 +383,16 @@ export type DivisionScalarWhereWithAggregatesInput = {
 export type DivisionCreateInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   districts?: Prisma.DistrictCreateNestedManyWithoutDivisionInput
@@ -253,8 +401,16 @@ export type DivisionCreateInput = {
 export type DivisionUncheckedCreateInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
   districts?: Prisma.DistrictUncheckedCreateNestedManyWithoutDivisionInput
@@ -263,8 +419,16 @@ export type DivisionUncheckedCreateInput = {
 export type DivisionUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   districts?: Prisma.DistrictUpdateManyWithoutDivisionNestedInput
@@ -273,8 +437,16 @@ export type DivisionUpdateInput = {
 export type DivisionUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   districts?: Prisma.DistrictUncheckedUpdateManyWithoutDivisionNestedInput
@@ -283,8 +455,16 @@ export type DivisionUncheckedUpdateInput = {
 export type DivisionCreateManyInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -292,8 +472,16 @@ export type DivisionCreateManyInput = {
 export type DivisionUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -301,8 +489,16 @@ export type DivisionUpdateManyMutationInput = {
 export type DivisionUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -310,17 +506,39 @@ export type DivisionUncheckedUpdateManyInput = {
 export type DivisionCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type DivisionAvgOrderByAggregateInput = {
+  sortOrder?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type DivisionMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
 }
@@ -328,10 +546,24 @@ export type DivisionMaxOrderByAggregateInput = {
 export type DivisionMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  nameBn?: Prisma.SortOrder
+  nameEn?: Prisma.SortOrder
   slug?: Prisma.SortOrder
   code?: Prisma.SortOrder
+  sortOrder?: Prisma.SortOrder
+  isActive?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
+  source?: Prisma.SortOrder
+  isVerified?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+}
+
+export type DivisionSumOrderByAggregateInput = {
+  sortOrder?: Prisma.SortOrder
+  latitude?: Prisma.SortOrder
+  longitude?: Prisma.SortOrder
 }
 
 export type DivisionScalarRelationFilter = {
@@ -356,8 +588,16 @@ export type DivisionUpdateOneRequiredWithoutDistrictsNestedInput = {
 export type DivisionCreateWithoutDistrictsInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -365,8 +605,16 @@ export type DivisionCreateWithoutDistrictsInput = {
 export type DivisionUncheckedCreateWithoutDistrictsInput = {
   id?: string
   name: string
+  nameBn?: string | null
+  nameEn?: string | null
   slug: string
   code?: string | null
+  sortOrder?: number
+  isActive?: boolean
+  latitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: string | null
+  isVerified?: boolean
   createdAt?: Date | string
   updatedAt?: Date | string
 }
@@ -390,8 +638,16 @@ export type DivisionUpdateToOneWithWhereWithoutDistrictsInput = {
 export type DivisionUpdateWithoutDistrictsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -399,8 +655,16 @@ export type DivisionUpdateWithoutDistrictsInput = {
 export type DivisionUncheckedUpdateWithoutDistrictsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  nameBn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  nameEn?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   slug?: Prisma.StringFieldUpdateOperationsInput | string
   code?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
+  isActive?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  latitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  longitude?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  source?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  isVerified?: Prisma.BoolFieldUpdateOperationsInput | boolean
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
@@ -439,8 +703,16 @@ export type DivisionCountOutputTypeCountDistrictsArgs<ExtArgs extends runtime.Ty
 export type DivisionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  nameBn?: boolean
+  nameEn?: boolean
   slug?: boolean
   code?: boolean
+  sortOrder?: boolean
+  isActive?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  source?: boolean
+  isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
   districts?: boolean | Prisma.Division$districtsArgs<ExtArgs>
@@ -450,8 +722,16 @@ export type DivisionSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 export type DivisionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  nameBn?: boolean
+  nameEn?: boolean
   slug?: boolean
   code?: boolean
+  sortOrder?: boolean
+  isActive?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  source?: boolean
+  isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["division"]>
@@ -459,8 +739,16 @@ export type DivisionSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type DivisionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  nameBn?: boolean
+  nameEn?: boolean
   slug?: boolean
   code?: boolean
+  sortOrder?: boolean
+  isActive?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  source?: boolean
+  isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }, ExtArgs["result"]["division"]>
@@ -468,13 +756,21 @@ export type DivisionSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type DivisionSelectScalar = {
   id?: boolean
   name?: boolean
+  nameBn?: boolean
+  nameEn?: boolean
   slug?: boolean
   code?: boolean
+  sortOrder?: boolean
+  isActive?: boolean
+  latitude?: boolean
+  longitude?: boolean
+  source?: boolean
+  isVerified?: boolean
   createdAt?: boolean
   updatedAt?: boolean
 }
 
-export type DivisionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "slug" | "code" | "createdAt" | "updatedAt", ExtArgs["result"]["division"]>
+export type DivisionOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "nameBn" | "nameEn" | "slug" | "code" | "sortOrder" | "isActive" | "latitude" | "longitude" | "source" | "isVerified" | "createdAt" | "updatedAt", ExtArgs["result"]["division"]>
 export type DivisionInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   districts?: boolean | Prisma.Division$districtsArgs<ExtArgs>
   _count?: boolean | Prisma.DivisionCountOutputTypeDefaultArgs<ExtArgs>
@@ -489,9 +785,29 @@ export type $DivisionPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    /**
+     * Legacy display label (English-oriented seeds). Prefer `nameEn` / `nameBn` when set.
+     */
     name: string
+    nameBn: string | null
+    nameEn: string | null
     slug: string
+    /**
+     * Not globally unique in legacy / merged seeds; match on slug + hierarchy when needed.
+     */
     code: string | null
+    sortOrder: number
+    isActive: boolean
+    /**
+     * Centroid or verified point; null if unknown (never guessed).
+     */
+    latitude: runtime.Decimal | null
+    longitude: runtime.Decimal | null
+    /**
+     * Provenance, e.g. dataset id/version.
+     */
+    source: string | null
+    isVerified: boolean
     createdAt: Date
     updatedAt: Date
   }, ExtArgs["result"]["division"]>
@@ -920,8 +1236,16 @@ export interface Prisma__DivisionClient<T, Null = never, ExtArgs extends runtime
 export interface DivisionFieldRefs {
   readonly id: Prisma.FieldRef<"Division", 'String'>
   readonly name: Prisma.FieldRef<"Division", 'String'>
+  readonly nameBn: Prisma.FieldRef<"Division", 'String'>
+  readonly nameEn: Prisma.FieldRef<"Division", 'String'>
   readonly slug: Prisma.FieldRef<"Division", 'String'>
   readonly code: Prisma.FieldRef<"Division", 'String'>
+  readonly sortOrder: Prisma.FieldRef<"Division", 'Int'>
+  readonly isActive: Prisma.FieldRef<"Division", 'Boolean'>
+  readonly latitude: Prisma.FieldRef<"Division", 'Decimal'>
+  readonly longitude: Prisma.FieldRef<"Division", 'Decimal'>
+  readonly source: Prisma.FieldRef<"Division", 'String'>
+  readonly isVerified: Prisma.FieldRef<"Division", 'Boolean'>
   readonly createdAt: Prisma.FieldRef<"Division", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Division", 'DateTime'>
 }

@@ -1,0 +1,213 @@
+{
+  "generatedAt": "2026-05-10T16:52:00.064Z",
+  "paths": {
+    "simpleReviewCsv": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\mappings\\union-parent-mapping-simple-review.csv",
+    "humanReviewMd": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\mappings\\union-parent-mapping-human-review.md",
+    "helperCsv": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\mappings\\union-parent-mapping-helper.csv",
+    "reviewCsv": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\mappings\\union-parent-mapping-review.csv",
+    "reportJson": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations\\reports\\union-mapping-simple-review-report.json"
+  },
+  "totals": {
+    "sourceParentContexts": 131,
+    "sumAffectedUnionRowsFromReviewNotes": 1099,
+    "unmatchedCsvDataRows": 1099
+  },
+  "guidanceCounts": {
+    "approveCandidate1": 23,
+    "reviewCandidates": 8,
+    "manualTargetRequired": 100,
+    "skipForNow": 0
+  },
+  "reviewBurden": {
+    "allContextsRequireHumanSignOff": 131,
+    "heuristicSuggestApproveCandidate1Only": 23,
+    "heuristicSuggestFurtherReviewOrManual": 108
+  },
+  "top20ByAffectedUnionCount": [
+    {
+      "review_id": "R-4-34-261",
+      "affected_union_count": 20,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Barisal",
+      "source_district_name_en": "Bhola",
+      "source_upazila_name_en": "Charfesson",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-1-8-67",
+      "affected_union_count": 16,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Chattagram",
+      "source_district_name_en": "Chattogram",
+      "source_upazila_name_en": "Mirsharai",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-1-9-81",
+      "affected_union_count": 16,
+      "failure_reason": "nuhil_district_name_no_match",
+      "source_division_name_en": "Chattagram",
+      "source_district_name_en": "Coxsbazar",
+      "source_upazila_name_en": "Chakaria",
+      "recommended_action": "APPROVE_CANDIDATE_1"
+    },
+    {
+      "review_id": "R-3-28-220",
+      "affected_union_count": 16,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Khulna",
+      "source_district_name_en": "Bagerhat",
+      "source_upazila_name_en": "Morrelganj",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-1-6-59",
+      "affected_union_count": 15,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Chattagram",
+      "source_district_name_en": "Chandpur",
+      "source_upazila_name_en": "Faridgonj",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-2-18-159",
+      "affected_union_count": 15,
+      "failure_reason": "nuhil_district_name_no_match",
+      "source_division_name_en": "Rajshahi",
+      "source_district_name_en": "Chapainawabganj",
+      "source_upazila_name_en": "Shibganj",
+      "recommended_action": "APPROVE_CANDIDATE_1"
+    },
+    {
+      "review_id": "R-3-20-177",
+      "affected_union_count": 15,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Khulna",
+      "source_district_name_en": "Jashore",
+      "source_upazila_name_en": "Jessore Sadar",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-7-59-445",
+      "affected_union_count": 15,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Rangpur",
+      "source_district_name_en": "Rangpur",
+      "source_upazila_name_en": "Pirgonj",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-1-1-14",
+      "affected_union_count": 14,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Chattagram",
+      "source_district_name_en": "Cumilla",
+      "source_upazila_name_en": "Sadarsouth",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-1-6-58",
+      "affected_union_count": 14,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Chattagram",
+      "source_district_name_en": "Chandpur",
+      "source_upazila_name_en": "Matlab North",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-2-18-155",
+      "affected_union_count": 14,
+      "failure_reason": "nuhil_district_name_no_match",
+      "source_division_name_en": "Rajshahi",
+      "source_district_name_en": "Chapainawabganj",
+      "source_upazila_name_en": "Chapainawabganj Sadar",
+      "recommended_action": "APPROVE_CANDIDATE_1"
+    },
+    {
+      "review_id": "R-4-33-250",
+      "affected_union_count": 14,
+      "failure_reason": "nuhil_district_name_no_match",
+      "source_division_name_en": "Barisal",
+      "source_district_name_en": "Barisal",
+      "source_upazila_name_en": "Bakerganj",
+      "recommended_action": "APPROVE_CANDIDATE_1"
+    },
+    {
+      "review_id": "R-1-3-31",
+      "affected_union_count": 13,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Chattagram",
+      "source_district_name_en": "Brahmanbaria",
+      "source_upazila_name_en": "Bancharampur",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-4-33-256",
+      "affected_union_count": 13,
+      "failure_reason": "nuhil_district_name_no_match",
+      "source_division_name_en": "Barisal",
+      "source_district_name_en": "Barisal",
+      "source_upazila_name_en": "Mehendiganj",
+      "recommended_action": "APPROVE_CANDIDATE_1"
+    },
+    {
+      "review_id": "R-8-64-484",
+      "affected_union_count": 13,
+      "failure_reason": "nuhil_district_name_no_match",
+      "source_division_name_en": "Mymensingh",
+      "source_district_name_en": "Netrokona",
+      "source_upazila_name_en": "Kendua",
+      "recommended_action": "APPROVE_CANDIDATE_1"
+    },
+    {
+      "review_id": "R-2-14-124",
+      "affected_union_count": 12,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Rajshahi",
+      "source_district_name_en": "Bogura",
+      "source_upazila_name_en": "Shariakandi",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-3-29-229",
+      "affected_union_count": 12,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Khulna",
+      "source_district_name_en": "Jhenaidah",
+      "source_upazila_name_en": "Moheshpur",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-6-40-312",
+      "affected_union_count": 12,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Dhaka",
+      "source_district_name_en": "Narsingdi",
+      "source_upazila_name_en": "Monohardi",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-8-64-491",
+      "affected_union_count": 12,
+      "failure_reason": "nuhil_district_name_no_match",
+      "source_division_name_en": "Mymensingh",
+      "source_district_name_en": "Netrokona",
+      "source_upazila_name_en": "Netrokona Sadar",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    },
+    {
+      "review_id": "R-1-1-13",
+      "affected_union_count": 11,
+      "failure_reason": "nuhil_upazila_name_no_match",
+      "source_division_name_en": "Chattagram",
+      "source_district_name_en": "Cumilla",
+      "source_upazila_name_en": "Monohargonj",
+      "recommended_action": "MANUAL_TARGET_REQUIRED"
+    }
+  ],
+  "preservedSimpleRows": 204,
+  "notes": [
+    "Guidance labels are heuristics only — always verify against divisions/districts/upazilas.csv before APPROVED.",
+    "Re-running this script preserves selected_candidate, manual_*, review_status, reviewed_by, notes from an existing union-parent-mapping-simple-review.csv keyed by review_id."
+  ]
+}
