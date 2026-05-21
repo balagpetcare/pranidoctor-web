@@ -152,7 +152,7 @@ export function AdminBillingDetail() {
           {row.commissionFormula.title}
         </h2>
         <ul className="mt-3 list-inside list-disc space-y-1 text-sm leading-relaxed text-emerald-950 dark:text-emerald-100">
-          {row.commissionFormula.lines.map((line, i) => (
+          {row.commissionFormula.lines.map((line: string, i: number) => (
             <li key={i} className="font-mono text-xs sm:text-sm">
               {line}
             </li>

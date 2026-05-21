@@ -1,0 +1,6 @@
+backup_timestamp=20260521-151048
+source_repo=pranidoctor-web
+paths:
+  prisma/
+  prisma.config.ts
+  package.json (snapshot)

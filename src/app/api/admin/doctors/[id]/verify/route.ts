@@ -1,25 +1,4 @@
-import { requireAdminPanelApiAccess } from "@/lib/admin-auth/api-guard";
-import { adminVerifyDoctor } from "@/lib/admin-doctors/doctor-admin-service";
-import { doctorMutationErrorResponse } from "@/lib/admin-doctors/mutation-errors";
-import { jsonError, jsonOk } from "@/lib/api-response";
+/** Auto-proxy to pranidoctor-backend — do not add Prisma here. */
+import { proxyRouteToBackend } from "@/lib/proxy-to-backend";
 
-type RouteCtx = { params: Promise<{ id: string }> };
-
-export async function POST(_request: Request, ctx: RouteCtx) {
-  const authError = await requireAdminPanelApiAccess();
-  if (authError) return authError;
-
-  const { id } = await ctx.params;
-
-  try {
-    const doctor = await adminVerifyDoctor(id);
-    if (!doctor) {
-      return jsonError("NOT_FOUND", "Doctor not found", 404);
-    }
-    return jsonOk({ doctor });
-  } catch (e) {
-    const mapped = doctorMutationErrorResponse(e);
-    if (mapped) return mapped;
-    throw e;
-  }
-}
+export const POST = (request: Request) => proxyRouteToBackend(request);

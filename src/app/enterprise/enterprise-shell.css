@@ -1,0 +1,25 @@
+/* Reuse admin shell tokens — extends admin-shell if needed */
+#pd-admin-root[data-enterprise="true"] {
+  --pd-enterprise-accent: var(--pd-admin-accent, #059669);
+}
+
+@keyframes pd-enterprise-drawer-in {
+  from {
+    transform: translateX(100%);
+    opacity: 0.96;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+.pd-enterprise-drawer-panel {
+  animation: pd-enterprise-drawer-in 0.22s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pd-enterprise-drawer-panel {
+    animation: none;
+  }
+}

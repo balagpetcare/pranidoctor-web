@@ -4,7 +4,7 @@ import { AdminPageHeader } from "@/components/admin-ui/AdminPageHeader";
 import {
   getLocationAdminStats,
   readLocationImportReport,
-} from "@/lib/locations/location-master-admin";
+} from "@/lib/locations/location-master-admin-client";
 
 type ImportReportShape = {
   generatedAt?: string;

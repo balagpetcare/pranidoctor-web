@@ -1,43 +1,29 @@
-import { ProviderStatus, UserRole, UserStatus } from "@/generated/prisma/client";
-import { prisma } from "@/lib/prisma";
+import { serverInternalJson } from "@/lib/server-internal";
 
 import type { DoctorJwtPayload } from "./jwt";
 import type { DoctorPanelActor } from "./panel-classify";
 
 export type { DoctorPanelActor } from "./panel-classify";
 
-/**
- * JWT subject must be an ACTIVE doctor user with an ACTIVE provider profile.
- */
+type MeResponse = {
+  user: {
+    id: string;
+    email: string;
+    displayName: string | null;
+    doctorProfileId: string;
+  };
+};
+
 export async function resolveDoctorPanelActor(
-  session: DoctorJwtPayload,
+  _session: DoctorJwtPayload,
 ): Promise<DoctorPanelActor | null> {
-  const user = await prisma.user.findUnique({
-    where: { id: session.sub },
-    select: {
-      id: true,
-      email: true,
-      role: true,
-      status: true,
-      doctorProfile: {
-        select: {
-          id: true,
-          displayName: true,
-          providerStatus: true,
-        },
-      },
-    },
-  });
-
-  if (!user?.doctorProfile) return null;
-  if (user.role !== UserRole.DOCTOR) return null;
-  if (user.status !== UserStatus.ACTIVE) return null;
-  if (user.doctorProfile.providerStatus !== ProviderStatus.ACTIVE) return null;
-
+  const res = await serverInternalJson<MeResponse>("/api/doctor/auth/me");
+  if (!res.ok) return null;
+  const u = res.data.user;
   return {
-    userId: user.id,
-    doctorProfileId: user.doctorProfile.id,
-    email: user.email,
-    displayName: user.doctorProfile.displayName,
+    userId: u.id,
+    doctorProfileId: u.doctorProfileId,
+    email: u.email,
+    displayName: u.displayName,
   };
 }

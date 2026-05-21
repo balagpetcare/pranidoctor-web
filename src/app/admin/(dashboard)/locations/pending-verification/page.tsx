@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { AdminPageHeader } from "@/components/admin-ui/AdminPageHeader";
-import { listPendingVerification } from "@/lib/locations/location-master-admin";
+import { listPendingVerification } from "@/lib/locations/location-master-admin-client";
 
 export default async function AdminLocationsPendingVerificationPage() {
   const items = await listPendingVerification({ level: "ALL", limit: 80 });

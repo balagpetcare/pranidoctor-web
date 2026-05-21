@@ -1,15 +1,4 @@
-import { jsonError, jsonOk } from "@/lib/api-response";
-import { requireAdminPanelApiAccess } from "@/lib/admin-auth/api-guard";
-import { getLocationAdminStats } from "@/lib/locations/location-master-admin";
+/** Auto-proxy to pranidoctor-backend — do not add Prisma here. */
+import { proxyRouteToBackend } from "@/lib/proxy-to-backend";
 
-export async function GET() {
-  const authError = await requireAdminPanelApiAccess();
-  if (authError) return authError;
-
-  try {
-    const stats = await getLocationAdminStats();
-    return jsonOk(stats);
-  } catch {
-    return jsonError("DATABASE_ERROR", "Failed to load stats", 500);
-  }
-}
+export const GET = (request: Request) => proxyRouteToBackend(request);

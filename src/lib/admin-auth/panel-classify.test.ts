@@ -1,5 +1,6 @@
 import { describe, expect, it } from "vitest";
 
+import { UserRole } from "@/generated/prisma/client";
 import type { AdminJwtPayload } from "./jwt";
 import { classifyAdminPanelAuth } from "./panel-classify";
 
@@ -13,6 +14,7 @@ const sampleActor = {
   id: "user_1",
   email: "a@b.com",
   displayName: "Admin",
+  role: UserRole.ADMIN,
 };
 
 describe("classifyAdminPanelAuth", () => {

@@ -34,7 +34,17 @@ For a usable **admin login** after seeding, also set `ADMIN_SEED_EMAIL` and `ADM
 node -e "console.log(require('crypto').randomBytes(48).toString('hex'))"
 ```
 
-Use distinct outputs for `ADMIN_JWT_SECRET`, `DOCTOR_JWT_SECRET`, `MOBILE_JWT_SECRET`, `TECHNICIAN_JWT_SECRET`, `AUTH_SECRET`, `JWT_SECRET`, and `NEXTAUTH_SECRET` where applicable. Each value used for signing should be **at least 32 characters** (the app enforces this for JWT helpers).
+Use distinct outputs per **auth context** (do not reuse the same string in production):
+
+| Variable | Auth context | Required for MVP |
+|----------|--------------|------------------|
+| `ADMIN_JWT_SECRET` | Admin panel (`/admin`, `/api/admin/*`) | Yes |
+| `MOBILE_JWT_SECRET` | Mobile OTP Bearer (`/api/mobile/*`) | Yes |
+| `DOCTOR_JWT_SECRET` | Doctor web panel cookie (`/doctor`, `/api/doctor/*`) | If doctor web enabled |
+| `TECHNICIAN_JWT_SECRET` | Technician web cookie (`/api/technician/*`) | If technician web enabled |
+| `AUTH_SECRET` / `JWT_SECRET` | Dev fallback only | Optional (not for prod) |
+
+Each signing secret must be **≥32 characters**. Canonical matrix: `MASTER_SYSTEM_RULES.md` §13.5, `AUTH_FLOW.md` §2.
 
 ---
 

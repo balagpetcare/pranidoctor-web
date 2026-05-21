@@ -1,21 +1,22 @@
 import { jsonError, jsonOk } from "@/lib/api-response";
-import { prisma } from "@/lib/prisma";
+import { fetchBackendHealth } from "@/lib/api-client";
 
 export async function GET() {
   const timestamp = new Date().toISOString();
-  try {
-    await prisma.$queryRaw`SELECT 1`;
-    return jsonOk({
-      service: "Prani Doctor Admin API",
-      timestamp,
-      scope: "admin",
-      database: "up",
-    });
-  } catch {
+  const backend = await fetchBackendHealth();
+  if (!backend.ok) {
     return jsonError(
-      "DATABASE_UNAVAILABLE",
-      "Could not reach PostgreSQL. Check DATABASE_URL.",
+      "BACKEND_UNAVAILABLE",
+      "Backend API unreachable. Check NEXT_PUBLIC_API_URL / BACKEND_URL.",
       503,
     );
   }
+  return jsonOk({
+    service: "Prani Doctor Admin API",
+    timestamp,
+    scope: "admin",
+    mode: "api-consumer",
+    backend: "up",
+    database: "via-backend",
+  });
 }

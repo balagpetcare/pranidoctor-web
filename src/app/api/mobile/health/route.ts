@@ -1,18 +1,19 @@
 import { jsonError, jsonOk } from "@/lib/api-response";
-import { prisma } from "@/lib/prisma";
+import { fetchBackendHealth } from "@/lib/api-client";
 
 export async function GET() {
-  try {
-    await prisma.$queryRaw`SELECT 1`;
-    return jsonOk({
-      scope: "mobile",
-      database: "up",
-    });
-  } catch {
+  const backend = await fetchBackendHealth();
+  if (!backend.ok) {
     return jsonError(
-      "DATABASE_UNAVAILABLE",
-      "Could not reach PostgreSQL. Check DATABASE_URL.",
+      "BACKEND_UNAVAILABLE",
+      backend.error || "Backend API unreachable",
       503,
     );
   }
+  return jsonOk({
+    scope: "mobile",
+    mode: "api-consumer",
+    backend: "up",
+    database: "via-backend",
+  });
 }

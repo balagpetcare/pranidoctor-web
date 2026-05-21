@@ -1,9 +1,12 @@
+import type { UserRole } from "@/generated/prisma/client";
+
 import type { AdminJwtPayload } from "./jwt";
 
 export type AdminPanelActor = {
   id: string;
   email: string;
   displayName: string | null;
+  role: UserRole;
 };
 
 export type AdminPanelAuthKind = "ok" | "unauthenticated" | "forbidden";

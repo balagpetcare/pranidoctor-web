@@ -1,15 +1,4 @@
-import { jsonError, jsonOk } from "@/lib/api-response";
-import { requireMobileCustomer } from "@/lib/mobile-auth/guard";
-import { markAllNotificationsRead } from "@/lib/notifications/notification-service";
+/** Auto-proxy to pranidoctor-backend — do not add Prisma here. */
+import { proxyRouteToBackend } from "@/lib/proxy-to-backend";
 
-export async function PATCH(request: Request) {
-  const auth = await requireMobileCustomer(request);
-  if (!auth.ok) return auth.response;
-
-  try {
-    const result = await markAllNotificationsRead(auth.ctx.userId);
-    return jsonOk({ updatedCount: result.updatedCount });
-  } catch {
-    return jsonError("DATABASE_ERROR", "Could not update notifications", 500);
-  }
-}
+export const PATCH = (request: Request) => proxyRouteToBackend(request);

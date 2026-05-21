@@ -160,6 +160,12 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
         titleEn: "AI technician complaints",
         icon: MessageSquareWarning,
       },
+      {
+        href: "/enterprise/services/review",
+        labelBn: "এন্টারপ্রাইজ সেবা পর্যালোচনা",
+        titleEn: "Enterprise service instance review",
+        icon: ClipboardList,
+      },
     ],
   },
   {
@@ -311,6 +317,16 @@ export const ADMIN_NAV_ITEMS: AdminNavItem[] = flattenAdminNavGroups(ADMIN_NAV_G
 export function getSectionTitleFromPath(pathname: string): string {
   const normalized =
     pathname.endsWith("/") && pathname !== "/" ? pathname.slice(0, -1) : pathname;
+  if (normalized.startsWith("/enterprise")) {
+    const sorted = [...ADMIN_NAV_ITEMS].sort((a, b) => b.href.length - a.href.length);
+    for (const item of sorted) {
+      if (!item.href.startsWith("/enterprise")) continue;
+      if (normalized === item.href || normalized.startsWith(`${item.href}/`)) {
+        return item.labelBn;
+      }
+    }
+    return "এন্টারপ্রাইজ";
+  }
   const activeHref = resolveAdminActiveHref(normalized, ADMIN_NAV_ITEMS);
   if (activeHref) {
     const hit = ADMIN_NAV_ITEMS.find((i) => i.href === activeHref);

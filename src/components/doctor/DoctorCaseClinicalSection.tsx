@@ -199,7 +199,7 @@ export function DoctorCaseClinicalSection({ requestId, row, onSaved }: Props) {
           </p>
         ) : (
           <ul className="mt-3 space-y-3">
-            {row.treatments.map((t) => (
+            {row.treatments.map((t: any) => (
               <li
                 key={t.id}
                 className="rounded-lg border border-zinc-200 bg-white p-3 text-sm dark:border-zinc-800 dark:bg-zinc-900"
@@ -272,7 +272,7 @@ export function DoctorCaseClinicalSection({ requestId, row, onSaved }: Props) {
           </p>
         ) : (
           <ul className="mt-3 space-y-4">
-            {row.prescriptions.map((p) => (
+            {row.prescriptions.map((p: any) => (
               <li
                 key={p.id}
                 className="rounded-lg border border-zinc-200 bg-white p-3 text-sm dark:border-zinc-800 dark:bg-zinc-900"
@@ -296,7 +296,7 @@ export function DoctorCaseClinicalSection({ requestId, row, onSaved }: Props) {
                   </p>
                 ) : null}
                 <ul className="mt-2 list-inside list-disc space-y-1 text-zinc-800 dark:text-zinc-200">
-                  {p.items.map((i) => (
+                  {p.items.map((i: any) => (
                     <li key={i.id}>
                       <span className="font-medium">{i.medicineName}</span>
                       {i.dosage ? ` — ${i.dosage}` : ""}

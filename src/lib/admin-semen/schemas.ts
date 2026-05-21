@@ -196,7 +196,7 @@ function validateOfferXorDiscountForCreate(
   }
 }
 
-function validateOfferXorDiscountForPatch(data: Record<string, unknown>, ctx: z.RefinementCtx): void {
+function validateOfferXorDiscountForPatch(data: any, ctx: z.RefinementCtx): void {
   const offerTouched = Object.prototype.hasOwnProperty.call(data, "defaultOfferPrice");
   const discTouched = Object.prototype.hasOwnProperty.call(data, "defaultDiscountPercent");
   if (!offerTouched && !discTouched) return;
@@ -282,7 +282,7 @@ function validateRejectReasonWhenRejectedCreate(
   }
 }
 
-function validateRejectReasonWhenRejectedPatch(data: Record<string, unknown>, ctx: z.RefinementCtx): void {
+function validateRejectReasonWhenRejectedPatch(data: any, ctx: z.RefinementCtx): void {
   if (!Object.prototype.hasOwnProperty.call(data, "approvalStatus")) return;
   if (data.approvalStatus !== SemenTemplateApprovalStatus.REJECTED) return;
   const raw = data.rejectedReason;
@@ -307,7 +307,7 @@ function validateSemenTemplateBusinessRulesForPatch(
   data: Partial<SemenTemplateBodyBase>,
   ctx: z.RefinementCtx,
 ): void {
-  const rec = data as Record<string, unknown>;
+  const rec = data as any;
   validateOfferXorDiscountForPatch(rec, ctx);
   validateOtherSemenLabelWhenOtherPatch(data, ctx);
   if (Object.prototype.hasOwnProperty.call(data, "breedMix") && data.breedMix !== undefined) {

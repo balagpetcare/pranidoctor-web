@@ -2,6 +2,20 @@
 
 These rules apply to **all** environments where the database may contain non-disposable data.
 
+## 0. Migration naming
+
+| Element | Convention | Example |
+|---------|------------|---------|
+| Folder | `YYYYMMDDHHMMSS_snake_case` (Prisma default) | `20260521143000_add_ai_usage_record` |
+| `--name` | snake_case verb phrase | `add_ai_usage_record` |
+| Scope | One logical change per migration | Do not mix unrelated DDL |
+
+```bash
+npx prisma migrate dev --name add_ai_usage_record
+```
+
+Catalogue: `TABLE_STRUCTURE.md` §12.0.
+
 ## 1. Never edit an applied migration
 
 After a migration has been applied to **any** shared database (staging, production, or a teammate’s machine you care about), **do not change** its `migration.sql` or folder name. Prisma stores a checksum in `_prisma_migrations`; a mismatch causes **drift** and blocks `migrate deploy` (e.g. P3009).

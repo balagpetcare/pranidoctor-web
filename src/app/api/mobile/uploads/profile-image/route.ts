@@ -1,12 +1,4 @@
-import { MobileUploadPurpose } from "@/generated/prisma/client";
-import { postCustomerImageAndSaveProfileField } from "@/lib/mobile-api/customer-profile-image-upload";
+/** Auto-proxy to pranidoctor-backend — do not add Prisma here. */
+import { proxyRouteToBackend } from "@/lib/proxy-to-backend";
 
-export const runtime = "nodejs";
-
-export async function POST(request: Request) {
-  return postCustomerImageAndSaveProfileField(
-    request,
-    MobileUploadPurpose.CUSTOMER_PROFILE_PHOTO,
-    "profilePhotoUrl",
-  );
-}
+export const POST = (request: Request) => proxyRouteToBackend(request);

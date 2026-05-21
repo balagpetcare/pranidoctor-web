@@ -125,7 +125,8 @@ export function SemenTemplateMediaSection(props: SemenTemplateMediaSectionProps)
   const [dragOverIndex, setDragOverIndex] = useState<number | null>(null);
   const [uploadingIndex, setUploadingIndex] = useState<number | null>(null);
   const [uploadPct, setUploadPct] = useState<number | null>(null);
-  const [, bumpPreviewTick] = useState(0);
+  /** Mirrors previewMapRef for render (avoid reading refs during render). */
+  const [previewUrls, setPreviewUrls] = useState<Record<string, string>>({});
   const [crop, setCrop] = useState<{
     rowIndex: number;
     objectUrl: string;
@@ -150,10 +151,12 @@ export function SemenTemplateMediaSection(props: SemenTemplateMediaSectionProps)
       uploadAbortRef.current = null;
       const c = cropRef.current;
       if (c?.objectUrl) URL.revokeObjectURL(c.objectUrl);
-      for (const url of previewMapRef.current.values()) {
+      // eslint-disable-next-line react-hooks/exhaustive-deps -- revoke latest previews at unmount (mutable map)
+      const previewSnapshot = previewMapRef.current;
+      for (const url of previewSnapshot.values()) {
         URL.revokeObjectURL(url);
       }
-      previewMapRef.current.clear();
+      previewSnapshot.clear();
     };
   }, []);
 
@@ -174,17 +177,17 @@ export function SemenTemplateMediaSection(props: SemenTemplateMediaSectionProps)
     const prev = map.get(clientKey);
     if (prev && prev !== url) URL.revokeObjectURL(prev);
     map.set(clientKey, url);
-    bumpPreviewTick((tick) => tick + 1);
-  }, [bumpPreviewTick]);
+    setPreviewUrls(Object.fromEntries(map));
+  }, []);
 
   const clearLocalPreview = useCallback((clientKey: string) => {
     const map = previewMapRef.current;
     const prev = map.get(clientKey);
     if (prev) URL.revokeObjectURL(prev);
     if (map.delete(clientKey)) {
-      bumpPreviewTick((tick) => tick + 1);
+      setPreviewUrls(Object.fromEntries(map));
     }
-  }, [bumpPreviewTick]);
+  }, []);
 
   const runUpload = useCallback(
     async (rowIndex: number, file: Blob, fileName: string) => {
@@ -323,8 +326,12 @@ export function SemenTemplateMediaSection(props: SemenTemplateMediaSectionProps)
         changed = true;
       }
     }
-    if (changed) bumpPreviewTick((tick) => tick + 1);
-  }, [bumpPreviewTick, mediaRows]);
+    if (changed) {
+      queueMicrotask(() => {
+        setPreviewUrls(Object.fromEntries(previewMapRef.current));
+      });
+    }
+  }, [mediaRows]);
 
   return (
     <>
@@ -494,7 +501,7 @@ export function SemenTemplateMediaSection(props: SemenTemplateMediaSectionProps)
                 const imageKind = row.kind === "COVER" || row.kind === "GALLERY";
                 const hasUploaded =
                   row.uploadedFileId.trim().length > 0 && row.kind !== "VIDEO_URL";
-                const localPreview = previewMapRef.current.get(row.clientKey) ?? null;
+                const localPreview = previewUrls[row.clientKey] ?? null;
                 const previewSrc =
                   row.kind === "VIDEO_UPLOAD"
                     ? localPreview

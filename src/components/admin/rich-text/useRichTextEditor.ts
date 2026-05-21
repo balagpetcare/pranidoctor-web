@@ -17,7 +17,10 @@ export type UseRichTextEditorOptions = Readonly<{
 export function useRichTextEditor(options: UseRichTextEditorOptions) {
   const placeholder = options.placeholder ?? "";
   const onChangeRef = useRef(options.onChange);
-  onChangeRef.current = options.onChange;
+
+  useEffect(() => {
+    onChangeRef.current = options.onChange;
+  }, [options.onChange]);
 
   const extensions = useMemo(() => createRichTextExtensions(placeholder), [placeholder]);
 

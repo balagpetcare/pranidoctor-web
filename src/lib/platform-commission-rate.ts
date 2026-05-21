@@ -20,7 +20,7 @@ export function parsePlatformCommissionRateFromJson(valueJson: unknown): number 
   }
 
   if (valueJson !== null && typeof valueJson === "object" && !Array.isArray(valueJson)) {
-    const o = valueJson as Record<string, unknown>;
+    const o = valueJson as any;
     const raw = o.rate ?? o.value;
     if (typeof raw === "number" && isRateInRange(raw)) return raw;
     if (typeof raw === "string") {

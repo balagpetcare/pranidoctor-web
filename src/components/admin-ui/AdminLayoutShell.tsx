@@ -25,6 +25,7 @@ function AdminLayoutShellInner({
   children: React.ReactNode;
 }>) {
   const pathname = usePathname();
+  const isEnterprise = pathname?.startsWith("/enterprise") ?? false;
   const [mobileOpen, setMobileOpen] = useState(false);
   const sectionTitle = getSectionTitleFromPath(pathname);
   const {
@@ -40,6 +41,7 @@ function AdminLayoutShellInner({
     <div
       id="pd-admin-root"
       data-pd-admin="shell"
+      data-enterprise={isEnterprise ? "true" : "false"}
       data-admin-appearance={appearance}
       data-sidebar-mode={sidebarMode}
       data-sidebar-theme={sidebarTheme}
@@ -74,7 +76,9 @@ function AdminLayoutShellInner({
           onOpenMobileMenu={() => setMobileOpen(true)}
           onSignOut={signOut}
         />
-        <AdminContent contained={contentWidth === "contained"}>{children}</AdminContent>
+        <AdminContent contained={contentWidth === "contained" && !isEnterprise}>
+          {children}
+        </AdminContent>
         <AdminFooter />
         <Toaster
           richColors

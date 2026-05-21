@@ -1,8 +1,4 @@
-import { jsonOk } from "@/lib/api-response";
-import { clearTechnicianSessionCookie } from "@/lib/technician-auth/cookies";
+/** Auto-proxy to pranidoctor-backend — do not add Prisma here. */
+import { proxyRouteToBackend } from "@/lib/proxy-to-backend";
 
-export async function POST() {
-  const res = jsonOk({ signedOut: true });
-  clearTechnicianSessionCookie(res);
-  return res;
-}
+export const POST = (request: Request) => proxyRouteToBackend(request);

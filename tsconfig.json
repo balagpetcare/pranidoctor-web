@@ -39,6 +39,9 @@
   ],
   "exclude": [
     "node_modules",
-    ".next/dev"
+    ".next/dev",
+    "docs/prisma_cleanup_backup/**",
+    "archive/**",
+    "scripts/**"
   ]
 }

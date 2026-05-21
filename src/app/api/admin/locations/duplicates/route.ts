@@ -1,26 +1,4 @@
-import { jsonError, jsonOk } from "@/lib/api-response";
-import { requireAdminPanelApiAccess } from "@/lib/admin-auth/api-guard";
-import { listDuplicateLocationSamples } from "@/lib/locations/location-master-admin";
-import { adminLocationListQuerySchema } from "@/lib/locations/location-master-schemas";
+/** Auto-proxy to pranidoctor-backend — do not add Prisma here. */
+import { proxyRouteToBackend } from "@/lib/proxy-to-backend";
 
-export async function GET(request: Request) {
-  const authError = await requireAdminPanelApiAccess();
-  if (authError) return authError;
-
-  const url = new URL(request.url);
-  const raw = {
-    level: url.searchParams.get("level") ?? undefined,
-    limit: url.searchParams.get("limit") ?? undefined,
-  };
-  const parsed = adminLocationListQuerySchema.safeParse(raw);
-  if (!parsed.success) {
-    return jsonError("VALIDATION_ERROR", "Invalid query", 422, parsed.error.flatten());
-  }
-
-  try {
-    const result = await listDuplicateLocationSamples(parsed.data);
-    return jsonOk(result);
-  } catch {
-    return jsonError("DATABASE_ERROR", "Failed to load duplicates", 500);
-  }
-}
+export const GET = (request: Request) => proxyRouteToBackend(request);

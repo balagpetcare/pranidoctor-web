@@ -1,12 +1,4 @@
-import { jsonError, jsonOk } from "@/lib/api-response";
-import { listActiveTutorialCategories } from "@/lib/knowledge-hub/service";
+/** Auto-proxy to pranidoctor-backend — do not add Prisma here. */
+import { proxyRouteToBackend } from "@/lib/proxy-to-backend";
 
-/** Public Knowledge Hub categories for mobile (no auth). */
-export async function GET() {
-  try {
-    const categories = await listActiveTutorialCategories();
-    return jsonOk({ categories });
-  } catch {
-    return jsonError("DATABASE_ERROR", "Could not load categories", 500);
-  }
-}
+export const GET = (request: Request) => proxyRouteToBackend(request);

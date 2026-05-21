@@ -95,12 +95,14 @@ export function useImageCropper(options: UseImageCropperOptions): UseImageCroppe
       if (previewTimer.current) clearTimeout(previewTimer.current);
       previewGenRef.current += 1;
       lastImageRef.current = "";
-      revokePreview();
-      setCrop({ x: 0, y: 0 });
-      setZoom(1);
-      setAreaPixels(null);
-      setError(null);
-      setMediaReady(false);
+      queueMicrotask(() => {
+        revokePreview();
+        setCrop({ x: 0, y: 0 });
+        setZoom(1);
+        setAreaPixels(null);
+        setError(null);
+        setMediaReady(false);
+      });
     }
   }, [open, revokePreview]);
 
@@ -109,12 +111,14 @@ export function useImageCropper(options: UseImageCropperOptions): UseImageCroppe
     if (imageSrc === lastImageRef.current) return;
     lastImageRef.current = imageSrc;
     previewGenRef.current += 1;
-    revokePreview();
-    setCrop({ x: 0, y: 0 });
-    setZoom(1);
-    setAreaPixels(null);
-    setError(null);
-    setMediaReady(false);
+    queueMicrotask(() => {
+      revokePreview();
+      setCrop({ x: 0, y: 0 });
+      setZoom(1);
+      setAreaPixels(null);
+      setError(null);
+      setMediaReady(false);
+    });
   }, [open, imageSrc, revokePreview]);
 
   useEffect(() => {

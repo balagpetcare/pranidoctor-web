@@ -1,8 +1,4 @@
-import { clearDoctorSessionCookie } from "@/lib/doctor-auth/cookies";
-import { jsonOk } from "@/lib/api-response";
+/** Auto-proxy to pranidoctor-backend — do not add Prisma here. */
+import { proxyRouteToBackend } from "@/lib/proxy-to-backend";
 
-export async function POST() {
-  const res = jsonOk({ signedOut: true });
-  clearDoctorSessionCookie(res);
-  return res;
-}
+export const POST = (request: Request) => proxyRouteToBackend(request);

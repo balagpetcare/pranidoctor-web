@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 import { AdminPageHeader } from "@/components/admin-ui/AdminPageHeader";
-import { listMissingCoords } from "@/lib/locations/location-master-admin";
+import { listMissingCoords } from "@/lib/locations/location-master-admin-client";
 
 export default async function AdminLocationsMissingCoordsPage() {
   const items = await listMissingCoords({ level: "ALL", limit: 80 });
