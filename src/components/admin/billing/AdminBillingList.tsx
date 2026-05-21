@@ -16,7 +16,12 @@ import { adminFetch } from "@/lib/admin/admin-fetch";
 import type { AdminBillingListItemDto } from "@/lib/admin-billing/admin-billing-service";
 import { readAdminJson } from "@/lib/admin/read-admin-json";
 import { cn } from "@/lib/cn";
-import { PaymentMethod, PaymentStatus } from "@/generated/prisma/browser";
+import {
+  PAYMENT_METHOD,
+  PAYMENT_STATUS,
+  type PaymentMethod,
+  type PaymentStatus,
+} from "@/lib/domain/payment-constants";
 
 import {
   formatBdt,
@@ -255,7 +260,7 @@ export function AdminBillingList() {
                 className={inputClassName()}
               >
                 <option value="">সব</option>
-                {Object.values(PaymentStatus).map((s) => (
+                {Object.values(PAYMENT_STATUS).map((s) => (
                   <option key={s} value={s}>
                     {paymentStatusBn(s)}
                   </option>
@@ -270,7 +275,7 @@ export function AdminBillingList() {
                 className={inputClassName()}
               >
                 <option value="">সব</option>
-                {Object.values(PaymentMethod).map((m) => (
+                {Object.values(PAYMENT_METHOD).map((m) => (
                   <option key={m} value={m}>
                     {paymentMethodBn(m)}
                   </option>

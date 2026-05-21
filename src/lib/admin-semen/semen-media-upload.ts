@@ -1,4 +1,7 @@
-import { SemenTemplateMediaKind } from "@/generated/prisma/browser";
+import {
+  SEMEN_TEMPLATE_MEDIA_KIND,
+  type SemenTemplateMediaKind,
+} from "@/lib/domain/semen-template-media-constants";
 
 export type AdminSemenUploadResult = {
   fileId: string;
@@ -10,17 +13,17 @@ export type AdminSemenUploadResult = {
 export function uploadPurposeForSemenTemplateMedia(
   kind: SemenTemplateMediaKind | string,
 ): string | null {
-  if (kind === SemenTemplateMediaKind.COVER) return "ADMIN_SEMEN_TEMPLATE_COVER";
-  if (kind === SemenTemplateMediaKind.GALLERY) return "ADMIN_SEMEN_TEMPLATE_GALLERY";
-  if (kind === SemenTemplateMediaKind.VIDEO_UPLOAD) return "ADMIN_SEMEN_TEMPLATE_VIDEO";
+  if (kind === SEMEN_TEMPLATE_MEDIA_KIND.COVER) return "ADMIN_SEMEN_TEMPLATE_COVER";
+  if (kind === SEMEN_TEMPLATE_MEDIA_KIND.GALLERY) return "ADMIN_SEMEN_TEMPLATE_GALLERY";
+  if (kind === SEMEN_TEMPLATE_MEDIA_KIND.VIDEO_UPLOAD) return "ADMIN_SEMEN_TEMPLATE_VIDEO";
   return null;
 }
 
 export function mediaKindFileAccept(kind: SemenTemplateMediaKind | string): string {
-  if (kind === SemenTemplateMediaKind.COVER || kind === SemenTemplateMediaKind.GALLERY) {
+  if (kind === SEMEN_TEMPLATE_MEDIA_KIND.COVER || kind === SEMEN_TEMPLATE_MEDIA_KIND.GALLERY) {
     return "image/jpeg,image/png,image/webp";
   }
-  if (kind === SemenTemplateMediaKind.VIDEO_UPLOAD) return "video/mp4,video/webm";
+  if (kind === SEMEN_TEMPLATE_MEDIA_KIND.VIDEO_UPLOAD) return "video/mp4,video/webm";
   return "";
 }
 

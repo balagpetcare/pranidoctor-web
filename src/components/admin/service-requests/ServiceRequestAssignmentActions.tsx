@@ -10,7 +10,10 @@ import type { AdminServiceRequestDto } from "@/lib/admin-service-requests/servic
 import { readAdminJson } from "@/lib/admin/read-admin-json";
 import { useClientMountReady } from "@/lib/admin/use-client-mount-ready";
 import { cn } from "@/lib/cn";
-import { ServiceRequestStatus } from "@/generated/prisma/browser";
+import {
+  SERVICE_REQUEST_STATUS,
+  type ServiceRequestStatus,
+} from "@/lib/domain/service-request-constants";
 
 type PickerDoctor = {
   id: string;
@@ -31,15 +34,15 @@ function inputClass(): string {
 }
 
 const CLOSED: ServiceRequestStatus[] = [
-  ServiceRequestStatus.COMPLETED,
-  ServiceRequestStatus.CANCELLED,
-  ServiceRequestStatus.REJECTED,
+  SERVICE_REQUEST_STATUS.COMPLETED,
+  SERVICE_REQUEST_STATUS.CANCELLED,
+  SERVICE_REQUEST_STATUS.REJECTED,
 ];
 
 function canAssignDoctor(status: ServiceRequestStatus): boolean {
   return (
-    status === ServiceRequestStatus.PENDING ||
-    status === ServiceRequestStatus.ASSIGNED
+    status === SERVICE_REQUEST_STATUS.PENDING ||
+    status === SERVICE_REQUEST_STATUS.ASSIGNED
   );
 }
 

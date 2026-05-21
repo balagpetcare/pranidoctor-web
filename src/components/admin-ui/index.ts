@@ -7,6 +7,22 @@ export {
   resolveAdminActiveHref,
 } from "./admin-nav";
 export type { AdminNavGroup, AdminNavItem } from "./admin-nav";
+export { AdminBreadcrumb } from "./AdminBreadcrumb";
+export type { AdminBreadcrumbProps } from "./AdminBreadcrumb";
+export { buildAdminBreadcrumbs } from "./admin-breadcrumbs";
+export type { AdminBreadcrumbCrumb } from "./admin-breadcrumbs";
+export {
+  filterAdminNavGroupsForActor,
+  getAdminCapabilitySummaries,
+  navItemVisibleForActor,
+  roleLabelBn,
+} from "./admin-nav-permissions";
+export type { AdminCapabilitySummary } from "./admin-nav-permissions";
+export { AdminNavSearch } from "./AdminNavSearch";
+export type { AdminNavSearchProps } from "./AdminNavSearch";
+export { AdminPermissionMenu } from "./AdminPermissionMenu";
+export { AdminWorkspace } from "./AdminWorkspace";
+export type { AdminWorkspaceProps } from "./AdminWorkspace";
 export { AdminActionButton } from "./AdminActionButton";
 export type { AdminActionButtonProps } from "./AdminActionButton";
 export { AdminBadge } from "./AdminBadge";

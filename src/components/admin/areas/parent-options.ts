@@ -1,4 +1,4 @@
-import { AreaType } from "@/generated/prisma/browser";
+import { AREA_TYPE, type AreaType } from "@/lib/domain/area-type-constants";
 
 import type { AdminAreaRow } from "@/types/admin-areas";
 
@@ -15,18 +15,18 @@ export function filterParentCandidates(
   );
 
   switch (childType) {
-    case AreaType.DIVISION:
-      return base.filter((o) => o.type === AreaType.DIVISION);
-    case AreaType.DISTRICT:
-      return base.filter((o) => o.type === AreaType.DIVISION);
-    case AreaType.UPAZILA:
-      return base.filter((o) => o.type === AreaType.DISTRICT);
-    case AreaType.UNION:
-      return base.filter((o) => o.type === AreaType.UPAZILA);
-    case AreaType.VILLAGE:
-      return base.filter((o) => o.type === AreaType.UNION);
-    case AreaType.SERVICE_AREA:
-      return base.filter((o) => o.type === AreaType.VILLAGE);
+    case AREA_TYPE.DIVISION:
+      return base.filter((o) => o.type === AREA_TYPE.DIVISION);
+    case AREA_TYPE.DISTRICT:
+      return base.filter((o) => o.type === AREA_TYPE.DIVISION);
+    case AREA_TYPE.UPAZILA:
+      return base.filter((o) => o.type === AREA_TYPE.DISTRICT);
+    case AREA_TYPE.UNION:
+      return base.filter((o) => o.type === AREA_TYPE.UPAZILA);
+    case AREA_TYPE.VILLAGE:
+      return base.filter((o) => o.type === AREA_TYPE.UNION);
+    case AREA_TYPE.SERVICE_AREA:
+      return base.filter((o) => o.type === AREA_TYPE.VILLAGE);
   }
 }
 

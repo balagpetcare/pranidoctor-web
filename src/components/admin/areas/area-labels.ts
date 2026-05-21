@@ -1,19 +1,19 @@
-import { AreaType } from "@/generated/prisma/browser";
+import { AREA_TYPE, type AreaType } from "@/lib/domain/area-type-constants";
 
 /** Bangla labels for area hierarchy types (admin UI). */
 export function areaTypeBn(type: AreaType | string): string {
   switch (type) {
-    case AreaType.DIVISION:
+    case AREA_TYPE.DIVISION:
       return "বিভাগ";
-    case AreaType.DISTRICT:
+    case AREA_TYPE.DISTRICT:
       return "জেলা";
-    case AreaType.UPAZILA:
+    case AREA_TYPE.UPAZILA:
       return "উপজেলা";
-    case AreaType.UNION:
+    case AREA_TYPE.UNION:
       return "ইউনিয়ন";
-    case AreaType.VILLAGE:
+    case AREA_TYPE.VILLAGE:
       return "গ্রাম";
-    case AreaType.SERVICE_AREA:
+    case AREA_TYPE.SERVICE_AREA:
       return "সার্ভিস এরিয়া";
     default:
       return String(type);

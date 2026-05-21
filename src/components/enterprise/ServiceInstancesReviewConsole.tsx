@@ -25,6 +25,7 @@ import { AdminEmptyState } from "@/components/admin-ui/AdminEmptyState";
 import { AdminErrorState } from "@/components/admin-ui/AdminErrorState";
 import { AdminLoadingState } from "@/components/admin-ui/AdminLoadingState";
 import { AdminPageHeader } from "@/components/admin-ui/AdminPageHeader";
+import { useAdminAuth } from "@/lib/admin-auth/AdminAuthProvider";
 import { AdminTable } from "@/components/admin-ui/AdminTable";
 import { adminFetch } from "@/lib/admin/admin-fetch";
 import { readAdminJson } from "@/lib/admin/read-admin-json";
@@ -33,8 +34,6 @@ import type { PraniSchemaDocument } from "@/lib/service-instances/semen-instance
 import {
   ServiceInstanceStatuses,
   type ServiceInstanceStatus,
-  UserRoles,
-  type UserRole,
 } from "@/lib/service-instances/service-instance-public.types";
 
 type ListItem = {
@@ -175,7 +174,7 @@ export function ServiceInstancesReviewConsole(props?: { initialTab?: string }) {
   const [listLoading, setListLoading] = useState(true);
   const [loadingMore, setLoadingMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [actorRole, setActorRole] = useState<UserRole | null>(null);
+  const { can } = useAdminAuth();
 
   const [drawerId, setDrawerId] = useState<string | null>(null);
   const [detailLoading, setDetailLoading] = useState(false);
@@ -201,18 +200,6 @@ export function ServiceInstancesReviewConsole(props?: { initialTab?: string }) {
       startTransition(() => setTab(initial));
     }
   }, [initial]);
-
-  useEffect(() => {
-    void (async () => {
-      try {
-        const res = await adminFetch("/api/admin/auth/me");
-        const data = await readAdminJson<{ user: { role: UserRole } }>(res);
-        setActorRole(data.user.role);
-      } catch {
-        setActorRole(null);
-      }
-    })();
-  }, []);
 
   useEffect(() => {
     if (!drawerId) return;
@@ -400,7 +387,7 @@ export function ServiceInstancesReviewConsole(props?: { initialTab?: string }) {
       }
     | undefined;
 
-  const canPublish = actorRole === UserRoles.SUPER_ADMIN;
+  const canPublish = can("serviceInstance.publish");
 
   return (
     <div className="space-y-5 sm:space-y-6">

@@ -2,19 +2,10 @@
 
 import Link from "next/link";
 import { LogOut, UserCircle2 } from "lucide-react";
-import { useCallback, useEffect, useId, useRef, useState } from "react";
+import { useEffect, useId, useRef, useState } from "react";
 
+import { useAdminAuth } from "@/lib/admin-auth/AdminAuthProvider";
 import { cn } from "@/lib/cn";
-import { adminFetch } from "@/lib/admin/admin-fetch";
-import { readAdminJson } from "@/lib/admin/read-admin-json";
-
-type MeData = {
-  user: {
-    id: string;
-    email: string;
-    displayName: string | null;
-  };
-};
 
 const panelClass =
   "absolute right-0 z-40 mt-1 w-64 min-w-[14rem] rounded-[var(--pd-admin-radius-sm)] border border-[var(--pd-admin-border)] bg-[var(--pd-admin-surface)] shadow-lg dark:border-zinc-700 dark:bg-zinc-900";
@@ -27,34 +18,17 @@ export type AdminProfileMenuProps = Readonly<{
 }>;
 
 export function AdminProfileMenu({ onSignOut }: AdminProfileMenuProps) {
+  const { user, syncing, syncProfile } = useAdminAuth();
   const menuId = useId();
   const rootRef = useRef<HTMLDivElement>(null);
   const [open, setOpen] = useState(false);
-  const [user, setUser] = useState<MeData["user"] | null>(null);
-  const [meAttempted, setMeAttempted] = useState(false);
-  const [meLoading, setMeLoading] = useState(false);
-
-  const loadMe = useCallback(async () => {
-    setMeLoading(true);
-    try {
-      const data = await readAdminJson<MeData>(await adminFetch("/api/admin/auth/me"));
-      setUser(data.user);
-    } catch {
-      setUser(null);
-    } finally {
-      setMeLoading(false);
-      setMeAttempted(true);
-    }
-  }, []);
 
   useEffect(() => {
-    if (!open || meAttempted) {
+    if (!open) {
       return;
     }
-    queueMicrotask(() => {
-      void loadMe();
-    });
-  }, [open, meAttempted, loadMe]);
+    void syncProfile();
+  }, [open, syncProfile]);
 
   useEffect(() => {
     if (!open) {
@@ -101,7 +75,7 @@ export function AdminProfileMenu({ onSignOut }: AdminProfileMenuProps) {
       {open ? (
         <div id={menuId} role="menu" className={panelClass} lang="bn">
           <div className="border-b border-[var(--pd-admin-border)] px-3 py-3 dark:border-zinc-700">
-            {meLoading ? (
+            {syncing && !user ? (
               <p className="text-sm text-[var(--pd-admin-muted)]">লোড হচ্ছে…</p>
             ) : primaryLabel ? (
               <>
@@ -110,6 +84,9 @@ export function AdminProfileMenu({ onSignOut }: AdminProfileMenuProps) {
                 </p>
                 {secondaryLabel ? (
                   <p className="mt-0.5 truncate text-xs text-[var(--pd-admin-muted)]">{secondaryLabel}</p>
+                ) : null}
+                {user?.role ? (
+                  <p className="mt-1 text-xs text-[var(--pd-admin-muted)]">{user.role}</p>
                 ) : null}
               </>
             ) : (

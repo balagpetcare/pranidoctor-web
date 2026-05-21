@@ -2,73 +2,56 @@
 
 import { PawPrint } from "lucide-react";
 import { useSearchParams } from "next/navigation";
-import { type FormEvent, useState } from "react";
+import { type FormEvent, useEffect, useMemo, useState } from "react";
 
+import { AdminAuthError } from "@/lib/admin-auth/auth-api";
+import {
+  adminLoginErrorBn,
+  adminLoginErrorEn,
+  adminLoginRedirectMessage,
+} from "@/lib/admin-auth/login-messages";
+import {
+  clearRememberedIdentifier,
+  loadRememberedIdentifier,
+  saveRememberedIdentifier,
+} from "@/lib/admin-auth/remember-login";
 import { getSafeAdminNextPath } from "@/lib/admin-auth/safe-next-path";
 import { cn } from "@/lib/cn";
-
-type ApiEnvelope<T> =
-  | { ok: true; data: T }
-  | { ok: false; error: { code: string; message: string } };
-
-/** Maps API `error.code` from `POST /api/admin/auth/login`. */
-function loginErrorBn(code: string): string {
-  switch (code) {
-    case "invalid_credentials":
-      return "ভুল ইমেইল/ফোন বা পাসওয়ার্ড";
-    case "db_unavailable":
-      return "সার্ভারের সাথে সংযোগ করা যাচ্ছে না";
-    case "server_error":
-      return "সিস্টেম সাময়িকভাবে ব্যস্ত";
-    case "INVALID_CREDENTIALS":
-      return "ভুল ইমেইল/ফোন বা পাসওয়ার্ড";
-    case "DATABASE_UNAVAILABLE":
-      return "সার্ভারের সাথে সংযোগ করা যাচ্ছে না";
-    case "SERVER_MISCONFIGURED":
-    case "VALIDATION_ERROR":
-    case "INVALID_JSON":
-      return "সিস্টেম সাময়িকভাবে ব্যস্ত";
-    default:
-      return "সিস্টেম সাময়িকভাবে ব্যস্ত";
-  }
-}
-
-function loginErrorEn(code: string): string {
-  switch (code) {
-    case "invalid_credentials":
-      return "Incorrect email or phone, or password.";
-    case "db_unavailable":
-      return "We could not reach the database. Please try again shortly.";
-    case "server_error":
-      return "Something went wrong. Please try again in a moment.";
-    case "INVALID_CREDENTIALS":
-      return "Incorrect email or phone, or password.";
-    case "DATABASE_UNAVAILABLE":
-      return "We could not reach the database. Please try again shortly.";
-    case "SERVER_MISCONFIGURED":
-    case "VALIDATION_ERROR":
-    case "INVALID_JSON":
-      return "Something went wrong. Please try again in a moment.";
-    default:
-      return "Something went wrong. Please try again in a moment.";
-  }
-}
 
 export function AdminLoginForm() {
   const searchParams = useSearchParams();
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
+  const [remember, setRemember] = useState(false);
+  const [showRememberHelper, setShowRememberHelper] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [clearedReason, setClearedReason] = useState<string | null>(null);
   const [loading, setLoading] = useState(false);
+  const reason = searchParams.get("reason");
+  const redirectNotice = useMemo(
+    () => adminLoginRedirectMessage(reason),
+    [reason],
+  );
+  const notice = clearedReason === reason ? null : redirectNotice;
+
+  useEffect(() => {
+    const saved = loadRememberedIdentifier();
+    if (!saved) return;
+    setIdentifier(saved);
+    setRemember(true);
+    setShowRememberHelper(true);
+  }, []);
 
   async function onSubmit(e: FormEvent) {
     e.preventDefault();
     setError(null);
+    setClearedReason(reason);
     setLoading(true);
     try {
       const trimmed = identifier.trim();
-      const payload: { password: string; email?: string; identifier?: string } =
-        { password };
+      const payload: { password: string; email?: string; identifier?: string } = {
+        password,
+      };
       if (trimmed.includes("@")) {
         payload.email = trimmed;
       } else {
@@ -78,6 +61,7 @@ export function AdminLoginForm() {
       const res = await fetch("/api/admin/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
+        credentials: "same-origin",
         body: JSON.stringify(payload),
       });
 
@@ -85,29 +69,40 @@ export function AdminLoginForm() {
       try {
         body = await res.json();
       } catch {
-        setError(`${loginErrorEn("UNKNOWN")} — ${loginErrorBn("server_error")}`);
+        setError(`${adminLoginErrorEn("server_error")} — ${adminLoginErrorBn("server_error")}`);
         return;
       }
 
-      const parsed = body as ApiEnvelope<{
-        user: { id: string; email: string; displayName: string | null };
-      }>;
+      const parsed = body as
+        | { ok: true; data: { user: unknown } }
+        | { ok: false; error: { code: string; message: string } };
 
       if (!parsed || typeof parsed !== "object" || !("ok" in parsed)) {
-        setError(`${loginErrorEn("UNKNOWN")} — ${loginErrorBn("server_error")}`);
+        setError(`${adminLoginErrorEn("server_error")} — ${adminLoginErrorBn("server_error")}`);
         return;
       }
 
       if (!parsed.ok) {
         const code = parsed.error.code;
-        setError(`${loginErrorEn(code)} — ${loginErrorBn(code)}`);
+        setError(`${adminLoginErrorEn(code)} — ${adminLoginErrorBn(code)}`);
         return;
+      }
+
+      if (remember && trimmed) {
+        saveRememberedIdentifier(trimmed);
+      } else {
+        clearRememberedIdentifier();
+        setShowRememberHelper(false);
       }
 
       const next = searchParams.get("next");
       window.location.assign(getSafeAdminNextPath(next));
-    } catch {
-      setError(`${loginErrorEn("UNKNOWN")} — ${loginErrorBn("server_error")}`);
+    } catch (err) {
+      if (err instanceof AdminAuthError) {
+        setError(`${adminLoginErrorEn(err.code)} — ${adminLoginErrorBn(err.code)}`);
+      } else {
+        setError(`${adminLoginErrorEn("server_error")} — ${adminLoginErrorBn("server_error")}`);
+      }
     } finally {
       setLoading(false);
     }
@@ -175,7 +170,33 @@ export function AdminLoginForm() {
             )}
           />
         </label>
+        <label className="flex cursor-pointer items-start gap-2 text-sm text-zinc-700 dark:text-zinc-300">
+          <input
+            type="checkbox"
+            name="remember"
+            checked={remember}
+            onChange={(ev) => setRemember(ev.target.checked)}
+            className="mt-1 h-4 w-4 rounded border-zinc-300 text-emerald-700 focus:ring-emerald-600"
+          />
+          <span>
+            Remember me on this device / এই ডিভাইসে মনে রাখুন
+            {showRememberHelper ? (
+              <span className="mt-0.5 block text-xs text-zinc-500">
+                শুধু ইমেইল/ফোন সংরক্ষিত — পাসওয়ার্ড নয়। সেশন ৭ দিন পর্যন্ত সক্রিয় থাকতে পারে।
+              </span>
+            ) : null}
+          </span>
+        </label>
       </div>
+
+      {notice ? (
+        <p
+          className="rounded-lg bg-amber-50 px-3 py-2.5 text-sm leading-relaxed text-amber-950 dark:bg-amber-950/40 dark:text-amber-100"
+          role="status"
+        >
+          {notice}
+        </p>
+      ) : null}
 
       {error ? (
         <p

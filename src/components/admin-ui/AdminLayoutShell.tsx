@@ -1,41 +1,62 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { Toaster } from "sonner";
 
+import { AdminAuthProvider, useAdminAuth } from "@/lib/admin-auth/AdminAuthProvider";
 import { cn } from "@/lib/cn";
 
-import { ADMIN_NAV_GROUPS, getSectionTitleFromPath } from "./admin-nav";
-import { AdminContent } from "./AdminContent";
+import {
+  ADMIN_NAV_GROUPS,
+  filterAdminNavGroups,
+  getSectionTitleFromPath,
+} from "./admin-nav";
+import { filterAdminNavGroupsForActor } from "./admin-nav-permissions";
 import { AdminFooter } from "./AdminFooter";
 import { AdminSidebar } from "./AdminSidebar";
 import { AdminThemeProvider } from "./AdminThemeProvider";
 import { AdminTopbar } from "./AdminTopbar";
+import { AdminWorkspace } from "./AdminWorkspace";
 import { useAdminTheme } from "./useAdminTheme";
-
-async function signOut(): Promise<void> {
-  await fetch("/api/admin/auth/logout", { method: "POST" });
-  window.location.href = "/admin/login";
-}
 
 function AdminLayoutShellInner({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const pathname = usePathname();
-  const isEnterprise = pathname?.startsWith("/enterprise") ?? false;
+  const { logout, user, status } = useAdminAuth();
+  const pathname = usePathname() ?? "/admin";
+  const isEnterprise = pathname.startsWith("/enterprise");
+  const [mobilePath, setMobilePath] = useState(pathname);
   const [mobileOpen, setMobileOpen] = useState(false);
+  if (mobilePath !== pathname) {
+    setMobilePath(pathname);
+    if (mobileOpen) setMobileOpen(false);
+  }
   const sectionTitle = getSectionTitleFromPath(pathname);
+  const authLoading = status === "loading";
   const {
     appearance,
     sidebarMode,
     sidebarTheme,
     contentWidth,
-    topbarSticky,
     footerVisible,
   } = useAdminTheme();
+
+  const navGroups = useMemo(() => {
+    const base = filterAdminNavGroups(ADMIN_NAV_GROUPS);
+    return filterAdminNavGroupsForActor(base, user, { authLoading });
+  }, [user, authLoading]);
+
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const prev = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    return () => {
+      document.body.style.overflow = prev;
+    };
+  }, [mobileOpen]);
 
   return (
     <div
@@ -46,7 +67,6 @@ function AdminLayoutShellInner({
       data-sidebar-mode={sidebarMode}
       data-sidebar-theme={sidebarTheme}
       data-content-width={contentWidth}
-      data-topbar-sticky={topbarSticky ? "true" : "false"}
       data-footer-visible={footerVisible ? "true" : "false"}
       className="flex h-[100dvh] min-h-0 overflow-hidden bg-[var(--pd-admin-app-bg)] text-[var(--pd-admin-app-fg)]"
     >
@@ -64,21 +84,25 @@ function AdminLayoutShellInner({
           "fixed inset-y-0 left-0 z-50 transition-[transform,width] duration-200 md:static md:z-auto md:translate-x-0",
           mobileOpen ? "translate-x-0" : "-translate-x-full md:translate-x-0",
         )}
-        groups={ADMIN_NAV_GROUPS}
+        groups={navGroups}
         pathname={pathname}
         onCloseMobile={() => setMobileOpen(false)}
-        onSignOut={signOut}
+        onSignOut={() => void logout("manual")}
       />
 
       <div className="flex min-h-0 min-w-0 flex-1 flex-col">
         <AdminTopbar
           sectionTitle={sectionTitle}
+          navGroups={navGroups}
           onOpenMobileMenu={() => setMobileOpen(true)}
-          onSignOut={signOut}
+          onSignOut={() => void logout("manual")}
         />
-        <AdminContent contained={contentWidth === "contained" && !isEnterprise}>
+        <AdminWorkspace
+          pathname={pathname}
+          contained={contentWidth === "contained" && !isEnterprise}
+        >
           {children}
-        </AdminContent>
+        </AdminWorkspace>
         <AdminFooter />
         <Toaster
           richColors
@@ -98,7 +122,9 @@ export function AdminLayoutShell({
 }>) {
   return (
     <AdminThemeProvider>
-      <AdminLayoutShellInner>{children}</AdminLayoutShellInner>
+      <AdminAuthProvider active>
+        <AdminLayoutShellInner>{children}</AdminLayoutShellInner>
+      </AdminAuthProvider>
     </AdminThemeProvider>
   );
 }

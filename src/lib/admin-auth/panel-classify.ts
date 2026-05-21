@@ -1,4 +1,4 @@
-import type { UserRole } from "@/generated/prisma/client";
+import type { UserRole } from "@/lib/admin-auth/user-role";
 
 import type { AdminJwtPayload } from "./jwt";
 

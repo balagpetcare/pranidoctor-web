@@ -13,8 +13,9 @@ type MeResponse = {
  * Resolves admin actor via backend `/api/admin/auth/me` (no direct Prisma).
  */
 export async function resolveAdminPanelActor(
-  _session: AdminJwtPayload,
+  session: AdminJwtPayload,
 ): Promise<AdminPanelActor | null> {
+  void session;
   const res = await serverInternalJson<MeResponse>("/api/admin/auth/me");
   if (!res.ok) return null;
   return res.data.user;

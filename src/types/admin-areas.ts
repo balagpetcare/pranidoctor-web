@@ -1,4 +1,4 @@
-import type { AreaType } from "@/generated/prisma/browser";
+import type { AreaType } from "@/lib/domain/area-type-constants";
 
 export type AdminAreaParentSummary = {
   id: string;

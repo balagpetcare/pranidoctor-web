@@ -131,6 +131,51 @@ exports.Prisma.UserScalarFieldEnum = {
   updatedAt: 'updatedAt'
 };
 
+exports.Prisma.UserDeviceScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  deviceKey: 'deviceKey',
+  platform: 'platform',
+  pushToken: 'pushToken',
+  appVersion: 'appVersion',
+  lastActiveAt: 'lastActiveAt',
+  revokedAt: 'revokedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.UserSessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  channel: 'channel',
+  status: 'status',
+  deviceId: 'deviceId',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  expiresAt: 'expiresAt',
+  lastSeenAt: 'lastSeenAt',
+  revokedAt: 'revokedAt',
+  revokedReason: 'revokedReason',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.RefreshTokenScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  sessionId: 'sessionId',
+  tokenHash: 'tokenHash',
+  channel: 'channel',
+  deviceId: 'deviceId',
+  expiresAt: 'expiresAt',
+  revoked: 'revoked',
+  revokedAt: 'revokedAt',
+  rotatedAt: 'rotatedAt',
+  rotatedToId: 'rotatedToId',
+  lastUsedAt: 'lastUsedAt',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.AdminProfileScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -142,56 +187,56 @@ exports.Prisma.AdminProfileScalarFieldEnum = {
 exports.Prisma.DoctorProfileScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  displayName: 'displayName',
   licenseNumber: 'licenseNumber',
-  degree: 'degree',
   specialization: 'specialization',
-  experienceYears: 'experienceYears',
   bio: 'bio',
-  profilePhotoUrl: 'profilePhotoUrl',
-  visitFeeBdt: 'visitFeeBdt',
-  acceptsEmergency: 'acceptsEmergency',
-  acceptsOnlineConsultation: 'acceptsOnlineConsultation',
-  providerStatus: 'providerStatus',
   verifiedAt: 'verifiedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  providerStatus: 'providerStatus',
+  acceptsEmergency: 'acceptsEmergency',
+  acceptsOnlineConsultation: 'acceptsOnlineConsultation',
+  degree: 'degree',
+  displayName: 'displayName',
+  experienceYears: 'experienceYears',
+  profilePhotoUrl: 'profilePhotoUrl',
+  visitFeeBdt: 'visitFeeBdt'
 };
 
 exports.Prisma.AiTechnicianProfileScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  displayName: 'displayName',
-  phone: 'phone',
-  email: 'email',
-  nidNumber: 'nidNumber',
-  dateOfBirth: 'dateOfBirth',
-  gender: 'gender',
-  presentAddress: 'presentAddress',
-  district: 'district',
-  upazila: 'upazila',
-  unionOrArea: 'unionOrArea',
-  districtId: 'districtId',
-  upazilaId: 'upazilaId',
-  unionId: 'unionId',
-  experienceYears: 'experienceYears',
-  trainingProvider: 'trainingProvider',
-  certificateNumber: 'certificateNumber',
   certification: 'certification',
   bio: 'bio',
-  serviceFeeBdt: 'serviceFeeBdt',
-  acceptsEmergency: 'acceptsEmergency',
-  metadataJson: 'metadataJson',
-  status: 'status',
   providerStatus: 'providerStatus',
   verifiedAt: 'verifiedAt',
-  adminNote: 'adminNote',
-  correctionNote: 'correctionNote',
-  reviewedById: 'reviewedById',
-  reviewedAt: 'reviewedAt',
-  publishedAt: 'publishedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  acceptsEmergency: 'acceptsEmergency',
+  displayName: 'displayName',
+  metadataJson: 'metadataJson',
+  serviceFeeBdt: 'serviceFeeBdt',
+  adminNote: 'adminNote',
+  certificateNumber: 'certificateNumber',
+  correctionNote: 'correctionNote',
+  dateOfBirth: 'dateOfBirth',
+  district: 'district',
+  email: 'email',
+  experienceYears: 'experienceYears',
+  gender: 'gender',
+  nidNumber: 'nidNumber',
+  phone: 'phone',
+  presentAddress: 'presentAddress',
+  publishedAt: 'publishedAt',
+  reviewedAt: 'reviewedAt',
+  reviewedById: 'reviewedById',
+  status: 'status',
+  trainingProvider: 'trainingProvider',
+  unionOrArea: 'unionOrArea',
+  upazila: 'upazila',
+  districtId: 'districtId',
+  unionId: 'unionId',
+  upazilaId: 'upazilaId'
 };
 
 exports.Prisma.CustomerProfileScalarFieldEnum = {
@@ -200,10 +245,12 @@ exports.Prisma.CustomerProfileScalarFieldEnum = {
   displayName: 'displayName',
   locale: 'locale',
   addressJson: 'addressJson',
-  profilePhotoUrl: 'profilePhotoUrl',
-  coverPhotoUrl: 'coverPhotoUrl',
+  primaryVillageId: 'primaryVillageId',
+  profileCompletedAt: 'profileCompletedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  profilePhotoUrl: 'profilePhotoUrl',
+  coverPhotoUrl: 'coverPhotoUrl'
 };
 
 exports.Prisma.MobileOtpChallengeScalarFieldEnum = {
@@ -214,112 +261,112 @@ exports.Prisma.MobileOtpChallengeScalarFieldEnum = {
   verifyAttempts: 'verifyAttempts',
   sendWindowStartedAt: 'sendWindowStartedAt',
   sendsInWindow: 'sendsInWindow',
-  lastOtpSentAt: 'lastOtpSentAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  lastOtpSentAt: 'lastOtpSentAt'
 };
 
 exports.Prisma.DivisionScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  nameBn: 'nameBn',
-  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
-  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   isActive: 'isActive',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
+  sortOrder: 'sortOrder',
+  isVerified: 'isVerified',
   latitude: 'latitude',
   longitude: 'longitude',
-  source: 'source',
-  isVerified: 'isVerified',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  source: 'source'
 };
 
 exports.Prisma.DistrictScalarFieldEnum = {
   id: 'id',
   divisionId: 'divisionId',
   name: 'name',
-  nameBn: 'nameBn',
-  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
-  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   isActive: 'isActive',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
+  sortOrder: 'sortOrder',
+  isVerified: 'isVerified',
   latitude: 'latitude',
   longitude: 'longitude',
-  source: 'source',
-  isVerified: 'isVerified',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  source: 'source'
 };
 
 exports.Prisma.UpazilaScalarFieldEnum = {
   id: 'id',
   districtId: 'districtId',
   name: 'name',
-  nameBn: 'nameBn',
-  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
-  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   isActive: 'isActive',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
+  sortOrder: 'sortOrder',
+  isVerified: 'isVerified',
   latitude: 'latitude',
   longitude: 'longitude',
-  source: 'source',
-  isVerified: 'isVerified',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  source: 'source'
 };
 
 exports.Prisma.UnionScalarFieldEnum = {
   id: 'id',
   upazilaId: 'upazilaId',
   name: 'name',
-  nameBn: 'nameBn',
-  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
-  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   isActive: 'isActive',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
+  sortOrder: 'sortOrder',
+  isVerified: 'isVerified',
   latitude: 'latitude',
   longitude: 'longitude',
-  source: 'source',
-  isVerified: 'isVerified',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  source: 'source'
 };
 
 exports.Prisma.VillageScalarFieldEnum = {
   id: 'id',
   unionId: 'unionId',
   name: 'name',
-  nameBn: 'nameBn',
-  nameEn: 'nameEn',
   slug: 'slug',
   code: 'code',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   isActive: 'isActive',
+  isVerified: 'isVerified',
   latitude: 'latitude',
   longitude: 'longitude',
-  source: 'source',
-  isVerified: 'isVerified',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
+  source: 'source'
 };
 
 exports.Prisma.AreaScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  nameBn: 'nameBn',
   slug: 'slug',
-  code: 'code',
-  type: 'type',
   parentId: 'parentId',
-  sortOrder: 'sortOrder',
-  isActive: 'isActive',
   metadataJson: 'metadataJson',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  code: 'code',
+  isActive: 'isActive',
+  nameBn: 'nameBn',
+  sortOrder: 'sortOrder',
+  type: 'type'
 };
 
 exports.Prisma.DoctorServiceAreaScalarFieldEnum = {
@@ -383,12 +430,12 @@ exports.Prisma.AiTechnicianDivisionServiceAreaScalarFieldEnum = {
   district: 'district',
   upazila: 'upazila',
   unionOrArea: 'unionOrArea',
-  districtId: 'districtId',
-  upazilaId: 'upazilaId',
-  unionId: 'unionId',
   isActive: 'isActive',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  districtId: 'districtId',
+  unionId: 'unionId',
+  upazilaId: 'upazilaId'
 };
 
 exports.Prisma.AiTechnicianDocumentScalarFieldEnum = {
@@ -399,11 +446,11 @@ exports.Prisma.AiTechnicianDocumentScalarFieldEnum = {
   fileUrl: 'fileUrl',
   storageKey: 'storageKey',
   mimeType: 'mimeType',
-  uploadedFileId: 'uploadedFileId',
   reviewStatus: 'reviewStatus',
   uploadedAt: 'uploadedAt',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  uploadedFileId: 'uploadedFileId'
 };
 
 exports.Prisma.UploadedFileScalarFieldEnum = {
@@ -509,13 +556,13 @@ exports.Prisma.AiTechnicianServiceScalarFieldEnum = {
   repeatServicePolicy: 'repeatServicePolicy',
   followUpIncluded: 'followUpIncluded',
   status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
   semenServiceTemplateId: 'semenServiceTemplateId',
   offerPrice: 'offerPrice',
   discountPercent: 'discountPercent',
   isAvailable: 'isAvailable',
-  technicianServiceNote: 'technicianServiceNote',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  technicianServiceNote: 'technicianServiceNote'
 };
 
 exports.Prisma.TechnicianSemenInventoryScalarFieldEnum = {
@@ -552,14 +599,14 @@ exports.Prisma.AiServiceRequestScalarFieldEnum = {
   addressDetail: 'addressDetail',
   preferredTime: 'preferredTime',
   isEmergency: 'isEmergency',
-  declineReason: 'declineReason',
   status: 'status',
   estimatedFee: 'estimatedFee',
   finalFee: 'finalFee',
   paymentStatus: 'paymentStatus',
   linkedServiceRequestId: 'linkedServiceRequestId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  declineReason: 'declineReason'
 };
 
 exports.Prisma.AiServiceRecordScalarFieldEnum = {
@@ -614,18 +661,18 @@ exports.Prisma.AnimalProfileScalarFieldEnum = {
   species: 'species',
   breed: 'breed',
   category: 'category',
-  animalType: 'animalType',
-  weightKg: 'weightKg',
   dateOfBirth: 'dateOfBirth',
   sex: 'sex',
-  gender: 'gender',
   microchipOrTag: 'microchipOrTag',
   notes: 'notes',
-  photoUrl: 'photoUrl',
-  pregnancyStatus: 'pregnancyStatus',
   active: 'active',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  animalType: 'animalType',
+  gender: 'gender',
+  weightKg: 'weightKg',
+  photoUrl: 'photoUrl',
+  pregnancyStatus: 'pregnancyStatus'
 };
 
 exports.Prisma.ServiceRequestScalarFieldEnum = {
@@ -633,61 +680,330 @@ exports.Prisma.ServiceRequestScalarFieldEnum = {
   customerId: 'customerId',
   animalId: 'animalId',
   areaId: 'areaId',
-  villageId: 'villageId',
   serviceCategoryId: 'serviceCategoryId',
-  serviceType: 'serviceType',
   assignedDoctorId: 'assignedDoctorId',
-  assignedTechnicianId: 'assignedTechnicianId',
   status: 'status',
   urgency: 'urgency',
   problemOrSymptom: 'problemOrSymptom',
-  description: 'description',
   preferredTime: 'preferredTime',
   locationText: 'locationText',
-  scheduledStart: 'scheduledStart',
-  scheduledEnd: 'scheduledEnd',
-  isEmergency: 'isEmergency',
-  emergencyNotes: 'emergencyNotes',
-  submittedAt: 'submittedAt',
-  assignedAt: 'assignedAt',
-  startedAt: 'startedAt',
-  cancelledAt: 'cancelledAt',
-  cancelReason: 'cancelReason',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
-  completedAt: 'completedAt'
+  completedAt: 'completedAt',
+  assignedTechnicianId: 'assignedTechnicianId',
+  assignedAt: 'assignedAt',
+  cancelledAt: 'cancelledAt',
+  emergencyNotes: 'emergencyNotes',
+  isEmergency: 'isEmergency',
+  serviceType: 'serviceType',
+  scheduledEnd: 'scheduledEnd',
+  scheduledStart: 'scheduledStart',
+  startedAt: 'startedAt',
+  submittedAt: 'submittedAt',
+  villageId: 'villageId',
+  description: 'description',
+  cancelReason: 'cancelReason',
+  priority: 'priority',
+  adminNote: 'adminNote',
+  leadId: 'leadId'
 };
 
 exports.Prisma.TreatmentCaseScalarFieldEnum = {
   id: 'id',
   serviceRequestId: 'serviceRequestId',
-  animalId: 'animalId',
   doctorId: 'doctorId',
-  aiTechnicianId: 'aiTechnicianId',
-  status: 'status',
+  animalId: 'animalId',
   chiefComplaint: 'chiefComplaint',
-  symptoms: 'symptoms',
   diagnosis: 'diagnosis',
   procedures: 'procedures',
-  treatmentNotes: 'treatmentNotes',
   followUpNotes: 'followUpNotes',
-  followUpDate: 'followUpDate',
   recordedAt: 'recordedAt',
   createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  aiTechnicianId: 'aiTechnicianId',
+  followUpDate: 'followUpDate',
+  symptoms: 'symptoms',
+  treatmentNotes: 'treatmentNotes',
+  status: 'status'
+};
+
+exports.Prisma.TreatmentWorkflowScalarFieldEnum = {
+  id: 'id',
+  serviceRequestId: 'serviceRequestId',
+  doctorId: 'doctorId',
+  status: 'status',
+  treatmentCaseId: 'treatmentCaseId',
+  closedAt: 'closedAt',
+  createdAt: 'createdAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TreatmentConsultationScalarFieldEnum = {
+  id: 'id',
+  serviceRequestId: 'serviceRequestId',
+  workflowId: 'workflowId',
+  doctorId: 'doctorId',
+  observations: 'observations',
+  diagnosisSummary: 'diagnosisSummary',
+  attachmentRefs: 'attachmentRefs',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TreatmentFollowupScalarFieldEnum = {
+  id: 'id',
+  serviceRequestId: 'serviceRequestId',
+  workflowId: 'workflowId',
+  doctorId: 'doctorId',
+  scheduledAt: 'scheduledAt',
+  reminderNote: 'reminderNote',
+  status: 'status',
+  completedAt: 'completedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.TreatmentNoteScalarFieldEnum = {
+  id: 'id',
+  serviceRequestId: 'serviceRequestId',
+  workflowId: 'workflowId',
+  authorDoctorId: 'authorDoctorId',
+  noteType: 'noteType',
+  content: 'content',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AiAssistantSessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  caseId: 'caseId',
+  locale: 'locale',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AiAssistantMessageScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  role: 'role',
+  content: 'content',
+  locale: 'locale',
+  inputJson: 'inputJson',
+  outputJson: 'outputJson',
+  refused: 'refused',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AiAssistantMemoryScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  userId: 'userId',
+  kind: 'kind',
+  key: 'key',
+  valueJson: 'valueJson',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AiTriageRecordScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  userId: 'userId',
+  caseId: 'caseId',
+  riskBucket: 'riskBucket',
+  urgencyLevel: 'urgencyLevel',
+  recommendation: 'recommendation',
+  escalationRequired: 'escalationRequired',
+  symptomsJson: 'symptomsJson',
+  mediaMetadataJson: 'mediaMetadataJson',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AiEscalationRecordScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  userId: 'userId',
+  caseId: 'caseId',
+  reason: 'reason',
+  status: 'status',
+  handoffNote: 'handoffNote',
+  flaggedAt: 'flaggedAt',
+  resolvedAt: 'resolvedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AiSafetyAuditLogScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  userId: 'userId',
+  action: 'action',
+  detailJson: 'detailJson',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.VoiceSessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  aiSessionId: 'aiSessionId',
+  caseId: 'caseId',
+  locale: 'locale',
+  bandwidthMode: 'bandwidthMode',
+  status: 'status',
+  interruptedAt: 'interruptedAt',
+  retryCount: 'retryCount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VoiceTranscriptScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  normalizedText: 'normalizedText',
+  rawHint: 'rawHint',
+  confidence: 'confidence',
+  sttMode: 'sttMode',
+  partial: 'partial',
+  locale: 'locale',
+  durationMs: 'durationMs',
+  audioSizeBytes: 'audioSizeBytes',
+  codec: 'codec',
+  retainAudio: 'retainAudio',
+  retrySuggested: 'retrySuggested',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.VoiceNavigationEventScalarFieldEnum = {
+  id: 'id',
+  sessionId: 'sessionId',
+  utterance: 'utterance',
+  aliasMatched: 'aliasMatched',
+  action: 'action',
+  success: 'success',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.OfflineSyncSessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  deviceId: 'deviceId',
+  connectivityMode: 'connectivityMode',
+  manualOverride: 'manualOverride',
+  lastSyncAt: 'lastSyncAt',
+  lastClientSnapshotAt: 'lastClientSnapshotAt',
+  pendingCount: 'pendingCount',
+  deadCount: 'deadCount',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OfflineSyncItemScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  sessionId: 'sessionId',
+  idempotencyKey: 'idempotencyKey',
+  entityType: 'entityType',
+  operation: 'operation',
+  payloadHash: 'payloadHash',
+  payloadJson: 'payloadJson',
+  conflictStrategy: 'conflictStrategy',
+  status: 'status',
+  attemptCount: 'attemptCount',
+  maxAttempts: 'maxAttempts',
+  lastError: 'lastError',
+  lastAttemptAt: 'lastAttemptAt',
+  nextRetryAt: 'nextRetryAt',
+  clientSequence: 'clientSequence',
+  batchId: 'batchId',
+  serverEntityId: 'serverEntityId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OfflineLeadDraftScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  syncItemId: 'syncItemId',
+  clientLeadId: 'clientLeadId',
+  phone: 'phone',
+  name: 'name',
+  concern: 'concern',
+  animalType: 'animalType',
+  villageId: 'villageId',
+  mediaMetadataJson: 'mediaMetadataJson',
+  status: 'status',
+  serverLeadId: 'serverLeadId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.OfflineConflictRecordScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  syncItemId: 'syncItemId',
+  entityType: 'entityType',
+  entityId: 'entityId',
+  resolution: 'resolution',
+  serverVersion: 'serverVersion',
+  clientVersion: 'clientVersion',
+  mergePayloadJson: 'mergePayloadJson',
+  resolvedAt: 'resolvedAt',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.ServiceRequestTimelineEventScalarFieldEnum = {
+  id: 'id',
+  serviceRequestId: 'serviceRequestId',
+  eventType: 'eventType',
+  actorUserId: 'actorUserId',
+  actorRole: 'actorRole',
+  note: 'note',
+  metadataJson: 'metadataJson',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.LeadScalarFieldEnum = {
+  id: 'id',
+  phone: 'phone',
+  name: 'name',
+  source: 'source',
+  status: 'status',
+  priority: 'priority',
+  assignedAdminId: 'assignedAdminId',
+  animalType: 'animalType',
+  concern: 'concern',
+  notes: 'notes',
+  villageId: 'villageId',
+  convertedUserId: 'convertedUserId',
+  serviceRequestId: 'serviceRequestId',
+  convertedAt: 'convertedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LeadActivityScalarFieldEnum = {
+  id: 'id',
+  leadId: 'leadId',
+  activityType: 'activityType',
+  description: 'description',
+  performedBy: 'performedBy',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.PrescriptionScalarFieldEnum = {
   id: 'id',
   serviceRequestId: 'serviceRequestId',
   doctorId: 'doctorId',
-  aiTechnicianId: 'aiTechnicianId',
   animalId: 'animalId',
   status: 'status',
   instructions: 'instructions',
   validUntil: 'validUntil',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  aiTechnicianId: 'aiTechnicianId'
 };
 
 exports.Prisma.PrescriptionItemScalarFieldEnum = {
@@ -705,29 +1021,29 @@ exports.Prisma.PrescriptionItemScalarFieldEnum = {
 exports.Prisma.BillingRecordScalarFieldEnum = {
   id: 'id',
   serviceRequestId: 'serviceRequestId',
-  treatmentCaseId: 'treatmentCaseId',
   doctorId: 'doctorId',
-  aiTechnicianId: 'aiTechnicianId',
   customerId: 'customerId',
-  status: 'status',
   currency: 'currency',
   subtotal: 'subtotal',
   tax: 'tax',
   total: 'total',
-  serviceFee: 'serviceFee',
-  travelCost: 'travelCost',
-  medicineCost: 'medicineCost',
-  discountAmount: 'discountAmount',
-  totalCollected: 'totalCollected',
-  platformCommission: 'platformCommission',
-  providerPayout: 'providerPayout',
-  paymentMethod: 'paymentMethod',
-  paymentStatus: 'paymentStatus',
   issuedAt: 'issuedAt',
   paidAt: 'paidAt',
   notes: 'notes',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  aiTechnicianId: 'aiTechnicianId',
+  discountAmount: 'discountAmount',
+  medicineCost: 'medicineCost',
+  platformCommission: 'platformCommission',
+  providerPayout: 'providerPayout',
+  serviceFee: 'serviceFee',
+  totalCollected: 'totalCollected',
+  travelCost: 'travelCost',
+  treatmentCaseId: 'treatmentCaseId',
+  status: 'status',
+  paymentMethod: 'paymentMethod',
+  paymentStatus: 'paymentStatus'
 };
 
 exports.Prisma.PaymentRecordScalarFieldEnum = {
@@ -774,17 +1090,17 @@ exports.Prisma.ContentPostScalarFieldEnum = {
   id: 'id',
   title: 'title',
   slug: 'slug',
-  summary: 'summary',
   body: 'body',
+  authorId: 'authorId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  summary: 'summary',
   coverImageUrl: 'coverImageUrl',
   categoryId: 'categoryId',
-  authorId: 'authorId',
   approvalStatus: 'approvalStatus',
   rejectionReason: 'rejectionReason',
   publishedAt: 'publishedAt',
-  isPublished: 'isPublished',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  isPublished: 'isPublished'
 };
 
 exports.Prisma.ComplaintScalarFieldEnum = {
@@ -804,12 +1120,12 @@ exports.Prisma.ComplaintScalarFieldEnum = {
 exports.Prisma.NotificationScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
-  type: 'type',
   title: 'title',
   body: 'body',
   readAt: 'readAt',
   metadataJson: 'metadataJson',
-  createdAt: 'createdAt'
+  createdAt: 'createdAt',
+  type: 'type'
 };
 
 exports.Prisma.ServiceInstanceScalarFieldEnum = {
@@ -898,6 +1214,18 @@ exports.Prisma.ServiceInstanceAuditEventScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.AuthAuditEventScalarFieldEnum = {
+  id: 'id',
+  action: 'action',
+  userId: 'userId',
+  role: 'role',
+  channel: 'channel',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SettingScalarFieldEnum = {
   id: 'id',
   key: 'key',
@@ -951,6 +1279,19 @@ exports.UserStatus = exports.$Enums.UserStatus = {
   DELETED: 'DELETED'
 };
 
+exports.AuthChannel = exports.$Enums.AuthChannel = {
+  MOBILE: 'MOBILE',
+  ADMIN_PANEL: 'ADMIN_PANEL',
+  DOCTOR_PANEL: 'DOCTOR_PANEL',
+  TECHNICIAN_PANEL: 'TECHNICIAN_PANEL'
+};
+
+exports.SessionStatus = exports.$Enums.SessionStatus = {
+  ACTIVE: 'ACTIVE',
+  REVOKED: 'REVOKED',
+  EXPIRED: 'EXPIRED'
+};
+
 exports.ProviderStatus = exports.$Enums.ProviderStatus = {
   PENDING_VERIFICATION: 'PENDING_VERIFICATION',
   ACTIVE: 'ACTIVE',
@@ -989,12 +1330,12 @@ exports.AiTechnicianDocumentType = exports.$Enums.AiTechnicianDocumentType = {
   NID_FRONT: 'NID_FRONT',
   NID_BACK: 'NID_BACK',
   PROFILE_PHOTO: 'PROFILE_PHOTO',
-  COVER_IMAGE: 'COVER_IMAGE',
   TRAINING_CERTIFICATE: 'TRAINING_CERTIFICATE',
   AI_CERTIFICATE: 'AI_CERTIFICATE',
   COMPANY_ID: 'COMPANY_ID',
   EXPERIENCE_PROOF: 'EXPERIENCE_PROOF',
-  OTHER: 'OTHER'
+  OTHER: 'OTHER',
+  COVER_IMAGE: 'COVER_IMAGE'
 };
 
 exports.AiTechnicianDocumentReviewStatus = exports.$Enums.AiTechnicianDocumentReviewStatus = {
@@ -1007,7 +1348,6 @@ exports.MobileUploadPurpose = exports.$Enums.MobileUploadPurpose = {
   AI_TECHNICIAN_NID_FRONT: 'AI_TECHNICIAN_NID_FRONT',
   AI_TECHNICIAN_NID_BACK: 'AI_TECHNICIAN_NID_BACK',
   AI_TECHNICIAN_PROFILE_PHOTO: 'AI_TECHNICIAN_PROFILE_PHOTO',
-  AI_TECHNICIAN_COVER_IMAGE: 'AI_TECHNICIAN_COVER_IMAGE',
   AI_TECHNICIAN_TRAINING_CERTIFICATE: 'AI_TECHNICIAN_TRAINING_CERTIFICATE',
   AI_TECHNICIAN_AI_CERTIFICATE: 'AI_TECHNICIAN_AI_CERTIFICATE',
   AI_TECHNICIAN_OTHER: 'AI_TECHNICIAN_OTHER',
@@ -1016,6 +1356,7 @@ exports.MobileUploadPurpose = exports.$Enums.MobileUploadPurpose = {
   ADMIN_SEMEN_PROVIDER_LOGO: 'ADMIN_SEMEN_PROVIDER_LOGO',
   ADMIN_SEMEN_TEMPLATE_COVER: 'ADMIN_SEMEN_TEMPLATE_COVER',
   ADMIN_SEMEN_TEMPLATE_GALLERY: 'ADMIN_SEMEN_TEMPLATE_GALLERY',
+  AI_TECHNICIAN_COVER_IMAGE: 'AI_TECHNICIAN_COVER_IMAGE',
   ADMIN_SEMEN_TEMPLATE_VIDEO: 'ADMIN_SEMEN_TEMPLATE_VIDEO',
   AI_SERVICE_INSTANCE_COVER: 'AI_SERVICE_INSTANCE_COVER',
   AI_SERVICE_INSTANCE_GALLERY: 'AI_SERVICE_INSTANCE_GALLERY',
@@ -1118,13 +1459,6 @@ exports.PregnancyStatus = exports.$Enums.PregnancyStatus = {
   PREGNANT: 'PREGNANT'
 };
 
-exports.ServiceRequestType = exports.$Enums.ServiceRequestType = {
-  DOCTOR_HOME_VISIT: 'DOCTOR_HOME_VISIT',
-  EMERGENCY_DOCTOR: 'EMERGENCY_DOCTOR',
-  AI_SERVICE: 'AI_SERVICE',
-  ONLINE_CONSULTATION_LATER: 'ONLINE_CONSULTATION_LATER'
-};
-
 exports.ServiceRequestStatus = exports.$Enums.ServiceRequestStatus = {
   PENDING: 'PENDING',
   ACCEPTED: 'ACCEPTED',
@@ -1135,10 +1469,195 @@ exports.ServiceRequestStatus = exports.$Enums.ServiceRequestStatus = {
   REJECTED: 'REJECTED'
 };
 
+exports.ServiceRequestType = exports.$Enums.ServiceRequestType = {
+  DOCTOR_HOME_VISIT: 'DOCTOR_HOME_VISIT',
+  EMERGENCY_DOCTOR: 'EMERGENCY_DOCTOR',
+  AI_SERVICE: 'AI_SERVICE',
+  ONLINE_CONSULTATION_LATER: 'ONLINE_CONSULTATION_LATER'
+};
+
+exports.RequestPriority = exports.$Enums.RequestPriority = {
+  LOW: 'LOW',
+  NORMAL: 'NORMAL',
+  HIGH: 'HIGH',
+  EMERGENCY: 'EMERGENCY'
+};
+
 exports.TreatmentCaseStatus = exports.$Enums.TreatmentCaseStatus = {
   DRAFT: 'DRAFT',
   FINALIZED: 'FINALIZED',
   CANCELLED: 'CANCELLED'
+};
+
+exports.TreatmentWorkflowStatus = exports.$Enums.TreatmentWorkflowStatus = {
+  ASSIGNED: 'ASSIGNED',
+  CONSULTATION_STARTED: 'CONSULTATION_STARTED',
+  DIAGNOSED: 'DIAGNOSED',
+  PRESCRIBED: 'PRESCRIBED',
+  FOLLOWUP_PENDING: 'FOLLOWUP_PENDING',
+  CLOSED: 'CLOSED'
+};
+
+exports.TreatmentFollowupStatus = exports.$Enums.TreatmentFollowupStatus = {
+  PENDING: 'PENDING',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+};
+
+exports.TreatmentNoteType = exports.$Enums.TreatmentNoteType = {
+  PRIVATE: 'PRIVATE',
+  SHARED: 'SHARED',
+  AUDIT: 'AUDIT'
+};
+
+exports.AiAssistantStatus = exports.$Enums.AiAssistantStatus = {
+  ACTIVE: 'ACTIVE',
+  CLOSED: 'CLOSED',
+  ESCALATED: 'ESCALATED'
+};
+
+exports.AiMessageRole = exports.$Enums.AiMessageRole = {
+  USER: 'USER',
+  ASSISTANT: 'ASSISTANT',
+  SYSTEM: 'SYSTEM'
+};
+
+exports.AiMemoryKind = exports.$Enums.AiMemoryKind = {
+  CONVERSATION: 'CONVERSATION',
+  CASE_CONTEXT: 'CASE_CONTEXT',
+  PREFERENCE: 'PREFERENCE'
+};
+
+exports.AiRiskBucket = exports.$Enums.AiRiskBucket = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH'
+};
+
+exports.AiEscalationReason = exports.$Enums.AiEscalationReason = {
+  HIGH_RISK: 'HIGH_RISK',
+  EMERGENCY_SYMPTOM: 'EMERGENCY_SYMPTOM',
+  LOW_CONFIDENCE: 'LOW_CONFIDENCE',
+  DOCTOR_REQUEST: 'DOCTOR_REQUEST',
+  POLICY_REFUSAL: 'POLICY_REFUSAL'
+};
+
+exports.AiEscalationStatus = exports.$Enums.AiEscalationStatus = {
+  PENDING_REVIEW: 'PENDING_REVIEW',
+  QUEUED: 'QUEUED',
+  HANDED_OFF: 'HANDED_OFF',
+  DISMISSED: 'DISMISSED'
+};
+
+exports.VoiceBandwidthMode = exports.$Enums.VoiceBandwidthMode = {
+  FULL: 'FULL',
+  LOW: 'LOW',
+  TRANSCRIPT_ONLY: 'TRANSCRIPT_ONLY'
+};
+
+exports.VoiceSessionStatus = exports.$Enums.VoiceSessionStatus = {
+  ACTIVE: 'ACTIVE',
+  PAUSED: 'PAUSED',
+  CLOSED: 'CLOSED',
+  INTERRUPTED: 'INTERRUPTED'
+};
+
+exports.VoiceSttMode = exports.$Enums.VoiceSttMode = {
+  STREAMING: 'STREAMING',
+  UPLOAD: 'UPLOAD'
+};
+
+exports.OfflineConnectivityMode = exports.$Enums.OfflineConnectivityMode = {
+  ONLINE: 'ONLINE',
+  DEGRADED: 'DEGRADED',
+  OFFLINE: 'OFFLINE'
+};
+
+exports.OfflineSyncEntityType = exports.$Enums.OfflineSyncEntityType = {
+  AUTH_SNAPSHOT: 'AUTH_SNAPSHOT',
+  AREA_DATA: 'AREA_DATA',
+  CASE_DRAFT: 'CASE_DRAFT',
+  VOICE_DRAFT: 'VOICE_DRAFT',
+  PROFILE: 'PROFILE',
+  OFFLINE_LEAD: 'OFFLINE_LEAD'
+};
+
+exports.OfflineSyncOperation = exports.$Enums.OfflineSyncOperation = {
+  UPSERT: 'UPSERT',
+  DELETE: 'DELETE'
+};
+
+exports.OfflineConflictStrategy = exports.$Enums.OfflineConflictStrategy = {
+  SERVER_WINS: 'SERVER_WINS',
+  LOCAL_WINS: 'LOCAL_WINS',
+  MERGE_REQUIRED: 'MERGE_REQUIRED'
+};
+
+exports.OfflineSyncItemStatus = exports.$Enums.OfflineSyncItemStatus = {
+  PENDING: 'PENDING',
+  SYNCING: 'SYNCING',
+  SYNCED: 'SYNCED',
+  FAILED: 'FAILED',
+  DEAD: 'DEAD',
+  CONFLICT: 'CONFLICT'
+};
+
+exports.OfflineLeadQueueStatus = exports.$Enums.OfflineLeadQueueStatus = {
+  QUEUED: 'QUEUED',
+  UPLOADING: 'UPLOADING',
+  SYNCED: 'SYNCED',
+  FAILED: 'FAILED'
+};
+
+exports.ServiceRequestEventType = exports.$Enums.ServiceRequestEventType = {
+  CREATED: 'CREATED',
+  ASSIGNED: 'ASSIGNED',
+  REASSIGNED: 'REASSIGNED',
+  ACCEPTED: 'ACCEPTED',
+  REJECTED: 'REJECTED',
+  STARTED: 'STARTED',
+  NOTE_ADDED: 'NOTE_ADDED',
+  CASE_OPENED: 'CASE_OPENED',
+  CASE_UPDATED: 'CASE_UPDATED',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+};
+
+exports.LeadSource = exports.$Enums.LeadSource = {
+  AI_CHAT: 'AI_CHAT',
+  PHONE: 'PHONE',
+  WEBSITE: 'WEBSITE',
+  REFERRAL: 'REFERRAL',
+  SOCIAL_MEDIA: 'SOCIAL_MEDIA',
+  WALK_IN: 'WALK_IN',
+  OTHER: 'OTHER'
+};
+
+exports.LeadStatus = exports.$Enums.LeadStatus = {
+  NEW: 'NEW',
+  CONTACTED: 'CONTACTED',
+  QUALIFIED: 'QUALIFIED',
+  CONSULTATION_SCHEDULED: 'CONSULTATION_SCHEDULED',
+  CONVERTED: 'CONVERTED',
+  LOST: 'LOST',
+  FOLLOW_UP: 'FOLLOW_UP'
+};
+
+exports.LeadPriority = exports.$Enums.LeadPriority = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH',
+  URGENT: 'URGENT'
+};
+
+exports.LeadActivityType = exports.$Enums.LeadActivityType = {
+  CREATED: 'CREATED',
+  CALLED: 'CALLED',
+  MESSAGED: 'MESSAGED',
+  STATUS_CHANGED: 'STATUS_CHANGED',
+  ASSIGNED: 'ASSIGNED',
+  NOTE_ADDED: 'NOTE_ADDED',
+  CONVERTED: 'CONVERTED'
 };
 
 exports.PrescriptionStatus = exports.$Enums.PrescriptionStatus = {
@@ -1266,8 +1785,26 @@ exports.ServiceInstanceAuditAction = exports.$Enums.ServiceInstanceAuditAction =
   STATUS_CHANGE: 'STATUS_CHANGE'
 };
 
+exports.AuthAuditAction = exports.$Enums.AuthAuditAction = {
+  LOGIN_SUCCESS: 'LOGIN_SUCCESS',
+  LOGIN_FAILURE: 'LOGIN_FAILURE',
+  LOGOUT: 'LOGOUT',
+  OTP_REQUEST: 'OTP_REQUEST',
+  OTP_VERIFY_SUCCESS: 'OTP_VERIFY_SUCCESS',
+  OTP_VERIFY_FAILURE: 'OTP_VERIFY_FAILURE',
+  REFRESH_SUCCESS: 'REFRESH_SUCCESS',
+  REFRESH_FAILURE: 'REFRESH_FAILURE',
+  PERMISSION_DENIED: 'PERMISSION_DENIED',
+  SESSION_REVOKED: 'SESSION_REVOKED',
+  DEVICE_REGISTERED: 'DEVICE_REGISTERED',
+  DEVICE_REVOKED: 'DEVICE_REVOKED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
+  UserDevice: 'UserDevice',
+  UserSession: 'UserSession',
+  RefreshToken: 'RefreshToken',
   AdminProfile: 'AdminProfile',
   DoctorProfile: 'DoctorProfile',
   AiTechnicianProfile: 'AiTechnicianProfile',
@@ -1303,6 +1840,26 @@ exports.Prisma.ModelName = {
   AnimalProfile: 'AnimalProfile',
   ServiceRequest: 'ServiceRequest',
   TreatmentCase: 'TreatmentCase',
+  TreatmentWorkflow: 'TreatmentWorkflow',
+  TreatmentConsultation: 'TreatmentConsultation',
+  TreatmentFollowup: 'TreatmentFollowup',
+  TreatmentNote: 'TreatmentNote',
+  AiAssistantSession: 'AiAssistantSession',
+  AiAssistantMessage: 'AiAssistantMessage',
+  AiAssistantMemory: 'AiAssistantMemory',
+  AiTriageRecord: 'AiTriageRecord',
+  AiEscalationRecord: 'AiEscalationRecord',
+  AiSafetyAuditLog: 'AiSafetyAuditLog',
+  VoiceSession: 'VoiceSession',
+  VoiceTranscript: 'VoiceTranscript',
+  VoiceNavigationEvent: 'VoiceNavigationEvent',
+  OfflineSyncSession: 'OfflineSyncSession',
+  OfflineSyncItem: 'OfflineSyncItem',
+  OfflineLeadDraft: 'OfflineLeadDraft',
+  OfflineConflictRecord: 'OfflineConflictRecord',
+  ServiceRequestTimelineEvent: 'ServiceRequestTimelineEvent',
+  Lead: 'Lead',
+  LeadActivity: 'LeadActivity',
   Prescription: 'Prescription',
   PrescriptionItem: 'PrescriptionItem',
   BillingRecord: 'BillingRecord',
@@ -1318,6 +1875,7 @@ exports.Prisma.ModelName = {
   ServiceInstanceReview: 'ServiceInstanceReview',
   ServiceInstancePublishLog: 'ServiceInstancePublishLog',
   ServiceInstanceAuditEvent: 'ServiceInstanceAuditEvent',
+  AuthAuditEvent: 'AuthAuditEvent',
   Setting: 'Setting'
 };
 

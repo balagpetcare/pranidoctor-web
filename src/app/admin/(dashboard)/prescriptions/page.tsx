@@ -1,10 +1,15 @@
-import { AdminPlaceholder } from "@/components/admin/AdminPlaceholder";
+import { AdminModuleUnavailable } from "@/components/admin/shared/AdminModuleUnavailable";
 
 export default function PrescriptionsPage() {
   return (
-    <AdminPlaceholder
+    <AdminModuleUnavailable
       title="প্রেসক্রিপশন"
-      description="প্রেসক্রিপশন তালিকা ও বিস্তারিত দেখা — এখনো প্লেসহোল্ডার।"
+      description="চিকিৎসা প্রেসক্রিপশন তালিকা, PDF ও সম্পাদনা।"
+      missingApi="GET /api/admin/prescriptions"
+      relatedLinks={[
+        { href: "/admin/reports", label: "চিকিৎসা রেকর্ড" },
+        { href: "/admin/service-requests", label: "সার্ভিস রিকোয়েস্ট" },
+      ]}
     />
   );
 }

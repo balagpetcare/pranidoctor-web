@@ -21,10 +21,11 @@ mkdirSync(join(root, 'src', 'generated'), { recursive: true });
 cpSync(backendGenerated, webGenerated, { recursive: true });
 
 const browserShim = `/**
- * Browser + server enum/types shim (legacy @/generated/prisma/browser imports).
+ * Browser-safe enum/types shim (legacy @/generated/prisma/browser imports).
+ * Must re-export index-browser.js — never index.js (full Node Prisma client).
  */
-export * from "./index.js";
-export type * from "./index.js";
+export * from "./index-browser.js";
+export type * from "./index-browser.js";
 `;
 import { writeFileSync } from 'node:fs';
 writeFileSync(join(webGenerated, 'browser.ts'), browserShim, 'utf8');

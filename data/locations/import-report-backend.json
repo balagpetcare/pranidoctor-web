@@ -1,0 +1,42 @@
+{
+  "generatedAt": "2026-05-21T23:08:58.656Z",
+  "dataDir": "D:\\PraniDoctor\\pranidoctor-web\\data\\locations",
+  "divisions": {
+    "inserted": 0,
+    "updated": 8,
+    "skipped": 0,
+    "invalid": 0
+  },
+  "districts": {
+    "inserted": 0,
+    "updated": 64,
+    "skipped": 0,
+    "invalid": 0
+  },
+  "upazilas": {
+    "inserted": 0,
+    "updated": 494,
+    "skipped": 0,
+    "invalid": 0
+  },
+  "unions": {
+    "inserted": 0,
+    "updated": 4536,
+    "skipped": 4,
+    "invalid": 0
+  },
+  "villages": {
+    "inserted": 0,
+    "updated": 0,
+    "skipped": 0,
+    "invalid": 0
+  },
+  "summary": {
+    "missingParent": 0,
+    "invalidCoordinate": 0,
+    "duplicateNamesSkipped": 4
+  },
+  "notes": [
+    "villages.csv empty or missing — village import skipped."
+  ]
+}

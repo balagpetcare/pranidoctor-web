@@ -1,5 +1,7 @@
 import { Prisma } from "@/generated/prisma/client";
 
+import { serverLog } from "@/lib/logging/server-logger";
+
 /** JSON `error.code` values for `POST /api/admin/auth/login`. */
 export type AdminLoginErrorCode =
   | "invalid_credentials"
@@ -47,12 +49,12 @@ export function logAdminLoginFailure(
   code: AdminLoginErrorCode,
   meta?: { prismaCode?: string },
 ): void {
-  const line = `[pranidoctor][admin-login] failure code=${code}${
-    meta?.prismaCode ? ` prismaCode=${meta.prismaCode}` : ""
-  }`;
-  if (code === "invalid_credentials") {
-    console.info(line);
-  } else {
-    console.warn(line);
-  }
+  const level = code === "invalid_credentials" ? "info" : "warn";
+  serverLog[level]("Admin login failure", {
+    event: "admin.login.failure",
+    metadata: {
+      code,
+      ...(meta?.prismaCode ? { prismaCode: meta.prismaCode } : {}),
+    },
+  });
 }

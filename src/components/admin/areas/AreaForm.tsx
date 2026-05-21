@@ -7,7 +7,7 @@ import { AdminActionButton } from "@/components/admin-ui/AdminActionButton";
 import { AdminErrorState } from "@/components/admin-ui/AdminErrorState";
 import { AdminFormSection } from "@/components/admin-ui/AdminFormSection";
 import { AdminLoadingState } from "@/components/admin-ui/AdminLoadingState";
-import { AreaType } from "@/generated/prisma/browser";
+import { AREA_TYPE, type AreaType } from "@/lib/domain/area-type-constants";
 import { adminFetch } from "@/lib/admin/admin-fetch";
 import { readAdminJson } from "@/lib/admin/read-admin-json";
 import { cn } from "@/lib/cn";
@@ -17,12 +17,12 @@ import { areaTypeBn } from "./area-labels";
 import { filterParentCandidates, formatAreaOptionLabel } from "./parent-options";
 
 const AREA_TYPES = [
-  AreaType.DIVISION,
-  AreaType.DISTRICT,
-  AreaType.UPAZILA,
-  AreaType.UNION,
-  AreaType.VILLAGE,
-  AreaType.SERVICE_AREA,
+  AREA_TYPE.DIVISION,
+  AREA_TYPE.DISTRICT,
+  AREA_TYPE.UPAZILA,
+  AREA_TYPE.UNION,
+  AREA_TYPE.VILLAGE,
+  AREA_TYPE.SERVICE_AREA,
 ] as const;
 
 function inputClassName(): string {
@@ -61,7 +61,7 @@ export function AreaForm({ mode, areaId }: AreaFormProps) {
   const [nameBn, setNameBn] = useState("");
   const [slug, setSlug] = useState("");
   const [code, setCode] = useState("");
-  const [type, setType] = useState<AreaType>(AreaType.DIVISION);
+  const [type, setType] = useState<AreaType>(AREA_TYPE.DIVISION);
   const [parentId, setParentId] = useState<string>("");
   const [sortOrder, setSortOrder] = useState("0");
   const [isActive, setIsActive] = useState(true);

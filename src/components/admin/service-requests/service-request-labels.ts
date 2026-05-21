@@ -1,24 +1,26 @@
 import type { AdminBadgeVariant } from "@/components/admin-ui/AdminBadge";
 import {
-  ServiceRequestStatus,
-  ServiceRequestType,
-} from "@/generated/prisma/browser";
+  SERVICE_REQUEST_STATUS,
+  type ServiceRequestStatus,
+  SERVICE_REQUEST_TYPE,
+  type ServiceRequestType,
+} from "@/lib/domain/service-request-constants";
 
 export function serviceRequestStatusBn(status: string): string {
   switch (status as ServiceRequestStatus) {
-    case ServiceRequestStatus.PENDING:
+    case SERVICE_REQUEST_STATUS.PENDING:
       return "অপেক্ষমাণ";
-    case ServiceRequestStatus.ACCEPTED:
+    case SERVICE_REQUEST_STATUS.ACCEPTED:
       return "গ্রহণ করা হয়েছে";
-    case ServiceRequestStatus.ASSIGNED:
+    case SERVICE_REQUEST_STATUS.ASSIGNED:
       return "বরাদ্দ";
-    case ServiceRequestStatus.IN_PROGRESS:
+    case SERVICE_REQUEST_STATUS.IN_PROGRESS:
       return "চলমান";
-    case ServiceRequestStatus.COMPLETED:
+    case SERVICE_REQUEST_STATUS.COMPLETED:
       return "সম্পন্ন";
-    case ServiceRequestStatus.CANCELLED:
+    case SERVICE_REQUEST_STATUS.CANCELLED:
       return "বাতিল";
-    case ServiceRequestStatus.REJECTED:
+    case SERVICE_REQUEST_STATUS.REJECTED:
       return "প্রত্যাখ্যাত";
     default:
       return status.replace(/_/g, " ");
@@ -29,16 +31,16 @@ export function serviceRequestStatusBadgeVariant(
   status: string,
 ): AdminBadgeVariant {
   switch (status as ServiceRequestStatus) {
-    case ServiceRequestStatus.COMPLETED:
+    case SERVICE_REQUEST_STATUS.COMPLETED:
       return "success";
-    case ServiceRequestStatus.CANCELLED:
-    case ServiceRequestStatus.REJECTED:
+    case SERVICE_REQUEST_STATUS.CANCELLED:
+    case SERVICE_REQUEST_STATUS.REJECTED:
       return "neutral";
-    case ServiceRequestStatus.PENDING:
+    case SERVICE_REQUEST_STATUS.PENDING:
       return "warning";
-    case ServiceRequestStatus.IN_PROGRESS:
-    case ServiceRequestStatus.ASSIGNED:
-    case ServiceRequestStatus.ACCEPTED:
+    case SERVICE_REQUEST_STATUS.IN_PROGRESS:
+    case SERVICE_REQUEST_STATUS.ASSIGNED:
+    case SERVICE_REQUEST_STATUS.ACCEPTED:
       return "info";
     default:
       return "default";
@@ -47,13 +49,13 @@ export function serviceRequestStatusBadgeVariant(
 
 export function serviceRequestTypeBn(t: string): string {
   switch (t as ServiceRequestType) {
-    case ServiceRequestType.DOCTOR_HOME_VISIT:
+    case SERVICE_REQUEST_TYPE.DOCTOR_HOME_VISIT:
       return "ডাক্তার হোম ভিজিট";
-    case ServiceRequestType.EMERGENCY_DOCTOR:
+    case SERVICE_REQUEST_TYPE.EMERGENCY_DOCTOR:
       return "জরুরি ডাক্তার";
-    case ServiceRequestType.AI_SERVICE:
+    case SERVICE_REQUEST_TYPE.AI_SERVICE:
       return "এআই সার্ভিস";
-    case ServiceRequestType.ONLINE_CONSULTATION_LATER:
+    case SERVICE_REQUEST_TYPE.ONLINE_CONSULTATION_LATER:
       return "অনলাইন পরামর্শ";
     default:
       return t.replace(/_/g, " ");
@@ -68,6 +70,6 @@ export function isEmergencyServiceRequest(row: {
   return (
     row.isEmergency ||
     (row.serviceType as ServiceRequestType) ===
-      ServiceRequestType.EMERGENCY_DOCTOR
+      SERVICE_REQUEST_TYPE.EMERGENCY_DOCTOR
   );
 }

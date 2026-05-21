@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import {
+  BarChart3,
   Bell,
   BookOpen,
   ClipboardList,
@@ -12,6 +13,7 @@ import {
   Inbox,
   LayoutDashboard,
   Layers,
+  ListTree,
   MapPin,
   MapPinned,
   MessageSquareWarning,
@@ -19,18 +21,26 @@ import {
   PawPrint,
   Pill,
   Settings,
+  ShieldCheck,
   Stethoscope,
   Users,
   UsersRound,
   Wallet2,
 } from "lucide-react";
 
+import { USER_ROLE, type UserRole } from "@/lib/admin-auth/user-role";
+import type { ServiceInstanceAdminCapability } from "@/lib/admin-auth/permissions";
+
 export type AdminNavItem = {
   href: string;
   labelBn: string;
   titleEn: string;
   icon: LucideIcon;
-  /** Reserved for future role-based nav filtering; not enforced in the shell today. */
+  /** Optional capability gate (enterprise review). */
+  capability?: ServiceInstanceAdminCapability;
+  /** Optional role allow-list; omit for all panel admins. */
+  roles?: UserRole[];
+  /** @deprecated Use `capability` / `roles` — kept for legacy callers. */
   permission?: string | string[];
 };
 
@@ -45,6 +55,7 @@ export type AdminNavGroup = {
   children: AdminNavItem[];
 };
 
+/** @deprecated Prefer {@link filterAdminNavGroupsForActor} in the shell. */
 export function navItemIsVisible(item: AdminNavItem): boolean {
   void item;
   return true;
@@ -97,6 +108,12 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
         titleEn: "Dashboard",
         icon: LayoutDashboard,
       },
+      {
+        href: "/admin/analytics",
+        labelBn: "অ্যানালিটিক্স",
+        titleEn: "Analytics",
+        icon: BarChart3,
+      },
     ],
   },
   {
@@ -143,9 +160,9 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
   },
   {
     id: "ai-technician-mgmt",
-    labelEn: "AI Technician Management",
-    labelBn: "এআই টেকনিশিয়ান",
-    titleEn: "Applications and complaints",
+    labelEn: "AI Technician Operations",
+    labelBn: "এআই অপারেশন",
+    titleEn: "Applications, complaints, and enterprise review",
     icon: FolderKanban,
     children: [
       {
@@ -165,6 +182,7 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
         labelBn: "এন্টারপ্রাইজ সেবা পর্যালোচনা",
         titleEn: "Enterprise service instance review",
         icon: ClipboardList,
+        capability: "serviceInstance.view",
       },
     ],
   },
@@ -204,8 +222,8 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
     children: [
       {
         href: "/admin/customers",
-        labelBn: "কাস্টমার",
-        titleEn: "Customers",
+        labelBn: "ইউজার / কাস্টমার",
+        titleEn: "Users / Customers",
         icon: Users,
       },
       {
@@ -228,6 +246,18 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
         labelBn: "সার্ভিস রিকোয়েস্ট",
         titleEn: "Service requests",
         icon: ClipboardList,
+      },
+      {
+        href: "/admin/cases",
+        labelBn: "কেস",
+        titleEn: "Cases (service requests)",
+        icon: FolderKanban,
+      },
+      {
+        href: "/admin/appointments",
+        labelBn: "অ্যাপয়েন্টমেন্ট",
+        titleEn: "Appointments (service requests)",
+        icon: Inbox,
       },
       {
         href: "/admin/reports",
@@ -291,6 +321,14 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
         labelBn: "(ডেভ) OTP লগ",
         titleEn: "Dev OTP logs",
         icon: FlaskConical,
+        roles: [USER_ROLE.SUPER_ADMIN, USER_ROLE.ADMIN],
+      },
+      {
+        href: "/admin/audit",
+        labelBn: "অডিট",
+        titleEn: "Audit hub",
+        icon: ShieldCheck,
+        roles: [USER_ROLE.SUPER_ADMIN, USER_ROLE.ADMIN],
       },
     ],
   },
@@ -298,14 +336,32 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
     id: "system",
     labelEn: "System",
     labelBn: "সিস্টেম",
-    titleEn: "Admin settings",
+    titleEn: "Admin settings and configuration",
     icon: Settings,
     children: [
+      {
+        href: "/admin/service-categories",
+        labelBn: "সার্ভিস ক্যাটাগরি",
+        titleEn: "Service categories (master)",
+        icon: ListTree,
+      },
       {
         href: "/admin/settings",
         labelBn: "সেটিংস",
         titleEn: "Settings",
         icon: Settings,
+      },
+      {
+        href: "/admin/settings/roles",
+        labelBn: "ভূমিকা",
+        titleEn: "Roles (read-only)",
+        icon: ShieldCheck,
+      },
+      {
+        href: "/admin/settings/permissions",
+        labelBn: "অনুমতি",
+        titleEn: "Permissions (read-only)",
+        icon: ShieldCheck,
       },
     ],
   },
@@ -324,6 +380,17 @@ export function getSectionTitleFromPath(pathname: string): string {
       if (normalized === item.href || normalized.startsWith(`${item.href}/`)) {
         return item.labelBn;
       }
+    }
+    const tab = normalized.split("/").pop();
+    const tabLabels: Record<string, string> = {
+      pending: "অপেক্ষমাণ",
+      "needs-correction": "সংশোধন",
+      approved: "অনুমোদিত",
+      published: "প্রকাশিত",
+      archived: "আর্কাইভ",
+    };
+    if (tab && tabLabels[tab]) {
+      return tabLabels[tab]!;
     }
     return "এন্টারপ্রাইজ";
   }

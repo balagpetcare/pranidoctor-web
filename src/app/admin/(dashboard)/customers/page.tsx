@@ -1,10 +1,15 @@
-import { AdminPlaceholder } from "@/components/admin/AdminPlaceholder";
+import { AdminModuleUnavailable } from "@/components/admin/shared/AdminModuleUnavailable";
 
 export default function CustomersPage() {
   return (
-    <AdminPlaceholder
-      title="কাস্টমার"
-      description="গ্রাহক তালিকা ও বিস্তারিত প্রোফাইল — API প্রস্তুত হলে এখানে দেখানো হবে।"
+    <AdminModuleUnavailable
+      title="ইউজার / কাস্টমার"
+      description="গ্রাহক (CUSTOMER role) তালিকা, প্রোফাইল ও সার্চ। ড্যাশবোর্ডে গ্রাহক সংখ্যা API থেকে আসে; তালিকা API নেই।"
+      missingApi="GET /api/admin/customers"
+      relatedLinks={[
+        { href: "/admin/service-requests", label: "সার্ভিস রিকোয়েস্ট" },
+        { href: "/admin", label: "ড্যাশবোর্ড" },
+      ]}
     />
   );
 }

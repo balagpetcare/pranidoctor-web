@@ -3,27 +3,13 @@ import Link from "next/link";
 import { AdminPageHeader } from "@/components/admin-ui/AdminPageHeader";
 import {
   getLocationAdminStats,
-  readLocationImportReport,
+  getLocationImportReport,
+  type LocationImportReport,
 } from "@/lib/locations/location-master-admin-client";
-
-type ImportReportShape = {
-  generatedAt?: string;
-  dryRun?: boolean;
-  summary?: {
-    missingParent?: number;
-    invalidCoordinate?: number;
-    pendingVerificationApprox?: number;
-    duplicateWarningsTotal?: number;
-    missingCoordinatesInDb?: number | null;
-  };
-  unions?: { imported?: number; updated?: number; invalid?: number };
-  villages?: { imported?: number; updated?: number; invalid?: number };
-};
 
 export default async function AdminLocationsPage() {
   const stats = await getLocationAdminStats();
-  const rawReport = readLocationImportReport();
-  const report = rawReport as ImportReportShape | null;
+  const report: LocationImportReport | null = await getLocationImportReport();
 
   const dup =
     stats.duplicateWarningCounts.divisions +

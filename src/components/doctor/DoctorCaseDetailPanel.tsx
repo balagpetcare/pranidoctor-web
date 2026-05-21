@@ -10,7 +10,16 @@ import { readDoctorJson } from "@/lib/doctor/read-doctor-json";
 import type { DoctorServiceRequestDetailDto } from "@/lib/doctor-service-requests/doctor-service-request-service";
 import { DOCTOR_CASE_COMPLETABLE_STATUSES } from "@/lib/doctor-service-requests/clinical-constants";
 import { cn } from "@/lib/cn";
-import { PaymentMethod, PaymentStatus, ServiceRequestStatus } from "@/generated/prisma/browser";
+import {
+  PAYMENT_METHOD,
+  PAYMENT_STATUS,
+  type PaymentMethod,
+  type PaymentStatus,
+} from "@/lib/domain/payment-constants";
+import {
+  SERVICE_REQUEST_STATUS,
+  type ServiceRequestStatus,
+} from "@/lib/domain/service-request-constants";
 
 function fmtEnum(s: string): string {
   return s.replace(/_/g, " ");
@@ -38,20 +47,20 @@ type ActionMeta = {
 };
 
 const MVP_PAYMENT_METHODS: PaymentMethod[] = [
-  PaymentMethod.CASH,
-  PaymentMethod.BKASH,
-  PaymentMethod.NAGAD,
-  PaymentMethod.ROCKET,
-  PaymentMethod.BANK,
-  PaymentMethod.OTHER,
+  PAYMENT_METHOD.CASH,
+  PAYMENT_METHOD.BKASH,
+  PAYMENT_METHOD.NAGAD,
+  PAYMENT_METHOD.ROCKET,
+  PAYMENT_METHOD.BANK,
+  PAYMENT_METHOD.OTHER,
 ];
 
 const MVP_PAYMENT_STATUSES: PaymentStatus[] = [
-  PaymentStatus.UNPAID,
-  PaymentStatus.PARTIAL,
-  PaymentStatus.PAID,
-  PaymentStatus.REFUNDED,
-  PaymentStatus.CANCELLED,
+  PAYMENT_STATUS.UNPAID,
+  PAYMENT_STATUS.PARTIAL,
+  PAYMENT_STATUS.PAID,
+  PAYMENT_STATUS.REFUNDED,
+  PAYMENT_STATUS.CANCELLED,
 ];
 
 function parseOptionalNonNegativeMoney(raw: string): number | null {
@@ -75,9 +84,9 @@ export function DoctorCaseDetailPanel({ requestId }: { requestId: string }) {
   const [billTravel, setBillTravel] = useState("");
   const [billMedicine, setBillMedicine] = useState("");
   const [billDiscount, setBillDiscount] = useState("");
-  const [billMethod, setBillMethod] = useState<PaymentMethod>(PaymentMethod.CASH);
+  const [billMethod, setBillMethod] = useState<PaymentMethod>(PAYMENT_METHOD.CASH);
   const [billPayStatus, setBillPayStatus] = useState<PaymentStatus>(
-    PaymentStatus.UNPAID,
+    PAYMENT_STATUS.UNPAID,
   );
 
   const load = useCallback(async () => {
@@ -220,11 +229,11 @@ export function DoctorCaseDetailPanel({ requestId }: { requestId: string }) {
     }
   }
 
-  const canAccept = row?.status === ServiceRequestStatus.ASSIGNED;
+  const canAccept = row?.status === SERVICE_REQUEST_STATUS.ASSIGNED;
   const canReject =
     row &&
-    (row.status === ServiceRequestStatus.ASSIGNED ||
-      row.status === ServiceRequestStatus.ACCEPTED);
+    (row.status === SERVICE_REQUEST_STATUS.ASSIGNED ||
+      row.status === SERVICE_REQUEST_STATUS.ACCEPTED);
 
   const hasTreatmentNote = (row?.treatments.length ?? 0) > 0;
   const canCompleteCase =
@@ -234,7 +243,7 @@ export function DoctorCaseDetailPanel({ requestId }: { requestId: string }) {
     ) &&
     hasTreatmentNote;
 
-  const isCompleted = row?.status === ServiceRequestStatus.COMPLETED;
+  const isCompleted = row?.status === SERVICE_REQUEST_STATUS.COMPLETED;
 
   if (loading) {
     return (

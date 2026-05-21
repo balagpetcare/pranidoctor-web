@@ -22,6 +22,8 @@ export type AdminJwtPayload = {
   sub: string;
   email: string;
   role: AdminPanelSessionRole;
+  /** Panel session id — when present, backend can revoke / touch session. */
+  sid?: string;
 };
 
 export async function signAdminToken(
@@ -54,10 +56,12 @@ export async function verifyAdminToken(
     if (role !== "ADMIN" && role !== "SUPER_ADMIN") return null;
     if (typeof payload.sub !== "string") return null;
     if (typeof payload.email !== "string") return null;
+    const sid = typeof payload.sid === "string" ? payload.sid : undefined;
     return {
       sub: payload.sub,
       email: payload.email,
       role: role as AdminPanelSessionRole,
+      ...(sid ? { sid } : {}),
     };
   } catch {
     return null;

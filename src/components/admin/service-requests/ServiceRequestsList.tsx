@@ -16,9 +16,11 @@ import { readAdminJson } from "@/lib/admin/read-admin-json";
 import { cn } from "@/lib/cn";
 import type { AdminAreaRow } from "@/types/admin-areas";
 import {
-  ServiceRequestStatus,
-  ServiceRequestType,
-} from "@/generated/prisma/browser";
+  SERVICE_REQUEST_STATUS,
+  type ServiceRequestStatus,
+  SERVICE_REQUEST_TYPE,
+  type ServiceRequestType,
+} from "@/lib/domain/service-request-constants";
 
 import {
   isEmergencyServiceRequest,
@@ -29,22 +31,27 @@ import {
 
 const PAGE_SIZE = 20;
 
-const STATUS_TABS: { value: "" | ServiceRequestStatus; label: string }[] = [
-  { value: "", label: "সব" },
-  { value: ServiceRequestStatus.PENDING, label: "অপেক্ষমাণ" },
-  { value: ServiceRequestStatus.ACCEPTED, label: "গ্রহণ করা হয়েছে" },
-  { value: ServiceRequestStatus.ASSIGNED, label: "বরাদ্দ" },
-  { value: ServiceRequestStatus.IN_PROGRESS, label: "চলমান" },
-  { value: ServiceRequestStatus.COMPLETED, label: "সম্পন্ন" },
-  { value: ServiceRequestStatus.CANCELLED, label: "বাতিল" },
-  { value: ServiceRequestStatus.REJECTED, label: "প্রত্যাখ্যাত" },
+const STATUS_FILTER_VALUES: ("" | ServiceRequestStatus)[] = [
+  "",
+  SERVICE_REQUEST_STATUS.PENDING,
+  SERVICE_REQUEST_STATUS.ACCEPTED,
+  SERVICE_REQUEST_STATUS.ASSIGNED,
+  SERVICE_REQUEST_STATUS.IN_PROGRESS,
+  SERVICE_REQUEST_STATUS.COMPLETED,
+  SERVICE_REQUEST_STATUS.CANCELLED,
+  SERVICE_REQUEST_STATUS.REJECTED,
 ];
 
+const STATUS_TABS = STATUS_FILTER_VALUES.map((value) => ({
+  value,
+  label: value === "" ? "সব" : serviceRequestStatusBn(value),
+}));
+
 const TYPE_OPTIONS: ServiceRequestType[] = [
-  ServiceRequestType.DOCTOR_HOME_VISIT,
-  ServiceRequestType.EMERGENCY_DOCTOR,
-  ServiceRequestType.AI_SERVICE,
-  ServiceRequestType.ONLINE_CONSULTATION_LATER,
+  SERVICE_REQUEST_TYPE.DOCTOR_HOME_VISIT,
+  SERVICE_REQUEST_TYPE.EMERGENCY_DOCTOR,
+  SERVICE_REQUEST_TYPE.AI_SERVICE,
+  SERVICE_REQUEST_TYPE.ONLINE_CONSULTATION_LATER,
 ];
 
 function inputClassName(): string {
@@ -101,7 +108,12 @@ function assignmentSummary(r: AdminServiceRequestDto): string {
   return "নির্ধারিত নয়";
 }
 
-export function ServiceRequestsList() {
+export type ServiceRequestsListProps = {
+  /** Pre-select status tab/filter on mount. */
+  initialStatus?: "" | ServiceRequestStatus;
+};
+
+export function ServiceRequestsList({ initialStatus = "" }: ServiceRequestsListProps) {
   const [requests, setRequests] = useState<AdminServiceRequestDto[]>([]);
   const [total, setTotal] = useState(0);
   const [offset, setOffset] = useState(0);
@@ -110,7 +122,7 @@ export function ServiceRequestsList() {
 
   const [draftType, setDraftType] = useState("");
   const [draftArea, setDraftArea] = useState("");
-  const [appliedStatus, setAppliedStatus] = useState("");
+  const [appliedStatus, setAppliedStatus] = useState(initialStatus);
   const [appliedType, setAppliedType] = useState("");
   const [appliedArea, setAppliedArea] = useState("");
   const [areas, setAreas] = useState<AdminAreaRow[]>([]);

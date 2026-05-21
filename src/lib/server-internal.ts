@@ -11,6 +11,10 @@ function getBackendOrigin(): string {
   return process.env.BACKEND_URL ?? (api || "http://localhost:3000");
 }
 
+function requestHasAuthHeaders(headers: Headers): boolean {
+  return headers.has("cookie") || headers.has("authorization");
+}
+
 export async function serverInternalFetch(
   path: string,
   init: RequestInit = {},
@@ -19,17 +23,20 @@ export async function serverInternalFetch(
   const url = path.startsWith("http") ? path : `${origin}${path.startsWith("/") ? path : `/${path}`}`;
 
   const hdrs = new Headers(init.headers);
-  const incoming = await headers();
-  const cookieStore = await cookies();
 
-  const auth = incoming.get("authorization");
-  if (auth && !hdrs.has("authorization")) hdrs.set("authorization", auth);
+  if (!requestHasAuthHeaders(hdrs)) {
+    const incoming = await headers();
+    const cookieStore = await cookies();
 
-  const cookieHeader = cookieStore
-    .getAll()
-    .map((c) => `${c.name}=${c.value}`)
-    .join("; ");
-  if (cookieHeader && !hdrs.has("cookie")) hdrs.set("cookie", cookieHeader);
+    const auth = incoming.get("authorization");
+    if (auth && !hdrs.has("authorization")) hdrs.set("authorization", auth);
+
+    const cookieHeader = cookieStore
+      .getAll()
+      .map((c) => `${c.name}=${c.value}`)
+      .join("; ");
+    if (cookieHeader && !hdrs.has("cookie")) hdrs.set("cookie", cookieHeader);
+  }
 
   if (!hdrs.has("accept")) hdrs.set("accept", "application/json");
 

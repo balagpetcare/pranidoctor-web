@@ -1,0 +1,13 @@
+﻿node : Warning: Detected unsettled top-level await at 
+file:///D:/PraniDoctor/pranidoctor-web/scripts/admin-api-smoke-test.mjs:68
+At C:\Users\balag\AppData\Local\Temp\ps-script-c99e4a86-b02f-4df5-9a84-7d9ac18af3d8.ps1:87 char:48
++ ... \pranidoctor-web"; node scripts/admin-api-smoke-test.mjs 2>&1 | Out-F ...
++                        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : NotSpecified: (Warning: Detect...oke-test.mjs:68:String) [], RemoteException
+    + FullyQualifiedErrorId : NativeCommandError
+ 
+  const r = await get(WEB, ep, webLogin.cookie);
+            ^
+
+
+

@@ -1,6 +1,3 @@
-import * as fs from "node:fs";
-import * as path from "node:path";
-
 import { serverInternalJson } from "@/lib/server-internal";
 
 export type LocationAdminStats = {
@@ -83,13 +80,25 @@ export async function listPendingVerification(
   return res.data.items ?? [];
 }
 
-/** Reads local import report JSON (filesystem only — not DB). */
-export function readLocationImportReport(): unknown | null {
-  const reportPath = path.join(process.cwd(), "data", "location-import-report.json");
-  if (!fs.existsSync(reportPath)) return null;
-  try {
-    return JSON.parse(fs.readFileSync(reportPath, "utf8")) as unknown;
-  } catch {
-    return null;
-  }
+export type LocationImportReport = {
+  generatedAt?: string;
+  dryRun?: boolean;
+  summary?: {
+    missingParent?: number;
+    invalidCoordinate?: number;
+    pendingVerificationApprox?: number;
+    duplicateWarningsTotal?: number;
+    missingCoordinatesInDb?: number | null;
+  };
+  unions?: { imported?: number; updated?: number; invalid?: number };
+  villages?: { imported?: number; updated?: number; invalid?: number };
+};
+
+export async function getLocationImportReport(): Promise<LocationImportReport | null> {
+  const res = await serverInternalJson<{ report: LocationImportReport | null }>(
+    "/api/admin/locations/import-report",
+  );
+  if (!res.ok) return null;
+  return res.data.report ?? null;
 }
+

@@ -28,6 +28,17 @@
   }
 }
 
+/* Workspace breadcrumb rail */
+#pd-admin-root .pd-admin-breadcrumb {
+  min-height: 1.25rem;
+}
+
+@media (max-width: 767.98px) {
+  #pd-admin-root[data-sidebar-mode="collapsed"] .pd-admin-sidebar {
+    max-width: min(100vw - 1rem, var(--pd-admin-sidebar-w-expanded));
+  }
+}
+
 /* Sticky desktop topbar (mobile topbar remains sticky via component classes) */
 #pd-admin-root[data-topbar-sticky="true"] .pd-admin-topbar-desktop {
   position: sticky;

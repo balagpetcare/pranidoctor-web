@@ -3,14 +3,10 @@
 import dynamic from "next/dynamic";
 import Link from "next/link";
 import {
-  AlertTriangle,
   ArrowLeft,
-  CheckCircle2,
-  ClipboardCheck,
   Loader2,
   Plus,
   Save,
-  Sparkles,
   Trash2,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
@@ -119,7 +115,6 @@ type AdminSemenTemplateDetail = {
   }[] | null;
 };
 
-type FormSectionStatus = "active" | "complete" | "warning" | "idle";
 type SaveIntent = "draft" | "continue" | "publish";
 
 function htmlPlainLen(html: string): number {
@@ -517,29 +512,6 @@ export function SemenServiceTemplateForm(props: SemenServiceTemplateFormProps) {
   const handleSaveContinue = useCallback(() => setSaveIntent("continue"), [setSaveIntent]);
   const handlePublishIntent = useCallback(() => setSaveIntent("publish"), [setSaveIntent]);
 
-  function stepStatusFromFlags(
-    active: boolean,
-    complete: boolean,
-    warning: boolean,
-  ): FormSectionStatus {
-    if (active) return "active";
-    if (warning) return "warning";
-    if (complete) return "complete";
-    return "idle";
-  }
-
-  function stepStateClasses(status: FormSectionStatus): string {
-    if (status === "active") {
-      return "border-emerald-300 bg-emerald-50 text-emerald-800 dark:border-emerald-800/60 dark:bg-emerald-950/40 dark:text-emerald-200";
-    }
-    if (status === "complete") {
-      return "border-sky-300 bg-sky-50 text-sky-800 dark:border-sky-900/60 dark:bg-sky-950/40 dark:text-sky-200";
-    }
-    if (status === "warning") {
-      return "border-amber-300 bg-amber-50 text-amber-900 dark:border-amber-800/60 dark:bg-amber-950/30 dark:text-amber-200";
-    }
-    return "border-zinc-200 bg-zinc-50 text-zinc-700 dark:border-zinc-800 dark:bg-zinc-900/60 dark:text-zinc-300";
-  }
   useEffect(() => {
     if (loading) {
       initialSnapshotRef.current = null;
@@ -974,58 +946,6 @@ export function SemenServiceTemplateForm(props: SemenServiceTemplateFormProps) {
     if (approvalBusy) return "অনুমোদন প্রক্রিয়া চলমান।";
     return null;
   }, [saving, mediaSectionBusy, approvalBusy]);
-
-  const coreComplete = Boolean(
-    internalName.trim() &&
-      semenProviderId.trim() &&
-      (semenProductKind !== "OTHER" || otherSemenLabel.trim()) &&
-      (approvalStatus !== "REJECTED" || rejectedReasonField.trim()),
-  );
-  const pricingComplete = Boolean(defaultBasePrice.trim() && !(defaultOfferPrice.trim() && defaultDiscountPercent.trim()));
-  const breedComplete = Boolean(breedRows.some((r) => r.breedId.trim()) && breedSumOk);
-  const richComplete = Boolean(
-    htmlPlainLen(shortDescription) > 0 || htmlPlainLen(detailedDescription) > 0 || htmlPlainLen(expectedBenefits) > 0,
-  );
-  const warningsComplete = htmlPlainLen(warningsContraindications) > 0;
-  const mediaComplete = mediaRows.some((m) => m.uploadedFileId.trim() || m.externalUrl.trim());
-  const metadataComplete = Boolean(tagsJsonText.trim());
-
-  const sectionStates = [
-    {
-      id: "semen-section-core",
-      label: "মূল তথ্য",
-      status: stepStatusFromFlags(false, coreComplete, !coreComplete && !!(internalName.trim() || semenProviderId.trim())),
-    },
-    {
-      id: "semen-section-pricing",
-      label: "মূল্য নির্ধারণ",
-      status: stepStatusFromFlags(false, pricingComplete, !pricingComplete && !!defaultBasePrice.trim()),
-    },
-    {
-      id: "semen-section-breed",
-      label: "জাত কম্পোজিশন",
-      status: stepStatusFromFlags(false, breedComplete, !breedSumOk),
-    },
-    {
-      id: "semen-section-description",
-      label: "রিচ বিবরণ ও সতর্কতা",
-      status: stepStatusFromFlags(false, richComplete || warningsComplete, false),
-    },
-    {
-      id: "semen-section-media",
-      label: "মিডিয়া",
-      status: stepStatusFromFlags(false, mediaComplete, mediaSectionBusy),
-    },
-    {
-      id: "semen-section-metadata",
-      label: "মেটাডেটা",
-      status: stepStatusFromFlags(false, metadataComplete, false),
-    },
-  ] as const;
-
-  const firstActionableSection =
-    sectionStates.find((section) => section.status === "warning" || section.status === "idle")?.id ??
-    sectionStates[0]?.id;
 
   if (loading) {
     return (

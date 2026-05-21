@@ -1,6 +1,6 @@
 /**
- * Browser + server enum/types shim (legacy `@/generated/prisma/browser` imports).
- * Values and types from backend-synced client.
+ * Browser-safe enum/types shim (legacy @/generated/prisma/browser imports).
+ * Must re-export index-browser.js — never index.js (full Node Prisma client).
  */
-export * from "./index.js";
-export type * from "./index.js";
+export * from "./index-browser.js";
+export type * from "./index-browser.js";

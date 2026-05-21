@@ -1,5 +1,13 @@
 import { NextResponse } from "next/server";
 
+import {
+  applyRequestCorrelationHeaders,
+  resolveRequestCorrelation,
+} from "@/lib/logging/correlation";
+import { REQUEST_ID_HEADER, CORRELATION_ID_HEADER } from "@/lib/logging/constants";
+import { runWithRequestContext } from "@/lib/logging/request-context";
+import { serverLog } from "@/lib/logging/server-logger";
+
 /**
  * Proxy Next.js App Router handlers to canonical Express backend.
  * Preserves method, query, headers, and body.
@@ -10,42 +18,105 @@ function getBackendOrigin(): string {
   return process.env.BACKEND_URL ?? (api || "http://localhost:3000");
 }
 
-export async function proxyRouteToBackend(request: Request): Promise<Response> {
+function isAdminProxyPath(pathname: string): boolean {
+  return pathname.startsWith("/api/admin");
+}
+
+async function proxyOnce(request: Request): Promise<Response> {
   const origin = getBackendOrigin();
   const url = new URL(request.url);
   const target = `${origin}${url.pathname}${url.search}`;
+  const ids = resolveRequestCorrelation(request.headers);
+  const started = Date.now();
 
-  const headers = new Headers(request.headers);
-  headers.delete("host");
-  headers.delete("connection");
+  return runWithRequestContext(
+    {
+      ...ids,
+      path: url.pathname,
+      method: request.method,
+    },
+    async () => {
+      const headers = new Headers(request.headers);
+      // Hop-by-hop / Node fetch-incompatible headers must not be forwarded upstream.
+      for (const name of [
+        "host",
+        "connection",
+        "keep-alive",
+        "transfer-encoding",
+        "te",
+        "trailer",
+        "upgrade",
+        "proxy-authorization",
+        "proxy-connection",
+        "expect",
+      ]) {
+        headers.delete(name);
+      }
+      applyRequestCorrelationHeaders(headers, ids);
 
-  const init: RequestInit = {
-    method: request.method,
-    headers,
-    redirect: "manual",
-  };
+      const init: RequestInit = {
+        method: request.method,
+        headers,
+        redirect: "manual",
+      };
 
-  if (request.method !== "GET" && request.method !== "HEAD") {
-    const body = await request.arrayBuffer();
-    if (body.byteLength > 0) {
-      init.body = body;
-    }
-  }
+      if (request.method !== "GET" && request.method !== "HEAD") {
+        const body = await request.arrayBuffer();
+        if (body.byteLength > 0) {
+          init.body = body;
+        }
+      }
 
-  const upstream = await fetch(target, init);
-  const responseHeaders = new Headers(upstream.headers);
-  responseHeaders.delete("transfer-encoding");
+      try {
+        const upstream = await fetch(target, init);
+        const responseHeaders = new Headers(upstream.headers);
+        responseHeaders.delete("transfer-encoding");
+        responseHeaders.set(REQUEST_ID_HEADER, ids.requestId);
+        responseHeaders.set(CORRELATION_ID_HEADER, ids.correlationId);
 
-  return new Response(upstream.body, {
-    status: upstream.status,
-    statusText: upstream.statusText,
-    headers: responseHeaders,
-  });
+        if (isAdminProxyPath(url.pathname)) {
+          const level = upstream.status >= 500 ? "error" : upstream.status >= 400 ? "warn" : "info";
+          serverLog[level]("Backend proxy completed", {
+            event: "admin.proxy",
+            metadata: {
+              path: url.pathname,
+              method: request.method,
+              status: upstream.status,
+              durationMs: Date.now() - started,
+            },
+          });
+        }
+
+        return new Response(upstream.body, {
+          status: upstream.status,
+          statusText: upstream.statusText,
+          headers: responseHeaders,
+        });
+      } catch (error) {
+        if (isAdminProxyPath(url.pathname)) {
+          serverLog.error("Backend proxy failed", {
+            event: "admin.proxy.error",
+            error,
+            metadata: {
+              path: url.pathname,
+              method: request.method,
+              durationMs: Date.now() - started,
+            },
+          });
+        }
+        throw error;
+      }
+    },
+  );
+}
+
+export async function proxyRouteToBackend(request: Request): Promise<Response> {
+  return proxyOnce(request);
 }
 
 /** Use when handler must return NextResponse (e.g. cookie mutations). */
 export async function proxyRouteToBackendNext(request: Request): Promise<NextResponse> {
-  const res = await proxyRouteToBackend(request);
+  const res = await proxyOnce(request);
   const body = await res.arrayBuffer();
   return new NextResponse(body, {
     status: res.status,

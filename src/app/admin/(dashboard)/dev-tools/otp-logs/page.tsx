@@ -1,3 +1,6 @@
+import { USER_ROLE } from "@/lib/admin-auth/user-role";
+import { ensureAdminRole } from "@/lib/admin-auth/dashboard-guard";
+
 import { AdminPageHeader } from "@/components/admin-ui/AdminPageHeader";
 import { AdminOtpDevLogsPanel } from "@/components/admin/dev-tools/AdminOtpDevLogsPanel";
 import {
@@ -5,7 +8,9 @@ import {
   isOtpDebugPanelAllowed,
 } from "@/lib/mobile-auth/otp-env";
 
-export default function AdminOtpDevLogsPage() {
+export default async function AdminOtpDevLogsPage() {
+  await ensureAdminRole(USER_ROLE.SUPER_ADMIN, USER_ROLE.ADMIN);
+
   const allowed = isOtpDebugPanelAllowed();
   const cfg = getOtpConfig();
 
@@ -31,7 +36,7 @@ export default function AdminOtpDevLogsPage() {
         description={
           cfg.mode === "dev"
             ? "ডেভ মোডে পাঠানো OTP এখানে দেখা যেতে পারে (প্রোডাকশন বিল্ডে কোড লুকানো)। টার্মিনাল লগও দেখুন।"
-            : "লাইভ মোডে এখানে কোনো প্লেইন OTP সংরক্ষণ করা হয় না। শুধু ডেভ মোডের চেষ্টা এখানে থাকে।"
+            : "লাইভ মোডে এখানে কোনো প্লেইন OTP সংরক্ষণ করা হয় নি। শুধু ডেভ মোডের চেষ্টা এখানে থাকে।"
         }
       />
       <AdminOtpDevLogsPanel />

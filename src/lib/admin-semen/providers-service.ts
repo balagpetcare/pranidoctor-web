@@ -1,2 +1,2 @@
 /** Implementation archived — DB via pranidoctor-backend. */
-export type ArchivedModule = any;
+export type ArchivedModule = unknown;

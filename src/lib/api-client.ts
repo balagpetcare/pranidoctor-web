@@ -95,16 +95,48 @@ export async function apiRequest<T>(
   }
 }
 
-/** Ops probe against backend root `/health` (not under `/api`). */
-export async function fetchBackendHealth(): Promise<ApiResult<{ status?: string; alive?: boolean }>> {
+function parseHealthJson(text: string): {
+  status?: string;
+  alive?: boolean;
+  database?: string;
+} {
+  if (!text) return {};
+  try {
+    const parsed = JSON.parse(text) as
+      | { status?: string; alive?: boolean; database?: string }
+      | { ok?: boolean; data?: { status?: string; alive?: boolean; database?: string } };
+    if (parsed && typeof parsed === "object" && "data" in parsed && parsed.data) {
+      return parsed.data;
+    }
+    return parsed as { status?: string; alive?: boolean; database?: string };
+  } catch {
+    return {};
+  }
+}
+
+/** Admin BFF probe — prefers `/api/admin/health` (DB) over root `/health` (S3/Redis). */
+export async function fetchBackendHealth(): Promise<
+  ApiResult<{ status?: string; alive?: boolean; database?: string }>
+> {
   const origin = getBackendOrigin();
   try {
+    const adminResponse = await fetch(`${origin}/api/admin/health`, {
+      method: "GET",
+      headers: { Accept: "application/json" },
+      cache: "no-store",
+    });
+    const adminText = await adminResponse.text();
+    const adminData = parseHealthJson(adminText);
+    if (adminResponse.ok && adminData.database === "up") {
+      return { ok: true, status: adminResponse.status, data: { status: "healthy", alive: true, database: "up" } };
+    }
+
     const response = await fetch(`${origin}/health`, {
       method: "GET",
       headers: { Accept: "application/json" },
       cache: "no-store",
     });
-    const data = (await response.json()) as { status?: string; alive?: boolean };
+    const data = parseHealthJson(await response.text());
     if (!response.ok) {
       return { ok: false, status: response.status, error: `HTTP ${response.status}`, body: data };
     }

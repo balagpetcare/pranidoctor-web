@@ -1,10 +1,13 @@
-import { ServiceRequestStatus } from "@/generated/prisma/browser";
+import {
+  SERVICE_REQUEST_STATUS,
+  type ServiceRequestStatus,
+} from "@/lib/domain/service-request-constants";
 
 /** Request must be assigned to this doctor and open for clinical documentation. */
 export const DOCTOR_CLINICAL_REQUEST_STATUSES: ServiceRequestStatus[] = [
-  ServiceRequestStatus.ASSIGNED,
-  ServiceRequestStatus.ACCEPTED,
-  ServiceRequestStatus.IN_PROGRESS,
+  SERVICE_REQUEST_STATUS.ASSIGNED,
+  SERVICE_REQUEST_STATUS.ACCEPTED,
+  SERVICE_REQUEST_STATUS.IN_PROGRESS,
 ];
 
 /** Doctor may mark the service request completed from these statuses (same as clinical writes). */

@@ -7,7 +7,10 @@ import { doctorFetch } from "@/lib/doctor/doctor-fetch";
 import type { DoctorServiceRequestDetailDto } from "@/lib/doctor-service-requests/doctor-service-request-service";
 import { DOCTOR_CLINICAL_REQUEST_STATUSES } from "@/lib/doctor-service-requests/clinical-constants";
 import { cn } from "@/lib/cn";
-import { ServiceRequestStatus } from "@/generated/prisma/browser";
+import {
+  SERVICE_REQUEST_STATUS,
+  type ServiceRequestStatus,
+} from "@/lib/domain/service-request-constants";
 
 function fmtEnum(s: string): string {
   return s.replace(/_/g, " ");
@@ -326,7 +329,7 @@ export function DoctorCaseClinicalSection({ requestId, row, onSaved }: Props) {
 
       {!canEdit ? (
         <p className="text-sm text-zinc-600 dark:text-zinc-400">
-          {row.status === ServiceRequestStatus.COMPLETED ? (
+          {row.status === SERVICE_REQUEST_STATUS.COMPLETED ? (
             <>
               This case is <strong>completed</strong>. Treatment notes and prescriptions are shown
               for reference only.
