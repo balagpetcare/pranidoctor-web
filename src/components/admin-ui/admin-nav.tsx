@@ -1,5 +1,6 @@
 import type { LucideIcon } from "lucide-react";
 import {
+  Activity,
   BarChart3,
   Bell,
   BookOpen,
@@ -22,6 +23,7 @@ import {
   PawPrint,
   Pill,
   Settings,
+  Shield,
   ShieldCheck,
   Stethoscope,
   Users,
@@ -184,6 +186,46 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
         titleEn: "Enterprise service instance review",
         icon: ClipboardList,
         capability: "serviceInstance.view",
+      },
+    ],
+  },
+  {
+    id: "ai-ops",
+    labelEn: "AI Operations",
+    labelBn: "এআই অপারেশন",
+    titleEn: "LLM dashboard, prompts, knowledge base",
+    icon: Cpu,
+    roles: [USER_ROLE.SUPER_ADMIN, USER_ROLE.ADMIN],
+    children: [
+      {
+        href: "/admin/ai-ops",
+        labelBn: "AI ড্যাশবোর্ড",
+        titleEn: "AI dashboard",
+        icon: LayoutDashboard,
+      },
+      {
+        href: "/admin/ai-ops/prompts",
+        labelBn: "প্রম্পট",
+        titleEn: "Prompt management",
+        icon: FileText,
+      },
+      {
+        href: "/admin/ai-ops/knowledge",
+        labelBn: "নলেজ বেস",
+        titleEn: "Knowledge management",
+        icon: BookOpen,
+      },
+      {
+        href: "/admin/ai-ops/risk",
+        labelBn: "ঝুঁকি মনিটরিং",
+        titleEn: "Risk monitoring",
+        icon: Activity,
+      },
+      {
+        href: "/admin/ai-ops/governance",
+        labelBn: "গভর্নেন্স",
+        titleEn: "Governance & kill switch",
+        icon: Shield,
       },
     ],
   },

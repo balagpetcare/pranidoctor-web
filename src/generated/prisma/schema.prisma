@@ -17,6 +17,7 @@ model User {
   createdAt                         DateTime                    @default(now())
   updatedAt                         DateTime                    @updatedAt
   adminProfile                      AdminProfile?
+  aiAssistantSessions               AiAssistantSession[]
   customerAiServiceRecords          AiServiceRecord[]           @relation("AiServiceRecordCustomer")
   customerAiServiceRequests         AiServiceRequest[]          @relation("AiServiceRequestCustomer")
   aiTechnicianModuleComplaintsFiled AiTechnicianComplaint[]     @relation("AiTechnicianComplaintAuthor")
@@ -29,6 +30,12 @@ model User {
   customerProfile                   CustomerProfile?
   doctorProfile                     DoctorProfile?
   notifications                     Notification[]
+  notificationSettings              NotificationSettings?
+  mobileUserSettings                MobileUserSettings?
+  offlineConflictRecords            OfflineConflictRecord[]
+  offlineLeadDrafts                 OfflineLeadDraft[]
+  offlineSyncItems                  OfflineSyncItem[]
+  offlineSyncSessions               OfflineSyncSession[]
   semenTemplatesApproved            SemenServiceTemplate[]      @relation("SemenTemplateApprovedBy")
   serviceInstancesLastReviewed      ServiceInstance[]           @relation("ServiceInstanceLastReviewedBy")
   serviceInstanceAuditEvents        ServiceInstanceAuditEvent[]
@@ -36,15 +43,10 @@ model User {
   serviceInstanceReviews            ServiceInstanceReview[]
   serviceInstanceStatusLogs         ServiceInstanceStatusLog[]
   uploadedFiles                     UploadedFile[]
+  voiceSessions                     VoiceSession[]
   refreshTokens                     RefreshToken[]
   userDevices                       UserDevice[]
   userSessions                      UserSession[]
-  aiAssistantSessions               AiAssistantSession[]
-  voiceSessions                     VoiceSession[]
-  offlineSyncSessions               OfflineSyncSession[]
-  offlineSyncItems                  OfflineSyncItem[]
-  offlineLeadDrafts                 OfflineLeadDraft[]
-  offlineConflictRecords            OfflineConflictRecord[]
 
   @@index([role])
   @@index([status])
@@ -161,11 +163,11 @@ model DoctorProfile {
   prescriptions                  Prescription[]
   reviews                        Review[]
   assignedRequests               ServiceRequest[]
-  treatmentCases                 TreatmentCase[]
-  treatmentWorkflows             TreatmentWorkflow[]
   treatmentConsultations         TreatmentConsultation[]
   treatmentFollowups             TreatmentFollowup[]
   treatmentNotesAuthored         TreatmentNote[]                @relation("TreatmentNoteAuthor")
+  treatmentCases                 TreatmentCase[]
+  treatmentWorkflows             TreatmentWorkflow[]
 
   @@index([providerStatus])
 }
@@ -244,26 +246,42 @@ model AiTechnicianProfile {
 }
 
 model CustomerProfile {
-  id                 String           @id @default(cuid())
-  userId             String           @unique
-  displayName        String
-  locale             String?          @default("bn-BD")
-  addressJson        Json?
-  /// P2 — denormalized village FK for service matching (optional).
-  primaryVillageId   String?
-  profileCompletedAt DateTime?
-  createdAt          DateTime         @default(now())
-  updatedAt          DateTime         @updatedAt
+  id                    String                 @id @default(cuid())
+  userId                String                 @unique
+  displayName           String
+  locale                String?                @default("bn-BD")
+  addressJson           Json?
+  createdAt             DateTime               @default(now())
+  updatedAt             DateTime               @updatedAt
   /// HTTPS URL to display asset (same-origin `/api/mobile/uploads/:id` redirect or CDN).
-  profilePhotoUrl    String?
-  coverPhotoUrl      String?
-  animals            AnimalProfile[]
-  billingRecords     BillingRecord[]
-  complaints         Complaint[]
-  primaryVillage     Village?         @relation("CustomerPrimaryVillage", fields: [primaryVillageId], references: [id])
-  user               User             @relation(fields: [userId], references: [id], onDelete: Cascade)
-  reviews            Review[]
-  serviceRequests    ServiceRequest[]
+  profilePhotoUrl       String?
+  profilePhotoThumbUrl  String?
+  coverPhotoUrl         String?
+  coverPhotoThumbUrl    String?
+  /// P2 — denormalized village FK for service matching (optional).
+  primaryVillageId      String?
+  profileCompletedAt    DateTime?
+  animals               AnimalProfile[]
+  milkRecords           MilkRecord[]
+  feedRecords           FeedRecord[]
+  financeRecords        FinanceRecord[]
+  healthEvents          HealthEvent[]
+  vaccineRecords        VaccineRecord[]
+  farmTreatments        FarmTreatment[]
+  fatteningBatches      FatteningBatch[]
+  fatteningBatchRois    FatteningBatchRoi[]
+  weightRecords         WeightRecord[]
+  batchFeedPlans        BatchFeedPlan[]
+  inventoryItems        InventoryItem[]
+  inventoryTransactions InventoryTransaction[]
+  inventoryAuditLogs    InventoryAuditLog[]
+  supportTickets        SupportTicket[]
+  billingRecords        BillingRecord[]
+  complaints            Complaint[]
+  primaryVillage        Village?               @relation("CustomerPrimaryVillage", fields: [primaryVillageId], references: [id])
+  user                  User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  reviews               Review[]
+  serviceRequests       ServiceRequest[]
 
   @@index([primaryVillageId])
 }
@@ -904,28 +922,154 @@ model AiTechnicianComplaint {
 }
 
 model AnimalProfile {
-  id              String           @id @default(cuid())
-  customerId      String
-  name            String
-  species         String
-  breed           String?
-  category        AnimalCategory   @default(OTHER)
-  dateOfBirth     DateTime?
-  sex             String?
-  microchipOrTag  String?
-  notes           String?
-  active          Boolean          @default(true)
-  createdAt       DateTime         @default(now())
-  updatedAt       DateTime         @updatedAt
-  animalType      AnimalType?
-  gender          Gender?
-  weightKg        Decimal?         @db.Decimal(10, 3)
-  photoUrl        String?
-  pregnancyStatus PregnancyStatus?
-  customer        CustomerProfile  @relation(fields: [customerId], references: [id], onDelete: Cascade)
-  prescriptions   Prescription[]
-  serviceRequests ServiceRequest[]
-  treatmentCases  TreatmentCase[]
+  id                        String                 @id @default(cuid())
+  customerId                String
+  name                      String
+  species                   String
+  breed                     String?
+  category                  AnimalCategory         @default(OTHER)
+  dateOfBirth               DateTime?
+  sex                       String?
+  microchipOrTag            String?
+  notes                     String?
+  active                    Boolean                @default(true)
+  createdAt                 DateTime               @default(now())
+  updatedAt                 DateTime               @updatedAt
+  animalType                AnimalType?
+  gender                    Gender?
+  weightKg                  Decimal?               @db.Decimal(10, 3)
+  photoUrl                  String?
+  pregnancyStatus           PregnancyStatus?
+  customer                  CustomerProfile        @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  prescriptions             Prescription[]
+  serviceRequests           ServiceRequest[]
+  treatmentCases            TreatmentCase[]
+  milkRecords               MilkRecord[]
+  feedRecords               FeedRecord[]
+  healthEvents              HealthEvent[]
+  vaccineRecords            VaccineRecord[]
+  farmTreatments            FarmTreatment[]
+  fatteningBatchMemberships FatteningBatchAnimal[]
+  weightRecords             WeightRecord[]
+
+  @@index([customerId])
+}
+
+enum FatteningBatchStatus {
+  DRAFT
+  ACTIVE
+  COMPLETED
+  ARCHIVED
+}
+
+enum FatteningBatchGoalType {
+  NORMAL
+  QURBANI
+}
+
+model FatteningBatch {
+  id             String                 @id @default(cuid())
+  customerId     String
+  farmId         String
+  name           String
+  goalType       FatteningBatchGoalType @default(NORMAL)
+  goal           String?
+  startDate      DateTime?              @db.Date
+  targetDate     DateTime?              @db.Date
+  status         FatteningBatchStatus   @default(DRAFT)
+  createdAt      DateTime               @default(now())
+  updatedAt      DateTime               @updatedAt
+  customer       CustomerProfile        @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  animals        FatteningBatchAnimal[]
+  weightRecords  WeightRecord[]
+  feedPlan       BatchFeedPlan?
+  feedRecords    FeedRecord[]
+  roi            FatteningBatchRoi?
+  financeRecords FinanceRecord[]
+
+  @@index([customerId, farmId, status])
+  @@index([customerId, status, updatedAt])
+}
+
+enum BatchFeedPlanMode {
+  NORMAL
+  FATTENING
+}
+
+model BatchFeedPlan {
+  id            String            @id @default(cuid())
+  customerId    String
+  batchId       String            @unique
+  mode          BatchFeedPlanMode @default(FATTENING)
+  dailyAmountKg Decimal?          @db.Decimal(10, 3)
+  dailyCostBdt  Decimal?          @db.Decimal(12, 2)
+  feedType      FeedType?
+  unit          FeedUnit?         @default(KG)
+  notes         String?
+  createdAt     DateTime          @default(now())
+  updatedAt     DateTime          @updatedAt
+  customer      CustomerProfile   @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  batch         FatteningBatch    @relation(fields: [batchId], references: [id], onDelete: Cascade)
+
+  @@index([customerId])
+}
+
+enum WeightRecordMethod {
+  SCALE
+  TAPE
+  ESTIMATE
+  OTHER
+}
+
+model WeightRecord {
+  id         String             @id @default(cuid())
+  customerId String
+  animalId   String
+  batchId    String
+  weightKg   Decimal            @db.Decimal(10, 3)
+  recordedAt DateTime
+  recordedOn DateTime           @db.Date
+  method     WeightRecordMethod @default(SCALE)
+  note       String?
+  photoUrl   String?
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+  customer   CustomerProfile    @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  animal     AnimalProfile      @relation(fields: [animalId], references: [id], onDelete: Cascade)
+  batch      FatteningBatch     @relation(fields: [batchId], references: [id], onDelete: Cascade)
+
+  @@unique([batchId, animalId, recordedOn])
+  @@index([customerId, batchId, recordedOn])
+  @@index([animalId, batchId, recordedAt])
+}
+
+model FatteningBatchAnimal {
+  id        String    @id @default(cuid())
+  batchId   String
+  animalId  String
+  joinedAt  DateTime  @default(now())
+  removedAt DateTime?
+
+  batch  FatteningBatch @relation(fields: [batchId], references: [id], onDelete: Cascade)
+  animal AnimalProfile  @relation(fields: [animalId], references: [id], onDelete: Cascade)
+
+  @@unique([batchId, animalId])
+  @@index([batchId])
+  @@index([animalId])
+}
+
+/// Per-batch ROI targets and manual cost overrides (Phase 4).
+model FatteningBatchRoi {
+  id               String          @id @default(cuid())
+  customerId       String
+  batchId          String          @unique
+  purchaseCostBdt  Decimal?        @db.Decimal(12, 2)
+  projectedSaleBdt Decimal?        @db.Decimal(12, 2)
+  notes            String?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  customer         CustomerProfile @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  batch            FatteningBatch  @relation(fields: [batchId], references: [id], onDelete: Cascade)
 
   @@index([customerId])
 }
@@ -964,12 +1108,12 @@ model ServiceRequest {
   villageId              String?
   description            String?
   cancelReason           String?
-  /// P3 — formal priority (maps from isEmergency / urgency).
-  priority               RequestPriority               @default(NORMAL)
   adminNote              String?
   leadId                 String?                       @unique
+  /// P3 — formal priority (maps from isEmergency / urgency).
+  priority               RequestPriority               @default(NORMAL)
+  aiAssistantSessions    AiAssistantSession[]
   linkedAiServiceRequest AiServiceRequest?
-  timelineEvents         ServiceRequestTimelineEvent[]
   billingRecords         BillingRecord[]
   complaints             Complaint[]
   paymentRecords         PaymentRecord[]
@@ -980,15 +1124,15 @@ model ServiceRequest {
   assignedTechnician     AiTechnicianProfile?          @relation(fields: [assignedTechnicianId], references: [id])
   assignedDoctor         DoctorProfile?                @relation(fields: [assignedDoctorId], references: [id])
   customer               CustomerProfile               @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  crmLead                Lead?                         @relation("LeadServiceRequest", fields: [leadId], references: [id])
   serviceCategory        ServiceCategory               @relation(fields: [serviceCategoryId], references: [id])
   village                Village?                      @relation(fields: [villageId], references: [id], onDelete: Restrict)
-  crmLead                Lead?                         @relation("LeadServiceRequest", fields: [leadId], references: [id])
-  treatmentCases         TreatmentCase[]
-  treatmentWorkflow      TreatmentWorkflow?
+  timelineEvents         ServiceRequestTimelineEvent[]
   treatmentConsultations TreatmentConsultation[]
   treatmentFollowups     TreatmentFollowup[]
   treatmentNotes         TreatmentNote[]
-  aiAssistantSessions    AiAssistantSession[]
+  treatmentCases         TreatmentCase[]
+  treatmentWorkflow      TreatmentWorkflow?
   voiceSessions          VoiceSession[]
 
   @@index([status])
@@ -1044,12 +1188,12 @@ model TreatmentWorkflow {
   closedAt         DateTime?
   createdAt        DateTime                @default(now())
   updatedAt        DateTime                @updatedAt
-  doctor           DoctorProfile           @relation(fields: [doctorId], references: [id], onDelete: Restrict)
-  serviceRequest   ServiceRequest          @relation(fields: [serviceRequestId], references: [id], onDelete: Cascade)
-  treatmentCase    TreatmentCase?          @relation(fields: [treatmentCaseId], references: [id], onDelete: SetNull)
   consultations    TreatmentConsultation[]
   followups        TreatmentFollowup[]
   notes            TreatmentNote[]
+  doctor           DoctorProfile           @relation(fields: [doctorId], references: [id])
+  serviceRequest   ServiceRequest          @relation(fields: [serviceRequestId], references: [id], onDelete: Cascade)
+  treatmentCase    TreatmentCase?          @relation(fields: [treatmentCaseId], references: [id])
 
   @@index([doctorId])
   @@index([status])
@@ -1066,7 +1210,7 @@ model TreatmentConsultation {
   attachmentRefs   Json?
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
-  doctor           DoctorProfile     @relation(fields: [doctorId], references: [id], onDelete: Restrict)
+  doctor           DoctorProfile     @relation(fields: [doctorId], references: [id])
   serviceRequest   ServiceRequest    @relation(fields: [serviceRequestId], references: [id], onDelete: Cascade)
   workflow         TreatmentWorkflow @relation(fields: [workflowId], references: [id], onDelete: Cascade)
 
@@ -1087,7 +1231,7 @@ model TreatmentFollowup {
   completedAt      DateTime?
   createdAt        DateTime                @default(now())
   updatedAt        DateTime                @updatedAt
-  doctor           DoctorProfile           @relation(fields: [doctorId], references: [id], onDelete: Restrict)
+  doctor           DoctorProfile           @relation(fields: [doctorId], references: [id])
   serviceRequest   ServiceRequest          @relation(fields: [serviceRequestId], references: [id], onDelete: Cascade)
   workflow         TreatmentWorkflow       @relation(fields: [workflowId], references: [id], onDelete: Cascade)
 
@@ -1107,7 +1251,7 @@ model TreatmentNote {
   content          String
   createdAt        DateTime          @default(now())
   updatedAt        DateTime          @updatedAt
-  author           DoctorProfile     @relation("TreatmentNoteAuthor", fields: [authorDoctorId], references: [id], onDelete: Restrict)
+  author           DoctorProfile     @relation("TreatmentNoteAuthor", fields: [authorDoctorId], references: [id])
   serviceRequest   ServiceRequest    @relation(fields: [serviceRequestId], references: [id], onDelete: Cascade)
   workflow         TreatmentWorkflow @relation(fields: [workflowId], references: [id], onDelete: Cascade)
 
@@ -1126,13 +1270,13 @@ model AiAssistantSession {
   status         AiAssistantStatus    @default(ACTIVE)
   createdAt      DateTime             @default(now())
   updatedAt      DateTime             @updatedAt
-  user           User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
-  serviceRequest ServiceRequest?      @relation(fields: [caseId], references: [id], onDelete: SetNull)
-  messages       AiAssistantMessage[]
   memories       AiAssistantMemory[]
-  triageRecords  AiTriageRecord[]
+  messages       AiAssistantMessage[]
+  serviceRequest ServiceRequest?      @relation(fields: [caseId], references: [id])
+  user           User                 @relation(fields: [userId], references: [id], onDelete: Cascade)
   escalations    AiEscalationRecord[]
   auditLogs      AiSafetyAuditLog[]
+  triageRecords  AiTriageRecord[]
 
   @@index([userId])
   @@index([caseId])
@@ -1165,7 +1309,7 @@ model AiAssistantMemory {
   expiresAt DateTime?
   createdAt DateTime            @default(now())
   updatedAt DateTime            @updatedAt
-  session   AiAssistantSession? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+  session   AiAssistantSession? @relation(fields: [sessionId], references: [id])
 
   @@unique([userId, kind, key])
   @@index([userId])
@@ -1184,7 +1328,7 @@ model AiTriageRecord {
   symptomsJson       Json?
   mediaMetadataJson  Json?
   createdAt          DateTime            @default(now())
-  session            AiAssistantSession? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+  session            AiAssistantSession? @relation(fields: [sessionId], references: [id])
 
   @@index([userId])
   @@index([caseId])
@@ -1203,7 +1347,7 @@ model AiEscalationRecord {
   resolvedAt  DateTime?
   createdAt   DateTime            @default(now())
   updatedAt   DateTime            @updatedAt
-  session     AiAssistantSession? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+  session     AiAssistantSession? @relation(fields: [sessionId], references: [id])
 
   @@index([userId])
   @@index([caseId])
@@ -1217,7 +1361,7 @@ model AiSafetyAuditLog {
   action     String
   detailJson Json?
   createdAt  DateTime            @default(now())
-  session    AiAssistantSession? @relation(fields: [sessionId], references: [id], onDelete: SetNull)
+  session    AiAssistantSession? @relation(fields: [sessionId], references: [id])
 
   @@index([sessionId])
   @@index([userId])
@@ -1237,10 +1381,10 @@ model VoiceSession {
   retryCount     Int                    @default(0)
   createdAt      DateTime               @default(now())
   updatedAt      DateTime               @updatedAt
-  user           User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  serviceRequest ServiceRequest?        @relation(fields: [caseId], references: [id], onDelete: SetNull)
-  transcripts    VoiceTranscript[]
   navEvents      VoiceNavigationEvent[]
+  serviceRequest ServiceRequest?        @relation(fields: [caseId], references: [id])
+  user           User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  transcripts    VoiceTranscript[]
 
   @@index([userId])
   @@index([caseId])
@@ -1294,8 +1438,8 @@ model OfflineSyncSession {
   deadCount            Int                     @default(0)
   createdAt            DateTime                @default(now())
   updatedAt            DateTime                @updatedAt
-  user                 User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
   items                OfflineSyncItem[]
+  user                 User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, deviceId])
   @@index([userId])
@@ -1323,10 +1467,10 @@ model OfflineSyncItem {
   serverEntityId   String?
   createdAt        DateTime                @default(now())
   updatedAt        DateTime                @updatedAt
-  user             User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
-  session          OfflineSyncSession?     @relation(fields: [sessionId], references: [id], onDelete: SetNull)
-  leadDraft        OfflineLeadDraft?
   conflicts        OfflineConflictRecord[]
+  leadDraft        OfflineLeadDraft[]
+  session          OfflineSyncSession?     @relation(fields: [sessionId], references: [id])
+  user             User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([userId, idempotencyKey])
   @@index([userId, status])
@@ -1339,7 +1483,7 @@ model OfflineSyncItem {
 model OfflineLeadDraft {
   id                String                 @id @default(cuid())
   userId            String
-  syncItemId        String?                @unique
+  syncItemId        String?
   clientLeadId      String
   phone             String
   name              String?
@@ -1351,12 +1495,13 @@ model OfflineLeadDraft {
   serverLeadId      String?
   createdAt         DateTime               @default(now())
   updatedAt         DateTime               @updatedAt
+  serverLead        Lead?                  @relation(fields: [serverLeadId], references: [id])
+  syncItem          OfflineSyncItem?       @relation(fields: [syncItemId], references: [id])
   user              User                   @relation(fields: [userId], references: [id], onDelete: Cascade)
-  syncItem          OfflineSyncItem?       @relation(fields: [syncItemId], references: [id], onDelete: SetNull)
-  serverLead        Lead?                  @relation(fields: [serverLeadId], references: [id], onDelete: SetNull)
 
   @@unique([userId, clientLeadId])
   @@index([userId, status])
+  @@index([syncItemId])
 }
 
 /// P8 — Conflict audit (no silent overwrite).
@@ -1372,8 +1517,8 @@ model OfflineConflictRecord {
   mergePayloadJson Json?
   resolvedAt       DateTime?
   createdAt        DateTime                @default(now())
-  user             User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
   syncItem         OfflineSyncItem         @relation(fields: [syncItemId], references: [id], onDelete: Cascade)
+  user             User                    @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@index([userId])
   @@index([syncItemId])
@@ -1413,8 +1558,8 @@ model Lead {
   createdAt        DateTime           @default(now())
   updatedAt        DateTime           @updatedAt
   activities       LeadActivity[]
-  serviceRequest   ServiceRequest?    @relation("LeadServiceRequest")
   offlineDrafts    OfflineLeadDraft[]
+  serviceRequest   ServiceRequest?    @relation("LeadServiceRequest")
 
   @@index([phone])
   @@index([status])
@@ -1636,6 +1781,35 @@ model Notification {
   @@index([type])
 }
 
+model NotificationSettings {
+  userId                   String   @id
+  pushEnabled              Boolean  @default(true)
+  marketingEnabled         Boolean  @default(false)
+  treatmentReminderEnabled Boolean  @default(true)
+  vaccineReminderEnabled   Boolean  @default(true)
+  orderServiceEnabled      Boolean  @default(true)
+  updatedAt                DateTime @updatedAt
+  user                     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+enum MobileThemePreference {
+  SYSTEM
+  LIGHT
+  DARK
+}
+
+model MobileUserSettings {
+  userId                 String                @id
+  theme                  MobileThemePreference @default(SYSTEM)
+  locale                 String?               @default("bn-BD")
+  privacyAcceptedVersion String?
+  privacyAcceptedAt      DateTime?
+  termsAcceptedVersion   String?
+  termsAcceptedAt        DateTime?
+  updatedAt              DateTime              @updatedAt
+  user                   User                  @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
 /// Enterprise: worker submission of a semen (main) template for admin review → publish → `AiTechnicianService`.
 model ServiceInstance {
   id                             String                      @id @default(cuid())
@@ -1836,6 +2010,446 @@ enum AnimalType {
   DOG
   CAT
   OTHER
+}
+
+enum MilkSession {
+  MORNING
+  EVENING
+}
+
+model MilkRecord {
+  id             String          @id @default(cuid())
+  customerId     String
+  animalId       String
+  farmRef        String?
+  recordedDate   DateTime        @db.Date
+  session        MilkSession
+  quantityLiters Decimal         @db.Decimal(10, 3)
+  notes          String?
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  customer       CustomerProfile @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  animal         AnimalProfile   @relation(fields: [animalId], references: [id], onDelete: Cascade)
+
+  @@unique([customerId, animalId, recordedDate, session])
+  @@index([customerId, recordedDate])
+  @@index([animalId])
+}
+
+enum FeedType {
+  GRASS
+  STRAW
+  CONCENTRATE
+  MINERAL
+  SILAGE
+  OTHER
+}
+
+enum FeedUnit {
+  KG
+  BAG
+  BUNDLE
+  LITER
+  OTHER
+}
+
+/// Bangladesh cattle feed master categories (platform catalog — not farmer stock).
+enum FeedCategory {
+  ROUGHAGE
+  GREEN
+  CONCENTRATE
+  SUPPLEMENT
+  MINERAL
+  SILAGE
+  CUSTOM
+}
+
+/// Global feed master catalog. Admin-managed; farmers link via optional InventoryItem.feedCatalogId.
+model FeedCatalog {
+  id                String          @id @default(cuid())
+  code              String          @unique
+  nameBn            String
+  nameEn            String
+  category          FeedCategory
+  defaultUnit       FeedUnit
+  approxPriceBdt    Decimal?        @db.Decimal(12, 2)
+  nutritionJson     Json?
+  availabilityScore Int?
+  isSeeded          Boolean         @default(false)
+  isActive          Boolean         @default(true)
+  sortOrder         Int             @default(0)
+  createdAt         DateTime        @default(now())
+  updatedAt         DateTime        @updatedAt
+  inventoryItems    InventoryItem[]
+
+  @@index([category, isActive])
+  @@index([isActive, sortOrder])
+}
+
+model FeedRecord {
+  id                     String                @id @default(cuid())
+  customerId             String
+  farmRef                String?
+  animalId               String?
+  /// Legacy free-text / local group batch key.
+  batchId                String?
+  batchName              String?
+  /// FK to fattening batch when logged from cattle fattening flow.
+  fatteningBatchId       String?
+  /// Optional link to farm feed inventory (V1).
+  inventoryItemId        String?
+  inventoryTransactionId String?               @unique
+  deductStock            Boolean               @default(false)
+  feedType               FeedType
+  amount                 Decimal               @db.Decimal(10, 3)
+  unit                   FeedUnit
+  costBdt                Decimal?              @db.Decimal(12, 2)
+  recordedDate           DateTime              @db.Date
+  notes                  String?
+  createdAt              DateTime              @default(now())
+  updatedAt              DateTime              @updatedAt
+  customer               CustomerProfile       @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  animal                 AnimalProfile?        @relation(fields: [animalId], references: [id], onDelete: SetNull)
+  fatteningBatch         FatteningBatch?       @relation(fields: [fatteningBatchId], references: [id], onDelete: SetNull)
+  inventoryItem          InventoryItem?        @relation(fields: [inventoryItemId], references: [id], onDelete: SetNull)
+  inventoryTransaction   InventoryTransaction? @relation("FeedInventoryTransaction", fields: [inventoryTransactionId], references: [id], onDelete: SetNull)
+
+  @@index([customerId, recordedDate])
+  @@index([animalId])
+  @@index([feedType])
+  @@index([fatteningBatchId, recordedDate])
+  @@index([inventoryItemId])
+}
+
+/// Farm inventory catalog (feed + medicine).
+enum InventoryType {
+  FEED
+  MEDICINE
+}
+
+enum MedicineUnit {
+  TABLET
+  CAPSULE
+  ML
+  LITER
+  VIAL
+  SACHET
+  TUBE
+  OTHER
+}
+
+enum InventoryTransactionType {
+  RECEIPT
+  CONSUMPTION
+  ADJUSTMENT
+  RESERVE
+  RELEASE_RESERVE
+  VOID
+}
+
+enum InventoryTransactionSourceType {
+  MANUAL
+  FEED_RECORD
+  FARM_TREATMENT
+  PRESCRIPTION_ITEM
+  TREATMENT_CASE
+  AI_PLAN
+}
+
+model InventoryItem {
+  id                 String                 @id @default(cuid())
+  customerId         String
+  farmRef            String
+  inventoryType      InventoryType
+  displayName        String
+  /// Optional link to platform feed master (null = farmer custom feed).
+  feedCatalogId      String?
+  feedType           FeedType?
+  feedUnit           FeedUnit?
+  medicineUnit       MedicineUnit?
+  lowStockThreshold  Decimal?               @db.Decimal(10, 3)
+  allowNegativeStock Boolean                @default(false)
+  isActive           Boolean                @default(true)
+  deletedAt          DateTime?
+  notes              String?
+  createdAt          DateTime               @default(now())
+  updatedAt          DateTime               @updatedAt
+  customer           CustomerProfile        @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  feedCatalog        FeedCatalog?           @relation(fields: [feedCatalogId], references: [id], onDelete: SetNull)
+  balance            InventoryBalance?
+  transactions       InventoryTransaction[]
+  feedRecords        FeedRecord[]
+  auditLogs          InventoryAuditLog[]
+
+  @@unique([customerId, farmRef, inventoryType, displayName])
+  @@index([customerId, farmRef, inventoryType, isActive])
+  @@index([customerId, farmRef, deletedAt])
+  @@index([feedCatalogId])
+}
+
+model InventoryBalance {
+  id               String        @id @default(cuid())
+  inventoryItemId  String        @unique
+  quantityOnHand   Decimal       @db.Decimal(12, 3)
+  quantityReserved Decimal       @default(0) @db.Decimal(12, 3)
+  updatedAt        DateTime      @updatedAt
+  item             InventoryItem @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
+}
+
+model InventoryTransaction {
+  id                 String                         @id @default(cuid())
+  customerId         String
+  inventoryItemId    String
+  farmRef            String
+  inventoryType      InventoryType
+  transactionType    InventoryTransactionType
+  quantityDelta      Decimal                        @db.Decimal(12, 3)
+  unitSnapshot       String
+  sourceType         InventoryTransactionSourceType
+  sourceId           String?
+  idempotencyKey     String?
+  reason             String?
+  authorizedBy       String?
+  voidsTransactionId String?
+  recordedAt         DateTime                       @default(now())
+  createdAt          DateTime                       @default(now())
+  customer           CustomerProfile                @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  item               InventoryItem                  @relation(fields: [inventoryItemId], references: [id], onDelete: Cascade)
+  feedRecord         FeedRecord?                    @relation("FeedInventoryTransaction")
+
+  @@unique([customerId, idempotencyKey])
+  @@index([inventoryItemId, recordedAt])
+  @@index([customerId, farmRef, inventoryType])
+  @@index([sourceType, sourceId])
+}
+
+model InventoryAuditLog {
+  id              String          @id @default(cuid())
+  customerId      String
+  inventoryItemId String?
+  action          String
+  payload         Json?
+  actorUserId     String?
+  createdAt       DateTime        @default(now())
+  customer        CustomerProfile @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  item            InventoryItem?  @relation(fields: [inventoryItemId], references: [id], onDelete: SetNull)
+
+  @@index([customerId, createdAt])
+  @@index([inventoryItemId, createdAt])
+}
+
+enum FinanceType {
+  EXPENSE
+  INCOME
+}
+
+enum ExpenseCategory {
+  FEED
+  MEDICINE
+  LABOR
+  EQUIPMENT
+  TRANSPORT
+  OTHER
+}
+
+enum IncomeSource {
+  MILK_SALES
+  ANIMAL_SALES
+  SUBSIDY
+  SERVICE
+  OTHER
+}
+
+model FinanceRecord {
+  id               String           @id @default(cuid())
+  customerId       String
+  type             FinanceType
+  amountBdt        Decimal          @db.Decimal(12, 2)
+  recordedDate     DateTime         @db.Date
+  category         ExpenseCategory?
+  source           IncomeSource?
+  farmRef          String?
+  /// Links expense/income to a fattening batch for ROI (Phase 4).
+  fatteningBatchId String?
+  notes            String?
+  createdAt        DateTime         @default(now())
+  updatedAt        DateTime         @updatedAt
+  customer         CustomerProfile  @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  fatteningBatch   FatteningBatch?  @relation(fields: [fatteningBatchId], references: [id], onDelete: SetNull)
+
+  @@index([customerId, type, recordedDate])
+  @@index([category])
+  @@index([source])
+  @@index([fatteningBatchId, recordedDate])
+}
+
+enum HealthEventType {
+  SYMPTOM
+  DIAGNOSIS
+  DISEASE
+  CHECKUP
+  TREATMENT_REF
+}
+
+model HealthEvent {
+  id             String          @id @default(cuid())
+  customerId     String
+  animalId       String?
+  farmRef        String?
+  eventType      HealthEventType
+  title          String
+  symptoms       String?
+  diagnosis      String?
+  diseaseName    String?
+  treatmentRefId String?
+  vaccineRefId   String?
+  notes          String?
+  recordedDate   DateTime        @db.Date
+  createdAt      DateTime        @default(now())
+  updatedAt      DateTime        @updatedAt
+  customer       CustomerProfile @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  animal         AnimalProfile?  @relation(fields: [animalId], references: [id], onDelete: SetNull)
+
+  @@index([customerId, recordedDate])
+  @@index([animalId])
+  @@index([eventType])
+}
+
+enum VaccineStatus {
+  SCHEDULED
+  DUE
+  OVERDUE
+  COMPLETED
+}
+
+model VaccineRecord {
+  id               String          @id @default(cuid())
+  customerId       String
+  animalId         String?
+  farmRef          String?
+  vaccineName      String
+  vaccineType      String?
+  scheduledDate    DateTime        @db.Date
+  administeredDate DateTime?       @db.Date
+  nextDueDate      DateTime?       @db.Date
+  status           VaccineStatus   @default(SCHEDULED)
+  batchNumber      String?
+  notes            String?
+  createdAt        DateTime        @default(now())
+  updatedAt        DateTime        @updatedAt
+  customer         CustomerProfile @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  animal           AnimalProfile?  @relation(fields: [animalId], references: [id], onDelete: SetNull)
+
+  @@index([customerId, scheduledDate])
+  @@index([customerId, status])
+  @@index([animalId])
+}
+
+enum FarmTreatmentStatus {
+  ACTIVE
+  COMPLETED
+  CANCELLED
+}
+
+model FarmTreatment {
+  id            String              @id @default(cuid())
+  customerId    String
+  animalId      String?
+  farmRef       String?
+  title         String
+  diagnosis     String?
+  prescription  String?
+  medicinesJson Json?
+  startDate     DateTime            @db.Date
+  endDate       DateTime?           @db.Date
+  status        FarmTreatmentStatus @default(ACTIVE)
+  notes         String?
+  createdAt     DateTime            @default(now())
+  updatedAt     DateTime            @updatedAt
+  customer      CustomerProfile     @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  animal        AnimalProfile?      @relation(fields: [animalId], references: [id], onDelete: SetNull)
+
+  @@index([customerId, startDate])
+  @@index([customerId, status])
+  @@index([animalId])
+}
+
+enum SupportTicketCategory {
+  ACCOUNT
+  BILLING
+  TECHNICAL
+  ANIMAL_HEALTH
+  APP_USAGE
+  OTHER
+}
+
+enum SupportTicketPriority {
+  LOW
+  MEDIUM
+  HIGH
+  URGENT
+}
+
+enum SupportTicketStatus {
+  OPEN
+  IN_PROGRESS
+  WAITING_CUSTOMER
+  RESOLVED
+  CLOSED
+}
+
+enum SupportMessageAuthorType {
+  CUSTOMER
+  SUPPORT
+  SYSTEM
+}
+
+model SupportTicket {
+  id          String                    @id @default(cuid())
+  customerId  String
+  category    SupportTicketCategory
+  subject     String
+  description String
+  priority    SupportTicketPriority     @default(MEDIUM)
+  status      SupportTicketStatus       @default(OPEN)
+  createdAt   DateTime                  @default(now())
+  updatedAt   DateTime                  @updatedAt
+  closedAt    DateTime?
+  customer    CustomerProfile           @relation(fields: [customerId], references: [id], onDelete: Cascade)
+  messages    SupportTicketMessage[]
+  attachments SupportTicketAttachment[]
+
+  @@index([customerId, status, updatedAt])
+  @@index([customerId, createdAt])
+}
+
+model SupportTicketMessage {
+  id          String                    @id @default(cuid())
+  ticketId    String
+  authorType  SupportMessageAuthorType
+  body        String
+  createdAt   DateTime                  @default(now())
+  ticket      SupportTicket             @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  attachments SupportTicketAttachment[]
+
+  @@index([ticketId, createdAt])
+}
+
+model SupportTicketAttachment {
+  id             String                @id @default(cuid())
+  ticketId       String
+  messageId      String?
+  uploadedFileId String?
+  fileName       String
+  mimeType       String
+  sizeBytes      Int
+  downloadUrl    String?
+  createdAt      DateTime              @default(now())
+  ticket         SupportTicket         @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+  message        SupportTicketMessage? @relation(fields: [messageId], references: [id], onDelete: SetNull)
+
+  @@index([ticketId])
+  @@index([messageId])
 }
 
 /// Reproductive status for applicable animals (e.g. livestock).
@@ -2205,6 +2819,8 @@ enum MobileUploadPurpose {
   CUSTOMER_PROFILE_PHOTO
   /// Customer account — cover / background (GET … public for this purpose).
   CUSTOMER_COVER_IMAGE
+  /// Customer animal photo (stored on AnimalProfile.photoUrl only).
+  ANIMAL_PHOTO
   /// Admin panel — semen provider logo (owner = admin user).
   ADMIN_SEMEN_PROVIDER_LOGO
   /// Admin panel — semen service template cover image.
@@ -2223,6 +2839,8 @@ enum MobileUploadPurpose {
   AI_SERVICE_INSTANCE_VIDEO
   /// AI technician — enterprise service instance supporting document (PDF).
   AI_SERVICE_INSTANCE_DOCUMENT
+  /// Customer support ticket attachment (images, PDF, documents).
+  SUPPORT_ATTACHMENT
 }
 
 /// Enterprise moderation lifecycle for template-backed worker service submissions.

@@ -22,6 +22,14 @@ const CAPABILITY_DETAILS: Record<
     description: "অনুমোদিত সেবা প্রকাশ (publish) করা।",
     navGated: "প্রকাশ বাটন",
   },
+  "analytics.view": {
+    description: "অ্যানালিটিক্স ড্যাশবোর্ড ও KPI দেখা।",
+    navGated: "/admin/analytics",
+  },
+  "analytics.export": {
+    description: "অ্যানালিটিক্স CSV এক্সপোর্ট।",
+    navGated: "Export CSV",
+  },
 };
 
 export function PermissionsAdminPanel() {

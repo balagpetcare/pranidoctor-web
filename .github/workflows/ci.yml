@@ -56,6 +56,29 @@ jobs:
       - run: npm ci
       - run: npm run lint:release
 
+  validate-env:
+    name: Validate production env schema
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/master'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ env.NODE_VERSION }}
+          cache: npm
+      - run: npm ci
+      - run: npm run validate:production-env
+        env:
+          NODE_ENV: production
+          ADMIN_JWT_SECRET: ci-admin-jwt-secret-minimum-32-characters-long
+          MOBILE_JWT_SECRET: ci-mobile-jwt-secret-minimum-32-characters
+          DOCTOR_JWT_SECRET: ci-doctor-jwt-secret-minimum-32-characters
+          TECHNICIAN_JWT_SECRET: ci-tech-jwt-secret-minimum-32-characters
+          BACKEND_URL: https://api.example.com
+          NEXT_PUBLIC_API_URL: https://api.example.com/api
+          OTP_MODE: live
+          OTP_DEBUG_PANEL_ENABLED: "false"
+
   build:
     name: Build
     runs-on: ubuntu-latest

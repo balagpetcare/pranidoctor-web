@@ -1,0 +1,37 @@
+# Production overlay for admin web + shared infra
+# Backend API should run from pranidoctor-backend compose on same Docker network.
+
+version: '3.9'
+
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        BACKEND_URL: http://api:3000
+        NEXT_PUBLIC_API_URL: http://api:3000/api
+    container_name: pranidoctor-web
+    restart: unless-stopped
+    env_file:
+      - .env
+    environment:
+      NODE_ENV: production
+      PORT: 3001
+      BACKEND_URL: http://api:3000
+      NEXT_PUBLIC_API_URL: http://api:3000/api
+    ports:
+      - '127.0.0.1:3001:3001'
+    networks:
+      - pranidoctor
+
+  postgres:
+    ports: []
+
+  minio:
+    ports: []
+
+networks:
+  pranidoctor:
+    external: true
+    name: pranidoctor-backend_backend

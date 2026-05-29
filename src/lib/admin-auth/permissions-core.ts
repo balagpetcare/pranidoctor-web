@@ -4,7 +4,9 @@ import { USER_ROLE, type UserRole } from "./user-role";
 export type ServiceInstanceAdminCapability =
   | "serviceInstance.view"
   | "serviceInstance.review"
-  | "serviceInstance.publish";
+  | "serviceInstance.publish"
+  | "analytics.view"
+  | "analytics.export";
 
 export const ADMIN_ENTERPRISE_CAPABILITIES: {
   id: ServiceInstanceAdminCapability;
@@ -13,6 +15,8 @@ export const ADMIN_ENTERPRISE_CAPABILITIES: {
   { id: "serviceInstance.view", labelBn: "এন্টারপ্রাইজ সেবা দেখা" },
   { id: "serviceInstance.review", labelBn: "এন্টারপ্রাইজ পর্যালোচনা" },
   { id: "serviceInstance.publish", labelBn: "এন্টারপ্রাইজ প্রকাশ" },
+  { id: "analytics.view", labelBn: "অ্যানালিটিক্স দেখা" },
+  { id: "analytics.export", labelBn: "অ্যানালিটিক্স এক্সপোর্ট" },
 ];
 
 export type AdminRoleAccessRow = {
@@ -29,13 +33,18 @@ const ROLE_MATRIX: Record<
     "serviceInstance.view": true,
     "serviceInstance.review": true,
     "serviceInstance.publish": true,
+    "analytics.view": true,
+    "analytics.export": true,
   },
   [USER_ROLE.ADMIN]: {
     "serviceInstance.view": true,
     "serviceInstance.review": true,
+    "analytics.view": true,
+    "analytics.export": true,
   },
   [USER_ROLE.SUPPORT]: {
     "serviceInstance.view": true,
+    "analytics.view": true,
   },
   [USER_ROLE.CUSTOMER]: undefined,
   [USER_ROLE.DOCTOR]: undefined,

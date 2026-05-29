@@ -42,6 +42,12 @@
     ".next/dev",
     "docs/prisma_cleanup_backup/**",
     "archive/**",
-    "scripts/**"
+    "scripts/**",
+    "src/components/admin/feed/**",
+    "src/app/admin/(dashboard)/feed-items/**",
+    "src/app/api/admin/feed-items/**",
+    "src/lib/feed/**",
+    "src/lib/livestock/**",
+    "src/types/feed.ts"
   ]
 }

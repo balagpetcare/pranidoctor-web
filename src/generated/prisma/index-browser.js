@@ -245,12 +245,14 @@ exports.Prisma.CustomerProfileScalarFieldEnum = {
   displayName: 'displayName',
   locale: 'locale',
   addressJson: 'addressJson',
-  primaryVillageId: 'primaryVillageId',
-  profileCompletedAt: 'profileCompletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt',
   profilePhotoUrl: 'profilePhotoUrl',
-  coverPhotoUrl: 'coverPhotoUrl'
+  profilePhotoThumbUrl: 'profilePhotoThumbUrl',
+  coverPhotoUrl: 'coverPhotoUrl',
+  coverPhotoThumbUrl: 'coverPhotoThumbUrl',
+  primaryVillageId: 'primaryVillageId',
+  profileCompletedAt: 'profileCompletedAt'
 };
 
 exports.Prisma.MobileOtpChallengeScalarFieldEnum = {
@@ -675,6 +677,68 @@ exports.Prisma.AnimalProfileScalarFieldEnum = {
   pregnancyStatus: 'pregnancyStatus'
 };
 
+exports.Prisma.FatteningBatchScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  farmId: 'farmId',
+  name: 'name',
+  goalType: 'goalType',
+  goal: 'goal',
+  startDate: 'startDate',
+  targetDate: 'targetDate',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.BatchFeedPlanScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  batchId: 'batchId',
+  mode: 'mode',
+  dailyAmountKg: 'dailyAmountKg',
+  dailyCostBdt: 'dailyCostBdt',
+  feedType: 'feedType',
+  unit: 'unit',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.WeightRecordScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  animalId: 'animalId',
+  batchId: 'batchId',
+  weightKg: 'weightKg',
+  recordedAt: 'recordedAt',
+  recordedOn: 'recordedOn',
+  method: 'method',
+  note: 'note',
+  photoUrl: 'photoUrl',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FatteningBatchAnimalScalarFieldEnum = {
+  id: 'id',
+  batchId: 'batchId',
+  animalId: 'animalId',
+  joinedAt: 'joinedAt',
+  removedAt: 'removedAt'
+};
+
+exports.Prisma.FatteningBatchRoiScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  batchId: 'batchId',
+  purchaseCostBdt: 'purchaseCostBdt',
+  projectedSaleBdt: 'projectedSaleBdt',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.ServiceRequestScalarFieldEnum = {
   id: 'id',
   customerId: 'customerId',
@@ -703,9 +767,9 @@ exports.Prisma.ServiceRequestScalarFieldEnum = {
   villageId: 'villageId',
   description: 'description',
   cancelReason: 'cancelReason',
-  priority: 'priority',
   adminNote: 'adminNote',
-  leadId: 'leadId'
+  leadId: 'leadId',
+  priority: 'priority'
 };
 
 exports.Prisma.TreatmentCaseScalarFieldEnum = {
@@ -1128,6 +1192,27 @@ exports.Prisma.NotificationScalarFieldEnum = {
   type: 'type'
 };
 
+exports.Prisma.NotificationSettingsScalarFieldEnum = {
+  userId: 'userId',
+  pushEnabled: 'pushEnabled',
+  marketingEnabled: 'marketingEnabled',
+  treatmentReminderEnabled: 'treatmentReminderEnabled',
+  vaccineReminderEnabled: 'vaccineReminderEnabled',
+  orderServiceEnabled: 'orderServiceEnabled',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MobileUserSettingsScalarFieldEnum = {
+  userId: 'userId',
+  theme: 'theme',
+  locale: 'locale',
+  privacyAcceptedVersion: 'privacyAcceptedVersion',
+  privacyAcceptedAt: 'privacyAcceptedAt',
+  termsAcceptedVersion: 'termsAcceptedVersion',
+  termsAcceptedAt: 'termsAcceptedAt',
+  updatedAt: 'updatedAt'
+};
+
 exports.Prisma.ServiceInstanceScalarFieldEnum = {
   id: 'id',
   semenServiceTemplateId: 'semenServiceTemplateId',
@@ -1231,6 +1316,213 @@ exports.Prisma.SettingScalarFieldEnum = {
   key: 'key',
   valueJson: 'valueJson',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.MilkRecordScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  animalId: 'animalId',
+  farmRef: 'farmRef',
+  recordedDate: 'recordedDate',
+  session: 'session',
+  quantityLiters: 'quantityLiters',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FeedCatalogScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
+  category: 'category',
+  defaultUnit: 'defaultUnit',
+  approxPriceBdt: 'approxPriceBdt',
+  nutritionJson: 'nutritionJson',
+  availabilityScore: 'availabilityScore',
+  isSeeded: 'isSeeded',
+  isActive: 'isActive',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FeedRecordScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  farmRef: 'farmRef',
+  animalId: 'animalId',
+  batchId: 'batchId',
+  batchName: 'batchName',
+  fatteningBatchId: 'fatteningBatchId',
+  inventoryItemId: 'inventoryItemId',
+  inventoryTransactionId: 'inventoryTransactionId',
+  deductStock: 'deductStock',
+  feedType: 'feedType',
+  amount: 'amount',
+  unit: 'unit',
+  costBdt: 'costBdt',
+  recordedDate: 'recordedDate',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.InventoryItemScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  farmRef: 'farmRef',
+  inventoryType: 'inventoryType',
+  displayName: 'displayName',
+  feedCatalogId: 'feedCatalogId',
+  feedType: 'feedType',
+  feedUnit: 'feedUnit',
+  medicineUnit: 'medicineUnit',
+  lowStockThreshold: 'lowStockThreshold',
+  allowNegativeStock: 'allowNegativeStock',
+  isActive: 'isActive',
+  deletedAt: 'deletedAt',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.InventoryBalanceScalarFieldEnum = {
+  id: 'id',
+  inventoryItemId: 'inventoryItemId',
+  quantityOnHand: 'quantityOnHand',
+  quantityReserved: 'quantityReserved',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.InventoryTransactionScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  inventoryItemId: 'inventoryItemId',
+  farmRef: 'farmRef',
+  inventoryType: 'inventoryType',
+  transactionType: 'transactionType',
+  quantityDelta: 'quantityDelta',
+  unitSnapshot: 'unitSnapshot',
+  sourceType: 'sourceType',
+  sourceId: 'sourceId',
+  idempotencyKey: 'idempotencyKey',
+  reason: 'reason',
+  authorizedBy: 'authorizedBy',
+  voidsTransactionId: 'voidsTransactionId',
+  recordedAt: 'recordedAt',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.InventoryAuditLogScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  inventoryItemId: 'inventoryItemId',
+  action: 'action',
+  payload: 'payload',
+  actorUserId: 'actorUserId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.FinanceRecordScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  type: 'type',
+  amountBdt: 'amountBdt',
+  recordedDate: 'recordedDate',
+  category: 'category',
+  source: 'source',
+  farmRef: 'farmRef',
+  fatteningBatchId: 'fatteningBatchId',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.HealthEventScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  animalId: 'animalId',
+  farmRef: 'farmRef',
+  eventType: 'eventType',
+  title: 'title',
+  symptoms: 'symptoms',
+  diagnosis: 'diagnosis',
+  diseaseName: 'diseaseName',
+  treatmentRefId: 'treatmentRefId',
+  vaccineRefId: 'vaccineRefId',
+  notes: 'notes',
+  recordedDate: 'recordedDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.VaccineRecordScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  animalId: 'animalId',
+  farmRef: 'farmRef',
+  vaccineName: 'vaccineName',
+  vaccineType: 'vaccineType',
+  scheduledDate: 'scheduledDate',
+  administeredDate: 'administeredDate',
+  nextDueDate: 'nextDueDate',
+  status: 'status',
+  batchNumber: 'batchNumber',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FarmTreatmentScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  animalId: 'animalId',
+  farmRef: 'farmRef',
+  title: 'title',
+  diagnosis: 'diagnosis',
+  prescription: 'prescription',
+  medicinesJson: 'medicinesJson',
+  startDate: 'startDate',
+  endDate: 'endDate',
+  status: 'status',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.SupportTicketScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  category: 'category',
+  subject: 'subject',
+  description: 'description',
+  priority: 'priority',
+  status: 'status',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  closedAt: 'closedAt'
+};
+
+exports.Prisma.SupportTicketMessageScalarFieldEnum = {
+  id: 'id',
+  ticketId: 'ticketId',
+  authorType: 'authorType',
+  body: 'body',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SupportTicketAttachmentScalarFieldEnum = {
+  id: 'id',
+  ticketId: 'ticketId',
+  messageId: 'messageId',
+  uploadedFileId: 'uploadedFileId',
+  fileName: 'fileName',
+  mimeType: 'mimeType',
+  sizeBytes: 'sizeBytes',
+  downloadUrl: 'downloadUrl',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -1353,6 +1645,7 @@ exports.MobileUploadPurpose = exports.$Enums.MobileUploadPurpose = {
   AI_TECHNICIAN_OTHER: 'AI_TECHNICIAN_OTHER',
   CUSTOMER_PROFILE_PHOTO: 'CUSTOMER_PROFILE_PHOTO',
   CUSTOMER_COVER_IMAGE: 'CUSTOMER_COVER_IMAGE',
+  ANIMAL_PHOTO: 'ANIMAL_PHOTO',
   ADMIN_SEMEN_PROVIDER_LOGO: 'ADMIN_SEMEN_PROVIDER_LOGO',
   ADMIN_SEMEN_TEMPLATE_COVER: 'ADMIN_SEMEN_TEMPLATE_COVER',
   ADMIN_SEMEN_TEMPLATE_GALLERY: 'ADMIN_SEMEN_TEMPLATE_GALLERY',
@@ -1361,7 +1654,8 @@ exports.MobileUploadPurpose = exports.$Enums.MobileUploadPurpose = {
   AI_SERVICE_INSTANCE_COVER: 'AI_SERVICE_INSTANCE_COVER',
   AI_SERVICE_INSTANCE_GALLERY: 'AI_SERVICE_INSTANCE_GALLERY',
   AI_SERVICE_INSTANCE_VIDEO: 'AI_SERVICE_INSTANCE_VIDEO',
-  AI_SERVICE_INSTANCE_DOCUMENT: 'AI_SERVICE_INSTANCE_DOCUMENT'
+  AI_SERVICE_INSTANCE_DOCUMENT: 'AI_SERVICE_INSTANCE_DOCUMENT',
+  SUPPORT_ATTACHMENT: 'SUPPORT_ATTACHMENT'
 };
 
 exports.UploadedFileStatus = exports.$Enums.UploadedFileStatus = {
@@ -1457,6 +1751,47 @@ exports.PregnancyStatus = exports.$Enums.PregnancyStatus = {
   NOT_APPLICABLE: 'NOT_APPLICABLE',
   NOT_PREGNANT: 'NOT_PREGNANT',
   PREGNANT: 'PREGNANT'
+};
+
+exports.FatteningBatchGoalType = exports.$Enums.FatteningBatchGoalType = {
+  NORMAL: 'NORMAL',
+  QURBANI: 'QURBANI'
+};
+
+exports.FatteningBatchStatus = exports.$Enums.FatteningBatchStatus = {
+  DRAFT: 'DRAFT',
+  ACTIVE: 'ACTIVE',
+  COMPLETED: 'COMPLETED',
+  ARCHIVED: 'ARCHIVED'
+};
+
+exports.BatchFeedPlanMode = exports.$Enums.BatchFeedPlanMode = {
+  NORMAL: 'NORMAL',
+  FATTENING: 'FATTENING'
+};
+
+exports.FeedType = exports.$Enums.FeedType = {
+  GRASS: 'GRASS',
+  STRAW: 'STRAW',
+  CONCENTRATE: 'CONCENTRATE',
+  MINERAL: 'MINERAL',
+  SILAGE: 'SILAGE',
+  OTHER: 'OTHER'
+};
+
+exports.FeedUnit = exports.$Enums.FeedUnit = {
+  KG: 'KG',
+  BAG: 'BAG',
+  BUNDLE: 'BUNDLE',
+  LITER: 'LITER',
+  OTHER: 'OTHER'
+};
+
+exports.WeightRecordMethod = exports.$Enums.WeightRecordMethod = {
+  SCALE: 'SCALE',
+  TAPE: 'TAPE',
+  ESTIMATE: 'ESTIMATE',
+  OTHER: 'OTHER'
 };
 
 exports.ServiceRequestStatus = exports.$Enums.ServiceRequestStatus = {
@@ -1729,6 +2064,12 @@ exports.NotificationType = exports.$Enums.NotificationType = {
   REVIEW: 'REVIEW'
 };
 
+exports.MobileThemePreference = exports.$Enums.MobileThemePreference = {
+  SYSTEM: 'SYSTEM',
+  LIGHT: 'LIGHT',
+  DARK: 'DARK'
+};
+
 exports.ServiceInstanceStatus = exports.$Enums.ServiceInstanceStatus = {
   DRAFT: 'DRAFT',
   SUBMITTED: 'SUBMITTED',
@@ -1800,6 +2141,128 @@ exports.AuthAuditAction = exports.$Enums.AuthAuditAction = {
   DEVICE_REVOKED: 'DEVICE_REVOKED'
 };
 
+exports.MilkSession = exports.$Enums.MilkSession = {
+  MORNING: 'MORNING',
+  EVENING: 'EVENING'
+};
+
+exports.FeedCategory = exports.$Enums.FeedCategory = {
+  ROUGHAGE: 'ROUGHAGE',
+  GREEN: 'GREEN',
+  CONCENTRATE: 'CONCENTRATE',
+  SUPPLEMENT: 'SUPPLEMENT',
+  MINERAL: 'MINERAL',
+  SILAGE: 'SILAGE',
+  CUSTOM: 'CUSTOM'
+};
+
+exports.InventoryType = exports.$Enums.InventoryType = {
+  FEED: 'FEED',
+  MEDICINE: 'MEDICINE'
+};
+
+exports.MedicineUnit = exports.$Enums.MedicineUnit = {
+  TABLET: 'TABLET',
+  CAPSULE: 'CAPSULE',
+  ML: 'ML',
+  LITER: 'LITER',
+  VIAL: 'VIAL',
+  SACHET: 'SACHET',
+  TUBE: 'TUBE',
+  OTHER: 'OTHER'
+};
+
+exports.InventoryTransactionType = exports.$Enums.InventoryTransactionType = {
+  RECEIPT: 'RECEIPT',
+  CONSUMPTION: 'CONSUMPTION',
+  ADJUSTMENT: 'ADJUSTMENT',
+  RESERVE: 'RESERVE',
+  RELEASE_RESERVE: 'RELEASE_RESERVE',
+  VOID: 'VOID'
+};
+
+exports.InventoryTransactionSourceType = exports.$Enums.InventoryTransactionSourceType = {
+  MANUAL: 'MANUAL',
+  FEED_RECORD: 'FEED_RECORD',
+  FARM_TREATMENT: 'FARM_TREATMENT',
+  PRESCRIPTION_ITEM: 'PRESCRIPTION_ITEM',
+  TREATMENT_CASE: 'TREATMENT_CASE',
+  AI_PLAN: 'AI_PLAN'
+};
+
+exports.FinanceType = exports.$Enums.FinanceType = {
+  EXPENSE: 'EXPENSE',
+  INCOME: 'INCOME'
+};
+
+exports.ExpenseCategory = exports.$Enums.ExpenseCategory = {
+  FEED: 'FEED',
+  MEDICINE: 'MEDICINE',
+  LABOR: 'LABOR',
+  EQUIPMENT: 'EQUIPMENT',
+  TRANSPORT: 'TRANSPORT',
+  OTHER: 'OTHER'
+};
+
+exports.IncomeSource = exports.$Enums.IncomeSource = {
+  MILK_SALES: 'MILK_SALES',
+  ANIMAL_SALES: 'ANIMAL_SALES',
+  SUBSIDY: 'SUBSIDY',
+  SERVICE: 'SERVICE',
+  OTHER: 'OTHER'
+};
+
+exports.HealthEventType = exports.$Enums.HealthEventType = {
+  SYMPTOM: 'SYMPTOM',
+  DIAGNOSIS: 'DIAGNOSIS',
+  DISEASE: 'DISEASE',
+  CHECKUP: 'CHECKUP',
+  TREATMENT_REF: 'TREATMENT_REF'
+};
+
+exports.VaccineStatus = exports.$Enums.VaccineStatus = {
+  SCHEDULED: 'SCHEDULED',
+  DUE: 'DUE',
+  OVERDUE: 'OVERDUE',
+  COMPLETED: 'COMPLETED'
+};
+
+exports.FarmTreatmentStatus = exports.$Enums.FarmTreatmentStatus = {
+  ACTIVE: 'ACTIVE',
+  COMPLETED: 'COMPLETED',
+  CANCELLED: 'CANCELLED'
+};
+
+exports.SupportTicketCategory = exports.$Enums.SupportTicketCategory = {
+  ACCOUNT: 'ACCOUNT',
+  BILLING: 'BILLING',
+  TECHNICAL: 'TECHNICAL',
+  ANIMAL_HEALTH: 'ANIMAL_HEALTH',
+  APP_USAGE: 'APP_USAGE',
+  OTHER: 'OTHER'
+};
+
+exports.SupportTicketPriority = exports.$Enums.SupportTicketPriority = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH',
+  URGENT: 'URGENT'
+};
+
+exports.SupportTicketStatus = exports.$Enums.SupportTicketStatus = {
+  OPEN: 'OPEN',
+  IN_PROGRESS: 'IN_PROGRESS',
+  WAITING_CUSTOMER: 'WAITING_CUSTOMER',
+  RESOLVED: 'RESOLVED',
+  CLOSED: 'CLOSED'
+};
+
+exports.SupportMessageAuthorType = exports.$Enums.SupportMessageAuthorType = {
+  CUSTOMER: 'CUSTOMER',
+  SUPPORT: 'SUPPORT',
+  SYSTEM: 'SYSTEM'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   UserDevice: 'UserDevice',
@@ -1838,6 +2301,11 @@ exports.Prisma.ModelName = {
   AiTechnicianReview: 'AiTechnicianReview',
   AiTechnicianComplaint: 'AiTechnicianComplaint',
   AnimalProfile: 'AnimalProfile',
+  FatteningBatch: 'FatteningBatch',
+  BatchFeedPlan: 'BatchFeedPlan',
+  WeightRecord: 'WeightRecord',
+  FatteningBatchAnimal: 'FatteningBatchAnimal',
+  FatteningBatchRoi: 'FatteningBatchRoi',
   ServiceRequest: 'ServiceRequest',
   TreatmentCase: 'TreatmentCase',
   TreatmentWorkflow: 'TreatmentWorkflow',
@@ -1869,6 +2337,8 @@ exports.Prisma.ModelName = {
   ContentPost: 'ContentPost',
   Complaint: 'Complaint',
   Notification: 'Notification',
+  NotificationSettings: 'NotificationSettings',
+  MobileUserSettings: 'MobileUserSettings',
   ServiceInstance: 'ServiceInstance',
   ServiceInstanceMedia: 'ServiceInstanceMedia',
   ServiceInstanceStatusLog: 'ServiceInstanceStatusLog',
@@ -1876,7 +2346,21 @@ exports.Prisma.ModelName = {
   ServiceInstancePublishLog: 'ServiceInstancePublishLog',
   ServiceInstanceAuditEvent: 'ServiceInstanceAuditEvent',
   AuthAuditEvent: 'AuthAuditEvent',
-  Setting: 'Setting'
+  Setting: 'Setting',
+  MilkRecord: 'MilkRecord',
+  FeedCatalog: 'FeedCatalog',
+  FeedRecord: 'FeedRecord',
+  InventoryItem: 'InventoryItem',
+  InventoryBalance: 'InventoryBalance',
+  InventoryTransaction: 'InventoryTransaction',
+  InventoryAuditLog: 'InventoryAuditLog',
+  FinanceRecord: 'FinanceRecord',
+  HealthEvent: 'HealthEvent',
+  VaccineRecord: 'VaccineRecord',
+  FarmTreatment: 'FarmTreatment',
+  SupportTicket: 'SupportTicket',
+  SupportTicketMessage: 'SupportTicketMessage',
+  SupportTicketAttachment: 'SupportTicketAttachment'
 };
 
 /**
