@@ -1525,6 +1525,451 @@ exports.Prisma.SupportTicketAttachmentScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.LivestockScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  farmRef: 'farmRef',
+  deploymentBranch: 'deploymentBranch',
+  legacyAnimalProfileId: 'legacyAnimalProfileId',
+  name: 'name',
+  species: 'species',
+  customSpeciesLabel: 'customSpeciesLabel',
+  breedId: 'breedId',
+  breedName: 'breedName',
+  gender: 'gender',
+  purpose: 'purpose',
+  lifecycleStatus: 'lifecycleStatus',
+  healthStatus: 'healthStatus',
+  dateOfBirth: 'dateOfBirth',
+  weightKg: 'weightKg',
+  lastWeightAt: 'lastWeightAt',
+  earTagNumber: 'earTagNumber',
+  qrCodePayload: 'qrCodePayload',
+  pregnancyStatus: 'pregnancyStatus',
+  lactationNumber: 'lactationNumber',
+  lastCalvingDate: 'lastCalvingDate',
+  photoUrl: 'photoUrl',
+  purchaseDate: 'purchaseDate',
+  purchasePriceBdt: 'purchasePriceBdt',
+  saleDate: 'saleDate',
+  salePriceBdt: 'salePriceBdt',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  deletedAt: 'deletedAt'
+};
+
+exports.Prisma.LivestockImageScalarFieldEnum = {
+  id: 'id',
+  livestockId: 'livestockId',
+  url: 'url',
+  uploadedFileId: 'uploadedFileId',
+  caption: 'caption',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.LivestockHealthRecordScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  livestockId: 'livestockId',
+  farmRef: 'farmRef',
+  recordType: 'recordType',
+  title: 'title',
+  symptoms: 'symptoms',
+  diagnosis: 'diagnosis',
+  diseaseName: 'diseaseName',
+  treatmentRef: 'treatmentRef',
+  notes: 'notes',
+  recordedDate: 'recordedDate',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LivestockVaccinationScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  livestockId: 'livestockId',
+  farmRef: 'farmRef',
+  vaccineName: 'vaccineName',
+  vaccineType: 'vaccineType',
+  scheduledDate: 'scheduledDate',
+  administeredDate: 'administeredDate',
+  nextDueDate: 'nextDueDate',
+  status: 'status',
+  batchNumber: 'batchNumber',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FeedItemScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  category: 'category',
+  nameBn: 'nameBn',
+  nameEn: 'nameEn',
+  defaultUnit: 'defaultUnit',
+  approxPriceBdt: 'approxPriceBdt',
+  moistureType: 'moistureType',
+  isSeasonal: 'isSeasonal',
+  seasonNotesBn: 'seasonNotesBn',
+  seasonNotesEn: 'seasonNotesEn',
+  restrictionJson: 'restrictionJson',
+  suitabilityJson: 'suitabilityJson',
+  isSeeded: 'isSeeded',
+  isActive: 'isActive',
+  sortOrder: 'sortOrder',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FeedNutritionScalarFieldEnum = {
+  id: 'id',
+  feedItemId: 'feedItemId',
+  cpPercent: 'cpPercent',
+  tdnPercent: 'tdnPercent',
+  cfPercent: 'cfPercent',
+  eePercent: 'eePercent',
+  caPercent: 'caPercent',
+  pPercent: 'pPercent',
+  dmPercent: 'dmPercent',
+  source: 'source',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FeedInventoryScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  farmRef: 'farmRef',
+  deploymentBranch: 'deploymentBranch',
+  feedItemId: 'feedItemId',
+  displayName: 'displayName',
+  unit: 'unit',
+  quantityOnHand: 'quantityOnHand',
+  lowStockThreshold: 'lowStockThreshold',
+  defaultBagWeightKg: 'defaultBagWeightKg',
+  allowNegativeStock: 'allowNegativeStock',
+  isActive: 'isActive',
+  deletedAt: 'deletedAt',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FeedPurchaseScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  farmRef: 'farmRef',
+  feedInventoryId: 'feedInventoryId',
+  feedItemId: 'feedItemId',
+  quantity: 'quantity',
+  unit: 'unit',
+  unitCostBdt: 'unitCostBdt',
+  totalCostBdt: 'totalCostBdt',
+  supplierName: 'supplierName',
+  supplierPhone: 'supplierPhone',
+  purchasedAt: 'purchasedAt',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FeedConsumptionScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  farmRef: 'farmRef',
+  livestockId: 'livestockId',
+  feedInventoryId: 'feedInventoryId',
+  feedItemId: 'feedItemId',
+  amount: 'amount',
+  unit: 'unit',
+  costBdt: 'costBdt',
+  deductStock: 'deductStock',
+  recordedDate: 'recordedDate',
+  notes: 'notes',
+  idempotencyKey: 'idempotencyKey',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FeedVendorScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  nameBn: 'nameBn',
+  phone: 'phone',
+  districtId: 'districtId',
+  address: 'address',
+  verificationStatus: 'verificationStatus',
+  isActive: 'isActive',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FeedVendorProductScalarFieldEnum = {
+  id: 'id',
+  vendorId: 'vendorId',
+  feedItemId: 'feedItemId',
+  displayName: 'displayName',
+  unit: 'unit',
+  unitWeightKg: 'unitWeightKg',
+  priceBdt: 'priceBdt',
+  isActive: 'isActive',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FeedRecommendationLogScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  livestockId: 'livestockId',
+  planDate: 'planDate',
+  ruleVersion: 'ruleVersion',
+  itemsJson: 'itemsJson',
+  totalsJson: 'totalsJson',
+  warningsJson: 'warningsJson',
+  accepted: 'accepted',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.LivestockExpenseScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  livestockId: 'livestockId',
+  farmRef: 'farmRef',
+  category: 'category',
+  amountBdt: 'amountBdt',
+  recordedDate: 'recordedDate',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FeedAnalyticsCacheScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  farmRef: 'farmRef',
+  cacheKey: 'cacheKey',
+  periodStart: 'periodStart',
+  periodEnd: 'periodEnd',
+  metricsJson: 'metricsJson',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LivestockAuditLogScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  action: 'action',
+  entityType: 'entityType',
+  entityId: 'entityId',
+  actorUserId: 'actorUserId',
+  payload: 'payload',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AiKnowledgeEntryScalarFieldEnum = {
+  id: 'id',
+  contentType: 'contentType',
+  slug: 'slug',
+  audience: 'audience',
+  titleBn: 'titleBn',
+  titleEn: 'titleEn',
+  bodyBn: 'bodyBn',
+  bodyEn: 'bodyEn',
+  species: 'species',
+  status: 'status',
+  version: 'version',
+  publishedAt: 'publishedAt',
+  createdById: 'createdById',
+  reviewedById: 'reviewedById',
+  metadataJson: 'metadataJson',
+  searchText: 'searchText',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AiSymptomNodeScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  species: 'species',
+  bodySystem: 'bodySystem',
+  labelBn: 'labelBn',
+  labelEn: 'labelEn',
+  redFlag: 'redFlag',
+  weight: 'weight',
+  parentId: 'parentId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AiSymptomDiseaseLinkScalarFieldEnum = {
+  symptomNodeId: 'symptomNodeId',
+  knowledgeEntryId: 'knowledgeEntryId',
+  edgeWeight: 'edgeWeight'
+};
+
+exports.Prisma.AiSymptomCheckSessionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  customerId: 'customerId',
+  livestockId: 'livestockId',
+  species: 'species',
+  symptomsJson: 'symptomsJson',
+  symptomCodes: 'symptomCodes',
+  confidence: 'confidence',
+  redFlagsJson: 'redFlagsJson',
+  differentialsJson: 'differentialsJson',
+  triageBucket: 'triageBucket',
+  urgencyLevel: 'urgencyLevel',
+  aiSessionId: 'aiSessionId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.SmartRecommendationScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  farmRef: 'farmRef',
+  livestockId: 'livestockId',
+  type: 'type',
+  priority: 'priority',
+  titleBn: 'titleBn',
+  titleEn: 'titleEn',
+  explanationBn: 'explanationBn',
+  explanationEn: 'explanationEn',
+  ruleVersion: 'ruleVersion',
+  confidence: 'confidence',
+  dueDate: 'dueDate',
+  status: 'status',
+  deepLink: 'deepLink',
+  metadataJson: 'metadataJson',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.DewormingRecordScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  livestockId: 'livestockId',
+  productName: 'productName',
+  administeredDate: 'administeredDate',
+  nextDueDate: 'nextDueDate',
+  notes: 'notes',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.FarmRiskSnapshotScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  farmRef: 'farmRef',
+  herdHealthScore: 'herdHealthScore',
+  farmRiskScore: 'farmRiskScore',
+  mortalityRiskAvg: 'mortalityRiskAvg',
+  computedAt: 'computedAt',
+  factorsJson: 'factorsJson'
+};
+
+exports.Prisma.RegionalOutbreakSignalScalarFieldEnum = {
+  id: 'id',
+  diseaseSlug: 'diseaseSlug',
+  divisionId: 'divisionId',
+  districtId: 'districtId',
+  riskIndex: 'riskIndex',
+  effectiveDate: 'effectiveDate',
+  source: 'source',
+  notes: 'notes',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AiUsageRecordScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  customerId: 'customerId',
+  feature: 'feature',
+  provider: 'provider',
+  model: 'model',
+  inputTokens: 'inputTokens',
+  outputTokens: 'outputTokens',
+  costUsd: 'costUsd',
+  latencyMs: 'latencyMs',
+  success: 'success',
+  errorCode: 'errorCode',
+  isFallback: 'isFallback',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AiUsageDailyRollupScalarFieldEnum = {
+  id: 'id',
+  bucketDate: 'bucketDate',
+  feature: 'feature',
+  provider: 'provider',
+  model: 'model',
+  requestCount: 'requestCount',
+  successCount: 'successCount',
+  failureCount: 'failureCount',
+  inputTokens: 'inputTokens',
+  outputTokens: 'outputTokens',
+  costUsd: 'costUsd',
+  latencyMsSum: 'latencyMsSum',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AiPromptTemplateScalarFieldEnum = {
+  id: 'id',
+  key: 'key',
+  name: 'name',
+  description: 'description',
+  systemBn: 'systemBn',
+  systemEn: 'systemEn',
+  userTemplateBn: 'userTemplateBn',
+  userTemplateEn: 'userTemplateEn',
+  status: 'status',
+  version: 'version',
+  metadataJson: 'metadataJson',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AiSmartAlertScalarFieldEnum = {
+  id: 'id',
+  customerId: 'customerId',
+  userId: 'userId',
+  type: 'type',
+  priority: 'priority',
+  titleBn: 'titleBn',
+  titleEn: 'titleEn',
+  bodyBn: 'bodyBn',
+  bodyEn: 'bodyEn',
+  deepLink: 'deepLink',
+  status: 'status',
+  scheduledAt: 'scheduledAt',
+  deliveredAt: 'deliveredAt',
+  metadataJson: 'metadataJson',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AiFollowUpSuggestionScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  customerId: 'customerId',
+  livestockId: 'livestockId',
+  sessionId: 'sessionId',
+  triageId: 'triageId',
+  titleBn: 'titleBn',
+  titleEn: 'titleEn',
+  actionBn: 'actionBn',
+  actionEn: 'actionEn',
+  dueDate: 'dueDate',
+  deepLink: 'deepLink',
+  dismissed: 'dismissed',
+  createdAt: 'createdAt'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -2263,6 +2708,152 @@ exports.SupportMessageAuthorType = exports.$Enums.SupportMessageAuthorType = {
   SYSTEM: 'SYSTEM'
 };
 
+exports.LivestockSpecies = exports.$Enums.LivestockSpecies = {
+  COW: 'COW',
+  GOAT: 'GOAT',
+  SHEEP: 'SHEEP',
+  CHICKEN: 'CHICKEN',
+  DUCK: 'DUCK',
+  PIGEON: 'PIGEON',
+  BUFFALO: 'BUFFALO',
+  HORSE: 'HORSE',
+  CUSTOM: 'CUSTOM',
+  OTHER: 'OTHER'
+};
+
+exports.LivestockGender = exports.$Enums.LivestockGender = {
+  MALE: 'MALE',
+  FEMALE: 'FEMALE',
+  UNKNOWN: 'UNKNOWN',
+  OTHER: 'OTHER'
+};
+
+exports.LivestockPurpose = exports.$Enums.LivestockPurpose = {
+  DAIRY: 'DAIRY',
+  MEAT: 'MEAT',
+  BREEDING: 'BREEDING',
+  DRAFT: 'DRAFT',
+  PET: 'PET',
+  MIXED: 'MIXED',
+  OTHER: 'OTHER'
+};
+
+exports.LivestockLifecycleStatus = exports.$Enums.LivestockLifecycleStatus = {
+  ACTIVE: 'ACTIVE',
+  SOLD: 'SOLD',
+  DECEASED: 'DECEASED',
+  MISSING: 'MISSING',
+  TRANSFERRED: 'TRANSFERRED',
+  INACTIVE: 'INACTIVE'
+};
+
+exports.LivestockHealthStatus = exports.$Enums.LivestockHealthStatus = {
+  HEALTHY: 'HEALTHY',
+  SICK: 'SICK',
+  RECOVERING: 'RECOVERING',
+  UNDER_OBSERVATION: 'UNDER_OBSERVATION',
+  UNKNOWN: 'UNKNOWN'
+};
+
+exports.LivestockHealthRecordType = exports.$Enums.LivestockHealthRecordType = {
+  SYMPTOM: 'SYMPTOM',
+  DIAGNOSIS: 'DIAGNOSIS',
+  DISEASE: 'DISEASE',
+  CHECKUP: 'CHECKUP',
+  TREATMENT: 'TREATMENT',
+  NOTE: 'NOTE'
+};
+
+exports.LivestockVaccinationStatus = exports.$Enums.LivestockVaccinationStatus = {
+  SCHEDULED: 'SCHEDULED',
+  DUE: 'DUE',
+  OVERDUE: 'OVERDUE',
+  COMPLETED: 'COMPLETED',
+  SKIPPED: 'SKIPPED'
+};
+
+exports.FeedMoistureType = exports.$Enums.FeedMoistureType = {
+  DRY: 'DRY',
+  WET: 'WET',
+  FRESH: 'FRESH'
+};
+
+exports.FeedVendorVerificationStatus = exports.$Enums.FeedVendorVerificationStatus = {
+  PENDING: 'PENDING',
+  VERIFIED: 'VERIFIED',
+  REJECTED: 'REJECTED'
+};
+
+exports.LivestockAuditAction = exports.$Enums.LivestockAuditAction = {
+  LIVESTOCK_CREATED: 'LIVESTOCK_CREATED',
+  LIVESTOCK_UPDATED: 'LIVESTOCK_UPDATED',
+  LIVESTOCK_DELETED: 'LIVESTOCK_DELETED',
+  HEALTH_RECORD_CREATED: 'HEALTH_RECORD_CREATED',
+  VACCINATION_CREATED: 'VACCINATION_CREATED',
+  FEED_INVENTORY_UPDATED: 'FEED_INVENTORY_UPDATED',
+  FEED_CONSUMPTION_CREATED: 'FEED_CONSUMPTION_CREATED',
+  EXPENSE_CREATED: 'EXPENSE_CREATED'
+};
+
+exports.AiKnowledgeContentType = exports.$Enums.AiKnowledgeContentType = {
+  DISEASE: 'DISEASE',
+  MEDICINE: 'MEDICINE',
+  VACCINE: 'VACCINE',
+  FEED: 'FEED',
+  FARM_MGMT: 'FARM_MGMT',
+  EMERGENCY: 'EMERGENCY'
+};
+
+exports.AiKnowledgeAudience = exports.$Enums.AiKnowledgeAudience = {
+  FARMER: 'FARMER',
+  DOCTOR: 'DOCTOR',
+  BOTH: 'BOTH'
+};
+
+exports.AiKnowledgeStatus = exports.$Enums.AiKnowledgeStatus = {
+  DRAFT: 'DRAFT',
+  IN_REVIEW: 'IN_REVIEW',
+  PUBLISHED: 'PUBLISHED',
+  DEPRECATED: 'DEPRECATED'
+};
+
+exports.SmartRecommendationType = exports.$Enums.SmartRecommendationType = {
+  VACCINE: 'VACCINE',
+  DEWORM: 'DEWORM',
+  FEED: 'FEED',
+  PREGNANCY: 'PREGNANCY',
+  FARM: 'FARM',
+  HEALTH: 'HEALTH',
+  INVENTORY: 'INVENTORY'
+};
+
+exports.SmartRecommendationStatus = exports.$Enums.SmartRecommendationStatus = {
+  PENDING: 'PENDING',
+  DISMISSED: 'DISMISSED',
+  COMPLETED: 'COMPLETED',
+  SNOOZED: 'SNOOZED'
+};
+
+exports.AiPromptStatus = exports.$Enums.AiPromptStatus = {
+  DRAFT: 'DRAFT',
+  ACTIVE: 'ACTIVE',
+  ARCHIVED: 'ARCHIVED'
+};
+
+exports.AiAlertPriority = exports.$Enums.AiAlertPriority = {
+  LOW: 'LOW',
+  MEDIUM: 'MEDIUM',
+  HIGH: 'HIGH',
+  CRITICAL: 'CRITICAL'
+};
+
+exports.AiAlertStatus = exports.$Enums.AiAlertStatus = {
+  PENDING: 'PENDING',
+  DELIVERED: 'DELIVERED',
+  DISMISSED: 'DISMISSED',
+  SNOOZED: 'SNOOZED'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   UserDevice: 'UserDevice',
@@ -2360,7 +2951,35 @@ exports.Prisma.ModelName = {
   FarmTreatment: 'FarmTreatment',
   SupportTicket: 'SupportTicket',
   SupportTicketMessage: 'SupportTicketMessage',
-  SupportTicketAttachment: 'SupportTicketAttachment'
+  SupportTicketAttachment: 'SupportTicketAttachment',
+  Livestock: 'Livestock',
+  LivestockImage: 'LivestockImage',
+  LivestockHealthRecord: 'LivestockHealthRecord',
+  LivestockVaccination: 'LivestockVaccination',
+  FeedItem: 'FeedItem',
+  FeedNutrition: 'FeedNutrition',
+  FeedInventory: 'FeedInventory',
+  FeedPurchase: 'FeedPurchase',
+  FeedConsumption: 'FeedConsumption',
+  FeedVendor: 'FeedVendor',
+  FeedVendorProduct: 'FeedVendorProduct',
+  FeedRecommendationLog: 'FeedRecommendationLog',
+  LivestockExpense: 'LivestockExpense',
+  FeedAnalyticsCache: 'FeedAnalyticsCache',
+  LivestockAuditLog: 'LivestockAuditLog',
+  AiKnowledgeEntry: 'AiKnowledgeEntry',
+  AiSymptomNode: 'AiSymptomNode',
+  AiSymptomDiseaseLink: 'AiSymptomDiseaseLink',
+  AiSymptomCheckSession: 'AiSymptomCheckSession',
+  SmartRecommendation: 'SmartRecommendation',
+  DewormingRecord: 'DewormingRecord',
+  FarmRiskSnapshot: 'FarmRiskSnapshot',
+  RegionalOutbreakSignal: 'RegionalOutbreakSignal',
+  AiUsageRecord: 'AiUsageRecord',
+  AiUsageDailyRollup: 'AiUsageDailyRollup',
+  AiPromptTemplate: 'AiPromptTemplate',
+  AiSmartAlert: 'AiSmartAlert',
+  AiFollowUpSuggestion: 'AiFollowUpSuggestion'
 };
 
 /**

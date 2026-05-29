@@ -8,7 +8,7 @@ export default function TermsPage() {
   return (
     <main className="mx-auto max-w-3xl px-4 py-10 prose prose-neutral">
       <h1>Terms of Service</h1>
-      <p className="text-sm text-muted-foreground">Last updated: May 2026</p>
+      <p className="text-sm text-muted-foreground">Last updated: June 2026 · Version 2026-06-01</p>
 
       <h2>Acceptance</h2>
       <p>

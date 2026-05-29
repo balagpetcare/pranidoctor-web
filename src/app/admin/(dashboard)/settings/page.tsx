@@ -11,6 +11,35 @@ export default function SettingsPage() {
       />
 
       <AdminFormSection
+        title="Legal & privacy"
+        description="Privacy policy versions, in-app summaries, and consent audit."
+      >
+        <AdminActionButton href="/admin/settings/legal" variant="primary">
+          Legal settings
+        </AdminActionButton>
+      </AdminFormSection>
+
+      <AdminFormSection
+        title="Legal & AI disclaimer"
+        description="Privacy/terms URLs, AI disclaimer tiers, consent versioning."
+      >
+        <div className="flex flex-wrap gap-2">
+          <AdminActionButton href="/admin/settings/ai-disclaimer" variant="primary">
+            AI Disclaimer
+          </AdminActionButton>
+          <AdminActionButton href="/admin/settings/vet-disclaimer" variant="primary">
+            Veterinary Disclaimer
+          </AdminActionButton>
+          <AdminActionButton href="/admin/settings/ai-escalation-disclosure" variant="primary">
+            AI Escalation Disclosure
+          </AdminActionButton>
+          <AdminActionButton href="/admin/settings/emergency-limitation" variant="primary">
+            Emergency Limitation Notice
+          </AdminActionButton>
+        </div>
+      </AdminFormSection>
+
+      <AdminFormSection
         title="বিলিং ও কমিশন"
         description="প্ল্যাটফর্ম কমিশন হার (০–১০০%) দেখুন ও সম্পাদনা করুন।"
       >

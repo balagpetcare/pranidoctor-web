@@ -17,6 +17,7 @@ import {
 import { useState } from "react";
 
 import { cn } from "@/lib/cn";
+import { DoctorLegalGate } from "@/components/doctor/legal/DoctorLegalGate";
 
 type NavItem = {
   href: string;
@@ -223,6 +224,7 @@ export function DoctorDashboardShell({
           {children}
         </main>
       </div>
+      <DoctorLegalGate />
     </div>
   );
 }

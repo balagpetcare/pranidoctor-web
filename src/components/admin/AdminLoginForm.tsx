@@ -17,6 +17,8 @@ import {
 } from "@/lib/admin-auth/remember-login";
 import { getSafeAdminNextPath } from "@/lib/admin-auth/safe-next-path";
 import { cn } from "@/lib/cn";
+import { AdminMonitoringEvent } from "@/lib/monitoring/admin-events";
+import { trackAdminAuthEvent } from "@/lib/monitoring/admin-monitoring-client";
 
 export function AdminLoginForm() {
   const searchParams = useSearchParams();
@@ -84,9 +86,15 @@ export function AdminLoginForm() {
 
       if (!parsed.ok) {
         const code = parsed.error.code;
+        trackAdminAuthEvent(AdminMonitoringEvent.AUTH_LOGIN_FAILURE, {
+          reason: code,
+          status: res.status,
+        });
         setError(`${adminLoginErrorEn(code)} — ${adminLoginErrorBn(code)}`);
         return;
       }
+
+      trackAdminAuthEvent(AdminMonitoringEvent.AUTH_LOGIN_SUCCESS);
 
       if (remember && trimmed) {
         saveRememberedIdentifier(trimmed);
@@ -99,8 +107,14 @@ export function AdminLoginForm() {
       window.location.assign(getSafeAdminNextPath(next));
     } catch (err) {
       if (err instanceof AdminAuthError) {
+        trackAdminAuthEvent(AdminMonitoringEvent.AUTH_LOGIN_FAILURE, {
+          reason: err.code,
+        });
         setError(`${adminLoginErrorEn(err.code)} — ${adminLoginErrorBn(err.code)}`);
       } else {
+        trackAdminAuthEvent(AdminMonitoringEvent.AUTH_LOGIN_FAILURE, {
+          reason: "network",
+        });
         setError(`${adminLoginErrorEn("server_error")} — ${adminLoginErrorBn("server_error")}`);
       }
     } finally {

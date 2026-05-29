@@ -2,7 +2,7 @@ import "server-only";
 
 import { serverLog } from "@/lib/logging/server-logger";
 
-import { sendAlert } from "./alerts";
+import { sendProductionAlert } from "./alerting/alert-service";
 import {
   getErrorTrackingProvider,
   getMonitoringAlertWebhookUrl,
@@ -81,12 +81,19 @@ export function captureException(
     error: serialized,
     context,
   });
-  void sendAlert(
-    "Unhandled admin error",
-    serialized.message,
-    "critical",
-    { ...context, errorName: serialized.name },
-  );
+  void sendProductionAlert({
+    alertId: "ALT-ERR-03",
+    title: "Unhandled admin error",
+    message: serialized.message,
+    severity: "critical",
+    metadata: { ...context, errorName: serialized.name },
+    fingerprint:
+      typeof context.route === "string"
+        ? context.route
+        : typeof context.requestId === "string"
+          ? context.requestId
+          : undefined,
+  });
 }
 
 export function captureMessage(

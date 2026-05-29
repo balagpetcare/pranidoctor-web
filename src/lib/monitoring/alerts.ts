@@ -1,10 +1,6 @@
-import {
-  getMonitoringAlertWebhookUrl,
-  isMonitoringEnabled,
-} from "./config";
-import { monitoringLog } from "./log";
+import type { AlertSeverity } from "./alerting/alert-types";
 
-export type AlertSeverity = "info" | "warning" | "critical";
+export type { AlertSeverity };
 
 export type AlertPayload = {
   title: string;
@@ -15,21 +11,17 @@ export type AlertPayload = {
   metadata?: Record<string, unknown>;
 };
 
-function buildAlertPayload(
-  title: string,
-  message: string,
-  severity: AlertSeverity,
-  metadata?: Record<string, unknown>,
-): AlertPayload {
-  return {
-    title,
-    message,
-    severity,
-    service: "pranidoctor-web-admin",
-    timestamp: new Date().toISOString(),
-    ...(metadata ? { metadata } : {}),
-  };
-}
+export {
+  sendProductionAlert,
+  sendCriticalAlert,
+  sendWarningAlert,
+  sendInformationalAlert,
+  resetProductionAlertingForTests,
+} from "./alerting/alert-service";
+
+export type { ProductionAlertInput, AlertEscalation } from "./alerting/alert-types";
+
+import { sendProductionAlert } from "./alerting/alert-service";
 
 export async function sendAlert(
   title: string,
@@ -37,31 +29,25 @@ export async function sendAlert(
   severity: AlertSeverity = "warning",
   metadata?: Record<string, unknown>,
 ): Promise<void> {
-  if (!isMonitoringEnabled()) return;
+  const alertId =
+    severity === "critical"
+      ? "ALT-ERR-03"
+      : severity === "warning"
+        ? "ALT-ERR-04"
+        : "ALT-INFO-01";
 
-  const payload = buildAlertPayload(title, message, severity, metadata);
-  const webhookUrl = getMonitoringAlertWebhookUrl();
-
-  if (webhookUrl) {
-    try {
-      await fetch(webhookUrl, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
-      });
-    } catch (error) {
-      monitoringLog.error("Alert webhook delivery failed", {
-        event: "monitoring.alert.webhook_failed",
-        error,
-        metadata: { title, severity },
-      });
-    }
-    return;
-  }
-
-  monitoringLog.warn(`${title}: ${message}`, {
-    event: "monitoring.alert",
-    metadata: { severity, ...metadata },
+  await sendProductionAlert({
+    alertId,
+    title,
+    message,
+    severity,
+    metadata,
+    fingerprint:
+      typeof metadata?.endpoint === "string"
+        ? metadata.endpoint
+        : typeof metadata?.path === "string"
+          ? metadata.path
+          : undefined,
   });
 }
 
@@ -69,17 +55,57 @@ export async function alertHealthCheckFailure(
   endpoint: string,
   reason: string,
 ): Promise<void> {
-  await sendAlert(
-    "Admin health check failed",
-    `${endpoint} — ${reason}`,
-    "critical",
-    { endpoint, reason },
-  );
+  await sendProductionAlert({
+    alertId: "ALT-DOWN-04",
+    title: "Admin health check failed",
+    message: `${endpoint} — ${reason}`,
+    severity: "critical",
+    metadata: { endpoint, reason },
+    fingerprint: endpoint,
+  });
 }
 
 export async function alertServerError(
   message: string,
   context?: Record<string, unknown>,
 ): Promise<void> {
-  await sendAlert("Admin server error", message, "critical", context);
+  await sendProductionAlert({
+    alertId: "ALT-ERR-03",
+    title: "Admin server error",
+    message,
+    severity: "critical",
+    metadata: context,
+    fingerprint: typeof context?.path === "string" ? context.path : undefined,
+  });
+}
+
+export async function alertAdminProxy5xx(
+  path: string,
+  method: string,
+  status: number,
+): Promise<void> {
+  await sendProductionAlert({
+    alertId: "ALT-ERR-04",
+    title: "Admin proxy 5xx",
+    message: `${method} ${path} — HTTP ${status}`,
+    severity: "warning",
+    metadata: { path, method, status },
+    fingerprint: `${method}:${path}`,
+  });
+}
+
+export async function alertAdminProxySlow(
+  path: string,
+  method: string,
+  durationMs: number,
+  thresholdMs: number,
+): Promise<void> {
+  await sendProductionAlert({
+    alertId: "ALT-SLOW-01",
+    title: "Admin proxy slow",
+    message: `${method} ${path} — ${durationMs}ms (threshold ${thresholdMs}ms)`,
+    severity: "warning",
+    metadata: { path, method, durationMs, thresholdMs },
+    fingerprint: `${method}:${path}`,
+  });
 }

@@ -3,6 +3,7 @@
 import { useEffect } from "react";
 
 import { AdminErrorState } from "@/components/admin-ui/AdminErrorState";
+import { AdminMonitoringEvent } from "@/lib/monitoring/admin-events";
 import { captureClientException } from "@/lib/monitoring/error-tracking-client";
 
 export default function EnterpriseRouteError({
@@ -15,7 +16,7 @@ export default function EnterpriseRouteError({
   useEffect(() => {
     captureClientException(error, {
       source: "client",
-      event: "enterprise.route_error",
+      event: AdminMonitoringEvent.PAGE_FAILURE,
       message: "Enterprise route error",
       tags: { kind: "route_error", scope: "enterprise" },
       digest: error.digest,

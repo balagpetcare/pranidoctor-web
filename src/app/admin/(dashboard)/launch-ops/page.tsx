@@ -105,6 +105,28 @@ export default function LaunchOpsPage() {
         </ul>
       </section>
 
+      <section className="rounded-lg border p-4 text-sm">
+        <h2 className="font-medium mb-3">Legal compliance</h2>
+        <ul className="list-disc pl-5 space-y-1">
+          <li>
+            Admin AUP status:{" "}
+            <Link className="text-primary underline" href="/api/admin/legal/status">
+              GET /api/admin/legal/status
+            </Link>
+          </li>
+          <li>
+            Consent audit:{" "}
+            <Link className="text-primary underline" href="/api/admin/legal-consent">
+              GET /api/admin/legal-consent
+            </Link>
+          </li>
+          <li>
+            Docs:{" "}
+            <code className="text-xs">docs/compliance/legal/TERMS_OF_SERVICE_IMPLEMENTATION.md</code>
+          </li>
+        </ul>
+      </section>
+
       <section className="rounded-lg border p-4 text-sm text-muted-foreground">
         <h2 className="font-medium text-foreground mb-2">Runbooks</h2>
         <p>

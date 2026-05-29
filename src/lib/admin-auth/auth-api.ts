@@ -1,4 +1,7 @@
 import type { AdminLoginPayload, AdminLoginResult, AdminSessionUser } from "./types";
+import { appendAdminCorrelationHeaders } from "@/lib/logging/client-logger";
+import { AdminMonitoringEvent } from "@/lib/monitoring/admin-events";
+import { trackAdminAuthEvent } from "@/lib/monitoring/admin-monitoring-client";
 
 type ApiEnvelope<T> =
   | { ok: true; data: T }
@@ -36,22 +39,54 @@ async function readJson(res: Response): Promise<unknown> {
 export async function adminLoginRequest(payload: AdminLoginPayload): Promise<AdminLoginResult> {
   const res = await fetch("/api/admin/auth/login", {
     method: "POST",
-    headers: { "Content-Type": "application/json" },
+    headers: appendAdminCorrelationHeaders({ "Content-Type": "application/json" }),
     credentials: "same-origin",
     body: JSON.stringify(payload),
   });
   const body = await readJson(res);
-  const data = parseEnvelope<{
-    result: "success";
-    user: AdminSessionUser;
-  }>(body);
-  return { user: data.user };
+
+  if (!res.ok) {
+    try {
+      const parsed = body as ApiEnvelope<unknown>;
+      if (!parsed.ok) {
+        trackAdminAuthEvent(AdminMonitoringEvent.AUTH_LOGIN_FAILURE, {
+          reason: parsed.error.code,
+          status: res.status,
+        });
+      }
+    } catch {
+      trackAdminAuthEvent(AdminMonitoringEvent.AUTH_LOGIN_FAILURE, {
+        reason: "server_error",
+        status: res.status,
+      });
+    }
+  }
+
+  try {
+    const data = parseEnvelope<{
+      result: "success";
+      user: AdminSessionUser;
+    }>(body);
+    trackAdminAuthEvent(AdminMonitoringEvent.AUTH_LOGIN_SUCCESS, {
+      role: data.user.role,
+    });
+    return { user: data.user };
+  } catch (error) {
+    if (error instanceof AdminAuthError) {
+      trackAdminAuthEvent(AdminMonitoringEvent.AUTH_LOGIN_FAILURE, {
+        reason: error.code,
+        status: res.status,
+      });
+    }
+    throw error;
+  }
 }
 
 export async function adminLogoutRequest(): Promise<void> {
   await fetch("/api/admin/auth/logout", {
     method: "POST",
     credentials: "same-origin",
+    headers: appendAdminCorrelationHeaders(),
   });
 }
 
@@ -60,6 +95,7 @@ export async function adminMeRequest(): Promise<AdminSessionUser> {
     method: "GET",
     credentials: "same-origin",
     cache: "no-store",
+    headers: appendAdminCorrelationHeaders(),
   });
   const body = await readJson(res);
   if (res.status === 401 || res.status === 403) {

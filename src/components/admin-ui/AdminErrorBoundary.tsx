@@ -3,6 +3,8 @@
 import { Component, type ErrorInfo, type ReactNode } from "react";
 
 import { AdminErrorState } from "@/components/admin-ui/AdminErrorState";
+import { AdminMonitoringEvent } from "@/lib/monitoring/admin-events";
+import { trackAdminPageFailure } from "@/lib/monitoring/admin-monitoring-client";
 import { captureClientException } from "@/lib/monitoring/error-tracking-client";
 
 type AdminErrorBoundaryProps = Readonly<{
@@ -25,9 +27,13 @@ export class AdminErrorBoundary extends Component<
   }
 
   componentDidCatch(error: Error, info: ErrorInfo): void {
+    trackAdminPageFailure("error_boundary", error, {
+      scope: this.props.scope ?? "admin",
+      componentStack: info.componentStack,
+    });
     captureClientException(error, {
       source: "client",
-      event: "admin.error_boundary",
+      event: AdminMonitoringEvent.PAGE_FAILURE,
       message: "Admin UI error boundary caught an error",
       tags: {
         kind: "error_boundary",

@@ -18,6 +18,11 @@ import {
   adminRefreshSessionRequest,
 } from "./auth-api";
 import { adminCan, type ServiceInstanceAdminCapability } from "./permissions-core";
+import { AdminMonitoringEvent } from "@/lib/monitoring/admin-events";
+import {
+  trackAdminAction,
+  trackAdminAuthEvent,
+} from "@/lib/monitoring/admin-monitoring-client";
 import {
   clearRememberedIdentifier,
   saveRememberedIdentifier,
@@ -70,6 +75,7 @@ export function AdminAuthProvider({ children, active = true }: AdminAuthProvider
         setUser(null);
         setStatus("unauthenticated");
       }
+      trackAdminAuthEvent(AdminMonitoringEvent.AUTH_SESSION_REFRESH_FAILED);
       return null;
     } finally {
       if (mountedRef.current) {
@@ -82,6 +88,8 @@ export function AdminAuthProvider({ children, active = true }: AdminAuthProvider
 
   const logout = useCallback(
     async (reason: "manual" | "idle" | "expired" = "manual") => {
+      trackAdminAuthEvent(AdminMonitoringEvent.AUTH_LOGOUT, { reason });
+      trackAdminAction("logout", { reason });
       try {
         await adminLogoutRequest();
       } catch {

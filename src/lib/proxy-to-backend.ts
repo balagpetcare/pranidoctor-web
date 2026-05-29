@@ -8,6 +8,15 @@ import { REQUEST_ID_HEADER, CORRELATION_ID_HEADER } from "@/lib/logging/constant
 import { runWithRequestContext } from "@/lib/logging/request-context";
 import { serverLog } from "@/lib/logging/server-logger";
 import { requireAdminPanelApiAccess } from "@/lib/admin-auth/api-guard";
+import { getAdminSlowProxyThresholdMs } from "@/lib/monitoring/admin-monitoring-config";
+import {
+  alertAdminProxy5xx,
+  alertAdminProxySlow,
+} from "@/lib/monitoring/alerts";
+import {
+  trackAdminAuthDenied,
+  trackAdminProxySlow,
+} from "@/lib/monitoring/admin-monitoring-server";
 
 /**
  * Proxy Next.js App Router handlers to canonical Express backend.
@@ -42,7 +51,16 @@ async function assertAdminProxyAccess(request: Request): Promise<Response | null
   if (!isAdminProxyPath(url.pathname) || isAdminApiPublicPath(url.pathname)) {
     return null;
   }
-  return requireAdminPanelApiAccess();
+  const denied = await requireAdminPanelApiAccess();
+  if (denied) {
+    const status = denied.status;
+    trackAdminAuthDenied(
+      status === 403 ? "forbidden" : "unauthorized",
+      url.pathname,
+      request.method,
+    );
+  }
+  return denied;
 }
 
 async function proxyOnce(request: Request): Promise<Response> {
@@ -98,6 +116,7 @@ async function proxyOnce(request: Request): Promise<Response> {
         responseHeaders.set(CORRELATION_ID_HEADER, ids.correlationId);
 
         if (isAdminProxyPath(url.pathname)) {
+          const durationMs = Date.now() - started;
           const level = upstream.status >= 500 ? "error" : upstream.status >= 400 ? "warn" : "info";
           serverLog[level]("Backend proxy completed", {
             event: "admin.proxy",
@@ -105,9 +124,28 @@ async function proxyOnce(request: Request): Promise<Response> {
               path: url.pathname,
               method: request.method,
               status: upstream.status,
-              durationMs: Date.now() - started,
+              durationMs,
             },
           });
+          if (upstream.status >= 500) {
+            void alertAdminProxy5xx(url.pathname, request.method, upstream.status);
+          }
+          const slowThreshold = getAdminSlowProxyThresholdMs();
+          if (durationMs >= slowThreshold) {
+            trackAdminProxySlow(
+              url.pathname,
+              request.method,
+              upstream.status,
+              durationMs,
+              slowThreshold,
+            );
+            void alertAdminProxySlow(
+              url.pathname,
+              request.method,
+              durationMs,
+              slowThreshold,
+            );
+          }
         }
 
         return new Response(upstream.body, {

@@ -1,6 +1,8 @@
 import { Prisma } from "@/generated/prisma/client";
 
 import { serverLog } from "@/lib/logging/server-logger";
+import { AdminMonitoringEvent } from "@/lib/monitoring/admin-events";
+import { trackAdminServerEvent } from "@/lib/monitoring/admin-monitoring-server";
 
 /** JSON `error.code` values for `POST /api/admin/auth/login`. */
 export type AdminLoginErrorCode =
@@ -57,4 +59,10 @@ export function logAdminLoginFailure(
       ...(meta?.prismaCode ? { prismaCode: meta.prismaCode } : {}),
     },
   });
+  trackAdminServerEvent(
+    AdminMonitoringEvent.AUTH_LOGIN_FAILURE,
+    level === "info" ? "warn" : level,
+    "Admin login failure",
+    { code, ...(meta?.prismaCode ? { prismaCode: meta.prismaCode } : {}) },
+  );
 }

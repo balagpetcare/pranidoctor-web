@@ -28,7 +28,9 @@ export function getErrorTrackingProvider(): ErrorTrackingProvider {
   if (raw === "console" || raw === "webhook" || raw === "noop" || raw === "sentry") {
     return raw;
   }
-  if (process.env.SENTRY_DSN?.trim()) {
+  const dsn = process.env.SENTRY_DSN?.trim();
+  const disabled = process.env.SENTRY_ENABLED?.trim().toLowerCase() === "false";
+  if (dsn && !disabled) {
     return "sentry";
   }
   return process.env.NODE_ENV === "production" ? "console" : "noop";

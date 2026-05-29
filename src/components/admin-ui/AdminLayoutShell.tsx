@@ -18,6 +18,8 @@ import { AdminSidebar } from "./AdminSidebar";
 import { AdminThemeProvider } from "./AdminThemeProvider";
 import { AdminTopbar } from "./AdminTopbar";
 import { AdminWorkspace } from "./AdminWorkspace";
+import { AdminMonitoringProvider } from "./AdminMonitoringProvider";
+import { AdminLegalGate } from "@/components/admin/legal/AdminLegalGate";
 import { useAdminTheme } from "./useAdminTheme";
 
 function AdminLayoutShellInner({
@@ -123,7 +125,10 @@ export function AdminLayoutShell({
   return (
     <AdminThemeProvider>
       <AdminAuthProvider active>
-        <AdminLayoutShellInner>{children}</AdminLayoutShellInner>
+        <AdminMonitoringProvider>
+          <AdminLayoutShellInner>{children}</AdminLayoutShellInner>
+          <AdminLegalGate />
+        </AdminMonitoringProvider>
       </AdminAuthProvider>
     </AdminThemeProvider>
   );
