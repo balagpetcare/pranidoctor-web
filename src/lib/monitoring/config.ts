@@ -1,4 +1,4 @@
-export type ErrorTrackingProvider = "noop" | "console" | "webhook";
+export type ErrorTrackingProvider = "noop" | "console" | "webhook" | "sentry";
 
 function parseBoolEnv(key: string, def: boolean): boolean {
   const v = process.env[key]?.trim().toLowerCase();
@@ -25,8 +25,11 @@ export function isClientErrorTrackingEnabled(): boolean {
 
 export function getErrorTrackingProvider(): ErrorTrackingProvider {
   const raw = process.env.ERROR_TRACKING_PROVIDER?.trim().toLowerCase();
-  if (raw === "console" || raw === "webhook" || raw === "noop") {
+  if (raw === "console" || raw === "webhook" || raw === "noop" || raw === "sentry") {
     return raw;
+  }
+  if (process.env.SENTRY_DSN?.trim()) {
+    return "sentry";
   }
   return process.env.NODE_ENV === "production" ? "console" : "noop";
 }

@@ -9,8 +9,10 @@ export async function register() {
 
   const { assertProductionEnvOrThrow } = await import("@/lib/env/production-validation");
   const { initErrorTracking } = await import("@/lib/monitoring/error-tracking");
+  const { initSentry } = await import("@/lib/monitoring/sentry-init");
 
   assertProductionEnvOrThrow();
+  await initSentry();
   initErrorTracking();
 }
 

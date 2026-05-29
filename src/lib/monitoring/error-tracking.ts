@@ -9,6 +9,7 @@ import {
   isErrorTrackingEnabled,
 } from "./config";
 import type { ErrorTrackingContext } from "./error-tracking-types";
+import { captureSentryException } from "./sentry-init";
 
 export type { ErrorTrackingContext } from "./error-tracking-types";
 
@@ -70,6 +71,10 @@ export function captureException(
       correlationId: context.correlationId,
     });
     return;
+  }
+
+  if (provider === "sentry") {
+    void captureSentryException(error, context as Record<string, unknown>);
   }
 
   void postWebhookEvent("exception", {

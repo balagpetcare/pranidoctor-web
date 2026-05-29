@@ -7,6 +7,7 @@ import {
 import { REQUEST_ID_HEADER, CORRELATION_ID_HEADER } from "@/lib/logging/constants";
 import { runWithRequestContext } from "@/lib/logging/request-context";
 import { serverLog } from "@/lib/logging/server-logger";
+import { requireAdminPanelApiAccess } from "@/lib/admin-auth/api-guard";
 
 /**
  * Proxy Next.js App Router handlers to canonical Express backend.
@@ -20,6 +21,28 @@ function getBackendOrigin(): string {
 
 function isAdminProxyPath(pathname: string): boolean {
   return pathname.startsWith("/api/admin");
+}
+
+/** Admin auth routes and health probes stay public at the BFF layer. */
+function isAdminApiPublicPath(pathname: string): boolean {
+  const publicPaths = [
+    "/api/admin/auth/login",
+    "/api/admin/auth/logout",
+    "/api/admin/health",
+    "/api/admin/health/live",
+    "/api/admin/health/ready",
+  ];
+  return publicPaths.some(
+    (prefix) => pathname === prefix || pathname.startsWith(`${prefix}/`),
+  );
+}
+
+async function assertAdminProxyAccess(request: Request): Promise<Response | null> {
+  const url = new URL(request.url);
+  if (!isAdminProxyPath(url.pathname) || isAdminApiPublicPath(url.pathname)) {
+    return null;
+  }
+  return requireAdminPanelApiAccess();
 }
 
 async function proxyOnce(request: Request): Promise<Response> {
@@ -111,11 +134,15 @@ async function proxyOnce(request: Request): Promise<Response> {
 }
 
 export async function proxyRouteToBackend(request: Request): Promise<Response> {
+  const denied = await assertAdminProxyAccess(request);
+  if (denied) return denied;
   return proxyOnce(request);
 }
 
 /** Use when handler must return NextResponse (e.g. cookie mutations). */
 export async function proxyRouteToBackendNext(request: Request): Promise<NextResponse> {
+  const denied = await assertAdminProxyAccess(request);
+  if (denied) return denied as NextResponse;
   const res = await proxyOnce(request);
   const body = await res.arrayBuffer();
   return new NextResponse(body, {

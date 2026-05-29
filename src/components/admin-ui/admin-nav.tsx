@@ -13,6 +13,7 @@ import {
   Inbox,
   LayoutDashboard,
   Layers,
+  Leaf,
   ListTree,
   MapPin,
   MapPinned,
@@ -187,6 +188,51 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
     ],
   },
   {
+    id: "feed-ecosystem",
+    labelEn: "Feed & Livestock Ecosystem",
+    labelBn: "খাদ্য ও পশু",
+    titleEn: "Phase 4 feed master, vendors, analytics",
+    icon: Leaf,
+    children: [
+      {
+        href: "/admin/feed-ecosystem",
+        labelBn: "ইকোসিস্টেম সারাংশ",
+        titleEn: "Feed ecosystem hub",
+        icon: LayoutDashboard,
+      },
+      {
+        href: "/admin/feed-ecosystem/items",
+        labelBn: "খাদ্য আইটেম",
+        titleEn: "Phase 4 feed items",
+        icon: Leaf,
+      },
+      {
+        href: "/admin/feed-ecosystem/vendors",
+        labelBn: "ভেন্ডর",
+        titleEn: "Feed vendors",
+        icon: PackageSearch,
+      },
+      {
+        href: "/admin/feed-ecosystem/analytics",
+        labelBn: "খাদ্য অ্যানালিটিক্স",
+        titleEn: "Feed analytics",
+        icon: BarChart3,
+      },
+      {
+        href: "/admin/feed-ecosystem/moderation",
+        labelBn: "অনুমোদন",
+        titleEn: "Approval queue",
+        icon: ShieldCheck,
+      },
+      {
+        href: "/admin/feed-catalog",
+        labelBn: "লেগাসি ক্যাটালগ",
+        titleEn: "Legacy feed catalog",
+        icon: ListTree,
+      },
+    ],
+  },
+  {
     id: "semen-breeding",
     labelEn: "Semen / Breeding Management",
     labelBn: "সিমেন ও ব্রিডিং",
@@ -344,6 +390,12 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
         labelBn: "সার্ভিস ক্যাটাগরি",
         titleEn: "Service categories (master)",
         icon: ListTree,
+      },
+      {
+        href: "/admin/launch-ops",
+        labelBn: "লঞ্চ অপারেশন",
+        titleEn: "Launch operations & health",
+        icon: ShieldCheck,
       },
       {
         href: "/admin/settings",
