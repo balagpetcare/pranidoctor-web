@@ -122,7 +122,7 @@ export default function LaunchOpsPage() {
           </p>
         </div>
         <div className="flex flex-wrap gap-2">
-          <AdminActionButton href="/admin/ai-ops/governance" variant="secondary">
+          <AdminActionButton href="/admin/ai-ops/settings" variant="secondary">
             AI governance
           </AdminActionButton>
           <AdminActionButton href="/admin/analytics/overview" variant="secondary">

@@ -86,7 +86,15 @@ export function AiDisclaimerAdminPanel() {
         await adminFetch('/api/admin/settings/ai-disclaimer', {
           method: 'PUT',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(data),
+          body: JSON.stringify({
+            contentVersion: data.contentVersion,
+            enforceAcceptance: data.enforceAcceptance,
+            consentVersion: data.consentVersion,
+            consentTitle: data.consentTitle,
+            consentContent: data.consentContent,
+            banner: data.banner,
+            contextual: data.contextual,
+          }),
         }),
       );
       setData(payload);

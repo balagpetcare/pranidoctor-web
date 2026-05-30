@@ -15,6 +15,7 @@ const SECTION_SPECS: readonly { id: string; titleBn: string; groupIds: readonly 
   { id: "sec-loc", titleBn: "লোকেশন ও এরিয়া ব্যবস্থাপনা", groupIds: ["location-area"] },
   { id: "sec-med", titleBn: "মেডিকেল টিম", groupIds: ["medical-team"] },
   { id: "sec-ai", titleBn: "এআই অপারেশন", groupIds: ["ai-technician-mgmt"] },
+  { id: "sec-ai-center", titleBn: "এআই সেন্টার", groupIds: ["ai-center"] },
   { id: "sec-semen", titleBn: "সিমেন ও ব্রিডিং ব্যবস্থাপনা", groupIds: ["semen-breeding"] },
   { id: "sec-cust", titleBn: "গ্রাহক ও প্রাণীর রেকর্ড", groupIds: ["customer-animal"] },
   { id: "sec-svc", titleBn: "সেবা ও চিকিৎসা", groupIds: ["service-treatment"] },

@@ -49,6 +49,12 @@ export async function acceptAdminLegalDocument(input: {
     body: JSON.stringify(input),
   });
   const body = await res.json();
-  if (!res.ok) throw new Error("Failed to record legal acceptance");
+  if (!res.ok) {
+    const parsed = body as ApiEnvelope<AdminLegalStatus>;
+    if (!parsed.ok && parsed.error.code === "LEGAL_DOCUMENT_UNAVAILABLE") {
+      throw new Error(parsed.error.message);
+    }
+    throw new Error("Failed to record legal acceptance");
+  }
   return parseEnvelope<AdminLegalStatus>(body);
 }

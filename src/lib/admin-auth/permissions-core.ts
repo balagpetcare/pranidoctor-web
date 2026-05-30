@@ -6,7 +6,11 @@ export type ServiceInstanceAdminCapability =
   | "serviceInstance.review"
   | "serviceInstance.publish"
   | "analytics.view"
-  | "analytics.export";
+  | "analytics.export"
+  | "ai.view"
+  | "ai.manage"
+  | "ai.secrets.manage"
+  | "ai.analytics.export";
 
 export const ADMIN_ENTERPRISE_CAPABILITIES: {
   id: ServiceInstanceAdminCapability;
@@ -17,6 +21,10 @@ export const ADMIN_ENTERPRISE_CAPABILITIES: {
   { id: "serviceInstance.publish", labelBn: "এন্টারপ্রাইজ প্রকাশ" },
   { id: "analytics.view", labelBn: "অ্যানালিটিক্স দেখা" },
   { id: "analytics.export", labelBn: "অ্যানালিটিক্স এক্সপোর্ট" },
+  { id: "ai.view", labelBn: "এআই অ্যাডমিন দেখা" },
+  { id: "ai.manage", labelBn: "এআই কনফিগ পরিচালনা" },
+  { id: "ai.secrets.manage", labelBn: "এআই API কী পরিচালনা" },
+  { id: "ai.analytics.export", labelBn: "এআই ব্যবহার রিপোর্ট এক্সপোর্ট" },
 ];
 
 export type AdminRoleAccessRow = {
@@ -35,16 +43,24 @@ const ROLE_MATRIX: Record<
     "serviceInstance.publish": true,
     "analytics.view": true,
     "analytics.export": true,
+    "ai.view": true,
+    "ai.manage": true,
+    "ai.secrets.manage": true,
+    "ai.analytics.export": true,
   },
   [USER_ROLE.ADMIN]: {
     "serviceInstance.view": true,
     "serviceInstance.review": true,
     "analytics.view": true,
     "analytics.export": true,
+    "ai.view": true,
+    "ai.manage": true,
+    "ai.analytics.export": true,
   },
   [USER_ROLE.SUPPORT]: {
     "serviceInstance.view": true,
     "analytics.view": true,
+    "ai.view": true,
   },
   [USER_ROLE.CUSTOMER]: undefined,
   [USER_ROLE.DOCTOR]: undefined,

@@ -47,6 +47,8 @@ export function adminLoginRedirectMessage(reason: string | null): string | null 
       return "নিষ্ক্রিয়তার কারণে সেশন শেষ হয়েছে। আবার লগ ইন করুন। / Signed out due to inactivity.";
     case "expired":
       return "সেশনের মেয়াদ শেষ। আবার লগ ইন করুন। / Session expired. Please sign in again.";
+    case "session_invalid":
+      return "সেশন আর বৈধ নয়। আবার লগ ইন করুন। / Session is no longer valid. Please sign in again.";
     default:
       return null;
   }

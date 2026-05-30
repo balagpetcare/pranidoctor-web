@@ -30,6 +30,22 @@ const CAPABILITY_DETAILS: Record<
     description: "অ্যানালিটিক্স CSV এক্সপোর্ট।",
     navGated: "Export CSV",
   },
+  "ai.view": {
+    description: "এআই অপস কনসোল, প্রোভাইডার, মডেল, রুট ও হেলথ দেখা।",
+    navGated: "/admin/ai-ops",
+  },
+  "ai.manage": {
+    description: "এআই প্রোভাইডার, মডেল, রুট, ফেইলওভার ও মার্কেটপ্লেস কনফিগ পরিচালনা।",
+    navGated: "AI Ops panels",
+  },
+  "ai.secrets.manage": {
+    description: "এআই API কী তৈরি, রোটেশন ও নিষ্ক্রিয় করা।",
+    navGated: "/admin/ai-ops/api-keys",
+  },
+  "ai.analytics.export": {
+    description: "এআই ব্যবহার ও খরচ রিপোর্ট এক্সপোর্ট।",
+    navGated: "/admin/ai-ops/analytics",
+  },
 };
 
 export function PermissionsAdminPanel() {

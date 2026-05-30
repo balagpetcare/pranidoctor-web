@@ -37,6 +37,7 @@ function isAdminApiPublicPath(pathname: string): boolean {
   const publicPaths = [
     "/api/admin/auth/login",
     "/api/admin/auth/logout",
+    "/api/admin/auth/session-invalid",
     "/api/admin/health",
     "/api/admin/health/live",
     "/api/admin/health/ready",
@@ -111,9 +112,19 @@ async function proxyOnce(request: Request): Promise<Response> {
       try {
         const upstream = await fetch(target, init);
         const responseHeaders = new Headers(upstream.headers);
-        responseHeaders.delete("transfer-encoding");
+        // Node fetch decompresses gzip/br bodies; drop encoding/length so clients
+        // do not wait for compressed bytes that will never arrive (BFF hang / invalid JSON).
+        for (const name of [
+          "transfer-encoding",
+          "content-encoding",
+          "content-length",
+        ]) {
+          responseHeaders.delete(name);
+        }
         responseHeaders.set(REQUEST_ID_HEADER, ids.requestId);
         responseHeaders.set(CORRELATION_ID_HEADER, ids.correlationId);
+
+        const body = await upstream.arrayBuffer();
 
         if (isAdminProxyPath(url.pathname)) {
           const durationMs = Date.now() - started;
@@ -148,7 +159,7 @@ async function proxyOnce(request: Request): Promise<Response> {
           }
         }
 
-        return new Response(upstream.body, {
+        return new Response(body.byteLength > 0 ? body : null, {
           status: upstream.status,
           statusText: upstream.statusText,
           headers: responseHeaders,

@@ -1,7 +1,5 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
-import { DOCTOR_SESSION_COOKIE } from "./constants";
 import { resolveDoctorPanelActor } from "./panel-access";
 import { getDoctorSession } from "./session";
 
@@ -17,8 +15,6 @@ export async function ensureDoctorDashboardAccess(): Promise<void> {
 
   const actor = await resolveDoctorPanelActor(session);
   if (!actor) {
-    const jar = await cookies();
-    jar.delete(DOCTOR_SESSION_COOKIE);
-    redirect("/doctor/login");
+    redirect("/api/doctor/auth/session-invalid");
   }
 }

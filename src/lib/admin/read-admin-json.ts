@@ -14,9 +14,9 @@ export async function readAdminJson<T>(res: Response): Promise<T> {
     | { ok: true; data: T }
     | { ok: false; error?: { code?: string; message?: string } };
 
-  if (res.status === 401) {
+  if (res.status === 401 || res.status === 403) {
     const next = `${window.location.pathname}${window.location.search}`;
-    window.location.href = `/admin/login?next=${encodeURIComponent(next)}`;
+    window.location.href = `/api/admin/auth/session-invalid?next=${encodeURIComponent(next)}`;
     throw new Error("Not signed in");
   }
 

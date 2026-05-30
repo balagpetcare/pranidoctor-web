@@ -15,7 +15,7 @@ export function validateServiceInstancePayloadJson(
     issues.push({ path: "$", messageBn: "পেলোড অবশ্যই অবজেক্ট হতে হবে" });
     return { ok: false, issues };
   }
-  const o = payload as any;
+  const o = payload as Record<string, unknown>;
 
   const hasOffer =
     o.offerPrice != null &&

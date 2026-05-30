@@ -1,9 +1,7 @@
-import { cookies } from "next/headers";
 import { redirect } from "next/navigation";
 
 import type { UserRole } from "@/lib/admin-auth/user-role";
 
-import { ADMIN_SESSION_COOKIE } from "./constants";
 import { adminCan, assertAdminCan, type ServiceInstanceAdminCapability } from "./permissions";
 import type { AdminPanelActor } from "./panel-classify";
 import { resolveAdminPanelActor } from "./panel-access";
@@ -26,9 +24,7 @@ export async function getAdminDashboardActor(): Promise<AdminPanelActor> {
 
   const actor = await resolveAdminPanelActor(session);
   if (!actor) {
-    const jar = await cookies();
-    jar.delete(ADMIN_SESSION_COOKIE);
-    redirect("/admin/login");
+    redirect("/api/admin/auth/session-invalid");
   }
 
   return actor;
@@ -38,7 +34,7 @@ export async function getAdminDashboardActor(): Promise<AdminPanelActor> {
 export async function ensureAdminRole(...roles: UserRole[]): Promise<AdminPanelActor> {
   const actor = await getAdminDashboardActor();
   if (!roles.includes(actor.role)) {
-    redirect("/admin?error=forbidden");
+    redirect("/admin/access-denied");
   }
   return actor;
 }
@@ -49,7 +45,7 @@ export async function ensureAdminCapability(
 ): Promise<AdminPanelActor> {
   const actor = await getAdminDashboardActor();
   if (!adminCan(actor, capability)) {
-    redirect("/admin?error=forbidden");
+    redirect("/admin/access-denied");
   }
   return actor;
 }

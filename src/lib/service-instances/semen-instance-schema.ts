@@ -161,7 +161,7 @@ export function buildSemenServiceInstanceSchema(
 export function mergeTemplateAndPayloadValues(
   template: TemplateRow,
   payloadJson: unknown,
-): any {
+): Record<string, unknown> {
   const breedLabel = template.breedMixes
     .map((m) => `${m.percentage.toString()}% ${m.breed.nameEn}`)
     .join(" + ");
@@ -185,10 +185,10 @@ export function mergeTemplateAndPayloadValues(
 
   const p =
     payloadJson && typeof payloadJson === "object" && !Array.isArray(payloadJson)
-      ? (payloadJson as any)
+      ? (payloadJson as Record<string, unknown>)
       : {};
 
-  const out: any = {};
+  const out: Record<string, unknown> = {};
   for (const [k, v] of Object.entries(tpl)) {
     out[`tpl.${k}`] = v;
   }

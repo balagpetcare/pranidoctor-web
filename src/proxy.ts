@@ -4,6 +4,7 @@ import { NextResponse } from "next/server";
 
 import { ADMIN_SESSION_COOKIE } from "@/lib/admin-auth/constants";
 import { verifyAdminToken } from "@/lib/admin-auth/jwt";
+import { getSafeAdminNextPath } from "@/lib/admin-auth/safe-next-path";
 import { DOCTOR_SESSION_COOKIE } from "@/lib/doctor-auth/constants";
 import { verifyDoctorToken } from "@/lib/doctor-auth/jwt";
 import {
@@ -56,9 +57,11 @@ async function guardAdminPanelHtml(
 
   if (isAdminLoginPath(pathname)) {
     if (session) {
+      const next = request.nextUrl.searchParams.get("next");
+      const destination = getSafeAdminNextPath(next);
       return attachObservabilityHeaders(
         request,
-        NextResponse.redirect(new URL("/admin", request.url)),
+        NextResponse.redirect(new URL(destination, request.url)),
       );
     }
     return attachObservabilityHeaders(request, NextResponse.next());

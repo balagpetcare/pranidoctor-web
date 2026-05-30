@@ -14,6 +14,11 @@ describe("buildAdminBreadcrumbs", () => {
     expect(crumbs.at(-1)?.label).toBe("সম্পাদনা");
   });
 
+  it("builds AI Center trail", () => {
+    const crumbs = buildAdminBreadcrumbs("/admin/ai-ops/providers");
+    expect(crumbs.some((c) => c.label === "প্রোভাইডার")).toBe(true);
+  });
+
   it("builds enterprise tab trail", () => {
     const crumbs = buildAdminBreadcrumbs("/enterprise/services/review/pending");
     expect(crumbs.some((c) => c.label === "এন্টারপ্রাইজ সেবা পর্যালোচনা")).toBe(true);

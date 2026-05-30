@@ -3,6 +3,8 @@
 import { useCallback, useState } from 'react';
 
 import { AdminActionButton } from '@/components/admin-ui/AdminActionButton';
+import { AdminErrorState } from '@/components/admin-ui/AdminErrorState';
+import { AdminLoadingState } from '@/components/admin-ui/AdminLoadingState';
 import { AdminPageHeader } from '@/components/admin-ui/AdminPageHeader';
 import { adminFetch } from '@/lib/admin/admin-fetch';
 import { readAdminJson } from '@/lib/admin/read-admin-json';
@@ -65,16 +67,26 @@ function historyLabel(h: GovernanceHistory): string {
   return `${h.previousLlmDisabled ? 'LLM off' : 'LLM on'} → ${h.llmDisabled ? 'LLM off' : 'LLM on'}`;
 }
 
-export function AiGovernancePanel() {
+export type AiGovernancePanelProps = Readonly<{
+  headingTitle?: string;
+  headingDescription?: string;
+}>;
+
+export function AiGovernancePanel({
+  headingTitle = 'AI Governance',
+  headingDescription = 'Escalations and LLM kill switch',
+}: AiGovernancePanelProps = {}) {
   const [escalations, setEscalations] = useState<Escalation[]>([]);
   const [governance, setGovernance] = useState<GovernanceState | null>(null);
   const [history, setHistory] = useState<GovernanceHistory[]>([]);
   const [reason, setReason] = useState('');
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [loading, setLoading] = useState(true);
 
   const load = useCallback(async () => {
     setError(null);
+    setLoading(true);
     try {
       const data = await readAdminJson<GovernancePanelResponse>(
         await adminFetch('/api/admin/ai-ops/governance'),
@@ -84,6 +96,8 @@ export function AiGovernancePanel() {
       setHistory(data.history ?? []);
     } catch (e) {
       setError(e instanceof Error ? e.message : 'Load failed');
+    } finally {
+      setLoading(false);
     }
   }, []);
 
@@ -134,10 +148,14 @@ export function AiGovernancePanel() {
 
   const scopes = governance?.scopes;
 
+  if (loading && !governance) {
+    return <AdminLoadingState message="Loading AI settings…" />;
+  }
+
   return (
     <div className="space-y-6">
-      <AdminPageHeader title="AI Governance" description="Escalations and LLM kill switch" />
-      {error ? <p className="text-red-600">{error}</p> : null}
+      <AdminPageHeader title={headingTitle} description={headingDescription} />
+      {error ? <AdminErrorState message={error} onRetry={() => void load()} /> : null}
       <div className="rounded border bg-white p-4">
         <p className="mb-2 font-medium">Global LLM kill switch</p>
         <p className="mb-2 text-sm text-gray-600">

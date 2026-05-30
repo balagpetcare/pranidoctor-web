@@ -24,9 +24,9 @@ function normalizePayloadForFingerprint(payload: unknown): unknown {
   if (payload == null || typeof payload !== "object" || Array.isArray(payload)) {
     return payload;
   }
-  const o = payload as any;
+  const o = payload as Record<string, unknown>;
   const keys = Object.keys(o).sort();
-  const out: any = {};
+  const out: Record<string, unknown> = {};
   for (const k of keys) {
     const v = o[k];
     if (v === undefined) continue;
@@ -42,7 +42,7 @@ function stableStringify(v: unknown): string {
   if (Array.isArray(v)) {
     return `[${v.map((x) => stableStringify(x)).join(",")}]`;
   }
-  const obj = v as any;
+  const obj = v as Record<string, unknown>;
   const keys = Object.keys(obj).sort();
   return `{${keys.map((k) => JSON.stringify(k) + ":" + stableStringify(obj[k])).join(",")}}`;
 }

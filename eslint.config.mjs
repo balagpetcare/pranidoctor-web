@@ -22,6 +22,29 @@ const eslintConfig = defineConfig([
       "@typescript-eslint/no-unused-vars": "off",
     },
   },
+  // Backend-proxy type stubs — archived web DB layer; types stay loose until backend OpenAPI.
+  {
+    files: [
+      "src/lib/admin-ai-technician-applications/**/*.ts",
+      "src/lib/admin-ai-technicians/technician-admin-service.ts",
+      "src/lib/admin-doctors/**/*.ts",
+      "src/lib/admin-service-requests/**/*.ts",
+      "src/lib/doctor-service-requests/doctor-*-service.ts",
+      "src/lib/technician-service-requests/**/*.ts",
+      "src/lib/knowledge-hub/service.ts",
+      "src/lib/locations/location-hierarchy-validation.ts",
+      "src/lib/locations/location-master-admin.ts",
+      "src/lib/locations/location-master-service.ts",
+      "src/lib/mobile-*/**/*.ts",
+      "src/lib/notifications/**/*.ts",
+      "src/lib/service-instances/*-service.ts",
+      "src/lib/storage/upload-download.ts",
+      "src/lib/storage/upload-service.ts",
+    ],
+    rules: {
+      "@typescript-eslint/no-explicit-any": "off",
+    },
+  },
   // Override default ignores of eslint-config-next.
   globalIgnores([
     // Default ignores of eslint-config-next:
@@ -30,6 +53,10 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
     "src/generated/**",
+    // Legacy modules excluded from tsconfig (see tsconfig.json exclude).
+    "scripts/**",
+    "src/lib/feed/**",
+    "src/lib/livestock/**",
   ]),
 ]);
 
