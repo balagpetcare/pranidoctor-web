@@ -110,12 +110,12 @@ export function AreasList() {
   }, [applied, offset]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network;
+     
     void loadParents();
   }, [loadParents]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network;
+     
     void loadList();
   }, [loadList]);
 

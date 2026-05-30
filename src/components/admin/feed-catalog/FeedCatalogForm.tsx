@@ -121,7 +121,7 @@ export function FeedCatalogForm({ mode, itemId }: Props) {
     }
   }
 
-  if (loading) return <AdminLoadingState label="লোড হচ্ছে…" />;
+  if (loading) return <AdminLoadingState message="লোড হচ্ছে…" />;
 
   return (
     <form onSubmit={(e) => void onSubmit(e)} className="mx-auto max-w-2xl space-y-6">

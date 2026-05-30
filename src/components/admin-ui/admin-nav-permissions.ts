@@ -35,6 +35,13 @@ export function filterAdminNavGroupsForActor(
   options?: { authLoading?: boolean },
 ): AdminNavGroup[] {
   return groups
+    .filter((g) => {
+      if (options?.authLoading && g.roles?.length) return false;
+      if (g.roles?.length) {
+        if (!actor || !g.roles.includes(actor.role)) return false;
+      }
+      return true;
+    })
     .map((g) => ({
       ...g,
       children: g.children.filter((c) => navItemVisibleForActor(c, actor, options)),

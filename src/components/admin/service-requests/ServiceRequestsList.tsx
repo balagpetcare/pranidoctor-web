@@ -139,7 +139,7 @@ export function ServiceRequestsList({ initialStatus = "" }: ServiceRequestsListP
   }, []);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void loadAreas();
   }, [loadAreas]);
 
@@ -171,7 +171,7 @@ export function ServiceRequestsList({ initialStatus = "" }: ServiceRequestsListP
   }, [offset, appliedStatus, appliedType, appliedArea]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void loadList();
   }, [loadList]);
 

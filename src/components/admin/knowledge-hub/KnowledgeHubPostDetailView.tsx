@@ -80,12 +80,12 @@ export function KnowledgeHubPostDetailView({ postId }: { postId: string }) {
   }, [postId]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void loadMe();
   }, [loadMe]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void loadTutorial();
   }, [loadTutorial, loadRetryKey]);
 

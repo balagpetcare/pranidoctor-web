@@ -31,6 +31,16 @@ function useChartGeometry(points: TrendPoint[], height = 160) {
   return { width, height, coords, linePath, areaPath, max };
 }
 
+function pieGradientStops(slices: ChartSlice[], total: number): string[] {
+  let cumulative = 0;
+  return slices.map((slice, i) => {
+    const start = (cumulative / total) * 100;
+    cumulative += slice.value;
+    const end = (cumulative / total) * 100;
+    return `${COLORS[i % COLORS.length]} ${start}% ${end}%`;
+  });
+}
+
 export function AnalyticsLineChart({
   points,
   className,
@@ -40,10 +50,10 @@ export function AnalyticsLineChart({
   className?: string;
   emptyLabel?: string;
 }) {
+  const { width, height, coords, linePath } = useChartGeometry(points);
   if (points.length === 0) {
     return <p className="py-8 text-center text-sm text-muted-foreground">{emptyLabel}</p>;
   }
-  const { width, height, coords, linePath } = useChartGeometry(points);
   const first = formatTrendLabel(points[0]?.date ?? '');
   const last = formatTrendLabel(points[points.length - 1]?.date ?? '');
   return (
@@ -69,10 +79,10 @@ export function AnalyticsAreaChart({
   points: TrendPoint[];
   className?: string;
 }) {
+  const { width, height, linePath, areaPath } = useChartGeometry(points);
   if (points.length === 0) {
     return <p className="py-8 text-center text-sm text-muted-foreground">No trend data</p>;
   }
-  const { width, height, linePath, areaPath } = useChartGeometry(points);
   return (
     <svg viewBox={`0 0 ${width} ${height}`} className={cn('h-40 w-full', className)} role="img">
       <path d={areaPath} fill="rgba(16, 185, 129, 0.2)" />
@@ -127,13 +137,7 @@ export function AnalyticsPieChart({
   if (total === 0) {
     return <p className="py-8 text-center text-sm text-muted-foreground">No data</p>;
   }
-  let cumulative = 0;
-  const stops = slices.map((slice, i) => {
-    const start = (cumulative / total) * 100;
-    cumulative += slice.value;
-    const end = (cumulative / total) * 100;
-    return `${COLORS[i % COLORS.length]} ${start}% ${end}%`;
-  });
+  const stops = pieGradientStops(slices, total);
   return (
     <div className={cn('flex flex-col items-center gap-4 sm:flex-row', className)}>
       <div
@@ -171,13 +175,7 @@ export function AnalyticsDonutChart({
   if (total === 0) {
     return <p className="py-8 text-center text-sm text-muted-foreground">No data</p>;
   }
-  let cumulative = 0;
-  const stops = slices.map((slice, i) => {
-    const start = (cumulative / total) * 100;
-    cumulative += slice.value;
-    const end = (cumulative / total) * 100;
-    return `${COLORS[i % COLORS.length]} ${start}% ${end}%`;
-  });
+  const stops = pieGradientStops(slices, total);
   return (
     <div className="flex flex-col items-center gap-4 sm:flex-row">
       <div

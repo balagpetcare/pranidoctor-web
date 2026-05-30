@@ -35,15 +35,15 @@ export function AiRiskPanel() {
   if (!data) {
     return (
       <div className="space-y-4">
-        <AdminPageHeader title="Farm risk monitoring" subtitle="High-risk farms and outbreak signals" />
-        <AdminLoadingState label="Loading risk data…" />
+        <AdminPageHeader title="Farm risk monitoring" description="High-risk farms and outbreak signals" />
+        <AdminLoadingState message="Loading risk data…" />
       </div>
     );
   }
 
   return (
     <div className="space-y-6">
-      <AdminPageHeader title="Farm risk monitoring" subtitle="High-risk farms and outbreak signals" />
+      <AdminPageHeader title="Farm risk monitoring" description="High-risk farms and outbreak signals" />
       <div>
         <p className="mb-2 font-medium">High-risk farms</p>
         <table className="w-full text-left text-sm">

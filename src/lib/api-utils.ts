@@ -7,7 +7,7 @@ import { AppError, NotFoundError, ValidationError, UnauthorizedError, ForbiddenE
 /**
  * Standard success response format
  */
-export function successResponse(data: any, status: number = 200) {
+export function successResponse(data: unknown, status: number = 200) {
   return NextResponse.json(
     { ok: true, data },
     { status }
@@ -20,9 +20,9 @@ export function successResponse(data: any, status: number = 200) {
 export function handleApiError(error: unknown): NextResponse {
   // Handle Zod validation errors
   if (error instanceof ZodError) {
-    const formattedErrors = error.errors.map(e => ({
-      path: e.path.join('.'),
-      message: e.message,
+    const formattedErrors = error.issues.map((issue) => ({
+      path: issue.path.join('.'),
+      message: issue.message,
     }));
 
     return NextResponse.json(
@@ -152,7 +152,7 @@ export function parseSortParams(
 export function buildSearchWhere(
   search: string | null,
   searchableFields: string[]
-): any {
+): Record<string, unknown> {
   if (!search || search.trim() === '') {
     return {};
   }

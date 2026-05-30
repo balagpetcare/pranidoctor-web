@@ -36,7 +36,7 @@ export function PromptList() {
 
   return (
     <div className="space-y-4">
-      <AdminPageHeader title="Prompt management" subtitle="Versioned AI system prompts" />
+      <AdminPageHeader title="Prompt management" description="Versioned AI system prompts" />
       <ul className="divide-y rounded border bg-white">
         {items.map((p) => (
           <li key={p.id} className="flex items-center justify-between px-4 py-3">

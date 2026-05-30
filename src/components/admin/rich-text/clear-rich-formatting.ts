@@ -1,4 +1,4 @@
-import type { Editor } from "@tiptap/core";
+import type { Editor } from "@tiptap/react";
 
 /**
  * Clears inline marks and normalizes common block structures for the current selection/caret.

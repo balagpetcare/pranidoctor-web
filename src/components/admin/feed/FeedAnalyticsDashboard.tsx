@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -73,11 +73,7 @@ export function FeedAnalyticsDashboard() {
   const [feedData, setFeedData] = useState<FeedAnalyticsSummary | null>(null);
   const [livestockData, setLivestockData] = useState<LivestockAnalyticsSummary | null>(null);
 
-  useEffect(() => {
-    fetchAnalytics();
-  }, [timeRange]);
-
-  const fetchAnalytics = async () => {
+  const fetchAnalytics = useCallback(async () => {
     setIsLoading(true);
     setError(null);
 
@@ -108,7 +104,11 @@ export function FeedAnalyticsDashboard() {
     } finally {
       setIsLoading(false);
     }
-  };
+  }, [timeRange, toast]);
+
+  useEffect(() => {
+    void fetchAnalytics();
+  }, [fetchAnalytics]);
 
   const formatCurrency = (value: number) => {
     return new Intl.NumberFormat('en-BD', {

@@ -54,7 +54,7 @@ export function DoctorDetailPanel({ doctorId }: { doctorId: string }) {
   }, [doctorId]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void load();
   }, [load, loadRetryKey]);
 

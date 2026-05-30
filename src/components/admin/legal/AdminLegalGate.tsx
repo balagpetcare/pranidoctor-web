@@ -17,7 +17,9 @@ export function AdminLegalGate() {
       description="You must accept the current platform personnel policy before using the admin console."
       fetchStatus={fetchAdminLegalStatus}
       acceptDocument={acceptAdminLegalDocument}
-      onAccepted={refreshSession}
+      onAccepted={() => {
+        void refreshSession();
+      }}
     />
   );
 }

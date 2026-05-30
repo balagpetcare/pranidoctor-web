@@ -55,6 +55,8 @@ export type AdminNavGroup = {
   labelBn: string;
   titleEn: string;
   icon: LucideIcon;
+  /** Optional role allow-list for the whole group; omit for all panel admins. */
+  roles?: UserRole[];
   children: AdminNavItem[];
 };
 

@@ -622,14 +622,14 @@ export function SemenServiceTemplateForm(props: SemenServiceTemplateFormProps) {
   }, []);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void loadProviders();
   }, [loadProviders]);
 
   useEffect(() => {
     let cancelled = false;
     const at = animalType;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- set load indicator before async fetch
+     
     setBreedsLoading(true);
     (async () => {
       try {
@@ -663,7 +663,7 @@ export function SemenServiceTemplateForm(props: SemenServiceTemplateFormProps) {
 
   useEffect(() => {
     if (props.mode !== "edit") return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void loadTemplate();
   }, [props.mode, loadTemplate, loadKey]);
 

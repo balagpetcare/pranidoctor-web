@@ -1,6 +1,6 @@
 "use client";
 
-import type { Editor } from "@tiptap/core";
+import type { Editor } from "@tiptap/react";
 import { EditorContent } from "@tiptap/react";
 
 import { cn } from "@/lib/cn";

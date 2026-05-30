@@ -8,7 +8,7 @@
  *   node scripts/lint-release.mjs --changed-only
  */
 import { execSync, spawnSync } from "node:child_process";
-import { existsSync } from "node:fs";
+import { existsSync, globSync } from "node:fs";
 import path from "node:path";
 
 const LINTABLE = /\.(cjs|mjs|js|jsx|ts|tsx)$/;
@@ -99,23 +99,57 @@ if (!adminOnly) {
 
 const uniqueTargets = [...new Set(eslintTargets)];
 
-if (uniqueTargets.length === 0) {
+function expandLintTargets(targets) {
+  const root = process.cwd();
+  const files = new Set();
+
+  for (const target of targets) {
+    const normalized = target.replace(/\\/g, "/");
+    if (normalized.startsWith("src/generated/")) continue;
+    if (normalized === "next-env.d.ts") continue;
+    if (normalized.includes("*")) {
+      for (const match of globSync(normalized, { cwd: root })) {
+        const file = match.replace(/\\/g, "/");
+        if (file.startsWith("src/generated/")) continue;
+        if (LINTABLE.test(file) && existsSync(path.join(root, file))) {
+          files.add(file);
+        }
+      }
+      continue;
+    }
+    if (LINTABLE.test(normalized) && existsSync(path.join(root, normalized))) {
+      files.add(normalized);
+    }
+  }
+
+  return [...files];
+}
+
+const lintFiles = expandLintTargets(uniqueTargets);
+
+if (lintFiles.length === 0) {
   console.log("lint-release: no files in release scope — skipping ESLint");
   process.exit(0);
 }
 
 console.log(
-  `lint-release: ESLint on ${uniqueTargets.length} target(s) (${adminOnly ? "admin-only" : changedOnly ? "changed-only" : "admin + changed"})`,
+  `lint-release: ESLint on ${lintFiles.length} file(s) (${adminOnly ? "admin-only" : changedOnly ? "changed-only" : "admin + changed"})`,
 );
 
-const eslintBin =
-  process.platform === "win32"
-    ? path.join("node_modules", ".bin", "eslint.cmd")
-    : path.join("node_modules", ".bin", "eslint");
+const eslintEntry = path.join("node_modules", "eslint", "bin", "eslint.js");
+const BATCH_SIZE = 40;
+let exitCode = 0;
 
-const result = spawnSync(eslintBin, ["--max-warnings", "0", ...uniqueTargets], {
-  stdio: "inherit",
-  shell: process.platform === "win32",
-});
+for (let i = 0; i < lintFiles.length; i += BATCH_SIZE) {
+  const batch = lintFiles.slice(i, i + BATCH_SIZE);
+  const result = spawnSync(
+    process.execPath,
+    [eslintEntry, "--max-warnings", "0", "--no-warn-ignored", ...batch],
+    { stdio: "inherit", shell: false },
+  );
+  if (result.status !== 0) {
+    exitCode = result.status ?? 1;
+  }
+}
 
-process.exit(result.status ?? 1);
+process.exit(exitCode);

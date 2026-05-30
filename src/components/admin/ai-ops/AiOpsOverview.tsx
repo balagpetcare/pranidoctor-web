@@ -63,13 +63,13 @@ export function AiOpsOverview() {
   }, []);
 
   if (error) return <p className="text-red-600">{error}</p>;
-  if (!data) return <AdminLoadingState label="Loading AI dashboard…" />;
+  if (!data) return <AdminLoadingState message="Loading AI dashboard…" />;
 
   const usage = data.usage?.totals;
 
   return (
     <div className="space-y-6">
-      <AdminPageHeader title="AI Operations" subtitle="Phase 8 ecosystem metrics" />
+      <AdminPageHeader title="AI Operations" description="Phase 8 ecosystem metrics" />
 
       {usage ? (
         <section>

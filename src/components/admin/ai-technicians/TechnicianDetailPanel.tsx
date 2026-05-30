@@ -60,7 +60,7 @@ export function TechnicianDetailPanel({
   }, [technicianId]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void load();
   }, [load, loadRetryKey]);
 

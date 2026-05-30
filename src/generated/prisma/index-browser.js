@@ -909,6 +909,50 @@ exports.Prisma.AiSafetyAuditLogScalarFieldEnum = {
   createdAt: 'createdAt'
 };
 
+exports.Prisma.AiGovernanceStateScalarFieldEnum = {
+  id: 'id',
+  llmDisabled: 'llmDisabled',
+  version: 'version',
+  updatedAt: 'updatedAt',
+  updatedByUserId: 'updatedByUserId',
+  updatedByRole: 'updatedByRole',
+  reason: 'reason',
+  source: 'source'
+};
+
+exports.Prisma.AiGovernanceStateHistoryScalarFieldEnum = {
+  id: 'id',
+  stateId: 'stateId',
+  llmDisabled: 'llmDisabled',
+  previousLlmDisabled: 'previousLlmDisabled',
+  version: 'version',
+  changeKind: 'changeKind',
+  scopeType: 'scopeType',
+  scopeId: 'scopeId',
+  disabled: 'disabled',
+  previousDisabled: 'previousDisabled',
+  actorId: 'actorId',
+  actorRole: 'actorRole',
+  reason: 'reason',
+  source: 'source',
+  requestId: 'requestId',
+  correlationId: 'correlationId',
+  rollbackOfId: 'rollbackOfId',
+  createdAt: 'createdAt'
+};
+
+exports.Prisma.AiGovernanceScopeScalarFieldEnum = {
+  scopeType: 'scopeType',
+  scopeId: 'scopeId',
+  disabled: 'disabled',
+  version: 'version',
+  updatedAt: 'updatedAt',
+  updatedByUserId: 'updatedByUserId',
+  updatedByRole: 'updatedByRole',
+  reason: 'reason',
+  source: 'source'
+};
+
 exports.Prisma.VoiceSessionScalarFieldEnum = {
   id: 'id',
   userId: 'userId',
@@ -1210,7 +1254,25 @@ exports.Prisma.MobileUserSettingsScalarFieldEnum = {
   privacyAcceptedAt: 'privacyAcceptedAt',
   termsAcceptedVersion: 'termsAcceptedVersion',
   termsAcceptedAt: 'termsAcceptedAt',
+  aiAcceptedVersion: 'aiAcceptedVersion',
+  aiAcceptedAt: 'aiAcceptedAt',
+  vetAcceptedVersion: 'vetAcceptedVersion',
+  vetAcceptedAt: 'vetAcceptedAt',
+  emergencyAcceptedVersion: 'emergencyAcceptedVersion',
+  emergencyAcceptedAt: 'emergencyAcceptedAt',
   updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LegalConsentEventScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  consentType: 'consentType',
+  version: 'version',
+  channel: 'channel',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  metadata: 'metadata',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.ServiceInstanceScalarFieldEnum = {
@@ -1309,6 +1371,41 @@ exports.Prisma.AuthAuditEventScalarFieldEnum = {
   userAgent: 'userAgent',
   metadata: 'metadata',
   createdAt: 'createdAt'
+};
+
+exports.Prisma.LegalDocumentScalarFieldEnum = {
+  id: 'id',
+  documentKey: 'documentKey',
+  version: 'version',
+  locale: 'locale',
+  title: 'title',
+  summary: 'summary',
+  contentMarkdown: 'contentMarkdown',
+  contentHash: 'contentHash',
+  publicUrl: 'publicUrl',
+  effectiveAt: 'effectiveAt',
+  requiresReaccept: 'requiresReaccept',
+  publishedAt: 'publishedAt',
+  publishedById: 'publishedById',
+  tenantId: 'tenantId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.LegalAcceptanceEventScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  legalDocumentId: 'legalDocumentId',
+  documentKey: 'documentKey',
+  version: 'version',
+  locale: 'locale',
+  acceptedAt: 'acceptedAt',
+  ipAddress: 'ipAddress',
+  userAgent: 'userAgent',
+  appSurface: 'appSurface',
+  appVersion: 'appVersion',
+  method: 'method',
+  metadataJson: 'metadataJson'
 };
 
 exports.Prisma.SettingScalarFieldEnum = {
@@ -1894,7 +1991,10 @@ exports.Prisma.AiUsageRecordScalarFieldEnum = {
   model: 'model',
   inputTokens: 'inputTokens',
   outputTokens: 'outputTokens',
+  totalTokens: 'totalTokens',
   costUsd: 'costUsd',
+  billable: 'billable',
+  rateVersion: 'rateVersion',
   latencyMs: 'latencyMs',
   success: 'success',
   errorCode: 'errorCode',
@@ -1913,8 +2013,45 @@ exports.Prisma.AiUsageDailyRollupScalarFieldEnum = {
   failureCount: 'failureCount',
   inputTokens: 'inputTokens',
   outputTokens: 'outputTokens',
+  totalTokens: 'totalTokens',
+  billableTokens: 'billableTokens',
   costUsd: 'costUsd',
+  billableCostUsd: 'billableCostUsd',
   latencyMsSum: 'latencyMsSum',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AiUsageUserDailyRollupScalarFieldEnum = {
+  id: 'id',
+  bucketDate: 'bucketDate',
+  userId: 'userId',
+  feature: 'feature',
+  provider: 'provider',
+  model: 'model',
+  requestCount: 'requestCount',
+  inputTokens: 'inputTokens',
+  outputTokens: 'outputTokens',
+  totalTokens: 'totalTokens',
+  billableTokens: 'billableTokens',
+  costUsd: 'costUsd',
+  billableCostUsd: 'billableCostUsd',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AiUsageCustomerDailyRollupScalarFieldEnum = {
+  id: 'id',
+  bucketDate: 'bucketDate',
+  customerId: 'customerId',
+  feature: 'feature',
+  provider: 'provider',
+  model: 'model',
+  requestCount: 'requestCount',
+  inputTokens: 'inputTokens',
+  outputTokens: 'outputTokens',
+  totalTokens: 'totalTokens',
+  billableTokens: 'billableTokens',
+  costUsd: 'costUsd',
+  billableCostUsd: 'billableCostUsd',
   updatedAt: 'updatedAt'
 };
 
@@ -2515,6 +2652,14 @@ exports.MobileThemePreference = exports.$Enums.MobileThemePreference = {
   DARK: 'DARK'
 };
 
+exports.LegalConsentType = exports.$Enums.LegalConsentType = {
+  PRIVACY: 'PRIVACY',
+  TERMS: 'TERMS',
+  AI_PROCESSING: 'AI_PROCESSING',
+  VET_ADVICE: 'VET_ADVICE',
+  EMERGENCY_SERVICE: 'EMERGENCY_SERVICE'
+};
+
 exports.ServiceInstanceStatus = exports.$Enums.ServiceInstanceStatus = {
   DRAFT: 'DRAFT',
   SUBMITTED: 'SUBMITTED',
@@ -2583,7 +2728,16 @@ exports.AuthAuditAction = exports.$Enums.AuthAuditAction = {
   PERMISSION_DENIED: 'PERMISSION_DENIED',
   SESSION_REVOKED: 'SESSION_REVOKED',
   DEVICE_REGISTERED: 'DEVICE_REGISTERED',
-  DEVICE_REVOKED: 'DEVICE_REVOKED'
+  DEVICE_REVOKED: 'DEVICE_REVOKED',
+  LEGAL_ACCEPTED: 'LEGAL_ACCEPTED'
+};
+
+exports.LegalAcceptanceMethod = exports.$Enums.LegalAcceptanceMethod = {
+  EXPLICIT_BUTTON: 'EXPLICIT_BUTTON',
+  CHECKBOX_REGISTER: 'CHECKBOX_REGISTER',
+  PROVIDER_ONBOARDING: 'PROVIDER_ONBOARDING',
+  FORCED_RECONSENT: 'FORCED_RECONSENT',
+  ADMIN_ATTESTED: 'ADMIN_ATTESTED'
 };
 
 exports.MilkSession = exports.$Enums.MilkSession = {
@@ -2909,6 +3063,9 @@ exports.Prisma.ModelName = {
   AiTriageRecord: 'AiTriageRecord',
   AiEscalationRecord: 'AiEscalationRecord',
   AiSafetyAuditLog: 'AiSafetyAuditLog',
+  AiGovernanceState: 'AiGovernanceState',
+  AiGovernanceStateHistory: 'AiGovernanceStateHistory',
+  AiGovernanceScope: 'AiGovernanceScope',
   VoiceSession: 'VoiceSession',
   VoiceTranscript: 'VoiceTranscript',
   VoiceNavigationEvent: 'VoiceNavigationEvent',
@@ -2930,6 +3087,7 @@ exports.Prisma.ModelName = {
   Notification: 'Notification',
   NotificationSettings: 'NotificationSettings',
   MobileUserSettings: 'MobileUserSettings',
+  LegalConsentEvent: 'LegalConsentEvent',
   ServiceInstance: 'ServiceInstance',
   ServiceInstanceMedia: 'ServiceInstanceMedia',
   ServiceInstanceStatusLog: 'ServiceInstanceStatusLog',
@@ -2937,6 +3095,8 @@ exports.Prisma.ModelName = {
   ServiceInstancePublishLog: 'ServiceInstancePublishLog',
   ServiceInstanceAuditEvent: 'ServiceInstanceAuditEvent',
   AuthAuditEvent: 'AuthAuditEvent',
+  LegalDocument: 'LegalDocument',
+  LegalAcceptanceEvent: 'LegalAcceptanceEvent',
   Setting: 'Setting',
   MilkRecord: 'MilkRecord',
   FeedCatalog: 'FeedCatalog',
@@ -2977,6 +3137,8 @@ exports.Prisma.ModelName = {
   RegionalOutbreakSignal: 'RegionalOutbreakSignal',
   AiUsageRecord: 'AiUsageRecord',
   AiUsageDailyRollup: 'AiUsageDailyRollup',
+  AiUsageUserDailyRollup: 'AiUsageUserDailyRollup',
+  AiUsageCustomerDailyRollup: 'AiUsageCustomerDailyRollup',
   AiPromptTemplate: 'AiPromptTemplate',
   AiSmartAlert: 'AiSmartAlert',
   AiFollowUpSuggestion: 'AiFollowUpSuggestion'

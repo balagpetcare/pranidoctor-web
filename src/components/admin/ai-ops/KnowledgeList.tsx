@@ -37,7 +37,7 @@ export function KnowledgeList() {
 
   return (
     <div className="space-y-4">
-      <AdminPageHeader title="Knowledge base" subtitle="Disease, vaccine, and emergency content" />
+      <AdminPageHeader title="Knowledge base" description="Disease, vaccine, and emergency content" />
       <table className="w-full text-left text-sm">
         <thead>
           <tr className="border-b">

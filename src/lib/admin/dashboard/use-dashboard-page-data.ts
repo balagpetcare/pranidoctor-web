@@ -59,7 +59,6 @@ export function useDashboardPageData(
 
   useEffect(() => {
     if (cached && preferCache) return;
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
     void reload();
   }, [cached, preferCache, reload]);
 

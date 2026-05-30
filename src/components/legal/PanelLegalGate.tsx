@@ -79,12 +79,13 @@ export function PanelLegalGate({
   }, [fetchStatus]);
 
   useEffect(() => {
-    if (!enabled) {
-      setLoading(false);
-      return;
-    }
+    if (!enabled) return;
     void load();
   }, [enabled, load]);
+
+  if (!enabled) {
+    return null;
+  }
 
   async function accept(doc: AdminLegalRequirement) {
     setAccepting(true);

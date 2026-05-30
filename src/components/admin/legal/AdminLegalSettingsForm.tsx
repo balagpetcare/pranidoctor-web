@@ -19,12 +19,21 @@ type ConsentOverviewDto = {
     privacyVersion: string;
     termsVersion: string;
     aiConsentVersion: string;
+    vetDisclaimerVersion?: string;
+    emergencyLimitationVersion?: string;
   };
+  policyUrls?: {
+    privacyPolicyUrl: string;
+    termsOfServiceUrl: string;
+  };
+  legalGateEnabled?: boolean;
   enforcePrivacyConsent: boolean;
   acceptanceCounts: {
     privacyAccepted: number;
     termsAccepted: number;
     aiConsentAccepted: number;
+    vetDisclaimerAccepted?: number;
+    emergencyLimitationAccepted?: number;
     totalCustomers: number;
   };
   recentEventsTotal: number;
@@ -120,7 +129,7 @@ export function AdminLegalSettingsForm() {
   }
 
   if (loading) {
-    return <AdminLoadingState label="Loading legal settings…" />;
+    return <AdminLoadingState message="Loading legal settings…" />;
   }
 
   if (error && !data) {
@@ -258,6 +267,20 @@ export function AdminLegalSettingsForm() {
               <dt className="text-muted-foreground">AI consent (current)</dt>
               <dd className="font-medium">
                 {overview.acceptanceCounts.aiConsentAccepted} /{" "}
+                {overview.acceptanceCounts.totalCustomers}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-muted-foreground">Vet disclaimer (current)</dt>
+              <dd className="font-medium">
+                {overview.acceptanceCounts.vetDisclaimerAccepted ?? 0} /{" "}
+                {overview.acceptanceCounts.totalCustomers}
+              </dd>
+            </div>
+            <div>
+              <dt className="text-muted-foreground">Emergency limitation (current)</dt>
+              <dd className="font-medium">
+                {overview.acceptanceCounts.emergencyLimitationAccepted ?? 0} /{" "}
                 {overview.acceptanceCounts.totalCustomers}
               </dd>
             </div>

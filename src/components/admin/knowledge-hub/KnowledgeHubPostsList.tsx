@@ -96,12 +96,12 @@ export function KnowledgeHubPostsList() {
   );
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void loadCategories();
   }, [loadCategories]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void loadPostsAt(skip);
   }, [loadPostsAt, skip, refreshKey]);
 

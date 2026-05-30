@@ -1,17 +1,23 @@
 'use client';
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useState } from 'react';
 
 import { AdminActionButton } from '@/components/admin-ui/AdminActionButton';
 import { AdminPageHeader } from '@/components/admin-ui/AdminPageHeader';
 import { adminFetch } from '@/lib/admin/admin-fetch';
 import { readAdminJson } from '@/lib/admin/read-admin-json';
+import { useAdminPanelLoad } from '@/lib/admin/use-admin-panel-load';
 
 type Escalation = {
   id: string;
   reason: string;
   status: string;
   flaggedAt: string;
+};
+
+type ScopeSnapshot = {
+  features: Record<string, boolean>;
+  providers: Record<string, boolean>;
 };
 
 type GovernanceState = {
@@ -22,12 +28,19 @@ type GovernanceState = {
   updatedByRole: string | null;
   reason: string | null;
   source: string;
+  environment: string;
+  scopes: ScopeSnapshot;
 };
 
 type GovernanceHistory = {
   id: string;
+  changeKind: string;
   llmDisabled: boolean;
   previousLlmDisabled: boolean;
+  scopeType: string | null;
+  scopeId: string | null;
+  disabled: boolean | null;
+  previousDisabled: boolean | null;
   version: number;
   actorId: string | null;
   actorRole: string | null;
@@ -41,6 +54,16 @@ type GovernancePanelResponse = {
   governance: GovernanceState;
   history: GovernanceHistory[];
 };
+
+function historyLabel(h: GovernanceHistory): string {
+  if (h.changeKind === 'failed_attempt') {
+    return `Failed attempt — ${h.reason ?? h.source}`;
+  }
+  if (h.changeKind === 'feature' || h.changeKind === 'provider') {
+    return `${h.scopeType}/${h.scopeId}: ${h.previousDisabled ? 'off' : 'on'} → ${h.disabled ? 'off' : 'on'}`;
+  }
+  return `${h.previousLlmDisabled ? 'LLM off' : 'LLM on'} → ${h.llmDisabled ? 'LLM off' : 'LLM on'}`;
+}
 
 export function AiGovernancePanel() {
   const [escalations, setEscalations] = useState<Escalation[]>([]);
@@ -64,25 +87,19 @@ export function AiGovernancePanel() {
     }
   }, []);
 
-  useEffect(() => {
-    void load();
-  }, [load]);
+  useAdminPanelLoad(load);
 
   const llmDisabled = governance?.llmDisabled ?? false;
 
-  async function toggleKillSwitch(disable: boolean) {
+  async function postGovernance(body: Record<string, unknown>) {
     setBusy(true);
     setError(null);
     try {
-      const data = await readAdminJson<{ llmDisabled: boolean; governance: GovernanceState }>(
+      const data = await readAdminJson<{ governance: GovernanceState }>(
         await adminFetch('/api/admin/ai-ops/governance', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({
-            disable,
-            reason: disable ? reason.trim() || undefined : undefined,
-            expectedVersion: governance?.version,
-          }),
+          body: JSON.stringify(body),
         }),
       );
       setGovernance(data.governance);
@@ -95,12 +112,34 @@ export function AiGovernancePanel() {
     }
   }
 
+  async function toggleKillSwitch(disable: boolean) {
+    await postGovernance({
+      disable,
+      reason: disable ? reason.trim() || undefined : undefined,
+      expectedVersion: governance?.version,
+    });
+  }
+
+  async function toggleScope(
+    scopeType: 'feature' | 'provider',
+    scopeId: string,
+    disabled: boolean,
+  ) {
+    await postGovernance({
+      scopeUpdates: [{ scopeType, scopeId, disabled }],
+      reason: disabled ? reason.trim() || undefined : undefined,
+      expectedVersion: governance?.version,
+    });
+  }
+
+  const scopes = governance?.scopes;
+
   return (
     <div className="space-y-6">
-      <AdminPageHeader title="AI Governance" subtitle="Escalations and LLM kill switch" />
+      <AdminPageHeader title="AI Governance" description="Escalations and LLM kill switch" />
       {error ? <p className="text-red-600">{error}</p> : null}
       <div className="rounded border bg-white p-4">
-        <p className="mb-2 font-medium">LLM kill switch</p>
+        <p className="mb-2 font-medium">Global LLM kill switch</p>
         <p className="mb-2 text-sm text-gray-600">
           Status: {llmDisabled ? 'LLM disabled (rules-only fallback)' : 'LLM enabled'}
         </p>
@@ -109,6 +148,10 @@ export function AiGovernancePanel() {
             <div>
               <dt className="inline font-medium">Version: </dt>
               <dd className="inline">{governance.version}</dd>
+            </div>
+            <div>
+              <dt className="inline font-medium">Environment: </dt>
+              <dd className="inline">{governance.environment}</dd>
             </div>
             <div>
               <dt className="inline font-medium">Updated: </dt>
@@ -146,21 +189,61 @@ export function AiGovernancePanel() {
           </label>
         ) : null}
         <AdminActionButton disabled={busy} onClick={() => void toggleKillSwitch(!llmDisabled)}>
-          {llmDisabled ? 'Enable LLM' : 'Disable LLM'}
+          {llmDisabled ? 'Enable LLM (global)' : 'Disable LLM (global)'}
         </AdminActionButton>
       </div>
+
+      {scopes ? (
+        <div className="grid gap-4 md:grid-cols-2">
+          <div className="rounded border bg-white p-4">
+            <p className="mb-2 font-medium">Per-feature LLM disable</p>
+            <ul className="space-y-2 text-sm">
+              {Object.entries(scopes.features).map(([key, off]) => (
+                <li key={key} className="flex items-center justify-between gap-2">
+                  <span>
+                    {key}: {off ? 'rules-only' : 'LLM allowed'}
+                  </span>
+                  <AdminActionButton
+                    disabled={busy}
+                    onClick={() => void toggleScope('feature', key, !off)}
+                  >
+                    {off ? 'Enable' : 'Disable'}
+                  </AdminActionButton>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="rounded border bg-white p-4">
+            <p className="mb-2 font-medium">Per-provider disable</p>
+            <ul className="space-y-2 text-sm">
+              {Object.entries(scopes.providers).map(([key, off]) => (
+                <li key={key} className="flex items-center justify-between gap-2">
+                  <span>
+                    {key}: {off ? 'blocked' : 'active'}
+                  </span>
+                  <AdminActionButton
+                    disabled={busy}
+                    onClick={() => void toggleScope('provider', key, !off)}
+                  >
+                    {off ? 'Enable' : 'Disable'}
+                  </AdminActionButton>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      ) : null}
+
       {history.length > 0 ? (
         <div>
           <p className="mb-2 font-medium">Kill switch history</p>
           <ul className="divide-y rounded border bg-white text-sm">
             {history.slice(0, 20).map((h) => (
               <li key={h.id} className="px-4 py-3">
-                <span className="font-medium">
-                  {h.previousLlmDisabled ? 'LLM off' : 'LLM on'} → {h.llmDisabled ? 'LLM off' : 'LLM on'}
-                </span>
+                <span className="font-medium">{historyLabel(h)}</span>
                 {' · '}
                 v{h.version} · {h.actorRole ?? 'system'} · {h.source}
-                {h.reason ? ` — ${h.reason}` : ''}
+                {h.reason && h.changeKind !== 'failed_attempt' ? ` — ${h.reason}` : ''}
                 <br />
                 <span className="text-xs text-gray-500">{new Date(h.createdAt).toLocaleString()}</span>
               </li>

@@ -252,7 +252,7 @@ export function ApplicationReviewPanel({ applicationId }: { applicationId: strin
   }, [applicationId]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void load();
   }, [load, retry]);
 

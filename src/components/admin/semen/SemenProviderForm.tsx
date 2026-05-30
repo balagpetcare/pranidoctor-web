@@ -66,7 +66,7 @@ export function SemenProviderForm(props: Props) {
   }, [props.mode, providerId]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void load();
   }, [load, loadKey]);
 

@@ -68,12 +68,12 @@ export function KnowledgeHubPostForm(props: Props) {
   }, [props.mode, editPostId]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void loadCategories();
   }, [loadCategories]);
 
   useEffect(() => {
-    // eslint-disable-next-line react-hooks/set-state-in-effect -- async loader updates state after network
+     
     void loadPost();
   }, [loadPost, loadRetryKey]);
 

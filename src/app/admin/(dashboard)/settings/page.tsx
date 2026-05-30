@@ -36,6 +36,9 @@ export default function SettingsPage() {
           <AdminActionButton href="/admin/settings/emergency-limitation" variant="primary">
             Emergency Limitation Notice
           </AdminActionButton>
+          <AdminActionButton href="/admin/settings/ai-compliance" variant="primary">
+            AI Compliance Rules
+          </AdminActionButton>
         </div>
       </AdminFormSection>
 
