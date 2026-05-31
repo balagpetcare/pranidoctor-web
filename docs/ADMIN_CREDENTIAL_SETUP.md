@@ -53,7 +53,7 @@ Other panels (doctor, technician, mobile) use their own secrets; see `.env.examp
 
 | Variable | Purpose |
 |----------|---------|
-| `APP_URL` | Public site base URL (e.g. `http://localhost:3000` locally, `https://pranidoctor.com` in production) for links and future features |
+| `APP_URL` | Public site base URL (e.g. `http://localhost:3001` locally for Next.js, `https://pranidoctor.com` in production) for links and future features |
 
 Copy `.env.example` to `.env` and fill in real values. **Do not commit `.env`.**
 
@@ -94,7 +94,7 @@ Display name and phone follow the same precedence as in `prisma/seed.ts` (see `.
 1. Start the app (`npm run dev` or your production process).
 2. Open the admin login page:
 
-   - **Local:** `http://localhost:3000/admin/login`
+   - **Local:** `http://localhost:3001/admin/login`
    - **Production:** `https://pranidoctor.com/admin/login`
 
 3. Sign in with the **same** `ADMIN_SEED_EMAIL` and `ADMIN_SEED_PASSWORD` values from your `.env` (not the hash).

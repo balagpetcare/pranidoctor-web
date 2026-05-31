@@ -4,12 +4,16 @@ import { useCallback, useEffect, useState } from 'react';
 import { adminFetch } from '@/lib/admin/admin-fetch';
 import { readAdminJson } from '@/lib/admin/read-admin-json';
 
-export function useAiAdminResource<T>(path: string, deps: unknown[] = []) {
+export function useAiAdminResource<T>(path: string | null, deps: unknown[] = []) {
   const [data, setData] = useState<T | null>(null);
   const [error, setError] = useState<string | null>(null);
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(Boolean(path));
 
   const reload = useCallback(async () => {
+    if (!path) {
+      setLoading(false);
+      return;
+    }
     setLoading(true);
     setError(null);
     try {

@@ -38,8 +38,12 @@ const CAPABILITY_DETAILS: Record<
     description: "এআই প্রোভাইডার, মডেল, রুট, ফেইলওভার ও মার্কেটপ্লেস কনফিগ পরিচালনা।",
     navGated: "AI Ops panels",
   },
+  "ai.secrets.view": {
+    description: "এআই API কী তালিকা, অডিট, টেস্ট ও নিষ্ক্রিয় করা (মেটাডেটা মাত্র)।",
+    navGated: "/admin/ai-ops/api-keys",
+  },
   "ai.secrets.manage": {
-    description: "এআই API কী তৈরি, রোটেশন ও নিষ্ক্রিয় করা।",
+    description: "এআই API কী তৈরি, রোটেশন ও প্রাইমারি সেট করা।",
     navGated: "/admin/ai-ops/api-keys",
   },
   "ai.analytics.export": {

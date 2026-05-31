@@ -29,6 +29,10 @@ export type AdminApiTrackPayload = {
   status: number | null;
   durationMs: number;
   ok: boolean;
+  /** Populated when `ok` is false (diagnostics only). */
+  responseBody?: string;
+  errorMessage?: string;
+  errorStack?: string;
 };
 
 export type AdminAuthTrackReason =

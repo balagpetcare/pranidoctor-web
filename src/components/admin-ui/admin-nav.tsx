@@ -208,6 +208,13 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
         capability: "ai.view",
       },
       {
+        href: "/admin/ai-ops/operations",
+        labelBn: "অপারেশন",
+        titleEn: "Operations",
+        icon: Layers,
+        capability: "ai.view",
+      },
+      {
         href: "/admin/ai-ops/providers",
         labelBn: "প্রোভাইডার",
         titleEn: "Providers",
@@ -233,7 +240,7 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
         labelBn: "API কী",
         titleEn: "API Keys",
         icon: Key,
-        capability: "ai.view",
+        capability: "ai.secrets.view",
       },
       {
         href: "/admin/ai-ops/prompts",
@@ -269,6 +276,21 @@ export const ADMIN_NAV_GROUPS: AdminNavGroup[] = [
         titleEn: "Logs",
         icon: ScrollText,
         capability: "ai.view",
+      },
+      {
+        href: "/admin/ai-ops/feed-intelligence",
+        labelBn: "ফিড ইন্টেলিজেন্স",
+        titleEn: "Feed Intelligence — VKL ingredients & toxic alerts",
+        icon: FlaskConical,
+        capability: "ai.feed.view",
+      },
+      {
+        href: "/admin/ai-ops/readiness",
+        labelBn: "রেডিনেস",
+        titleEn: "Readiness",
+        icon: ShieldCheck,
+        capability: "ai.manage",
+        roles: [USER_ROLE.SUPER_ADMIN, USER_ROLE.ADMIN],
       },
       {
         href: "/admin/ai-ops/settings",

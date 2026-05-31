@@ -1,0 +1,164 @@
+/*
+ * Admin login — enterprise auth experience (scoped to .pd-admin-login)
+ */
+
+.pd-admin-login {
+  --pd-login-primary: #0f8f5f;
+  --pd-login-secondary: #14b87a;
+  --pd-login-accent: #22c55e;
+  --pd-login-bg: #f5faf7;
+  --pd-login-text: #111827;
+  --pd-login-success: #16a34a;
+  --pd-login-muted: #6b7280;
+  --pd-login-border: rgb(15 143 95 / 0.12);
+  --pd-login-card-shadow:
+    0 24px 48px -12px rgb(15 143 95 / 0.12),
+    0 8px 24px -8px rgb(17 24 39 / 0.08);
+  --pd-login-hero-overlay: linear-gradient(
+    145deg,
+    rgb(6 78 59 / 0.92) 0%,
+    rgb(15 143 95 / 0.78) 45%,
+    rgb(20 184 122 / 0.65) 100%
+  );
+  color: var(--pd-login-text);
+  background: var(--pd-login-bg);
+}
+
+@keyframes pd-login-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pd-login-card-enter {
+  from {
+    opacity: 0;
+    transform: translateY(20px) scale(0.98);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes pd-login-float {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+}
+
+.pd-admin-login-animate-in {
+  animation: pd-login-fade-in 0.6s ease-out both;
+}
+
+.pd-admin-login-card-enter {
+  animation: pd-login-card-enter 0.65s cubic-bezier(0.22, 1, 0.36, 1) both;
+}
+
+.pd-admin-login-float {
+  animation: pd-login-float 8s ease-in-out infinite;
+}
+
+.pd-admin-login-float-delayed {
+  animation: pd-login-float 10s ease-in-out 1.5s infinite;
+}
+
+.pd-admin-login-pattern {
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%230f8f5f' fill-opacity='0.06'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+
+.pd-admin-login-glass {
+  border: 1px solid rgb(255 255 255 / 0.72);
+  background: rgb(255 255 255 / 0.82);
+  box-shadow: var(--pd-login-card-shadow);
+  backdrop-filter: blur(20px);
+}
+
+.pd-admin-login-btn-primary {
+  background: linear-gradient(
+    135deg,
+    var(--pd-login-primary) 0%,
+    var(--pd-login-secondary) 55%,
+    var(--pd-login-accent) 100%
+  );
+  transition:
+    transform 0.2s ease,
+    box-shadow 0.2s ease,
+    filter 0.2s ease;
+}
+
+.pd-admin-login-btn-primary:hover:not(:disabled) {
+  filter: brightness(1.05);
+  box-shadow: 0 12px 28px -8px rgb(15 143 95 / 0.45);
+  transform: translateY(-1px);
+}
+
+.pd-admin-login-btn-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.pd-admin-login-btn-primary:focus-visible {
+  outline: 2px solid var(--pd-login-primary);
+  outline-offset: 3px;
+}
+
+.pd-admin-login-floating-field:focus-within .pd-admin-login-floating-label,
+.pd-admin-login-floating-field[data-filled="true"] .pd-admin-login-floating-label {
+  top: 0.5rem;
+  transform: translateY(0);
+  font-size: 0.6875rem;
+  font-weight: 600;
+  color: var(--pd-login-primary);
+  letter-spacing: 0.02em;
+}
+
+.pd-admin-login-floating-field:focus-within .pd-admin-login-floating-input {
+  border-color: var(--pd-login-primary);
+  box-shadow: 0 0 0 3px rgb(15 143 95 / 0.15);
+}
+
+.pd-admin-login-floating-field[data-invalid="true"] .pd-admin-login-floating-input {
+  border-color: #dc2626;
+  box-shadow: 0 0 0 3px rgb(220 38 38 / 0.12);
+}
+
+.pd-admin-login-floating-field[data-invalid="true"] .pd-admin-login-floating-label {
+  color: #dc2626;
+}
+
+.pd-admin-login-checkbox:checked + .pd-admin-login-checkbox-box {
+  border-color: var(--pd-login-primary);
+  background: linear-gradient(135deg, var(--pd-login-primary), var(--pd-login-secondary));
+}
+
+.pd-admin-login-checkbox:checked + .pd-admin-login-checkbox-box svg {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.pd-admin-login-checkbox:focus-visible + .pd-admin-login-checkbox-box {
+  outline: 2px solid var(--pd-login-primary);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .pd-admin-login-animate-in,
+  .pd-admin-login-card-enter,
+  .pd-admin-login-float,
+  .pd-admin-login-float-delayed {
+    animation: none;
+  }
+
+  .pd-admin-login-btn-primary:hover:not(:disabled) {
+    transform: none;
+  }
+}

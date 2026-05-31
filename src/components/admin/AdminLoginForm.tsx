@@ -1,9 +1,13 @@
 "use client";
 
-import { PawPrint } from "lucide-react";
+import { Loader2, Lock, Mail, ShieldCheck } from "lucide-react";
+import Link from "next/link";
 import { useSearchParams } from "next/navigation";
 import { type FormEvent, useEffect, useMemo, useState } from "react";
 
+import { AdminLoginBrandLogo } from "@/components/admin/login/AdminLoginBrandLogo";
+import { AdminLoginCheckbox } from "@/components/admin/login/AdminLoginCheckbox";
+import { AdminLoginFloatingInput } from "@/components/admin/login/AdminLoginFloatingInput";
 import { AdminAuthError } from "@/lib/admin-auth/auth-api";
 import {
   adminLoginErrorBn,
@@ -20,7 +24,15 @@ import { cn } from "@/lib/cn";
 import { AdminMonitoringEvent } from "@/lib/monitoring/admin-events";
 import { trackAdminAuthEvent } from "@/lib/monitoring/admin-monitoring-client";
 
-export function AdminLoginForm() {
+const SUPPORT_EMAIL = "support@pranidoctor.com";
+
+type AdminLoginFormProps = {
+  platformVersion?: string;
+};
+
+export function AdminLoginForm({
+  platformVersion = "0.1.0",
+}: AdminLoginFormProps) {
   const searchParams = useSearchParams();
   const [identifier, setIdentifier] = useState("");
   const [password, setPassword] = useState("");
@@ -123,115 +135,167 @@ export function AdminLoginForm() {
   }
 
   return (
-    <form
-      onSubmit={onSubmit}
-      className={cn(
-        "mx-auto w-full max-w-sm space-y-6 rounded-2xl border border-emerald-900/10 bg-white/95 p-6 shadow-lg shadow-emerald-900/5 backdrop-blur-sm",
-        "dark:border-emerald-500/15 dark:bg-zinc-900/95 dark:shadow-black/40",
-        "sm:p-8",
-      )}
-    >
-      <div className="flex justify-center sm:hidden">
-        <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-emerald-100 text-emerald-800 dark:bg-emerald-950/80 dark:text-emerald-300">
-          <PawPrint className="h-5 w-5" aria-hidden />
-        </span>
-      </div>
+    <div className="pd-admin-login-card-enter mx-auto w-full max-w-[480px]">
+      <div className="pd-admin-login-glass rounded-[24px] p-6 sm:p-8">
+        <AdminLoginBrandLogo />
 
-      <div className="space-y-1 text-center sm:text-left">
-        <h2 className="text-lg font-semibold leading-snug text-zinc-900 dark:text-zinc-50 sm:text-xl">
-          Sign in
-        </h2>
-        <p className="text-sm leading-relaxed text-zinc-600 dark:text-zinc-400">
-          Email or Bangladesh mobile number, and your password.
-        </p>
-        <p className="text-xs leading-relaxed text-zinc-500 dark:text-zinc-500">
-          ইমেইল বা বাংলাদেশি মোবাইল নম্বর, এবং পাসওয়ার্ড।
-        </p>
-      </div>
+        <header className="mt-6 text-center">
+          <h2 className="text-2xl font-bold tracking-tight text-[#111827]">
+            Welcome Back
+          </h2>
+          <p className="mt-1 text-sm font-medium text-[#374151]">
+            Admin Dashboard Access
+          </p>
+          <p className="mt-2 text-xs leading-relaxed text-[#6B7280]">
+            Authorized staff only — use your admin email or Bangladesh mobile number.
+          </p>
+          <p className="mt-1 text-xs leading-relaxed text-[#9CA3AF]" lang="bn">
+            শুধুমাত্র অনুমোদিত অ্যাডমিন — ইমেইল বা মোবাইল নম্বর ব্যবহার করুন।
+          </p>
+        </header>
 
-      <div className="space-y-4">
-        <label className="block text-sm font-medium text-zinc-800 dark:text-zinc-200">
-          <span className="block">Email or phone / ইমেইল বা ফোন</span>
-          <input
-            type="text"
+        <form onSubmit={onSubmit} className="mt-8 space-y-5" noValidate={false}>
+          <AdminLoginFloatingInput
+            label="Email or phone"
+            labelBn="ইমেইল বা ফোন"
             name="identifier"
+            type="text"
             autoComplete="username"
             required
             value={identifier}
             onChange={(ev) => setIdentifier(ev.target.value)}
-            className={cn(
-              "mt-1.5 block w-full min-h-11 rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-base text-zinc-900 sm:text-sm",
-              "outline-none ring-emerald-600/30 focus:border-emerald-600 focus:ring-2",
-              "dark:border-zinc-600 dark:bg-zinc-950 dark:text-zinc-100",
-            )}
-            placeholder="admin@example.com or 017…"
+            icon={Mail}
+            invalid={Boolean(error)}
+            placeholder=" "
           />
-        </label>
-        <label className="block text-sm font-medium text-zinc-800 dark:text-zinc-200">
-          <span className="block">Password / পাসওয়ার্ড</span>
-          <input
-            type="password"
+
+          <AdminLoginFloatingInput
+            label="Password"
+            labelBn="পাসওয়ার্ড"
             name="password"
+            type="password"
             autoComplete="current-password"
             required
             minLength={1}
             value={password}
             onChange={(ev) => setPassword(ev.target.value)}
+            icon={Lock}
+            invalid={Boolean(error)}
+            showPasswordToggle
+            placeholder=" "
+          />
+
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-start sm:justify-between">
+            <AdminLoginCheckbox
+              name="remember"
+              checked={remember}
+              onChange={(ev) => setRemember(ev.target.checked)}
+              label={
+                <>
+                  Remember me on this device
+                  <span className="block text-xs text-[#6B7280]" lang="bn">
+                    এই ডিভাইসে মনে রাখুন
+                  </span>
+                  {showRememberHelper ? (
+                    <span className="mt-1 block text-xs text-[#9CA3AF]" lang="bn">
+                      শুধু ইমেইল/ফোন সংরক্ষিত — পাসওয়ার্ড নয়। সেশন ৭ দিন পর্যন্ত সক্রিয়
+                      থাকতে পারে।
+                    </span>
+                  ) : null}
+                </>
+              }
+            />
+          </div>
+
+          {notice ? (
+            <p
+              className="rounded-xl border border-amber-200/80 bg-amber-50 px-4 py-3 text-sm leading-relaxed text-amber-950"
+              role="status"
+            >
+              {notice}
+            </p>
+          ) : null}
+
+          {error ? (
+            <p
+              className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-sm leading-relaxed text-red-900"
+              role="alert"
+              aria-live="assertive"
+            >
+              {error}
+            </p>
+          ) : null}
+
+          <button
+            type="submit"
+            disabled={loading}
             className={cn(
-              "mt-1.5 block w-full min-h-11 rounded-lg border border-zinc-300 bg-white px-3 py-2.5 text-base text-zinc-900 sm:text-sm",
-              "outline-none ring-emerald-600/30 focus:border-emerald-600 focus:ring-2",
-              "dark:border-zinc-600 dark:bg-zinc-950 dark:text-zinc-100",
+              "pd-admin-login-btn-primary flex min-h-12 w-full items-center justify-center gap-2 rounded-xl px-4 py-3 text-sm font-semibold text-white",
+              "disabled:cursor-not-allowed disabled:opacity-65",
             )}
-          />
-        </label>
-        <label className="flex cursor-pointer items-start gap-2 text-sm text-zinc-700 dark:text-zinc-300">
-          <input
-            type="checkbox"
-            name="remember"
-            checked={remember}
-            onChange={(ev) => setRemember(ev.target.checked)}
-            className="mt-1 h-4 w-4 rounded border-zinc-300 text-emerald-700 focus:ring-emerald-600"
-          />
-          <span>
-            Remember me on this device / এই ডিভাইসে মনে রাখুন
-            {showRememberHelper ? (
-              <span className="mt-0.5 block text-xs text-zinc-500">
-                শুধু ইমেইল/ফোন সংরক্ষিত — পাসওয়ার্ড নয়। সেশন ৭ দিন পর্যন্ত সক্রিয় থাকতে পারে।
-              </span>
-            ) : null}
-          </span>
-        </label>
+          >
+            {loading ? (
+              <>
+                <Loader2 className="h-4 w-4 animate-spin" aria-hidden />
+                <span>Signing in… / লগ ইন হচ্ছে…</span>
+              </>
+            ) : (
+              "Log in / প্রবেশ করুন"
+            )}
+          </button>
+
+          <div className="flex flex-col items-center justify-center gap-2 pt-1 text-sm sm:flex-row sm:gap-4">
+            <Link
+              href={`mailto:${SUPPORT_EMAIL}?subject=Admin%20password%20reset%20request`}
+              className="font-medium text-[#0F8F5F] underline-offset-4 transition-colors hover:text-[#14B87A] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F8F5F]"
+            >
+              Forgot Password
+            </Link>
+            <span className="hidden text-[#D1D5DB] sm:inline" aria-hidden>
+              |
+            </span>
+            <Link
+              href={`mailto:${SUPPORT_EMAIL}?subject=Admin%20access%20request`}
+              className="font-medium text-[#0F8F5F] underline-offset-4 transition-colors hover:text-[#14B87A] hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F8F5F]"
+            >
+              Contact Administrator
+            </Link>
+          </div>
+        </form>
+
+        <footer className="mt-8 space-y-4 border-t border-[#E5E7EB] pt-6">
+          <div className="flex gap-3 rounded-xl bg-[#F5FAF7] p-4">
+            <ShieldCheck
+              className="mt-0.5 h-5 w-5 shrink-0 text-[#0F8F5F]"
+              aria-hidden
+            />
+            <div>
+              <p className="text-sm font-semibold text-[#111827]">Security Notice</p>
+              <p className="mt-1 text-xs leading-relaxed text-[#6B7280]">
+                This is a restricted admin environment. All sign-in attempts are
+                monitored and logged for security compliance.
+              </p>
+              <p className="mt-1 text-xs leading-relaxed text-[#9CA3AF]" lang="bn">
+                এটি একটি সুরক্ষিত অ্যাডমিন পরিবেশ — সকল লগইন চেষ্টা নিরাপত্তার জন্য
+                রেকর্ড করা হয়।
+              </p>
+            </div>
+          </div>
+
+          <div className="flex flex-col gap-1 text-center text-xs text-[#9CA3AF] sm:flex-row sm:items-center sm:justify-between sm:text-left">
+            <p>Platform version {platformVersion}</p>
+            <p>
+              Support:{" "}
+              <a
+                href={`mailto:${SUPPORT_EMAIL}`}
+                className="font-medium text-[#0F8F5F] underline-offset-2 hover:underline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#0F8F5F]"
+              >
+                {SUPPORT_EMAIL}
+              </a>
+            </p>
+          </div>
+        </footer>
       </div>
-
-      {notice ? (
-        <p
-          className="rounded-lg bg-amber-50 px-3 py-2.5 text-sm leading-relaxed text-amber-950 dark:bg-amber-950/40 dark:text-amber-100"
-          role="status"
-        >
-          {notice}
-        </p>
-      ) : null}
-
-      {error ? (
-        <p
-          className="rounded-lg bg-red-50 px-3 py-2.5 text-sm leading-relaxed text-red-900 dark:bg-red-950/50 dark:text-red-100"
-          role="alert"
-        >
-          {error}
-        </p>
-      ) : null}
-
-      <button
-        type="submit"
-        disabled={loading}
-        className={cn(
-          "flex min-h-11 w-full items-center justify-center rounded-lg bg-emerald-700 px-4 py-2.5 text-sm font-semibold text-white",
-          "hover:bg-emerald-800 disabled:cursor-not-allowed disabled:opacity-60",
-          "focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-600",
-        )}
-      >
-        {loading ? "Signing in… / লগ ইন হচ্ছে…" : "Log in / প্রবেশ করুন"}
-      </button>
-    </form>
+    </div>
   );
 }

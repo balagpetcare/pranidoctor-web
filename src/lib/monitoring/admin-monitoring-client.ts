@@ -10,6 +10,7 @@ import {
 import {
   getAdminSlowApiThresholdMs,
   getAdminSlowNavThresholdMs,
+  isAdminApiDiagnosticsVerbose,
   isAdminClientMonitoringEnabled,
   isAdminServerEventIngestEnabled,
   normalizeAdminApiPath,
@@ -114,7 +115,20 @@ export function trackAdminApiResult(payload: AdminApiTrackPayload): void {
 
   if (!payload.ok) {
     const level = payload.status != null && payload.status >= 500 ? "error" : "warn";
-    emitClientEvent(AdminMonitoringEvent.API_FAILURE, level, "Admin API call failed", meta);
+    const diagnostics = {
+      ...meta,
+      url: payload.url,
+      ...(payload.responseBody ? { responseBody: payload.responseBody } : {}),
+      ...(payload.errorMessage ? { errorMessage: payload.errorMessage } : {}),
+      ...(payload.errorStack ? { errorStack: payload.errorStack } : {}),
+    };
+    emitClientEvent(AdminMonitoringEvent.API_FAILURE, level, "Admin API call failed", diagnostics);
+    if (isAdminApiDiagnosticsVerbose()) {
+      clientLog[level]("Admin API call failed (diagnostics)", {
+        event: AdminMonitoringEvent.API_FAILURE,
+        metadata: diagnostics,
+      });
+    }
     return;
   }
 

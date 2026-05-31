@@ -9,8 +9,13 @@ export type ServiceInstanceAdminCapability =
   | "analytics.export"
   | "ai.view"
   | "ai.manage"
+  | "ai.secrets.view"
   | "ai.secrets.manage"
-  | "ai.analytics.export";
+  | "ai.analytics.export"
+  | "ai.feed.view"
+  | "ai.feed.manage"
+  | "ai.feed.publish"
+  | "ai.feed.audit";
 
 export const ADMIN_ENTERPRISE_CAPABILITIES: {
   id: ServiceInstanceAdminCapability;
@@ -23,8 +28,13 @@ export const ADMIN_ENTERPRISE_CAPABILITIES: {
   { id: "analytics.export", labelBn: "অ্যানালিটিক্স এক্সপোর্ট" },
   { id: "ai.view", labelBn: "এআই অ্যাডমিন দেখা" },
   { id: "ai.manage", labelBn: "এআই কনফিগ পরিচালনা" },
+  { id: "ai.secrets.view", labelBn: "এআই API কী দেখা" },
   { id: "ai.secrets.manage", labelBn: "এআই API কী পরিচালনা" },
   { id: "ai.analytics.export", labelBn: "এআই ব্যবহার রিপোর্ট এক্সপোর্ট" },
+  { id: "ai.feed.view", labelBn: "ফিড ইন্টেলিজেন্স দেখা" },
+  { id: "ai.feed.manage", labelBn: "ফিড জ্ঞান পরিচালনা" },
+  { id: "ai.feed.publish", labelBn: "ফিড জ্ঞান প্রকাশ" },
+  { id: "ai.feed.audit", labelBn: "ফিড অডিট লগ" },
 ];
 
 export type AdminRoleAccessRow = {
@@ -45,8 +55,13 @@ const ROLE_MATRIX: Record<
     "analytics.export": true,
     "ai.view": true,
     "ai.manage": true,
+    "ai.secrets.view": true,
     "ai.secrets.manage": true,
     "ai.analytics.export": true,
+    "ai.feed.view": true,
+    "ai.feed.manage": true,
+    "ai.feed.publish": true,
+    "ai.feed.audit": true,
   },
   [USER_ROLE.ADMIN]: {
     "serviceInstance.view": true,
@@ -55,12 +70,19 @@ const ROLE_MATRIX: Record<
     "analytics.export": true,
     "ai.view": true,
     "ai.manage": true,
+    "ai.secrets.view": true,
     "ai.analytics.export": true,
+    "ai.feed.view": true,
+    "ai.feed.manage": true,
+    "ai.feed.publish": true,
+    "ai.feed.audit": true,
   },
   [USER_ROLE.SUPPORT]: {
     "serviceInstance.view": true,
     "analytics.view": true,
     "ai.view": true,
+    "ai.feed.view": true,
+    "ai.feed.audit": true,
   },
   [USER_ROLE.CUSTOMER]: undefined,
   [USER_ROLE.DOCTOR]: undefined,

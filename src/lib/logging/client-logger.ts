@@ -83,6 +83,27 @@ function emit(entry: StructuredLogEntry): void {
         : entry.level === "debug"
           ? console.debug
           : console.info;
+
+  if (
+    entry.event === "admin.api.failure" &&
+    entry.metadata &&
+    typeof entry.metadata === "object"
+  ) {
+    const m = entry.metadata as Record<string, unknown>;
+    writer(`[${entry.level}] ${entry.message}`, {
+      url: m.url ?? m.path,
+      method: m.method,
+      status: m.status,
+      durationMs: m.durationMs,
+      responseBody: m.responseBody,
+      errorMessage: m.errorMessage,
+      errorStack: m.errorStack,
+      correlationId: entry.correlationId,
+      event: entry.event,
+    });
+    return;
+  }
+
   writer(`[${entry.level}] ${entry.message}`, entry);
 }
 

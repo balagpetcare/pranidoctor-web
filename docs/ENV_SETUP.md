@@ -23,7 +23,7 @@ For a usable **admin login** after seeding, also set `ADMIN_SEED_EMAIL` and `ADM
 
 | Kind | Examples | Notes |
 |------|-----------|--------|
-| **Local-only** | `NODE_ENV=development`, `APP_URL=http://localhost:3000`, `OTP_MODE=dev`, `SMS_PROVIDER=local`, `MAIL_ENABLED=false`, `PAYMENT_ENABLED=false` | `OTP_MODE=dev` logs OTP to the server terminal — **never** use in production |
+| **Local-only** | `NODE_ENV=development`, `APP_URL=http://localhost:3001`, `BACKEND_URL=http://localhost:3000`, `OTP_MODE=dev`, `SMS_PROVIDER=local`, `MAIL_ENABLED=false`, `PAYMENT_ENABLED=false` | Next.js on **3001**, Express API on **3000**; `OTP_MODE=dev` logs OTP to the server terminal — **never** use in production |
 | **Change in production** | `OTP_MODE=live`, SMS credentials, all JWT/`AUTH_SECRET` values, `DATABASE_URL`, payment/S3 credentials, `NEXT_PUBLIC_*` pointing at prod URLs | Rotate secrets if exposed; use a secrets manager |
 
 ---

@@ -47,6 +47,11 @@ export function getAdminSlowNavThresholdMs(): number {
   return parsePositiveIntEnv("NEXT_PUBLIC_ADMIN_SLOW_NAV_MS", 4000);
 }
 
+/** Extra client console fields (URL, response body, error stack) on failed admin API calls. */
+export function isAdminApiDiagnosticsVerbose(): boolean {
+  return parseBoolEnv("NEXT_PUBLIC_ADMIN_API_DIAGNOSTICS", true);
+}
+
 /** Collapse dynamic path segments to limit log cardinality. */
 export function normalizeAdminApiPath(url: string): string {
   try {

@@ -98,8 +98,15 @@ export async function adminMeRequest(): Promise<AdminSessionUser> {
     headers: appendAdminCorrelationHeaders(),
   });
   const body = await readJson(res);
-  if (res.status === 401 || res.status === 403) {
+  if (res.status === 401) {
     throw new AdminAuthError("UNAUTHORIZED", "Not signed in");
+  }
+  if (res.status === 403) {
+    const parsed = body as ApiEnvelope<unknown>;
+    if (parsed && typeof parsed === "object" && "ok" in parsed && !parsed.ok) {
+      throw new AdminAuthError(parsed.error.code, parsed.error.message);
+    }
+    throw new AdminAuthError("FORBIDDEN", "Admin panel access required");
   }
   const data = parseEnvelope<{ user: AdminSessionUser }>(body);
   return data.user;
